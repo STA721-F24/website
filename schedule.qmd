@@ -1,0 +1,112 @@
+---
+title: "{{< fa calendar-days >}} Schedule"
+repo-url: https://github.com/sta721-F24/website
+repo-actions: [issue]
+freeze: false
+execute: 
+  echo: false
+---
+
+### Please refresh often in case links/content has been updated
+
+```{r}
+#| message: false
+#| results: 'hide'
+
+require(readxl)
+library(readxl)
+
+require(fontawesome)
+library(fontawesome)
+
+require(gt)
+library(gt)
+require(dplyr)
+library(dplyr)
+```
+
+```{r}
+#| label: functions
+#| message: false
+#| results: 'hide'
+add_lab_link <- function(link_location) {
+  ifelse(is.na(link_location), 
+        NA, 
+        paste0("[" , '<i class="fa fa-laptop fa-fw"></i>', 
+               "](labs/", link_location, ")"))
+}
+
+add_reading_link <- function(link_location) {
+  ifelse(is.na(link_location), 
+        NA, 
+        paste0("[" , '<i class="fa fa-book fa-fw"></i>', 
+               "](reading/", link_location, ")"))
+}
+
+
+add_hw_link<- function(link_location) {
+  ifelse(is.na(link_location), 
+        NA, 
+        paste0("[",'<i class="fa fa-pen-to-square fa-fw"></i> ', link_location, "](hw/", 
+               link_location, ".html)"))
+}
+
+add_slide_link <- function(Lesson, Slides) {
+  ifelse(is.na(Slides), 
+        Lesson, 
+        paste0("[", Lesson, "](resources/slides/", Slides, ".html)"))
+}
+
+add_slide_pdf <- function(Slides) {
+  ifelse(is.na(Slides), 
+        NA, 
+        paste0("[", '<i class="fa fa-file-pdf fa-fw"></i> ',  "](resources/slides/", Slides, ".pdf)"))
+}
+```
+
+
+
+
+```{r}
+#| message: false
+#| results: 'hide'
+schedule = read_xlsx("schedule.xlsx")
+```
+
+
+```{r}
+schedule |> 
+  mutate(Labs = add_lab_link(Labs),
+         Reading = add_reading_link(Reading),
+         Lesson = add_slide_link(Lesson, Slides),
+         Slides = add_slide_pdf(Slides),
+         HW = add_hw_link(HW)
+     ) |> 
+  select(-Old) |>
+  gt() |>
+          fmt_markdown(columns = c(Week, Date, Lesson,Slides, Reading, Labs, HW)
+     ) |>
+          sub_missing(missing_text = "") |>
+          cols_width(
+            Week ~ px(55),
+            Date ~ px(100),
+            Lesson ~ px(375),
+            Slides ~ px(55),
+            Reading ~ px(55),
+            Labs ~ px(50),
+            HW ~ px(70)
+     ) |>
+         cols_align("left") |>
+         cols_align("center", columns = c(Reading,Slides, Labs))  |>  
+         opt_stylize(style = 1, color = "gray")
+```
+
+
+
+```{r schedule, echo=FALSE, include=FALSE}
+#options(knitr.kable.NA = '')
+knitr::kable(schedule)
+
+```
+
+

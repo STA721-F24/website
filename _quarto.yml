@@ -1,0 +1,46 @@
+project:
+  type: website
+
+website:
+  title: "STA721-F24: Linear Models"
+  navbar:
+    background: "#353148"
+    align: center
+    collapse-below: lg
+  
+    left:
+      - href: index.qmd
+        text: "{{< fa home >}} Home"
+      - syllabus.qmd
+      - schedule.qmd
+      - resources.qmd
+    right:
+      - icon: github
+        href: https://github.com/sta721-F24/
+  
+  repo-url: https://github.com/sta721-F24/website
+  repo-actions: [issue]
+  page-footer:
+    right: "This page is built with [Quarto](https://quarto.org/)."
+    left: "&copy; Copyright 2024, Merlise Clyde"
+    background: "#353148"
+      
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    
+callout-appearance: simple 
+
+execute: 
+  freeze: auto
+  
+render:  
+  - "*.qmd"
+
+
+
+
+

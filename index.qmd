@@ -1,0 +1,48 @@
+---
+title: "STA721-F24 Linear Models"
+---
+
+![](img/Bayes_Theorem.jpg){fig-alt="Photo of Neon Sign with Bayes Theorem."}
+
+
+## Course Description
+
+This course introduces students to linear models and extensions for model building from the frequentist (OLS/MLE and penalized likelihoods) and Bayesian paradigms, with an emphasis on a geometric perspective. Course topics include optimal estimation and prediction, distributional assumptions and model checking, hypothesis testing and model selection including Bayes factors and intrinsic Bayes factors, and Bayesian Model Averaging. Students should have a strong background in matrix algebra and distribution theory.  Co-requisite: STA 602L, 702L or equivalent.
+
+## Course Info
+
+
+
+### Lecture
+
+<font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; Tuesday and Thursday
+
+<font color="#6CA0DC"><i class="fas fa-clock fa-lg"></i></font> &nbsp; 1:25pm - 2:40pm
+
+<font color="#6CA0DC"><i class="fas fa-university fa-lg"></i></font> &nbsp; Old Chemistry 123 </font>
+
+
+### Labs
+
+<font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; Fridays
+
+<font color="#6CA0DC"><i class="fas fa-clock fa-lg"></i></font> &nbsp;10:05am - 11:20pm
+
+<font color="#6CA0DC"><i class="fas fa-university fa-lg"></i></font> &nbsp; LINK 088 (Clasroom 4) </font>
+
+### Final Exam
+
+<font color="#6CA0DC"><i class="fas fa-calendar-alt fa-lg"></i></font> &nbsp; 
+December 15 
+
+<font color="#6CA0DC"><i class="fas fa-clock fa-lg"></i></font> &nbsp; 9:00am - 12:00pm
+
+<font color="#6CA0DC"><i class="fas fa-university fa-lg"></i></font> &nbsp; Old Chemistry 123 </font>
+
+### Instructional Team and Office Hours 
+
+Role              | Name |  Email         |  Office Hours  | Location     
+-----------|-------------|----------------|----------------|-------------:
+Instructor | [Dr Merlise Clyde](https://www2.stat.duke.edu/~clyde) | [{{< fa envelope >}} ](mailto:clyde@duke.edu)  | Tues 2:45 - 3:45 <br> or by appointment  <br /> | 223E Old Chem |  
+TA               | [Bongjung Sung](https://scholars.duke.edu/person/bongjung.sung) | <a href="mailto:bongjung.sung@duke.edu" title="email"><i class="fa fa-envelope"></i></a> | Mon 9:30-11:30am | 203B Old Chem
+
