@@ -39,6 +39,9 @@ _site
 *.utf8.md
 *.knit.md
 
+# Temporary Excel file
+~$schedule.xlsx
+
 # R Environment Variables
 .Renviron
 

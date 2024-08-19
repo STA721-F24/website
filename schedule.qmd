@@ -80,21 +80,21 @@ schedule |>
          Reading = add_reading_link(Reading),
          Lesson = add_slide_link(Lesson, Slides),
          Slides = add_slide_pdf(Slides),
-         HW = add_hw_link(HW)
+         Homework = add_hw_link(Homework)
      ) |> 
   select(-Old) |>
   gt() |>
-          fmt_markdown(columns = c(Week, Date, Lesson,Slides, Reading, Labs, HW)
+          fmt_markdown(columns = c(Week, Date, Lesson,Slides, Reading, Labs, Homework)
      ) |>
           sub_missing(missing_text = "") |>
           cols_width(
             Week ~ px(55),
-            Date ~ px(100),
+            Date ~ px(60),
             Lesson ~ px(375),
             Slides ~ px(55),
             Reading ~ px(55),
             Labs ~ px(50),
-            HW ~ px(70)
+            Homework ~ px(100)
      ) |>
          cols_align("left") |>
          cols_align("center", columns = c(Reading,Slides, Labs))  |>  
