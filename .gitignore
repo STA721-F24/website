@@ -57,4 +57,5 @@ rsconnect/
 /.quarto/
 /_site/
 /resources/_slides_702-F23/
-/resources/_old_lectures_Rnw
+/resources/_old_lectures_Rnw/
+/resources/.DS_Store
