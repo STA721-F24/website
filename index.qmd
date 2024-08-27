@@ -1,5 +1,5 @@
 ---
-title: "STA721Linear Models (Fall 2024)"
+title: "STA721: Linear Models (Fall 2024)"
 ---
 
 ![](img/Bayes_Theorem.jpg){fig-alt="Photo of Neon Sign with Bayes Theorem."}
