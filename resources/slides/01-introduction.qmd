@@ -226,6 +226,72 @@ Rewrite in vectors:
 
 Quadratic in $x$, but linear in $\beta$'s - how do we know this model is adequate?
 
+
+## Kernel Regression (NonParametric)
+
+$$y_i =  \beta_0 + \sum_{j = 1}^J \beta_j e^{-\lambda (x_i - k_j)^d} + \epsilon_i \text{  for  } i = 1, \ldots, n$$
+where $k_j$ are kernel locations and $\lambda$ is a smoothing parameter
+\pause
+\begin{eqnarray*}
+\left[
+\begin{array}{c}  y_1 \\ \vdots \\  y_n \end{array}
+  \right]   =  &
+ \left[ \begin{array}{cccc}  1 &  e^{-\lambda (x_1 - k_1)^d} &
+     \ldots &  e^{-\lambda (x_1 - k_J)^d}  \\
+     \vdots & \vdots & & \vdots \\ 1 & e^{-\lambda (x_n - k_1)^d} &  \ldots & e^{-\lambda (x_n - k_J)^d} \end{array}  \right]
+ \left[ \begin{array}{c}  \beta_0  \\  \beta_1 \\\vdots \\ \beta_J \end{array}
+ \right] +
+\left[ \begin{array}{c}  \epsilon_1 \\ \vdots \\ \epsilon_n  \end{array}
+\right] \\
+ & \\
+\Y = & \X \b + \eps
+\end{eqnarray*}
+
+- Linear in $\beta$ given $\lambda$ and $k_1, \ldots k_J$
+
+- Learn $\lambda$, $k_1, \ldots k_J$ and $J$
+
+## Hierarchical Models
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{r}
+#| fig.height: 5
+#| fig.width:  4.5
+bone <- read.table("../data/spinalbonedata.txt", header=T)
+bone <- subset(bone, sex=="fem")
+bone$ethnic <- as.factor(bone$ethnic)
+bone$groupVec <- 1
+bone$seqno <- 1:nrow(bone)
+library(lattice)
+lattice.options(default.theme = "col.whitebg")
+xyplot(spnbmd~age|ethnic, data = bone, groups=idnum, layout=c(2,2), aspect=1,
+       xlab="Age (years)",ylab="Spinal Bone Marrow Density",
+       panel=function(x,y,subscripts,groups) {
+         lpoints (x,y, pch=20, col=1, cex=.3)
+         ids=unique(groups[subscripts])
+         for (id in ids) {
+            subset=groups[subscripts]==id
+            llines(x[subset], y[subset], col=1, lty=1)
+         }
+       }
+)
+```
+:::
+
+
+::: {.column width="40%"}
+- each line represent individual sample trajectories
+- correlation between an individual's measurements
+- similarities within groups
+- differences among groups?
+- allow individual regressions for each individual ?
+- add more structure?
+:::
+
+::::
+
 ## Linear Regression Models
 Response $Y_i$ and $p$ predictors $x_{i1}, x_{i2}, \dots x_ip$
 $$Y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \ldots \beta_{p}
