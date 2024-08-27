@@ -372,6 +372,7 @@ If we have just a single model matrix $\X$, then the subspace $\M$ is the _model
   data") so great for exploratory analysis and for building a
   "data-sense"  
 - Bayesian methods sit on top of Frequentist Likelihood  
+- Goemetric perspective important in both!
 
 . . .
 

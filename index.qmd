@@ -11,6 +11,13 @@ This course introduces students to linear models and extensions for model buildi
 
 ## Course Info
 
+### Textbooks
+
+| Textbook               | Ordering Information  |
+|:---------------------- |-----------------------|
+![Plane Answers to Complex Questions](/img/plane.jpg) |  [Plane Answers to Complex Questions](http://getitatduke.library.duke.edu/?sid=sersol&SS_jc=TC0000508493&title=Plane%20Answers%20to%20Complex%20Questions%3A%20The%20Theory%20of%20Linear%20Models) Ronald Christensen (2011) 4th Edition Springer-Verlag, NY.  The textbook is freely available as an [eBook](http://getitatduke.library.duke.edu/?sid=sersol&SS_jc=TC0000508493&title=Plane%20Answers%20to%20Complex%20Questions%3A%20The%20Theory%20of%20Linear%20Models) thru the Duke Library. You're welcomed to read on screen or print it out. If you prefer a paperback version you can buy it at the cost of printing from Springer or purchase a hardback version at your favorite vendor.|
+| ![Linear Regression Analysis](/img/Seber.png) | [Linear Regression Analysis](https://find.library.duke.edu/catalog/DUKE003161269), George A.F Seber and  Alan J. Lee (2003) 2nd Edition, Wiley [eBook in Duke Library](https://find.library.duke.edu/catalog/DUKE003161269).  _Duke Library is aware the link to the [ebook](https://www-wiley-com.proxy.lib.duke.edu/cda/product/0,,0471415405,00.html) is broken_ See Canvas site for a pdf.
+
 
 
 ### Lecture
@@ -46,3 +53,27 @@ Role              | Name |  Email         |  Office Hours  | Location
 Instructor | [Dr Merlise Clyde](https://www2.stat.duke.edu/~clyde) | [{{< fa envelope >}} ](mailto:clyde@duke.edu)  | Tues 2:45 - 3:45 <br> or by appointment  <br /> | 223E Old Chem |  
 TA               | [Bongjung Sung](https://scholars.duke.edu/person/bongjung.sung) | <a href="mailto:bongjung.sung@duke.edu" title="email"><i class="fa fa-envelope"></i></a> | Mon 9:30-11:30am | 203B Old Chem
 
+## Course Topics 
+
+Course topics will be drawn (but subject to change) from
+
+* Motivation for Studying Linear Models as Foundation
+* Random Vectors and Matrices
+* Multivariate Normal Distribution Theory
+* Conditional Normal Distribution Theory
+* Linear Models via Coordinate free representations (examples)
+* Maximum Likelihood Estimation & Projections
+* Interval Estimation: Distribution of Quadratic Forms
+* Gauss-Markov Theorem & Optimality of OLS/GLS
+* Formulation of Bayesian Inference
+* Subjective and Default Priors
+* Related Shrinkage Methods and Penalized Likelihoods  (Ridge regression, lasso)
+* Model Selection (comparison of classical and Bayesian approaches)
+* Bayes Factors
+* Bayesian Model Averaging
+* Model Checking:  Residual Analysis & Diagnostics
+* Robust Methods for Outliers
+* Generalized Linear Model
+* Hierarchical Models
+
+Please check the website for updates, slides and current readings.
