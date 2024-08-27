@@ -2,26 +2,40 @@
 title: "{{< fa book-open >}} Resources"
 ---
 
-### Supplementary Textbooks
+### Primary Textbooks
 
-These textbooks are great resources for some of the topics we will cover. You do not need to buy them, but you may be able to borrow them from Duke library should you need extra reading materials, besides the class slides and main textbooks.
+These textbooks are great resources for some of the topics we will cover. 
 
- 1. [Doing Bayesian Data Analysis in brms and the tidyverse](https://bookdown.org/ajkurz/DBDA_recoded/)
- 2. [Statistical rethinking with brms, ggplot2, and the tidyverse: Second edition](https://bookdown.org/content/4857/)
- 3. [Albert, J. (2009), "Bayesian Computation with R (Second Edition)."](https://www.amazon.com/Bayesian-Computation-R-Use/dp/0387922970)
- 4. [Bolstad, W. M. and Curran, J. M. (2016), "Introduction to Bayesian Statistics (Third Edition)."](https://www.amazon.com/Introduction-Bayesian-Statistics-William-Bolstad/dp/1118091566)
+ * Plane Answers to Complex Questions, Ronald Christensen.  [eBook in Duke Library](http://getitatduke.library.duke.edu/?sid=sersol&SS_jc=TC0000508493&title=Plane%20Answers%20to%20Complex%20Questions%3A%20The%20Theory%20of%20Linear%20Models)
+ 
+* Linear Regression Analysis, George A.F Seber and  Alan J. Lee [eBook in Duke Library](https://find.library.duke.edu/catalog/DUKE003161269).  _Duke Library is aware the link is broken_
+
+* The Linear Model and Hypothesis, George A. F. Seber [eBook in Duke Library](https://link-springer-com.proxy.lib.duke.edu/book/10.1007/978-3-319-21930-1)
+ 
+### Supplementary Textbooks on Linear/Matrix  Algebra
+
+
+* [Gilbert Strang's Online Course at MIT](http://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/index.htm)
+* [Video Lectures](http://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/video-lectures/)
+  * Introduction to Linear Algebra. Strang, Gilbert. 4th ed. Wellesley, MA: Wellesley-Cambridge Press, 2009. ISBN: 9780980232714. [Buy @ Amazon](http://www.amazon.com/exec/obidos/ASIN/0980232716/ref=nosim/mitopencourse-20)
+
+* Matrix Algebra from a Statistician's Perspective. Harville, David A. [eBook in Duke Library](http://getitatduke.library.duke.edu/?sid=sersol&SS_jc=TC0000199325&title=Matrix%20Algebra%20from%20a%20Statistician%27s%20Perspective)
+
+
+
 
 ### R and R Markdown Resources
 
-R Markdown can be used to create high quality reports and presentations with embedded chunks of R code. You are required to use R Markdown to type up your lab reports. R Markdown would also be my personal favorite for typing up your homework assignments for this course, but you are welcome to use any word processor of your choice for those. To learn more about R Markdown and for other resources for programming in R, see the links below. 
+Quarto/R Markdown/LaTeX can be used to create high quality reports and presentations with embedded chunks of R code and LaTeX equations! You are required to use Quarto in RStudio to type up your homework assignments that involve Data Analysis/Simulation for this course, but you are welcome to use any word processor of your choice for those. To learn more about Quarto/R Markdown and for other resources for programming in R, see the links below. 
 
-1. [R for Data Science (by Hadley Wickham & Garrett Grolemund)](https://r4ds.had.co.nz)
-2. [Introduction to R Markdown (Article by Garrett Grolemund)](https://rmarkdown.rstudio.com/articles_intro.html)
-3. [Introduction to R Markdown (Slides by Andrew Cho)](http://rpubs.com/andrew-cho/303981)
-4. [R Markdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
-5. [Data Visualization with ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)
-6. [Other Useful Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/#import)
-7. [A very (very!) basic R Markdown template](https://sta-602l-s20.github.io/Course-Website/labs/resources/LabReport.Rmd)
+* [Using R in Quarto for Documents](https://quarto.org/docs/computations/r.html)
+* [R for Data Science (by Hadley Wickham & Garrett Grolemund)](https://r4ds.had.co.nz)
+* [Introduction to R Markdown (Article by Garrett Grolemund)](https://rmarkdown.rstudio.com/articles_intro.html)
+* [Introduction to R Markdown (Slides by Andrew Cho)](http://rpubs.com/andrew-cho/303981)
+* [R Markdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+* [Data Visualization with ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)
+* [Other Useful Cheat Sheets](https://www.rstudio.com/resources/cheatsheets/#import)
+* [A very (very!) basic R Markdown template](https://sta-602l-s20.github.io/Course-Website/labs/resources/LabReport.Rmd)
 
 ### LaTeX
 

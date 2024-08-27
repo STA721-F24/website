@@ -22,9 +22,8 @@ Students' final grades will be determined as shown below:
 Component             | Percentage
 ----------------------|----------------
 Homework | 20%
-Midterm | 20%
-Midterm II | 20%
-Lab exercises | 10%
+Midterm | 25%
+Midterm II | 25%
 Participation | 5%
 Final Exam | 25%
 : Component Percentage {.striped .hover}
@@ -62,17 +61,6 @@ There will be a final exam after the reading week. If you miss any quiz or the m
 
 ### Course Topics
 
--  Basics of Bayesian Models
--  Loss Functions, Inference and Decision Making
--  Predictive Distributions
--  Predictive Distributions and Model Checking
--  Bayesian Hypothesis Testing
--  Multiple Testing
--  MCMC (Gibbs & Metropolis Hastings Algorithms)
--  Bayesian Generalized Linear Models
--  Hiearchical Modeling and Random Effects
--  Hamiltonian Monte Carlo
--  NonParametric Bayes
 
 For a detailed day-by-day list of topics, please refer to the [Course Schedule](schedule.html)
 

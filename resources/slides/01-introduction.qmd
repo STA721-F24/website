@@ -1,0 +1,381 @@
+---
+title: "Introduction to STA721"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"   
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+    Corollary:
+      group: thmlike
+    Conjecture:
+      group: thmlike
+      collapse: true  
+    Definition:
+      group: thmlike
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+## Introduction to STA721
+{{< include macros.qmd >}}
+
+- Course: Theory and Application of linear models from both a
+frequentist (classical) and Bayesian perspective 
+- Prerequisites:   linear algebra and a mathematical statistics
+  course covering likelihoods and distribution theory (normal, t, F,
+  chi-square, gamma distributions) 
+- Introduce  R programming as needed in the lab
+- Introduce  Bayesian methods, but assume that you are
+  co-registered in 702 or have taken it previously 
+- more info on  Course website [https://sta721-F24.github.io/website/](https://sta721-F24.github.io/website/)
+  - schedule and slides, HW, etc
+  - critical dates (Midterms and Finals)
+  - office hours
+- Canvas for grades, email, announcements 
+
+. . .
+
+Please let me know if there are broken links for slides, etc!
+
+## Notation 
+
+- scalors are $a$ (italics or math italics) 
+- vectors are in bold lower case, $\a$, with the exception of random variables
+- all vectors are column vectors
+ $$\a = \left[\begin{array}{c}
+      a_1 \\
+      a_2 \\
+      \vdots \\
+      a_n
+       \end{array} \right]
+  $$  
+- $\one_n$ is a $n \times 1$ vector of all ones       
+- inner product $\langle    \a, \a \rangle = \a^T\a = \|\a \|^2 = \sum_{i=1}^n a_i^2$;   $\langle    \a, \bv \rangle = \a^T\bv$
+- length or norm of $\a$ is $\|\a\|$
+
+## Matrices
+
+- Matrices are represented in bold $\A = (a_{ij})$
+$$\A = \left[\begin{array}{cccc}
+      a_{11} & a_{12} & \cdots & a_{1m}  \\
+      a_{21} & a_{22} & \cdots & a_{2m} \\
+      \vdots & \vdots & \vdots & \vdots\\
+      a_{n1} & a_{n2} & \cdots & a_{nm}
+       \end{array} \right]
+$$  
+- identity matrix $\I_n$ square matrix with diagonal elements 1 and off diagonal 0
+- trace: if $\A$ is $n \times m$ $\tr(\A) = \sum_i^{\max n,m } a_{ii}$ 
+- determinant:  for $\A$ is $n \times n$ then the determinant is $\det(A)$
+- inverse:  if $\A$ is nonsingular $\A > 0$, then its inverse is $\A^{-1}$
+
+## Statistical Models
+
+Ohm's Law: $Y$ is voltage across a resistor of $r$ ohms and $X$ is the amperes of the current through the resistor (in theory)
+$$Y = rX$$ 
+
+- Simple linear regression for observational data 
+$$Y_i = \beta_0 + \beta_1 x_i + \epsilon_i \text{  for  } i = 1,
+\ldots, n$$  
+
+- Rewrite in vectors:
+\begin{eqnarray*}
+  \left[
+\begin{array}{c}  y_1 \\ \vdots \\  y_n \end{array}
+  \right]   =  &
+ \left[ \begin{array}{c}  1 \\ \vdots \\ 1 \end{array}  \right]   \beta_0 +
+ \left[ \begin{array}{c}  x_1 \\ \vdots \\  x_n \end{array}
+ \right] \beta_1 +
+\left[ \begin{array}{c}  \epsilon_1 \\ \vdots \\ \epsilon_n  \end{array}
+\right]
+  =  &
+ \left[ \begin{array}{cc}  1 &  x_1 \\ \vdots & \vdots \\ 1 & x_n\end{array}  \right]
+ \left[ \begin{array}{c}  \beta_0  \\  \beta_1 \end{array}
+ \right] +
+\left[ \begin{array}{c}  \epsilon_1 \\ \vdots \\ \epsilon_n  \end{array}
+\right] \\
+\\
+\Y = & \X \b + \eps
+\end{eqnarray*}
+
+## Nonlinear Models
+Gravitational Law:  $F = \alpha/d^\beta$ where $d$ is distance between 2 objects
+and $F$ is the force of gravity between them
+
+- log transformations
+$$\log(F) = \log(\alpha) - \beta \log(d)$$ 
+
+- compare to noisy experimental data $Y_i =\log(F_i)$ observed at $x_i = \log(d_i)$
+
+- write $\X = [\one_n \, \x]$ 
+- $\b = (\log(\alpha), -\beta)^T$ 
+- model with additive error on log scale $\Y = \X\b + \e$
+- test if $\beta = 2$
+- error assumptions?
+
+## Intrinsically Nonlinear Models
+Regression function may be an intrinsically nonlinear function of $t_i$ (time) and parameters $\tb$
+  $$Y_i = f(t_i, \tb) + \epsilon_i$$
+```{r}
+#| out-width: 75%
+#| out-height: 65%
+#| fig-height: 5
+#| fig-width: 7
+#| echo: false
+#| label: concentration
+library(nlme)
+data(Theoph)
+conc1 <- Theoph$conc[24:33]
+time1 <- Theoph$Time[24:33]
+
+plot(conc1~time1,xlab="Time (hours)",ylab="Concentration (mg/liter)",
+     ylim=c(0,max(conc1)))
+```
+
+## Quadratic Linear Regression {.smaller}
+Taylor's Theorem:
+$$f(t_i, \tb) = f(t_0, \tb) + (t_i - t_0) f'(t_0, \tb) + (t_i - t_0)^2
+\frac{f^{''}(t_0, \tb)}{2}  + R(t_i, \tb)$$
+
+. . .
+
+
+$$Y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \epsilon_i \text{  for  } i = 1, \ldots, n$$
+
+. . .
+
+Rewrite in vectors:
+\begin{eqnarray*}
+\left[
+\begin{array}{c}  y_1 \\ \vdots \\  y_n \end{array}
+  \right]   =  &
+ \left[ \begin{array}{ccc}  1 &  x_1 & x_1^2 \\ \vdots & \vdots \\ 1 &
+     x_n &  x_n^2\end{array}  \right]
+ \left[ \begin{array}{c}  \beta_0  \\  \beta_1 \\ \beta_2 \end{array}
+ \right] +
+\left[ \begin{array}{c}  \epsilon_1 \\ \vdots \\ \epsilon_n  \end{array}
+\right] \\
+ & \\ 
+\Y = & \X \b + \eps 
+\end{eqnarray*}
+
+. . .
+
+Quadratic in $x$, but linear in $\beta$'s - how do we know this model is adequate?
+
+## Linear Regression Models
+Response $Y_i$ and $p$ predictors $x_{i1}, x_{i2}, \dots x_ip$
+$$Y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \ldots \beta_{p}
+  x_{ip} + \epsilon_i$$
+
+
+- Design matrix  $$\X =
+\left[\begin{array}{cccc}
+  1 & x_{11} & \ldots & x_{1p} \\
+  1 & x_{21}  & \ldots & x_{2p} \\
+  \vdots & \vdots  & \vdots & \vdots \\
+  1 & x_{n1} & \ldots & x_{np} \\
+\end{array} \right] = \left[ \begin{array}{cc}
+1 & \x_1^T  \\
+\vdots & \vdots \\
+1 & \x_n^T 
+\end{array} \right] = 
+\left[\begin{array}{cccc}
+\one_n & \X_1 & \X_2 \cdots \X_p
+\end{array} \right]
+$$
+
+- matrix version
+$$\Y = \X \b + \epsilon$$
+\pause
+what should go into $\X$ and do we need all columns of $\X$ for
+inference about $\Y$?
+
+## Linear  Model 
+
+- $\Y  = \X \, \b + \eps$
+- $\Y$ ($n \times 1$) vector of random response   (observe $\y$); $\Y, \y \in \bbR^n$
+- $\X$ ($n \times p$)  design matrix  (observe)
+- $\b$ ($p \times 1$) vector of coefficients  (unknown)
+- $\eps$ ($n \times 1$) vector of "errors" (unobservable)
+
+. . .
+
+Goals: 
+
+- What goes into $\X$?   (model building, model selection - post-selection inference?) 
+- What if multiple models are "good"?  (model averaging or ensembles) \pause
+- What about the future?  (Prediction) 
+- Uncertainty Quantification - assumptions about $\eps$
+
+. . .
+
+_All models are wrong, but some may be useful  (George Box)_
+
+## Ordinary Least Squares
+Goal: Find the best fitting "line" or "hyper-plane" that
+  minimizes
+$$\sum_i  (Y_i - \x_i^T \b)^2 = (\Y - \X\b)^T(\Y - \X \b) = \| \Y -
+\X\b \|^2 $$ 
+
+
+- Optimization problem - seek $\b \ni \X\b$ is close to $\Y$ in squared error
+- May over-fit $\Rightarrow$ add other criteria that provide a penalty
+  **Penalized Least Squares** 
+- Robustness to extreme points $\Rightarrow$ replace quadratic
+  loss with other functions  
+- no notion of uncertainty of estimates  
+- no structure of problem  (repeated measures on individual,
+  randomization restrictions, etc) 
+
+. . .
+
+Need  Distribution Assumptions of $\Y$ (or $\eps$) for testing and
+uncertainty measures $\Rightarrow$ Likelihood  and Bayesian inference
+
+## Random Vectors
+
+- Let $Y_1, \ldots Y_n$ be random variables in $\bbR$ 
+Then $$\Y \equiv
+\left[ \begin{array}{c}
+  Y_1 \\
+\vdots \\
+Y_n
+\end{array} \right]$$
+is a random vector in $\bbR^n$
+
+
+- Expectations of random vectors are defined element-wise:
+$$\E[\Y] \equiv
+\E \left[ \begin{array}{c}
+  Y_1 \\
+\vdots \\
+Y_n
+\end{array} \right] \equiv
+\left[ \begin{array}{c}
+  \E[Y_1] \\
+\vdots \\
+\E[Y_n]
+\end{array} \right] =
+\left[ \begin{array}{c}
+  \mu_1 \\
+\vdots \\
+\mu_n
+\end{array} \right]
+\equiv \mub \in \bbR^n
+$$
+where mean or expected value $\E[Y_i] = \mu_i$   
+
+## Model Space
+
+We will work with inner product spaces: a vector spaces, say $\bbR^n$ equipped with an inner product $\langle \x ,\y \rangle \equiv \x^T\y, \quad \x, \y \in \bbR^n$
+
+. . . 
+ 
+::: {.Definition #Subspace .unnumbered}
+### Subspace
+A set $\M$ is a subspace of $\bbR^n$ if is a subset of $\bbR^n$ and also a vector space.
+
+That is, if $\x_1 \in \M$ and $\x_2 \in \M$, then $b_1\x_1 + b_2 \x_2 \in \M$ for all $b_1, b_2 \in \bbR$
+:::
+
+. . .
+
+::: {.Definition #ColumnSpace .unnumbered}
+### Column Space
+The column space of $\X$ is $C(\X) = \X\b$ for  $\b \in \bbR^p$
+:::
+
+. . .
+
+If $\X$ is full column rank, then the columns of $\X$ form a basis for $C(\X)$ and $C(\X)$ is a p-dimensional subspace of $\bbR^n$
+
+. . .
+
+If we have just a single model matrix $\X$, then the subspace $\M$ is the _model space_.
+
+##  Philosophy
+ 
+- for many problems frequentist and Bayesian methods will give
+  similar answers (more a matter of taste in interpretation) 
+  - For small problems, Bayesian methods allow us to incorporate
+    prior information which provides better calibrated answers  
+  - for problems with complex designs and/or missing data Bayesian
+    methods are often easier to implement (do not need to rely
+    on asymptotics)  \pause
+- For problems involving hypothesis testing or model selection
+  frequentist and Bayesian methods can be strikingly different.  
+- Frequentist methods often faster (particularly with "big
+  data") so great for exploratory analysis and for building a
+  "data-sense"  
+- Bayesian methods sit on top of Frequentist Likelihood  
+
+. . .
+
+Important to understand advantages and problems of each perspective!
+
+
+

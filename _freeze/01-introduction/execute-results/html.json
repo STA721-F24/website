@@ -1,0 +1,24 @@
+{
+  "hash": "8e5279c6a4878a88c08159ff61d8bca9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Lecture 01: Introduction\"\nauthor: \"Merlise Clyde\"\nsubtitle: \"STA721\"\ninstitute: \"Duke University\"\nformat: \n  revealjs:\n    theme: [simple, custom.scss]\n    slide-number: true\n    incremental: true\n    scrollable: false\n    controls: true\n    fragments: true\n    preview-links: auto\n    smaller: true\n    logo: ../../img/icon.png\n    footer: <https://sta721-F24.github.io/website/>\n    chalkboard: \n      boardmarker-width: 1\n      chalk-width: 2\n      chalk-effect: 0\n    embed-resources: false\nhtml-math-method:\n  method: mathjax\n  url: \"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\"    \neditor: \n  markdown: \n    wrap: 72\nexecute: \n  echo: false\nnumber-sections: false\nfilters:\n  - custom-numbered-blocks  \ncustom-numbered-blocks:\n  groups:\n    thmlike:\n      colors: [948bde, 584eab]\n      boxstyle: foldbox.simple\n      collapse: false\n      listin: [mathstuff]\n    todos: default  \n  classes:\n    Theorem:\n      group: thmlike\n    Corollary:\n      group: thmlike\n    Conjecture:\n      group: thmlike\n      collapse: true  \n    Definition:\n      group: thmlike\n      colors: [d999d3, a01793]\n    Feature: default\n    TODO:\n      label: \"To do\"\n      colors: [e7b1b4, 8c3236]\n      group: todos\n      listin: [stilltodo]\n    DONE:\n      label: \"Done\"\n      colors: [cce7b1, 86b754]  \n      group: todos  \n---\n\n\n\n\n\n## Introduction\n\n\n\n",
+    "supporting": [
+      "01-introduction_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"site_libs/font-awesome/css/all.min.css\" rel=\"stylesheet\" />\n<link href=\"site_libs/font-awesome/css/v4-shims.min.css\" rel=\"stylesheet\" />\n"
+      ],
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
