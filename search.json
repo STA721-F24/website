@@ -142,21 +142,21 @@
   {
     "objectID": "index.html#course-description",
     "href": "index.html#course-description",
-    "title": "STA721Linear Models (Fall 2024)",
+    "title": "STA721: Linear Models (Fall 2024)",
     "section": "Course Description",
     "text": "Course Description\nThis course introduces students to linear models and extensions for model building from the frequentist (OLS/MLE and penalized likelihoods) and Bayesian paradigms, with an emphasis on a geometric perspective. Course topics include optimal estimation and prediction, distributional assumptions and model checking, hypothesis testing and model selection including Bayes factors and intrinsic Bayes factors, and Bayesian Model Averaging. Students should have a strong background in matrix algebra and distribution theory. Co-requisite: STA 602L, 702L or equivalent."
   },
   {
     "objectID": "index.html#course-info",
     "href": "index.html#course-info",
-    "title": "STA721Linear Models (Fall 2024)",
+    "title": "STA721: Linear Models (Fall 2024)",
     "section": "Course Info",
     "text": "Course Info\n\nTextbooks\n\n\n\nTextbook\nOrdering Information\n\n\n\n\n\nPlane Answers to Complex Questions Ronald Christensen (2011) 4th Edition Springer-Verlag, NY. The textbook is freely available as an eBook thru the Duke Library. You’re welcomed to read on screen or print it out. If you prefer a paperback version you can buy it at the cost of printing from Springer or purchase a hardback version at your favorite vendor.\n\n\n\nLinear Regression Analysis, George A.F Seber and Alan J. Lee (2003) 2nd Edition, Wiley eBook in Duke Library. Duke Library is aware the link to the ebook is broken See Canvas site for a pdf.\n\n\n\n\n\nLecture\n   Tuesday and Thursday\n   1:25pm - 2:40pm\n   Old Chemistry 123 \n\n\nLabs\n   Fridays\n  10:05am - 11:20pm\n   LINK 088 (Clasroom 4) \n\n\nFinal Exam\n   December 15\n   9:00am - 12:00pm\n   Old Chemistry 123 \n\n\nInstructional Team and Office Hours\n\n\n\nRole\nName\nEmail\nOffice Hours\nLocation\n\n\n\n\nInstructor\nDr Merlise Clyde\n\nTues 2:45 - 3:45  or by appointment \n223E Old Chem\n\n\nTA\nBongjung Sung\n\nMon 9:30-11:30am\n203B Old Chem"
   },
   {
     "objectID": "index.html#course-topics",
     "href": "index.html#course-topics",
-    "title": "STA721Linear Models (Fall 2024)",
+    "title": "STA721: Linear Models (Fall 2024)",
     "section": "Course Topics",
     "text": "Course Topics\nCourse topics will be drawn (but subject to change) from\n\nMotivation for Studying Linear Models as Foundation\nRandom Vectors and Matrices\nMultivariate Normal Distribution Theory\nConditional Normal Distribution Theory\nLinear Models via Coordinate free representations (examples)\nMaximum Likelihood Estimation & Projections\nInterval Estimation: Distribution of Quadratic Forms\nGauss-Markov Theorem & Optimality of OLS/GLS\nFormulation of Bayesian Inference\nSubjective and Default Priors\nRelated Shrinkage Methods and Penalized Likelihoods (Ridge regression, lasso)\nModel Selection (comparison of classical and Bayesian approaches)\nBayes Factors\nBayesian Model Averaging\nModel Checking: Residual Analysis & Diagnostics\nRobust Methods for Outliers\nGeneralized Linear Model\nHierarchical Models\n\nPlease check the website for updates, slides and current readings."
   }
