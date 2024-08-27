@@ -16,7 +16,8 @@ This course introduces students to linear models and extensions for model buildi
 | Textbook               | Ordering Information  |
 |:---------------------- |-----------------------|
 ![Plane Answers to Complex Questions](/img/plane.jpg) |  [Plane Answers to Complex Questions](http://getitatduke.library.duke.edu/?sid=sersol&SS_jc=TC0000508493&title=Plane%20Answers%20to%20Complex%20Questions%3A%20The%20Theory%20of%20Linear%20Models) Ronald Christensen (2011) 4th Edition Springer-Verlag, NY.  The textbook is freely available as an [eBook](http://getitatduke.library.duke.edu/?sid=sersol&SS_jc=TC0000508493&title=Plane%20Answers%20to%20Complex%20Questions%3A%20The%20Theory%20of%20Linear%20Models) thru the Duke Library. You're welcomed to read on screen or print it out. If you prefer a paperback version you can buy it at the cost of printing from Springer or purchase a hardback version at your favorite vendor.|
-| ![Linear Regression Analysis](/img/Seber.png) | [Linear Regression Analysis](https://find.library.duke.edu/catalog/DUKE003161269), George A.F Seber and  Alan J. Lee (2003) 2nd Edition, Wiley [eBook in Duke Library](https://find.library.duke.edu/catalog/DUKE003161269).  _Duke Library is aware the link to the [ebook](https://www-wiley-com.proxy.lib.duke.edu/cda/product/0,,0471415405,00.html) is broken_ See Canvas site for a pdf.
+| ![Linear Regression Analysis](/img/Seber.png) | [Linear Regression Analysis](https://find.library.duke.edu/catalog/DUKE003161269), George A.F Seber and  Alan J. Lee (2003) 2nd Edition, Wiley [eBook in Duke Library](https://find.library.duke.edu/catalog/DUKE003161269).  _Duke Library is aware the link to the [ebook](https://www-wiley-com.proxy.lib.duke.edu/cda/product/0,,0471415405,00.html) is broken_ See the 
+[Canvas site](https://canvas.duke.edu/courses/35767/files?preview=1658347) for a pdf version until the links are fixed.
 
 
 
