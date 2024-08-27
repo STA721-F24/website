@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title> Resources – STA721-F24: Linear Models</title>
+<title>macros – STA721-F24: Linear Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">STA721-F24: Linear Models</span>
     </a>
   </div>
@@ -91,19 +91,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i> Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html"> 
+    <a class="nav-link" href="../../syllabus.html"> 
 <span class="menu-text"><i class="fa-solid fa-school-circle-check" aria-label="school-circle-check"></i> Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./schedule.html"> 
+    <a class="nav-link" href="../../schedule.html"> 
 <span class="menu-text"><i class="fa-solid fa-calendar-days" aria-label="calendar-days"></i> Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./resources.html" aria-current="page"> 
+    <a class="nav-link" href="../../resources.html"> 
 <span class="menu-text"><i class="fa-solid fa-book-open" aria-label="book-open"></i> Resources</span></a>
   </li>  
 </ul>
@@ -124,96 +124,17 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#primary-textbooks" id="toc-primary-textbooks" class="nav-link active" data-scroll-target="#primary-textbooks">Primary Textbooks</a></li>
-  <li><a href="#supplementary-textbooks-on-linearmatrix-algebra" id="toc-supplementary-textbooks-on-linearmatrix-algebra" class="nav-link" data-scroll-target="#supplementary-textbooks-on-linearmatrix-algebra">Supplementary Textbooks on Linear/Matrix Algebra</a></li>
-  <li><a href="#r-and-r-markdown-resources" id="toc-r-and-r-markdown-resources" class="nav-link" data-scroll-target="#r-and-r-markdown-resources">R and R Markdown Resources</a></li>
-  <li><a href="#latex" id="toc-latex" class="nav-link" data-scroll-target="#latex">LaTeX</a></li>
-  <li><a href="#interesting-articles" id="toc-interesting-articles" class="nav-link" data-scroll-target="#interesting-articles">Interesting Articles</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sta721-F24/website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><i class="fa-solid fa-book-open" aria-label="book-open"></i> Resources</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="primary-textbooks" class="level3">
-<h3 class="anchored" data-anchor-id="primary-textbooks">Primary Textbooks</h3>
-<p>These textbooks are great resources for some of the topics we will cover.</p>
-<ul>
-<li><p>Plane Answers to Complex Questions, Ronald Christensen. <a href="http://getitatduke.library.duke.edu/?sid=sersol&amp;SS_jc=TC0000508493&amp;title=Plane%20Answers%20to%20Complex%20Questions%3A%20The%20Theory%20of%20Linear%20Models">eBook in Duke Library</a></p></li>
-<li><p>Linear Regression Analysis, George A.F Seber and Alan J. Lee <a href="https://find.library.duke.edu/catalog/DUKE003161269">eBook in Duke Library</a>. <em>Duke Library is aware the link is broken</em></p></li>
-<li><p>The Linear Model and Hypothesis, George A. F. Seber <a href="https://link-springer-com.proxy.lib.duke.edu/book/10.1007/978-3-319-21930-1">eBook in Duke Library</a></p></li>
-</ul>
-</section>
-<section id="supplementary-textbooks-on-linearmatrix-algebra" class="level3">
-<h3 class="anchored" data-anchor-id="supplementary-textbooks-on-linearmatrix-algebra">Supplementary Textbooks on Linear/Matrix Algebra</h3>
-<ul>
-<li><a href="http://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/index.htm">Gilbert Strang’s Online Course at MIT</a></li>
-<li><a href="http://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/video-lectures/">Video Lectures</a>
-<ul>
-<li>Introduction to Linear Algebra. Strang, Gilbert. 4th ed.&nbsp;Wellesley, MA: Wellesley-Cambridge Press, 2009. ISBN: 9780980232714. <a href="http://www.amazon.com/exec/obidos/ASIN/0980232716/ref=nosim/mitopencourse-20">Buy @ Amazon</a></li>
-</ul></li>
-<li>Matrix Algebra from a Statistician’s Perspective. Harville, David A. <a href="http://getitatduke.library.duke.edu/?sid=sersol&amp;SS_jc=TC0000199325&amp;title=Matrix%20Algebra%20from%20a%20Statistician%27s%20Perspective">eBook in Duke Library</a></li>
-</ul>
-</section>
-<section id="r-and-r-markdown-resources" class="level3">
-<h3 class="anchored" data-anchor-id="r-and-r-markdown-resources">R and R Markdown Resources</h3>
-<p>Quarto/R Markdown/LaTeX can be used to create high quality reports and presentations with embedded chunks of R code and LaTeX equations! You are required to use Quarto in RStudio to type up your homework assignments that involve Data Analysis/Simulation for this course, but you are welcome to use any word processor of your choice for those. To learn more about Quarto/R Markdown and for other resources for programming in R, see the links below.</p>
-<ul>
-<li><a href="https://quarto.org/docs/computations/r.html">Using R in Quarto for Documents</a></li>
-<li><a href="https://r4ds.had.co.nz">R for Data Science (by Hadley Wickham &amp; Garrett Grolemund)</a></li>
-<li><a href="https://rmarkdown.rstudio.com/articles_intro.html">Introduction to R Markdown (Article by Garrett Grolemund)</a></li>
-<li><a href="http://rpubs.com/andrew-cho/303981">Introduction to R Markdown (Slides by Andrew Cho)</a></li>
-<li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown Cheat Sheet</a></li>
-<li><a href="https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">Data Visualization with ggplot2 Cheat Sheet</a></li>
-<li><a href="https://www.rstudio.com/resources/cheatsheets/#import">Other Useful Cheat Sheets</a></li>
-<li><a href="https://sta-602l-s20.github.io/Course-Website/labs/resources/LabReport.Rmd">A very (very!) basic R Markdown template</a></li>
-</ul>
-</section>
-<section id="latex" class="level3">
-<h3 class="anchored" data-anchor-id="latex">LaTeX</h3>
-<p>You may also use LaTeX to type up your assignments. You may find it easier to create your TeX and LaTeX documents using online editors such as <a href="https://www.overleaf.com">Overleaf</a> (simply create a free account and you are good to go!). However, that need not be the case. If you prefer to create them locally/offline on your personal computers, you will need to download a TeX distribution (the most popular choices are <a href="https://miktex.org/download">MiKTeX</a> for Windows and <a href="http://www.tug.org/mactex/">MacTeX</a> for macOS) plus an editor (I personally prefer <a href="https://www.texstudio.org">TeXstudio</a> but feel free to download any editor of your choice). Follow the links below for some options, and to also learn how to use LaTeX.</p>
-<ol type="1">
-<li><a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">Learn LaTeX in 30 minutes</a></li>
-<li><a href="https://www.overleaf.com/learn/latex/Choosing_a_LaTeX_Compiler">Choosing a LaTeX Compiler</a>.</li>
-</ol>
-</section>
-<section id="interesting-articles" class="level3">
-<h3 class="anchored" data-anchor-id="interesting-articles">Interesting Articles</h3>
-<p>I will add articles I find interesting below. These are articles I find useful as supplementary readings for topics covered in class, or as good sources that cover concepts I think you should know, but which we may not have time to cover. I strongly suggest you find time to (at the very least) take a “quick peek” at each article.</p>
-<ol type="1">
-<li>Efron, B., 1986. Why isn’t everyone a Bayesian?. The American Statistician, 40(1), pp.&nbsp;1-5.</li>
-<li>Gelman, A., 2008. Objections to Bayesian statistics. Bayesian Analysis, 3(3), pp.&nbsp;445-449.</li>
-<li>Diaconis, P., 1977. Finite forms of de Finetti’s theorem on exchangeability. Synthese, 36(2), pp.&nbsp;271-281.</li>
-<li>Gelman, A., Meng, X. L. and Stern, H., 1996. Posterior predictive assessment of model fitness via realized discrepancies. Statistica sinica, pp.&nbsp;733-760.</li>
-<li>Dunson, D. B., 2018. Statistics in the big data era: Failures of the machine. Statistics &amp; Probability Letters, 136, pp.&nbsp;4-9.</li>
-</ol>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -644,7 +565,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta721-F24/website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/sta721-F24/website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
