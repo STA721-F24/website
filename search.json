@@ -63,6 +63,20 @@
     "text": "Quadratic Linear Regression\nTaylor’s Theorem: \\[f(t_i, \\boldsymbol{\\theta}) = f(t_0, \\boldsymbol{\\theta}) + (t_i - t_0) f'(t_0, \\boldsymbol{\\theta}) + (t_i - t_0)^2\n\\frac{f^{''}(t_0, \\boldsymbol{\\theta})}{2}  + R(t_i, \\boldsymbol{\\theta})\\]\n\n\\[Y_i = \\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\epsilon_i \\text{  for  } i = 1, \\ldots, n\\]\n\n\nRewrite in vectors: \\[\\begin{eqnarray*}\n\\left[\n\\begin{array}{c}  y_1 \\\\ \\vdots \\\\  y_n \\end{array}\n  \\right]   =  &\n\\left[ \\begin{array}{ccc}  1 &  x_1 & x_1^2 \\\\ \\vdots & \\vdots \\\\ 1 &\n     x_n &  x_n^2\\end{array}  \\right]\n\\left[ \\begin{array}{c}  \\beta_0  \\\\  \\beta_1 \\\\ \\beta_2 \\end{array}\n\\right] +\n\\left[ \\begin{array}{c}  \\epsilon_1 \\\\ \\vdots \\\\ \\epsilon_n  \\end{array}\n\\right] \\\\\n& \\\\\n\\mathbf{Y}= & \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\n\\end{eqnarray*}\\]\n\n\nQuadratic in \\(x\\), but linear in \\(\\beta\\)’s - how do we know this model is adequate?"
   },
   {
+    "objectID": "resources/slides/01-introduction.html#kernel-regression-nonparametric",
+    "href": "resources/slides/01-introduction.html#kernel-regression-nonparametric",
+    "title": "Introduction to STA721",
+    "section": "Kernel Regression (NonParametric)",
+    "text": "Kernel Regression (NonParametric)\n\\[y_i =  \\beta_0 + \\sum_{j = 1}^J \\beta_j e^{-\\lambda (x_i - k_j)^d} + \\epsilon_i \\text{  for  } i = 1, \\ldots, n\\] where \\(k_j\\) are kernel locations and \\(\\lambda\\) is a smoothing parameter \\[\\begin{eqnarray*}\n\\left[\n\\begin{array}{c}  y_1 \\\\ \\vdots \\\\  y_n \\end{array}\n  \\right]   =  &\n\\left[ \\begin{array}{cccc}  1 &  e^{-\\lambda (x_1 - k_1)^d} &\n     \\ldots &  e^{-\\lambda (x_1 - k_J)^d}  \\\\\n     \\vdots & \\vdots & & \\vdots \\\\ 1 & e^{-\\lambda (x_n - k_1)^d} &  \\ldots & e^{-\\lambda (x_n - k_J)^d} \\end{array}  \\right]\n\\left[ \\begin{array}{c}  \\beta_0  \\\\  \\beta_1 \\\\\\vdots \\\\ \\beta_J \\end{array}\n\\right] +\n\\left[ \\begin{array}{c}  \\epsilon_1 \\\\ \\vdots \\\\ \\epsilon_n  \\end{array}\n\\right] \\\\\n& \\\\\n\\mathbf{Y}= & \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\n\\end{eqnarray*}\\]\n\nLinear in \\(\\beta\\) given \\(\\lambda\\) and \\(k_1, \\ldots k_J\\)\nLearn \\(\\lambda\\), \\(k_1, \\ldots k_J\\) and \\(J\\)"
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#hierarchical-models",
+    "href": "resources/slides/01-introduction.html#hierarchical-models",
+    "title": "Introduction to STA721",
+    "section": "Hierarchical Models",
+    "text": "Hierarchical Models\n\n\n\n\n\n\n\n\n\n\n\n\n\neach line represent individual sample trajectories\ncorrelation between an individual’s measurements\nsimilarities within groups\ndifferences among groups?\nallow individual regressions for each individual ?\nadd more structure?"
+  },
+  {
     "objectID": "resources/slides/01-introduction.html#linear-regression-models",
     "href": "resources/slides/01-introduction.html#linear-regression-models",
     "title": "Introduction to STA721",

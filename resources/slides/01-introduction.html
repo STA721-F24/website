@@ -330,29 +330,29 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
-  }
   .Feature {
     --color1: #c0c0c0;
     --color2: #808080;
   }
-  .Conjecture {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Theorem {
     --color1: #948bde;
     --color2: #584eab;
   }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
+  }
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
+  }
+  .Theorem {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Conjecture {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   </style>
 </head>
@@ -507,6 +507,51 @@ Merlise Clyde (clyde@duke.edu)
 <div class="fragment">
 <p>Quadratic in <span class="math inline">\(x\)</span>, but linear in <span class="math inline">\(\beta\)</span>’s - how do we know this model is adequate?</p>
 </div>
+</section>
+<section id="kernel-regression-nonparametric" class="slide level2">
+<h2>Kernel Regression (NonParametric)</h2>
+<p><span class="math display">\[y_i =  \beta_0 + \sum_{j = 1}^J \beta_j e^{-\lambda (x_i - k_j)^d} + \epsilon_i \text{  for  } i = 1, \ldots, n\]</span> where <span class="math inline">\(k_j\)</span> are kernel locations and <span class="math inline">\(\lambda\)</span> is a smoothing parameter <span class="math display">\[\begin{eqnarray*}
+\left[
+\begin{array}{c}  y_1 \\ \vdots \\  y_n \end{array}
+  \right]   =  &amp;
+\left[ \begin{array}{cccc}  1 &amp;  e^{-\lambda (x_1 - k_1)^d} &amp;
+     \ldots &amp;  e^{-\lambda (x_1 - k_J)^d}  \\
+     \vdots &amp; \vdots &amp; &amp; \vdots \\ 1 &amp; e^{-\lambda (x_n - k_1)^d} &amp;  \ldots &amp; e^{-\lambda (x_n - k_J)^d} \end{array}  \right]
+\left[ \begin{array}{c}  \beta_0  \\  \beta_1 \\\vdots \\ \beta_J \end{array}
+\right] +
+\left[ \begin{array}{c}  \epsilon_1 \\ \vdots \\ \epsilon_n  \end{array}
+\right] \\
+&amp; \\
+\mathbf{Y}= &amp; \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}
+\end{eqnarray*}\]</span></p>
+<ul>
+<li class="fragment"><p>Linear in <span class="math inline">\(\beta\)</span> given <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(k_1, \ldots k_J\)</span></p></li>
+<li class="fragment"><p>Learn <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(k_1, \ldots k_J\)</span> and <span class="math inline">\(J\)</span></p></li>
+</ul>
+</section>
+<section id="hierarchical-models" class="slide level2">
+<h2>Hierarchical Models</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-introduction_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="1350"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<ul>
+<li class="fragment">each line represent individual sample trajectories</li>
+<li class="fragment">correlation between an individual’s measurements</li>
+<li class="fragment">similarities within groups</li>
+<li class="fragment">differences among groups?</li>
+<li class="fragment">allow individual regressions for each individual ?</li>
+<li class="fragment">add more structure?</li>
+</ul>
+</div></div>
 </section>
 <section id="linear-regression-models" class="slide level2">
 <h2>Linear Regression Models</h2>
