@@ -277,14 +277,14 @@
     "href": "HW/hw-01.html",
     "title": "Homework 1",
     "section": "",
-    "text": "(see Gradescope for any updates on due dates)"
+    "text": "(see [Gradescope]https://www.gradescope.com/courses/843802/assignments) for any updates on due dates)"
   },
   {
     "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
     "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
     "title": "Homework 1",
     "section": "",
-    "text": "(see Gradescope for any updates on due dates)"
+    "text": "(see [Gradescope]https://www.gradescope.com/courses/843802/assignments) for any updates on due dates)"
   },
   {
     "objectID": "HW/hw-01.html#rstudio",
@@ -312,7 +312,7 @@
     "href": "HW/hw-01.html#gradescope-submission",
     "title": "Homework 1",
     "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/585736/assignments\nMake sure to knit to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+    "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
     "objectID": "HW/hw-01.html#grading",
