@@ -7,10 +7,11 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.56">
 
-  <meta name="author" content="Merlise Clyde">
+  <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
   <title>STA721-F24: Linear Models – template</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -322,6 +323,38 @@
       margin-right: 0; 
     }
   </style>
+  <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
+  <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
+  <style>
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Theorem {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Conjecture {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
+  }
+  </style>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -334,7 +367,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Merlise Clyde 
+Merlise Clyde (clyde@duke.edu) 
 </div>
         <p class="quarto-title-affiliation">
             Duke University
@@ -343,13 +376,13 @@ Merlise Clyde
 </div>
 
 </section>
-<section class="slide level2">
-
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><a href="https://sta702-F23.github.io/website/" class="uri">https://sta702-F23.github.io/website/</a></p>
+<p><a href="https://sta721-F24.github.io/website/" class="uri">https://sta721-F24.github.io/website/</a></p>
 </div>
 </div>
 </section>
@@ -386,7 +419,7 @@ Merlise Clyde
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true,"boardmarkerWidth":1,"chalkWidth":2,"chalkEffect":0},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: true,
@@ -565,6 +598,44 @@ Merlise Clyde
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

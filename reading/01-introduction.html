@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>list-of-mathstuff – STA721-F24: Linear Models</title>
+<title>Lecture 1 Readings – STA721-F24: Linear Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">STA721-F24: Linear Models</span>
     </a>
   </div>
@@ -91,19 +91,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i> Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../syllabus.html"> 
+    <a class="nav-link" href="../syllabus.html"> 
 <span class="menu-text"><i class="fa-solid fa-school-circle-check" aria-label="school-circle-check"></i> Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../schedule.html"> 
+    <a class="nav-link" href="../schedule.html"> 
 <span class="menu-text"><i class="fa-solid fa-calendar-days" aria-label="calendar-days"></i> Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resources.html"> 
+    <a class="nav-link" href="../resources.html"> 
 <span class="menu-text"><i class="fa-solid fa-book-open" aria-label="book-open"></i> Resources</span></a>
   </li>  
 </ul>
@@ -124,21 +124,57 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-linear-models" id="toc-introduction-to-linear-models" class="nav-link active" data-scroll-target="#introduction-to-linear-models">Introduction to Linear Models</a></li>
+  <li><a href="#vector-spaces" id="toc-vector-spaces" class="nav-link" data-scroll-target="#vector-spaces">Vector Spaces</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/sta721-F24/website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lecture 1 Readings</h1>
+</div>
 
 
 
-<p><a href="#Projection"><strong>Definition</strong></a>: Projection</p>
-<p><a href="#OrthComp"><strong>Definition</strong></a>: Orthogonal Complement</p>
-<p><a href="#Nullspace"><strong>Definition</strong></a>: Null Space</p>
-<p><a href="#orthproj"><strong>Definition</strong></a>: Orthogonal Projections</p>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<p>links to eBooks are on the <a href="../">Home page</a> of the website or <a href="../resources.html">Resources</a> page.</p>
+<section id="introduction-to-linear-models" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-linear-models">Introduction to Linear Models</h2>
+<ul>
+<li>review the course website and syllabus for policies</li>
+</ul>
+</section>
+<section id="vector-spaces" class="level2">
+<h2 class="anchored" data-anchor-id="vector-spaces">Vector Spaces</h2>
+<p>Christensen: Read</p>
+<ul>
+<li>Chapter 1: pages 1-3</li>
+<li>Appendix A in Christensen pages 411-413</li>
+<li>Appendix B section B.1</li>
+</ul>
+<p>See also Seber &amp; Lee Chapter 1.</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -569,7 +605,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/sta721-F24/website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta721-F24/website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
