@@ -10,7 +10,7 @@ toc: true
 
 
 
-(see [Gradescope](https://www.gradescope.com/courses/585736/assignments) for any updates on due dates)
+(see [Gradescope]https://www.gradescope.com/courses/843802/assignments) for any updates on due dates)
 
 ## RStudio
 
@@ -23,7 +23,7 @@ You are required to use  the `.qmd` format to type up this report report.  To ge
 
 ## Getting started with Github Classroom
 
-Go to Github classroom to  accept the invitation to create a repository for this assignment  at [HW1](https://classroom.github.com/a/mGaI4K_m)
+Go to Github classroom to  accept the invitation to create a repository for this assignment  at [HW1](https://classroom.github.com/a/l3RW9Y2N)
 
 This will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf. 
 
@@ -36,9 +36,9 @@ that you have pushed your final assignment to GitHub by the due date to validate
 
 ## Gradescope Submission
 
-You MUST submit both your final `.qmd` `.pdf` files to the repo on Github and upload the pdf to Gradescope here: [https://www.gradescope.com/courses/585736/assignments](https://www.gradescope.com/courses/585736/assignments)
+You MUST submit both your final `.qmd` `.pdf` files to the repo on Github and upload the pdf to Gradescope here: [https://www.gradescope.com/courses/843802/assignments](https://www.gradescope.com/courses/843802/assignments)
 
-Make sure to knit to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!  
+Make sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!  
 
 
 ## Grading
