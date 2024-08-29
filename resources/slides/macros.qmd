@@ -65,6 +65,7 @@ iid}}}}
 \newcommand{\var}{\textsf{var}}
 \newcommand{\Cov}{\textsf{Cov}}
 \newcommand{\Sam}{{\cal S}}
+\newcommand{\VS}{{\cal V}}
 \def\H{\mathbf{H}}
 \newcommand{\I}{\mathbf{I}}
 \newcommand{\Y}{\mathbf{Y}}
@@ -86,6 +87,8 @@ iid}}}}
 \def\Yf{\mathbf{Y_f}}
 \def\W{\mathbf{W}}
 \def\L{\mathbf{L}}
+\def\m{\mathbf{m}}
+\def\n{\mathbf{n}}
 \def\w{\mathbf{w}}
 \def\U{\mathbf{U}}
 \def\V{\mathbf{V}}

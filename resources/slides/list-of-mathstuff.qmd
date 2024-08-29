@@ -1,4 +1,8 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
- [**Definition**](#Subspace): Subspace\Pageref{Subspace}
+ [**Definition**](#Projection): Projection\Pageref{Projection}
 
- [**Definition**](#ColumnSpace): Column Space\Pageref{ColumnSpace}
+ [**Definition**](#OrthComp): Orthogonal Complement\Pageref{OrthComp}
+
+ [**Definition**](#Nullspace): Null Space\Pageref{Nullspace}
+
+ [**Definition**](#orthproj): Orthogonal Projections\Pageref{orthproj}

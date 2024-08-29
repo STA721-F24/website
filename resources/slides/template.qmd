@@ -1,7 +1,7 @@
 ---
 subtitle: "STA 721: Lecture ?"
 title: "template"
-author: "Merlise Clyde"
+author: "Merlise Clyde (clyde@duke.edu)"
 institute: "Duke University"
 format: 
   revealjs:
@@ -12,8 +12,9 @@ format:
     controls: true
     fragments: true
     preview-links: auto
+    smaller: true
     logo: ../../img/icon.png
-    footer: <https://sta702-F23.github.io/website/>
+    footer: <https://sta721-F24.github.io/website/>
     chalkboard: 
       boardmarker-width: 1
       chalk-width: 2
@@ -21,11 +22,64 @@ format:
     embed-resources: false
 html-math-method:
   method: mathjax
-  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"    
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"   
 editor: 
   markdown: 
     wrap: 72
 execute: 
   echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+    Corollary:
+      group: thmlike
+    Conjecture:
+      group: thmlike
+      collapse: true  
+    Definition:
+      group: thmlike
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
 ---
 
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+## Outline
+{{< include macros.qmd >}}

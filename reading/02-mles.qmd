@@ -1,0 +1,10 @@
+---
+title: "MLEs & Projections"
+editor: visual
+---
+
+Readings:
+
+-   Christensen Chapter 1-2, Appendix A, and Appendix B
+
+-   Seber & Lee Chapter 3, Appendix B
