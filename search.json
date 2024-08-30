@@ -333,21 +333,21 @@
     "href": "HW/hw-01.html",
     "title": "Homework 1",
     "section": "",
-    "text": "See Gradescope for any updates on due dates)"
+    "text": "See Gradescope for any updates on due dates."
   },
   {
     "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
     "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
     "title": "Homework 1",
     "section": "",
-    "text": "See Gradescope for any updates on due dates)"
+    "text": "See Gradescope for any updates on due dates."
   },
   {
     "objectID": "HW/hw-01.html#rstudio",
     "href": "HW/hw-01.html#rstudio",
     "title": "Homework 1",
     "section": "RStudio",
-    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com (remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
     "objectID": "HW/hw-01.html#r-quarto",
