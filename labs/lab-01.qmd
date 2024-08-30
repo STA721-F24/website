@@ -1,0 +1,5 @@
+---
+title: "lab-01"
+---
+
+Please see the instructions for `HW-01` and be preapred to ask questions in lab (using R, theory, etc)
