@@ -29,7 +29,7 @@ This will create a private repo in the STA721-F24 organization on Github with yo
 
 Hit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.
 
-Follow the instructions in the `README` in your repo and in the `hw1.Rnw` file to complete the assignment and
+Follow the instructions in the `README` in your repo and in the `hw1.qmd` file to complete the assignment and
 push to GitHub. If you encounter issues with Gradescope submission, it is critical
 that you have pushed your final assignment to GitHub by the due date to validate timestamps.
 
