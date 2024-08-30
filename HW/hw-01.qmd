@@ -10,7 +10,7 @@ toc: true
 
 
 
-(see [Gradescope]https://www.gradescope.com/courses/843802/assignments) for any updates on due dates)
+See [Gradescope](https://www.gradescope.com/courses/843802/assignments) for any updates on due dates)
 
 ## RStudio
 
