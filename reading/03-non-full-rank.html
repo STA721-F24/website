@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Homework 1 – STA721-F24: Linear Models</title>
+<title>Rank Deficient Models – STA721-F24: Linear Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">STA721-F24: Linear Models</span>
     </a>
   </div>
@@ -91,19 +91,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i> Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html"> 
+    <a class="nav-link" href="../syllabus.html"> 
 <span class="menu-text"><i class="fa-solid fa-school-circle-check" aria-label="school-circle-check"></i> Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./schedule.html"> 
+    <a class="nav-link" href="../schedule.html"> 
 <span class="menu-text"><i class="fa-solid fa-calendar-days" aria-label="calendar-days"></i> Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resources.html"> 
+    <a class="nav-link" href="../resources.html"> 
 <span class="menu-text"><i class="fa-solid fa-book-open" aria-label="book-open"></i> Resources</span></a>
   </li>  
 </ul>
@@ -124,26 +124,15 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#due-1100pm-thurs-sept-5" id="toc-due-1100pm-thurs-sept-5" class="nav-link active" data-scroll-target="#due-1100pm-thurs-sept-5">Due: 11:00pm, Thurs, Sept 5</a></li>
-  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a></li>
-  <li><a href="#r-quarto" id="toc-r-quarto" class="nav-link" data-scroll-target="#r-quarto">R &amp; Quarto</a></li>
-  <li><a href="#getting-started-with-github-classroom" id="toc-getting-started-with-github-classroom" class="nav-link" data-scroll-target="#getting-started-with-github-classroom">Getting started with Github Classroom</a></li>
-  <li><a href="#gradescope-submission" id="toc-gradescope-submission" class="nav-link" data-scroll-target="#gradescope-submission">Gradescope Submission</a></li>
-  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/sta721-F24/website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Homework 1</h1>
+<h1 class="title">Rank Deficient Models</h1>
 </div>
 
 
@@ -160,36 +149,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="due-1100pm-thurs-sept-5" class="level2">
-<h2 class="anchored" data-anchor-id="due-1100pm-thurs-sept-5">Due: 11:00pm, Thurs, Sept 5</h2>
-<p>(see [Gradescope]https://www.gradescope.com/courses/843802/assignments) for any updates on due dates)</p>
-</section>
-<section id="rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="rstudio">RStudio</h2>
-<p>You all should have R and RStudio installed on your computers by now or access to the Department Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com (remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system.</p>
-</section>
-<section id="r-quarto" class="level2">
-<h2 class="anchored" data-anchor-id="r-quarto">R &amp; Quarto</h2>
-<p>You are required to use the <code>.qmd</code> format to type up this report report. To get started see <a href="https://quarto.org/docs/visual-editor/technical.html">technical writing with Quarto</a>. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The <code>macros.tex</code> file should help with shortcuts.</p>
-</section>
-<section id="getting-started-with-github-classroom" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started-with-github-classroom">Getting started with Github Classroom</h2>
-<p>Go to Github classroom to accept the invitation to create a repository for this assignment at <a href="https://classroom.github.com/a/l3RW9Y2N">HW1</a></p>
-<p>This will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.</p>
-<p>Hit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.</p>
-<p>Follow the instructions in the <code>README</code> in your repo and in the <code>hw1.Rnw</code> file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps.</p>
-</section>
-<section id="gradescope-submission" class="level2">
-<h2 class="anchored" data-anchor-id="gradescope-submission">Gradescope Submission</h2>
-<p>You MUST submit both your final <code>.qmd</code> <code>.pdf</code> files to the repo on Github and upload the pdf to Gradescope here: <a href="https://www.gradescope.com/courses/843802/assignments">https://www.gradescope.com/courses/843802/assignments</a></p>
-<p>Make sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!</p>
-</section>
-<section id="grading" class="level2">
-<h2 class="anchored" data-anchor-id="grading">Grading</h2>
-<p>Total: 20 points.</p>
+<p>We will explore MLEs/OLS using rank deficient models using generalized inverses. We will characterize orthogonal projections using Spectral Decompositions and review how that is related to the Singular Value Decomposition of the model matrix.</p>
+<p>Readings:</p>
+<ul>
+<li><p>Christensen Chapter 1-2, Appendix B</p></li>
+<li><p>Seber &amp; Lee Chapter 3, Appendix A &amp; Appendix B</p></li>
+</ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -620,7 +587,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/sta721-F24/website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/sta721-F24/website/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

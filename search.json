@@ -28,57 +28,57 @@
     "text": "Vector Spaces\nChristensen: Read\n\nChapter 1: pages 1-3\nAppendix A in Christensen pages 411-413\nAppendix B section B.1\n\nSee also Seber & Lee Chapter 1."
   },
   {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": " Schedule",
+    "objectID": "reading/02-mles.html",
+    "href": "reading/02-mles.html",
+    "title": "MLEs & Projections",
     "section": "",
-    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\n\n\n\n\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\n\n\n\n\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\n\n\n\n\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\n\n\n\n\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\n\n\n\n\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTue, Oct 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\n\n\n\n\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\nReview for Midterm I\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nMidterm 1\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 24\n\n\n\n\n\n\n\n\n hw-08\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 31\n\n\n\n\n\n\n\n\n hw-09\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\nTues, Nov 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 7\n\n\n\n\n\n\n\n\n hw-10\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 12\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 14\nMidterm2\n\n\n\n\n\n\n hw-11\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 19\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\nTues, Nov 26\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
+    "text": "Readings:\n\nChristensen Chapter 1-2, Appendix A, and Appendix B\nSeber & Lee Chapter 3, Appendix B"
   },
   {
-    "objectID": "hw-01.html",
-    "href": "hw-01.html",
+    "objectID": "HW/hw-01.html",
+    "href": "HW/hw-01.html",
     "title": "Homework 1",
     "section": "",
-    "text": "(see [Gradescope]https://www.gradescope.com/courses/843802/assignments) for any updates on due dates)"
+    "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "hw-01.html#due-1100pm-thurs-sept-5",
-    "href": "hw-01.html#due-1100pm-thurs-sept-5",
+    "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
+    "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
     "title": "Homework 1",
     "section": "",
-    "text": "(see [Gradescope]https://www.gradescope.com/courses/843802/assignments) for any updates on due dates)"
+    "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "hw-01.html#rstudio",
-    "href": "hw-01.html#rstudio",
+    "objectID": "HW/hw-01.html#rstudio",
+    "href": "HW/hw-01.html#rstudio",
     "title": "Homework 1",
     "section": "RStudio",
-    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com (remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "hw-01.html#r-quarto",
-    "href": "hw-01.html#r-quarto",
+    "objectID": "HW/hw-01.html#r-quarto",
+    "href": "HW/hw-01.html#r-quarto",
     "title": "Homework 1",
     "section": "R & Quarto",
     "text": "R & Quarto\nYou are required to use the .qmd format to type up this report report. To get started see technical writing with Quarto. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts."
   },
   {
-    "objectID": "hw-01.html#getting-started-with-github-classroom",
-    "href": "hw-01.html#getting-started-with-github-classroom",
+    "objectID": "HW/hw-01.html#getting-started-with-github-classroom",
+    "href": "HW/hw-01.html#getting-started-with-github-classroom",
     "title": "Homework 1",
     "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW1\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw1.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW1\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw1.qmd file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "hw-01.html#gradescope-submission",
-    "href": "hw-01.html#gradescope-submission",
+    "objectID": "HW/hw-01.html#gradescope-submission",
+    "href": "HW/hw-01.html#gradescope-submission",
     "title": "Homework 1",
     "section": "Gradescope Submission",
     "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "hw-01.html#grading",
-    "href": "hw-01.html#grading",
+    "objectID": "HW/hw-01.html#grading",
+    "href": "HW/hw-01.html#grading",
     "title": "Homework 1",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
@@ -189,25 +189,11 @@
     "text": "Philosophy\n\nfor many problems frequentist and Bayesian methods will give similar answers (more a matter of taste in interpretation)\n\nFor small problems, Bayesian methods allow us to incorporate prior information which provides better calibrated answers\n\nfor problems with complex designs and/or missing data Bayesian methods are often easier to implement (do not need to rely on asymptotics) \n\nFor problems involving hypothesis testing or model selection frequentist and Bayesian methods can be strikingly different.\n\nFrequentist methods often faster (particularly with “big data”) so great for exploratory analysis and for building a “data-sense”\n\nBayesian methods sit on top of Frequentist Likelihood\n\nGoemetric perspective important in both!\n\n\nImportant to understand advantages and problems of each perspective!\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
-    "objectID": "resources/slides/list-of-mathstuff.html",
-    "href": "resources/slides/list-of-mathstuff.html",
-    "title": "STA721-F24: Linear Models",
-    "section": "",
-    "text": "Definition: Projection\nDefinition: Orthogonal Complement\nDefinition: Null Space\nDefinition: Orthogonal Projections"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "labs/lab-01.html",
-    "href": "labs/lab-01.html",
-    "title": "lab-01",
-    "section": "",
-    "text": "Please see the instructions for HW-01 and be preapred to ask questions in lab (using R, theory, etc)"
+    "objectID": "resources/slides/template.html#outline",
+    "href": "resources/slides/template.html#outline",
+    "title": "template",
+    "section": "Outline",
+    "text": "Outline\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
     "objectID": "resources/slides/02-mles.html#outline",
@@ -315,11 +301,137 @@
     "text": "MLE Estimate of \\(\\sigma^2\\)\nMaximum Likelihood Estimate of \\(\\sigma^2\\) \\[\\begin{eqnarray*}\n    {\\hat{\\sigma}}^2& = & \\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2}{n} \\\\\n      & = & \\frac{\\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})^T(\\mathbf{I}-\\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{ \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{\\mathbf{e}^T\\mathbf{e}} {n}\n  \\end{eqnarray*}\\] where \\(\\mathbf{e}= (\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\\mathbf{Y}\\) are the residuals from the regression of \\(\\mathbf{Y}\\) on \\(\\mathbf{X}\\)\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
-    "objectID": "resources/slides/template.html#outline",
-    "href": "resources/slides/template.html#outline",
-    "title": "template",
+    "objectID": "labs/lab-01.html",
+    "href": "labs/lab-01.html",
+    "title": "lab-01",
+    "section": "",
+    "text": "Please see the instructions for HW-01 and be preapred to ask questions in lab (using R, theory, etc)"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "resources/slides/list-of-mathstuff.html",
+    "href": "resources/slides/list-of-mathstuff.html",
+    "title": "STA721-F24: Linear Models",
+    "section": "",
+    "text": "Definition: B.21 Positive Definite and Non-Negative Definite\nDefinition: Generalized-Inverse (B.36)\nTheorem: Christensen B.39\nTheorem: B.44\nDefinition: Linear Unbiased Estimators (LUEs)"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#outline",
+    "href": "resources/slides/03-non-full-rank.html#outline",
+    "title": "Rank Deficient Models",
     "section": "Outline",
-    "text": "Outline\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Outline\n\nRank Deficient Models\nGeneralized Inverses, Projections and MLEs/OLS\nClass of Unbiased Estimators\n\n\nReadings: - Christensen Chapter 2 and Appendix B - Seber & Lee Chapter 3"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#geometric-view",
+    "href": "resources/slides/03-non-full-rank.html#geometric-view",
+    "title": "Rank Deficient Models",
+    "section": "Geometric View",
+    "text": "Geometric View"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#non-full-rank-case",
+    "href": "resources/slides/03-non-full-rank.html#non-full-rank-case",
+    "title": "Rank Deficient Models",
+    "section": "Non-Full Rank Case",
+    "text": "Non-Full Rank Case\n\nModel: \\(\\mathbf{Y}= \\boldsymbol{\\mu}+ \\boldsymbol{\\epsilon}\\)\nAssumption: \\(\\boldsymbol{\\mu}\\in C(\\mathbf{X})\\) for \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\)\nWhat if the rank of \\(\\mathbf{X}\\), \\(r(\\mathbf{X}) \\equiv r \\ne p\\)?\nStill have result that the OLS/MLE solution satisfies \\[\\mathbf{P}_\\mathbf{X}\\mathbf{Y}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\]\nHow can we characterize \\(\\mathbf{P}\\) and \\(\\hat{\\boldsymbol{\\beta}}\\) in this case? 3 cases\n\n\n\n\\(p \\le n\\), \\(r(\\mathbf{X}) \\ne p\\) \\(\\Rightarrow r(\\mathbf{X}) &lt; p\\)\n\\(p \\gt n\\), \\(r(\\mathbf{X}) \\ne p\\)\n\\(p \\gt n\\), \\(r(\\mathbf{X}) = p\\)\n\n\n\nFocus on the first case for OLS/MLE for now…"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#model-space",
+    "href": "resources/slides/03-non-full-rank.html#model-space",
+    "title": "Rank Deficient Models",
+    "section": "Model Space",
+    "text": "Model Space\n\n\\(\\boldsymbol{{\\cal M}}= C(\\mathbf{X})\\) is an \\(r\\)-dimensional subspace of \\(\\mathbb{R}^n\\)\n\\(\\boldsymbol{{\\cal M}}\\) has an \\((n - r)\\)-dimensional orthogonal complement \\(\\boldsymbol{{\\cal N}}\\)\neach \\(\\mathbf{y}\\in \\mathbb{R}^n\\) has a unique representation as \\[ \\mathbf{y}= \\hat{\\mathbf{y}}+ \\mathbf{e}\\] for \\(\\hat{\\mathbf{y}}\\in \\boldsymbol{{\\cal M}}\\) and \\(\\mathbf{e}\\in \\boldsymbol{{\\cal N}}\\)\n\\(\\hat{\\mathbf{y}}\\) is the orthogonal projection of \\(\\mathbf{y}\\) onto \\(\\boldsymbol{{\\cal M}}\\) and is the OLS/MLE estimate of \\(\\boldsymbol{\\mu}\\) that satisfies \\[\\mathbf{P}_\\mathbf{X}\\mathbf{y}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\]\n\\(\\mathbf{X}^T\\mathbf{X}\\) is not invertible so need another way to represent \\(\\mathbf{P}_\\mathbf{X}\\) and \\(\\hat{\\boldsymbol{\\beta}}\\)"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#spectral-decomposition-sd",
+    "href": "resources/slides/03-non-full-rank.html#spectral-decomposition-sd",
+    "title": "Rank Deficient Models",
+    "section": "Spectral Decomposition (SD)",
+    "text": "Spectral Decomposition (SD)\nEvery symmetric \\(n \\times n\\) matrix, \\({\\mathbf{S}}\\), has an eigen decomposition \\({\\mathbf{S}}= \\mathbf{U}\\boldsymbol{\\Lambda}\\mathbf{U}^T\\)\n\n\\(\\boldsymbol{\\lambda}\\) is a diagonal matrix with eigenvalues \\((\\lambda_1, \\ldots, \\lambda_n)\\) of \\({\\mathbf{S}}\\)\n\\(\\mathbf{U}\\) is a \\(n \\times n\\) orthogonal matrix \\(\\mathbf{U}^T\\mathbf{U}= \\mathbf{U}\\mathbf{U}^T = \\mathbf{I}_n\\) ( \\(\\mathbf{U}^{-1} = \\mathbf{U}^T\\))\nthe columns of \\(\\mathbf{U}\\) from an Orthonormal Basis (ONB) for \\(\\mathbb{R}^n\\)\nthe columns of \\(\\mathbf{U}\\) associated with non-zero eigenvalues form an ONB for \\(C({\\mathbf{S}})\\)\nthe number of non-zero eigenvalues is the rank of \\({\\mathbf{S}}\\)\nthe columns of \\(\\mathbf{U}\\) associated with zero eigenvalues form an ONB for \\(C({\\mathbf{S}})^\\perp\\)\n\\({\\mathbf{S}}^d = \\mathbf{U}\\boldsymbol{\\Lambda}^d \\mathbf{U}^T\\) (matrix powers)"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#positive-definite-and-non-negative-definite-matrices",
+    "href": "resources/slides/03-non-full-rank.html#positive-definite-and-non-negative-definite-matrices",
+    "title": "Rank Deficient Models",
+    "section": "Positive Definite and Non-Negative Definite Matrices",
+    "text": "Positive Definite and Non-Negative Definite Matrices\n\nDefinition: B.21 Positive Definite and Non-Negative DefiniteA symmetric matrix \\({\\mathbf{S}}\\) is positive definite (\\({\\mathbf{S}}\\gt 0\\)) if and only if \\(\\mathbf{x}^T{\\mathbf{S}}\\mathbf{x}&gt; 0\\) for \\(\\mathbf{x}\\in \\mathbb{R}^n\\), \\(\\mathbf{x}\\ne \\mathbf{0}_n\\), and positive semi-definite or non-negative definite (\\({\\mathbf{S}}\\ge 0\\)) if and only if \\(\\mathbf{x}^T{\\mathbf{S}}\\mathbf{x}\\ge 0\\) for \\(\\mathbf{x}\\in \\mathbb{R}^n\\), \\(\\mathbf{x}\\ne \\mathbf{0}_n\\)\n\n\n\n\n\n\n\n\nExercise\n\n\nShow that a symmetric matrix \\({\\mathbf{S}}\\) is positive definite if and only if its eigenvalues are all strictly greater than zero, and positive semi-definite if all the eigenvalues are non-negative."
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#projections",
+    "href": "resources/slides/03-non-full-rank.html#projections",
+    "title": "Rank Deficient Models",
+    "section": "Projections",
+    "text": "Projections\nLet \\(\\mathbf{P}\\) be an orthogonal projection matrix onto \\(\\boldsymbol{{\\cal M}}\\), then\n\nthe eigenvalues of \\(\\mathbf{P}\\), \\(\\lambda_i\\), are either zero or one\nthe trace of \\(\\mathbf{P}\\) is the rank of \\(\\mathbf{P}\\)\nthe dimension of the subspace that \\(\\mathbf{P}\\) projects onto is the rank of \\(\\mathbf{P}\\)\nthe columns of \\(\\mathbf{U}_r = [u_1, u_2, \\ldots u_r]\\) form an ONB for the \\(C(\\mathbf{P})\\)\nthe projection \\(\\mathbf{P}\\) has the representation \\(\\mathbf{P}= \\mathbf{U}_r \\mathbf{U}_r^T = \\sum_{i = 1}^r u_i u_i^T\\) (the sum of \\(r\\) rank \\(1\\) projections)\nthe projection \\(\\mathbf{I}_n - \\mathbf{P}= \\mathbf{I}- \\mathbf{U}_r \\mathbf{U}_r^T = \\mathbf{U}_\\perp \\mathbf{U}_\\perp^T\\) where \\(\\mathbf{U}_\\perp = [u_{r+1}, \\ldots u_n]\\) is an orthogonal projection onto \\(\\boldsymbol{{\\cal N}}\\)\n\n\nMLE/OLS:\n\n\\(\\mathbf{P}_X \\mathbf{y}= \\mathbf{U}_r \\mathbf{U}_r^T \\mathbf{y}= \\mathbf{U}_r \\tilde{\\boldsymbol{\\beta}}\\)\nClaim \\(\\tilde{\\boldsymbol{\\beta}}\\) is a MLE/OLS estimate of \\(\\boldsymbol{\\beta}\\) where \\(\\tilde{\\mathbf{X}}= \\mathbf{U}_r\\)."
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#singular-value-decomposition-connections-to-spectral-decompositions",
+    "href": "resources/slides/03-non-full-rank.html#singular-value-decomposition-connections-to-spectral-decompositions",
+    "title": "Rank Deficient Models",
+    "section": "Singular Value Decomposition & Connections to Spectral Decompositions",
+    "text": "Singular Value Decomposition & Connections to Spectral Decompositions\nA matrix \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\), \\(p \\le n\\) has a singular value decomposition \\[\\mathbf{X}= \\mathbf{U}_p \\mathbf{D}\\mathbf{V}^T\\]\n\n\\(\\mathbf{U}_p\\) is a \\(n \\times p\\) matrix with the first \\(p\\) eigenvectors in \\(\\mathbf{U}\\) associated with the \\(p\\) largest eigenvectors of \\(\\mathbf{X}\\mathbf{X}^T = \\mathbf{U}\\boldsymbol{\\Lambda}\\mathbf{U}^T\\) with \\(\\mathbf{U}_p^T\\mathbf{U}_p = I_p\\)\n\\(\\mathbf{V}\\) is a \\(p \\times p\\) orthogonal matrix associated with the \\(p\\) eigenvectors of \\(\\mathbf{X}^T\\mathbf{X}= \\mathbf{V}\\boldsymbol{\\Lambda}_p \\mathbf{V}^T\\) where \\(\\boldsymbol{\\Lambda}_p\\) is the diagonal matrix of eigenvalues associated with the \\(p\\) largest eigenvalues of \\(\\boldsymbol{\\Lambda}\\)\n\\(\\mathbf{D}\\) = \\(\\boldsymbol{\\Lambda}_p^{1/2}\\) are the singular values\nif \\(\\mathbf{X}\\) has rank \\(r &lt; p\\), then \\(C(\\mathbf{X}) = C(\\mathbf{U}_p) = C(\\mathbf{U}_r)\\), where \\(\\mathbf{U}_r\\) are the eigenvectors of \\(\\mathbf{U}\\) or \\(\\mathbf{U}_p\\) associated with the non-zero eigenvalues."
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#mleols-for-non-full-rank-case",
+    "href": "resources/slides/03-non-full-rank.html#mleols-for-non-full-rank-case",
+    "title": "Rank Deficient Models",
+    "section": "MLE/OLS for non-full rank case",
+    "text": "MLE/OLS for non-full rank case\n\nif \\(\\mathbf{X}^T\\mathbf{X}\\) is invertible, \\(\\mathbf{P}_X = \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\) and \\(\\hat{\\boldsymbol{\\beta}}\\) is the unique estimator that satisfies \\(\\mathbf{P}_\\mathbf{X}\\mathbf{y}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\) or \\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\mathbf{y}\\)\nif \\(\\mathbf{X}^T\\mathbf{X}\\) is not invertible, replace \\(\\mathbf{X}\\) by \\(\\tilde{\\mathbf{X}}\\) that is rank \\(r\\)\nor represent \\(\\mathbf{P}_\\mathbf{X}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-} \\mathbf{X}^T\\) where \\((\\mathbf{X}^T\\mathbf{X})^{-}\\) is a generalized inverse of \\(\\mathbf{X}^T\\mathbf{X}\\) and \\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-}\\mathbf{X}^T \\mathbf{y}\\)"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#generalized-inverses",
+    "href": "resources/slides/03-non-full-rank.html#generalized-inverses",
+    "title": "Rank Deficient Models",
+    "section": "Generalized Inverses",
+    "text": "Generalized Inverses\n\nDefinition: Generalized-Inverse (B.36)A generalized inverse of any matrix \\(\\mathbf{A}\\): \\(\\mathbf{A}^{-}\\) satisfies \\(\\mathbf{A}\\mathbf{A}^- \\mathbf{A}= \\mathbf{A}\\)\n\n\n\nA generalized inverse of \\(\\mathbf{A}\\) symmetric always exists!\n\n\n\nTheorem: Christensen B.39If \\(\\mathbf{G}_1\\) and \\(\\mathbf{G}_2\\) are generalized inverses of \\(\\mathbf{A}\\) then \\(\\mathbf{G}_1 \\mathbf{A}\\mathbf{G}_2\\) is also a generalized inverse of \\(\\mathbf{A}\\)\n\n\n\nif \\(\\mathbf{A}\\) is symmetric, then \\(\\mathbf{A}^-\\) need not be!"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#orthogonal-projections-in-general",
+    "href": "resources/slides/03-non-full-rank.html#orthogonal-projections-in-general",
+    "title": "Rank Deficient Models",
+    "section": "Orthogonal Projections in General",
+    "text": "Orthogonal Projections in General\n\n\n\n\n\n\n\nLemma B.43\n\n\nIf \\(\\mathbf{G}\\) and \\(\\mathbf{H}\\) are generalized inverses of \\(\\mathbf{X}^T\\mathbf{X}\\) then \\[\\begin{align*}\n\\mathbf{X}\\mathbf{G}\\mathbf{X}^T \\mathbf{X}& = \\mathbf{X}\\mathbf{H}\\mathbf{X}^T \\mathbf{X}= \\mathbf{X}\\\\\n\\mathbf{X}\\mathbf{G}\\mathbf{X}^T & = \\mathbf{X}\\mathbf{H}\\mathbf{X}^T\n\\end{align*}\\]\n\n\n\n\n\n\nTheorem: B.44\\(\\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^-\\mathbf{X}^T\\) is an orthogonal projection onto \\(C(\\mathbf{X})\\).\n\n\n\n\n\nWe need to show that (i) \\(\\mathbf{P}\\mathbf{m}= \\mathbf{m}\\) for \\(\\mathbf{m}\\in C(\\mathbf{X})\\) and (ii) \\(\\mathbf{P}\\mathbf{n}= 0\\) for \\(\\mathbf{n}\\in C(\\mathbf{X})^\\perp\\).\n\nFor \\(\\mathbf{m}\\in C(\\mathbf{X})\\), write \\(\\mathbf{m}= \\mathbf{X}\\mathbf{b}\\). Then \\(\\mathbf{P}\\mathbf{m}= \\mathbf{P}\\mathbf{X}\\mathbf{b}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^-\\mathbf{X}^T \\mathbf{X}\\mathbf{b}\\) and by Lemma B43, we have that \\(\\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^-\\mathbf{X}^T \\mathbf{X}\\mathbf{b}= \\mathbf{X}\\mathbf{b}= \\mathbf{m}\\)\nFor \\(\\mathbf{n}\\perp C(\\mathbf{X})\\), \\(\\mathbf{P}\\mathbf{n}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^-\\mathbf{X}^T \\mathbf{n}= \\mathbf{0}_n\\) as \\(C(\\mathbf{X})^\\perp = N(\\mathbf{X}^T)\\)."
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#mles-ols",
+    "href": "resources/slides/03-non-full-rank.html#mles-ols",
+    "title": "Rank Deficient Models",
+    "section": "MLEs & OLS",
+    "text": "MLEs & OLS\nMLE/OLS satisfies\n\n\\(\\mathbf{P}\\mathbf{y}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\)\n\\(\\mathbf{P}\\mathbf{y}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^-\\mathbf{X}^T \\mathbf{X}\\hat{\\boldsymbol{\\beta}}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\) (does not depend on choice of generalized inverse)\n\\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^-\\mathbf{X}^T \\mathbf{y}\\)\n\\(\\hat{\\boldsymbol{\\beta}}\\) is not unique - does depend on choice of generalized inverse unless \\(\\mathbf{X}\\) is full rank"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#moore-penrose-generalized-inverse",
+    "href": "resources/slides/03-non-full-rank.html#moore-penrose-generalized-inverse",
+    "title": "Rank Deficient Models",
+    "section": "Moore-Penrose Generalized Inverse:",
+    "text": "Moore-Penrose Generalized Inverse:\n\nDecompose symmetric \\(\\mathbf{A}= \\mathbf{U}\\boldsymbol{\\Lambda}\\mathbf{U}^T\\) (i.e \\(\\mathbf{X}^T\\mathbf{X}\\))\n\\(\\mathbf{A}^-_{MP} = \\mathbf{U}\\boldsymbol{\\Lambda}^- \\mathbf{U}^T\\)\n\n\\(\\boldsymbol{\\Lambda}^-\\) is diagonal with \\[ \\lambda_i^- = \\left\\{\n\\begin{array}{l}\n1/\\lambda_i \\text{ if } \\lambda_i \\neq 0 \\\\\n0 \\quad \\, \\text{  if } \\lambda_i = 0\n\\end{array}\n\\right.\\]\n\nSymmetric \\(\\mathbf{A}^-_{MP} = (\\mathbf{A}^-_{MP})^T\\)\n\nReflexive \\(\\mathbf{A}^-_{MP}\\mathbf{A}\\mathbf{A}^-_{MP} = \\mathbf{A}^-_{MP}\\)\n\n\n\nCan you construct another generalized inverse of \\(\\mathbf{X}^T\\mathbf{X}\\) ?\nCan you find the Moore-Penrose generalized inverse of \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\)?"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#properties-of-ols-full-rank-case",
+    "href": "resources/slides/03-non-full-rank.html#properties-of-ols-full-rank-case",
+    "title": "Rank Deficient Models",
+    "section": "Properties of OLS (full rank case)",
+    "text": "Properties of OLS (full rank case)\nHow good is \\(\\hat{\\boldsymbol{\\beta}}\\) as an estimator of \\(\\beta\\)\n\n\\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T \\mathbf{Y}=  (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T \\mathbf{X}\\boldsymbol{\\beta}+ (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\boldsymbol{\\epsilon}\\)\ndon’t know \\(\\boldsymbol{\\epsilon}\\), but can talk about behavior on average over\n\ndifferent runs of an experiment\ndifferent samples from a population\ndifferent values of \\(\\boldsymbol{\\epsilon}\\)\n\nwith minimal assumption \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\), \\[\\begin{align*}\n\\textsf{E}[\\hat{\\boldsymbol{\\beta}}] & = \\textsf{E}[(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}+ (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\boldsymbol{\\epsilon}]\\\\\n& = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\textsf{E}[\\boldsymbol{\\epsilon}] \\\\\n& = \\boldsymbol{\\beta}\n\\end{align*}\\]\nBias of \\(\\hat{\\boldsymbol{\\beta}}\\), \\(\\text{Bias}[\\hat{\\boldsymbol{\\beta}}] =  \\textsf{E}[\\hat{\\boldsymbol{\\beta}}- \\boldsymbol{\\beta}] = \\mathbf{0}_p\\) - \\(\\hat{\\boldsymbol{\\beta}}\\) is an unbiased estimator of \\(\\boldsymbol{\\beta}\\) if \\(\\boldsymbol{\\mu}\\in C(\\mathbf{X})\\)"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#class-of-unbiased-estimators",
+    "href": "resources/slides/03-non-full-rank.html#class-of-unbiased-estimators",
+    "title": "Rank Deficient Models",
+    "section": "Class of Unbiased Estimators",
+    "text": "Class of Unbiased Estimators\nClass of linear statistical models: \\[\\begin{align*}\n\\mathbf{Y}& = \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\\\\\n\\boldsymbol{\\epsilon}& \\sim P \\\\\nP & \\in \\cal{P}\n\\end{align*}\\]\n\nAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is unbiased for \\(\\boldsymbol{\\beta}\\) if \\(\\textsf{E}_P[\\tilde{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\quad \\forall \\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in \\cal{P}\\)\n\n\nExamples:\n\n\n\\(\\cal{P}_1= \\{P = \\textsf{N}(\\mathbf{0}_n ,\\mathbf{I}_n)\\}\\)\n\n\n\\(\\cal{P}_2 = \\{P = \\textsf{N}(\\mathbf{0}_n ,\\sigma^2 \\mathbf{I}_n), \\sigma^2 &gt;0\\}\\)\n\n\n\\(\\cal{P}_3 = \\{P = \\textsf{N}(\\mathbf{0}_n ,\\boldsymbol{\\Sigma}), \\boldsymbol{\\Sigma}\\in \\cal{{\\cal{S}}}^+ \\}\\)\n\n\n\\(\\cal{P}_4\\) is the set of distributions with \\(\\textsf{E}_P[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\) and \\(\\textsf{E}_P[\\boldsymbol{\\epsilon}\\boldsymbol{\\epsilon}^T] \\gt 0\\)\n\n\n\\(\\cal{P}_5\\) is the set of distributions with \\(\\textsf{E}_P[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\) and \\(\\textsf{E}_P[\\boldsymbol{\\epsilon}\\boldsymbol{\\epsilon}^T] \\ge 0\\)"
+  },
+  {
+    "objectID": "resources/slides/03-non-full-rank.html#linear-unbiased-estimation",
+    "href": "resources/slides/03-non-full-rank.html#linear-unbiased-estimation",
+    "title": "Rank Deficient Models",
+    "section": "Linear Unbiased Estimation",
+    "text": "Linear Unbiased Estimation\n\n\n\n\n\n\n\nExercise\n\n\n\nExplain why an estimator that is unbiased for the model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{k+1}\\) is unbiased for the model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{k}\\) .\nFind an estimator that is unbiased for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{1}\\) that but is biased for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{2}\\).\n\n\n\n\n\n\nRestrict attention to linear unbiased estimators\n\n\n\nDefinition: Linear Unbiased Estimators (LUEs)\nAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is a Linear Unbiased Estimator (LUE) of \\(\\boldsymbol{\\beta}\\) if\n\nlinearity: \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\) for \\(\\mathbf{A}\\in \\mathbb{R}^{p \\times n}\\)\nunbiasedness: \\(\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\) for all \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\)\n\n\n\n\n\n\nAre there other LUEs besides the OLS/MLE estimator?\nWhich is “best”? (and in what sense?)\n\n\n\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
     "objectID": "syllabus.html",
@@ -329,60 +441,18 @@
     "text": "When in doubt about anything at all, ask questions!!!\n\nPrerequisites\nALL students are expected to be familiar with all the topics covered within the required prerequisites to be in this course. That is - mathematical statistics and probability, linear algebra, and multivariate calculus. Students are also expected to be familiar with R and are encouraged to learn LaTeX during the course.\n\n\nWorkload\nWork hours will include time spent going through the preassigned readings, attending lectures and lab sessions, and doing all graded work.\n\n\nGraded Work\nGraded work for the course will consist of homework assignments, lab exercises, two midterms and a final exam. Regrade requests for problem sets and lab exercises must be done via Gradescope AT MOST 24 hours after grades are released! Regrade requests for quizzes, midterm, and final exams must be done via Gradescope AT MOST 12 hours after grades are released! Always write in complete sentences and show your steps.\nStudents’ final grades will be determined as shown below:\n\nComponent Percentage\n\n\nComponent\nPercentage\n\n\n\n\nHomework\n20%\n\n\nMidterm\n25%\n\n\nMidterm II\n25%\n\n\nParticipation\n5%\n\n\nFinal Exam\n25%\n\n\n\nThere are no make-ups for any of the graded work except for medical or familial emergencies or for reasons approved by the instructor BEFORE the due date. See the instructor in advance of relevant due dates to discuss possible alternatives.\nGrades may be curved at the end of the semester. Cumulative averages of 90% – 100% are guaranteed at least an A-, 80% – 89% at least a B-, and 70% – 79% at least a C-, however the exact ranges for letter grades will be determined at the end of the course.\n\n\nDescriptions of graded work\n\nProblem sets\nHomework will be handed out on a weekly basis. They will be based on both the lectures and labs and will be announced every Thursday or Friday – be sure to check the website regularly! Also, please note that any work that is not legible by the instructor or TAs will not be graded (given a score of 0). Every write-up must be clearly written in full sentences and clear English. Any assignment that is completely unclear to the instructors and/or TAs, may result in a grade of a 0. For programming exercises, we will be using R/knitr with \\(\\LaTeX\\) for preparing assignments using github classroom for data analysis.\nEach student MUST write up and turn in her or his own answers. You are encouraged to talk to each other regarding homework problems or to the instructor/TA. However, the write-up, solution, and code must be entirely your own work. No sharing of solutions or code! The assignments must be submitted on Gradescope under Assignments. Note that you will not be able to make online submissions after the due date, so be sure to submit before or by the Gradescope-specified deadline. You may resubmit, so when in doubt submit work early. In certain situations if there are issues with submissions, the TA may review your GitHub repository prior to the due date.\nSolutions will be curated from student solutions with proper attribution. Every week the TAs will select a representative correct solution for the assigned problems and put them together into one solutions set with each answer being attributed to the student who wrote it. If you would like to OPT OUT of having your homework solutions used for the class solutions, please let the Instructor and TAs know in advance.\nFinally, your lowest homework score will be dropped!\n\n\nLab exercises\nThe objective of the lab assignments is to give you more hands-on experience with Bayesian data analysis. Attend the lab session and learn a concept or two and some R from the TA, and then work on the computational part of the problem sets. Each lab assignment should be submitted in timely fashion. You are REQUIRED to use R/knitr (or R/Rmarkdown in some cases).\n\n\nMidterm Exams\nThere will be two inclass midterm exams. Detailed instructions on the midterm will be made available later but please check dates on the calendar well in advance!\n\n\nFinal Exam\nThere will be a final exam after the reading week. If you miss any quiz or the midterm, your grade will depend more on the final exam score since there are no make-up exams. You cannot miss the final exam! Please check the important dates on the homepage for the date and time of the final before making plans to return home at the end of the semester. Detailed instructions on the final will be made available later.\n\n\n\nLate Submission Policy\n\nno late submission of homework or lab assignments, however we will drop the lowest score in each.\n\n\n\nCourse Topics\nFor a detailed day-by-day list of topics, please refer to the Course Schedule\n\n\nAcademic integrity\nDuke University is a community dedicated to scholarship, leadership, and service and to the principles of honesty, fairness, respect, and accountability. Citizens of this community commit to reflect upon and uphold these principles in all academic and nonacademic endeavors, and to protect and promote a culture of integrity.\nRemember the Duke Community Standard that you have agreed to abide by:\n\nTo uphold the Duke Community Standard:\n\n\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors; and\nI will act if the Standard is compromised.\n\n\nCheating or plagiarism on any graded assessments, lying about an illness or absence and other forms of academic dishonesty are a breach of trust with classmates and faculty, violate the Duke Community Standard, and will not be tolerated. Such incidences will result in a 0 grade for all parties involved. Additionally, there may be penalties to your final class grade along with being reported to the Office of Student Conduct. Review the academic dishonesty policies at https://studentaffairs.duke.edu/conduct/z-policies/academic-dishonesty.\n\n\nDiversity & Inclusiveness\nThis course is designed so that students from all backgrounds and perspectives all feel welcome both in and out of class. Please feel free to talk to me (in person or via email) if you do not feel well-served by any aspect of this class, or if some aspect of class is not welcoming or accessible to you. My goal is for you to succeed in this course, therefore, let me know immediately if you feel you are struggling with any part of the course more than you know how to manage. Doing so will not affect your grades, but it will allow me to provide the resources to help you succeed in the course.\n\n\nDisability Statement\nStudents with disabilities who believe that they may need accommodations in the class are encouraged to contact the Student Disabilities Access Office at 919-668-1267 or disabilities@aas.duke.edu as soon as possible to better ensure that such accommodations are implemented in a timely fashion.\n\n\nOther Information\nIt can be a lot more pleasant oftentimes to get one-on-one answers and help. Make use of the teaching team’s office hours, we’re here to help! Do not hesitate to talk to me during office hours or by appointment to discuss a problem set or any aspect of the course. Questions related to course assignments and honesty policy should be directed to me. When the teaching team has announcements for you we will send an email to your Duke email address. Be sure to check your email daily.\nMost of the course components will be held in person, but occasionally may need to be held online using Zoom meetings. If you have any concerns, issues or challenges, let the instructor know as soon as possible. Also, all students are strongly encouraged to rely on the forums in Sakai, for interacting among yourself and asking other students questions. You can also ask the instructor or the TAs questions on there and we will try to respond as soon as possible. If you experience any technical issues with joining or using the forums, let the instructor know.\n\n\nProfessionalism\nTry as much as possible to refrain from texting or using your computer for anything other than coursework during class and labs. Again, the more engaged you are, the quicker you will be able to get through the materials. You are responsible for everything covered in the lecture videos, lecture notes/slides, and in the assigned readings."
   },
   {
-    "objectID": "HW/hw-01.html",
-    "href": "HW/hw-01.html",
-    "title": "Homework 1",
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": " Schedule",
     "section": "",
-    "text": "See Gradescope for any updates on due dates."
+    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\nLecture 3: Rank Deficient Models\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\nLecture 4: Linear Unbiased Estimation and Gauss-Markov\n\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\n\n\n\n\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\n\n\n\n\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\n\n\n\n\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\n\n\n\n\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTue, Oct 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\n\n\n\n\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\nReview for Midterm I\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nMidterm 1\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 24\n\n\n\n\n\n\n\n\n hw-08\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 31\n\n\n\n\n\n\n\n\n hw-09\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\nTues, Nov 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 7\n\n\n\n\n\n\n\n\n hw-10\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 12\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 14\nMidterm2\n\n\n\n\n\n\n hw-11\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 19\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\nTues, Nov 26\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
   },
   {
-    "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
-    "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
-    "title": "Homework 1",
+    "objectID": "reading/03-non-full-rank.html",
+    "href": "reading/03-non-full-rank.html",
+    "title": "Rank Deficient Models",
     "section": "",
-    "text": "See Gradescope for any updates on due dates."
-  },
-  {
-    "objectID": "HW/hw-01.html#rstudio",
-    "href": "HW/hw-01.html#rstudio",
-    "title": "Homework 1",
-    "section": "RStudio",
-    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
-  },
-  {
-    "objectID": "HW/hw-01.html#r-quarto",
-    "href": "HW/hw-01.html#r-quarto",
-    "title": "Homework 1",
-    "section": "R & Quarto",
-    "text": "R & Quarto\nYou are required to use the .qmd format to type up this report report. To get started see technical writing with Quarto. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts."
-  },
-  {
-    "objectID": "HW/hw-01.html#getting-started-with-github-classroom",
-    "href": "HW/hw-01.html#getting-started-with-github-classroom",
-    "title": "Homework 1",
-    "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW1\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw1.qmd file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
-  },
-  {
-    "objectID": "HW/hw-01.html#gradescope-submission",
-    "href": "HW/hw-01.html#gradescope-submission",
-    "title": "Homework 1",
-    "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
-  },
-  {
-    "objectID": "HW/hw-01.html#grading",
-    "href": "HW/hw-01.html#grading",
-    "title": "Homework 1",
-    "section": "Grading",
-    "text": "Grading\nTotal: 20 points."
-  },
-  {
-    "objectID": "reading/02-mles.html",
-    "href": "reading/02-mles.html",
-    "title": "MLEs & Projections",
-    "section": "",
-    "text": "Readings:\n\nChristensen Chapter 1-2, Appendix A, and Appendix B\nSeber & Lee Chapter 3, Appendix B"
+    "text": "We will explore MLEs/OLS using rank deficient models using generalized inverses. We will characterize orthogonal projections using Spectral Decompositions and review how that is related to the Singular Value Decomposition of the model matrix.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
   },
   {
     "objectID": "index.html#course-description",
