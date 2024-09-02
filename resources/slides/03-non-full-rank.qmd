@@ -337,7 +337,7 @@ $\cal{P}_2 = \{P = \N(\zero_n ,\sigma^2 \I_n), \sigma^2 >0\}$
 
 . . .
 
-$\cal{P}_3 = \{P = \N(\zero_n ,\Sigmab), \Sigmab \in \cal{\S}^+ \}$
+$\cal{P}_3 = \{P = \N(\zero_n ,\Sigmab), \Sigmab \in \cal{\S}^+ \}$ ($\cal{\S}^+$ is the set of all $n \times n$ symmetric positive definite matrices.)
 
 . . . 
 
