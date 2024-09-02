@@ -71,11 +71,13 @@ iid}}}}
 \newcommand{\Y}{\mathbf{Y}}
 \newcommand{\tY}{\tilde{\mathbf{Y}}}
 \newcommand{\Yhat}{\hat{\mathbf{Y}}}
+\newcommand{\yhat}{\hat{\mathbf{y}}}
 \newcommand{\Yobs}{\mathbf{Y}_{{\cal S}}}
 \newcommand{\barYobs}{\bar{Y}_{{\cal S}}}
 \newcommand{\barYmiss}{\bar{Y}_{{\cal S}^c}}
 \def\bv{\mathbf{b}}
 \def\X{\mathbf{X}}
+\def\XtX{\X^T\X}
 \def\tX{\tilde{\mathbf{X}}}
 \def\x{\mathbf{x}}
 \def\xbar{\bar{\mathbf{x}}}
@@ -145,12 +147,14 @@ iid}}}}
 \def\gMPM{\boldsymbol{\gamma}_{\text{MPM}}}
 \def\gHPM{\boldsymbol{\gamma}_{\text{HPM}}}
 \def\Mfull{\boldsymbol{{\cal M}}_{F}}
+\def\NS{\boldsymbol{{\cal N}}}
 \def\tg{\boldsymbol{\theta}_{\boldsymbol{\gamma}}}
 \def\g{\boldsymbol{\gamma}}
 \def\eg{\boldsymbol{\eta}_{\boldsymbol{\gamma}}}
 \def\G{\mathbf{G}}
 \def\cM{\cal M}
-\def\D{\Delta}
+\def\D{\boldsymbo{\Delta}}
+\def\Dbf{\mathbf{D}}
 \def \shat{{\hat{\sigma}}^2}
 \def\uv{\mathbf{u}}
 \def\l {\lambda}
@@ -161,6 +165,7 @@ iid}}}}
 \def\lambdab{\boldsymbol{\lambda}}
 \def\Mg{{\cal M}_\gamma}
 \def\S{{\cal{S}}}
+\def\Sbf{{\mathbf{S}}}
 \def\qg{p_{\boldsymbol{\gamma}}}
 \def\pg{p_{\boldsymbol{\gamma}}}
 \def\T{\boldsymbol{\Theta}}

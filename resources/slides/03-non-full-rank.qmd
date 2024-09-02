@@ -1,0 +1,383 @@
+---
+subtitle: "STA 721: Lecture 3"
+title: "Rank Deficient Models"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"   
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+    Corollary:
+      group: thmlike
+    Conjecture:
+      group: thmlike
+      collapse: true  
+    Definition:
+      group: thmlike
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+## Outline
+{{< include macros.qmd >}}
+- Rank Deficient Models 
+- Generalized Inverses, Projections and MLEs/OLS
+- Class of Unbiased Estimators
+
+
+
+. . .
+
+Readings: 
+ - Christensen Chapter 2 and Appendix B
+ - Seber & Lee Chapter 3
+
+## Geometric View
+
+![](img/OLS.jpg)
+
+## Non-Full Rank Case
+
+- Model: $\Y = \mub + \eps$ 
+
+- Assumption: $\mub \in C(\X)$ for $\X \in \bbR^{n \times p}$
+
+- What if the rank of $\X$, $r(\X) \equiv r \ne p$?
+
+- Still have result that the OLS/MLE solution satisfies 
+$$\P_\X \Y = \X \bhat$$
+
+- How can we characterize $\P$ and $\bhat$ in this case?   3 cases
+
+. . .
+
+1) $p \le n$, $r(\X) \ne p$ $\Rightarrow r(\X) < p$
+2) $p \gt n$, $r(\X) \ne p$
+3) $p \gt n$, $r(\X) = p$
+
+. . .
+
+Focus on the first case for OLS/MLE for now...
+
+## Model Space
+
+- $\M = C(\X)$ is an $r$-dimensional subspace of $\bbR^n$
+
+- $\M$ has an $(n - r)$-dimensional orthogonal complement $\NS$
+
+- each $\y \in \bbR^n$ has a unique representation as 
+$$ \y = \yhat + \e$$ 
+for $\yhat \in \M$ and $\e \in \NS$
+
+- $\yhat$  is the orthogonal projection of $\y$ onto $\M$ and is the OLS/MLE estimate of $\mub$ that satisfies
+$$\P_\X \y = \X \bhat$$
+
+- $\XtX$ is not invertible so need another way to represent $\P_\X$ and $\bhat$
+
+
+
+## Spectral Decomposition (SD)
+
+Every symmetric  $n \times n$ matrix, $\Sbf$, has an eigen decomposition  $\Sbf = \U \Lambdab \U^T$
+
+- $\lambdab$ is a diagonal matrix with eigenvalues $(\lambda_1, \ldots, \lambda_n)$ of $\Sbf$
+- $\U$ is a $n \times n$ *orthogonal* matrix $\U^T\U = \U \U^T = \I_n$ ( $\U^{-1} = \U^T$)
+- the columns of $\U$ from an Orthonormal Basis (ONB)  for $\bbR^n$
+- the columns of $\U$ associated with non-zero eigenvalues form an ONB for $C(\Sbf)$ 
+- the number of non-zero eigenvalues is the rank of $\Sbf$
+- the columns of $\U$ associated with zero eigenvalues form an ONB for $C(\Sbf)^\perp$ 
+- $\Sbf^d = \U \Lambdab^d \U^T$ (matrix powers)
+
+## Positive Definite and Non-Negative Definite Matrices 
+
+::: {.Definition #PD .unnumbered}
+## B.21 Positive Definite and Non-Negative Definite
+A symmetric matrix $\Sbf$ is *positive definite* ($\Sbf \gt 0$) if and only if $\x^T\Sbf \x > 0$ for $\x \in \bbR^n$,  $\x \ne \zero_n$,  and *positive semi-definite*  or *non-negative definite* ($\Sbf \ge 0$) if and only if $\x^T\Sbf \x \ge 0$ for $\x \in \bbR^n$, $\x \ne \zero_n$
+:::
+
+
+
+::: {.callout-note }
+## Exercise
+Show that a symmetric matrix $\Sbf$ is positive definite if and only if its eigenvalues are all strictly greater than zero, and positive semi-definite if all the eigenvalues are non-negative.
+:::
+
+## Projections 
+
+Let $\P$ be an orthogonal projection matrix onto $\M$, then 
+
+1. the eigenvalues of $\P$,
+$\lambda_i$, are
+either zero or one 
+
+2. the trace of $\P$ is the rank of $\P$ 
+
+3. the dimension of the subspace that $\P$ projects onto is the rank of $\P$
+4. the columns of $\U_r = [u_1, u_2, \ldots u_r]$ form an ONB for the $C(\P)$
+5. the projection $\P$ has the representation $\P = \U_r \U_r^T = \sum_{i = 1}^r u_i u_i^T$ (the sum of $r$ rank $1$ projections)
+6. the projection $\I_n - \P = \I - \U_r \U_r^T = \U_\perp \U_\perp^T$
+where $\U_\perp = [u_{r+1}, \ldots u_n]$ is an orthogonal projection onto $\NS$
+
+
+
+. . .
+
+MLE/OLS: 
+
+- $\P_X \y = \U_r \U_r^T \y = \U_r \btilde$
+- Claim $\btilde$ is a MLE/OLS estimate of $\b$ where $\tX = \U_r$.
+
+## Singular Value Decomposition & Connections to Spectral Decompositions
+
+A matrix $\X \in \bbR^{n \times p}$, $p \le n$ has a *singular value decomposition* 
+$$\X = \U_p \Dbf \V^T$$
+
+- $\U_p$ is a $n \times p$ matrix with the first $p$ eigenvectors in $\U$ associated with the $p$ largest eigenvectors of $\X \X^T = \U \Lambdab \U^T$ with $\U_p^T\U_p = I_p$ 
+- $\V$ is a $p \times p$ orthogonal matrix associated with the $p$ eigenvectors of $\X^T\X = \V \Lambdab_p \V^T$ where $\Lambdab_p$ is the diagonal matrix of eigenvalues associated with the $p$ largest eigenvalues of $\Lambdab$
+- $\Dbf$ = $\Lambdab_p^{1/2}$ are the singular values
+- if $\X$ has rank $r < p$, then $C(\X) = C(\U_p) = C(\U_r)$, where $\U_r$ are the eigenvectors of $\U$ or $\U_p$ associated with the non-zero eigenvalues. 
+ 
+ 
+##  MLE/OLS for non-full rank case
+
+- if $\X^T\X$ is invertible, $\P_X = \X (\XtX)^{-1} \X^T$ and $\bhat$ is the unique estimator that satisfies $\P_\X\y = \X \bhat$ or $\bhat = (\XtX)^{-1} \X^T\y$
+
+- if $\X^T\X$ is not invertible, replace $\X$ by $\tX$ that is rank $r$
+
+- or represent $\P_\X = \X (\XtX)^{-} \X^T$ where $(\XtX)^{-}$ is a generalized inverse of $\X^T\X$ and $\bhat = (\XtX)^{-}\X^T \y$
+
+## Generalized Inverses
+
+::: {.Definition #Generalized-Inverse .unnumbered}
+## Generalized-Inverse (B.36)
+A generalized inverse of any matrix $\A$: $\A^{-}$ satisfies   $\A \A^- \A = \A$
+:::
+
+
+- A generalized inverse of $\A$ symmetric always exists!
+
+. . .
+
+
+::: {.Theorem #Th-Generalized-Inverse .unnumbered}
+## Christensen B.39
+  If $\G_1$ and $\G_2$ are generalized inverses of $\A$ then $\G_1 \A \G_2$ is also a generalized inverse of $\A$
+:::  
+
+ 
+- if $\A$ is symmetric, then $\A^-$ need not be!
+
+## Orthogonal Projections in General
+::: {.callout-note title="Lemma B.43" appearance="default"}
+
+  If $\G$ and $\H$ are generalized inverses of $\XtX$ then
+\begin{align*}
+ \X \G \X^T \X  & = \X \H \X^T \X = \X \\
+ \X \G \X^T & = \X \H \X^T
+\end{align*}
+
+:::
+
+. . .
+
+::: {.Theorem .unnumbered}
+## B.44 
+$\X(\XtX)^-\X^T$ is an orthogonal projection onto $C(\X)$.
+:::
+
+. . .
+
+::: {.Proof .unnumbered}
+We need to show that (i) $\P\m = \m$ for $\m \in C(\X)$ and (ii) $\P \n = 0$ for $\n \in C(\X)^\perp$.
+
+i) For $\m \in C(\X)$, write $\m = \X \bv$.  Then $\P \m = \P \X \bv = \X(\XtX)^-\X^T \X \bv$ and by Lemma B43, we have that $\X(\XtX)^-\X^T \X \bv = \X \bv = \m$
+
+ii) For $\n \perp C(\X)$, $\P \n = \X(\XtX)^-\X^T \n = \zero_n$ as $C(\X)^\perp = N(\X^T)$.
+
+:::
+
+## MLEs & OLS
+
+MLE/OLS satisfies
+
+- $\P \y = \X \bhat$ 
+- $\P \y = \X(\XtX)^-\X^T \X \bhat = \X \bhat$ (does not depend on  choice of generalized inverse)
+- $\bhat = (\XtX)^-\X^T \y$ 
+- $\bhat$ is not unique - does depend on choice of generalized inverse unless $\X$ is full rank
+
+## Moore-Penrose Generalized Inverse:
+
+-  Decompose symmetric $\A = \U \Lambdab \U^T$  (i.e $\XtX$)
+-  $\A^-_{MP} = \U \Lambdab^- \U^T$  
+-  $\Lambdab^-$ is diagonal with 
+$$ \lambda_i^- = \left\{
+    \begin{array}{l}
+   1/\lambda_i \text{ if } \lambda_i \neq 0 \\
+   0 \quad \, \text{  if } \lambda_i = 0
+    \end{array}
+\right.$$  
+-  Symmetric  $\A^-_{MP} = (\A^-_{MP})^T$  
+- Reflexive  $\A^-_{MP}\A \A^-_{MP} = \A^-_{MP}$  
+
+. . .
+
+- Can you construct another generalized inverse of $\XtX$ ?
+
+- Can you find the Moore-Penrose generalized inverse of $\X \in \bbR^{n \times p}$?
+
+## Properties of OLS (full rank case)
+
+How good is $\bhat$ as an estimator of $\beta$
+
+- $\bhat = (\XtX)^{-1}\X^T \Y =  (\XtX)^{-1}\X^T \X \b + (\XtX)^{-1}\X^T\eps$
+- don't know $\eps$, but can talk about behavior on average over
+  - different runs of an experiment
+  - different samples from a population
+  - different values of $\eps$
+- with minimal assumption $\E[\eps] = \zero_n$, 
+\begin{align*}
+\E[\bhat] & = \E[(\XtX)^{-1}\X^T\X\b + (\XtX)^{-1}\X^T\eps]\\
+& = (\XtX)^{-1}\X^T\E[\eps] \\
+& = \b
+\end{align*}
+- *Bias* of $\bhat$, $\text{Bias}[\bhat] =  \E[\bhat - \b] = \zero_p$ - $\bhat$ is an unbiased estimator of $\b$ if $\mub \in C(\X)$
+
+
+
+
+
+## Class of Unbiased Estimators
+
+Class of linear statistical models:
+\begin{align*}
+\Y & = \X \b + \eps \\
+\eps & \sim P \\
+P & \in \cal{P}
+\end{align*}
+
+. . .
+
+An estimator $\btilde$ is unbiased for $\b$ if $\E_P[\btilde] = \b \quad \forall \b \in \bbR^p$ and $P \in \cal{P}$
+
+. . .
+
+Examples:
+
+
+. . .
+
+$\cal{P}_1= \{P = \N(\zero_n ,\I_n)\}$
+
+. . .
+
+$\cal{P}_2 = \{P = \N(\zero_n ,\sigma^2 \I_n), \sigma^2 >0\}$
+
+. . .
+
+$\cal{P}_3 = \{P = \N(\zero_n ,\Sigmab), \Sigmab \in \cal{\S}^+ \}$
+
+. . . 
+
+$\cal{P}_4$ is the set of distributions with $\E_P[\eps] = \zero_n$ and  $\E_P[\eps \eps^T] \gt 0$ 
+
+. . . 
+
+$\cal{P}_5$ is the set of distributions with $\E_P[\eps] = \zero_n$ and  $\E_P[\eps \eps^T] \ge 0$  
+
+
+## Linear Unbiased Estimation
+
+::: {.callout-note title="Exercise" appearance="default"}
+
+1.  Explain why an estimator that is unbiased for the model with parameter space $\b \in \bbR^p$ and $P \in  \cal{P}_{k+1}$ is unbiased for the model with parameter space $\b \in \bbR^p$ and $P \in  \cal{P}_{k}$ .
+
+2.  Find an estimator that is unbiased for $\b \in \bbR^p$ and $P \in  \cal{P}_{1}$ that but is biased for $\b \in \bbR^p$ and $P \in  \cal{P}_{2}$.
+:::
+
+. . .
+
+
+Restrict attention to **linear** unbiased estimators 
+
+. . .
+
+::: {.Definition .unnumbered}
+## Linear Unbiased Estimators (LUEs)
+An estimator $\btilde$ is a **Linear Unbiased Estimator** (LUE) of $\b$ if
+
+1) linearity: $\btilde = \A \Y$ for $\A \in \bbR^{p \times n}$
+2) unbiasedness: $\E[\btilde] = \b$ for all $\b \in \bbR^p$
+
+
+:::
+
+. . .
+
+- Are there other LUEs besides the OLS/MLE estimator?
+- Which is "best"? (and in what sense?)
+
+::: footer
+:::

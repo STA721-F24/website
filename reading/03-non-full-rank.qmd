@@ -1,0 +1,12 @@
+---
+title: "Rank Deficient Models"
+editor: visual
+---
+
+We will explore MLEs/OLS using rank deficient models using generalized inverses. We will characterize orthogonal projections using Spectral Decompositions and review how that is related to the Singular Value Decomposition of the model matrix.
+
+Readings:
+
+-   Christensen Chapter 1-2, Appendix B
+
+-   Seber & Lee Chapter 3, Appendix A & Appendix B

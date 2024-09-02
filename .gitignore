@@ -60,4 +60,6 @@ rsconnect/
 /resources/_old_lectures_Rnw/
 /resources/Linear_Regression_Analysis_2nd_edition.pdf
 /resources/_Hoff-Supplementary\ Reading/
+.DS_Store
 /resources/.DS_Store
+/resources/slides/.DS_Store
