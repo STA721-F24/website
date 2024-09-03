@@ -110,13 +110,12 @@ Readings:
 - Still have result that the OLS/MLE solution satisfies 
 $$\P_\X \Y = \X \bhat$$
 
-- How can we characterize $\P$ and $\bhat$ in this case?   3 cases
+- How can we characterize $\P$ and $\bhat$ in this case?   2 cases
 
 . . .
 
 1) $p \le n$, $r(\X) \ne p$ $\Rightarrow r(\X) < p$
 2) $p \gt n$, $r(\X) \ne p$
-3) $p \gt n$, $r(\X) = p$
 
 . . .
 
@@ -133,7 +132,7 @@ $$ \y = \yhat + \e$$
 for $\yhat \in \M$ and $\e \in \NS$
 
 - $\yhat$  is the orthogonal projection of $\y$ onto $\M$ and is the OLS/MLE estimate of $\mub$ that satisfies
-$$\P_\X \y = \X \bhat$$
+$$\P_\X \y = \X \bhat = \yhat$$
 
 - $\XtX$ is not invertible so need another way to represent $\P_\X$ and $\bhat$
 
@@ -143,7 +142,7 @@ $$\P_\X \y = \X \bhat$$
 
 Every symmetric  $n \times n$ matrix, $\Sbf$, has an eigen decomposition  $\Sbf = \U \Lambdab \U^T$
 
-- $\lambdab$ is a diagonal matrix with eigenvalues $(\lambda_1, \ldots, \lambda_n)$ of $\Sbf$
+- $\Lambdab$ is a diagonal matrix with eigenvalues $(\lambda_1, \ldots, \lambda_n)$ of $\Sbf$
 - $\U$ is a $n \times n$ *orthogonal* matrix $\U^T\U = \U \U^T = \I_n$ ( $\U^{-1} = \U^T$)
 - the columns of $\U$ from an Orthonormal Basis (ONB)  for $\bbR^n$
 - the columns of $\U$ associated with non-zero eigenvalues form an ONB for $C(\Sbf)$ 
@@ -158,7 +157,7 @@ Every symmetric  $n \times n$ matrix, $\Sbf$, has an eigen decomposition  $\Sbf 
 A symmetric matrix $\Sbf$ is *positive definite* ($\Sbf \gt 0$) if and only if $\x^T\Sbf \x > 0$ for $\x \in \bbR^n$,  $\x \ne \zero_n$,  and *positive semi-definite*  or *non-negative definite* ($\Sbf \ge 0$) if and only if $\x^T\Sbf \x \ge 0$ for $\x \in \bbR^n$, $\x \ne \zero_n$
 :::
 
-
+. . .
 
 ::: {.callout-note }
 ## Exercise
@@ -195,7 +194,7 @@ MLE/OLS:
 A matrix $\X \in \bbR^{n \times p}$, $p \le n$ has a *singular value decomposition* 
 $$\X = \U_p \Dbf \V^T$$
 
-- $\U_p$ is a $n \times p$ matrix with the first $p$ eigenvectors in $\U$ associated with the $p$ largest eigenvectors of $\X \X^T = \U \Lambdab \U^T$ with $\U_p^T\U_p = I_p$ 
+- $\U_p$ is a $n \times p$ matrix with the first $p$ eigenvectors in $\U$ associated with the $p$ largest eigenvectors of $\X \X^T = \U \Lambdab \U^T$ with $\U_p^T\U_p = I_p$ but $\U_p \U_p^T \ne \I_n$ (or $\P_p$)
 - $\V$ is a $p \times p$ orthogonal matrix associated with the $p$ eigenvectors of $\X^T\X = \V \Lambdab_p \V^T$ where $\Lambdab_p$ is the diagonal matrix of eigenvalues associated with the $p$ largest eigenvalues of $\Lambdab$
 - $\Dbf$ = $\Lambdab_p^{1/2}$ are the singular values
 - if $\X$ has rank $r < p$, then $C(\X) = C(\U_p) = C(\U_r)$, where $\U_r$ are the eigenvectors of $\U$ or $\U_p$ associated with the non-zero eigenvalues.
@@ -285,6 +284,8 @@ $$ \lambda_i^- = \left\{
 
 . . .
 
+- Show that $\A_{MP}^-$ is a generalized inverse of $\A$
+
 - Can you construct another generalized inverse of $\XtX$ ?
 
 - Can you find the Moore-Penrose generalized inverse of $\X \in \bbR^{n \times p}$?
@@ -293,7 +294,7 @@ $$ \lambda_i^- = \left\{
 
 How good is $\bhat$ as an estimator of $\beta$
 
-- $\bhat = (\XtX)^{-1}\X^T \Y =  (\XtX)^{-1}\X^T \X \b + (\XtX)^{-1}\X^T\eps$
+- $\bhat = (\XtX)^{-1}\X^T \Y =  (\XtX)^{-1}\X^T \X \b + (\XtX)^{-1}\X^T\eps = \b +  (\XtX)^{-1}\X^T\eps$
 - don't know $\eps$, but can talk about behavior on average over
   - different runs of an experiment
   - different samples from a population
@@ -301,11 +302,14 @@ How good is $\bhat$ as an estimator of $\beta$
 - with minimal assumption $\E[\eps] = \zero_n$, 
 \begin{align*}
 \E[\bhat] & = \E[(\XtX)^{-1}\X^T\X\b + (\XtX)^{-1}\X^T\eps]\\
-& = (\XtX)^{-1}\X^T\E[\eps] \\
+& = \b + (\XtX)^{-1}\X^T\E[\eps] \\
 & = \b
 \end{align*}
-- *Bias* of $\bhat$, $\text{Bias}[\bhat] =  \E[\bhat - \b] = \zero_p$ - $\bhat$ is an unbiased estimator of $\b$ if $\mub \in C(\X)$
+- *Bias* of $\bhat$, $\text{Bias}[\bhat] =  \E[\bhat - \b] = \zero_p$ 
+- $\bhat$ is an unbiased estimator of $\b$ if $\mub \in C(\X)$
 
+::: footer
+:::
 
 
 
