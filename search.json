@@ -319,7 +319,7 @@
     "href": "resources/slides/list-of-mathstuff.html",
     "title": "STA721-F24: Linear Models",
     "section": "",
-    "text": "Definition: Linear Unbiased Estimators (LUEs)\nTheorem"
+    "text": "Definition: B.21 Positive Definite and Non-Negative Definite\nDefinition: Generalized-Inverse (B.36)\nTheorem: Christensen B.39\nTheorem: B.44\nDefinition: Linear Unbiased Estimators (LUEs)"
   },
   {
     "objectID": "resources/slides/03-non-full-rank.html#outline",
@@ -375,7 +375,7 @@
     "href": "resources/slides/03-non-full-rank.html#singular-value-decomposition-connections-to-spectral-decompositions",
     "title": "Rank Deficient Models",
     "section": "Singular Value Decomposition & Connections to Spectral Decompositions",
-    "text": "Singular Value Decomposition & Connections to Spectral Decompositions\nA matrix \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\), \\(p \\le n\\) has a singular value decomposition \\[\\mathbf{X}= \\mathbf{U}_p \\mathbf{D}\\mathbf{V}^T\\]\n\n\\(\\mathbf{U}_p\\) is a \\(n \\times p\\) matrix with the first \\(p\\) eigenvectors in \\(\\mathbf{U}\\) associated with the \\(p\\) largest eigenvectors of \\(\\mathbf{X}\\mathbf{X}^T = \\mathbf{U}\\boldsymbol{\\Lambda}\\mathbf{U}^T\\) with \\(\\mathbf{U}_p^T\\mathbf{U}_p = I_p\\)\n\\(\\mathbf{V}\\) is a \\(p \\times p\\) orthogonal matrix associated with the \\(p\\) eigenvectors of \\(\\mathbf{X}^T\\mathbf{X}= \\mathbf{V}\\boldsymbol{\\Lambda}_p \\mathbf{V}^T\\) where \\(\\boldsymbol{\\Lambda}_p\\) is the diagonal matrix of eigenvalues associated with the \\(p\\) largest eigenvalues of \\(\\boldsymbol{\\Lambda}\\)\n\\(\\mathbf{D}\\) = \\(\\boldsymbol{\\Lambda}_p^{1/2}\\) are the singular values\nif \\(\\mathbf{X}\\) has rank \\(r &lt; p\\), then \\(C(\\mathbf{X}) = C(\\mathbf{U}_p) = C(\\mathbf{U}_r)\\), where \\(\\mathbf{U}_r\\) are the eigenvectors of \\(\\mathbf{U}\\) or \\(\\mathbf{U}_p\\) associated with the non-zero eigenvalues."
+    "text": "Singular Value Decomposition & Connections to Spectral Decompositions\nA matrix \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\), \\(p \\le n\\) has a singular value decomposition \\[\\mathbf{X}= \\mathbf{U}_p \\mathbf{D}\\mathbf{V}^T\\]\n\n\\(\\mathbf{U}_p\\) is a \\(n \\times p\\) matrix with the first \\(p\\) eigenvectors in \\(\\mathbf{U}\\) associated with the \\(p\\) largest eigenvectors of \\(\\mathbf{X}\\mathbf{X}^T = \\mathbf{U}\\boldsymbol{\\Lambda}\\mathbf{U}^T\\) with \\(\\mathbf{U}_p^T\\mathbf{U}_p = I_p\\)\n\\(\\mathbf{V}\\) is a \\(p \\times p\\) orthogonal matrix associated with the \\(p\\) eigenvectors of \\(\\mathbf{X}^T\\mathbf{X}= \\mathbf{V}\\boldsymbol{\\Lambda}_p \\mathbf{V}^T\\) where \\(\\boldsymbol{\\Lambda}_p\\) is the diagonal matrix of eigenvalues associated with the \\(p\\) largest eigenvalues of \\(\\boldsymbol{\\Lambda}\\)\n\\(\\mathbf{D}\\) = \\(\\boldsymbol{\\Lambda}_p^{1/2}\\) are the singular values\nif \\(\\mathbf{X}\\) has rank \\(r &lt; p\\), then \\(C(\\mathbf{X}) = C(\\mathbf{U}_p) = C(\\mathbf{U}_r)\\), where \\(\\mathbf{U}_r\\) are the eigenvectors of \\(\\mathbf{U}\\) or \\(\\mathbf{U}_p\\) associated with the non-zero eigenvalues.\n\\(\\mathbf{U}_r\\) is an ONB for \\(C(X)\\)"
   },
   {
     "objectID": "resources/slides/03-non-full-rank.html#mleols-for-non-full-rank-case",
