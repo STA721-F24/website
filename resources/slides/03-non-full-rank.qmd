@@ -198,7 +198,8 @@ $$\X = \U_p \Dbf \V^T$$
 - $\U_p$ is a $n \times p$ matrix with the first $p$ eigenvectors in $\U$ associated with the $p$ largest eigenvectors of $\X \X^T = \U \Lambdab \U^T$ with $\U_p^T\U_p = I_p$ 
 - $\V$ is a $p \times p$ orthogonal matrix associated with the $p$ eigenvectors of $\X^T\X = \V \Lambdab_p \V^T$ where $\Lambdab_p$ is the diagonal matrix of eigenvalues associated with the $p$ largest eigenvalues of $\Lambdab$
 - $\Dbf$ = $\Lambdab_p^{1/2}$ are the singular values
-- if $\X$ has rank $r < p$, then $C(\X) = C(\U_p) = C(\U_r)$, where $\U_r$ are the eigenvectors of $\U$ or $\U_p$ associated with the non-zero eigenvalues. 
+- if $\X$ has rank $r < p$, then $C(\X) = C(\U_p) = C(\U_r)$, where $\U_r$ are the eigenvectors of $\U$ or $\U_p$ associated with the non-zero eigenvalues.
+- $\U_r$ is an ONB for $C(X)$
  
  
 ##  MLE/OLS for non-full rank case
