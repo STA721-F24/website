@@ -153,12 +153,13 @@ iid}}}}
 \def\eg{\boldsymbol{\eta}_{\boldsymbol{\gamma}}}
 \def\G{\mathbf{G}}
 \def\cM{\cal M}
-\def\D{\boldsymbo{\Delta}}
+\def\D{\boldsymbol{\Delta}}
 \def\Dbf{\mathbf{D}}
 \def \shat{{\hat{\sigma}}^2}
 \def\uv{\mathbf{u}}
 \def\l {\lambda}
 \def\d{\delta}
+\def\deltab{\mathbf{\delta}}
 \def\Sigmab{\boldsymbol{\Sigma}}
 \def\Phib{\boldsymbol{\Phi}}
 \def\Lambdab{\boldsymbol{\Lambda}}

@@ -1,10 +1,4 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
- [**Definition**](#PD): B.21 Positive Definite and Non-Negative Definite\Pageref{PD}
-
- [**Definition**](#Generalized-Inverse): Generalized-Inverse (B.36)\Pageref{Generalized-Inverse}
-
- [**Theorem**](#Th-Generalized-Inverse): Christensen B.39\Pageref{Th-Generalized-Inverse}
-
- [**Theorem**](#b.44): B.44\Pageref{b.44}
-
  [**Definition**](#linear-unbiased-estimators-lues): Linear Unbiased Estimators (LUEs)\Pageref{linear-unbiased-estimators-lues}
+
+ [**Theorem**](#Theorem*-0.2)\Pageref{Theorem*-0.2}
