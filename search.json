@@ -319,7 +319,7 @@
     "href": "resources/slides/list-of-mathstuff.html",
     "title": "STA721-F24: Linear Models",
     "section": "",
-    "text": "Definition: B.21 Positive Definite and Non-Negative Definite\nDefinition: Generalized-Inverse (B.36)\nTheorem: Christensen B.39\nTheorem: B.44\nDefinition: Linear Unbiased Estimators (LUEs)"
+    "text": "Definition: Linear Unbiased Estimators (LUEs)\nTheorem"
   },
   {
     "objectID": "resources/slides/03-non-full-rank.html#outline",
