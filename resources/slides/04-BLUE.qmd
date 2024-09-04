@@ -1,0 +1,372 @@
+---
+subtitle: "STA 721: Lecture 4"
+title: "Best Linear Unbiased Estimators"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"   
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+      numbered: false
+    Lemma:
+      group: thmlike
+      numbered: false
+    Corollary:
+      group: thmlike
+      numbered: false
+    Proof:
+      group: thmlike
+      numbered: false
+      collapse: true  
+    Definition:
+      group: thmlike
+      numbered: false
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+- Characterizing Linear Unbiased Estimators
+- Gauss-Markov Theorem
+- Best Linear Unbiased Estimators
+
+
+
+. . .
+
+Readings: 
+ - Christensen Chapter 1-2 and Appendix B
+ - Seber & Lee Chapter 3
+
+
+
+## Full Rank Case
+
+- Model: $\Y = \mub + \eps$ 
+
+- Minimal Assumptions: 
+  - Mean $\mub \in C(\X)$ for $\X \in \bbR^{n \times p}$
+  - Errors $\E[\eps] = \zero_n$
+
+. . .
+
+::: {.Definition .unnumbered}
+## Linear Unbiased Estimators (LUEs)
+An estimator $\btilde$ is a **Linear Unbiased Estimator** (LUE) of $\b$ if
+
+1) linearity: $\btilde = \A \Y$ for $\A \in \bbR^{p \times n}$
+2) unbiasedness: $\E[\btilde] = \b$ for all $\b \in \bbR^p$
+
+
+:::
+
+. . .
+
+The class of linear unbiased estimators is the same for every model with parameter space $\b \in \bbR^p$ and $P \in \cal{P}$, for any collection $\cal{P}$ of mean-zero distributions over $\bbR ^n$.
+
+## Linear Unbiased Estimators (LUEs)
+
+- Let $\N$ be an ONB for $\NS = \M^\perp = N(\X^T)$: 
+  - $\N^T\m =  \N^T\X\bv = \zero  \quad \forall \m =\X \bv \in \M$
+  - $\N^T\N = \I_{n-p}$
+
+. . .
+
+Consider another linear estimator $\btilde = \A \Y$
+
+- Difference between $\btilde$ and $\bhat$ (OLS/MLE):
+  \begin{align*}
+    \deltab = \btilde - \bhat & = \left(\A - (\XtX)^{-1}\X^T \right)\Y \\
+                    & \equiv \H^T \Y
+  \end{align*}
+
+-  Since both $\btilde$ and $\bhat$ are unbiased, $\E[\deltab] = \zero_p \quad \forall \b \in \bbR^p$
+$$\zero_p = \E[\H^T \Y] = \H^T \X \b \quad \forall \b \in \bbR^p$$
+- $\X^T \H = \zero$ so each column of $\H$ is in $\M^\perp \equiv \NS$
+
+::: footer
+:::
+
+## LUEs continued
+
+
+Since each column of $\H$ is in $\NS$
+there exists a $\G \in \bbR^{p \times (n-p)} \ni \H = \N \G^T$
+ 
+ . . .
+ 
+ Rewriting $\deltab = \btilde - \bhat$:
+ \begin{align*}
+ \btilde & = \bhat + \deltab \\
+         & = \bhat + \H^T\Y \\
+         & = \bhat + \G \N^T\Y
+ \end{align*}
+
+- therefore $\btilde$ is linear and unbiased:
+ \begin{align*}
+ \E[\btilde] & = \E[\bhat + \G \N^T\Y] \\
+             & =  \b + \E[\G \N^T\X\b] \\ 
+             & = \b
+ \end{align*} 
+  
+## Characterization of LUEs
+
+Summary of previous results:
+
+::: {.Theorem .unnumbered}
+An estimator $\btilde$ is a linear unbiased estimator of $\b$ in a linear statistical model if and only if 
+$$\btilde = \bhat + \H^T\Y$$
+for some $\H \in \bbR^{n \times p}$ such that $\X^T \H = \zero$ or equivalently for some $\G \in \bbR^{p \times (n-p)}$
+$$\btilde = \bhat + \G \N^T\Y$$
+:::
+
+## Numerical 
+
+```{r}
+#| echo: true
+#| eval: false
+# X is model matrix; Y is response
+  p = ncol(X)
+  n = nrow(X)
+  G = matrix(rnorm(p*(n-p)), nrow=p, ncol=n-p)
+  H = MASS::Null(X) %*% t(G)
+  btilde = bhat + t(H) %*% Y
+```
+
+infinite number of LUEs!
+
+## LUEs via Generalized Inverses
+
+
+
+Let $\btilde = \A \Y$ be a LUE in the statistical linear model $\Y = \X \b + \eps$ with $\X$ full column rank $p$
+\begin{align*}
+\E[\btilde] & = \E[\A \Y] \\
+            & = \A \E[\Y] \\
+            & = \A \X \b \quad \forall \b \in \bbR^p
+\end{align*}
+
+- Must have $\A \X = \I_p$ ($\A$ is a generalized inverse of $\X$) 
+- $\X \X^- \X = \X$
+- one generalized inverse is $\X_{MP}^- = (\XtX)^{-1}\X^T$ 
+- $\X_{MP}^- = (\XtX)^{-1}\X^T = \V \D^{-1} \U^T$ (using SVD of $\X = \U \D \V^T$)
+- $\A$ is a generalized inverse of $\X$ iff $\A = \X_{MP}^- + \H^T$ for 
+$\H \in \bbR^{n \times p} \ni \H^T \U = \zero$
+- $\A \Y = (\X_{MP}^- + \H^T)\Y = \bhat +  \H^T \Y$
+
+## Best Linear Unbiased Estimators
+
+- the distribution of values of any unbiased estimator is _centered_ around $\b$
+
+- out of the infinite number of LUEs is there one that is more _concentrated_ around $\b$?
+
+- is there an unbiased estimator that has a lower variance than all other unbiased estimators?
+
+- Recall variance-covariance matrix of a random vector $\Z$ with mean $\tb$
+\begin{align*}
+\Cov[\Z]      & \equiv \E[(\Z - \tb)(\Z - \tb)^T] \\
+\Cov[\Z]_{ij} &  =     \E[(z_i - \theta_i)(z_j - \theta_j)]
+\end{align*}
+
+. . .
+
+::: {.callout-note title="Lemma" appearance="default"}
+Let $\A \in \bbR^{q \times p}$ and $\bv \in \bbR^q$ with $\Z$ a random vector in $\bbR^p$ then
+$$\Cov[\A \Z + \bv] = \A \Cov[\Z] \A^T \ge 0$$
+:::
+
+## Variance of Linear Unbiased Estimators
+
+Let's look at the variance of any LUE under assumption $\Cov[\eps] = \sigma^2 \I_n$
+
+- for $\bhat = (\XtX)^{-1} \X^T\Y = \b + (\XtX)^{-1} \X^T\eps$
+\begin{align*}
+\Cov[\bhat] & = \Cov[\b + (\XtX)^{-1} \X^T\eps] \\ 
+            & =  (\XtX)^{-1} \X^T\Cov[\eps] \X (\XtX)^{-1} \\
+            & = \sigma^2 (\XtX)^{-1} \X^T\X (\XtX)^{-1} \\
+            & = \sigma^2 (\XtX)^{-1}
+\end{align*}
+
+- Covariance is increasing in $\sigma^2$ and generally decreasing in $n$
+- Rewrite $\XtX$ as  $\XtX = \sum_{i=1}^n \x_i \x_i^T$ (a sum of $n$ outer-products)
+
+## Variance of Arbitrary LUE
+
+- for $\btilde = \left((\XtX)^{-1} \X^T + \H^T \right)\Y = \b + \left((\XtX)^{-1} \X^T + \H^T \right)\eps$
+- recall $\X_{MP}^- \equiv  (\XtX)^{-1} \X^T$
+\begin{align*}
+\Cov[\btilde] & = \Cov[\left(\X_{MP}^- + \H^T \right)\eps]  \\
+              & = \sigma^2 \left(\X_{MP}^- + \H^T \right)\left(\X_{MP}^- + \H^T \right)^T \\
+              & = \sigma^2\left( \X_{MP}^-(\X_{MP}^-)^T + \X_{MP}^-\H +
+                  \H^T (\X_{MP}^-)^T + \H^T \H \right) \\
+              & =   \sigma^2\left( (\XtX)^{-1} +  \H^T \H \right)
+\end{align*}
+
+- Cross-product term $\H^T(\X_{MP}^-)^T = \H^T\X (\XtX)^{-1} =  \zero$
+
+- Therefor the $\Cov[\btilde] = \Cov[\bhat] + \H^T\H$
+
+- the sum of a positive definite matrix plus a positive semi-definite matrix
+
+
+
+## Gauss-Markov Theorem
+
+Is $\Cov[\btilde] \ge \Cov[\bhat]$ in some sense?
+
+. . .
+
+::: {.Definition .unnumbered}
+## Loewner Ordering
+For two positive semi-definite matrices $\Sigmab_1$ and $\Sigmab_2$, we say that $\Sigmab_1 > \Sigmab_2$ if $\Sigmab_1 - \Sigmab_2$ is positive definite, $\x^T(\Sigmab_1 - \Sigmab_2)\x) > 0$, and $\Sigmab_1 \ge \Sigmab_2$ if $\Sigmab_1 - \Sigmab_2$ is positive semi-definite, $\x^T(\Sigmab_1 - \Sigmab_2)\x) \ge 0$
+:::
+
+- Since $\Cov[\btilde] - \Cov[\bhat] = \H^T\H$, we have that $\Cov[\btilde] \ge \Cov[\bhat]$
+
+. . .
+
+::: {.Theorem .unnumbered}
+## Gauss-Markov 
+Let $\btilde$ be a linear unbiased estimator of $\b$ in a linear model where $\E[\Y] = \X\b, \b \in \bbR^p$, $\X$ rank $p$, and $\Cov[\Y] = \sigma^2\I_n, \sigma^2 > 0$. Then
+$\Cov[\btilde] \ge \Cov[\bhat]$ where $\bhat$ is the OLS estimator and is the **Best Linear Unbiased Estimator** (BLUE) of $\b$.
+:::
+
+## {#slide13-id data-menu-title="GM Theorem and Proof"}
+::: {.Theorem}
+## Gauss-Markov Theorem (Classic)
+For $\Y = \mub + \eps$, with $\mub \in \M$, $\E[\eps]= \zero_n$ and $\Cov[\eps] =\sigma^2 \I_n$ and $\P$ the orthogonal projection onto $\M$,  $\P\Y = \muhat$ is the BLUE of $\mub$  out of the class of LUEs $\A\Y$ where $\E[\A \Y] = \mub$, $\A \in \bbR^{n \times n}$ equality iff $\A = \P$
+:::
+
+::: Proof
+- write $\A = \P + \H^T$ so $\H^T = \A - \P$
+- since $\A\mub = \mub$, $\H^T\mu = \zero_n$ for $\mu \in \M$ and $\H^T \P = \P\H = \zero$ so columns of $\H \in \M^\perp$.
+
+. . .
+
+\begin{align*}
+\E[\|\A\Y - \mub\|^2]  & = \E[\|\A(\Y - \mub)\|^2]  = \E[\|\P(\Y - \mub) + \H ^T(\Y - \mub)\|^2]  \\
+& = \E[\|\P(\Y - \mub)\|^2] + \underbrace{\E[\|\H^T(\Y - \mub)\|^2]} + \underbrace{2\E[(\H^T(\Y - \mu))^T\P(\Y - \mub)]} \\
+& \hspace{4.35in} \ge 0 \quad \quad + \quad \quad {\text{cross-product is 0}}\\
+& \ge \E[\|\P(\Y - \mub)\|^2]
+\end{align*}
+:::
+
+::: Footer
+:::
+
+## Estimation of Linear Functionals of $\mub$
+If $\P\Y = \muhat$ is the BLUE of $\mub$, is $\B\P\Y = \B\muhat$ the BLUE of $\B\mub$?
+
+. . .
+
+Yes! Similar proof as above to show that out of the class of LUEs $\A\Y$ of $\B\mub$ where $\A \in \bbR^{d \times n}$ that
+$$\E[\|\A\Y - \B\mub\|^2] \ge \E[\|\B\P\Y - \B\mub\|^2]$$ 
+with equality iff $\A = \B\P$.
+
+. . .
+
+What about linear functionals of $\b$, $\Lambdab^T \b$, for $\X$ rank $r \le p$?
+
+- $\bhat$ is not unique if $r < p$ even though $\muhat$ is unique ($\bhat$ is not BLUE)
+- Since $\B\mub = \B\X\b$ is always identifiable, the only linear functions of $\b$ that are identifiable and can be estimated uniquely are functions of $\X\b$, i.e. estimates in the form $\Lambdab^T \b = \B\X\b$ or $\Lambdab = \X^T \B^T$.
+- columns of $\Lambdab$ must be in the $C(\X^T)$
+- detailed discussion and proof in Christensen Ch. 2 for scalar functionals
+$\lambda^T\beta$.
+
+## BLUE of $\Lambdab \b$
+
+If $\Lambdab^T= \B\X$ for some matrix $\B$ then
+
+- $\E[\B\P\Y] = \E[\Lambdab \bhat] = \Lambdab^T\b$
+- The unique OLS estimate of $\Lambdab^T\b$ is $\Lambdab^T\bhat$
+- $\B\P\Y = \Lambdab^T\bhat$ is the BLUE of $\\Lambdab^T\b$
+$$\E[\|\B\P\Y - \B\mub\|^2]  \le \E[\|\A\Y - \B\mub\|^2] \LeftRightarrow
+\E[\|\Lambdab^T\bhat - \Lambdab^T\b)\|^2]  \le \E[\|\L^T\bhat - \Lambdab^T\b\|^2]$$
+for LUE $\A\Y$ and $\L^T\bhat$ of $\Lambdab^T\b$
+
+
+## Proof of Cross-Product
+Let $\Dbf = \H \P$ and write
+\begin{align*}
+\E[(\H^T(\Y - \mu))^T\P(\Y - \mub)] & = \E[(\Y - \mu))^T\H\P(\Y - \mub)] \\
+ & = \E[(\Y - \mu))^T\Dbf(\Y - \mub)]
+\end{align*}
+
+. . .
+
+\begin{align*}
+\E[(\Y - \mu))^T\Dbf(\Y - \mub)] = & \E[\tr(\Y - \mu))^T\Dbf(\Y - \mub))]  \\
+ = & \E[\tr(\Dbf(\Y - \mub)(\Y - \mu)^T)] \\
+ = & \tr(\E[\Dbf(\Y - \mub)(\Y - \mu)^T]) \\
+ = & \tr(\Dbf\E[(\Y - \mub)(\Y - \mu)^T]) \\
+  = & \sigma^2 \tr(\Dbf \I_n)\\
+\end{align*}
+
+. . .
+
+Since $\tr(\Dbf) = \tr(\H\P) = \tr (\P\H)$ we can conclude that the cross-product term is zero.
