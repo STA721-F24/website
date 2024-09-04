@@ -91,116 +91,116 @@
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "resources/slides/02-mles.html#outline",
-    "href": "resources/slides/02-mles.html#outline",
-    "title": "Maximum Likelihood Estimation",
+    "objectID": "resources/slides/04-BLUE.html#outline",
+    "href": "resources/slides/04-BLUE.html#outline",
+    "title": "Best Linear Unbiased Estimators",
     "section": "Outline",
-    "text": "Outline\n\nLikelihood Function\nProjections\nMaximum Likelihood Estimates\n\n\nReadings: Christensen Chapter 1-2, Appendix A, and Appendix B"
+    "text": "Outline\n\nCharacterizing Linear Unbiased Estimators\nGauss-Markov Theorem\nBest Linear Unbiased Estimators\n\n\nReadings: - Christensen Chapter 1-2 and Appendix B - Seber & Lee Chapter 3"
   },
   {
-    "objectID": "resources/slides/02-mles.html#normal-model",
-    "href": "resources/slides/02-mles.html#normal-model",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Normal Model",
-    "text": "Normal Model\nTake an random vector \\(\\mathbf{Y}\\in \\mathbb{R}^n\\) which is observable and decompose\n\\[ \\mathbf{Y}= \\boldsymbol{\\mu}+ \\boldsymbol{\\epsilon}\\]\n\n\\(\\boldsymbol{\\mu}\\in \\mathbb{R}^n\\) (unknown, fixed)\n\n\\(\\boldsymbol{\\epsilon}\\in \\mathbb{R}^n\\) unobservable error vector (random)\n\n\nUsual assumptions?\n\n\\(E[\\epsilon_i] = 0 \\ \\forall i \\Leftrightarrow \\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}\\) \\(\\quad \\Rightarrow \\textsf{E}[\\mathbf{Y}] = \\boldsymbol{\\mu}\\) (mean vector)\n\\(\\epsilon_i\\) independent with \\(\\textsf{Var}(\\epsilon_i) = \\sigma^2\\) and \\(\\textsf{Cov}(\\epsilon_i, \\epsilon_j) = 0\\)\nMatrix version \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] \\equiv \\left[ (\\textsf{E}\\left[(\\epsilon_i -\\textsf{E}[\\epsilon_i])(\\epsilon_j - \\textsf{E}[\\epsilon_j])\\right]\\right]_{ij} = \\sigma^2 \\mathbf{I}_n\n\\quad \\Rightarrow \\textsf{Cov}[\\mathbf{Y}] = \\sigma^2 \\mathbf{I}_n\\) (errors are uncorrelated)\n\\(\\boldsymbol{\\epsilon}_i \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(0, \\sigma^2)\\) implies that \\(Y_i \\mathrel{\\mathop{\\sim}\\limits^{\\rm ind}}\\textsf{N}(\\mu_i, \\sigma^2)\\)"
+    "objectID": "resources/slides/04-BLUE.html#full-rank-case",
+    "href": "resources/slides/04-BLUE.html#full-rank-case",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Full Rank Case",
+    "text": "Full Rank Case\n\nModel: \\(\\mathbf{Y}= \\boldsymbol{\\mu}+ \\boldsymbol{\\epsilon}\\)\nMinimal Assumptions:\n\nMean \\(\\boldsymbol{\\mu}\\in C(\\mathbf{X})\\) for \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\)\nErrors \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\)\n\n\n\n\nDefinition: Linear Unbiased Estimators (LUEs)\nAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is a Linear Unbiased Estimator (LUE) of \\(\\boldsymbol{\\beta}\\) if\n\nlinearity: \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\) for \\(\\mathbf{A}\\in \\mathbb{R}^{p \\times n}\\)\nunbiasedness: \\(\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\) for all \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\)\n\n\n\n\n\nThe class of linear unbiased estimators is the same for every model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in \\cal{P}\\), for any collection \\(\\cal{P}\\) of mean-zero distributions over \\(\\mathbb{R}^n\\)."
   },
   {
-    "objectID": "resources/slides/02-mles.html#likelihood-function",
-    "href": "resources/slides/02-mles.html#likelihood-function",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Likelihood Function",
-    "text": "Likelihood Function\nThe likelihood function for \\(\\boldsymbol{\\mu}, \\sigma^2\\) is proportional to the sampling distribution of the data\n\\[\\begin{eqnarray*}\n{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) & \\propto & \\prod_{i = 1}^n \\frac{1}{\\sqrt{(2 \\pi\n                                 \\sigma^2)}} \\exp{- \\frac{1}{2}\n                                 \\left\\{ \\frac{( Y_i\n                                 - \\mu_i)^2}{\\sigma^2} \\right\\}}\n                                 \\\\\n& \\propto & ({2 \\pi} \\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2  \\frac{ \\sum_i(Y_i - \\mu_i)^2 )}{\\sigma^2}\n\\right\\}}   \\\\\n   & \\propto & (\\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}} \\\\\n  & \\propto &  (2 \\pi)^{-n/2}\n| \\mathbf{I}_n\\sigma^2|^{-1/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}}  \n\\end{eqnarray*}\\]\n\nLast line is the density of \\(\\mathbf{Y}\\sim \\textsf{N}_n\\left(\\boldsymbol{\\mu}, \\sigma^2 \\mathbf{I}_n\\right)\\)"
+    "objectID": "resources/slides/04-BLUE.html#linear-unbiased-estimators-lues-1",
+    "href": "resources/slides/04-BLUE.html#linear-unbiased-estimators-lues-1",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Linear Unbiased Estimators (LUEs)",
+    "text": "Linear Unbiased Estimators (LUEs)\n\nLet \\(\\textsf{N}\\) be an ONB for \\(\\boldsymbol{{\\cal N}}= \\boldsymbol{{\\cal M}}^\\perp = N(\\mathbf{X}^T)\\):\n\n\\(\\textsf{N}^T\\mathbf{m}=  \\textsf{N}^T\\mathbf{X}\\mathbf{b}= \\mathbf{0}\\quad \\forall \\mathbf{m}=\\mathbf{X}\\mathbf{b}\\in \\boldsymbol{{\\cal M}}\\)\n\\(\\textsf{N}^T\\textsf{N}= \\mathbf{I}_{n-p}\\)\n\n\n\nConsider another linear estimator \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\)\n\nDifference between \\(\\tilde{\\boldsymbol{\\beta}}\\) and \\(\\hat{\\boldsymbol{\\beta}}\\) (OLS/MLE): \\[\\begin{align*}\n  \\mathbf{\\delta}= \\tilde{\\boldsymbol{\\beta}}- \\hat{\\boldsymbol{\\beta}}& = \\left(\\mathbf{A}- (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T \\right)\\mathbf{Y}\\\\\n                  & \\equiv \\mathbf{H}^T \\mathbf{Y}\n\\end{align*}\\]\nSince both \\(\\tilde{\\boldsymbol{\\beta}}\\) and \\(\\hat{\\boldsymbol{\\beta}}\\) are unbiased, \\(\\textsf{E}[\\mathbf{\\delta}] = \\mathbf{0}_p \\quad \\forall \\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) \\[\\mathbf{0}_p = \\textsf{E}[\\mathbf{H}^T \\mathbf{Y}] = \\mathbf{H}^T \\mathbf{X}\\boldsymbol{\\beta}\\quad \\forall \\boldsymbol{\\beta}\\in \\mathbb{R}^p\\]\n\\(\\mathbf{X}^T \\mathbf{H}= \\mathbf{0}\\) so each column of \\(\\mathbf{H}\\) is in \\(\\boldsymbol{{\\cal M}}^\\perp \\equiv \\boldsymbol{{\\cal N}}\\)"
   },
   {
-    "objectID": "resources/slides/02-mles.html#mles",
-    "href": "resources/slides/02-mles.html#mles",
-    "title": "Maximum Likelihood Estimation",
-    "section": "MLEs",
-    "text": "MLEs\nFind values of \\(\\hat{\\boldsymbol{\\mu}}\\) and \\({\\hat{\\sigma}}^2\\) that maximize the likelihood \\({\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)\\) for \\(\\boldsymbol{\\mu}\\in \\mathbb{R}^n\\) and \\(\\sigma^2 \\in \\mathbb{R}^+\\) \\[\\begin{eqnarray*}\n{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)\n    & \\propto & (\\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}} \\\\\n\\log({\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) )\n   & \\propto & -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\\\\n\\end{eqnarray*}\\] or equivalently the log likelihood\n\nClearly, \\(\\hat{\\boldsymbol{\\mu}}= \\mathbf{Y}\\) but \\({\\hat{\\sigma}}^2= 0\\) is outside the parameter space\nIf \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}\\), can show that \\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{Y}\\) is the MLE/OLS estimator of \\(\\boldsymbol{\\beta}\\) and \\(\\hat{\\boldsymbol{\\mu}}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\) if \\(\\mathbf{X}\\) is full column rank.\nshow via projections"
+    "objectID": "resources/slides/04-BLUE.html#lues-continued",
+    "href": "resources/slides/04-BLUE.html#lues-continued",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "LUEs continued",
+    "text": "LUEs continued\nSince each column of \\(\\mathbf{H}\\) is in \\(\\boldsymbol{{\\cal N}}\\) there exists a \\(\\mathbf{G}\\in \\mathbb{R}^{p \\times (n-p)} \\ni \\mathbf{H}= \\textsf{N}\\mathbf{G}^T\\)\n\nRewriting \\(\\mathbf{\\delta}= \\tilde{\\boldsymbol{\\beta}}- \\hat{\\boldsymbol{\\beta}}\\): \\[\\begin{align*}\n\\tilde{\\boldsymbol{\\beta}}& = \\hat{\\boldsymbol{\\beta}}+ \\mathbf{\\delta}\\\\\n         & = \\hat{\\boldsymbol{\\beta}}+ \\mathbf{H}^T\\mathbf{Y}\\\\\n         & = \\hat{\\boldsymbol{\\beta}}+ \\mathbf{G}\\textsf{N}^T\\mathbf{Y}\n\\end{align*}\\]\n\ntherefore \\(\\tilde{\\boldsymbol{\\beta}}\\) is linear and unbiased: \\[\\begin{align*}\n\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] & = \\textsf{E}[\\hat{\\boldsymbol{\\beta}}+ \\mathbf{G}\\textsf{N}^T\\mathbf{Y}] \\\\\n           & =  \\boldsymbol{\\beta}+ \\textsf{E}[\\mathbf{G}\\textsf{N}^T\\mathbf{X}\\boldsymbol{\\beta}] \\\\\n           & = \\boldsymbol{\\beta}\n\\end{align*}\\]"
   },
   {
-    "objectID": "resources/slides/02-mles.html#projections",
-    "href": "resources/slides/02-mles.html#projections",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Projections",
-    "text": "Projections\ntake any point \\(\\mathbf{y}\\in \\mathbb{R}^n\\) and “project” it onto \\(C(\\mathbf{X}) = \\boldsymbol{{\\cal M}}\\)\n\nany point already in \\(\\boldsymbol{{\\cal M}}\\) stays the same\nso if \\(\\mathbf{P}_\\mathbf{X}\\) is a projection onto the column space of \\(\\mathbf{X}\\) then for \\(\\mathbf{m}\\in C(\\mathbf{X})\\) \\(\\mathbf{P}_\\mathbf{X}\\mathbf{m}= \\mathbf{m}\\)\n\\(\\mathbf{P}_\\mathbf{X}\\) is a linear transformation from \\(\\mathbb{R}^n \\to \\mathbb{R}^n\\)\nmaps vectors in \\(\\mathbb{R}^n\\) into \\(C(\\mathbf{X})\\)\nif \\(\\mathbf{z}\\in \\mathbb{R}^n\\) then \\(\\mathbf{P}_\\mathbf{X}\\mathbf{z}= \\mathbf{X}\\mathbf{a}\\in C(\\mathbf{X})\\) for some \\(\\mathbf{a}\\in \\mathbb{R}^p\\)\n\n\n\n\n\n\n\n\nExample\n\n\nFor \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\), rank \\(p\\), \\(\\mathbf{P}_\\mathbf{X}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}\\) is a projection onto the \\(p\\) dimensional subspace \\(\\boldsymbol{{\\cal M}}= C(\\mathbf{X})\\)"
+    "objectID": "resources/slides/04-BLUE.html#characterization-of-lues",
+    "href": "resources/slides/04-BLUE.html#characterization-of-lues",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Characterization of LUEs",
+    "text": "Characterization of LUEs\nSummary of previous results:\n\nTheoremAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is a linear unbiased estimator of \\(\\boldsymbol{\\beta}\\) in a linear statistical model if and only if \\[\\tilde{\\boldsymbol{\\beta}}= \\hat{\\boldsymbol{\\beta}}+ \\mathbf{H}^T\\mathbf{Y}\\] for some \\(\\mathbf{H}\\in \\mathbb{R}^{n \\times p}\\) such that \\(\\mathbf{X}^T \\mathbf{H}= \\mathbf{0}\\) or equivalently for some \\(\\mathbf{G}\\in \\mathbb{R}^{p \\times (n-p)}\\) \\[\\tilde{\\boldsymbol{\\beta}}= \\hat{\\boldsymbol{\\beta}}+ \\mathbf{G}\\textsf{N}^T\\mathbf{Y}\\]"
   },
   {
-    "objectID": "resources/slides/02-mles.html#idempotent-matrix",
-    "href": "resources/slides/02-mles.html#idempotent-matrix",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Idempotent Matrix",
-    "text": "Idempotent Matrix\nWhat if we project a projection?\n\n\\(\\mathbf{P}_\\mathbf{X}\\mathbf{z}= \\mathbf{X}\\mathbf{a}\\in C(\\mathbf{X})\\)\n\\(\\mathbf{P}_\\mathbf{X}\\mathbf{X}\\mathbf{a}= \\mathbf{X}\\mathbf{a}\\)\nsince \\(\\mathbf{P}_\\mathbf{X}^2 \\mathbf{z}=  \\mathbf{P}_\\mathbf{X}\\mathbf{z}\\) for all \\(\\mathbf{z}\\in \\mathbb{R}^n\\) we have \\(\\mathbf{P}_\\mathbf{X}^2 = \\mathbf{P}_\\mathbf{X}\\)\n\n\n\nDefinition: ProjectionFor a matrix \\(\\mathbf{P}\\) in \\(\\mathbb{R}^{n \\times n}\\) is a projection matrix if \\(\\mathbf{P}^2 = \\mathbf{P}\\). That is all projections \\(\\mathbf{P}\\) are idempotent matrix.\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\nFor \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\), rank \\(p\\), if \\(\\mathbf{P}_\\mathbf{X}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}\\) use the definition to show that it is a projection onto the \\(p\\) dimensional subspace \\(\\boldsymbol{{\\cal M}}= C(\\mathbf{X})\\)"
+    "objectID": "resources/slides/04-BLUE.html#numerical",
+    "href": "resources/slides/04-BLUE.html#numerical",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Numerical",
+    "text": "Numerical\n\n# X is model matrix; Y is response\n  p = ncol(X)\n  n = nrow(X)\n  G = matrix(rnorm(p*(n-p)), nrow=p, ncol=n-p)\n  H = MASS::Null(X) %*% t(G)\n  btilde = bhat + t(H) %*% Y\n\ninfinite number of LUEs!"
   },
   {
-    "objectID": "resources/slides/02-mles.html#null-space",
-    "href": "resources/slides/02-mles.html#null-space",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Null Space",
-    "text": "Null Space\n\nDefinition: Orthogonal ComplementThe set of all vectors that are orthogonal to a given subspace \\(\\boldsymbol{{\\cal M}}\\) is called the orthogonal complement of the subspace denoted as \\(\\boldsymbol{{\\cal M}}^\\perp\\). Under the usual inner product, \\(\\boldsymbol{{\\cal M}}^\\perp \\equiv \\{\\mathbf{n}\\in \\mathbb{R}^n \\ni \\mathbf{m}^T\\mathbf{n}= 0 {\\text{ for }} \\mathbf{m}\\in \\boldsymbol{{\\cal M}}\\}\\)\n\n\n\n\nDefinition: Null SpaceFor a matrix \\(\\mathbf{A}\\), the null space of \\(\\mathbf{A}\\) is defined as \\(N(\\mathbf{A}) = \\{\\mathbf{n}\\ni \\mathbf{A}\\mathbf{n}= \\mathbf{0}\\}\\)\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\nShow that \\(C(\\mathbf{X})^\\perp\\) (the orthogonal complement of \\(C(\\mathbf{X})\\)) is the null space of \\(\\mathbf{X}^T\\), \\(\\, N(\\mathbf{X}^T)\\)."
+    "objectID": "resources/slides/04-BLUE.html#lues-via-generalized-inverses",
+    "href": "resources/slides/04-BLUE.html#lues-via-generalized-inverses",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "LUEs via Generalized Inverses",
+    "text": "LUEs via Generalized Inverses\nLet \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\) be a LUE in the statistical linear model \\(\\mathbf{Y}= \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\\) with \\(\\mathbf{X}\\) full column rank \\(p\\) \\[\\begin{align*}\n\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] & = \\textsf{E}[\\mathbf{A}\\mathbf{Y}] \\\\\n            & = \\mathbf{A}\\textsf{E}[\\mathbf{Y}] \\\\\n            & = \\mathbf{A}\\mathbf{X}\\boldsymbol{\\beta}\\quad \\forall \\boldsymbol{\\beta}\\in \\mathbb{R}^p\n\\end{align*}\\]\n\nMust have \\(\\mathbf{A}\\mathbf{X}= \\mathbf{I}_p\\) (\\(\\mathbf{A}\\) is a generalized inverse of \\(\\mathbf{X}\\))\n\\(\\mathbf{X}\\mathbf{X}^- \\mathbf{X}= \\mathbf{X}\\)\none generalized inverse is \\(\\mathbf{X}_{MP}^- = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\)\n\\(\\mathbf{X}_{MP}^- = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T = \\mathbf{V}\\boldsymbol{\\Delta}^{-1} \\mathbf{U}^T\\) (using SVD of \\(\\mathbf{X}= \\mathbf{U}\\boldsymbol{\\Delta}\\mathbf{V}^T\\))\n\\(\\mathbf{A}\\) is a generalized inverse of \\(\\mathbf{X}\\) iff \\(\\mathbf{A}= \\mathbf{X}_{MP}^- + \\mathbf{H}^T\\) for \\(\\mathbf{H}\\in \\mathbb{R}^{n \\times p} \\ni \\mathbf{H}^T \\mathbf{U}= \\mathbf{0}\\)\n\\(\\mathbf{A}\\mathbf{Y}= (\\mathbf{X}_{MP}^- + \\mathbf{H}^T)\\mathbf{Y}= \\hat{\\boldsymbol{\\beta}}+  \\mathbf{H}^T \\mathbf{Y}\\)"
   },
   {
-    "objectID": "resources/slides/02-mles.html#orthogonal-projection",
-    "href": "resources/slides/02-mles.html#orthogonal-projection",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Orthogonal Projection",
-    "text": "Orthogonal Projection\n\nDefinition: Orthogonal ProjectionsFor a vector space \\({\\cal V}\\) with an inner product \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle\\) for \\(\\mathbf{x}, \\mathbf{y}\\in {\\cal V}\\), \\(\\mathbf{x}\\) and \\(\\mathbf{y}\\) are orthogonal if \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle = 0\\). A projection \\(\\mathbf{P}\\) is an orthogonal projection onto a subspace \\(\\boldsymbol{{\\cal M}}\\) of \\({\\cal V}\\) if for any \\(\\mathbf{m}\\in {\\cal V}\\), \\(\\mathbf{P}\\mathbf{m}= \\mathbf{m}\\) and for any \\(\\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\), \\(\\mathbf{P}\\mathbf{n}= \\mathbf{0}\\).\nThe null space of \\(\\mathbf{P}\\) is the orthogonal complement of \\(\\boldsymbol{{\\cal M}}\\)\n\n\n\nFor \\(\\mathbb{R}^N\\) with the inner product, \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle = \\mathbf{x}^T\\mathbf{y}\\), \\(\\mathbf{P}\\) is an orthogonal projection onto \\(\\boldsymbol{{\\cal M}}\\) if \\(\\mathbf{P}\\) is a projection (\\(\\mathbf{P}^2 = \\mathbf{P}\\)) and it is symmetric (\\(\\mathbf{P}= \\mathbf{P}^T\\))\n\n\n\n\n\n\n\n\nExercise\n\n\nShow that \\(\\mathbf{P}_\\mathbf{X}\\) is an orthogonal projection on \\(C(\\mathbf{X})\\)."
+    "objectID": "resources/slides/04-BLUE.html#best-linear-unbiased-estimators",
+    "href": "resources/slides/04-BLUE.html#best-linear-unbiased-estimators",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Best Linear Unbiased Estimators",
+    "text": "Best Linear Unbiased Estimators\n\nthe distribution of values of any unbiased estimator is centered around \\(\\boldsymbol{\\beta}\\)\nout of the infinite number of LUEs is there one that is more concentrated around \\(\\boldsymbol{\\beta}\\)?\nis there an unbiased estimator that has a lower variance than all other unbiased estimators?\nRecall variance-covariance matrix of a random vector \\(\\mathbf{Z}\\) with mean \\(\\boldsymbol{\\theta}\\) \\[\\begin{align*}\n\\textsf{Cov}[\\mathbf{Z}]      & \\equiv \\textsf{E}[(\\mathbf{Z}- \\boldsymbol{\\theta})(\\mathbf{Z}- \\boldsymbol{\\theta})^T] \\\\\n\\textsf{Cov}[\\mathbf{Z}]_{ij} &  =     \\textsf{E}[(z_i - \\theta_i)(z_j - \\theta_j)]\n\\end{align*}\\]\n\n\n\n\n\n\n\n\n\nLemma\n\n\nLet \\(\\mathbf{A}\\in \\mathbb{R}^{q \\times p}\\) and \\(\\mathbf{b}\\in \\mathbb{R}^q\\) with \\(\\mathbf{Z}\\) a random vector in \\(\\mathbb{R}^p\\) then \\[\\textsf{Cov}[\\mathbf{A}\\mathbf{Z}+ \\mathbf{b}] = \\mathbf{A}\\textsf{Cov}[\\mathbf{Z}] \\mathbf{A}^T \\ge 0\\]"
   },
   {
-    "objectID": "resources/slides/02-mles.html#decompsition",
-    "href": "resources/slides/02-mles.html#decompsition",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Decompsition",
-    "text": "Decompsition\n\nFor any \\(\\mathbf{y}\\in \\mathbb{R}^n\\), we can write it uniquely as a vector \\[ \\mathbf{y}= \\mathbf{m}+ \\mathbf{n}, \\quad \\mathbf{m}\\in \\boldsymbol{{\\cal M}}\\quad \\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\]\nwrite \\(\\mathbf{y}= \\mathbf{P}\\mathbf{y}+ (\\mathbf{y}- \\mathbf{P}\\mathbf{y}) = \\mathbf{P}\\mathbf{y}+ (\\mathbf{I}- \\mathbf{P})\\mathbf{y}\\)\nclaim that if \\(\\mathbf{P}\\) is an orthogonal projection, \\((\\mathbf{I}- \\mathbf{P})\\) is an orthogonal projection onto \\(\\boldsymbol{{\\cal M}}^\\perp\\)\nif \\(\\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\), then \\((\\mathbf{I}- \\mathbf{P})\\mathbf{n}= \\mathbf{n}- \\mathbf{P}\\mathbf{n}= \\mathbf{n}\\)"
+    "objectID": "resources/slides/04-BLUE.html#variance-of-linear-unbiased-estimators",
+    "href": "resources/slides/04-BLUE.html#variance-of-linear-unbiased-estimators",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Variance of Linear Unbiased Estimators",
+    "text": "Variance of Linear Unbiased Estimators\nLet’s look at the variance of any LUE under assumption \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{I}_n\\)\n\nfor \\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\mathbf{Y}= \\boldsymbol{\\beta}+ (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\boldsymbol{\\epsilon}\\) \\[\\begin{align*}\n\\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}] & = \\textsf{Cov}[\\boldsymbol{\\beta}+ (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\boldsymbol{\\epsilon}] \\\\\n          & =  (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\textsf{Cov}[\\boldsymbol{\\epsilon}] \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1} \\\\\n          & = \\sigma^2 (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1} \\\\\n          & = \\sigma^2 (\\mathbf{X}^T\\mathbf{X})^{-1}\n\\end{align*}\\]\nCovariance is increasing in \\(\\sigma^2\\) and generally decreasing in \\(n\\)\nRewrite \\(\\mathbf{X}^T\\mathbf{X}\\) as \\(\\mathbf{X}^T\\mathbf{X}= \\sum_{i=1}^n \\mathbf{x}_i \\mathbf{x}_i^T\\) (a sum of \\(n\\) outer-products)"
   },
   {
-    "objectID": "resources/slides/02-mles.html#back-to-mles",
-    "href": "resources/slides/02-mles.html#back-to-mles",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Back to MLEs",
-    "text": "Back to MLEs\n\n\\(\\mathbf{Y}\\sim \\textsf{N}(\\boldsymbol{\\mu}, \\sigma^2 \\mathbf{I}_n)\\) with \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}\\) and \\(\\mathbf{X}\\) full column rank\nClaim: Maximum Likelihood Estimator (MLE) of \\(\\boldsymbol{\\mu}\\) is \\(\\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\)\nLog Likelihood: \\[ \\log {\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) =\n-\\frac{n}{2} \\log(\\sigma^2)\n- \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\]\nDecompose \\(\\mathbf{Y}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}+ (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\)\n\nUse \\(\\mathbf{P}_\\mathbf{X}\\boldsymbol{\\mu}= \\boldsymbol{\\mu}\\)\n\nSimplify \\(\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2\\)"
+    "objectID": "resources/slides/04-BLUE.html#variance-of-arbitrary-lue",
+    "href": "resources/slides/04-BLUE.html#variance-of-arbitrary-lue",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Variance of Arbitrary LUE",
+    "text": "Variance of Arbitrary LUE\n\nfor \\(\\tilde{\\boldsymbol{\\beta}}= \\left((\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T + \\mathbf{H}^T \\right)\\mathbf{Y}= \\boldsymbol{\\beta}+ \\left((\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T + \\mathbf{H}^T \\right)\\boldsymbol{\\epsilon}\\)\nrecall \\(\\mathbf{X}_{MP}^- \\equiv  (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\) \\[\\begin{align*}\n\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] & = \\textsf{Cov}[\\left(\\mathbf{X}_{MP}^- + \\mathbf{H}^T \\right)\\boldsymbol{\\epsilon}]  \\\\\n            & = \\sigma^2 \\left(\\mathbf{X}_{MP}^- + \\mathbf{H}^T \\right)\\left(\\mathbf{X}_{MP}^- + \\mathbf{H}^T \\right)^T \\\\\n            & = \\sigma^2\\left( \\mathbf{X}_{MP}^-(\\mathbf{X}_{MP}^-)^T + \\mathbf{X}_{MP}^-\\mathbf{H}+\n                \\mathbf{H}^T (\\mathbf{X}_{MP}^-)^T + \\mathbf{H}^T \\mathbf{H}\\right) \\\\\n            & =   \\sigma^2\\left( (\\mathbf{X}^T\\mathbf{X})^{-1} +  \\mathbf{H}^T \\mathbf{H}\\right)\n\\end{align*}\\]\nCross-product term \\(\\mathbf{H}^T(\\mathbf{X}_{MP}^-)^T = \\mathbf{H}^T\\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1} =  \\mathbf{0}\\)\nTherefor the \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] = \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}] + \\mathbf{H}^T\\mathbf{H}\\)\nthe sum of a positive definite matrix plus a positive semi-definite matrix"
   },
   {
-    "objectID": "resources/slides/02-mles.html#expand",
-    "href": "resources/slides/02-mles.html#expand",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Expand",
-    "text": "Expand\n\\[\\begin{eqnarray*}\n    \\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 & = & \\|  { (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}+ \\mathbf{P}_x \\mathbf{Y}} -\n    \\boldsymbol{\\mu}\\|^2  \\\\\n  & = & \\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}+ \\mathbf{P}_x \\mathbf{Y}- {\\mathbf{P}_\\mathbf{X}}\\boldsymbol{\\mu}\\|^2  \\\\\n  & = & {\\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})}\\mathbf{Y}+  {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu})\n  \\|^2 \\\\\n& = & {\\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2} +  {\\|\n   {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu}) \\|^2}  + {\\small{2 (\\mathbf{Y}-\n\\boldsymbol{\\mu})^T \\mathbf{P}_\\mathbf{X}^T (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}}\\\\\n& = & \\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2 +  \\| {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu}) \\|^2 + {0}\n\\\\\n& = & \\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2 +  \\| {\\mathbf{P}_\\mathbf{X}}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2\n  \\end{eqnarray*}\\]\n\nCrossproduct term is zero: \\[\\begin{eqnarray*}\n  \\mathbf{P}_\\mathbf{X}^T (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) & = &  \\mathbf{P}_\\mathbf{X}(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})  \\\\\n  & = &  \\mathbf{P}_\\mathbf{X}- \\mathbf{P}_\\mathbf{X}\\mathbf{P}_\\mathbf{X}\\\\\n& = &  \\mathbf{P}_\\mathbf{X}- \\mathbf{P}_\\mathbf{X}\\\\\n& = & \\mathbf{0}\n\\end{eqnarray*}\\]"
+    "objectID": "resources/slides/04-BLUE.html#gauss-markov-theorem",
+    "href": "resources/slides/04-BLUE.html#gauss-markov-theorem",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Gauss-Markov Theorem",
+    "text": "Gauss-Markov Theorem\nIs \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] \\ge \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}]\\) in some sense?\n\n\nDefinition: Loewner OrderingFor two positive semi-definite matrices \\(\\boldsymbol{\\Sigma}_1\\) and \\(\\boldsymbol{\\Sigma}_2\\), we say that \\(\\boldsymbol{\\Sigma}_1 &gt; \\boldsymbol{\\Sigma}_2\\) if \\(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2\\) is positive definite, \\(\\mathbf{x}^T(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2)\\mathbf{x}) &gt; 0\\), and \\(\\boldsymbol{\\Sigma}_1 \\ge \\boldsymbol{\\Sigma}_2\\) if \\(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2\\) is positive semi-definite, \\(\\mathbf{x}^T(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2)\\mathbf{x}) \\ge 0\\)\n\n\n\nSince \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] - \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}] = \\mathbf{H}^T\\mathbf{H}\\), we have that \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] \\ge \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}]\\)\n\n\n\n\nTheorem: Gauss-MarkovLet \\(\\tilde{\\boldsymbol{\\beta}}\\) be a linear unbiased estimator of \\(\\boldsymbol{\\beta}\\) in a linear model where \\(\\textsf{E}[\\mathbf{Y}] = \\mathbf{X}\\boldsymbol{\\beta}, \\boldsymbol{\\beta}\\in \\mathbb{R}^p\\), \\(\\mathbf{X}\\) rank \\(p\\), and \\(\\textsf{Cov}[\\mathbf{Y}] = \\sigma^2\\mathbf{I}_n, \\sigma^2 &gt; 0\\). Then \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] \\ge \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}]\\) where \\(\\hat{\\boldsymbol{\\beta}}\\) is the OLS estimator and is the Best Linear Unbiased Estimator (BLUE) of \\(\\boldsymbol{\\beta}\\)."
   },
   {
-    "objectID": "resources/slides/02-mles.html#log-likelihood",
-    "href": "resources/slides/02-mles.html#log-likelihood",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Log Likelihood",
-    "text": "Log Likelihood\nSubstitute decomposition into log likelihood \\[\\begin{eqnarray*}\n\\log {\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)  & = &\n-\\frac{n}{2} \\log(\\sigma^2) - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}  \\\\\n  & = & -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 } {\\sigma^2} \\right)   \\\\\n& = &  \\underbrace { -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2  \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} }  +  \\underbrace{- \\frac 1 2  \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}-\n  \\boldsymbol{\\mu}\\|^2 } {\\sigma^2}}   \\\\\n& = &  \\text{ constant with respect to } \\boldsymbol{\\mu}\\qquad  \\leq 0\n\\end{eqnarray*}\\]\n\nMaximize with respect to \\(\\boldsymbol{\\mu}\\) for each \\(\\sigma^2\\)\nRHS is largest when \\(\\boldsymbol{\\mu}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\) for any choice of \\(\\sigma^2\\) \\[\\therefore \\quad \\hat{\\boldsymbol{\\mu}}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\] is the MLE of \\(\\boldsymbol{\\mu}\\) (fitted values \\(\\hat{\\mathbf{Y}}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\))"
-  },
-  {
-    "objectID": "resources/slides/02-mles.html#mle-of-boldsymbolbeta",
-    "href": "resources/slides/02-mles.html#mle-of-boldsymbolbeta",
-    "title": "Maximum Likelihood Estimation",
-    "section": "MLE of \\(\\boldsymbol{\\beta}\\)",
-    "text": "MLE of \\(\\boldsymbol{\\beta}\\)\n\\[{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)   =  -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 } {\\sigma^2} \\right)\\]\n\nRewrite as likeloood function for \\(\\boldsymbol{\\beta}, \\sigma^2\\): \\[{\\cal{L}}(\\boldsymbol{\\beta}, \\sigma^2 )  =  -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2 } {\\sigma^2}\n\\right)\\]\n\n\n\nSimilar argument to show that RHS is maximized by minimizing \\[\\| \\mathbf{P}_\\mathbf{X}\n\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2\\] \nTherefore \\(\\hat{\\boldsymbol{\\beta}}\\) is a MLE of \\(\\boldsymbol{\\beta}\\) if and only if satisfies \\[\\mathbf{P}_\\mathbf{X}\\mathbf{Y}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\]\nIf \\(\\mathbf{X}^T\\mathbf{X}\\) is full rank, the MLE of \\(\\boldsymbol{\\beta}\\) is \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{Y}= \\hat{\\boldsymbol{\\beta}}\\)"
-  },
-  {
-    "objectID": "resources/slides/02-mles.html#mle-of-sigma2",
-    "href": "resources/slides/02-mles.html#mle-of-sigma2",
-    "title": "Maximum Likelihood Estimation",
-    "section": "MLE of \\(\\sigma^2\\)",
-    "text": "MLE of \\(\\sigma^2\\)\n\nPlug-in MLE of \\(\\hat{\\boldsymbol{\\mu}}\\) for \\(\\boldsymbol{\\mu}\\) \\[ \\log {\\cal{L}}(\\hat{\\boldsymbol{\\mu}}, \\sigma^2)  =   -\\frac{n}{2} \\log \\sigma^2 - \\frac 1 2\n\\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2  }{\\sigma^2}\\]\nDifferentiate with respect to \\(\\sigma^2\\) \\[\\frac{\\partial \\, \\log {\\cal{L}}(\\hat{\\boldsymbol{\\mu}}, \\sigma^2)}{\\partial \\, \\sigma^2} =  -\\frac{n}{2} \\frac{1}{\\sigma^2}  +  \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\left(\\frac{1}{\\sigma^2}\\right)^2 \\]\nSet derivative to zero and solve for MLE \\[\\begin{eqnarray*}\n0 & = &  -\\frac{n}{2} \\frac{1}{{\\hat{\\sigma}}^2}  +  \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\left(\\frac{1}{{\\hat{\\sigma}}^2}\\right)^2  \\\\\n\\frac{n}{2} {\\hat{\\sigma}}^2& = & \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\\\\n{\\hat{\\sigma}}^2& = & \\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2}{n}\n\\end{eqnarray*}\\]"
-  },
-  {
-    "objectID": "resources/slides/02-mles.html#mle-estimate-of-sigma2",
-    "href": "resources/slides/02-mles.html#mle-estimate-of-sigma2",
-    "title": "Maximum Likelihood Estimation",
-    "section": "MLE Estimate of \\(\\sigma^2\\)",
-    "text": "MLE Estimate of \\(\\sigma^2\\)\nMaximum Likelihood Estimate of \\(\\sigma^2\\) \\[\\begin{eqnarray*}\n    {\\hat{\\sigma}}^2& = & \\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2}{n} \\\\\n      & = & \\frac{\\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})^T(\\mathbf{I}-\\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{ \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{\\mathbf{e}^T\\mathbf{e}} {n}\n  \\end{eqnarray*}\\] where \\(\\mathbf{e}= (\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\\mathbf{Y}\\) are the residuals from the regression of \\(\\mathbf{Y}\\) on \\(\\mathbf{X}\\)\n\n\n\n\nhttps://sta721-F24.github.io/website/"
-  },
-  {
-    "objectID": "resources/slides/list-of-mathstuff.html",
-    "href": "resources/slides/list-of-mathstuff.html",
-    "title": "STA721-F24: Linear Models",
+    "objectID": "resources/slides/04-BLUE.html#slide13-id",
+    "href": "resources/slides/04-BLUE.html#slide13-id",
+    "title": "Best Linear Unbiased Estimators",
     "section": "",
-    "text": "Definition: B.21 Positive Definite and Non-Negative Definite\nDefinition: Generalized-Inverse (B.36)\nTheorem: Christensen B.39\nTheorem: B.44\nDefinition: Linear Unbiased Estimators (LUEs)"
+    "text": "Theorem: Gauss-Markov Theorem (Classic)For \\(\\mathbf{Y}= \\boldsymbol{\\mu}+ \\boldsymbol{\\epsilon}\\), with \\(\\boldsymbol{\\mu}\\in \\boldsymbol{{\\cal M}}\\), \\(\\textsf{E}[\\boldsymbol{\\epsilon}]= \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] =\\sigma^2 \\mathbf{I}_n\\) and \\(\\mathbf{P}\\) the orthogonal projection onto \\(\\boldsymbol{{\\cal M}}\\), \\(\\mathbf{P}\\mathbf{Y}= \\hat{\\boldsymbol{\\mu}}\\) is the BLUE of \\(\\boldsymbol{\\mu}\\) out of the class of LUEs \\(\\mathbf{A}\\mathbf{Y}\\) where \\(\\textsf{E}[\\mathbf{A}\\mathbf{Y}] = \\boldsymbol{\\mu}\\), \\(\\mathbf{A}\\in \\mathbb{R}^{n \\times n}\\) equality iff \\(\\mathbf{A}= \\mathbf{P}\\)\n\n\n\nProof\n\nwrite \\(\\mathbf{A}= \\mathbf{P}+ \\mathbf{H}^T\\) so \\(\\mathbf{H}^T = \\mathbf{A}- \\mathbf{P}\\)\nsince \\(\\mathbf{A}\\boldsymbol{\\mu}= \\boldsymbol{\\mu}\\), \\(\\mathbf{H}^T\\mu = \\mathbf{0}_n\\) for \\(\\mu \\in \\boldsymbol{{\\cal M}}\\) and \\(\\mathbf{H}^T \\mathbf{P}= \\mathbf{P}\\mathbf{H}= \\mathbf{0}\\) so columns of \\(\\mathbf{H}\\in \\boldsymbol{{\\cal M}}^\\perp\\).\n\n. . .\n\\[\\begin{align*}\n\\textsf{E}[\\|\\mathbf{A}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2]  & = \\textsf{E}[\\|\\mathbf{A}(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2]  = \\textsf{E}[\\|\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu}) + \\mathbf{H}^T(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2]  \\\\\n& = \\textsf{E}[\\|\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2] + \\underbrace{\\textsf{E}[\\|\\mathbf{H}^T(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2]} + \\underbrace{2\\textsf{E}[(\\mathbf{H}^T(\\mathbf{Y}- \\mu))^T\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})]} \\\\\n& \\hspace{4.35in} \\ge 0 \\quad \\quad + \\quad \\quad {\\text{cross-product is 0}}\\\\\n& \\ge \\textsf{E}[\\|\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2]\n\\end{align*}\\]"
+  },
+  {
+    "objectID": "resources/slides/04-BLUE.html#estimation-of-linear-functionals-of-boldsymbolmu",
+    "href": "resources/slides/04-BLUE.html#estimation-of-linear-functionals-of-boldsymbolmu",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Estimation of Linear Functionals of \\(\\boldsymbol{\\mu}\\)",
+    "text": "Estimation of Linear Functionals of \\(\\boldsymbol{\\mu}\\)\nIf \\(\\mathbf{P}\\mathbf{Y}= \\hat{\\boldsymbol{\\mu}}\\) is the BLUE of \\(\\boldsymbol{\\mu}\\), is \\(\\mathbf{B}\\mathbf{P}\\mathbf{Y}= \\mathbf{B}\\hat{\\boldsymbol{\\mu}}\\) the BLUE of \\(\\mathbf{B}\\boldsymbol{\\mu}\\)?\n\nYes! Similar proof as above to show that out of the class of LUEs \\(\\mathbf{A}\\mathbf{Y}\\) of \\(\\mathbf{B}\\boldsymbol{\\mu}\\) where \\(\\mathbf{A}\\in \\mathbb{R}^{d \\times n}\\) that \\[\\textsf{E}[\\|\\mathbf{A}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2] \\ge \\textsf{E}[\\|\\mathbf{B}\\mathbf{P}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2]\\] with equality iff \\(\\mathbf{A}= \\mathbf{B}\\mathbf{P}\\).\n\n\nWhat about linear functionals of \\(\\boldsymbol{\\beta}\\), \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}\\), for \\(\\mathbf{X}\\) rank \\(r \\le p\\)?\n\n\\(\\hat{\\boldsymbol{\\beta}}\\) is not unique if \\(r &lt; p\\) even though \\(\\hat{\\boldsymbol{\\mu}}\\) is unique (\\(\\hat{\\boldsymbol{\\beta}}\\) is not BLUE)\nSince \\(\\mathbf{B}\\boldsymbol{\\mu}= \\mathbf{B}\\mathbf{X}\\boldsymbol{\\beta}\\) is always identifiable, the only linear functions of \\(\\boldsymbol{\\beta}\\) that are identifiable and can be estimated uniquely are functions of \\(\\mathbf{X}\\boldsymbol{\\beta}\\), i.e. estimates in the form \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}= \\mathbf{B}\\mathbf{X}\\boldsymbol{\\beta}\\) or \\(\\boldsymbol{\\Lambda}= \\mathbf{X}^T \\mathbf{B}^T\\).\ncolumns of \\(\\boldsymbol{\\Lambda}\\) must be in the \\(C(\\mathbf{X}^T)\\)\ndetailed discussion and proof in Christensen Ch. 2 for scalar functionals \\(\\lambda^T\\beta\\)."
+  },
+  {
+    "objectID": "resources/slides/04-BLUE.html#blue-of-boldsymbollambdaboldsymbolbeta",
+    "href": "resources/slides/04-BLUE.html#blue-of-boldsymbollambdaboldsymbolbeta",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "BLUE of \\(\\boldsymbol{\\Lambda}\\boldsymbol{\\beta}\\)",
+    "text": "BLUE of \\(\\boldsymbol{\\Lambda}\\boldsymbol{\\beta}\\)\nIf \\(\\boldsymbol{\\Lambda}^T= \\mathbf{B}\\mathbf{X}\\) for some matrix \\(\\mathbf{B}\\) then\n\n\\(\\textsf{E}[\\mathbf{B}\\mathbf{P}\\mathbf{Y}] = \\textsf{E}[\\boldsymbol{\\Lambda}\\hat{\\boldsymbol{\\beta}}] = \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\)\nThe unique OLS estimate of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\) is \\(\\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}\\)\n\\(\\mathbf{B}\\mathbf{P}\\mathbf{Y}= \\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}\\) is the BLUE of \\(\\\\Lambdab^T\\boldsymbol{\\beta}\\) \\[\\textsf{E}[\\|\\mathbf{B}\\mathbf{P}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2]  \\le \\textsf{E}[\\|\\mathbf{A}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2] \\LeftRightarrow\n\\textsf{E}[\\|\\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}- \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta})\\|^2]  \\le \\textsf{E}[\\|\\mathbf{L}^T\\hat{\\boldsymbol{\\beta}}- \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\|^2]\\] for LUE \\(\\mathbf{A}\\mathbf{Y}\\) and \\(\\mathbf{L}^T\\hat{\\boldsymbol{\\beta}}\\) of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\)"
+  },
+  {
+    "objectID": "resources/slides/04-BLUE.html#proof-of-cross-product",
+    "href": "resources/slides/04-BLUE.html#proof-of-cross-product",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Proof of Cross-Product",
+    "text": "Proof of Cross-Product\nLet \\(\\mathbf{D}= \\mathbf{H}\\mathbf{P}\\) and write \\[\\begin{align*}\n\\textsf{E}[(\\mathbf{H}^T(\\mathbf{Y}- \\mu))^T\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] & = \\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{H}\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] \\\\\n& = \\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})]\n\\end{align*}\\]\n\n\\[\\begin{align*}\n\\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})] = & \\textsf{E}[\\textsf{tr}(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu}))]  \\\\\n= & \\textsf{E}[\\textsf{tr}(\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T)] \\\\\n= & \\textsf{tr}(\\textsf{E}[\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T]) \\\\\n= & \\textsf{tr}(\\mathbf{D}\\textsf{E}[(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T]) \\\\\n  = & \\sigma^2 \\textsf{tr}(\\mathbf{D}\\mathbf{I}_n)\\\\\n\\end{align*}\\]\n\n\nSince \\(\\textsf{tr}(\\mathbf{D}) = \\textsf{tr}(\\mathbf{H}\\mathbf{P}) = \\textsf{tr}(\\mathbf{P}\\mathbf{H})\\) we can conclude that the cross-product term is zero.\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+  },
+  {
+    "objectID": "resources/slides/template.html#outline",
+    "href": "resources/slides/template.html#outline",
+    "title": "template",
+    "section": "Outline",
+    "text": "Outline\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
     "objectID": "resources/slides/03-non-full-rank.html#outline",
@@ -315,11 +315,116 @@
     "text": "Linear Unbiased Estimation\n\n\n\n\n\n\n\nExercise\n\n\n\nExplain why an estimator that is unbiased for the model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{k+1}\\) is unbiased for the model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{k}\\) .\nFind an estimator that is unbiased for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{1}\\) that but is biased for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{2}\\).\n\n\n\n\n\n\nRestrict attention to linear unbiased estimators\n\n\n\nDefinition: Linear Unbiased Estimators (LUEs)\nAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is a Linear Unbiased Estimator (LUE) of \\(\\boldsymbol{\\beta}\\) if\n\nlinearity: \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\) for \\(\\mathbf{A}\\in \\mathbb{R}^{p \\times n}\\)\nunbiasedness: \\(\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\) for all \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\)\n\n\n\n\n\n\nAre there other LUEs besides the OLS/MLE estimator?\nWhich is “best”? (and in what sense?)\n\n\n\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
-    "objectID": "resources/slides/template.html#outline",
-    "href": "resources/slides/template.html#outline",
-    "title": "template",
+    "objectID": "resources/slides/list-of-mathstuff.html",
+    "href": "resources/slides/list-of-mathstuff.html",
+    "title": "STA721-F24: Linear Models",
+    "section": "",
+    "text": "Definition: Linear Unbiased Estimators (LUEs)\nTheorem\nDefinition: Loewner Ordering\nTheorem: Gauss-Markov\nTheorem: Gauss-Markov Theorem (Classic)\nProof"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#outline",
+    "href": "resources/slides/02-mles.html#outline",
+    "title": "Maximum Likelihood Estimation",
     "section": "Outline",
-    "text": "Outline\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Outline\n\nLikelihood Function\nProjections\nMaximum Likelihood Estimates\n\n\nReadings: Christensen Chapter 1-2, Appendix A, and Appendix B"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#normal-model",
+    "href": "resources/slides/02-mles.html#normal-model",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Normal Model",
+    "text": "Normal Model\nTake an random vector \\(\\mathbf{Y}\\in \\mathbb{R}^n\\) which is observable and decompose\n\\[ \\mathbf{Y}= \\boldsymbol{\\mu}+ \\boldsymbol{\\epsilon}\\]\n\n\\(\\boldsymbol{\\mu}\\in \\mathbb{R}^n\\) (unknown, fixed)\n\n\\(\\boldsymbol{\\epsilon}\\in \\mathbb{R}^n\\) unobservable error vector (random)\n\n\nUsual assumptions?\n\n\\(E[\\epsilon_i] = 0 \\ \\forall i \\Leftrightarrow \\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}\\) \\(\\quad \\Rightarrow \\textsf{E}[\\mathbf{Y}] = \\boldsymbol{\\mu}\\) (mean vector)\n\\(\\epsilon_i\\) independent with \\(\\textsf{Var}(\\epsilon_i) = \\sigma^2\\) and \\(\\textsf{Cov}(\\epsilon_i, \\epsilon_j) = 0\\)\nMatrix version \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] \\equiv \\left[ (\\textsf{E}\\left[(\\epsilon_i -\\textsf{E}[\\epsilon_i])(\\epsilon_j - \\textsf{E}[\\epsilon_j])\\right]\\right]_{ij} = \\sigma^2 \\mathbf{I}_n\n\\quad \\Rightarrow \\textsf{Cov}[\\mathbf{Y}] = \\sigma^2 \\mathbf{I}_n\\) (errors are uncorrelated)\n\\(\\boldsymbol{\\epsilon}_i \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(0, \\sigma^2)\\) implies that \\(Y_i \\mathrel{\\mathop{\\sim}\\limits^{\\rm ind}}\\textsf{N}(\\mu_i, \\sigma^2)\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#likelihood-function",
+    "href": "resources/slides/02-mles.html#likelihood-function",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Likelihood Function",
+    "text": "Likelihood Function\nThe likelihood function for \\(\\boldsymbol{\\mu}, \\sigma^2\\) is proportional to the sampling distribution of the data\n\\[\\begin{eqnarray*}\n{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) & \\propto & \\prod_{i = 1}^n \\frac{1}{\\sqrt{(2 \\pi\n                                 \\sigma^2)}} \\exp{- \\frac{1}{2}\n                                 \\left\\{ \\frac{( Y_i\n                                 - \\mu_i)^2}{\\sigma^2} \\right\\}}\n                                 \\\\\n& \\propto & ({2 \\pi} \\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2  \\frac{ \\sum_i(Y_i - \\mu_i)^2 )}{\\sigma^2}\n\\right\\}}   \\\\\n   & \\propto & (\\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}} \\\\\n  & \\propto &  (2 \\pi)^{-n/2}\n| \\mathbf{I}_n\\sigma^2|^{-1/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}}  \n\\end{eqnarray*}\\]\n\nLast line is the density of \\(\\mathbf{Y}\\sim \\textsf{N}_n\\left(\\boldsymbol{\\mu}, \\sigma^2 \\mathbf{I}_n\\right)\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#mles",
+    "href": "resources/slides/02-mles.html#mles",
+    "title": "Maximum Likelihood Estimation",
+    "section": "MLEs",
+    "text": "MLEs\nFind values of \\(\\hat{\\boldsymbol{\\mu}}\\) and \\({\\hat{\\sigma}}^2\\) that maximize the likelihood \\({\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)\\) for \\(\\boldsymbol{\\mu}\\in \\mathbb{R}^n\\) and \\(\\sigma^2 \\in \\mathbb{R}^+\\) \\[\\begin{eqnarray*}\n{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)\n    & \\propto & (\\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}} \\\\\n\\log({\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) )\n   & \\propto & -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\\\\n\\end{eqnarray*}\\] or equivalently the log likelihood\n\nClearly, \\(\\hat{\\boldsymbol{\\mu}}= \\mathbf{Y}\\) but \\({\\hat{\\sigma}}^2= 0\\) is outside the parameter space\nIf \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}\\), can show that \\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{Y}\\) is the MLE/OLS estimator of \\(\\boldsymbol{\\beta}\\) and \\(\\hat{\\boldsymbol{\\mu}}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\) if \\(\\mathbf{X}\\) is full column rank.\nshow via projections"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#projections",
+    "href": "resources/slides/02-mles.html#projections",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Projections",
+    "text": "Projections\ntake any point \\(\\mathbf{y}\\in \\mathbb{R}^n\\) and “project” it onto \\(C(\\mathbf{X}) = \\boldsymbol{{\\cal M}}\\)\n\nany point already in \\(\\boldsymbol{{\\cal M}}\\) stays the same\nso if \\(\\mathbf{P}_\\mathbf{X}\\) is a projection onto the column space of \\(\\mathbf{X}\\) then for \\(\\mathbf{m}\\in C(\\mathbf{X})\\) \\(\\mathbf{P}_\\mathbf{X}\\mathbf{m}= \\mathbf{m}\\)\n\\(\\mathbf{P}_\\mathbf{X}\\) is a linear transformation from \\(\\mathbb{R}^n \\to \\mathbb{R}^n\\)\nmaps vectors in \\(\\mathbb{R}^n\\) into \\(C(\\mathbf{X})\\)\nif \\(\\mathbf{z}\\in \\mathbb{R}^n\\) then \\(\\mathbf{P}_\\mathbf{X}\\mathbf{z}= \\mathbf{X}\\mathbf{a}\\in C(\\mathbf{X})\\) for some \\(\\mathbf{a}\\in \\mathbb{R}^p\\)\n\n\n\n\n\n\n\n\nExample\n\n\nFor \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\), rank \\(p\\), \\(\\mathbf{P}_\\mathbf{X}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}\\) is a projection onto the \\(p\\) dimensional subspace \\(\\boldsymbol{{\\cal M}}= C(\\mathbf{X})\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#idempotent-matrix",
+    "href": "resources/slides/02-mles.html#idempotent-matrix",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Idempotent Matrix",
+    "text": "Idempotent Matrix\nWhat if we project a projection?\n\n\\(\\mathbf{P}_\\mathbf{X}\\mathbf{z}= \\mathbf{X}\\mathbf{a}\\in C(\\mathbf{X})\\)\n\\(\\mathbf{P}_\\mathbf{X}\\mathbf{X}\\mathbf{a}= \\mathbf{X}\\mathbf{a}\\)\nsince \\(\\mathbf{P}_\\mathbf{X}^2 \\mathbf{z}=  \\mathbf{P}_\\mathbf{X}\\mathbf{z}\\) for all \\(\\mathbf{z}\\in \\mathbb{R}^n\\) we have \\(\\mathbf{P}_\\mathbf{X}^2 = \\mathbf{P}_\\mathbf{X}\\)\n\n\n\nDefinition: ProjectionFor a matrix \\(\\mathbf{P}\\) in \\(\\mathbb{R}^{n \\times n}\\) is a projection matrix if \\(\\mathbf{P}^2 = \\mathbf{P}\\). That is all projections \\(\\mathbf{P}\\) are idempotent matrix.\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\nFor \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\), rank \\(p\\), if \\(\\mathbf{P}_\\mathbf{X}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}\\) use the definition to show that it is a projection onto the \\(p\\) dimensional subspace \\(\\boldsymbol{{\\cal M}}= C(\\mathbf{X})\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#null-space",
+    "href": "resources/slides/02-mles.html#null-space",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Null Space",
+    "text": "Null Space\n\nDefinition: Orthogonal ComplementThe set of all vectors that are orthogonal to a given subspace \\(\\boldsymbol{{\\cal M}}\\) is called the orthogonal complement of the subspace denoted as \\(\\boldsymbol{{\\cal M}}^\\perp\\). Under the usual inner product, \\(\\boldsymbol{{\\cal M}}^\\perp \\equiv \\{\\mathbf{n}\\in \\mathbb{R}^n \\ni \\mathbf{m}^T\\mathbf{n}= 0 {\\text{ for }} \\mathbf{m}\\in \\boldsymbol{{\\cal M}}\\}\\)\n\n\n\n\nDefinition: Null SpaceFor a matrix \\(\\mathbf{A}\\), the null space of \\(\\mathbf{A}\\) is defined as \\(N(\\mathbf{A}) = \\{\\mathbf{n}\\ni \\mathbf{A}\\mathbf{n}= \\mathbf{0}\\}\\)\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\nShow that \\(C(\\mathbf{X})^\\perp\\) (the orthogonal complement of \\(C(\\mathbf{X})\\)) is the null space of \\(\\mathbf{X}^T\\), \\(\\, N(\\mathbf{X}^T)\\)."
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#orthogonal-projection",
+    "href": "resources/slides/02-mles.html#orthogonal-projection",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Orthogonal Projection",
+    "text": "Orthogonal Projection\n\nDefinition: Orthogonal ProjectionsFor a vector space \\({\\cal V}\\) with an inner product \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle\\) for \\(\\mathbf{x}, \\mathbf{y}\\in {\\cal V}\\), \\(\\mathbf{x}\\) and \\(\\mathbf{y}\\) are orthogonal if \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle = 0\\). A projection \\(\\mathbf{P}\\) is an orthogonal projection onto a subspace \\(\\boldsymbol{{\\cal M}}\\) of \\({\\cal V}\\) if for any \\(\\mathbf{m}\\in {\\cal V}\\), \\(\\mathbf{P}\\mathbf{m}= \\mathbf{m}\\) and for any \\(\\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\), \\(\\mathbf{P}\\mathbf{n}= \\mathbf{0}\\).\nThe null space of \\(\\mathbf{P}\\) is the orthogonal complement of \\(\\boldsymbol{{\\cal M}}\\)\n\n\n\nFor \\(\\mathbb{R}^N\\) with the inner product, \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle = \\mathbf{x}^T\\mathbf{y}\\), \\(\\mathbf{P}\\) is an orthogonal projection onto \\(\\boldsymbol{{\\cal M}}\\) if \\(\\mathbf{P}\\) is a projection (\\(\\mathbf{P}^2 = \\mathbf{P}\\)) and it is symmetric (\\(\\mathbf{P}= \\mathbf{P}^T\\))\n\n\n\n\n\n\n\n\nExercise\n\n\nShow that \\(\\mathbf{P}_\\mathbf{X}\\) is an orthogonal projection on \\(C(\\mathbf{X})\\)."
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#decompsition",
+    "href": "resources/slides/02-mles.html#decompsition",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Decompsition",
+    "text": "Decompsition\n\nFor any \\(\\mathbf{y}\\in \\mathbb{R}^n\\), we can write it uniquely as a vector \\[ \\mathbf{y}= \\mathbf{m}+ \\mathbf{n}, \\quad \\mathbf{m}\\in \\boldsymbol{{\\cal M}}\\quad \\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\]\nwrite \\(\\mathbf{y}= \\mathbf{P}\\mathbf{y}+ (\\mathbf{y}- \\mathbf{P}\\mathbf{y}) = \\mathbf{P}\\mathbf{y}+ (\\mathbf{I}- \\mathbf{P})\\mathbf{y}\\)\nclaim that if \\(\\mathbf{P}\\) is an orthogonal projection, \\((\\mathbf{I}- \\mathbf{P})\\) is an orthogonal projection onto \\(\\boldsymbol{{\\cal M}}^\\perp\\)\nif \\(\\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\), then \\((\\mathbf{I}- \\mathbf{P})\\mathbf{n}= \\mathbf{n}- \\mathbf{P}\\mathbf{n}= \\mathbf{n}\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#back-to-mles",
+    "href": "resources/slides/02-mles.html#back-to-mles",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Back to MLEs",
+    "text": "Back to MLEs\n\n\\(\\mathbf{Y}\\sim \\textsf{N}(\\boldsymbol{\\mu}, \\sigma^2 \\mathbf{I}_n)\\) with \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}\\) and \\(\\mathbf{X}\\) full column rank\nClaim: Maximum Likelihood Estimator (MLE) of \\(\\boldsymbol{\\mu}\\) is \\(\\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\)\nLog Likelihood: \\[ \\log {\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) =\n-\\frac{n}{2} \\log(\\sigma^2)\n- \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\]\nDecompose \\(\\mathbf{Y}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}+ (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\)\n\nUse \\(\\mathbf{P}_\\mathbf{X}\\boldsymbol{\\mu}= \\boldsymbol{\\mu}\\)\n\nSimplify \\(\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#expand",
+    "href": "resources/slides/02-mles.html#expand",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Expand",
+    "text": "Expand\n\\[\\begin{eqnarray*}\n    \\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 & = & \\|  { (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}+ \\mathbf{P}_x \\mathbf{Y}} -\n    \\boldsymbol{\\mu}\\|^2  \\\\\n  & = & \\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}+ \\mathbf{P}_x \\mathbf{Y}- {\\mathbf{P}_\\mathbf{X}}\\boldsymbol{\\mu}\\|^2  \\\\\n  & = & {\\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})}\\mathbf{Y}+  {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu})\n  \\|^2 \\\\\n& = & {\\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2} +  {\\|\n   {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu}) \\|^2}  + {\\small{2 (\\mathbf{Y}-\n\\boldsymbol{\\mu})^T \\mathbf{P}_\\mathbf{X}^T (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}}\\\\\n& = & \\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2 +  \\| {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu}) \\|^2 + {0}\n\\\\\n& = & \\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2 +  \\| {\\mathbf{P}_\\mathbf{X}}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2\n  \\end{eqnarray*}\\]\n\nCrossproduct term is zero: \\[\\begin{eqnarray*}\n  \\mathbf{P}_\\mathbf{X}^T (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) & = &  \\mathbf{P}_\\mathbf{X}(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})  \\\\\n  & = &  \\mathbf{P}_\\mathbf{X}- \\mathbf{P}_\\mathbf{X}\\mathbf{P}_\\mathbf{X}\\\\\n& = &  \\mathbf{P}_\\mathbf{X}- \\mathbf{P}_\\mathbf{X}\\\\\n& = & \\mathbf{0}\n\\end{eqnarray*}\\]"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#log-likelihood",
+    "href": "resources/slides/02-mles.html#log-likelihood",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Log Likelihood",
+    "text": "Log Likelihood\nSubstitute decomposition into log likelihood \\[\\begin{eqnarray*}\n\\log {\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)  & = &\n-\\frac{n}{2} \\log(\\sigma^2) - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}  \\\\\n  & = & -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 } {\\sigma^2} \\right)   \\\\\n& = &  \\underbrace { -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2  \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} }  +  \\underbrace{- \\frac 1 2  \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}-\n  \\boldsymbol{\\mu}\\|^2 } {\\sigma^2}}   \\\\\n& = &  \\text{ constant with respect to } \\boldsymbol{\\mu}\\qquad  \\leq 0\n\\end{eqnarray*}\\]\n\nMaximize with respect to \\(\\boldsymbol{\\mu}\\) for each \\(\\sigma^2\\)\nRHS is largest when \\(\\boldsymbol{\\mu}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\) for any choice of \\(\\sigma^2\\) \\[\\therefore \\quad \\hat{\\boldsymbol{\\mu}}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\] is the MLE of \\(\\boldsymbol{\\mu}\\) (fitted values \\(\\hat{\\mathbf{Y}}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\))"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#mle-of-boldsymbolbeta",
+    "href": "resources/slides/02-mles.html#mle-of-boldsymbolbeta",
+    "title": "Maximum Likelihood Estimation",
+    "section": "MLE of \\(\\boldsymbol{\\beta}\\)",
+    "text": "MLE of \\(\\boldsymbol{\\beta}\\)\n\\[{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)   =  -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 } {\\sigma^2} \\right)\\]\n\nRewrite as likeloood function for \\(\\boldsymbol{\\beta}, \\sigma^2\\): \\[{\\cal{L}}(\\boldsymbol{\\beta}, \\sigma^2 )  =  -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2 } {\\sigma^2}\n\\right)\\]\n\n\n\nSimilar argument to show that RHS is maximized by minimizing \\[\\| \\mathbf{P}_\\mathbf{X}\n\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2\\] \nTherefore \\(\\hat{\\boldsymbol{\\beta}}\\) is a MLE of \\(\\boldsymbol{\\beta}\\) if and only if satisfies \\[\\mathbf{P}_\\mathbf{X}\\mathbf{Y}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\]\nIf \\(\\mathbf{X}^T\\mathbf{X}\\) is full rank, the MLE of \\(\\boldsymbol{\\beta}\\) is \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{Y}= \\hat{\\boldsymbol{\\beta}}\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#mle-of-sigma2",
+    "href": "resources/slides/02-mles.html#mle-of-sigma2",
+    "title": "Maximum Likelihood Estimation",
+    "section": "MLE of \\(\\sigma^2\\)",
+    "text": "MLE of \\(\\sigma^2\\)\n\nPlug-in MLE of \\(\\hat{\\boldsymbol{\\mu}}\\) for \\(\\boldsymbol{\\mu}\\) \\[ \\log {\\cal{L}}(\\hat{\\boldsymbol{\\mu}}, \\sigma^2)  =   -\\frac{n}{2} \\log \\sigma^2 - \\frac 1 2\n\\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2  }{\\sigma^2}\\]\nDifferentiate with respect to \\(\\sigma^2\\) \\[\\frac{\\partial \\, \\log {\\cal{L}}(\\hat{\\boldsymbol{\\mu}}, \\sigma^2)}{\\partial \\, \\sigma^2} =  -\\frac{n}{2} \\frac{1}{\\sigma^2}  +  \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\left(\\frac{1}{\\sigma^2}\\right)^2 \\]\nSet derivative to zero and solve for MLE \\[\\begin{eqnarray*}\n0 & = &  -\\frac{n}{2} \\frac{1}{{\\hat{\\sigma}}^2}  +  \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\left(\\frac{1}{{\\hat{\\sigma}}^2}\\right)^2  \\\\\n\\frac{n}{2} {\\hat{\\sigma}}^2& = & \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\\\\n{\\hat{\\sigma}}^2& = & \\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2}{n}\n\\end{eqnarray*}\\]"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#mle-estimate-of-sigma2",
+    "href": "resources/slides/02-mles.html#mle-estimate-of-sigma2",
+    "title": "Maximum Likelihood Estimation",
+    "section": "MLE Estimate of \\(\\sigma^2\\)",
+    "text": "MLE Estimate of \\(\\sigma^2\\)\nMaximum Likelihood Estimate of \\(\\sigma^2\\) \\[\\begin{eqnarray*}\n    {\\hat{\\sigma}}^2& = & \\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2}{n} \\\\\n      & = & \\frac{\\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})^T(\\mathbf{I}-\\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{ \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{\\mathbf{e}^T\\mathbf{e}} {n}\n  \\end{eqnarray*}\\] where \\(\\mathbf{e}= (\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\\mathbf{Y}\\) are the residuals from the regression of \\(\\mathbf{Y}\\) on \\(\\mathbf{X}\\)\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
     "objectID": "resources/slides/01-introduction.html#introduction-to-sta721",
