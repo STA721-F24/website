@@ -302,21 +302,20 @@ $\Cov[\btilde] \ge \Cov[\bhat]$ where $\bhat$ is the OLS estimator and is the **
 For $\Y = \mub + \eps$, with $\mub \in \M$, $\E[\eps]= \zero_n$ and $\Cov[\eps] =\sigma^2 \I_n$ and $\P$ the orthogonal projection onto $\M$,  $\P\Y = \muhat$ is the BLUE of $\mub$  out of the class of LUEs $\A\Y$ where $\E[\A \Y] = \mub$, $\A \in \bbR^{n \times n}$ equality iff $\A = \P$
 :::
 
-::: Proof
+::: Proof 
 - write $\A = \P + \H^T$ so $\H^T = \A - \P$
-- since $\A\mub = \mub$, $\H^T\mu = \zero_n$ for $\mu \in \M$ and $\H^T \P = \P\H = \zero$ so columns of $\H \in \M^\perp$.
-
-. . .
-
+- since $\A\mub = \mub$, $\H^T\mu = \zero_n$ for $\mu \in \M$ and $\H^T \P = \P\H = \zero$ (columns of $\H \in \M^\perp$)
 \begin{align*}
 \E[\|\A\Y - \mub\|^2]  & = \E[\|\A(\Y - \mub)\|^2]  = \E[\|\P(\Y - \mub) + \H ^T(\Y - \mub)\|^2]  \\
-& = \E[\|\P(\Y - \mub)\|^2] + \underbrace{\E[\|\H^T(\Y - \mub)\|^2]} + \underbrace{2\E[(\H^T(\Y - \mu))^T\P(\Y - \mub)]} \\
-& \hspace{4.35in} \ge 0 \quad \quad + \quad \quad {\text{cross-product is 0}}\\
+& = \E[\|\P(\Y - \mub)\|^2] + \underbrace{\E[\|\H^T(\Y - \mub)\|^2]} + \underbrace{{\text{cross-product}}} \\
+& \hspace{4.35in} \ge 0 \quad  + \hspace{1.25in} 0\\
 & \ge \E[\|\P(\Y - \mub)\|^2]
 \end{align*}
+
+- Cross-product is  $2\E[(\H^T(\Y - \mu))^T\P(\Y - \mub)]$
 :::
 
-::: Footer
+::: footer
 :::
 
 ## Estimation of Linear Functionals of $\mub$
@@ -344,9 +343,12 @@ If $\Lambdab^T= \B\X$ for some matrix $\B$ then
 
 - $\E[\B\P\Y] = \E[\Lambdab \bhat] = \Lambdab^T\b$
 - The unique OLS estimate of $\Lambdab^T\b$ is $\Lambdab^T\bhat$
-- $\B\P\Y = \Lambdab^T\bhat$ is the BLUE of $\\Lambdab^T\b$
-$$\E[\|\B\P\Y - \B\mub\|^2]  \le \E[\|\A\Y - \B\mub\|^2] \LeftRightarrow
-\E[\|\Lambdab^T\bhat - \Lambdab^T\b)\|^2]  \le \E[\|\L^T\bhat - \Lambdab^T\b\|^2]$$
+- $\B\P\Y = \Lambdab^T\bhat$ is the BLUE of $\Lambdab^T\b$
+\begin{align*}
+ & \E[\|\B\P\Y - \B\mub\|^2]  \le \E[\|\A\Y - \B\mub\|^2] \\
+ \Leftrightarrow & \\
+& \E[\|\Lambdab^T\bhat - \Lambdab^T\b)\|^2]  \le \E[\|\L^T\bhat - \Lambdab^T\b\|^2]
+\end{align*}
 for LUE $\A\Y$ and $\L^T\bhat$ of $\Lambdab^T\b$
 
 

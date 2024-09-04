@@ -1,0 +1,12 @@
+---
+title: "Best Linear Unbiased Estimation"
+editor: visual
+---
+
+We will explore properties of MLEs/OLS and linear functionals of them. In particular characterizing the class of linear unbiased estimates and minimimum variances, cumulating with the Guass Markov Theorem for both the full rank case and rank deficient models and establing conditions under which OLS/MLE estimators are the Best Linear Unbiased Estimators under the assumption that the covariance of the errors is spherically symmetric.
+
+Readings:
+
+-   Christensen Chapter 1-2, Appendix B
+
+-   Seber & Lee Chapter 3, Appendix A & Appendix B
