@@ -391,7 +391,19 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
+  }
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   .Theorem {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Corollary {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -399,29 +411,17 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
-  }
-  .Feature {
-    --color1: #c0c0c0;
-    --color2: #808080;
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   .Proof {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Lemma {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
   }
   </style>
 </head>
@@ -646,19 +646,18 @@ Merlise Clyde (clyde@duke.edu)
 <div id="Proof*-0.6" class="Proof">
 <details class="Proof fbx-simplebox fbx-default"><summary><strong>Proof</strong></summary><div>
 <ul>
-<li class="fragment">write <span class="math inline">\(\mathbf{A}= \mathbf{P}+ \mathbf{H}^T\)</span> so <span class="math inline">\(\mathbf{H}^T = \mathbf{A}- \mathbf{P}\)</span></li>
-<li class="fragment">since <span class="math inline">\(\mathbf{A}\boldsymbol{\mu}= \boldsymbol{\mu}\)</span>, <span class="math inline">\(\mathbf{H}^T\mu = \mathbf{0}_n\)</span> for <span class="math inline">\(\mu \in \boldsymbol{{\cal M}}\)</span> and <span class="math inline">\(\mathbf{H}^T \mathbf{P}= \mathbf{P}\mathbf{H}= \mathbf{0}\)</span> so columns of <span class="math inline">\(\mathbf{H}\in \boldsymbol{{\cal M}}^\perp\)</span>.</li>
-</ul>
-<p>. . .</p>
-<p><span class="math display">\[\begin{align*}
+<li class="fragment"><p>write <span class="math inline">\(\mathbf{A}= \mathbf{P}+ \mathbf{H}^T\)</span> so <span class="math inline">\(\mathbf{H}^T = \mathbf{A}- \mathbf{P}\)</span></p></li>
+<li class="fragment"><p>since <span class="math inline">\(\mathbf{A}\boldsymbol{\mu}= \boldsymbol{\mu}\)</span>, <span class="math inline">\(\mathbf{H}^T\mu = \mathbf{0}_n\)</span> for <span class="math inline">\(\mu \in \boldsymbol{{\cal M}}\)</span> and <span class="math inline">\(\mathbf{H}^T \mathbf{P}= \mathbf{P}\mathbf{H}= \mathbf{0}\)</span> (columns of <span class="math inline">\(\mathbf{H}\in \boldsymbol{{\cal M}}^\perp\)</span>) <span class="math display">\[\begin{align*}
 \textsf{E}[\|\mathbf{A}\mathbf{Y}- \boldsymbol{\mu}\|^2]  &amp; = \textsf{E}[\|\mathbf{A}(\mathbf{Y}- \boldsymbol{\mu})\|^2]  = \textsf{E}[\|\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu}) + \mathbf{H}^T(\mathbf{Y}- \boldsymbol{\mu})\|^2]  \\
-&amp; = \textsf{E}[\|\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})\|^2] + \underbrace{\textsf{E}[\|\mathbf{H}^T(\mathbf{Y}- \boldsymbol{\mu})\|^2]} + \underbrace{2\textsf{E}[(\mathbf{H}^T(\mathbf{Y}- \mu))^T\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})]} \\
-&amp; \hspace{4.35in} \ge 0 \quad \quad + \quad \quad {\text{cross-product is 0}}\\
+&amp; = \textsf{E}[\|\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})\|^2] + \underbrace{\textsf{E}[\|\mathbf{H}^T(\mathbf{Y}- \boldsymbol{\mu})\|^2]} + \underbrace{{\text{cross-product}}} \\
+&amp; \hspace{4.35in} \ge 0 \quad  + \hspace{1.25in} 0\\
 &amp; \ge \textsf{E}[\|\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})\|^2]
-\end{align*}\]</span></p>
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>Cross-product is <span class="math inline">\(2\textsf{E}[(\mathbf{H}^T(\mathbf{Y}- \mu))^T\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})]\)</span></p></li>
+</ul>
 </div></details>
 </div>
-<div class="Footer">
+<div class="footer">
 
 </div>
 </section>
@@ -684,8 +683,11 @@ Merlise Clyde (clyde@duke.edu)
 <ul>
 <li class="fragment"><span class="math inline">\(\textsf{E}[\mathbf{B}\mathbf{P}\mathbf{Y}] = \textsf{E}[\boldsymbol{\Lambda}\hat{\boldsymbol{\beta}}] = \boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span></li>
 <li class="fragment">The unique OLS estimate of <span class="math inline">\(\boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span> is <span class="math inline">\(\boldsymbol{\Lambda}^T\hat{\boldsymbol{\beta}}\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{B}\mathbf{P}\mathbf{Y}= \boldsymbol{\Lambda}^T\hat{\boldsymbol{\beta}}\)</span> is the BLUE of <span class="math inline">\(\\Lambdab^T\boldsymbol{\beta}\)</span> <span class="math display">\[\textsf{E}[\|\mathbf{B}\mathbf{P}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2]  \le \textsf{E}[\|\mathbf{A}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2] \LeftRightarrow
-\textsf{E}[\|\boldsymbol{\Lambda}^T\hat{\boldsymbol{\beta}}- \boldsymbol{\Lambda}^T\boldsymbol{\beta})\|^2]  \le \textsf{E}[\|\mathbf{L}^T\hat{\boldsymbol{\beta}}- \boldsymbol{\Lambda}^T\boldsymbol{\beta}\|^2]\]</span> for LUE <span class="math inline">\(\mathbf{A}\mathbf{Y}\)</span> and <span class="math inline">\(\mathbf{L}^T\hat{\boldsymbol{\beta}}\)</span> of <span class="math inline">\(\boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span></li>
+<li class="fragment"><span class="math inline">\(\mathbf{B}\mathbf{P}\mathbf{Y}= \boldsymbol{\Lambda}^T\hat{\boldsymbol{\beta}}\)</span> is the BLUE of <span class="math inline">\(\boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span> <span class="math display">\[\begin{align*}
+&amp; \textsf{E}[\|\mathbf{B}\mathbf{P}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2]  \le \textsf{E}[\|\mathbf{A}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2] \\
+\Leftrightarrow &amp; \\
+&amp; \textsf{E}[\|\boldsymbol{\Lambda}^T\hat{\boldsymbol{\beta}}- \boldsymbol{\Lambda}^T\boldsymbol{\beta})\|^2]  \le \textsf{E}[\|\mathbf{L}^T\hat{\boldsymbol{\beta}}- \boldsymbol{\Lambda}^T\boldsymbol{\beta}\|^2]
+\end{align*}\]</span> for LUE <span class="math inline">\(\mathbf{A}\mathbf{Y}\)</span> and <span class="math inline">\(\mathbf{L}^T\hat{\boldsymbol{\beta}}\)</span> of <span class="math inline">\(\boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span></li>
 </ul>
 </section>
 <section id="proof-of-cross-product" class="slide level2">
