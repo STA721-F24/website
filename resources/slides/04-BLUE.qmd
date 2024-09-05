@@ -170,7 +170,8 @@ there exists a $\G \in \bbR^{p \times (n-p)} \ni \H = \N \G^T$
 - therefore $\btilde$ is linear and unbiased:
  \begin{align*}
  \E[\btilde] & = \E[\bhat + \G \N^T\Y] \\
-             & =  \b + \E[\G \N^T\X\b] \\ 
+             & =  \E[\bhat] + \E[\G \N^T\Y] \\ 
+             & =  \b + \G \N^T\X\b \\ 
              & = \b
  \end{align*} 
   
@@ -306,13 +307,13 @@ For $\Y = \mub + \eps$, with $\mub \in \M$, $\E[\eps]= \zero_n$ and $\Cov[\eps] 
 - write $\A = \P + \H^T$ so $\H^T = \A - \P$
 - since $\A\mub = \mub$, $\H^T\mu = \zero_n$ for $\mu \in \M$ and $\H^T \P = \P\H = \zero$ (columns of $\H \in \M^\perp$)
 \begin{align*}
-\E[\|\A\Y - \mub\|^2]  & = \E[\|\A(\Y - \mub)\|^2]  = \E[\|\P(\Y - \mub) + \H ^T(\Y - \mub)\|^2]  \\
+\E[\|\A\Y - \mub\|^2]  & =  \E[\|\P(\Y - \mub) + \H ^T(\Y - \mub)\|^2]  \\
 & = \E[\|\P(\Y - \mub)\|^2] + \underbrace{\E[\|\H^T(\Y - \mub)\|^2]} + \underbrace{{\text{cross-product}}} \\
 & \hspace{4.35in} \ge 0 \quad  + \hspace{1.25in} 0\\
 & \ge \E[\|\P(\Y - \mub)\|^2]
 \end{align*}
 
-- Cross-product is  $2\E[(\H^T(\Y - \mu))^T\P(\Y - \mub)]$
+- Cross-product is  $2\E[(\H^T(\Y - \mu))^T\P(\Y - \mub)] = 0$ (see last slide)
 :::
 
 ::: footer
@@ -337,20 +338,21 @@ What about linear functionals of $\b$, $\Lambdab^T \b$, for $\X$ rank $r \le p$?
 - detailed discussion and proof in Christensen Ch. 2 for scalar functionals
 $\lambda^T\beta$.
 
-## BLUE of $\Lambdab \b$
+## BLUE of $\Lambdab^T \b$
 
 If $\Lambdab^T= \B\X$ for some matrix $\B$ then
 
-- $\E[\B\P\Y] = \E[\Lambdab \bhat] = \Lambdab^T\b$
+- $\E[\B\P\Y] = \E[\Lambdab^T \bhat] = \Lambdab^T\b$
 - The unique OLS estimate of $\Lambdab^T\b$ is $\Lambdab^T\bhat$
 - $\B\P\Y = \Lambdab^T\bhat$ is the BLUE of $\Lambdab^T\b$
 \begin{align*}
  & \E[\|\B\P\Y - \B\mub\|^2]  \le \E[\|\A\Y - \B\mub\|^2] \\
  \Leftrightarrow & \\
-& \E[\|\Lambdab^T\bhat - \Lambdab^T\b)\|^2]  \le \E[\|\L^T\bhat - \Lambdab^T\b\|^2]
+& \E[\|\Lambdab^T\bhat - \Lambdab^T\b)\|^2]  \le \E[\|\L^T\btilde - \Lambdab^T\b\|^2]
 \end{align*}
-for LUE $\A\Y$ and $\L^T\bhat$ of $\Lambdab^T\b$
+for LUE $\A\Y = \L^T\btilde$ of $\Lambdab^T\b$
 
+- Proof proceeds as the classic case. 
 
 ## Proof of Cross-Product
 Let $\Dbf = \H \P$ and write
