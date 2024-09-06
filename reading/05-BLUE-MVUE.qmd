@@ -1,0 +1,14 @@
+---
+title: "Best Linear Unbiased Estimation in Prediction, MVUEs and BUEs"
+editor: visual
+---
+
+We will continue our discussion of OLS/MLE estimators with exploring conditions for when the Best Linear Unbiased Estimators exist, with a special focus on out of sample prediction in the non-full rank case. We will outline the proof for why MLEs are also Minimum Variance Unbiased Estimators or "BUE" out of all unbiased estimators linear or non-linear under the additional assumption of normality of the errors. This opens up the question of what estimators are unbiased for linear models and if there are other nonlinear unbiased estimators that are better than OLS, a topic that has received recent attention.
+
+Readings:
+
+-   Christensen Chapter 2, Appendix B
+
+-   Seber & Lee Chapter 3
+
+-   [What Estimators are Unbiased for Linear Models](https://arxiv.org/pdf/2212.14185) (2023) and references within
