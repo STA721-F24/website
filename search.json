@@ -35,179 +35,305 @@
     "text": "Primary Textbooks\nThese textbooks are great resources for some of the topics we will cover.\n\nPlane Answers to Complex Questions, Ronald Christensen. eBook in Duke Library\nLinear Regression Analysis, George A.F Seber and Alan J. Lee eBook in Duke Library. Duke Library is aware the link is broken\nThe Linear Model and Hypothesis, George A. F. Seber eBook in Duke Library\n\n\n\nSupplementary Textbooks on Linear/Matrix Algebra\n\nGilbert Strang’s Online Course at MIT\nVideo Lectures\n\nIntroduction to Linear Algebra. Strang, Gilbert. 4th ed. Wellesley, MA: Wellesley-Cambridge Press, 2009. ISBN: 9780980232714. Buy @ Amazon\n\nMatrix Algebra from a Statistician’s Perspective. Harville, David A. eBook in Duke Library\n\n\n\nR and R Markdown Resources\nQuarto/R Markdown/LaTeX can be used to create high quality reports and presentations with embedded chunks of R code and LaTeX equations! You are required to use Quarto in RStudio to type up your homework assignments that involve Data Analysis/Simulation for this course, but you are welcome to use any word processor of your choice for those. To learn more about Quarto/R Markdown and for other resources for programming in R, see the links below.\n\nUsing R in Quarto for Documents\nR for Data Science (by Hadley Wickham & Garrett Grolemund)\nIntroduction to R Markdown (Article by Garrett Grolemund)\nIntroduction to R Markdown (Slides by Andrew Cho)\nR Markdown Cheat Sheet\nData Visualization with ggplot2 Cheat Sheet\nOther Useful Cheat Sheets\nA very (very!) basic R Markdown template\n\n\n\nLaTeX\nYou may also use LaTeX to type up your assignments. You may find it easier to create your TeX and LaTeX documents using online editors such as Overleaf (simply create a free account and you are good to go!). However, that need not be the case. If you prefer to create them locally/offline on your personal computers, you will need to download a TeX distribution (the most popular choices are MiKTeX for Windows and MacTeX for macOS) plus an editor (I personally prefer TeXstudio but feel free to download any editor of your choice). Follow the links below for some options, and to also learn how to use LaTeX.\n\nLearn LaTeX in 30 minutes\nChoosing a LaTeX Compiler.\n\n\n\nInteresting Articles\nI will add articles I find interesting below. These are articles I find useful as supplementary readings for topics covered in class, or as good sources that cover concepts I think you should know, but which we may not have time to cover. I strongly suggest you find time to (at the very least) take a “quick peek” at each article.\n\nEfron, B., 1986. Why isn’t everyone a Bayesian?. The American Statistician, 40(1), pp. 1-5.\nGelman, A., 2008. Objections to Bayesian statistics. Bayesian Analysis, 3(3), pp. 445-449.\nDiaconis, P., 1977. Finite forms of de Finetti’s theorem on exchangeability. Synthese, 36(2), pp. 271-281.\nGelman, A., Meng, X. L. and Stern, H., 1996. Posterior predictive assessment of model fitness via realized discrepancies. Statistica sinica, pp. 733-760.\nDunson, D. B., 2018. Statistics in the big data era: Failures of the machine. Statistics & Probability Letters, 136, pp. 4-9."
   },
   {
-    "objectID": "reading/04-BLUE.html",
-    "href": "reading/04-BLUE.html",
-    "title": "Best Linear Unbiased Estimation",
+    "objectID": "reading/01-introduction.html",
+    "href": "reading/01-introduction.html",
+    "title": "Lecture 1 Readings",
     "section": "",
-    "text": "We will explore properties of MLEs/OLS and linear functionals of them. In particular characterizing the class of linear unbiased estimates and minimimum variances, cumulating with the Guass Markov Theorem for both the full rank case and rank deficient models and establing conditions under which OLS/MLE estimators are the Best Linear Unbiased Estimators under the assumption that the covariance of the errors is spherically symmetric.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
+    "text": "links to eBooks are on the Home page of the website or Resources page."
   },
   {
-    "objectID": "reading/03-non-full-rank.html",
-    "href": "reading/03-non-full-rank.html",
-    "title": "Rank Deficient Models",
-    "section": "",
-    "text": "We will explore MLEs/OLS using rank deficient models using generalized inverses. We will characterize orthogonal projections using Spectral Decompositions and review how that is related to the Singular Value Decomposition of the model matrix.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
+    "objectID": "reading/01-introduction.html#introduction-to-linear-models",
+    "href": "reading/01-introduction.html#introduction-to-linear-models",
+    "title": "Lecture 1 Readings",
+    "section": "Introduction to Linear Models",
+    "text": "Introduction to Linear Models\n\nreview the course website and syllabus for policies"
   },
   {
-    "objectID": "HW/hw-02.html",
-    "href": "HW/hw-02.html",
-    "title": "Homework 2",
+    "objectID": "reading/01-introduction.html#vector-spaces",
+    "href": "reading/01-introduction.html#vector-spaces",
+    "title": "Lecture 1 Readings",
+    "section": "Vector Spaces",
+    "text": "Vector Spaces\nChristensen: Read\n\nChapter 1: pages 1-3\nAppendix A in Christensen pages 411-413\nAppendix B section B.1\n\nSee also Seber & Lee Chapter 1."
+  },
+  {
+    "objectID": "reading/02-mles.html",
+    "href": "reading/02-mles.html",
+    "title": "MLEs & Projections",
+    "section": "",
+    "text": "Readings:\n\nChristensen Chapter 1-2, Appendix A, and Appendix B\nSeber & Lee Chapter 3, Appendix B"
+  },
+  {
+    "objectID": "HW/hw-01.html",
+    "href": "HW/hw-01.html",
+    "title": "Homework 1",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-02.html#due-1100pm-thurs-sept-12",
-    "href": "HW/hw-02.html#due-1100pm-thurs-sept-12",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
+    "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
+    "title": "Homework 1",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-02.html#rstudio",
-    "href": "HW/hw-02.html#rstudio",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#rstudio",
+    "href": "HW/hw-01.html#rstudio",
+    "title": "Homework 1",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-02.html#r-rnw",
-    "href": "HW/hw-02.html#r-rnw",
-    "title": "Homework 2",
-    "section": "R & RNW",
-    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+    "objectID": "HW/hw-01.html#r-quarto",
+    "href": "HW/hw-01.html#r-quarto",
+    "title": "Homework 1",
+    "section": "R & Quarto",
+    "text": "R & Quarto\nYou are required to use the .qmd format to type up this report report. To get started see technical writing with Quarto. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts."
   },
   {
-    "objectID": "HW/hw-02.html#getting-started-with-github-classroom",
-    "href": "HW/hw-02.html#getting-started-with-github-classroom",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#getting-started-with-github-classroom",
+    "href": "HW/hw-01.html#getting-started-with-github-classroom",
+    "title": "Homework 1",
     "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW2\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw2.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW1\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw1.qmd file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-02.html#gradescope-submission",
-    "href": "HW/hw-02.html#gradescope-submission",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#gradescope-submission",
+    "href": "HW/hw-01.html#gradescope-submission",
+    "title": "Homework 1",
     "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+    "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-02.html#grading",
-    "href": "HW/hw-02.html#grading",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#grading",
+    "href": "HW/hw-01.html#grading",
+    "title": "Homework 1",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "resources/slides/04-BLUE.html#outline",
-    "href": "resources/slides/04-BLUE.html#outline",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "Outline",
-    "text": "Outline\n\nCharacterizing Linear Unbiased Estimators\nGauss-Markov Theorem\nBest Linear Unbiased Estimators\n\n\nReadings: - Christensen Chapter 1-2 and Appendix B - Seber & Lee Chapter 3"
-  },
-  {
-    "objectID": "resources/slides/04-BLUE.html#full-rank-case",
-    "href": "resources/slides/04-BLUE.html#full-rank-case",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "Full Rank Case",
-    "text": "Full Rank Case\n\nModel: \\(\\mathbf{Y}= \\boldsymbol{\\mu}+ \\boldsymbol{\\epsilon}\\)\nMinimal Assumptions:\n\nMean \\(\\boldsymbol{\\mu}\\in C(\\mathbf{X})\\) for \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\)\nErrors \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\)\n\n\n\n\nDefinition: Linear Unbiased Estimators (LUEs)\nAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is a Linear Unbiased Estimator (LUE) of \\(\\boldsymbol{\\beta}\\) if\n\nlinearity: \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\) for \\(\\mathbf{A}\\in \\mathbb{R}^{p \\times n}\\)\nunbiasedness: \\(\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\) for all \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\)\n\n\n\n\n\nThe class of linear unbiased estimators is the same for every model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in \\cal{P}\\), for any collection \\(\\cal{P}\\) of mean-zero distributions over \\(\\mathbb{R}^n\\)."
-  },
-  {
-    "objectID": "resources/slides/04-BLUE.html#linear-unbiased-estimators-lues-1",
-    "href": "resources/slides/04-BLUE.html#linear-unbiased-estimators-lues-1",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "Linear Unbiased Estimators (LUEs)",
-    "text": "Linear Unbiased Estimators (LUEs)\n\nLet \\(\\textsf{N}\\) be an ONB for \\(\\boldsymbol{{\\cal N}}= \\boldsymbol{{\\cal M}}^\\perp = N(\\mathbf{X}^T)\\):\n\n\\(\\textsf{N}^T\\mathbf{m}=  \\textsf{N}^T\\mathbf{X}\\mathbf{b}= \\mathbf{0}\\quad \\forall \\mathbf{m}=\\mathbf{X}\\mathbf{b}\\in \\boldsymbol{{\\cal M}}\\)\n\\(\\textsf{N}^T\\textsf{N}= \\mathbf{I}_{n-p}\\)\n\n\n\nConsider another linear estimator \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\)\n\nDifference between \\(\\tilde{\\boldsymbol{\\beta}}\\) and \\(\\hat{\\boldsymbol{\\beta}}\\) (OLS/MLE): \\[\\begin{align*}\n  \\mathbf{\\delta}= \\tilde{\\boldsymbol{\\beta}}- \\hat{\\boldsymbol{\\beta}}& = \\left(\\mathbf{A}- (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T \\right)\\mathbf{Y}\\\\\n                  & \\equiv \\mathbf{H}^T \\mathbf{Y}\n\\end{align*}\\]\nSince both \\(\\tilde{\\boldsymbol{\\beta}}\\) and \\(\\hat{\\boldsymbol{\\beta}}\\) are unbiased, \\(\\textsf{E}[\\mathbf{\\delta}] = \\mathbf{0}_p \\quad \\forall \\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) \\[\\mathbf{0}_p = \\textsf{E}[\\mathbf{H}^T \\mathbf{Y}] = \\mathbf{H}^T \\mathbf{X}\\boldsymbol{\\beta}\\quad \\forall \\boldsymbol{\\beta}\\in \\mathbb{R}^p\\]\n\\(\\mathbf{X}^T \\mathbf{H}= \\mathbf{0}\\) so each column of \\(\\mathbf{H}\\) is in \\(\\boldsymbol{{\\cal M}}^\\perp \\equiv \\boldsymbol{{\\cal N}}\\)"
-  },
-  {
-    "objectID": "resources/slides/04-BLUE.html#lues-continued",
-    "href": "resources/slides/04-BLUE.html#lues-continued",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "LUEs continued",
-    "text": "LUEs continued\nSince each column of \\(\\mathbf{H}\\) is in \\(\\boldsymbol{{\\cal N}}\\) there exists a \\(\\mathbf{G}\\in \\mathbb{R}^{p \\times (n-p)} \\ni \\mathbf{H}= \\textsf{N}\\mathbf{G}^T\\)\n\nRewriting \\(\\mathbf{\\delta}= \\tilde{\\boldsymbol{\\beta}}- \\hat{\\boldsymbol{\\beta}}\\): \\[\\begin{align*}\n\\tilde{\\boldsymbol{\\beta}}& = \\hat{\\boldsymbol{\\beta}}+ \\mathbf{\\delta}\\\\\n         & = \\hat{\\boldsymbol{\\beta}}+ \\mathbf{H}^T\\mathbf{Y}\\\\\n         & = \\hat{\\boldsymbol{\\beta}}+ \\mathbf{G}\\textsf{N}^T\\mathbf{Y}\n\\end{align*}\\]\n\ntherefore \\(\\tilde{\\boldsymbol{\\beta}}\\) is linear and unbiased: \\[\\begin{align*}\n\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] & = \\textsf{E}[\\hat{\\boldsymbol{\\beta}}+ \\mathbf{G}\\textsf{N}^T\\mathbf{Y}] \\\\\n           & =  \\textsf{E}[\\hat{\\boldsymbol{\\beta}}] + \\textsf{E}[\\mathbf{G}\\textsf{N}^T\\mathbf{Y}] \\\\\n           & =  \\boldsymbol{\\beta}+ \\mathbf{G}\\textsf{N}^T\\mathbf{X}\\boldsymbol{\\beta}\\\\\n           & = \\boldsymbol{\\beta}\n\\end{align*}\\]"
-  },
-  {
-    "objectID": "resources/slides/04-BLUE.html#characterization-of-lues",
-    "href": "resources/slides/04-BLUE.html#characterization-of-lues",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "Characterization of LUEs",
-    "text": "Characterization of LUEs\nSummary of previous results:\n\nTheoremAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is a linear unbiased estimator of \\(\\boldsymbol{\\beta}\\) in a linear statistical model if and only if \\[\\tilde{\\boldsymbol{\\beta}}= \\hat{\\boldsymbol{\\beta}}+ \\mathbf{H}^T\\mathbf{Y}\\] for some \\(\\mathbf{H}\\in \\mathbb{R}^{n \\times p}\\) such that \\(\\mathbf{X}^T \\mathbf{H}= \\mathbf{0}\\) or equivalently for some \\(\\mathbf{G}\\in \\mathbb{R}^{p \\times (n-p)}\\) \\[\\tilde{\\boldsymbol{\\beta}}= \\hat{\\boldsymbol{\\beta}}+ \\mathbf{G}\\textsf{N}^T\\mathbf{Y}\\]"
-  },
-  {
-    "objectID": "resources/slides/04-BLUE.html#numerical",
-    "href": "resources/slides/04-BLUE.html#numerical",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "Numerical",
-    "text": "Numerical\n\n# X is model matrix; Y is response\n  p = ncol(X)\n  n = nrow(X)\n  G = matrix(rnorm(p*(n-p)), nrow=p, ncol=n-p)\n  H = MASS::Null(X) %*% t(G)\n  btilde = bhat + t(H) %*% Y\n\ninfinite number of LUEs!"
-  },
-  {
-    "objectID": "resources/slides/04-BLUE.html#lues-via-generalized-inverses",
-    "href": "resources/slides/04-BLUE.html#lues-via-generalized-inverses",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "LUEs via Generalized Inverses",
-    "text": "LUEs via Generalized Inverses\nLet \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\) be a LUE in the statistical linear model \\(\\mathbf{Y}= \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\\) with \\(\\mathbf{X}\\) full column rank \\(p\\) \\[\\begin{align*}\n\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] & = \\textsf{E}[\\mathbf{A}\\mathbf{Y}] \\\\\n            & = \\mathbf{A}\\textsf{E}[\\mathbf{Y}] \\\\\n            & = \\mathbf{A}\\mathbf{X}\\boldsymbol{\\beta}\\quad \\forall \\boldsymbol{\\beta}\\in \\mathbb{R}^p\n\\end{align*}\\]\n\nMust have \\(\\mathbf{A}\\mathbf{X}= \\mathbf{I}_p\\) (\\(\\mathbf{A}\\) is a generalized inverse of \\(\\mathbf{X}\\))\n\\(\\mathbf{X}\\mathbf{X}^- \\mathbf{X}= \\mathbf{X}\\)\none generalized inverse is \\(\\mathbf{X}_{MP}^- = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\)\n\\(\\mathbf{X}_{MP}^- = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T = \\mathbf{V}\\boldsymbol{\\Delta}^{-1} \\mathbf{U}^T\\) (using SVD of \\(\\mathbf{X}= \\mathbf{U}\\boldsymbol{\\Delta}\\mathbf{V}^T\\))\n\\(\\mathbf{A}\\) is a generalized inverse of \\(\\mathbf{X}\\) iff \\(\\mathbf{A}= \\mathbf{X}_{MP}^- + \\mathbf{H}^T\\) for \\(\\mathbf{H}\\in \\mathbb{R}^{n \\times p} \\ni \\mathbf{H}^T \\mathbf{U}= \\mathbf{0}\\)\n\\(\\mathbf{A}\\mathbf{Y}= (\\mathbf{X}_{MP}^- + \\mathbf{H}^T)\\mathbf{Y}= \\hat{\\boldsymbol{\\beta}}+  \\mathbf{H}^T \\mathbf{Y}\\)"
-  },
-  {
-    "objectID": "resources/slides/04-BLUE.html#best-linear-unbiased-estimators",
-    "href": "resources/slides/04-BLUE.html#best-linear-unbiased-estimators",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "Best Linear Unbiased Estimators",
-    "text": "Best Linear Unbiased Estimators\n\nthe distribution of values of any unbiased estimator is centered around \\(\\boldsymbol{\\beta}\\)\nout of the infinite number of LUEs is there one that is more concentrated around \\(\\boldsymbol{\\beta}\\)?\nis there an unbiased estimator that has a lower variance than all other unbiased estimators?\nRecall variance-covariance matrix of a random vector \\(\\mathbf{Z}\\) with mean \\(\\boldsymbol{\\theta}\\) \\[\\begin{align*}\n\\textsf{Cov}[\\mathbf{Z}]      & \\equiv \\textsf{E}[(\\mathbf{Z}- \\boldsymbol{\\theta})(\\mathbf{Z}- \\boldsymbol{\\theta})^T] \\\\\n\\textsf{Cov}[\\mathbf{Z}]_{ij} &  =     \\textsf{E}[(z_i - \\theta_i)(z_j - \\theta_j)]\n\\end{align*}\\]\n\n\n\n\n\n\n\n\n\nLemma\n\n\nLet \\(\\mathbf{A}\\in \\mathbb{R}^{q \\times p}\\) and \\(\\mathbf{b}\\in \\mathbb{R}^q\\) with \\(\\mathbf{Z}\\) a random vector in \\(\\mathbb{R}^p\\) then \\[\\textsf{Cov}[\\mathbf{A}\\mathbf{Z}+ \\mathbf{b}] = \\mathbf{A}\\textsf{Cov}[\\mathbf{Z}] \\mathbf{A}^T \\ge 0\\]"
-  },
-  {
-    "objectID": "resources/slides/04-BLUE.html#variance-of-linear-unbiased-estimators",
-    "href": "resources/slides/04-BLUE.html#variance-of-linear-unbiased-estimators",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "Variance of Linear Unbiased Estimators",
-    "text": "Variance of Linear Unbiased Estimators\nLet’s look at the variance of any LUE under assumption \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{I}_n\\)\n\nfor \\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\mathbf{Y}= \\boldsymbol{\\beta}+ (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\boldsymbol{\\epsilon}\\) \\[\\begin{align*}\n\\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}] & = \\textsf{Cov}[\\boldsymbol{\\beta}+ (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\boldsymbol{\\epsilon}] \\\\\n          & =  (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\textsf{Cov}[\\boldsymbol{\\epsilon}] \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1} \\\\\n          & = \\sigma^2 (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1} \\\\\n          & = \\sigma^2 (\\mathbf{X}^T\\mathbf{X})^{-1}\n\\end{align*}\\]\nCovariance is increasing in \\(\\sigma^2\\) and generally decreasing in \\(n\\)\nRewrite \\(\\mathbf{X}^T\\mathbf{X}\\) as \\(\\mathbf{X}^T\\mathbf{X}= \\sum_{i=1}^n \\mathbf{x}_i \\mathbf{x}_i^T\\) (a sum of \\(n\\) outer-products)"
-  },
-  {
-    "objectID": "resources/slides/04-BLUE.html#variance-of-arbitrary-lue",
-    "href": "resources/slides/04-BLUE.html#variance-of-arbitrary-lue",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "Variance of Arbitrary LUE",
-    "text": "Variance of Arbitrary LUE\n\nfor \\(\\tilde{\\boldsymbol{\\beta}}= \\left((\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T + \\mathbf{H}^T \\right)\\mathbf{Y}= \\boldsymbol{\\beta}+ \\left((\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T + \\mathbf{H}^T \\right)\\boldsymbol{\\epsilon}\\)\nrecall \\(\\mathbf{X}_{MP}^- \\equiv  (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\) \\[\\begin{align*}\n\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] & = \\textsf{Cov}[\\left(\\mathbf{X}_{MP}^- + \\mathbf{H}^T \\right)\\boldsymbol{\\epsilon}]  \\\\\n            & = \\sigma^2 \\left(\\mathbf{X}_{MP}^- + \\mathbf{H}^T \\right)\\left(\\mathbf{X}_{MP}^- + \\mathbf{H}^T \\right)^T \\\\\n            & = \\sigma^2\\left( \\mathbf{X}_{MP}^-(\\mathbf{X}_{MP}^-)^T + \\mathbf{X}_{MP}^-\\mathbf{H}+\n                \\mathbf{H}^T (\\mathbf{X}_{MP}^-)^T + \\mathbf{H}^T \\mathbf{H}\\right) \\\\\n            & =   \\sigma^2\\left( (\\mathbf{X}^T\\mathbf{X})^{-1} +  \\mathbf{H}^T \\mathbf{H}\\right)\n\\end{align*}\\]\nCross-product term \\(\\mathbf{H}^T(\\mathbf{X}_{MP}^-)^T = \\mathbf{H}^T\\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1} =  \\mathbf{0}\\)\nTherefor the \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] = \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}] + \\mathbf{H}^T\\mathbf{H}\\)\nthe sum of a positive definite matrix plus a positive semi-definite matrix"
-  },
-  {
-    "objectID": "resources/slides/04-BLUE.html#gauss-markov-theorem",
-    "href": "resources/slides/04-BLUE.html#gauss-markov-theorem",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "Gauss-Markov Theorem",
-    "text": "Gauss-Markov Theorem\nIs \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] \\ge \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}]\\) in some sense?\n\n\nDefinition: Loewner OrderingFor two positive semi-definite matrices \\(\\boldsymbol{\\Sigma}_1\\) and \\(\\boldsymbol{\\Sigma}_2\\), we say that \\(\\boldsymbol{\\Sigma}_1 &gt; \\boldsymbol{\\Sigma}_2\\) if \\(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2\\) is positive definite, \\(\\mathbf{x}^T(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2)\\mathbf{x}) &gt; 0\\), and \\(\\boldsymbol{\\Sigma}_1 \\ge \\boldsymbol{\\Sigma}_2\\) if \\(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2\\) is positive semi-definite, \\(\\mathbf{x}^T(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2)\\mathbf{x}) \\ge 0\\)\n\n\n\nSince \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] - \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}] = \\mathbf{H}^T\\mathbf{H}\\), we have that \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] \\ge \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}]\\)\n\n\n\n\nTheorem: Gauss-MarkovLet \\(\\tilde{\\boldsymbol{\\beta}}\\) be a linear unbiased estimator of \\(\\boldsymbol{\\beta}\\) in a linear model where \\(\\textsf{E}[\\mathbf{Y}] = \\mathbf{X}\\boldsymbol{\\beta}, \\boldsymbol{\\beta}\\in \\mathbb{R}^p\\), \\(\\mathbf{X}\\) rank \\(p\\), and \\(\\textsf{Cov}[\\mathbf{Y}] = \\sigma^2\\mathbf{I}_n, \\sigma^2 &gt; 0\\). Then \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] \\ge \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}]\\) where \\(\\hat{\\boldsymbol{\\beta}}\\) is the OLS estimator and is the Best Linear Unbiased Estimator (BLUE) of \\(\\boldsymbol{\\beta}\\)."
-  },
-  {
-    "objectID": "resources/slides/04-BLUE.html#slide13-id",
-    "href": "resources/slides/04-BLUE.html#slide13-id",
-    "title": "Best Linear Unbiased Estimators",
+    "objectID": "labs/lab-01.html",
+    "href": "labs/lab-01.html",
+    "title": "lab-01",
     "section": "",
-    "text": "Theorem: Gauss-Markov Theorem (Classic)For \\(\\mathbf{Y}= \\boldsymbol{\\mu}+ \\boldsymbol{\\epsilon}\\), with \\(\\boldsymbol{\\mu}\\in \\boldsymbol{{\\cal M}}\\), \\(\\textsf{E}[\\boldsymbol{\\epsilon}]= \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] =\\sigma^2 \\mathbf{I}_n\\) and \\(\\mathbf{P}\\) the orthogonal projection onto \\(\\boldsymbol{{\\cal M}}\\), \\(\\mathbf{P}\\mathbf{Y}= \\hat{\\boldsymbol{\\mu}}\\) is the BLUE of \\(\\boldsymbol{\\mu}\\) out of the class of LUEs \\(\\mathbf{A}\\mathbf{Y}\\) where \\(\\textsf{E}[\\mathbf{A}\\mathbf{Y}] = \\boldsymbol{\\mu}\\), \\(\\mathbf{A}\\in \\mathbb{R}^{n \\times n}\\) equality iff \\(\\mathbf{A}= \\mathbf{P}\\)\n\n\n\nProof\n\nwrite \\(\\mathbf{A}= \\mathbf{P}+ \\mathbf{H}^T\\) so \\(\\mathbf{H}^T = \\mathbf{A}- \\mathbf{P}\\)\nsince \\(\\mathbf{A}\\boldsymbol{\\mu}= \\boldsymbol{\\mu}\\), \\(\\mathbf{H}^T\\mu = \\mathbf{0}_n\\) for \\(\\mu \\in \\boldsymbol{{\\cal M}}\\) and \\(\\mathbf{H}^T \\mathbf{P}= \\mathbf{P}\\mathbf{H}= \\mathbf{0}\\) (columns of \\(\\mathbf{H}\\in \\boldsymbol{{\\cal M}}^\\perp\\)) \\[\\begin{align*}\n\\textsf{E}[\\|\\mathbf{A}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2]  & =  \\textsf{E}[\\|\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu}) + \\mathbf{H}^T(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2]  \\\\\n& = \\textsf{E}[\\|\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2] + \\underbrace{\\textsf{E}[\\|\\mathbf{H}^T(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2]} + \\underbrace{{\\text{cross-product}}} \\\\\n& \\hspace{4.35in} \\ge 0 \\quad  + \\hspace{1.25in} 0\\\\\n& \\ge \\textsf{E}[\\|\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2]\n\\end{align*}\\]\nCross-product is \\(2\\textsf{E}[(\\mathbf{H}^T(\\mathbf{Y}- \\mu))^T\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] = 0\\) (see last slide)"
+    "text": "Please see the instructions for HW-01 and be preapred to ask questions in lab (using R, theory, etc)"
   },
   {
-    "objectID": "resources/slides/04-BLUE.html#estimation-of-linear-functionals-of-boldsymbolmu",
-    "href": "resources/slides/04-BLUE.html#estimation-of-linear-functionals-of-boldsymbolmu",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "Estimation of Linear Functionals of \\(\\boldsymbol{\\mu}\\)",
-    "text": "Estimation of Linear Functionals of \\(\\boldsymbol{\\mu}\\)\nIf \\(\\mathbf{P}\\mathbf{Y}= \\hat{\\boldsymbol{\\mu}}\\) is the BLUE of \\(\\boldsymbol{\\mu}\\), is \\(\\mathbf{B}\\mathbf{P}\\mathbf{Y}= \\mathbf{B}\\hat{\\boldsymbol{\\mu}}\\) the BLUE of \\(\\mathbf{B}\\boldsymbol{\\mu}\\)?\n\nYes! Similar proof as above to show that out of the class of LUEs \\(\\mathbf{A}\\mathbf{Y}\\) of \\(\\mathbf{B}\\boldsymbol{\\mu}\\) where \\(\\mathbf{A}\\in \\mathbb{R}^{d \\times n}\\) that \\[\\textsf{E}[\\|\\mathbf{A}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2] \\ge \\textsf{E}[\\|\\mathbf{B}\\mathbf{P}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2]\\] with equality iff \\(\\mathbf{A}= \\mathbf{B}\\mathbf{P}\\).\n\n\nWhat about linear functionals of \\(\\boldsymbol{\\beta}\\), \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}\\), for \\(\\mathbf{X}\\) rank \\(r \\le p\\)?\n\n\\(\\hat{\\boldsymbol{\\beta}}\\) is not unique if \\(r &lt; p\\) even though \\(\\hat{\\boldsymbol{\\mu}}\\) is unique (\\(\\hat{\\boldsymbol{\\beta}}\\) is not BLUE)\nSince \\(\\mathbf{B}\\boldsymbol{\\mu}= \\mathbf{B}\\mathbf{X}\\boldsymbol{\\beta}\\) is always identifiable, the only linear functions of \\(\\boldsymbol{\\beta}\\) that are identifiable and can be estimated uniquely are functions of \\(\\mathbf{X}\\boldsymbol{\\beta}\\), i.e. estimates in the form \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}= \\mathbf{B}\\mathbf{X}\\boldsymbol{\\beta}\\) or \\(\\boldsymbol{\\Lambda}= \\mathbf{X}^T \\mathbf{B}^T\\).\ncolumns of \\(\\boldsymbol{\\Lambda}\\) must be in the \\(C(\\mathbf{X}^T)\\)\ndetailed discussion and proof in Christensen Ch. 2 for scalar functionals \\(\\lambda^T\\beta\\)."
+    "objectID": "resources/slides/01-introduction.html#introduction-to-sta721",
+    "href": "resources/slides/01-introduction.html#introduction-to-sta721",
+    "title": "Introduction to STA721",
+    "section": "Introduction to STA721",
+    "text": "Introduction to STA721\n\nCourse: Theory and Application of linear models from both a frequentist (classical) and Bayesian perspective\nPrerequisites: linear algebra and a mathematical statistics course covering likelihoods and distribution theory (normal, t, F, chi-square, gamma distributions)\nIntroduce R programming as needed in the lab\nIntroduce Bayesian methods, but assume that you are co-registered in 702 or have taken it previously\nmore info on Course website https://sta721-F24.github.io/website/\n\nschedule and slides, HW, etc\ncritical dates (Midterms and Finals)\noffice hours\n\nCanvas for grades, email, announcements\n\n\nPlease let me know if there are broken links for slides, etc!"
   },
   {
-    "objectID": "resources/slides/04-BLUE.html#blue-of-boldsymbollambdat-boldsymbolbeta",
-    "href": "resources/slides/04-BLUE.html#blue-of-boldsymbollambdat-boldsymbolbeta",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "BLUE of \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}\\)",
-    "text": "BLUE of \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}\\)\nIf \\(\\boldsymbol{\\Lambda}^T= \\mathbf{B}\\mathbf{X}\\) for some matrix \\(\\mathbf{B}\\) then\n\n\\(\\textsf{E}[\\mathbf{B}\\mathbf{P}\\mathbf{Y}] = \\textsf{E}[\\boldsymbol{\\Lambda}^T \\hat{\\boldsymbol{\\beta}}] = \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\)\nThe unique OLS estimate of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\) is \\(\\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}\\)\n\\(\\mathbf{B}\\mathbf{P}\\mathbf{Y}= \\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}\\) is the BLUE of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\) \\[\\begin{align*}\n& \\textsf{E}[\\|\\mathbf{B}\\mathbf{P}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2]  \\le \\textsf{E}[\\|\\mathbf{A}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2] \\\\\n\\Leftrightarrow & \\\\\n& \\textsf{E}[\\|\\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}- \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta})\\|^2]  \\le \\textsf{E}[\\|\\mathbf{L}^T\\tilde{\\boldsymbol{\\beta}}- \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\|^2]\n\\end{align*}\\] for LUE \\(\\mathbf{A}\\mathbf{Y}= \\mathbf{L}^T\\tilde{\\boldsymbol{\\beta}}\\) of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\)\nProof proceeds as the classic case."
+    "objectID": "resources/slides/01-introduction.html#notation",
+    "href": "resources/slides/01-introduction.html#notation",
+    "title": "Introduction to STA721",
+    "section": "Notation",
+    "text": "Notation\n\nscalors are \\(a\\) (italics or math italics)\nvectors are in bold lower case, \\(\\mathbf{a}\\), with the exception of random variables\nall vectors are column vectors \\[\\mathbf{a}= \\left[\\begin{array}{c}\n    a_1 \\\\\n    a_2 \\\\\n    \\vdots \\\\\n    a_n\n     \\end{array} \\right]\n\\]\n\n\\(\\mathbf{1}_n\\) is a \\(n \\times 1\\) vector of all ones\n\ninner product \\(\\langle    \\mathbf{a}, \\mathbf{a}\\rangle = \\mathbf{a}^T\\mathbf{a}= \\|\\mathbf{a}\\|^2 = \\sum_{i=1}^n a_i^2\\); \\(\\langle    \\mathbf{a}, \\mathbf{b}\\rangle = \\mathbf{a}^T\\mathbf{b}\\)\nlength or norm of \\(\\mathbf{a}\\) is \\(\\|\\mathbf{a}\\|\\)"
   },
   {
-    "objectID": "resources/slides/04-BLUE.html#proof-of-cross-product",
-    "href": "resources/slides/04-BLUE.html#proof-of-cross-product",
-    "title": "Best Linear Unbiased Estimators",
-    "section": "Proof of Cross-Product",
-    "text": "Proof of Cross-Product\nLet \\(\\mathbf{D}= \\mathbf{H}\\mathbf{P}\\) and write \\[\\begin{align*}\n\\textsf{E}[(\\mathbf{H}^T(\\mathbf{Y}- \\mu))^T\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] & = \\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{H}\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] \\\\\n& = \\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})]\n\\end{align*}\\]\n\n\\[\\begin{align*}\n\\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})] = & \\textsf{E}[\\textsf{tr}(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu}))]  \\\\\n= & \\textsf{E}[\\textsf{tr}(\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T)] \\\\\n= & \\textsf{tr}(\\textsf{E}[\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T]) \\\\\n= & \\textsf{tr}(\\mathbf{D}\\textsf{E}[(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T]) \\\\\n  = & \\sigma^2 \\textsf{tr}(\\mathbf{D}\\mathbf{I}_n)\\\\\n\\end{align*}\\]\n\n\nSince \\(\\textsf{tr}(\\mathbf{D}) = \\textsf{tr}(\\mathbf{H}\\mathbf{P}) = \\textsf{tr}(\\mathbf{P}\\mathbf{H})\\) we can conclude that the cross-product term is zero.\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "objectID": "resources/slides/01-introduction.html#matrices",
+    "href": "resources/slides/01-introduction.html#matrices",
+    "title": "Introduction to STA721",
+    "section": "Matrices",
+    "text": "Matrices\n\nMatrices are represented in bold \\(\\mathbf{A}= (a_{ij})\\) \\[\\mathbf{A}= \\left[\\begin{array}{cccc}\n    a_{11} & a_{12} & \\cdots & a_{1m}  \\\\\n    a_{21} & a_{22} & \\cdots & a_{2m} \\\\\n    \\vdots & \\vdots & \\vdots & \\vdots\\\\\n    a_{n1} & a_{n2} & \\cdots & a_{nm}\n     \\end{array} \\right]\n\\]\n\nidentity matrix \\(\\mathbf{I}_n\\) square matrix with diagonal elements 1 and off diagonal 0\ntrace: if \\(\\mathbf{A}\\) is \\(n \\times m\\) \\(\\textsf{tr}(\\mathbf{A}) = \\sum_i^{\\max n,m } a_{ii}\\)\ndeterminant: for \\(\\mathbf{A}\\) is \\(n \\times n\\) then the determinant is \\(\\det(A)\\)\ninverse: if \\(\\mathbf{A}\\) is nonsingular \\(\\mathbf{A}&gt; 0\\), then its inverse is \\(\\mathbf{A}^{-1}\\)"
   },
   {
-    "objectID": "resources/slides/template.html#outline",
-    "href": "resources/slides/template.html#outline",
-    "title": "template",
+    "objectID": "resources/slides/01-introduction.html#statistical-models",
+    "href": "resources/slides/01-introduction.html#statistical-models",
+    "title": "Introduction to STA721",
+    "section": "Statistical Models",
+    "text": "Statistical Models\nOhm’s Law: \\(Y\\) is voltage across a resistor of \\(r\\) ohms and \\(X\\) is the amperes of the current through the resistor (in theory) \\[Y = rX\\]\n\nSimple linear regression for observational data \\[Y_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i \\text{  for  } i = 1,\n\\ldots, n\\]\nRewrite in vectors: \\[\\begin{eqnarray*}\n\\left[\n\\begin{array}{c}  y_1 \\\\ \\vdots \\\\  y_n \\end{array}\n\\right]   =  &\n\\left[ \\begin{array}{c}  1 \\\\ \\vdots \\\\ 1 \\end{array}  \\right]   \\beta_0 +\n\\left[ \\begin{array}{c}  x_1 \\\\ \\vdots \\\\  x_n \\end{array}\n\\right] \\beta_1 +\n\\left[ \\begin{array}{c}  \\epsilon_1 \\\\ \\vdots \\\\ \\epsilon_n  \\end{array}\n\\right]\n=  &\n\\left[ \\begin{array}{cc}  1 &  x_1 \\\\ \\vdots & \\vdots \\\\ 1 & x_n\\end{array}  \\right]\n\\left[ \\begin{array}{c}  \\beta_0  \\\\  \\beta_1 \\end{array}\n\\right] +\n\\left[ \\begin{array}{c}  \\epsilon_1 \\\\ \\vdots \\\\ \\epsilon_n  \\end{array}\n\\right] \\\\\n\\\\\n\\mathbf{Y}= & \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\n\\end{eqnarray*}\\]"
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#nonlinear-models",
+    "href": "resources/slides/01-introduction.html#nonlinear-models",
+    "title": "Introduction to STA721",
+    "section": "Nonlinear Models",
+    "text": "Nonlinear Models\nGravitational Law: \\(F = \\alpha/d^\\beta\\) where \\(d\\) is distance between 2 objects and \\(F\\) is the force of gravity between them\n\nlog transformations \\[\\log(F) = \\log(\\alpha) - \\beta \\log(d)\\]\ncompare to noisy experimental data \\(Y_i =\\log(F_i)\\) observed at \\(x_i = \\log(d_i)\\)\nwrite \\(\\mathbf{X}= [\\mathbf{1}_n \\, \\mathbf{x}]\\)\n\\(\\boldsymbol{\\beta}= (\\log(\\alpha), -\\beta)^T\\)\nmodel with additive error on log scale \\(\\mathbf{Y}= \\mathbf{X}\\boldsymbol{\\beta}+ \\mathbf{e}\\)\ntest if \\(\\beta = 2\\)\nerror assumptions?"
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#intrinsically-nonlinear-models",
+    "href": "resources/slides/01-introduction.html#intrinsically-nonlinear-models",
+    "title": "Introduction to STA721",
+    "section": "Intrinsically Nonlinear Models",
+    "text": "Intrinsically Nonlinear Models\nRegression function may be an intrinsically nonlinear function of \\(t_i\\) (time) and parameters \\(\\boldsymbol{\\theta}\\) \\[Y_i = f(t_i, \\boldsymbol{\\theta}) + \\epsilon_i\\]"
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#quadratic-linear-regression",
+    "href": "resources/slides/01-introduction.html#quadratic-linear-regression",
+    "title": "Introduction to STA721",
+    "section": "Quadratic Linear Regression",
+    "text": "Quadratic Linear Regression\nTaylor’s Theorem: \\[f(t_i, \\boldsymbol{\\theta}) = f(t_0, \\boldsymbol{\\theta}) + (t_i - t_0) f'(t_0, \\boldsymbol{\\theta}) + (t_i - t_0)^2\n\\frac{f^{''}(t_0, \\boldsymbol{\\theta})}{2}  + R(t_i, \\boldsymbol{\\theta})\\]\n\n\\[Y_i = \\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\epsilon_i \\text{  for  } i = 1, \\ldots, n\\]\n\n\nRewrite in vectors: \\[\\begin{eqnarray*}\n\\left[\n\\begin{array}{c}  y_1 \\\\ \\vdots \\\\  y_n \\end{array}\n  \\right]   =  &\n\\left[ \\begin{array}{ccc}  1 &  x_1 & x_1^2 \\\\ \\vdots & \\vdots \\\\ 1 &\n     x_n &  x_n^2\\end{array}  \\right]\n\\left[ \\begin{array}{c}  \\beta_0  \\\\  \\beta_1 \\\\ \\beta_2 \\end{array}\n\\right] +\n\\left[ \\begin{array}{c}  \\epsilon_1 \\\\ \\vdots \\\\ \\epsilon_n  \\end{array}\n\\right] \\\\\n& \\\\\n\\mathbf{Y}= & \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\n\\end{eqnarray*}\\]\n\n\nQuadratic in \\(x\\), but linear in \\(\\beta\\)’s - how do we know this model is adequate?"
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#kernel-regression-nonparametric",
+    "href": "resources/slides/01-introduction.html#kernel-regression-nonparametric",
+    "title": "Introduction to STA721",
+    "section": "Kernel Regression (NonParametric)",
+    "text": "Kernel Regression (NonParametric)\n\\[y_i =  \\beta_0 + \\sum_{j = 1}^J \\beta_j e^{-\\lambda (x_i - k_j)^d} + \\epsilon_i \\text{  for  } i = 1, \\ldots, n\\] where \\(k_j\\) are kernel locations and \\(\\lambda\\) is a smoothing parameter \\[\\begin{eqnarray*}\n\\left[\n\\begin{array}{c}  y_1 \\\\ \\vdots \\\\  y_n \\end{array}\n  \\right]   =  &\n\\left[ \\begin{array}{cccc}  1 &  e^{-\\lambda (x_1 - k_1)^d} &\n     \\ldots &  e^{-\\lambda (x_1 - k_J)^d}  \\\\\n     \\vdots & \\vdots & & \\vdots \\\\ 1 & e^{-\\lambda (x_n - k_1)^d} &  \\ldots & e^{-\\lambda (x_n - k_J)^d} \\end{array}  \\right]\n\\left[ \\begin{array}{c}  \\beta_0  \\\\  \\beta_1 \\\\\\vdots \\\\ \\beta_J \\end{array}\n\\right] +\n\\left[ \\begin{array}{c}  \\epsilon_1 \\\\ \\vdots \\\\ \\epsilon_n  \\end{array}\n\\right] \\\\\n& \\\\\n\\mathbf{Y}= & \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\n\\end{eqnarray*}\\]\n\nLinear in \\(\\beta\\) given \\(\\lambda\\) and \\(k_1, \\ldots k_J\\)\nLearn \\(\\lambda\\), \\(k_1, \\ldots k_J\\) and \\(J\\)"
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#hierarchical-models",
+    "href": "resources/slides/01-introduction.html#hierarchical-models",
+    "title": "Introduction to STA721",
+    "section": "Hierarchical Models",
+    "text": "Hierarchical Models\n\n\n\n\n\n\n\n\n\n\n\n\n\neach line represent individual sample trajectories\ncorrelation between an individual’s measurements\nsimilarities within groups\ndifferences among groups?\nallow individual regressions for each individual ?\nadd more structure?"
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#linear-regression-models",
+    "href": "resources/slides/01-introduction.html#linear-regression-models",
+    "title": "Introduction to STA721",
+    "section": "Linear Regression Models",
+    "text": "Linear Regression Models\nResponse \\(Y_i\\) and \\(p\\) predictors \\(x_{i1}, x_{i2}, \\dots x_ip\\) \\[Y_i = \\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\ldots \\beta_{p}\n  x_{ip} + \\epsilon_i\\]\n\nDesign matrix \\[\\mathbf{X}=\n\\left[\\begin{array}{cccc}\n1 & x_{11} & \\ldots & x_{1p} \\\\\n1 & x_{21}  & \\ldots & x_{2p} \\\\\n\\vdots & \\vdots  & \\vdots & \\vdots \\\\\n1 & x_{n1} & \\ldots & x_{np} \\\\\n\\end{array} \\right] = \\left[ \\begin{array}{cc}\n1 & \\mathbf{x}_1^T  \\\\\n\\vdots & \\vdots \\\\\n1 & \\mathbf{x}_n^T\n\\end{array} \\right] =\n\\left[\\begin{array}{cccc}\n\\mathbf{1}_n & \\mathbf{X}_1 & \\mathbf{X}_2 \\cdots \\mathbf{X}_p\n\\end{array} \\right]\n\\]\nmatrix version \\[\\mathbf{Y}= \\mathbf{X}\\boldsymbol{\\beta}+ \\epsilon\\] what should go into \\(\\mathbf{X}\\) and do we need all columns of \\(\\mathbf{X}\\) for inference about \\(\\mathbf{Y}\\)?"
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#linear-model",
+    "href": "resources/slides/01-introduction.html#linear-model",
+    "title": "Introduction to STA721",
+    "section": "Linear Model",
+    "text": "Linear Model\n\n\\(\\mathbf{Y}= \\mathbf{X}\\, \\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\\)\n\\(\\mathbf{Y}\\) (\\(n \\times 1\\)) vector of random response (observe \\(\\mathbf{y}\\)); \\(\\mathbf{Y}, \\mathbf{y}\\in \\mathbb{R}^n\\)\n\\(\\mathbf{X}\\) (\\(n \\times p\\)) design matrix (observe)\n\\(\\boldsymbol{\\beta}\\) (\\(p \\times 1\\)) vector of coefficients (unknown)\n\\(\\boldsymbol{\\epsilon}\\) (\\(n \\times 1\\)) vector of “errors” (unobservable)\n\n\nGoals:\n\nWhat goes into \\(\\mathbf{X}\\)? (model building, model selection - post-selection inference?)\nWhat if multiple models are “good”? (model averaging or ensembles) \nWhat about the future? (Prediction)\nUncertainty Quantification - assumptions about \\(\\boldsymbol{\\epsilon}\\)\n\n\n\nAll models are wrong, but some may be useful (George Box)"
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#ordinary-least-squares",
+    "href": "resources/slides/01-introduction.html#ordinary-least-squares",
+    "title": "Introduction to STA721",
+    "section": "Ordinary Least Squares",
+    "text": "Ordinary Least Squares\nGoal: Find the best fitting “line” or “hyper-plane” that minimizes \\[\\sum_i  (Y_i - \\mathbf{x}_i^T \\boldsymbol{\\beta})^2 = (\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta})^T(\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}) = \\| \\mathbf{Y}-\n\\mathbf{X}\\boldsymbol{\\beta}\\|^2 \\]\n\nOptimization problem - seek \\(\\boldsymbol{\\beta}\\ni \\mathbf{X}\\boldsymbol{\\beta}\\) is close to \\(\\mathbf{Y}\\) in squared error\nMay over-fit \\(\\Rightarrow\\) add other criteria that provide a penalty Penalized Least Squares\nRobustness to extreme points \\(\\Rightarrow\\) replace quadratic loss with other functions\n\nno notion of uncertainty of estimates\n\nno structure of problem (repeated measures on individual, randomization restrictions, etc)\n\n\nNeed Distribution Assumptions of \\(\\mathbf{Y}\\) (or \\(\\boldsymbol{\\epsilon}\\)) for testing and uncertainty measures \\(\\Rightarrow\\) Likelihood and Bayesian inference"
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#random-vectors",
+    "href": "resources/slides/01-introduction.html#random-vectors",
+    "title": "Introduction to STA721",
+    "section": "Random Vectors",
+    "text": "Random Vectors\n\nLet \\(Y_1, \\ldots Y_n\\) be random variables in \\(\\mathbb{R}\\) Then \\[\\mathbf{Y}\\equiv\n\\left[ \\begin{array}{c}\nY_1 \\\\\n\\vdots \\\\\nY_n\n\\end{array} \\right]\\] is a random vector in \\(\\mathbb{R}^n\\)\nExpectations of random vectors are defined element-wise: \\[\\textsf{E}[\\mathbf{Y}] \\equiv\n\\textsf{E}\\left[ \\begin{array}{c}\nY_1 \\\\\n\\vdots \\\\\nY_n\n\\end{array} \\right] \\equiv\n\\left[ \\begin{array}{c}\n\\textsf{E}[Y_1] \\\\\n\\vdots \\\\\n\\textsf{E}[Y_n]\n\\end{array} \\right] =\n\\left[ \\begin{array}{c}\n\\mu_1 \\\\\n\\vdots \\\\\n\\mu_n\n\\end{array} \\right]\n\\equiv \\boldsymbol{\\mu}\\in \\mathbb{R}^n\n\\] where mean or expected value \\(\\textsf{E}[Y_i] = \\mu_i\\)"
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#model-space",
+    "href": "resources/slides/01-introduction.html#model-space",
+    "title": "Introduction to STA721",
+    "section": "Model Space",
+    "text": "Model Space\nWe will work with inner product spaces: a vector spaces, say \\(\\mathbb{R}^n\\) equipped with an inner product \\(\\langle \\mathbf{x},\\mathbf{y}\\rangle \\equiv \\mathbf{x}^T\\mathbf{y}, \\quad \\mathbf{x}, \\mathbf{y}\\in \\mathbb{R}^n\\)\n\n\nDefinition: SubspaceA set \\(\\boldsymbol{{\\cal M}}\\) is a subspace of \\(\\mathbb{R}^n\\) if is a subset of \\(\\mathbb{R}^n\\) and also a vector space.\nThat is, if \\(\\mathbf{x}_1 \\in \\boldsymbol{{\\cal M}}\\) and \\(\\mathbf{x}_2 \\in \\boldsymbol{{\\cal M}}\\), then \\(b_1\\mathbf{x}_1 + b_2 \\mathbf{x}_2 \\in \\boldsymbol{{\\cal M}}\\) for all \\(b_1, b_2 \\in \\mathbb{R}\\)\n\n\n\n\n\nDefinition: Column SpaceThe column space of \\(\\mathbf{X}\\) is \\(C(\\mathbf{X}) = \\mathbf{X}\\boldsymbol{\\beta}\\) for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\)\n\n\n\n\nIf \\(\\mathbf{X}\\) is full column rank, then the columns of \\(\\mathbf{X}\\) form a basis for \\(C(\\mathbf{X})\\) and \\(C(\\mathbf{X})\\) is a p-dimensional subspace of \\(\\mathbb{R}^n\\)\n\n\nIf we have just a single model matrix \\(\\mathbf{X}\\), then the subspace \\(\\boldsymbol{{\\cal M}}\\) is the model space."
+  },
+  {
+    "objectID": "resources/slides/01-introduction.html#philosophy",
+    "href": "resources/slides/01-introduction.html#philosophy",
+    "title": "Introduction to STA721",
+    "section": "Philosophy",
+    "text": "Philosophy\n\nfor many problems frequentist and Bayesian methods will give similar answers (more a matter of taste in interpretation)\n\nFor small problems, Bayesian methods allow us to incorporate prior information which provides better calibrated answers\n\nfor problems with complex designs and/or missing data Bayesian methods are often easier to implement (do not need to rely on asymptotics) \n\nFor problems involving hypothesis testing or model selection frequentist and Bayesian methods can be strikingly different.\n\nFrequentist methods often faster (particularly with “big data”) so great for exploratory analysis and for building a “data-sense”\n\nBayesian methods sit on top of Frequentist Likelihood\n\nGoemetric perspective important in both!\n\n\nImportant to understand advantages and problems of each perspective!\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#outline",
+    "href": "resources/slides/02-mles.html#outline",
+    "title": "Maximum Likelihood Estimation",
     "section": "Outline",
-    "text": "Outline\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Outline\n\nLikelihood Function\nProjections\nMaximum Likelihood Estimates\n\n\nReadings: Christensen Chapter 1-2, Appendix A, and Appendix B"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#normal-model",
+    "href": "resources/slides/02-mles.html#normal-model",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Normal Model",
+    "text": "Normal Model\nTake an random vector \\(\\mathbf{Y}\\in \\mathbb{R}^n\\) which is observable and decompose\n\\[ \\mathbf{Y}= \\boldsymbol{\\mu}+ \\boldsymbol{\\epsilon}\\]\n\n\\(\\boldsymbol{\\mu}\\in \\mathbb{R}^n\\) (unknown, fixed)\n\n\\(\\boldsymbol{\\epsilon}\\in \\mathbb{R}^n\\) unobservable error vector (random)\n\n\nUsual assumptions?\n\n\\(E[\\epsilon_i] = 0 \\ \\forall i \\Leftrightarrow \\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}\\) \\(\\quad \\Rightarrow \\textsf{E}[\\mathbf{Y}] = \\boldsymbol{\\mu}\\) (mean vector)\n\\(\\epsilon_i\\) independent with \\(\\textsf{Var}(\\epsilon_i) = \\sigma^2\\) and \\(\\textsf{Cov}(\\epsilon_i, \\epsilon_j) = 0\\)\nMatrix version \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] \\equiv \\left[ (\\textsf{E}\\left[(\\epsilon_i -\\textsf{E}[\\epsilon_i])(\\epsilon_j - \\textsf{E}[\\epsilon_j])\\right]\\right]_{ij} = \\sigma^2 \\mathbf{I}_n\n\\quad \\Rightarrow \\textsf{Cov}[\\mathbf{Y}] = \\sigma^2 \\mathbf{I}_n\\) (errors are uncorrelated)\n\\(\\boldsymbol{\\epsilon}_i \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(0, \\sigma^2)\\) implies that \\(Y_i \\mathrel{\\mathop{\\sim}\\limits^{\\rm ind}}\\textsf{N}(\\mu_i, \\sigma^2)\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#likelihood-function",
+    "href": "resources/slides/02-mles.html#likelihood-function",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Likelihood Function",
+    "text": "Likelihood Function\nThe likelihood function for \\(\\boldsymbol{\\mu}, \\sigma^2\\) is proportional to the sampling distribution of the data\n\\[\\begin{eqnarray*}\n{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) & \\propto & \\prod_{i = 1}^n \\frac{1}{\\sqrt{(2 \\pi\n                                 \\sigma^2)}} \\exp{- \\frac{1}{2}\n                                 \\left\\{ \\frac{( Y_i\n                                 - \\mu_i)^2}{\\sigma^2} \\right\\}}\n                                 \\\\\n& \\propto & ({2 \\pi} \\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2  \\frac{ \\sum_i(Y_i - \\mu_i)^2 )}{\\sigma^2}\n\\right\\}}   \\\\\n   & \\propto & (\\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}} \\\\\n  & \\propto &  (2 \\pi)^{-n/2}\n| \\mathbf{I}_n\\sigma^2|^{-1/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}}  \n\\end{eqnarray*}\\]\n\nLast line is the density of \\(\\mathbf{Y}\\sim \\textsf{N}_n\\left(\\boldsymbol{\\mu}, \\sigma^2 \\mathbf{I}_n\\right)\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#mles",
+    "href": "resources/slides/02-mles.html#mles",
+    "title": "Maximum Likelihood Estimation",
+    "section": "MLEs",
+    "text": "MLEs\nFind values of \\(\\hat{\\boldsymbol{\\mu}}\\) and \\({\\hat{\\sigma}}^2\\) that maximize the likelihood \\({\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)\\) for \\(\\boldsymbol{\\mu}\\in \\mathbb{R}^n\\) and \\(\\sigma^2 \\in \\mathbb{R}^+\\) \\[\\begin{eqnarray*}\n{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)\n    & \\propto & (\\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}} \\\\\n\\log({\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) )\n   & \\propto & -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\\\\n\\end{eqnarray*}\\] or equivalently the log likelihood\n\nClearly, \\(\\hat{\\boldsymbol{\\mu}}= \\mathbf{Y}\\) but \\({\\hat{\\sigma}}^2= 0\\) is outside the parameter space\nIf \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}\\), can show that \\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{Y}\\) is the MLE/OLS estimator of \\(\\boldsymbol{\\beta}\\) and \\(\\hat{\\boldsymbol{\\mu}}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\) if \\(\\mathbf{X}\\) is full column rank.\nshow via projections"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#projections",
+    "href": "resources/slides/02-mles.html#projections",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Projections",
+    "text": "Projections\ntake any point \\(\\mathbf{y}\\in \\mathbb{R}^n\\) and “project” it onto \\(C(\\mathbf{X}) = \\boldsymbol{{\\cal M}}\\)\n\nany point already in \\(\\boldsymbol{{\\cal M}}\\) stays the same\nso if \\(\\mathbf{P}_\\mathbf{X}\\) is a projection onto the column space of \\(\\mathbf{X}\\) then for \\(\\mathbf{m}\\in C(\\mathbf{X})\\) \\(\\mathbf{P}_\\mathbf{X}\\mathbf{m}= \\mathbf{m}\\)\n\\(\\mathbf{P}_\\mathbf{X}\\) is a linear transformation from \\(\\mathbb{R}^n \\to \\mathbb{R}^n\\)\nmaps vectors in \\(\\mathbb{R}^n\\) into \\(C(\\mathbf{X})\\)\nif \\(\\mathbf{z}\\in \\mathbb{R}^n\\) then \\(\\mathbf{P}_\\mathbf{X}\\mathbf{z}= \\mathbf{X}\\mathbf{a}\\in C(\\mathbf{X})\\) for some \\(\\mathbf{a}\\in \\mathbb{R}^p\\)\n\n\n\n\n\n\n\n\nExample\n\n\nFor \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\), rank \\(p\\), \\(\\mathbf{P}_\\mathbf{X}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}\\) is a projection onto the \\(p\\) dimensional subspace \\(\\boldsymbol{{\\cal M}}= C(\\mathbf{X})\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#idempotent-matrix",
+    "href": "resources/slides/02-mles.html#idempotent-matrix",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Idempotent Matrix",
+    "text": "Idempotent Matrix\nWhat if we project a projection?\n\n\\(\\mathbf{P}_\\mathbf{X}\\mathbf{z}= \\mathbf{X}\\mathbf{a}\\in C(\\mathbf{X})\\)\n\\(\\mathbf{P}_\\mathbf{X}\\mathbf{X}\\mathbf{a}= \\mathbf{X}\\mathbf{a}\\)\nsince \\(\\mathbf{P}_\\mathbf{X}^2 \\mathbf{z}=  \\mathbf{P}_\\mathbf{X}\\mathbf{z}\\) for all \\(\\mathbf{z}\\in \\mathbb{R}^n\\) we have \\(\\mathbf{P}_\\mathbf{X}^2 = \\mathbf{P}_\\mathbf{X}\\)\n\n\n\nDefinition: ProjectionFor a matrix \\(\\mathbf{P}\\) in \\(\\mathbb{R}^{n \\times n}\\) is a projection matrix if \\(\\mathbf{P}^2 = \\mathbf{P}\\). That is all projections \\(\\mathbf{P}\\) are idempotent matrix.\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\nFor \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\), rank \\(p\\), if \\(\\mathbf{P}_\\mathbf{X}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}\\) use the definition to show that it is a projection onto the \\(p\\) dimensional subspace \\(\\boldsymbol{{\\cal M}}= C(\\mathbf{X})\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#null-space",
+    "href": "resources/slides/02-mles.html#null-space",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Null Space",
+    "text": "Null Space\n\nDefinition: Orthogonal ComplementThe set of all vectors that are orthogonal to a given subspace \\(\\boldsymbol{{\\cal M}}\\) is called the orthogonal complement of the subspace denoted as \\(\\boldsymbol{{\\cal M}}^\\perp\\). Under the usual inner product, \\(\\boldsymbol{{\\cal M}}^\\perp \\equiv \\{\\mathbf{n}\\in \\mathbb{R}^n \\ni \\mathbf{m}^T\\mathbf{n}= 0 {\\text{ for }} \\mathbf{m}\\in \\boldsymbol{{\\cal M}}\\}\\)\n\n\n\n\nDefinition: Null SpaceFor a matrix \\(\\mathbf{A}\\), the null space of \\(\\mathbf{A}\\) is defined as \\(N(\\mathbf{A}) = \\{\\mathbf{n}\\ni \\mathbf{A}\\mathbf{n}= \\mathbf{0}\\}\\)\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\nShow that \\(C(\\mathbf{X})^\\perp\\) (the orthogonal complement of \\(C(\\mathbf{X})\\)) is the null space of \\(\\mathbf{X}^T\\), \\(\\, N(\\mathbf{X}^T)\\)."
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#orthogonal-projection",
+    "href": "resources/slides/02-mles.html#orthogonal-projection",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Orthogonal Projection",
+    "text": "Orthogonal Projection\n\nDefinition: Orthogonal ProjectionsFor a vector space \\({\\cal V}\\) with an inner product \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle\\) for \\(\\mathbf{x}, \\mathbf{y}\\in {\\cal V}\\), \\(\\mathbf{x}\\) and \\(\\mathbf{y}\\) are orthogonal if \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle = 0\\). A projection \\(\\mathbf{P}\\) is an orthogonal projection onto a subspace \\(\\boldsymbol{{\\cal M}}\\) of \\({\\cal V}\\) if for any \\(\\mathbf{m}\\in {\\cal V}\\), \\(\\mathbf{P}\\mathbf{m}= \\mathbf{m}\\) and for any \\(\\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\), \\(\\mathbf{P}\\mathbf{n}= \\mathbf{0}\\).\nThe null space of \\(\\mathbf{P}\\) is the orthogonal complement of \\(\\boldsymbol{{\\cal M}}\\)\n\n\n\nFor \\(\\mathbb{R}^N\\) with the inner product, \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle = \\mathbf{x}^T\\mathbf{y}\\), \\(\\mathbf{P}\\) is an orthogonal projection onto \\(\\boldsymbol{{\\cal M}}\\) if \\(\\mathbf{P}\\) is a projection (\\(\\mathbf{P}^2 = \\mathbf{P}\\)) and it is symmetric (\\(\\mathbf{P}= \\mathbf{P}^T\\))\n\n\n\n\n\n\n\n\nExercise\n\n\nShow that \\(\\mathbf{P}_\\mathbf{X}\\) is an orthogonal projection on \\(C(\\mathbf{X})\\)."
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#decompsition",
+    "href": "resources/slides/02-mles.html#decompsition",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Decompsition",
+    "text": "Decompsition\n\nFor any \\(\\mathbf{y}\\in \\mathbb{R}^n\\), we can write it uniquely as a vector \\[ \\mathbf{y}= \\mathbf{m}+ \\mathbf{n}, \\quad \\mathbf{m}\\in \\boldsymbol{{\\cal M}}\\quad \\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\]\nwrite \\(\\mathbf{y}= \\mathbf{P}\\mathbf{y}+ (\\mathbf{y}- \\mathbf{P}\\mathbf{y}) = \\mathbf{P}\\mathbf{y}+ (\\mathbf{I}- \\mathbf{P})\\mathbf{y}\\)\nclaim that if \\(\\mathbf{P}\\) is an orthogonal projection, \\((\\mathbf{I}- \\mathbf{P})\\) is an orthogonal projection onto \\(\\boldsymbol{{\\cal M}}^\\perp\\)\nif \\(\\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\), then \\((\\mathbf{I}- \\mathbf{P})\\mathbf{n}= \\mathbf{n}- \\mathbf{P}\\mathbf{n}= \\mathbf{n}\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#back-to-mles",
+    "href": "resources/slides/02-mles.html#back-to-mles",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Back to MLEs",
+    "text": "Back to MLEs\n\n\\(\\mathbf{Y}\\sim \\textsf{N}(\\boldsymbol{\\mu}, \\sigma^2 \\mathbf{I}_n)\\) with \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}\\) and \\(\\mathbf{X}\\) full column rank\nClaim: Maximum Likelihood Estimator (MLE) of \\(\\boldsymbol{\\mu}\\) is \\(\\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\)\nLog Likelihood: \\[ \\log {\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) =\n-\\frac{n}{2} \\log(\\sigma^2)\n- \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\]\nDecompose \\(\\mathbf{Y}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}+ (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\)\n\nUse \\(\\mathbf{P}_\\mathbf{X}\\boldsymbol{\\mu}= \\boldsymbol{\\mu}\\)\n\nSimplify \\(\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#expand",
+    "href": "resources/slides/02-mles.html#expand",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Expand",
+    "text": "Expand\n\\[\\begin{eqnarray*}\n    \\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 & = & \\|  { (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}+ \\mathbf{P}_x \\mathbf{Y}} -\n    \\boldsymbol{\\mu}\\|^2  \\\\\n  & = & \\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}+ \\mathbf{P}_x \\mathbf{Y}- {\\mathbf{P}_\\mathbf{X}}\\boldsymbol{\\mu}\\|^2  \\\\\n  & = & {\\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})}\\mathbf{Y}+  {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu})\n  \\|^2 \\\\\n& = & {\\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2} +  {\\|\n   {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu}) \\|^2}  + {\\small{2 (\\mathbf{Y}-\n\\boldsymbol{\\mu})^T \\mathbf{P}_\\mathbf{X}^T (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}}\\\\\n& = & \\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2 +  \\| {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu}) \\|^2 + {0}\n\\\\\n& = & \\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2 +  \\| {\\mathbf{P}_\\mathbf{X}}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2\n  \\end{eqnarray*}\\]\n\nCrossproduct term is zero: \\[\\begin{eqnarray*}\n  \\mathbf{P}_\\mathbf{X}^T (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) & = &  \\mathbf{P}_\\mathbf{X}(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})  \\\\\n  & = &  \\mathbf{P}_\\mathbf{X}- \\mathbf{P}_\\mathbf{X}\\mathbf{P}_\\mathbf{X}\\\\\n& = &  \\mathbf{P}_\\mathbf{X}- \\mathbf{P}_\\mathbf{X}\\\\\n& = & \\mathbf{0}\n\\end{eqnarray*}\\]"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#log-likelihood",
+    "href": "resources/slides/02-mles.html#log-likelihood",
+    "title": "Maximum Likelihood Estimation",
+    "section": "Log Likelihood",
+    "text": "Log Likelihood\nSubstitute decomposition into log likelihood \\[\\begin{eqnarray*}\n\\log {\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)  & = &\n-\\frac{n}{2} \\log(\\sigma^2) - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}  \\\\\n  & = & -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 } {\\sigma^2} \\right)   \\\\\n& = &  \\underbrace { -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2  \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} }  +  \\underbrace{- \\frac 1 2  \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}-\n  \\boldsymbol{\\mu}\\|^2 } {\\sigma^2}}   \\\\\n& = &  \\text{ constant with respect to } \\boldsymbol{\\mu}\\qquad  \\leq 0\n\\end{eqnarray*}\\]\n\nMaximize with respect to \\(\\boldsymbol{\\mu}\\) for each \\(\\sigma^2\\)\nRHS is largest when \\(\\boldsymbol{\\mu}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\) for any choice of \\(\\sigma^2\\) \\[\\therefore \\quad \\hat{\\boldsymbol{\\mu}}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\] is the MLE of \\(\\boldsymbol{\\mu}\\) (fitted values \\(\\hat{\\mathbf{Y}}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\))"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#mle-of-boldsymbolbeta",
+    "href": "resources/slides/02-mles.html#mle-of-boldsymbolbeta",
+    "title": "Maximum Likelihood Estimation",
+    "section": "MLE of \\(\\boldsymbol{\\beta}\\)",
+    "text": "MLE of \\(\\boldsymbol{\\beta}\\)\n\\[{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)   =  -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 } {\\sigma^2} \\right)\\]\n\nRewrite as likeloood function for \\(\\boldsymbol{\\beta}, \\sigma^2\\): \\[{\\cal{L}}(\\boldsymbol{\\beta}, \\sigma^2 )  =  -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2 } {\\sigma^2}\n\\right)\\]\n\n\n\nSimilar argument to show that RHS is maximized by minimizing \\[\\| \\mathbf{P}_\\mathbf{X}\n\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2\\] \nTherefore \\(\\hat{\\boldsymbol{\\beta}}\\) is a MLE of \\(\\boldsymbol{\\beta}\\) if and only if satisfies \\[\\mathbf{P}_\\mathbf{X}\\mathbf{Y}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\]\nIf \\(\\mathbf{X}^T\\mathbf{X}\\) is full rank, the MLE of \\(\\boldsymbol{\\beta}\\) is \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{Y}= \\hat{\\boldsymbol{\\beta}}\\)"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#mle-of-sigma2",
+    "href": "resources/slides/02-mles.html#mle-of-sigma2",
+    "title": "Maximum Likelihood Estimation",
+    "section": "MLE of \\(\\sigma^2\\)",
+    "text": "MLE of \\(\\sigma^2\\)\n\nPlug-in MLE of \\(\\hat{\\boldsymbol{\\mu}}\\) for \\(\\boldsymbol{\\mu}\\) \\[ \\log {\\cal{L}}(\\hat{\\boldsymbol{\\mu}}, \\sigma^2)  =   -\\frac{n}{2} \\log \\sigma^2 - \\frac 1 2\n\\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2  }{\\sigma^2}\\]\nDifferentiate with respect to \\(\\sigma^2\\) \\[\\frac{\\partial \\, \\log {\\cal{L}}(\\hat{\\boldsymbol{\\mu}}, \\sigma^2)}{\\partial \\, \\sigma^2} =  -\\frac{n}{2} \\frac{1}{\\sigma^2}  +  \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\left(\\frac{1}{\\sigma^2}\\right)^2 \\]\nSet derivative to zero and solve for MLE \\[\\begin{eqnarray*}\n0 & = &  -\\frac{n}{2} \\frac{1}{{\\hat{\\sigma}}^2}  +  \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\left(\\frac{1}{{\\hat{\\sigma}}^2}\\right)^2  \\\\\n\\frac{n}{2} {\\hat{\\sigma}}^2& = & \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\\\\n{\\hat{\\sigma}}^2& = & \\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2}{n}\n\\end{eqnarray*}\\]"
+  },
+  {
+    "objectID": "resources/slides/02-mles.html#mle-estimate-of-sigma2",
+    "href": "resources/slides/02-mles.html#mle-estimate-of-sigma2",
+    "title": "Maximum Likelihood Estimation",
+    "section": "MLE Estimate of \\(\\sigma^2\\)",
+    "text": "MLE Estimate of \\(\\sigma^2\\)\nMaximum Likelihood Estimate of \\(\\sigma^2\\) \\[\\begin{eqnarray*}\n    {\\hat{\\sigma}}^2& = & \\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2}{n} \\\\\n      & = & \\frac{\\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})^T(\\mathbf{I}-\\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{ \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{\\mathbf{e}^T\\mathbf{e}} {n}\n  \\end{eqnarray*}\\] where \\(\\mathbf{e}= (\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\\mathbf{Y}\\) are the residuals from the regression of \\(\\mathbf{Y}\\) on \\(\\mathbf{X}\\)\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+  },
+  {
+    "objectID": "resources/slides/list-of-mathstuff.html",
+    "href": "resources/slides/list-of-mathstuff.html",
+    "title": "STA721-F24: Linear Models",
+    "section": "",
+    "text": "Definition: Linear Unbiased Estimators (LUEs)\nTheorem\nDefinition: Loewner Ordering\nTheorem: Gauss-Markov\nTheorem: Gauss-Markov Theorem (Classic)\nProof"
   },
   {
     "objectID": "resources/slides/03-non-full-rank.html#outline",
@@ -322,312 +448,193 @@
     "text": "Linear Unbiased Estimation\n\n\n\n\n\n\n\nExercise\n\n\n\nExplain why an estimator that is unbiased for the model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{k+1}\\) is unbiased for the model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{k}\\) .\nFind an estimator that is unbiased for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{1}\\) that but is biased for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{2}\\).\n\n\n\n\n\n\nRestrict attention to linear unbiased estimators\n\n\n\nDefinition: Linear Unbiased Estimators (LUEs)\nAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is a Linear Unbiased Estimator (LUE) of \\(\\boldsymbol{\\beta}\\) if\n\nlinearity: \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\) for \\(\\mathbf{A}\\in \\mathbb{R}^{p \\times n}\\)\nunbiasedness: \\(\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\) for all \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\)\n\n\n\n\n\n\nAre there other LUEs besides the OLS/MLE estimator?\nWhich is “best”? (and in what sense?)\n\n\n\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
-    "objectID": "resources/slides/list-of-mathstuff.html",
-    "href": "resources/slides/list-of-mathstuff.html",
-    "title": "STA721-F24: Linear Models",
-    "section": "",
-    "text": "Definition: Linear Unbiased Estimators (LUEs)\nTheorem\nDefinition: Loewner Ordering\nTheorem: Gauss-Markov\nTheorem: Gauss-Markov Theorem (Classic)\nProof"
-  },
-  {
-    "objectID": "resources/slides/02-mles.html#outline",
-    "href": "resources/slides/02-mles.html#outline",
-    "title": "Maximum Likelihood Estimation",
+    "objectID": "resources/slides/template.html#outline",
+    "href": "resources/slides/template.html#outline",
+    "title": "template",
     "section": "Outline",
-    "text": "Outline\n\nLikelihood Function\nProjections\nMaximum Likelihood Estimates\n\n\nReadings: Christensen Chapter 1-2, Appendix A, and Appendix B"
+    "text": "Outline\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
-    "objectID": "resources/slides/02-mles.html#normal-model",
-    "href": "resources/slides/02-mles.html#normal-model",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Normal Model",
-    "text": "Normal Model\nTake an random vector \\(\\mathbf{Y}\\in \\mathbb{R}^n\\) which is observable and decompose\n\\[ \\mathbf{Y}= \\boldsymbol{\\mu}+ \\boldsymbol{\\epsilon}\\]\n\n\\(\\boldsymbol{\\mu}\\in \\mathbb{R}^n\\) (unknown, fixed)\n\n\\(\\boldsymbol{\\epsilon}\\in \\mathbb{R}^n\\) unobservable error vector (random)\n\n\nUsual assumptions?\n\n\\(E[\\epsilon_i] = 0 \\ \\forall i \\Leftrightarrow \\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}\\) \\(\\quad \\Rightarrow \\textsf{E}[\\mathbf{Y}] = \\boldsymbol{\\mu}\\) (mean vector)\n\\(\\epsilon_i\\) independent with \\(\\textsf{Var}(\\epsilon_i) = \\sigma^2\\) and \\(\\textsf{Cov}(\\epsilon_i, \\epsilon_j) = 0\\)\nMatrix version \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] \\equiv \\left[ (\\textsf{E}\\left[(\\epsilon_i -\\textsf{E}[\\epsilon_i])(\\epsilon_j - \\textsf{E}[\\epsilon_j])\\right]\\right]_{ij} = \\sigma^2 \\mathbf{I}_n\n\\quad \\Rightarrow \\textsf{Cov}[\\mathbf{Y}] = \\sigma^2 \\mathbf{I}_n\\) (errors are uncorrelated)\n\\(\\boldsymbol{\\epsilon}_i \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(0, \\sigma^2)\\) implies that \\(Y_i \\mathrel{\\mathop{\\sim}\\limits^{\\rm ind}}\\textsf{N}(\\mu_i, \\sigma^2)\\)"
+    "objectID": "resources/slides/04-BLUE.html#outline",
+    "href": "resources/slides/04-BLUE.html#outline",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Outline",
+    "text": "Outline\n\nCharacterizing Linear Unbiased Estimators\nGauss-Markov Theorem\nBest Linear Unbiased Estimators\n\n\nReadings: - Christensen Chapter 1-2 and Appendix B - Seber & Lee Chapter 3"
   },
   {
-    "objectID": "resources/slides/02-mles.html#likelihood-function",
-    "href": "resources/slides/02-mles.html#likelihood-function",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Likelihood Function",
-    "text": "Likelihood Function\nThe likelihood function for \\(\\boldsymbol{\\mu}, \\sigma^2\\) is proportional to the sampling distribution of the data\n\\[\\begin{eqnarray*}\n{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) & \\propto & \\prod_{i = 1}^n \\frac{1}{\\sqrt{(2 \\pi\n                                 \\sigma^2)}} \\exp{- \\frac{1}{2}\n                                 \\left\\{ \\frac{( Y_i\n                                 - \\mu_i)^2}{\\sigma^2} \\right\\}}\n                                 \\\\\n& \\propto & ({2 \\pi} \\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2  \\frac{ \\sum_i(Y_i - \\mu_i)^2 )}{\\sigma^2}\n\\right\\}}   \\\\\n   & \\propto & (\\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}} \\\\\n  & \\propto &  (2 \\pi)^{-n/2}\n| \\mathbf{I}_n\\sigma^2|^{-1/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}}  \n\\end{eqnarray*}\\]\n\nLast line is the density of \\(\\mathbf{Y}\\sim \\textsf{N}_n\\left(\\boldsymbol{\\mu}, \\sigma^2 \\mathbf{I}_n\\right)\\)"
+    "objectID": "resources/slides/04-BLUE.html#full-rank-case",
+    "href": "resources/slides/04-BLUE.html#full-rank-case",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Full Rank Case",
+    "text": "Full Rank Case\n\nModel: \\(\\mathbf{Y}= \\boldsymbol{\\mu}+ \\boldsymbol{\\epsilon}\\)\nMinimal Assumptions:\n\nMean \\(\\boldsymbol{\\mu}\\in C(\\mathbf{X})\\) for \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\)\nErrors \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\)\n\n\n\n\nDefinition: Linear Unbiased Estimators (LUEs)\nAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is a Linear Unbiased Estimator (LUE) of \\(\\boldsymbol{\\beta}\\) if\n\nlinearity: \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\) for \\(\\mathbf{A}\\in \\mathbb{R}^{p \\times n}\\)\nunbiasedness: \\(\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\) for all \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\)\n\n\n\n\n\nThe class of linear unbiased estimators is the same for every model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in \\cal{P}\\), for any collection \\(\\cal{P}\\) of mean-zero distributions over \\(\\mathbb{R}^n\\)."
   },
   {
-    "objectID": "resources/slides/02-mles.html#mles",
-    "href": "resources/slides/02-mles.html#mles",
-    "title": "Maximum Likelihood Estimation",
-    "section": "MLEs",
-    "text": "MLEs\nFind values of \\(\\hat{\\boldsymbol{\\mu}}\\) and \\({\\hat{\\sigma}}^2\\) that maximize the likelihood \\({\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)\\) for \\(\\boldsymbol{\\mu}\\in \\mathbb{R}^n\\) and \\(\\sigma^2 \\in \\mathbb{R}^+\\) \\[\\begin{eqnarray*}\n{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)\n    & \\propto & (\\sigma^2)^{-n/2}\n\\exp{\\left\\{ - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\right\\}} \\\\\n\\log({\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) )\n   & \\propto & -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\\\\n\\end{eqnarray*}\\] or equivalently the log likelihood\n\nClearly, \\(\\hat{\\boldsymbol{\\mu}}= \\mathbf{Y}\\) but \\({\\hat{\\sigma}}^2= 0\\) is outside the parameter space\nIf \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}\\), can show that \\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{Y}\\) is the MLE/OLS estimator of \\(\\boldsymbol{\\beta}\\) and \\(\\hat{\\boldsymbol{\\mu}}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\) if \\(\\mathbf{X}\\) is full column rank.\nshow via projections"
+    "objectID": "resources/slides/04-BLUE.html#linear-unbiased-estimators-lues-1",
+    "href": "resources/slides/04-BLUE.html#linear-unbiased-estimators-lues-1",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Linear Unbiased Estimators (LUEs)",
+    "text": "Linear Unbiased Estimators (LUEs)\n\nLet \\(\\textsf{N}\\) be an ONB for \\(\\boldsymbol{{\\cal N}}= \\boldsymbol{{\\cal M}}^\\perp = N(\\mathbf{X}^T)\\):\n\n\\(\\textsf{N}^T\\mathbf{m}=  \\textsf{N}^T\\mathbf{X}\\mathbf{b}= \\mathbf{0}\\quad \\forall \\mathbf{m}=\\mathbf{X}\\mathbf{b}\\in \\boldsymbol{{\\cal M}}\\)\n\\(\\textsf{N}^T\\textsf{N}= \\mathbf{I}_{n-p}\\)\n\n\n\nConsider another linear estimator \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\)\n\nDifference between \\(\\tilde{\\boldsymbol{\\beta}}\\) and \\(\\hat{\\boldsymbol{\\beta}}\\) (OLS/MLE): \\[\\begin{align*}\n  \\mathbf{\\delta}= \\tilde{\\boldsymbol{\\beta}}- \\hat{\\boldsymbol{\\beta}}& = \\left(\\mathbf{A}- (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T \\right)\\mathbf{Y}\\\\\n                  & \\equiv \\mathbf{H}^T \\mathbf{Y}\n\\end{align*}\\]\nSince both \\(\\tilde{\\boldsymbol{\\beta}}\\) and \\(\\hat{\\boldsymbol{\\beta}}\\) are unbiased, \\(\\textsf{E}[\\mathbf{\\delta}] = \\mathbf{0}_p \\quad \\forall \\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) \\[\\mathbf{0}_p = \\textsf{E}[\\mathbf{H}^T \\mathbf{Y}] = \\mathbf{H}^T \\mathbf{X}\\boldsymbol{\\beta}\\quad \\forall \\boldsymbol{\\beta}\\in \\mathbb{R}^p\\]\n\\(\\mathbf{X}^T \\mathbf{H}= \\mathbf{0}\\) so each column of \\(\\mathbf{H}\\) is in \\(\\boldsymbol{{\\cal M}}^\\perp \\equiv \\boldsymbol{{\\cal N}}\\)"
   },
   {
-    "objectID": "resources/slides/02-mles.html#projections",
-    "href": "resources/slides/02-mles.html#projections",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Projections",
-    "text": "Projections\ntake any point \\(\\mathbf{y}\\in \\mathbb{R}^n\\) and “project” it onto \\(C(\\mathbf{X}) = \\boldsymbol{{\\cal M}}\\)\n\nany point already in \\(\\boldsymbol{{\\cal M}}\\) stays the same\nso if \\(\\mathbf{P}_\\mathbf{X}\\) is a projection onto the column space of \\(\\mathbf{X}\\) then for \\(\\mathbf{m}\\in C(\\mathbf{X})\\) \\(\\mathbf{P}_\\mathbf{X}\\mathbf{m}= \\mathbf{m}\\)\n\\(\\mathbf{P}_\\mathbf{X}\\) is a linear transformation from \\(\\mathbb{R}^n \\to \\mathbb{R}^n\\)\nmaps vectors in \\(\\mathbb{R}^n\\) into \\(C(\\mathbf{X})\\)\nif \\(\\mathbf{z}\\in \\mathbb{R}^n\\) then \\(\\mathbf{P}_\\mathbf{X}\\mathbf{z}= \\mathbf{X}\\mathbf{a}\\in C(\\mathbf{X})\\) for some \\(\\mathbf{a}\\in \\mathbb{R}^p\\)\n\n\n\n\n\n\n\n\nExample\n\n\nFor \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\), rank \\(p\\), \\(\\mathbf{P}_\\mathbf{X}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}\\) is a projection onto the \\(p\\) dimensional subspace \\(\\boldsymbol{{\\cal M}}= C(\\mathbf{X})\\)"
+    "objectID": "resources/slides/04-BLUE.html#lues-continued",
+    "href": "resources/slides/04-BLUE.html#lues-continued",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "LUEs continued",
+    "text": "LUEs continued\nSince each column of \\(\\mathbf{H}\\) is in \\(\\boldsymbol{{\\cal N}}\\) there exists a \\(\\mathbf{G}\\in \\mathbb{R}^{p \\times (n-p)} \\ni \\mathbf{H}= \\textsf{N}\\mathbf{G}^T\\)\n\nRewriting \\(\\mathbf{\\delta}= \\tilde{\\boldsymbol{\\beta}}- \\hat{\\boldsymbol{\\beta}}\\): \\[\\begin{align*}\n\\tilde{\\boldsymbol{\\beta}}& = \\hat{\\boldsymbol{\\beta}}+ \\mathbf{\\delta}\\\\\n         & = \\hat{\\boldsymbol{\\beta}}+ \\mathbf{H}^T\\mathbf{Y}\\\\\n         & = \\hat{\\boldsymbol{\\beta}}+ \\mathbf{G}\\textsf{N}^T\\mathbf{Y}\n\\end{align*}\\]\n\ntherefore \\(\\tilde{\\boldsymbol{\\beta}}\\) is linear and unbiased: \\[\\begin{align*}\n\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] & = \\textsf{E}[\\hat{\\boldsymbol{\\beta}}+ \\mathbf{G}\\textsf{N}^T\\mathbf{Y}] \\\\\n           & =  \\textsf{E}[\\hat{\\boldsymbol{\\beta}}] + \\textsf{E}[\\mathbf{G}\\textsf{N}^T\\mathbf{Y}] \\\\\n           & =  \\boldsymbol{\\beta}+ \\mathbf{G}\\textsf{N}^T\\mathbf{X}\\boldsymbol{\\beta}\\\\\n           & = \\boldsymbol{\\beta}\n\\end{align*}\\]"
   },
   {
-    "objectID": "resources/slides/02-mles.html#idempotent-matrix",
-    "href": "resources/slides/02-mles.html#idempotent-matrix",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Idempotent Matrix",
-    "text": "Idempotent Matrix\nWhat if we project a projection?\n\n\\(\\mathbf{P}_\\mathbf{X}\\mathbf{z}= \\mathbf{X}\\mathbf{a}\\in C(\\mathbf{X})\\)\n\\(\\mathbf{P}_\\mathbf{X}\\mathbf{X}\\mathbf{a}= \\mathbf{X}\\mathbf{a}\\)\nsince \\(\\mathbf{P}_\\mathbf{X}^2 \\mathbf{z}=  \\mathbf{P}_\\mathbf{X}\\mathbf{z}\\) for all \\(\\mathbf{z}\\in \\mathbb{R}^n\\) we have \\(\\mathbf{P}_\\mathbf{X}^2 = \\mathbf{P}_\\mathbf{X}\\)\n\n\n\nDefinition: ProjectionFor a matrix \\(\\mathbf{P}\\) in \\(\\mathbb{R}^{n \\times n}\\) is a projection matrix if \\(\\mathbf{P}^2 = \\mathbf{P}\\). That is all projections \\(\\mathbf{P}\\) are idempotent matrix.\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\nFor \\(\\mathbf{X}\\in \\mathbb{R}^{n \\times p}\\), rank \\(p\\), if \\(\\mathbf{P}_\\mathbf{X}= \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}\\) use the definition to show that it is a projection onto the \\(p\\) dimensional subspace \\(\\boldsymbol{{\\cal M}}= C(\\mathbf{X})\\)"
+    "objectID": "resources/slides/04-BLUE.html#characterization-of-lues",
+    "href": "resources/slides/04-BLUE.html#characterization-of-lues",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Characterization of LUEs",
+    "text": "Characterization of LUEs\nSummary of previous results:\n\nTheoremAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is a linear unbiased estimator of \\(\\boldsymbol{\\beta}\\) in a linear statistical model if and only if \\[\\tilde{\\boldsymbol{\\beta}}= \\hat{\\boldsymbol{\\beta}}+ \\mathbf{H}^T\\mathbf{Y}\\] for some \\(\\mathbf{H}\\in \\mathbb{R}^{n \\times p}\\) such that \\(\\mathbf{X}^T \\mathbf{H}= \\mathbf{0}\\) or equivalently for some \\(\\mathbf{G}\\in \\mathbb{R}^{p \\times (n-p)}\\) \\[\\tilde{\\boldsymbol{\\beta}}= \\hat{\\boldsymbol{\\beta}}+ \\mathbf{G}\\textsf{N}^T\\mathbf{Y}\\]"
   },
   {
-    "objectID": "resources/slides/02-mles.html#null-space",
-    "href": "resources/slides/02-mles.html#null-space",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Null Space",
-    "text": "Null Space\n\nDefinition: Orthogonal ComplementThe set of all vectors that are orthogonal to a given subspace \\(\\boldsymbol{{\\cal M}}\\) is called the orthogonal complement of the subspace denoted as \\(\\boldsymbol{{\\cal M}}^\\perp\\). Under the usual inner product, \\(\\boldsymbol{{\\cal M}}^\\perp \\equiv \\{\\mathbf{n}\\in \\mathbb{R}^n \\ni \\mathbf{m}^T\\mathbf{n}= 0 {\\text{ for }} \\mathbf{m}\\in \\boldsymbol{{\\cal M}}\\}\\)\n\n\n\n\nDefinition: Null SpaceFor a matrix \\(\\mathbf{A}\\), the null space of \\(\\mathbf{A}\\) is defined as \\(N(\\mathbf{A}) = \\{\\mathbf{n}\\ni \\mathbf{A}\\mathbf{n}= \\mathbf{0}\\}\\)\n\n\n\n\n\n\n\n\n\n\nExercise\n\n\nShow that \\(C(\\mathbf{X})^\\perp\\) (the orthogonal complement of \\(C(\\mathbf{X})\\)) is the null space of \\(\\mathbf{X}^T\\), \\(\\, N(\\mathbf{X}^T)\\)."
+    "objectID": "resources/slides/04-BLUE.html#numerical",
+    "href": "resources/slides/04-BLUE.html#numerical",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Numerical",
+    "text": "Numerical\n\n# X is model matrix; Y is response\n  p = ncol(X)\n  n = nrow(X)\n  G = matrix(rnorm(p*(n-p)), nrow=p, ncol=n-p)\n  H = MASS::Null(X) %*% t(G)\n  btilde = bhat + t(H) %*% Y\n\ninfinite number of LUEs!"
   },
   {
-    "objectID": "resources/slides/02-mles.html#orthogonal-projection",
-    "href": "resources/slides/02-mles.html#orthogonal-projection",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Orthogonal Projection",
-    "text": "Orthogonal Projection\n\nDefinition: Orthogonal ProjectionsFor a vector space \\({\\cal V}\\) with an inner product \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle\\) for \\(\\mathbf{x}, \\mathbf{y}\\in {\\cal V}\\), \\(\\mathbf{x}\\) and \\(\\mathbf{y}\\) are orthogonal if \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle = 0\\). A projection \\(\\mathbf{P}\\) is an orthogonal projection onto a subspace \\(\\boldsymbol{{\\cal M}}\\) of \\({\\cal V}\\) if for any \\(\\mathbf{m}\\in {\\cal V}\\), \\(\\mathbf{P}\\mathbf{m}= \\mathbf{m}\\) and for any \\(\\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\), \\(\\mathbf{P}\\mathbf{n}= \\mathbf{0}\\).\nThe null space of \\(\\mathbf{P}\\) is the orthogonal complement of \\(\\boldsymbol{{\\cal M}}\\)\n\n\n\nFor \\(\\mathbb{R}^N\\) with the inner product, \\(\\langle \\mathbf{x}, \\mathbf{y}\\rangle = \\mathbf{x}^T\\mathbf{y}\\), \\(\\mathbf{P}\\) is an orthogonal projection onto \\(\\boldsymbol{{\\cal M}}\\) if \\(\\mathbf{P}\\) is a projection (\\(\\mathbf{P}^2 = \\mathbf{P}\\)) and it is symmetric (\\(\\mathbf{P}= \\mathbf{P}^T\\))\n\n\n\n\n\n\n\n\nExercise\n\n\nShow that \\(\\mathbf{P}_\\mathbf{X}\\) is an orthogonal projection on \\(C(\\mathbf{X})\\)."
+    "objectID": "resources/slides/04-BLUE.html#lues-via-generalized-inverses",
+    "href": "resources/slides/04-BLUE.html#lues-via-generalized-inverses",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "LUEs via Generalized Inverses",
+    "text": "LUEs via Generalized Inverses\nLet \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\) be a LUE in the statistical linear model \\(\\mathbf{Y}= \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\\) with \\(\\mathbf{X}\\) full column rank \\(p\\) \\[\\begin{align*}\n\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] & = \\textsf{E}[\\mathbf{A}\\mathbf{Y}] \\\\\n            & = \\mathbf{A}\\textsf{E}[\\mathbf{Y}] \\\\\n            & = \\mathbf{A}\\mathbf{X}\\boldsymbol{\\beta}\\quad \\forall \\boldsymbol{\\beta}\\in \\mathbb{R}^p\n\\end{align*}\\]\n\nMust have \\(\\mathbf{A}\\mathbf{X}= \\mathbf{I}_p\\) (\\(\\mathbf{A}\\) is a generalized inverse of \\(\\mathbf{X}\\))\n\\(\\mathbf{X}\\mathbf{X}^- \\mathbf{X}= \\mathbf{X}\\)\none generalized inverse is \\(\\mathbf{X}_{MP}^- = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\)\n\\(\\mathbf{X}_{MP}^- = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T = \\mathbf{V}\\boldsymbol{\\Delta}^{-1} \\mathbf{U}^T\\) (using SVD of \\(\\mathbf{X}= \\mathbf{U}\\boldsymbol{\\Delta}\\mathbf{V}^T\\))\n\\(\\mathbf{A}\\) is a generalized inverse of \\(\\mathbf{X}\\) iff \\(\\mathbf{A}= \\mathbf{X}_{MP}^- + \\mathbf{H}^T\\) for \\(\\mathbf{H}\\in \\mathbb{R}^{n \\times p} \\ni \\mathbf{H}^T \\mathbf{U}= \\mathbf{0}\\)\n\\(\\mathbf{A}\\mathbf{Y}= (\\mathbf{X}_{MP}^- + \\mathbf{H}^T)\\mathbf{Y}= \\hat{\\boldsymbol{\\beta}}+  \\mathbf{H}^T \\mathbf{Y}\\)"
   },
   {
-    "objectID": "resources/slides/02-mles.html#decompsition",
-    "href": "resources/slides/02-mles.html#decompsition",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Decompsition",
-    "text": "Decompsition\n\nFor any \\(\\mathbf{y}\\in \\mathbb{R}^n\\), we can write it uniquely as a vector \\[ \\mathbf{y}= \\mathbf{m}+ \\mathbf{n}, \\quad \\mathbf{m}\\in \\boldsymbol{{\\cal M}}\\quad \\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\]\nwrite \\(\\mathbf{y}= \\mathbf{P}\\mathbf{y}+ (\\mathbf{y}- \\mathbf{P}\\mathbf{y}) = \\mathbf{P}\\mathbf{y}+ (\\mathbf{I}- \\mathbf{P})\\mathbf{y}\\)\nclaim that if \\(\\mathbf{P}\\) is an orthogonal projection, \\((\\mathbf{I}- \\mathbf{P})\\) is an orthogonal projection onto \\(\\boldsymbol{{\\cal M}}^\\perp\\)\nif \\(\\mathbf{n}\\in \\boldsymbol{{\\cal M}}^\\perp\\), then \\((\\mathbf{I}- \\mathbf{P})\\mathbf{n}= \\mathbf{n}- \\mathbf{P}\\mathbf{n}= \\mathbf{n}\\)"
+    "objectID": "resources/slides/04-BLUE.html#best-linear-unbiased-estimators",
+    "href": "resources/slides/04-BLUE.html#best-linear-unbiased-estimators",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Best Linear Unbiased Estimators",
+    "text": "Best Linear Unbiased Estimators\n\nthe distribution of values of any unbiased estimator is centered around \\(\\boldsymbol{\\beta}\\)\nout of the infinite number of LUEs is there one that is more concentrated around \\(\\boldsymbol{\\beta}\\)?\nis there an unbiased estimator that has a lower variance than all other unbiased estimators?\nRecall variance-covariance matrix of a random vector \\(\\mathbf{Z}\\) with mean \\(\\boldsymbol{\\theta}\\) \\[\\begin{align*}\n\\textsf{Cov}[\\mathbf{Z}]      & \\equiv \\textsf{E}[(\\mathbf{Z}- \\boldsymbol{\\theta})(\\mathbf{Z}- \\boldsymbol{\\theta})^T] \\\\\n\\textsf{Cov}[\\mathbf{Z}]_{ij} &  =     \\textsf{E}[(z_i - \\theta_i)(z_j - \\theta_j)]\n\\end{align*}\\]\n\n\n\n\n\n\n\n\n\nLemma\n\n\nLet \\(\\mathbf{A}\\in \\mathbb{R}^{q \\times p}\\) and \\(\\mathbf{b}\\in \\mathbb{R}^q\\) with \\(\\mathbf{Z}\\) a random vector in \\(\\mathbb{R}^p\\) then \\[\\textsf{Cov}[\\mathbf{A}\\mathbf{Z}+ \\mathbf{b}] = \\mathbf{A}\\textsf{Cov}[\\mathbf{Z}] \\mathbf{A}^T \\ge 0\\]"
   },
   {
-    "objectID": "resources/slides/02-mles.html#back-to-mles",
-    "href": "resources/slides/02-mles.html#back-to-mles",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Back to MLEs",
-    "text": "Back to MLEs\n\n\\(\\mathbf{Y}\\sim \\textsf{N}(\\boldsymbol{\\mu}, \\sigma^2 \\mathbf{I}_n)\\) with \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}\\) and \\(\\mathbf{X}\\) full column rank\nClaim: Maximum Likelihood Estimator (MLE) of \\(\\boldsymbol{\\mu}\\) is \\(\\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\)\nLog Likelihood: \\[ \\log {\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2) =\n-\\frac{n}{2} \\log(\\sigma^2)\n- \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}\n\\]\nDecompose \\(\\mathbf{Y}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}+ (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\)\n\nUse \\(\\mathbf{P}_\\mathbf{X}\\boldsymbol{\\mu}= \\boldsymbol{\\mu}\\)\n\nSimplify \\(\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2\\)"
+    "objectID": "resources/slides/04-BLUE.html#variance-of-linear-unbiased-estimators",
+    "href": "resources/slides/04-BLUE.html#variance-of-linear-unbiased-estimators",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Variance of Linear Unbiased Estimators",
+    "text": "Variance of Linear Unbiased Estimators\nLet’s look at the variance of any LUE under assumption \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{I}_n\\)\n\nfor \\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\mathbf{Y}= \\boldsymbol{\\beta}+ (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\boldsymbol{\\epsilon}\\) \\[\\begin{align*}\n\\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}] & = \\textsf{Cov}[\\boldsymbol{\\beta}+ (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\boldsymbol{\\epsilon}] \\\\\n          & =  (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\textsf{Cov}[\\boldsymbol{\\epsilon}] \\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1} \\\\\n          & = \\sigma^2 (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1} \\\\\n          & = \\sigma^2 (\\mathbf{X}^T\\mathbf{X})^{-1}\n\\end{align*}\\]\nCovariance is increasing in \\(\\sigma^2\\) and generally decreasing in \\(n\\)\nRewrite \\(\\mathbf{X}^T\\mathbf{X}\\) as \\(\\mathbf{X}^T\\mathbf{X}= \\sum_{i=1}^n \\mathbf{x}_i \\mathbf{x}_i^T\\) (a sum of \\(n\\) outer-products)"
   },
   {
-    "objectID": "resources/slides/02-mles.html#expand",
-    "href": "resources/slides/02-mles.html#expand",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Expand",
-    "text": "Expand\n\\[\\begin{eqnarray*}\n    \\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 & = & \\|  { (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}+ \\mathbf{P}_x \\mathbf{Y}} -\n    \\boldsymbol{\\mu}\\|^2  \\\\\n  & = & \\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}+ \\mathbf{P}_x \\mathbf{Y}- {\\mathbf{P}_\\mathbf{X}}\\boldsymbol{\\mu}\\|^2  \\\\\n  & = & {\\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})}\\mathbf{Y}+  {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu})\n  \\|^2 \\\\\n& = & {\\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2} +  {\\|\n   {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu}) \\|^2}  + {\\small{2 (\\mathbf{Y}-\n\\boldsymbol{\\mu})^T \\mathbf{P}_\\mathbf{X}^T (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}}\\\\\n& = & \\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2 +  \\| {\\mathbf{P}_\\mathbf{X}}(\\mathbf{Y}- \\boldsymbol{\\mu}) \\|^2 + {0}\n\\\\\n& = & \\|(\\mathbf{I}-\\mathbf{P}_\\mathbf{x})\\mathbf{Y}\\|^2 +  \\| {\\mathbf{P}_\\mathbf{X}}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2\n  \\end{eqnarray*}\\]\n\nCrossproduct term is zero: \\[\\begin{eqnarray*}\n  \\mathbf{P}_\\mathbf{X}^T (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) & = &  \\mathbf{P}_\\mathbf{X}(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})  \\\\\n  & = &  \\mathbf{P}_\\mathbf{X}- \\mathbf{P}_\\mathbf{X}\\mathbf{P}_\\mathbf{X}\\\\\n& = &  \\mathbf{P}_\\mathbf{X}- \\mathbf{P}_\\mathbf{X}\\\\\n& = & \\mathbf{0}\n\\end{eqnarray*}\\]"
+    "objectID": "resources/slides/04-BLUE.html#variance-of-arbitrary-lue",
+    "href": "resources/slides/04-BLUE.html#variance-of-arbitrary-lue",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Variance of Arbitrary LUE",
+    "text": "Variance of Arbitrary LUE\n\nfor \\(\\tilde{\\boldsymbol{\\beta}}= \\left((\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T + \\mathbf{H}^T \\right)\\mathbf{Y}= \\boldsymbol{\\beta}+ \\left((\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T + \\mathbf{H}^T \\right)\\boldsymbol{\\epsilon}\\)\nrecall \\(\\mathbf{X}_{MP}^- \\equiv  (\\mathbf{X}^T\\mathbf{X})^{-1} \\mathbf{X}^T\\) \\[\\begin{align*}\n\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] & = \\textsf{Cov}[\\left(\\mathbf{X}_{MP}^- + \\mathbf{H}^T \\right)\\boldsymbol{\\epsilon}]  \\\\\n            & = \\sigma^2 \\left(\\mathbf{X}_{MP}^- + \\mathbf{H}^T \\right)\\left(\\mathbf{X}_{MP}^- + \\mathbf{H}^T \\right)^T \\\\\n            & = \\sigma^2\\left( \\mathbf{X}_{MP}^-(\\mathbf{X}_{MP}^-)^T + \\mathbf{X}_{MP}^-\\mathbf{H}+\n                \\mathbf{H}^T (\\mathbf{X}_{MP}^-)^T + \\mathbf{H}^T \\mathbf{H}\\right) \\\\\n            & =   \\sigma^2\\left( (\\mathbf{X}^T\\mathbf{X})^{-1} +  \\mathbf{H}^T \\mathbf{H}\\right)\n\\end{align*}\\]\nCross-product term \\(\\mathbf{H}^T(\\mathbf{X}_{MP}^-)^T = \\mathbf{H}^T\\mathbf{X}(\\mathbf{X}^T\\mathbf{X})^{-1} =  \\mathbf{0}\\)\nTherefor the \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] = \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}] + \\mathbf{H}^T\\mathbf{H}\\)\nthe sum of a positive definite matrix plus a positive semi-definite matrix"
   },
   {
-    "objectID": "resources/slides/02-mles.html#log-likelihood",
-    "href": "resources/slides/02-mles.html#log-likelihood",
-    "title": "Maximum Likelihood Estimation",
-    "section": "Log Likelihood",
-    "text": "Log Likelihood\nSubstitute decomposition into log likelihood \\[\\begin{eqnarray*}\n\\log {\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)  & = &\n-\\frac{n}{2} \\log(\\sigma^2) - \\frac 1 2 \\frac{\\| \\mathbf{Y}- \\boldsymbol{\\mu}\\|^2}{\\sigma^2}  \\\\\n  & = & -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 } {\\sigma^2} \\right)   \\\\\n& = &  \\underbrace { -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2  \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} }  +  \\underbrace{- \\frac 1 2  \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}-\n  \\boldsymbol{\\mu}\\|^2 } {\\sigma^2}}   \\\\\n& = &  \\text{ constant with respect to } \\boldsymbol{\\mu}\\qquad  \\leq 0\n\\end{eqnarray*}\\]\n\nMaximize with respect to \\(\\boldsymbol{\\mu}\\) for each \\(\\sigma^2\\)\nRHS is largest when \\(\\boldsymbol{\\mu}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\) for any choice of \\(\\sigma^2\\) \\[\\therefore \\quad \\hat{\\boldsymbol{\\mu}}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\] is the MLE of \\(\\boldsymbol{\\mu}\\) (fitted values \\(\\hat{\\mathbf{Y}}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\))"
+    "objectID": "resources/slides/04-BLUE.html#gauss-markov-theorem",
+    "href": "resources/slides/04-BLUE.html#gauss-markov-theorem",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Gauss-Markov Theorem",
+    "text": "Gauss-Markov Theorem\nIs \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] \\ge \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}]\\) in some sense?\n\n\nDefinition: Loewner OrderingFor two positive semi-definite matrices \\(\\boldsymbol{\\Sigma}_1\\) and \\(\\boldsymbol{\\Sigma}_2\\), we say that \\(\\boldsymbol{\\Sigma}_1 &gt; \\boldsymbol{\\Sigma}_2\\) if \\(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2\\) is positive definite, \\(\\mathbf{x}^T(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2)\\mathbf{x}) &gt; 0\\), and \\(\\boldsymbol{\\Sigma}_1 \\ge \\boldsymbol{\\Sigma}_2\\) if \\(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2\\) is positive semi-definite, \\(\\mathbf{x}^T(\\boldsymbol{\\Sigma}_1 - \\boldsymbol{\\Sigma}_2)\\mathbf{x}) \\ge 0\\)\n\n\n\nSince \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] - \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}] = \\mathbf{H}^T\\mathbf{H}\\), we have that \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] \\ge \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}]\\)\n\n\n\n\nTheorem: Gauss-MarkovLet \\(\\tilde{\\boldsymbol{\\beta}}\\) be a linear unbiased estimator of \\(\\boldsymbol{\\beta}\\) in a linear model where \\(\\textsf{E}[\\mathbf{Y}] = \\mathbf{X}\\boldsymbol{\\beta}, \\boldsymbol{\\beta}\\in \\mathbb{R}^p\\), \\(\\mathbf{X}\\) rank \\(p\\), and \\(\\textsf{Cov}[\\mathbf{Y}] = \\sigma^2\\mathbf{I}_n, \\sigma^2 &gt; 0\\). Then \\(\\textsf{Cov}[\\tilde{\\boldsymbol{\\beta}}] \\ge \\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}]\\) where \\(\\hat{\\boldsymbol{\\beta}}\\) is the OLS estimator and is the Best Linear Unbiased Estimator (BLUE) of \\(\\boldsymbol{\\beta}\\)."
   },
   {
-    "objectID": "resources/slides/02-mles.html#mle-of-boldsymbolbeta",
-    "href": "resources/slides/02-mles.html#mle-of-boldsymbolbeta",
-    "title": "Maximum Likelihood Estimation",
-    "section": "MLE of \\(\\boldsymbol{\\beta}\\)",
-    "text": "MLE of \\(\\boldsymbol{\\beta}\\)\n\\[{\\cal{L}}(\\boldsymbol{\\mu}, \\sigma^2)   =  -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2 } {\\sigma^2} \\right)\\]\n\nRewrite as likeloood function for \\(\\boldsymbol{\\beta}, \\sigma^2\\): \\[{\\cal{L}}(\\boldsymbol{\\beta}, \\sigma^2 )  =  -\\frac{n}{2} \\log(\\sigma^2)  - \\frac 1 2 \\left( \\frac{\\|(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\n  \\mathbf{Y}\\|^2}{\\sigma^2} + \\frac{\\| \\mathbf{P}_\\mathbf{X}\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2 } {\\sigma^2}\n\\right)\\]\n\n\n\nSimilar argument to show that RHS is maximized by minimizing \\[\\| \\mathbf{P}_\\mathbf{X}\n\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2\\] \nTherefore \\(\\hat{\\boldsymbol{\\beta}}\\) is a MLE of \\(\\boldsymbol{\\beta}\\) if and only if satisfies \\[\\mathbf{P}_\\mathbf{X}\\mathbf{Y}= \\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\]\nIf \\(\\mathbf{X}^T\\mathbf{X}\\) is full rank, the MLE of \\(\\boldsymbol{\\beta}\\) is \\((\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{Y}= \\hat{\\boldsymbol{\\beta}}\\)"
-  },
-  {
-    "objectID": "resources/slides/02-mles.html#mle-of-sigma2",
-    "href": "resources/slides/02-mles.html#mle-of-sigma2",
-    "title": "Maximum Likelihood Estimation",
-    "section": "MLE of \\(\\sigma^2\\)",
-    "text": "MLE of \\(\\sigma^2\\)\n\nPlug-in MLE of \\(\\hat{\\boldsymbol{\\mu}}\\) for \\(\\boldsymbol{\\mu}\\) \\[ \\log {\\cal{L}}(\\hat{\\boldsymbol{\\mu}}, \\sigma^2)  =   -\\frac{n}{2} \\log \\sigma^2 - \\frac 1 2\n\\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2  }{\\sigma^2}\\]\nDifferentiate with respect to \\(\\sigma^2\\) \\[\\frac{\\partial \\, \\log {\\cal{L}}(\\hat{\\boldsymbol{\\mu}}, \\sigma^2)}{\\partial \\, \\sigma^2} =  -\\frac{n}{2} \\frac{1}{\\sigma^2}  +  \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\left(\\frac{1}{\\sigma^2}\\right)^2 \\]\nSet derivative to zero and solve for MLE \\[\\begin{eqnarray*}\n0 & = &  -\\frac{n}{2} \\frac{1}{{\\hat{\\sigma}}^2}  +  \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\left(\\frac{1}{{\\hat{\\sigma}}^2}\\right)^2  \\\\\n\\frac{n}{2} {\\hat{\\sigma}}^2& = & \\frac 1 2\n\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2 \\\\\n{\\hat{\\sigma}}^2& = & \\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2}{n}\n\\end{eqnarray*}\\]"
-  },
-  {
-    "objectID": "resources/slides/02-mles.html#mle-estimate-of-sigma2",
-    "href": "resources/slides/02-mles.html#mle-estimate-of-sigma2",
-    "title": "Maximum Likelihood Estimation",
-    "section": "MLE Estimate of \\(\\sigma^2\\)",
-    "text": "MLE Estimate of \\(\\sigma^2\\)\nMaximum Likelihood Estimate of \\(\\sigma^2\\) \\[\\begin{eqnarray*}\n    {\\hat{\\sigma}}^2& = & \\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2}{n} \\\\\n      & = & \\frac{\\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})^T(\\mathbf{I}-\\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{ \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{\\mathbf{e}^T\\mathbf{e}} {n}\n  \\end{eqnarray*}\\] where \\(\\mathbf{e}= (\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\\mathbf{Y}\\) are the residuals from the regression of \\(\\mathbf{Y}\\) on \\(\\mathbf{X}\\)\n\n\n\n\nhttps://sta721-F24.github.io/website/"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#introduction-to-sta721",
-    "href": "resources/slides/01-introduction.html#introduction-to-sta721",
-    "title": "Introduction to STA721",
-    "section": "Introduction to STA721",
-    "text": "Introduction to STA721\n\nCourse: Theory and Application of linear models from both a frequentist (classical) and Bayesian perspective\nPrerequisites: linear algebra and a mathematical statistics course covering likelihoods and distribution theory (normal, t, F, chi-square, gamma distributions)\nIntroduce R programming as needed in the lab\nIntroduce Bayesian methods, but assume that you are co-registered in 702 or have taken it previously\nmore info on Course website https://sta721-F24.github.io/website/\n\nschedule and slides, HW, etc\ncritical dates (Midterms and Finals)\noffice hours\n\nCanvas for grades, email, announcements\n\n\nPlease let me know if there are broken links for slides, etc!"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#notation",
-    "href": "resources/slides/01-introduction.html#notation",
-    "title": "Introduction to STA721",
-    "section": "Notation",
-    "text": "Notation\n\nscalors are \\(a\\) (italics or math italics)\nvectors are in bold lower case, \\(\\mathbf{a}\\), with the exception of random variables\nall vectors are column vectors \\[\\mathbf{a}= \\left[\\begin{array}{c}\n    a_1 \\\\\n    a_2 \\\\\n    \\vdots \\\\\n    a_n\n     \\end{array} \\right]\n\\]\n\n\\(\\mathbf{1}_n\\) is a \\(n \\times 1\\) vector of all ones\n\ninner product \\(\\langle    \\mathbf{a}, \\mathbf{a}\\rangle = \\mathbf{a}^T\\mathbf{a}= \\|\\mathbf{a}\\|^2 = \\sum_{i=1}^n a_i^2\\); \\(\\langle    \\mathbf{a}, \\mathbf{b}\\rangle = \\mathbf{a}^T\\mathbf{b}\\)\nlength or norm of \\(\\mathbf{a}\\) is \\(\\|\\mathbf{a}\\|\\)"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#matrices",
-    "href": "resources/slides/01-introduction.html#matrices",
-    "title": "Introduction to STA721",
-    "section": "Matrices",
-    "text": "Matrices\n\nMatrices are represented in bold \\(\\mathbf{A}= (a_{ij})\\) \\[\\mathbf{A}= \\left[\\begin{array}{cccc}\n    a_{11} & a_{12} & \\cdots & a_{1m}  \\\\\n    a_{21} & a_{22} & \\cdots & a_{2m} \\\\\n    \\vdots & \\vdots & \\vdots & \\vdots\\\\\n    a_{n1} & a_{n2} & \\cdots & a_{nm}\n     \\end{array} \\right]\n\\]\n\nidentity matrix \\(\\mathbf{I}_n\\) square matrix with diagonal elements 1 and off diagonal 0\ntrace: if \\(\\mathbf{A}\\) is \\(n \\times m\\) \\(\\textsf{tr}(\\mathbf{A}) = \\sum_i^{\\max n,m } a_{ii}\\)\ndeterminant: for \\(\\mathbf{A}\\) is \\(n \\times n\\) then the determinant is \\(\\det(A)\\)\ninverse: if \\(\\mathbf{A}\\) is nonsingular \\(\\mathbf{A}&gt; 0\\), then its inverse is \\(\\mathbf{A}^{-1}\\)"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#statistical-models",
-    "href": "resources/slides/01-introduction.html#statistical-models",
-    "title": "Introduction to STA721",
-    "section": "Statistical Models",
-    "text": "Statistical Models\nOhm’s Law: \\(Y\\) is voltage across a resistor of \\(r\\) ohms and \\(X\\) is the amperes of the current through the resistor (in theory) \\[Y = rX\\]\n\nSimple linear regression for observational data \\[Y_i = \\beta_0 + \\beta_1 x_i + \\epsilon_i \\text{  for  } i = 1,\n\\ldots, n\\]\nRewrite in vectors: \\[\\begin{eqnarray*}\n\\left[\n\\begin{array}{c}  y_1 \\\\ \\vdots \\\\  y_n \\end{array}\n\\right]   =  &\n\\left[ \\begin{array}{c}  1 \\\\ \\vdots \\\\ 1 \\end{array}  \\right]   \\beta_0 +\n\\left[ \\begin{array}{c}  x_1 \\\\ \\vdots \\\\  x_n \\end{array}\n\\right] \\beta_1 +\n\\left[ \\begin{array}{c}  \\epsilon_1 \\\\ \\vdots \\\\ \\epsilon_n  \\end{array}\n\\right]\n=  &\n\\left[ \\begin{array}{cc}  1 &  x_1 \\\\ \\vdots & \\vdots \\\\ 1 & x_n\\end{array}  \\right]\n\\left[ \\begin{array}{c}  \\beta_0  \\\\  \\beta_1 \\end{array}\n\\right] +\n\\left[ \\begin{array}{c}  \\epsilon_1 \\\\ \\vdots \\\\ \\epsilon_n  \\end{array}\n\\right] \\\\\n\\\\\n\\mathbf{Y}= & \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\n\\end{eqnarray*}\\]"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#nonlinear-models",
-    "href": "resources/slides/01-introduction.html#nonlinear-models",
-    "title": "Introduction to STA721",
-    "section": "Nonlinear Models",
-    "text": "Nonlinear Models\nGravitational Law: \\(F = \\alpha/d^\\beta\\) where \\(d\\) is distance between 2 objects and \\(F\\) is the force of gravity between them\n\nlog transformations \\[\\log(F) = \\log(\\alpha) - \\beta \\log(d)\\]\ncompare to noisy experimental data \\(Y_i =\\log(F_i)\\) observed at \\(x_i = \\log(d_i)\\)\nwrite \\(\\mathbf{X}= [\\mathbf{1}_n \\, \\mathbf{x}]\\)\n\\(\\boldsymbol{\\beta}= (\\log(\\alpha), -\\beta)^T\\)\nmodel with additive error on log scale \\(\\mathbf{Y}= \\mathbf{X}\\boldsymbol{\\beta}+ \\mathbf{e}\\)\ntest if \\(\\beta = 2\\)\nerror assumptions?"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#intrinsically-nonlinear-models",
-    "href": "resources/slides/01-introduction.html#intrinsically-nonlinear-models",
-    "title": "Introduction to STA721",
-    "section": "Intrinsically Nonlinear Models",
-    "text": "Intrinsically Nonlinear Models\nRegression function may be an intrinsically nonlinear function of \\(t_i\\) (time) and parameters \\(\\boldsymbol{\\theta}\\) \\[Y_i = f(t_i, \\boldsymbol{\\theta}) + \\epsilon_i\\]"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#quadratic-linear-regression",
-    "href": "resources/slides/01-introduction.html#quadratic-linear-regression",
-    "title": "Introduction to STA721",
-    "section": "Quadratic Linear Regression",
-    "text": "Quadratic Linear Regression\nTaylor’s Theorem: \\[f(t_i, \\boldsymbol{\\theta}) = f(t_0, \\boldsymbol{\\theta}) + (t_i - t_0) f'(t_0, \\boldsymbol{\\theta}) + (t_i - t_0)^2\n\\frac{f^{''}(t_0, \\boldsymbol{\\theta})}{2}  + R(t_i, \\boldsymbol{\\theta})\\]\n\n\\[Y_i = \\beta_0 + \\beta_1 x_i + \\beta_2 x_i^2 + \\epsilon_i \\text{  for  } i = 1, \\ldots, n\\]\n\n\nRewrite in vectors: \\[\\begin{eqnarray*}\n\\left[\n\\begin{array}{c}  y_1 \\\\ \\vdots \\\\  y_n \\end{array}\n  \\right]   =  &\n\\left[ \\begin{array}{ccc}  1 &  x_1 & x_1^2 \\\\ \\vdots & \\vdots \\\\ 1 &\n     x_n &  x_n^2\\end{array}  \\right]\n\\left[ \\begin{array}{c}  \\beta_0  \\\\  \\beta_1 \\\\ \\beta_2 \\end{array}\n\\right] +\n\\left[ \\begin{array}{c}  \\epsilon_1 \\\\ \\vdots \\\\ \\epsilon_n  \\end{array}\n\\right] \\\\\n& \\\\\n\\mathbf{Y}= & \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\n\\end{eqnarray*}\\]\n\n\nQuadratic in \\(x\\), but linear in \\(\\beta\\)’s - how do we know this model is adequate?"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#kernel-regression-nonparametric",
-    "href": "resources/slides/01-introduction.html#kernel-regression-nonparametric",
-    "title": "Introduction to STA721",
-    "section": "Kernel Regression (NonParametric)",
-    "text": "Kernel Regression (NonParametric)\n\\[y_i =  \\beta_0 + \\sum_{j = 1}^J \\beta_j e^{-\\lambda (x_i - k_j)^d} + \\epsilon_i \\text{  for  } i = 1, \\ldots, n\\] where \\(k_j\\) are kernel locations and \\(\\lambda\\) is a smoothing parameter \\[\\begin{eqnarray*}\n\\left[\n\\begin{array}{c}  y_1 \\\\ \\vdots \\\\  y_n \\end{array}\n  \\right]   =  &\n\\left[ \\begin{array}{cccc}  1 &  e^{-\\lambda (x_1 - k_1)^d} &\n     \\ldots &  e^{-\\lambda (x_1 - k_J)^d}  \\\\\n     \\vdots & \\vdots & & \\vdots \\\\ 1 & e^{-\\lambda (x_n - k_1)^d} &  \\ldots & e^{-\\lambda (x_n - k_J)^d} \\end{array}  \\right]\n\\left[ \\begin{array}{c}  \\beta_0  \\\\  \\beta_1 \\\\\\vdots \\\\ \\beta_J \\end{array}\n\\right] +\n\\left[ \\begin{array}{c}  \\epsilon_1 \\\\ \\vdots \\\\ \\epsilon_n  \\end{array}\n\\right] \\\\\n& \\\\\n\\mathbf{Y}= & \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\n\\end{eqnarray*}\\]\n\nLinear in \\(\\beta\\) given \\(\\lambda\\) and \\(k_1, \\ldots k_J\\)\nLearn \\(\\lambda\\), \\(k_1, \\ldots k_J\\) and \\(J\\)"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#hierarchical-models",
-    "href": "resources/slides/01-introduction.html#hierarchical-models",
-    "title": "Introduction to STA721",
-    "section": "Hierarchical Models",
-    "text": "Hierarchical Models\n\n\n\n\n\n\n\n\n\n\n\n\n\neach line represent individual sample trajectories\ncorrelation between an individual’s measurements\nsimilarities within groups\ndifferences among groups?\nallow individual regressions for each individual ?\nadd more structure?"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#linear-regression-models",
-    "href": "resources/slides/01-introduction.html#linear-regression-models",
-    "title": "Introduction to STA721",
-    "section": "Linear Regression Models",
-    "text": "Linear Regression Models\nResponse \\(Y_i\\) and \\(p\\) predictors \\(x_{i1}, x_{i2}, \\dots x_ip\\) \\[Y_i = \\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + \\ldots \\beta_{p}\n  x_{ip} + \\epsilon_i\\]\n\nDesign matrix \\[\\mathbf{X}=\n\\left[\\begin{array}{cccc}\n1 & x_{11} & \\ldots & x_{1p} \\\\\n1 & x_{21}  & \\ldots & x_{2p} \\\\\n\\vdots & \\vdots  & \\vdots & \\vdots \\\\\n1 & x_{n1} & \\ldots & x_{np} \\\\\n\\end{array} \\right] = \\left[ \\begin{array}{cc}\n1 & \\mathbf{x}_1^T  \\\\\n\\vdots & \\vdots \\\\\n1 & \\mathbf{x}_n^T\n\\end{array} \\right] =\n\\left[\\begin{array}{cccc}\n\\mathbf{1}_n & \\mathbf{X}_1 & \\mathbf{X}_2 \\cdots \\mathbf{X}_p\n\\end{array} \\right]\n\\]\nmatrix version \\[\\mathbf{Y}= \\mathbf{X}\\boldsymbol{\\beta}+ \\epsilon\\] what should go into \\(\\mathbf{X}\\) and do we need all columns of \\(\\mathbf{X}\\) for inference about \\(\\mathbf{Y}\\)?"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#linear-model",
-    "href": "resources/slides/01-introduction.html#linear-model",
-    "title": "Introduction to STA721",
-    "section": "Linear Model",
-    "text": "Linear Model\n\n\\(\\mathbf{Y}= \\mathbf{X}\\, \\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\\)\n\\(\\mathbf{Y}\\) (\\(n \\times 1\\)) vector of random response (observe \\(\\mathbf{y}\\)); \\(\\mathbf{Y}, \\mathbf{y}\\in \\mathbb{R}^n\\)\n\\(\\mathbf{X}\\) (\\(n \\times p\\)) design matrix (observe)\n\\(\\boldsymbol{\\beta}\\) (\\(p \\times 1\\)) vector of coefficients (unknown)\n\\(\\boldsymbol{\\epsilon}\\) (\\(n \\times 1\\)) vector of “errors” (unobservable)\n\n\nGoals:\n\nWhat goes into \\(\\mathbf{X}\\)? (model building, model selection - post-selection inference?)\nWhat if multiple models are “good”? (model averaging or ensembles) \nWhat about the future? (Prediction)\nUncertainty Quantification - assumptions about \\(\\boldsymbol{\\epsilon}\\)\n\n\n\nAll models are wrong, but some may be useful (George Box)"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#ordinary-least-squares",
-    "href": "resources/slides/01-introduction.html#ordinary-least-squares",
-    "title": "Introduction to STA721",
-    "section": "Ordinary Least Squares",
-    "text": "Ordinary Least Squares\nGoal: Find the best fitting “line” or “hyper-plane” that minimizes \\[\\sum_i  (Y_i - \\mathbf{x}_i^T \\boldsymbol{\\beta})^2 = (\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta})^T(\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}) = \\| \\mathbf{Y}-\n\\mathbf{X}\\boldsymbol{\\beta}\\|^2 \\]\n\nOptimization problem - seek \\(\\boldsymbol{\\beta}\\ni \\mathbf{X}\\boldsymbol{\\beta}\\) is close to \\(\\mathbf{Y}\\) in squared error\nMay over-fit \\(\\Rightarrow\\) add other criteria that provide a penalty Penalized Least Squares\nRobustness to extreme points \\(\\Rightarrow\\) replace quadratic loss with other functions\n\nno notion of uncertainty of estimates\n\nno structure of problem (repeated measures on individual, randomization restrictions, etc)\n\n\nNeed Distribution Assumptions of \\(\\mathbf{Y}\\) (or \\(\\boldsymbol{\\epsilon}\\)) for testing and uncertainty measures \\(\\Rightarrow\\) Likelihood and Bayesian inference"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#random-vectors",
-    "href": "resources/slides/01-introduction.html#random-vectors",
-    "title": "Introduction to STA721",
-    "section": "Random Vectors",
-    "text": "Random Vectors\n\nLet \\(Y_1, \\ldots Y_n\\) be random variables in \\(\\mathbb{R}\\) Then \\[\\mathbf{Y}\\equiv\n\\left[ \\begin{array}{c}\nY_1 \\\\\n\\vdots \\\\\nY_n\n\\end{array} \\right]\\] is a random vector in \\(\\mathbb{R}^n\\)\nExpectations of random vectors are defined element-wise: \\[\\textsf{E}[\\mathbf{Y}] \\equiv\n\\textsf{E}\\left[ \\begin{array}{c}\nY_1 \\\\\n\\vdots \\\\\nY_n\n\\end{array} \\right] \\equiv\n\\left[ \\begin{array}{c}\n\\textsf{E}[Y_1] \\\\\n\\vdots \\\\\n\\textsf{E}[Y_n]\n\\end{array} \\right] =\n\\left[ \\begin{array}{c}\n\\mu_1 \\\\\n\\vdots \\\\\n\\mu_n\n\\end{array} \\right]\n\\equiv \\boldsymbol{\\mu}\\in \\mathbb{R}^n\n\\] where mean or expected value \\(\\textsf{E}[Y_i] = \\mu_i\\)"
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#model-space",
-    "href": "resources/slides/01-introduction.html#model-space",
-    "title": "Introduction to STA721",
-    "section": "Model Space",
-    "text": "Model Space\nWe will work with inner product spaces: a vector spaces, say \\(\\mathbb{R}^n\\) equipped with an inner product \\(\\langle \\mathbf{x},\\mathbf{y}\\rangle \\equiv \\mathbf{x}^T\\mathbf{y}, \\quad \\mathbf{x}, \\mathbf{y}\\in \\mathbb{R}^n\\)\n\n\nDefinition: SubspaceA set \\(\\boldsymbol{{\\cal M}}\\) is a subspace of \\(\\mathbb{R}^n\\) if is a subset of \\(\\mathbb{R}^n\\) and also a vector space.\nThat is, if \\(\\mathbf{x}_1 \\in \\boldsymbol{{\\cal M}}\\) and \\(\\mathbf{x}_2 \\in \\boldsymbol{{\\cal M}}\\), then \\(b_1\\mathbf{x}_1 + b_2 \\mathbf{x}_2 \\in \\boldsymbol{{\\cal M}}\\) for all \\(b_1, b_2 \\in \\mathbb{R}\\)\n\n\n\n\n\nDefinition: Column SpaceThe column space of \\(\\mathbf{X}\\) is \\(C(\\mathbf{X}) = \\mathbf{X}\\boldsymbol{\\beta}\\) for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\)\n\n\n\n\nIf \\(\\mathbf{X}\\) is full column rank, then the columns of \\(\\mathbf{X}\\) form a basis for \\(C(\\mathbf{X})\\) and \\(C(\\mathbf{X})\\) is a p-dimensional subspace of \\(\\mathbb{R}^n\\)\n\n\nIf we have just a single model matrix \\(\\mathbf{X}\\), then the subspace \\(\\boldsymbol{{\\cal M}}\\) is the model space."
-  },
-  {
-    "objectID": "resources/slides/01-introduction.html#philosophy",
-    "href": "resources/slides/01-introduction.html#philosophy",
-    "title": "Introduction to STA721",
-    "section": "Philosophy",
-    "text": "Philosophy\n\nfor many problems frequentist and Bayesian methods will give similar answers (more a matter of taste in interpretation)\n\nFor small problems, Bayesian methods allow us to incorporate prior information which provides better calibrated answers\n\nfor problems with complex designs and/or missing data Bayesian methods are often easier to implement (do not need to rely on asymptotics) \n\nFor problems involving hypothesis testing or model selection frequentist and Bayesian methods can be strikingly different.\n\nFrequentist methods often faster (particularly with “big data”) so great for exploratory analysis and for building a “data-sense”\n\nBayesian methods sit on top of Frequentist Likelihood\n\nGoemetric perspective important in both!\n\n\nImportant to understand advantages and problems of each perspective!\n\n\n\n\nhttps://sta721-F24.github.io/website/"
-  },
-  {
-    "objectID": "labs/lab-01.html",
-    "href": "labs/lab-01.html",
-    "title": "lab-01",
+    "objectID": "resources/slides/04-BLUE.html#slide13-id",
+    "href": "resources/slides/04-BLUE.html#slide13-id",
+    "title": "Best Linear Unbiased Estimators",
     "section": "",
-    "text": "Please see the instructions for HW-01 and be preapred to ask questions in lab (using R, theory, etc)"
+    "text": "Theorem: Gauss-Markov Theorem (Classic)For \\(\\mathbf{Y}= \\boldsymbol{\\mu}+ \\boldsymbol{\\epsilon}\\), with \\(\\boldsymbol{\\mu}\\in \\boldsymbol{{\\cal M}}\\), \\(\\textsf{E}[\\boldsymbol{\\epsilon}]= \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] =\\sigma^2 \\mathbf{I}_n\\) and \\(\\mathbf{P}\\) the orthogonal projection onto \\(\\boldsymbol{{\\cal M}}\\), \\(\\mathbf{P}\\mathbf{Y}= \\hat{\\boldsymbol{\\mu}}\\) is the BLUE of \\(\\boldsymbol{\\mu}\\) out of the class of LUEs \\(\\mathbf{A}\\mathbf{Y}\\) where \\(\\textsf{E}[\\mathbf{A}\\mathbf{Y}] = \\boldsymbol{\\mu}\\), \\(\\mathbf{A}\\in \\mathbb{R}^{n \\times n}\\) equality iff \\(\\mathbf{A}= \\mathbf{P}\\)\n\n\n\nProof\n\nwrite \\(\\mathbf{A}= \\mathbf{P}+ \\mathbf{H}^T\\) so \\(\\mathbf{H}^T = \\mathbf{A}- \\mathbf{P}\\)\nsince \\(\\mathbf{A}\\boldsymbol{\\mu}= \\boldsymbol{\\mu}\\), \\(\\mathbf{H}^T\\mu = \\mathbf{0}_n\\) for \\(\\mu \\in \\boldsymbol{{\\cal M}}\\) and \\(\\mathbf{H}^T \\mathbf{P}= \\mathbf{P}\\mathbf{H}= \\mathbf{0}\\) (columns of \\(\\mathbf{H}\\in \\boldsymbol{{\\cal M}}^\\perp\\)) \\[\\begin{align*}\n\\textsf{E}[\\|\\mathbf{A}\\mathbf{Y}- \\boldsymbol{\\mu}\\|^2]  & =  \\textsf{E}[\\|\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu}) + \\mathbf{H}^T(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2]  \\\\\n& = \\textsf{E}[\\|\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2] + \\underbrace{\\textsf{E}[\\|\\mathbf{H}^T(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2]} + \\underbrace{{\\text{cross-product}}} \\\\\n& \\hspace{4.35in} \\ge 0 \\quad  + \\hspace{1.25in} 0\\\\\n& \\ge \\textsf{E}[\\|\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})\\|^2]\n\\end{align*}\\]\nCross-product is \\(2\\textsf{E}[(\\mathbf{H}^T(\\mathbf{Y}- \\mu))^T\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] = 0\\) (see last slide)"
   },
   {
-    "objectID": "HW/hw-01.html",
-    "href": "HW/hw-01.html",
-    "title": "Homework 1",
+    "objectID": "resources/slides/04-BLUE.html#estimation-of-linear-functionals-of-boldsymbolmu",
+    "href": "resources/slides/04-BLUE.html#estimation-of-linear-functionals-of-boldsymbolmu",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Estimation of Linear Functionals of \\(\\boldsymbol{\\mu}\\)",
+    "text": "Estimation of Linear Functionals of \\(\\boldsymbol{\\mu}\\)\nIf \\(\\mathbf{P}\\mathbf{Y}= \\hat{\\boldsymbol{\\mu}}\\) is the BLUE of \\(\\boldsymbol{\\mu}\\), is \\(\\mathbf{B}\\mathbf{P}\\mathbf{Y}= \\mathbf{B}\\hat{\\boldsymbol{\\mu}}\\) the BLUE of \\(\\mathbf{B}\\boldsymbol{\\mu}\\)?\n\nYes! Similar proof as above to show that out of the class of LUEs \\(\\mathbf{A}\\mathbf{Y}\\) of \\(\\mathbf{B}\\boldsymbol{\\mu}\\) where \\(\\mathbf{A}\\in \\mathbb{R}^{d \\times n}\\) that \\[\\textsf{E}[\\|\\mathbf{A}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2] \\ge \\textsf{E}[\\|\\mathbf{B}\\mathbf{P}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2]\\] with equality iff \\(\\mathbf{A}= \\mathbf{B}\\mathbf{P}\\).\n\n\nWhat about linear functionals of \\(\\boldsymbol{\\beta}\\), \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}\\), for \\(\\mathbf{X}\\) rank \\(r \\le p\\)?\n\n\\(\\hat{\\boldsymbol{\\beta}}\\) is not unique if \\(r &lt; p\\) even though \\(\\hat{\\boldsymbol{\\mu}}\\) is unique (\\(\\hat{\\boldsymbol{\\beta}}\\) is not BLUE)\nSince \\(\\mathbf{B}\\boldsymbol{\\mu}= \\mathbf{B}\\mathbf{X}\\boldsymbol{\\beta}\\) is always identifiable, the only linear functions of \\(\\boldsymbol{\\beta}\\) that are identifiable and can be estimated uniquely are functions of \\(\\mathbf{X}\\boldsymbol{\\beta}\\), i.e. estimates in the form \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}= \\mathbf{B}\\mathbf{X}\\boldsymbol{\\beta}\\) or \\(\\boldsymbol{\\Lambda}= \\mathbf{X}^T \\mathbf{B}^T\\).\ncolumns of \\(\\boldsymbol{\\Lambda}\\) must be in the \\(C(\\mathbf{X}^T)\\)\ndetailed discussion and proof in Christensen Ch. 2 for scalar functionals \\(\\lambda^T\\beta\\)."
+  },
+  {
+    "objectID": "resources/slides/04-BLUE.html#blue-of-boldsymbollambdat-boldsymbolbeta",
+    "href": "resources/slides/04-BLUE.html#blue-of-boldsymbollambdat-boldsymbolbeta",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "BLUE of \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}\\)",
+    "text": "BLUE of \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}\\)\nIf \\(\\boldsymbol{\\Lambda}^T= \\mathbf{B}\\mathbf{X}\\) for some matrix \\(\\mathbf{B}\\) then\n\n\\(\\textsf{E}[\\mathbf{B}\\mathbf{P}\\mathbf{Y}] = \\textsf{E}[\\boldsymbol{\\Lambda}^T \\hat{\\boldsymbol{\\beta}}] = \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\)\nThe unique OLS estimate of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\) is \\(\\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}\\)\n\\(\\mathbf{B}\\mathbf{P}\\mathbf{Y}= \\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}\\) is the BLUE of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\) \\[\\begin{align*}\n& \\textsf{E}[\\|\\mathbf{B}\\mathbf{P}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2]  \\le \\textsf{E}[\\|\\mathbf{A}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2] \\\\\n\\Leftrightarrow & \\\\\n& \\textsf{E}[\\|\\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}- \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta})\\|^2]  \\le \\textsf{E}[\\|\\mathbf{L}^T\\tilde{\\boldsymbol{\\beta}}- \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\|^2]\n\\end{align*}\\] for LUE \\(\\mathbf{A}\\mathbf{Y}= \\mathbf{L}^T\\tilde{\\boldsymbol{\\beta}}\\) of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\)\nProof proceeds as the classic case."
+  },
+  {
+    "objectID": "resources/slides/04-BLUE.html#proof-of-cross-product",
+    "href": "resources/slides/04-BLUE.html#proof-of-cross-product",
+    "title": "Best Linear Unbiased Estimators",
+    "section": "Proof of Cross-Product",
+    "text": "Proof of Cross-Product\nLet \\(\\mathbf{D}= \\mathbf{H}\\mathbf{P}\\) and write \\[\\begin{align*}\n\\textsf{E}[(\\mathbf{H}^T(\\mathbf{Y}- \\mu))^T\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] & = \\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{H}\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] \\\\\n& = \\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})]\n\\end{align*}\\]\n\n\\[\\begin{align*}\n\\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})] = & \\textsf{E}[\\textsf{tr}(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu}))]  \\\\\n= & \\textsf{E}[\\textsf{tr}(\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T)] \\\\\n= & \\textsf{tr}(\\textsf{E}[\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T]) \\\\\n= & \\textsf{tr}(\\mathbf{D}\\textsf{E}[(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T]) \\\\\n  = & \\sigma^2 \\textsf{tr}(\\mathbf{D}\\mathbf{I}_n)\\\\\n\\end{align*}\\]\n\n\nSince \\(\\textsf{tr}(\\mathbf{D}) = \\textsf{tr}(\\mathbf{H}\\mathbf{P}) = \\textsf{tr}(\\mathbf{P}\\mathbf{H})\\) we can conclude that the cross-product term is zero.\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+  },
+  {
+    "objectID": "HW/hw-02.html",
+    "href": "HW/hw-02.html",
+    "title": "Homework 2",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
-    "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
-    "title": "Homework 1",
+    "objectID": "HW/hw-02.html#due-1100pm-thurs-sept-12",
+    "href": "HW/hw-02.html#due-1100pm-thurs-sept-12",
+    "title": "Homework 2",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-01.html#rstudio",
-    "href": "HW/hw-01.html#rstudio",
-    "title": "Homework 1",
+    "objectID": "HW/hw-02.html#rstudio",
+    "href": "HW/hw-02.html#rstudio",
+    "title": "Homework 2",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-01.html#r-quarto",
-    "href": "HW/hw-01.html#r-quarto",
-    "title": "Homework 1",
-    "section": "R & Quarto",
-    "text": "R & Quarto\nYou are required to use the .qmd format to type up this report report. To get started see technical writing with Quarto. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts."
+    "objectID": "HW/hw-02.html#r-rnw",
+    "href": "HW/hw-02.html#r-rnw",
+    "title": "Homework 2",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
   },
   {
-    "objectID": "HW/hw-01.html#getting-started-with-github-classroom",
-    "href": "HW/hw-01.html#getting-started-with-github-classroom",
-    "title": "Homework 1",
+    "objectID": "HW/hw-02.html#getting-started-with-github-classroom",
+    "href": "HW/hw-02.html#getting-started-with-github-classroom",
+    "title": "Homework 2",
     "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW1\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw1.qmd file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW2\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw2.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-01.html#gradescope-submission",
-    "href": "HW/hw-01.html#gradescope-submission",
-    "title": "Homework 1",
+    "objectID": "HW/hw-02.html#gradescope-submission",
+    "href": "HW/hw-02.html#gradescope-submission",
+    "title": "Homework 2",
     "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-01.html#grading",
-    "href": "HW/hw-01.html#grading",
-    "title": "Homework 1",
+    "objectID": "HW/hw-02.html#grading",
+    "href": "HW/hw-02.html#grading",
+    "title": "Homework 2",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "reading/02-mles.html",
-    "href": "reading/02-mles.html",
-    "title": "MLEs & Projections",
+    "objectID": "reading/03-non-full-rank.html",
+    "href": "reading/03-non-full-rank.html",
+    "title": "Rank Deficient Models",
     "section": "",
-    "text": "Readings:\n\nChristensen Chapter 1-2, Appendix A, and Appendix B\nSeber & Lee Chapter 3, Appendix B"
+    "text": "We will explore MLEs/OLS using rank deficient models using generalized inverses. We will characterize orthogonal projections using Spectral Decompositions and review how that is related to the Singular Value Decomposition of the model matrix.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
   },
   {
-    "objectID": "reading/01-introduction.html",
-    "href": "reading/01-introduction.html",
-    "title": "Lecture 1 Readings",
+    "objectID": "reading/04-BLUE.html",
+    "href": "reading/04-BLUE.html",
+    "title": "Best Linear Unbiased Estimation",
     "section": "",
-    "text": "links to eBooks are on the Home page of the website or Resources page."
+    "text": "We will explore properties of MLEs/OLS and linear functionals of them. In particular characterizing the class of linear unbiased estimates and minimimum variances, cumulating with the Guass Markov Theorem for both the full rank case and rank deficient models and establing conditions under which OLS/MLE estimators are the Best Linear Unbiased Estimators under the assumption that the covariance of the errors is spherically symmetric.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
   },
   {
-    "objectID": "reading/01-introduction.html#introduction-to-linear-models",
-    "href": "reading/01-introduction.html#introduction-to-linear-models",
-    "title": "Lecture 1 Readings",
-    "section": "Introduction to Linear Models",
-    "text": "Introduction to Linear Models\n\nreview the course website and syllabus for policies"
-  },
-  {
-    "objectID": "reading/01-introduction.html#vector-spaces",
-    "href": "reading/01-introduction.html#vector-spaces",
-    "title": "Lecture 1 Readings",
-    "section": "Vector Spaces",
-    "text": "Vector Spaces\nChristensen: Read\n\nChapter 1: pages 1-3\nAppendix A in Christensen pages 411-413\nAppendix B section B.1\n\nSee also Seber & Lee Chapter 1."
+    "objectID": "reading/05-BLUE-MVUE.html",
+    "href": "reading/05-BLUE-MVUE.html",
+    "title": "Best Linear Unbiased Estimation in Prediction, MVUEs and BUEs",
+    "section": "",
+    "text": "We will continue our discussion of OLS/MLE estimators with exploring conditions for when the Best Linear Unbiased Estimators exist, with a special focus on out of sample prediction in the non-full rank case. We will outline the proof for why MLEs are also Minimum Variance Unbiased Estimators or “BUE” out of all unbiased estimators linear or non-linear under the additional assumption of normality of the errors. This opens up the question of what estimators are unbiased for linear models and if there are other nonlinear unbiased estimators that are better than OLS, a topic that has received recent attention.\nReadings:\n\nChristensen Chapter 2, Appendix B\nSeber & Lee Chapter 3\nWhat Estimators are Unbiased for Linear Models (2023) and references within"
   },
   {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": " Schedule",
     "section": "",
-    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\nLecture 3: Rank Deficient Models\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\nLecture 4: Best Linear Unbiased Estimation and Gauss-Markov Theorem\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\n\n\n\n\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\n\n\n\n\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\n\n\n\n\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\n\n\n\n\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTue, Oct 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\n\n\n\n\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\nReview for Midterm I\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nMidterm 1\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 24\n\n\n\n\n\n\n\n\n hw-08\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 31\n\n\n\n\n\n\n\n\n hw-09\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\nTues, Nov 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 7\n\n\n\n\n\n\n\n\n hw-10\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 12\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 14\nMidterm2\n\n\n\n\n\n\n hw-11\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 19\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\nTues, Nov 26\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
+    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\nLecture 3: Rank Deficient Models\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\nLecture 4: Best Linear Unbiased Estimation and Gauss-Markov Theorem\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\nLecture 5: BLUES for Prediction and MVUE\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\nLecture 6: Generalized Linear Squares\n\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\nLecture 7: Sampling Distributions\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\n\n\n\n\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\n\n\n\n\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\n\n\n\n\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTue, Oct 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\n\n\n\n\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\nReview for Midterm I\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nMidterm 1\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 24\n\n\n\n\n\n\n\n\n hw-08\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 31\n\n\n\n\n\n\n\n\n hw-09\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\nTues, Nov 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 7\n\n\n\n\n\n\n\n\n hw-10\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 12\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 14\nMidterm2\n\n\n\n\n\n\n hw-11\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 19\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\nTues, Nov 26\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
   },
   {
     "objectID": "syllabus.html",
