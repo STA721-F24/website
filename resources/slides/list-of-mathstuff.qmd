@@ -1,12 +1,6 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
- [**Definition**](#linear-unbiased-estimators-lues): Linear Unbiased Estimators (LUEs)\Pageref{linear-unbiased-estimators-lues}
+ [**Definition**](#identifiable): Identifiable\Pageref{identifiable}
 
- [**Theorem**](#Theorem*-0.2)\Pageref{Theorem*-0.2}
+ [**Proposition**](#Proposition*-0.2)\Pageref{Proposition*-0.2}
 
- [**Definition**](#loewner-ordering): Loewner Ordering\Pageref{loewner-ordering}
-
- [**Theorem**](#gauss-markov): Gauss-Markov\Pageref{gauss-markov}
-
- [**Theorem**](#gauss-markov-theorem-classic): Gauss-Markov Theorem (Classic)\Pageref{gauss-markov-theorem-classic}
-
- [**Proof**](#Proof*-0.6)\Pageref{Proof*-0.6}
+ [**Exercise**](#Exercise*-0.3)\Pageref{Exercise*-0.3}

@@ -11,4 +11,20 @@ Readings:
 
 -   Seber & Lee Chapter 3
 
+
+
+For the curious
+
 -   [What Estimators are Unbiased for Linear Models](https://arxiv.org/pdf/2212.14185) (2023) and references within
+
+-   Anderson, T.W. (1962). [Least squares and best unbiased estimates](https://www.jstor.org/stable/2237657). The Annals of Mathematical Statistics, 33(1): 266–272
+  
+- Hansen, B.E. (2022) [A modern gauss-markov theorem](https://users.ssc.wisc.edu/~bhansen/papers/ecnmt_2022.pdf). Econometrica
+
+			
+
+    			
+
+    		
+
+    	
