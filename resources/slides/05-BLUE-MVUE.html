@@ -391,27 +391,15 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   .Corollary {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Proof {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Proposition {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
-  }
-  .Lemma {
+  .Exercise {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -419,17 +407,29 @@
     --color1: #c0c0c0;
     --color2: #808080;
   }
-  .Exercise {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Proposition {
     --color1: #948bde;
     --color2: #584eab;
+  }
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
   }
   .Theorem {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Proof {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   </style>
 </head>
@@ -628,7 +628,7 @@ Merlise Clyde (clyde@duke.edu)
 <section id="conditions-for-lue-of-boldsymbollambda" class="slide level2">
 <h2>Conditions for LUE of <span class="math inline">\(\boldsymbol{\lambda}\)</span></h2>
 <ul>
-<li class="fragment"><p>GM requires that <span class="math inline">\(\boldsymbol{\lambda}^T = \mathbf{b}^T\mathbf{X}\Leftrightarrow \boldsymbol{\lambda}= \mathbf{X}^T \mathbf{b}\)</span> therefore <span class="math inline">\(\boldsymbol{\lambda}\in C(\mathbf{X}^T) = N(\mathbf{X})\)</span></p></li>
+<li class="fragment"><p>GM requires that <span class="math inline">\(\boldsymbol{\lambda}^T = \mathbf{b}^T\mathbf{X}\Leftrightarrow \boldsymbol{\lambda}= \mathbf{X}^T \mathbf{b}\)</span> therefore <span class="math inline">\(\boldsymbol{\lambda}\in C(\mathbf{X}^T)\)</span></p></li>
 <li class="fragment"><p>Suppose we have an arbitrary <span class="math inline">\(\boldsymbol{\lambda}= \boldsymbol{\lambda}_* + \mathbf{u}\)</span>, where <span class="math inline">\(\boldsymbol{\lambda}_*  \in C(\mathbf{X}^T)\)</span> and <span class="math inline">\(\mathbf{u}\in C(\mathbf{X}^T)^\perp\)</span> (orthogonal complement)</p></li>
 <li class="fragment"><p>Let <span class="math inline">\(\mathbf{P}_{\mathbf{X}^T}\)</span> denote an orthogonal projection onto <span class="math inline">\(C(\mathbf{X}^T)\)</span> then <span class="math inline">\(\mathbf{I}- \mathbf{P}_{\mathbf{X}^T}\)</span> is an orthogonal projection onto <span class="math inline">\(C(\mathbf{X}^T)^\perp\)</span></p></li>
 <li class="fragment"><p><span class="math inline">\((\mathbf{I}- \mathbf{P}_{\mathbf{X}^T})\boldsymbol{\lambda}= (\mathbf{I}- \mathbf{P}_{\mathbf{X}^T})\boldsymbol{\lambda}_* + (\mathbf{I}- \mathbf{P}_{\mathbf{X}^T})\mathbf{u}= \mathbf{0}_p + \mathbf{u}\)</span></p></li>
