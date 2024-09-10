@@ -172,6 +172,7 @@ $$\mu_{ij} = \mu + \tau_j \qquad \mub = (
 
 ## LUEs of Individual $\beta_j$
 ::: {.Proposition}
+## Christensen 2.1.6
 For $\mub = \X \b = \sum_j \X_j \beta_j$
 $\beta_j$ is **not identifiable**  if and only if there exists $\alpha_j$
 such that $\X_j = \sum_{i \neq j} \X_i \alpha_i$
@@ -198,7 +199,7 @@ $$
 
 - Are any parameters $\mu$ or $\tau_j$ identifiable?
 
-## Examples:
+## Examples of $\lambdab$ of Interest:
 - A $j$th element of $\b$: $\lambdab = (0, 0, \ldots,1, 0, \ldots, 0)^T$,  $$\lambdab^T\b = \beta_j$$
 
 - Difference between two treatements: $\tau_1 - \tau_2$:  $\lambdab = (0, 1, -1, \ldots, 0, \ldots, 0)^T$,  $$\lambdab^T\b = \tau_1 - \tau_2$$
@@ -270,9 +271,9 @@ out
 - Let  $\P_{\X^T}$ denote an orthogonal projection onto $C(\X^T)$ then $\I - \P_{\X^T}$ is an orthogonal  projection  onto $C(\X^T)^\perp$ 
 
 - $(\I - \P_{\X^T})\lambdab = (\I - \P_{\X^T})\lambdab_* + (\I - \P_{\X^T})\u = \zero_p + \u$ 
-- so if $\lambdab \in C(\X^T)$ we will have $(\I - \P_{\X^T})\lambdab = \zero_p$!
+- so if $\lambdab \in C(\X^T)$ we will have $(\I - \P_{\X^T})\lambdab = \zero_p$!  (or $\P_{\X^T} \lambdab = \lambdab$)
 
-- Note this is really just a generalization of Proposition 2.1.6 in Christensen  that $\beta_j$ is identifiable iff there exist scalars such that $\X_j \neq \sum_{i \neq j} \X_i \alpha_i$
+- Note this is really just a generalization of Proposition 2.1.6 in Christensen  that $\beta_j$ is **not** identifiable iff there exist scalars such that $\X_j = \sum_{i \neq j} \X_i \alpha_i$
 
 ---
 
@@ -298,7 +299,7 @@ Rows 2, 5, and 6  do not have a unique best linear unbiased estimator, $\x_*^T \
 
 ## MVUE: Minimum Variance Unbiased Estimators
 - Gauss-Markov Theorem says that OLS has minimum variance in the
-    class of all Linear Unbiased estimators for $\E[\eps] = \zero_n$ and $\Cov[\eps] = \sigma^2 |_n$
+    class of all Linear Unbiased estimators for $\E[\eps] = \zero_n$ and $\Cov[\eps] = \sigma^2 \I_n$
 - Requires just first and second moments 
 - Additional assumption of normality and full rank,  OLS of $\b$ is the same as MLEs and have
   minimum variance out of **ALL**  unbiased estimators (MVUE); not
@@ -328,7 +329,7 @@ Rows 2, 5, and 6  do not have a unique best linear unbiased estimator, $\x_*^T \
 
 ## Next Up
 
-- GLS under assumptions $\E[\eps] = \zero_n$ and $\Cov[\eps] = \Sigmab^2$
+- GLS under assumptions $\E[\eps] = \zero_n$ and $\Cov[\eps] = \Sigmab$
 
 - Oblique projections and orthogonality with other inner products on $\bbR^n$
 

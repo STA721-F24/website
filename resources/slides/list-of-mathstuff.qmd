@@ -1,6 +1,6 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
  [**Definition**](#identifiable): Identifiable\Pageref{identifiable}
 
- [**Proposition**](#Proposition*-0.2)\Pageref{Proposition*-0.2}
+ [**Proposition**](#christensen-2.1.6): Christensen 2.1.6\Pageref{christensen-2.1.6}
 
  [**Exercise**](#Exercise*-0.3)\Pageref{Exercise*-0.3}
