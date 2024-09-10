@@ -265,7 +265,7 @@ out
 
 ## Conditions for LUE of $\lambdab$
 
-- GM requires that $\lambdab^T = \bv^T\X \Leftrightarrow \lambdab = \X^T \bv$   therefore $\lambdab \in C(\X^T) = N(\X)$ 
+- GM requires that $\lambdab^T = \bv^T\X \Leftrightarrow \lambdab = \X^T \bv$   therefore $\lambdab \in C(\X^T)$ 
 - Suppose we have an arbitrary $\lambdab = \lambdab_* + \u$, where $\lambdab_*  \in C(\X^T)$ and $\u \in C(\X^T)^\perp$ (orthogonal complement)
 - Let  $\P_{\X^T}$ denote an orthogonal projection onto $C(\X^T)$ then $\I - \P_{\X^T}$ is an orthogonal  projection  onto $C(\X^T)^\perp$ 
 
