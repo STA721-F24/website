@@ -326,29 +326,25 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Theorem {
-    --color1: #948bde;
-    --color2: #584eab;
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
   }
   .Proposition {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Lemma {
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
+  }
+  .Theorem {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Feature {
-    --color1: #c0c0c0;
-    --color2: #808080;
+  .Exercise {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   .Proof {
     --color1: #948bde;
@@ -358,9 +354,13 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   .TODO {
     --color1: #e7b1b4;
@@ -582,18 +582,15 @@ Merlise Clyde (clyde@duke.edu)
 </section>
 <section id="outline-of-proof" class="slide level2">
 <h2>Outline of Proof</h2>
-<p>We need to show that <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> are the same for all <span class="math inline">\(\mathbf{Y}\)</span>. Since both <span class="math inline">\(\mathbf{P}\)</span> and <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> are projections onto <span class="math inline">\(C(\mathbf{X})\)</span>, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> will be the same iff</p>
+<p>We need to show that <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> are the same for all <span class="math inline">\(\mathbf{Y}\)</span>. Since both <span class="math inline">\(\mathbf{P}\)</span> and <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> are projections onto <span class="math inline">\(C(\mathbf{X})\)</span>, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> will be the same iff <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> is an orthogonal projection onto <span class="math inline">\(C(\mathbf{X})\)</span> so that <span class="math inline">\(\mathbf{P}_\mathbf{V}\mathbf{n}= 0\)</span> for <span class="math inline">\(\mathbf{n}\in C(\mathbf{X})^\perp\)</span> (they have the same null spaces)</p>
 <ol type="1">
-<li class="fragment">Show that <span class="math inline">\(\mathbf{P}= \mathbf{P}_V\)</span> iff <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}^{-1} \mathbf{X})\)</span></li>
-<li class="fragment">Show that <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}^{-1} \mathbf{X})\)</span> iff <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}\mathbf{X})\)</span></li>
-<li class="fragment">Show that <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}\mathbf{X})\)</span> iff <span class="math inline">\(\mathbf{V}\)</span> can be written as <span class="math display">\[\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^T + \mathbf{H}\boldsymbol{\Phi}\mathbf{H}^T\]</span></li>
+<li class="fragment"><p>Show that <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}\mathbf{X})\)</span> iff <span class="math inline">\(\mathbf{V}\)</span> can be written as <span class="math display">\[\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^T + \mathbf{H}\boldsymbol{\Phi}\mathbf{H}^T\]</span> (Show <span class="math inline">\(C(\mathbf{V}\mathbf{X}) \subset C( \mathbf{X})\)</span> iff <span class="math inline">\(\mathbf{V}\)</span> has the above form and since the two subspaces have the same rank <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}\mathbf{X})\)</span></p></li>
+<li class="fragment"><p>Show that <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}^{-1} \mathbf{X})\)</span> iff <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}\mathbf{X})\)</span></p></li>
+<li class="fragment"><p>Show that <span class="math inline">\(C(\mathbf{X})^\perp = C(\mathbf{V}^{-1} \mathbf{X})^\perp\)</span> iff <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}^{-1} \mathbf{X})\)</span></p></li>
+<li class="fragment"><p>Show that <span class="math inline">\(\mathbf{n}\in C(\mathbf{X})^\perp\)</span> iff <span class="math inline">\(\mathbf{n}\in C(\mathbf{V}^{-1}\mathbf{X})^\perp\)</span> so <span class="math inline">\(\mathbf{P}_\mathbf{V}\mathbf{n}= 0\)</span></p></li>
 </ol>
 <div class="fragment">
 <p>See Proposition 2.7.5 and Proof in Christensen</p>
-<div id="Corollary*-0.8" class="Corollary">
-<p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary</strong></summary><div>Suppose <span class="math inline">\(\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^ T + \boldsymbol{\Omega}\)</span>. Then <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}= \hat{\boldsymbol{\beta}}_\boldsymbol{\Omega}\)</span><p></p>
-</div></details>
-</div>
 </div>
 </section>
 <section id="some-intuition" class="slide level2">
@@ -630,15 +627,28 @@ Merlise Clyde (clyde@duke.edu)
 </section>
 <section id="intuition-continued-1" class="slide level2">
 <h2>Intuition Continued</h2>
-<p>As a consequence we have<br>
-- <span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}= \mathbf{P}\boldsymbol{\epsilon}= \mathbf{X}\mathbf{Z}_\mathbf{X}\)</span> - <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}= (\mathbf{I}_n - \mathbf{P})\boldsymbol{\epsilon}= \mathbf{H}\mathbf{Z}_\textsf{N}\)</span> - <span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}\)</span> and <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}\)</span> are uncorrelated <span class="math display">\[\begin{align}
-\textsf{E}[\boldsymbol{\epsilon}_\mathbf{X}\boldsymbol{\epsilon}_\textsf{N}] &amp; = \textsf{E}[\mathbf{X}\mathbf{Z}_\mathbf{X}\mathbf{Z}_\textsf{N}^T \mathbf{H}^T] \\
-                    &amp; = \mathbf{X}\mathbf{0}\mathbf{H}^T \\
-                    &amp; = \mathbf{0}
-\end{align}\]</span></p>
+<p>As a consequence we have</p>
 <ul>
+<li class="fragment"><p><span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}= \mathbf{P}\boldsymbol{\epsilon}= \mathbf{X}\mathbf{Z}_\mathbf{X}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}= (\mathbf{I}_n - \mathbf{P})\boldsymbol{\epsilon}= \mathbf{H}\mathbf{Z}_\textsf{N}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}\)</span> and <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}\)</span> are uncorrelated <span class="math display">\[\begin{align}
+\textsf{E}[\boldsymbol{\epsilon}_\mathbf{X}\boldsymbol{\epsilon}_\textsf{N}] &amp; = \textsf{E}[\mathbf{X}\mathbf{Z}_\mathbf{X}\mathbf{Z}_\textsf{N}^T \mathbf{H}^T] \\
+                  &amp; = \mathbf{X}\mathbf{0}\mathbf{H}^T \\
+                  &amp; = \mathbf{0}
+\end{align}\]</span></p></li>
 <li class="fragment"><p>so that <span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}\)</span> and <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}\)</span> are uncorrelated with <span class="math inline">\(\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^T + \mathbf{H}\boldsymbol{\Phi}\mathbf{H}\)</span> ^T$</p></li>
 <li class="fragment"><p>Alternative Statement of Theorem: <span class="math inline">\(\hat{\boldsymbol{\beta}}= \hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> for all <span class="math inline">\(\mathbf{Y}\)</span> under <span class="math inline">\(\textsf{Cov}[\mathbf{Y}] = \sigma^2 \mathbf{V}\)</span> iff <span class="math inline">\(\mathbf{P}\mathbf{Y}\)</span> and <span class="math inline">\((\mathbf{I}- \mathbf{P})\mathbf{Y}\)</span> are uncorrelated</p></li>
+</ul>
+</section>
+<section id="equivalence-of-gls-estimators" class="slide level2">
+<h2>Equivalence of GLS estimators</h2>
+<p>The following corollary to the theorem establishes when two GLS estimators for different <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}]\)</span> are equivalent :</p>
+<div id="Corollary*-0.8" class="Corollary">
+<p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary</strong></summary><div>Suppose <span class="math inline">\(\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^ T + \boldsymbol{\Omega}\)</span>. Then <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}= \hat{\boldsymbol{\beta}}_\boldsymbol{\Omega}\)</span><p></p>
+</div></details>
+</div>
+<ul>
+<li class="fragment">Can you construct an equivalent representation based on zero correlation of <span class="math inline">\(\mathbf{P}_\boldsymbol{\Omega}\mathbf{Y}\)</span> and <span class="math inline">\((\mathbf{I}_n - \mathbf{P}_\boldsymbol{\Omega})\mathbf{Y}\)</span> when <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{V}?\)</span></li>
 </ul>
 
 <div class="quarto-auto-generated-content">
