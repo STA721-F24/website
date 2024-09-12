@@ -2,94 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://STA721-F24.github.io/website/about.html</loc>
-    <lastmod>2024-09-10T14:47:22.544Z</lastmod>
+    <lastmod>2024-09-12T04:05:45.040Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/index.html</loc>
-    <lastmod>2024-09-10T14:47:22.556Z</lastmod>
+    <lastmod>2024-09-12T04:05:45.052Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources.html</loc>
-    <lastmod>2024-09-10T14:47:22.556Z</lastmod>
+    <lastmod>2024-09-12T04:05:45.052Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/01-introduction.html</loc>
-    <lastmod>2024-09-10T14:47:22.556Z</lastmod>
+    <lastmod>2024-09-12T04:05:45.052Z</lastmod>
   </url>
   <url>
-    <loc>https://STA721-F24.github.io/website/reading/02-mles.html</loc>
-    <lastmod>2024-09-10T14:47:22.556Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/HW/hw-01.html</loc>
-    <lastmod>2024-09-10T14:47:22.480Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/labs/lab-01.html</loc>
-    <lastmod>2024-09-10T14:47:22.556Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/resources/slides/list-of-stilltodo.html</loc>
-    <lastmod>2024-09-10T14:48:30.884Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/resources/slides/04-BLUE.html</loc>
-    <lastmod>2024-09-10T14:47:22.568Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/resources/slides/example.html</loc>
-    <lastmod>2024-09-10T14:47:22.572Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/resources/slides/02-mles.html</loc>
-    <lastmod>2024-09-10T14:47:22.564Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/resources/slides/list-of-mathstuff.html</loc>
-    <lastmod>2024-09-10T14:48:30.884Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/resources/slides/03-non-full-rank.html</loc>
-    <lastmod>2024-09-10T14:47:22.568Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/resources/slides/template.html</loc>
-    <lastmod>2024-09-10T14:47:22.572Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/resources/slides/macros.html</loc>
-    <lastmod>2024-09-10T14:47:22.572Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/resources/slides/01-introduction.html</loc>
-    <lastmod>2024-09-10T14:47:22.560Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/resources/slides/05-BLUE-MVUE.html</loc>
-    <lastmod>2024-09-10T14:47:22.572Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/HW/hw-02.html</loc>
-    <lastmod>2024-09-10T14:47:22.480Z</lastmod>
+    <loc>https://STA721-F24.github.io/website/reading/06-GLS.html</loc>
+    <lastmod>2024-09-12T04:05:45.052Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/03-non-full-rank.html</loc>
-    <lastmod>2024-09-10T14:47:22.556Z</lastmod>
+    <lastmod>2024-09-12T04:05:45.052Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/HW/hw-02.html</loc>
+    <lastmod>2024-09-12T04:05:44.952Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/resources/slides/05-BLUE-MVUE.html</loc>
+    <lastmod>2024-09-12T04:05:45.068Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/resources/slides/01-introduction.html</loc>
+    <lastmod>2024-09-12T04:05:45.060Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/resources/slides/macros.html</loc>
+    <lastmod>2024-09-12T04:05:45.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/resources/slides/06-GLS.html</loc>
+    <lastmod>2024-09-12T04:05:45.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/resources/slides/02-mles.html</loc>
+    <lastmod>2024-09-12T04:05:45.064Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/resources/slides/list-of-mathstuff.html</loc>
+    <lastmod>2024-09-12T04:07:04.896Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/resources/slides/03-non-full-rank.html</loc>
+    <lastmod>2024-09-12T04:05:45.068Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/resources/slides/template.html</loc>
+    <lastmod>2024-09-12T04:05:45.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/resources/slides/example.html</loc>
+    <lastmod>2024-09-12T04:05:45.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/resources/slides/04-BLUE.html</loc>
+    <lastmod>2024-09-12T04:05:45.068Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/resources/slides/list-of-stilltodo.html</loc>
+    <lastmod>2024-09-12T04:07:04.896Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/labs/lab-01.html</loc>
+    <lastmod>2024-09-12T04:05:45.052Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/HW/hw-01.html</loc>
+    <lastmod>2024-09-12T04:05:44.952Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/reading/02-mles.html</loc>
+    <lastmod>2024-09-12T04:05:45.052Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/04-BLUE.html</loc>
-    <lastmod>2024-09-10T14:47:22.556Z</lastmod>
+    <lastmod>2024-09-12T04:05:45.052Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/05-BLUE-MVUE.html</loc>
-    <lastmod>2024-09-10T14:47:22.556Z</lastmod>
+    <lastmod>2024-09-12T04:05:45.052Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/schedule.html</loc>
-    <lastmod>2024-09-10T14:47:22.572Z</lastmod>
+    <lastmod>2024-09-12T04:05:45.072Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/syllabus.html</loc>
-    <lastmod>2024-09-10T14:47:22.572Z</lastmod>
+    <lastmod>2024-09-12T04:05:45.072Z</lastmod>
   </url>
 </urlset>

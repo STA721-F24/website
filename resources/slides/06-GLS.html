@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – Best Linear Unbiased Estimators</title>
+  <title>STA721-F24: Linear Models – Generalized Least Squares, BLUES &amp; BUES</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,71 +30,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -391,13 +326,25 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
+  .Exercise {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   .Theorem {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .Proposition {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   .Feature {
     --color1: #c0c0c0;
@@ -407,21 +354,17 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
-  }
-  .Lemma {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   </style>
 </head>
@@ -430,8 +373,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Best Linear Unbiased Estimators</h1>
-  <p class="subtitle">STA 721: Lecture 4</p>
+  <h1 class="title">Generalized Least Squares, BLUES &amp; BUES</h1>
+  <p class="subtitle">STA 721: Lecture 6</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -448,273 +391,260 @@ Merlise Clyde (clyde@duke.edu)
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
 <ul>
-<li class="fragment">Characterizing Linear Unbiased Estimators</li>
-<li class="fragment">Gauss-Markov Theorem</li>
-<li class="fragment">Best Linear Unbiased Estimators</li>
+<li class="fragment">General Least Squares and MLEs</li>
+<li class="fragment">Gauss-Markov Theorem &amp; BLUEs</li>
+<li class="fragment">MVUE</li>
 </ul>
 <div class="fragment">
-<p>Readings: - Christensen Chapter 1-2 and Appendix B - Seber &amp; Lee Chapter 3</p>
+<p>Readings:</p>
+<ul>
+<li class="fragment"><p>Christensen Chapter 2 and 10 (Appendix B as needed)</p></li>
+<li class="fragment"><p>Seber &amp; Lee Chapter 3</p></li>
+</ul>
 </div>
 </section>
-<section id="full-rank-case" class="slide level2">
-<h2>Full Rank Case</h2>
+<section id="other-error-distributions" class="slide level2">
+<h2>Other Error Distributions</h2>
+<p>Model:<br>
+<span class="math display">\[\begin{align} \mathbf{Y}&amp; = \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\quad
+              \textsf{E}[\boldsymbol{\epsilon}]  = \mathbf{0}_n \\
+              \textsf{Cov}[\boldsymbol{\epsilon}] &amp; = \sigma^2 \mathbf{V}
+\end{align}\]</span> where <span class="math inline">\(\sigma^2\)</span> is a scalar and <span class="math inline">\(\mathbf{V}\)</span> is a <span class="math inline">\(n \times n\)</span> symmetric matrix</p>
+<div class="fragment">
+<p>Examples:</p>
 <ul>
-<li class="fragment"><p>Model: <span class="math inline">\(\mathbf{Y}= \boldsymbol{\mu}+ \boldsymbol{\epsilon}\)</span></p></li>
-<li class="fragment"><p>Minimal Assumptions:</p>
+<li class="fragment">Heteroscedasticity: <span class="math inline">\(\mathbf{V}\)</span> is a diagonal matrix with <span class="math inline">\([\mathbf{V}]_{ii} =  v_i\)</span>
 <ul>
-<li class="fragment">Mean <span class="math inline">\(\boldsymbol{\mu}\in C(\mathbf{X})\)</span> for <span class="math inline">\(\mathbf{X}\in \mathbb{R}^{n \times p}\)</span></li>
-<li class="fragment">Errors <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span></li>
+<li class="fragment"><span class="math inline">\(v_{i} = 1/n_i\)</span> if <span class="math inline">\(y_i\)</span> is the mean of <span class="math inline">\(n_i\)</span> observations</li>
+<li class="fragment">survey weights or propogation of measurement errors in physics models</li>
 </ul></li>
+<li class="fragment">Correlated data:
+<ul>
+<li class="fragment">time series; first order auto-regressive model with equally spaced data <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{V}\)</span>, where <span class="math inline">\(v_{ij} = \rho^{|i−j|}\)</span>.</li>
+</ul></li>
+<li class="fragment">Hierarchical models with random effects</li>
+</ul>
+</div>
+</section>
+<section id="ols-under-a-general-covariance" class="slide level2">
+<h2>OLS under a General Covariance</h2>
+<ul>
+<li class="fragment"><p>Is it still unbiased? What’s its variance? Is it still the BLUE?</p></li>
+<li class="fragment"><p><strong>Unbiasedness of</strong> <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> <span class="math display">\[\begin{align}
+\textsf{E}[\hat{\boldsymbol{\beta}}] &amp; = \textsf{E}[(\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T \mathbf{Y}] \\
+        &amp; = (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T \textsf{E}[\mathbf{Y}] =  (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T \textsf{E}[\mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}] \\
+        &amp; = \boldsymbol{\beta}+ \mathbf{0}_p = \boldsymbol{\beta}
+\end{align}\]</span></p></li>
+<li class="fragment"><p><strong>Covariance of</strong> <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> <span class="math display">\[\begin{align}
+\textsf{Cov}[\hat{\boldsymbol{\beta}}] &amp; = \textsf{Cov}[(\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T \mathbf{Y}] \\
+       &amp; = (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T \textsf{Cov}[\mathbf{Y}]  \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
+       &amp; = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T  \mathbf{V}\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}
+\end{align}\]</span></p></li>
+<li class="fragment"><p>Not necessarily <span class="math inline">\(\sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}\)</span> unless <span class="math inline">\(\mathbf{V}\)</span> has a special form</p></li>
+</ul>
+</section>
+<section id="gls-via-whitening" class="slide level2">
+<h2>GLS via Whitening</h2>
+<p>Transform the data and reduce problem to one we have solved!</p>
+<ul>
+<li class="fragment"><p>For <span class="math inline">\(\mathbf{V}&gt; 0\)</span> use the Spectral Decomposition <span class="math display">\[\mathbf{V}= \mathbf{U}\boldsymbol{\Lambda}\mathbf{U}^T = \mathbf{U}\boldsymbol{\Lambda}^{1/2} \boldsymbol{\Lambda}^{1/2} \mathbf{U}^T\]</span></p></li>
+<li class="fragment"><p>define the symmetric square root of <span class="math inline">\(\mathbf{V}\)</span> as <span class="math display">\[\mathbf{V}^{1/2} \equiv \mathbf{U}\boldsymbol{\Lambda}^{1/2} \mathbf{U}^T\]</span></p></li>
+<li class="fragment"><p>transform model: <span class="math display">\[\begin{align*}
+\mathbf{V}^{-1/2} \mathbf{Y}&amp; = \mathbf{V}^{-1/2} \mathbf{X}\boldsymbol{\beta}+ \mathbf{V}^{-1/2}\boldsymbol{\epsilon}\\
+\tilde{\mathbf{Y}} &amp; = \tilde{\mathbf{X}} \boldsymbol{\beta}+ \tilde{\boldsymbol{\epsilon}}
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>Since <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\epsilon}}] = \sigma^2\mathbf{V}^{-1/2} \mathbf{V}\mathbf{V}^{-1/2} = \sigma^2 \mathbf{I}_n\)</span>, we know that <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\equiv (\tilde{\mathbf{X}}^T\tilde{\mathbf{X}})^{-1} \tilde{\mathbf{X}}^T\tilde{\mathbf{Y}}\)</span> is the BLUE for <span class="math inline">\(\boldsymbol{\beta}\)</span> based on <span class="math inline">\(\tilde{\mathbf{Y}}\)</span> (<span class="math inline">\(\mathbf{X}\)</span> full rank)</p></li>
+</ul>
+</section>
+<section id="gls" class="slide level2">
+<h2>GLS</h2>
+<ul>
+<li class="fragment"><p>If <span class="math inline">\(\mathbf{V}\)</span> is known, then <span class="math inline">\(\tilde{\mathbf{Y}}\)</span> and <span class="math inline">\(\mathbf{Y}\)</span> are known linear transformations of each other</p></li>
+<li class="fragment"><p>any estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> that is linear in <span class="math inline">\(\mathbf{Y}\)</span> is linear in <span class="math inline">\(\tilde{\mathbf{Y}}\)</span> and vice versa from previous results</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> is the BLUE of <span class="math inline">\(\boldsymbol{\beta}\)</span> based on either <span class="math inline">\(\tilde{\mathbf{Y}}\)</span> or <span class="math inline">\(\mathbf{Y}\)</span>!</p></li>
+<li class="fragment"><p>Substituting back, we have <span class="math display">\[\begin{align}
+\hat{\boldsymbol{\beta}}_\mathbf{V}&amp; =  (\tilde{\mathbf{X}}^T\tilde{\mathbf{X}})^{-1} \tilde{\mathbf{X}}^T\tilde{\mathbf{Y}}\\
+       &amp; = (\mathbf{X}^T \mathbf{V}^{-1/2}\mathbf{V}^{-1/2} \mathbf{X})^{-1} \mathbf{X}^T\mathbf{V}^{-1/2}\mathbf{V}^{-1/2}\mathbf{Y}\\
+       &amp; = (\mathbf{X}^T \mathbf{V}^{-1} \mathbf{X})^{-1} \mathbf{X}^T\mathbf{V}^{-1}\mathbf{Y}
+\end{align}\]</span> which is the <strong>Generalized Least Squares Estimator</strong> of <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
 </ul>
 <div class="fragment">
-<div id="linear-unbiased-estimators-lues" class="Definition unnumbered" title="Linear Unbiased Estimators (LUEs)">
-<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Linear Unbiased Estimators (LUEs)</summary><div>
-<p>An estimator <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> is a <strong>Linear Unbiased Estimator</strong> (LUE) of <span class="math inline">\(\boldsymbol{\beta}\)</span> if</p>
+<div id="weighted-regression" class="Exercise" title="Weighted Regression">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercise: </strong>Weighted Regression</summary><div>Consider the model <span class="math inline">\(\mathbf{Y}= \beta \mathbf{x}+ \boldsymbol{\epsilon}\)</span> where <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}]\)</span> is a known diagonal matrix <span class="math inline">\(\mathbf{V}\)</span>. Write out the GLS estimator in terms of sums and interpret.<p></p>
+</div></details>
+</div>
+</div>
+</section>
+<section id="gls-of-boldsymbolmu-full-rank-casedagger" class="slide level2">
+<h2>GLS of <span class="math inline">\(\boldsymbol{\mu}\)</span> (Full Rank Case)<span class="math inline">\(^{\dagger}\)</span></h2>
+<ul>
+<li class="fragment"><p>the OLS/MLE of <span class="math inline">\(\boldsymbol{\mu}\in C(\mathbf{X})\)</span> with transformed variables is <span class="math display">\[\begin{align*}
+\mathbf{P}_{\tilde{\mathbf{X}}} \tilde{\mathbf{Y}}&amp; = \tilde{\mathbf{X}}\hat{\boldsymbol{\beta}}_\mathbf{V}\\
+\tilde{\mathbf{X}}\left(\tilde{\mathbf{X}}^T\tilde{\mathbf{X}}\right)^{-1}\tilde{\mathbf{X}}^T \tilde{\mathbf{Y}}&amp; = \tilde{\mathbf{X}}\hat{\boldsymbol{\beta}}_\mathbf{V}\\
+\mathbf{V}^{-1/2} \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1} \mathbf{Y}&amp; = \mathbf{V}^{-1/2} \mathbf{X}\hat{\boldsymbol{\beta}}_\mathbf{V}\end{align*}\]</span></p></li>
+<li class="fragment"><p>since <span class="math inline">\(\mathbf{V}\)</span> is positive definite, multiple thru by <span class="math inline">\(\mathbf{V}^{1/2}\)</span>, to show that <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> is a GLS/MLE estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> iff <span class="math display">\[\mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1} \mathbf{Y}= \mathbf{X}\hat{\boldsymbol{\beta}}_\mathbf{V}\]</span></p></li>
+<li class="fragment"><p>Is <span class="math inline">\(\mathbf{P}_\mathbf{V}\equiv \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1}\)</span> a projection onto <span class="math inline">\(C(\mathbf{X})\)</span>? Is it an orthogonal projection onto <span class="math inline">\(C(\mathbf{X})\)</span>?</p></li>
+</ul>
+<div class="footer">
+<p><span class="math inline">\(\dagger\)</span> if <span class="math inline">\(\mathbf{X}\)</span> is not full rank replace <span class="math inline">\(\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\)</span> with <span class="math inline">\(\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-}\)</span></p>
+</div>
+</section>
+<section id="projections" class="slide level2">
+<h2>Projections</h2>
+<p>We want to show that <span class="math inline">\(\mathbf{P}_\mathbf{V}\equiv \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1}\)</span> is a projection onto <span class="math inline">\(C(\mathbf{X})\)</span></p>
+<ul>
+<li class="fragment"><p>from the definition of <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> it follows that <span class="math inline">\(\mathbf{m}\in C(\mathbf{P}_\mathbf{v})\)</span> implies that <span class="math inline">\(\mathbf{m}= \mathbf{P}_\mathbf{V}\mathbf{m}= \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T\mathbf{m}\)</span> so <span class="math inline">\(C(\mathbf{P}_\mathbf{V}) \subset C(\mathbf{X})\)</span></p></li>
+<li class="fragment"><p>since <span class="math inline">\(\mathbf{P}_\tilde{\mathbf{X}}\)</span> is a projection onto <span class="math inline">\(C(\tilde{\mathbf{X}})\)</span> we have <span class="math display">\[\begin{align*}
+\mathbf{P}_{\tilde{\mathbf{X}}} \tilde{\mathbf{X}}&amp; = \tilde{\mathbf{X}}\\
+\tilde{\mathbf{X}}\left(\tilde{\mathbf{X}}^T\tilde{\mathbf{X}}\right)^{-1}\tilde{\mathbf{X}}^T \tilde{\mathbf{X}}&amp; = \tilde{\mathbf{X}}\\
+\mathbf{V}^{-1/2} \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1} \mathbf{X}&amp; = \mathbf{V}^{-1/2} \mathbf{X}\\
+\mathbf{V}^{-1/2} \mathbf{P}_\mathbf{V}\mathbf{X}&amp; = \mathbf{V}^{-1/2} \mathbf{X}
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>We can multiply both sides by <span class="math inline">\(\mathbf{V}^{1/2} &gt; 0\)</span>, so that <span class="math inline">\(\mathbf{P}_\mathbf{V}\mathbf{X}= \mathbf{X}\)</span></p></li>
+<li class="fragment"><p>for <span class="math inline">\(\mathbf{m}\in C(\mathbf{X})\)</span>, <span class="math inline">\(\mathbf{P}_\mathbf{V}\mathbf{m}= \mathbf{m}\)</span> and <span class="math inline">\(C(\mathbf{X}) \subset C(\mathbf{P}_\mathbf{V})\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\quad \quad \therefore C(\mathbf{P}_\mathbf{V}) = C(\mathbf{X})\)</span> so that <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> is a projection onto <span class="math inline">\(C(\mathbf{X})\)</span></p></li>
+</ul>
+<div class="footer">
+
+</div>
+</section>
+<section id="oblique-projections" class="slide level2">
+<h2>Oblique Projections</h2>
+<div id="projection" class="Proposition" title="Projection">
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition: </strong>Projection</summary><div>The <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}_\mathbf{V}\equiv \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1}\)</span> is a projection onto the <span class="math inline">\(C(\mathbf{X})\)</span><p></p>
+</div></details>
+</div>
+<ul>
+<li class="fragment"><p>Show that <span class="math inline">\(\mathbf{P}_\mathbf{V}^2 = \mathbf{P}_\mathbf{V}\)</span> (idempotent)</p></li>
+<li class="fragment"><p>every vector <span class="math inline">\(\mathbf{y}\in \mathbb{R}^n\)</span> may be written as <span class="math inline">\(\mathbf{y}= \mathbf{m}+ \mathbf{n}\)</span> where <span class="math inline">\(\mathbf{P}_\mathbf{v}\mathbf{y}= \mathbf{m}\)</span> and <span class="math inline">\((\mathbf{I}_n - \mathbf{P}_\mathbf{v})\mathbf{y}= \mathbf{n}\)</span> where <span class="math inline">\(\mathbf{m}\in C(\mathbf{P}_\mathbf{V})\)</span> and <span class="math inline">\(\mathbf{u}\in N(\mathbf{P}_\mathbf{V})\)</span></p></li>
+<li class="fragment"><p>Is <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> an orthogonal projection onto <span class="math inline">\(C(\mathbf{X})\)</span> for the inner product space <span class="math inline">\((\mathbb{R}^n, \langle \mathbf{v}, \mathbf{u}\rangle = \mathbf{v}^T\mathbf{u})\)</span>?</p></li>
+</ul>
+<div class="fragment">
+<div id="oblique-projection" class="Definition" title="Oblique Projection">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Oblique Projection</summary><div>For the inner product space <span class="math inline">\((\mathbb{R}^n, \langle \mathbf{v}, \mathbf{u}\rangle = \mathbf{v}^T\mathbf{u})\)</span>, a projection <span class="math inline">\(\mathbf{P}\)</span> that is not an orthogonal projection is called an <em>oblique projection</em><p></p>
+</div></details>
+</div>
+</div>
+</section>
+<section id="loss-function" class="slide level2">
+<h2>Loss Function</h2>
+<p>The GLS estimator minimizes the following generalized squared error loss: <span class="math display">\[\begin{align}
+\| \tilde{\mathbf{Y}}- \tilde{\mathbf{X}}\boldsymbol{\beta}\|^2 &amp; = (\tilde{\mathbf{Y}}- \tilde{\mathbf{X}}\boldsymbol{\beta})^T(\tilde{\mathbf{Y}}- \tilde{\mathbf{X}}\boldsymbol{\beta}) \\
+                    &amp; = (\mathbf{Y}- \mathbf{X}\boldsymbol{\beta})^T \mathbf{V}^{-1/2}\mathbf{V}^{-1/2}(\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}) \\
+                    &amp; = (\mathbf{Y}- \mathbf{X}\boldsymbol{\beta})^T \mathbf{V}^{-1}(\mathbf{Y}- \mathbf{X}\boldsymbol{\beta})  \\
+                    &amp; = \| \mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2_{\mathbf{V}^{-1}}
+\end{align}\]</span> where we can change the inner product to be <span class="math display">\[\langle \mathbf{u}, \mathbf{v}\rangle_{\mathbf{V}^{-1}} \equiv \mathbf{u}^T\mathbf{V}^{-1} \mathbf{v}\]</span></p>
+</section>
+<section id="orthogonality-in-an-inner-product-space" class="slide level2">
+<h2>Orthogonality in an Inner Product Space</h2>
+<div id="orthogonal-projecton" class="Definition" title="Orthogonal Projecton">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Orthogonal Projecton</summary><div>For an inner product space, (<span class="math inline">\(\mathbb{R}^n, \langle , \rangle\)</span>). The projection <span class="math inline">\(\mathbf{P}\)</span> is an orthogonal projection if for every vector <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> in <span class="math inline">\(\mathbb{R}^n\)</span>, <span class="math display">\[
+  \langle \mathbf{P}\mathbf{x}, (\mathbf{I}_n -\mathbf{P})\mathbf{y}\rangle = \langle (\mathbf{I}_n - \mathbf{P}) \mathbf{x},\mathbf{P}\mathbf{y}\rangle = 0
+\]</span> Equivalently: <span class="math display">\[
+  \langle \mathbf{x},\mathbf{P}\mathbf{y}\rangle = \langle \mathbf{P}\mathbf{x}, \mathbf{P}\mathbf{y}\rangle =\langle \mathbf{P}\mathbf{x},\mathbf{y}\rangle
+\]</span><p></p>
+</div></details>
+</div>
+<div id="Exercise*-0.5" class="Exercise">
+<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercise</strong></summary><div>Show that <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> is an orthogonal projection under the inner product <span class="math inline">\(\langle \mathbf{x}, \mathbf{y}\rangle_{\mathbf{V}^{-1}} \equiv \mathbf{x}^T\mathbf{V}^{-1} \mathbf{y}\)</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="variance-of-gls" class="slide level2">
+<h2>Variance of GLS</h2>
+<ul>
+<li class="fragment">Variance of the GLS estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}=  (\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1}\mathbf{X}^T\mathbf{V}^{−1}\mathbf{Y}\)</span> is much simpler <span class="math display">\[\begin{align}
+\textsf{Cov}[\hat{\boldsymbol{\beta}}_\mathbf{V}] &amp; = (\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1}\mathbf{X}^T\mathbf{V}^{−1}\textsf{Cov}[\mathbf{Y}]\mathbf{V}^{−1}\mathbf{X}(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1} \\
+&amp; = (\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1}\mathbf{X}^T\mathbf{V}^{−1}\mathbf{V}\mathbf{V}^{−1}\mathbf{X}(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1} \\
+&amp; = \sigma^2(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1}(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1} \\
+&amp; = \sigma^2(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1}
+\end{align}\]</span></li>
+</ul>
+<div class="fragment">
+<div id="gauss-markov-aitkin" class="Theorem" title="Gauss-Markov-Aitkin">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Gauss-Markov-Aitkin</summary><div>Let <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> be a linear unbiased estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> be the GLS estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> in the linear model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\)</span> with <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{V}\)</span> with <span class="math inline">\(\mathbf{X}\)</span> and <span class="math inline">\(\mathbf{V}&gt;0\)</span> known. Then <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> is the BLUE where <span class="math display">\[\textsf{Cov}[\tilde{\boldsymbol{\beta}}] \ge  \sigma^2 (\mathbf{X}^T\mathbf{V}^{-1} \mathbf{X})^{-1} = \textsf{Cov}[\hat{\boldsymbol{\beta}}_\mathbf{V}] \]</span><p></p>
+</div></details>
+</div>
+</div>
+</section>
+<section id="when-will-ols-and-gls-be-equal" class="slide level2">
+<h2>When will OLS and GLS be Equal?</h2>
+<ul>
+<li class="fragment"><p>For what covariance matrices <span class="math inline">\(\mathbf{V}\)</span> will the OLS and GLS estimators be the same?</p></li>
+<li class="fragment"><p>Figuring this out can help us understand why the GLS estimator has a lower variance in general.</p></li>
+</ul>
+<div class="fragment">
+<div id="Theorem*-0.7" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>The estimators <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> (OLS) and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> (GLS) are the same for all <span class="math inline">\(\mathbf{Y}\in \mathbb{R}^n\)</span> iff <span class="math display">\[\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^T + \mathbf{H}\boldsymbol{\Phi}\mathbf{H}^T\]</span> for some positive definite matrices <span class="math inline">\(\boldsymbol{\Psi}\)</span> and <span class="math inline">\(\boldsymbol{\Phi}\)</span> and a matrix <span class="math inline">\(\mathbf{H}\)</span> such that <span class="math inline">\(\mathbf{H}^T \mathbf{X}= \mathbf{0}\)</span>.<p></p>
+</div></details>
+</div>
+</div>
+</section>
+<section id="outline-of-proof" class="slide level2">
+<h2>Outline of Proof</h2>
+<p>We need to show that <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> are the same for all <span class="math inline">\(\mathbf{Y}\)</span>. Since both <span class="math inline">\(\mathbf{P}\)</span> and <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> are projections onto <span class="math inline">\(C(\mathbf{X})\)</span>, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> will be the same iff</p>
 <ol type="1">
-<li class="fragment">linearity: <span class="math inline">\(\tilde{\boldsymbol{\beta}}= \mathbf{A}\mathbf{Y}\)</span> for <span class="math inline">\(\mathbf{A}\in \mathbb{R}^{p \times n}\)</span></li>
-<li class="fragment">unbiasedness: <span class="math inline">\(\textsf{E}[\tilde{\boldsymbol{\beta}}] = \boldsymbol{\beta}\)</span> for all <span class="math inline">\(\boldsymbol{\beta}\in \mathbb{R}^p\)</span></li>
+<li class="fragment">Show that <span class="math inline">\(\mathbf{P}= \mathbf{P}_V\)</span> iff <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}^{-1} \mathbf{X})\)</span></li>
+<li class="fragment">Show that <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}^{-1} \mathbf{X})\)</span> iff <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}\mathbf{X})\)</span></li>
+<li class="fragment">Show that <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}\mathbf{X})\)</span> iff <span class="math inline">\(\mathbf{V}\)</span> can be written as <span class="math display">\[\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^T + \mathbf{H}\boldsymbol{\Phi}\mathbf{H}^T\]</span></li>
 </ol>
+<div class="fragment">
+<p>See Proposition 2.7.5 and Proof in Christensen</p>
+<div id="Corollary*-0.8" class="Corollary">
+<p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary</strong></summary><div>Suppose <span class="math inline">\(\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^ T + \boldsymbol{\Omega}\)</span>. Then <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}= \hat{\boldsymbol{\beta}}_\boldsymbol{\Omega}\)</span><p></p>
 </div></details>
 </div>
 </div>
-<div class="fragment">
-<p>The class of linear unbiased estimators is the same for every model with parameter space <span class="math inline">\(\boldsymbol{\beta}\in \mathbb{R}^p\)</span> and <span class="math inline">\(P \in \cal{P}\)</span>, for any collection <span class="math inline">\(\cal{P}\)</span> of mean-zero distributions over <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
-</div>
 </section>
-<section id="linear-unbiased-estimators-lues-1" class="slide level2">
-<h2>Linear Unbiased Estimators (LUEs)</h2>
+<section id="some-intuition" class="slide level2">
+<h2>Some Intuition</h2>
+<p>For the linear model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\)</span> with <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{V}\)</span>, we can always write</p>
+<p><span class="math display">\[\begin{align} \boldsymbol{\epsilon}&amp; = \mathbf{P}\boldsymbol{\epsilon}+ (\mathbf{I}- \mathbf{P})\boldsymbol{\epsilon}\\
+                   &amp; = \boldsymbol{\epsilon}_\mathbf{X}+ \boldsymbol{\epsilon}_N   
+\end{align}\]</span></p>
 <ul>
-<li class="fragment">Let <span class="math inline">\(\textsf{N}\)</span> be an ONB for <span class="math inline">\(\boldsymbol{{\cal N}}= \boldsymbol{{\cal M}}^\perp = N(\mathbf{X}^T)\)</span>:
+<li class="fragment"><p>we can recover <span class="math inline">\(\boldsymbol{\epsilon}_N\)</span> from the data <span class="math inline">\(\mathbf{Y}\)</span> but not <span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}\)</span>: <span class="math display">\[\begin{align} \mathbf{P}\mathbf{Y}&amp; = \mathbf{P}( \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}_\mathbf{X}+ \boldsymbol{\epsilon}_n )\\
+                   &amp; =  \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}_\mathbf{X}= \mathbf{X}\hat{\boldsymbol{\beta}}\\
+    (\mathbf{I}_n - \mathbf{P}) \mathbf{Y}&amp; =  \boldsymbol{\epsilon}_N = \hat{\boldsymbol{\epsilon}} = \mathbf{e}
+\end{align}\]</span></p></li>
+<li class="fragment"><p>Can <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}\)</span> help us estimate <span class="math inline">\(\mathbf{X}\boldsymbol{\beta}\)</span>? What if <span class="math inline">\(\boldsymbol{\epsilon}_N\)</span> could tell us something about <span class="math inline">\(\boldsymbol{\epsilon}_X\)</span>?</p></li>
+<li class="fragment"><p>Yes if they were highly correlated! But if they were independent or uncorrelated then knowing <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}\)</span> doesn’t help us!</p></li>
+</ul>
+</section>
+<section id="intuition-continued" class="slide level2">
+<h2>Intuition Continued</h2>
 <ul>
-<li class="fragment"><span class="math inline">\(\textsf{N}^T\mathbf{m}=  \textsf{N}^T\mathbf{X}\mathbf{b}= \mathbf{0}\quad \forall \mathbf{m}=\mathbf{X}\mathbf{b}\in \boldsymbol{{\cal M}}\)</span></li>
-<li class="fragment"><span class="math inline">\(\textsf{N}^T\textsf{N}= \mathbf{I}_{n-p}\)</span></li>
+<li class="fragment"><p>For what matrices are <span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}\)</span> and <span class="math inline">\(\boldsymbol{\epsilon}_N\)</span> uncorrelated?</p></li>
+<li class="fragment"><p>Under <span class="math inline">\(\mathbf{V}= \mathbf{I}_n\)</span>: <span class="math display">\[\begin{align}
+\textsf{E}[\boldsymbol{\epsilon}_X \boldsymbol{\epsilon}_N] &amp; = \mathbf{P}\textsf{E}[\boldsymbol{\epsilon}\boldsymbol{\epsilon}^T](\mathbf{I}-\mathbf{P}) \\
+                &amp; = \sigma^2 \mathbf{P}(\mathbf{I}- \mathbf{P}) = \mathbf{0}
+\end{align}\]</span> so they are uncorrelated</p></li>
+<li class="fragment"><p>For the <span class="math inline">\(\mathbf{V}\)</span> in the theorem, introduce</p>
+<ul>
+<li class="fragment"><span class="math inline">\(\mathbf{Z}_\mathbf{X}\)</span> where <span class="math inline">\(\textsf{E}[\mathbf{Z}_\mathbf{X}]= \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\mathbf{Z}_\mathbf{X}] = \boldsymbol{\Psi}\)</span></li>
+<li class="fragment"><span class="math inline">\(\mathbf{Z}_\textsf{N}\)</span> where <span class="math inline">\(\textsf{E}[\mathbf{Z}_\textsf{N}]= \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\mathbf{Z}_\textsf{N}] = \boldsymbol{\Phi}\)</span></li>
+<li class="fragment"><span class="math inline">\(\mathbf{Z}_\mathbf{X}\)</span> and <span class="math inline">\(\mathbf{Z}_\textsf{N}\)</span> are uncorrelated, <span class="math inline">\(\textsf{E}[\mathbf{Z}_\mathbf{X}\mathbf{Z}_\textsf{N}] = \mathbf{0}\)</span></li>
+<li class="fragment"><span class="math inline">\(\boldsymbol{\epsilon}= \mathbf{X}\mathbf{Z}_\mathbf{X}+ \mathbf{H}\mathbf{Z}_\textsf{N}\)</span> so that <span class="math inline">\(\boldsymbol{\epsilon}\)</span> has the desired mean and covariance <span class="math inline">\(\mathbf{V}\)</span> in the theorem</li>
 </ul></li>
 </ul>
-<div class="fragment">
-<p>Consider another linear estimator <span class="math inline">\(\tilde{\boldsymbol{\beta}}= \mathbf{A}\mathbf{Y}\)</span></p>
+</section>
+<section id="intuition-continued-1" class="slide level2">
+<h2>Intuition Continued</h2>
+<p>As a consequence we have<br>
+- <span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}= \mathbf{P}\boldsymbol{\epsilon}= \mathbf{X}\mathbf{Z}_\mathbf{X}\)</span> - <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}= (\mathbf{I}_n - \mathbf{P})\boldsymbol{\epsilon}= \mathbf{H}\mathbf{Z}_\textsf{N}\)</span> - <span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}\)</span> and <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}\)</span> are uncorrelated <span class="math display">\[\begin{align}
+\textsf{E}[\boldsymbol{\epsilon}_\mathbf{X}\boldsymbol{\epsilon}_\textsf{N}] &amp; = \textsf{E}[\mathbf{X}\mathbf{Z}_\mathbf{X}\mathbf{Z}_\textsf{N}^T \mathbf{H}^T] \\
+                    &amp; = \mathbf{X}\mathbf{0}\mathbf{H}^T \\
+                    &amp; = \mathbf{0}
+\end{align}\]</span></p>
 <ul>
-<li class="fragment"><p>Difference between <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> (OLS/MLE): <span class="math display">\[\begin{align*}
-  \mathbf{\delta}= \tilde{\boldsymbol{\beta}}- \hat{\boldsymbol{\beta}}&amp; = \left(\mathbf{A}- (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T \right)\mathbf{Y}\\
-                  &amp; \equiv \mathbf{H}^T \mathbf{Y}
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>Since both <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> are unbiased, <span class="math inline">\(\textsf{E}[\mathbf{\delta}] = \mathbf{0}_p \quad \forall \boldsymbol{\beta}\in \mathbb{R}^p\)</span> <span class="math display">\[\mathbf{0}_p = \textsf{E}[\mathbf{H}^T \mathbf{Y}] = \mathbf{H}^T \mathbf{X}\boldsymbol{\beta}\quad \forall \boldsymbol{\beta}\in \mathbb{R}^p\]</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\mathbf{X}^T \mathbf{H}= \mathbf{0}\)</span> so each column of <span class="math inline">\(\mathbf{H}\)</span> is in <span class="math inline">\(\boldsymbol{{\cal M}}^\perp \equiv \boldsymbol{{\cal N}}\)</span></p></li>
+<li class="fragment"><p>so that <span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}\)</span> and <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}\)</span> are uncorrelated with <span class="math inline">\(\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^T + \mathbf{H}\boldsymbol{\Phi}\mathbf{H}\)</span> ^T$</p></li>
+<li class="fragment"><p>Alternative Statement of Theorem: <span class="math inline">\(\hat{\boldsymbol{\beta}}= \hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> for all <span class="math inline">\(\mathbf{Y}\)</span> under <span class="math inline">\(\textsf{Cov}[\mathbf{Y}] = \sigma^2 \mathbf{V}\)</span> iff <span class="math inline">\(\mathbf{P}\mathbf{Y}\)</span> and <span class="math inline">\((\mathbf{I}- \mathbf{P})\mathbf{Y}\)</span> are uncorrelated</p></li>
 </ul>
-<div class="footer">
-
-</div>
-</div>
-</section>
-<section id="lues-continued" class="slide level2">
-<h2>LUEs continued</h2>
-<p>Since each column of <span class="math inline">\(\mathbf{H}\)</span> is in <span class="math inline">\(\boldsymbol{{\cal N}}\)</span> there exists a <span class="math inline">\(\mathbf{G}\in \mathbb{R}^{p \times (n-p)} \ni \mathbf{H}= \textsf{N}\mathbf{G}^T\)</span></p>
-<div class="fragment">
-<p>Rewriting <span class="math inline">\(\mathbf{\delta}= \tilde{\boldsymbol{\beta}}- \hat{\boldsymbol{\beta}}\)</span>: <span class="math display">\[\begin{align*}
-\tilde{\boldsymbol{\beta}}&amp; = \hat{\boldsymbol{\beta}}+ \mathbf{\delta}\\
-         &amp; = \hat{\boldsymbol{\beta}}+ \mathbf{H}^T\mathbf{Y}\\
-         &amp; = \hat{\boldsymbol{\beta}}+ \mathbf{G}\textsf{N}^T\mathbf{Y}
-\end{align*}\]</span></p>
-<ul>
-<li class="fragment">therefore <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> is linear and unbiased: <span class="math display">\[\begin{align*}
-\textsf{E}[\tilde{\boldsymbol{\beta}}] &amp; = \textsf{E}[\hat{\boldsymbol{\beta}}+ \mathbf{G}\textsf{N}^T\mathbf{Y}] \\
-           &amp; =  \textsf{E}[\hat{\boldsymbol{\beta}}] + \textsf{E}[\mathbf{G}\textsf{N}^T\mathbf{Y}] \\
-           &amp; =  \boldsymbol{\beta}+ \mathbf{G}\textsf{N}^T\mathbf{X}\boldsymbol{\beta}\\
-           &amp; = \boldsymbol{\beta}
-\end{align*}\]</span></li>
-</ul>
-</div>
-</section>
-<section id="characterization-of-lues" class="slide level2">
-<h2>Characterization of LUEs</h2>
-<p>Summary of previous results:</p>
-<div id="Theorem*-0.2" class="Theorem unnumbered">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>An estimator <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> is a linear unbiased estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> in a linear statistical model if and only if <span class="math display">\[\tilde{\boldsymbol{\beta}}= \hat{\boldsymbol{\beta}}+ \mathbf{H}^T\mathbf{Y}\]</span> for some <span class="math inline">\(\mathbf{H}\in \mathbb{R}^{n \times p}\)</span> such that <span class="math inline">\(\mathbf{X}^T \mathbf{H}= \mathbf{0}\)</span> or equivalently for some <span class="math inline">\(\mathbf{G}\in \mathbb{R}^{p \times (n-p)}\)</span> <span class="math display">\[\tilde{\boldsymbol{\beta}}= \hat{\boldsymbol{\beta}}+ \mathbf{G}\textsf{N}^T\mathbf{Y}\]</span><p></p>
-</div></details>
-</div>
-</section>
-<section id="numerical" class="slide level2">
-<h2>Numerical</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># X is model matrix; Y is response</span></span>
-<span id="cb1-2"><a></a>  p <span class="ot">=</span> <span class="fu">ncol</span>(X)</span>
-<span id="cb1-3"><a></a>  n <span class="ot">=</span> <span class="fu">nrow</span>(X)</span>
-<span id="cb1-4"><a></a>  G <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(p<span class="sc">*</span>(n<span class="sc">-</span>p)), <span class="at">nrow=</span>p, <span class="at">ncol=</span>n<span class="sc">-</span>p)</span>
-<span id="cb1-5"><a></a>  H <span class="ot">=</span> MASS<span class="sc">::</span><span class="fu">Null</span>(X) <span class="sc">%*%</span> <span class="fu">t</span>(G)</span>
-<span id="cb1-6"><a></a>  btilde <span class="ot">=</span> bhat <span class="sc">+</span> <span class="fu">t</span>(H) <span class="sc">%*%</span> Y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>infinite number of LUEs!</p>
-</section>
-<section id="lues-via-generalized-inverses" class="slide level2">
-<h2>LUEs via Generalized Inverses</h2>
-<p>Let <span class="math inline">\(\tilde{\boldsymbol{\beta}}= \mathbf{A}\mathbf{Y}\)</span> be a LUE in the statistical linear model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\)</span> with <span class="math inline">\(\mathbf{X}\)</span> full column rank <span class="math inline">\(p\)</span> <span class="math display">\[\begin{align*}
-\textsf{E}[\tilde{\boldsymbol{\beta}}] &amp; = \textsf{E}[\mathbf{A}\mathbf{Y}] \\
-            &amp; = \mathbf{A}\textsf{E}[\mathbf{Y}] \\
-            &amp; = \mathbf{A}\mathbf{X}\boldsymbol{\beta}\quad \forall \boldsymbol{\beta}\in \mathbb{R}^p
-\end{align*}\]</span></p>
-<ul>
-<li class="fragment">Must have <span class="math inline">\(\mathbf{A}\mathbf{X}= \mathbf{I}_p\)</span> (<span class="math inline">\(\mathbf{A}\)</span> is a generalized inverse of <span class="math inline">\(\mathbf{X}\)</span>)</li>
-<li class="fragment"><span class="math inline">\(\mathbf{X}\mathbf{X}^- \mathbf{X}= \mathbf{X}\)</span></li>
-<li class="fragment">one generalized inverse is <span class="math inline">\(\mathbf{X}_{MP}^- = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{X}_{MP}^- = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T = \mathbf{V}\boldsymbol{\Delta}^{-1} \mathbf{U}^T\)</span> (using SVD of <span class="math inline">\(\mathbf{X}= \mathbf{U}\boldsymbol{\Delta}\mathbf{V}^T\)</span>)</li>
-<li class="fragment"><span class="math inline">\(\mathbf{A}\)</span> is a generalized inverse of <span class="math inline">\(\mathbf{X}\)</span> iff <span class="math inline">\(\mathbf{A}= \mathbf{X}_{MP}^- + \mathbf{H}^T\)</span> for <span class="math inline">\(\mathbf{H}\in \mathbb{R}^{n \times p} \ni \mathbf{H}^T \mathbf{U}= \mathbf{0}\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{A}\mathbf{Y}= (\mathbf{X}_{MP}^- + \mathbf{H}^T)\mathbf{Y}= \hat{\boldsymbol{\beta}}+  \mathbf{H}^T \mathbf{Y}\)</span></li>
-</ul>
-</section>
-<section id="best-linear-unbiased-estimators" class="slide level2">
-<h2>Best Linear Unbiased Estimators</h2>
-<ul>
-<li class="fragment"><p>the distribution of values of any unbiased estimator is <em>centered</em> around <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
-<li class="fragment"><p>out of the infinite number of LUEs is there one that is more <em>concentrated</em> around <span class="math inline">\(\boldsymbol{\beta}\)</span>?</p></li>
-<li class="fragment"><p>is there an unbiased estimator that has a lower variance than all other unbiased estimators?</p></li>
-<li class="fragment"><p>Recall variance-covariance matrix of a random vector <span class="math inline">\(\mathbf{Z}\)</span> with mean <span class="math inline">\(\boldsymbol{\theta}\)</span> <span class="math display">\[\begin{align*}
-\textsf{Cov}[\mathbf{Z}]      &amp; \equiv \textsf{E}[(\mathbf{Z}- \boldsymbol{\theta})(\mathbf{Z}- \boldsymbol{\theta})^T] \\
-\textsf{Cov}[\mathbf{Z}]_{ij} &amp;  =     \textsf{E}[(z_i - \theta_i)(z_j - \theta_j)]
-\end{align*}\]</span></p></li>
-</ul>
-<div class="fragment">
-<div title="Lemma">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Lemma</strong></p>
-</div>
-<div class="callout-content">
-<p>Let <span class="math inline">\(\mathbf{A}\in \mathbb{R}^{q \times p}\)</span> and <span class="math inline">\(\mathbf{b}\in \mathbb{R}^q\)</span> with <span class="math inline">\(\mathbf{Z}\)</span> a random vector in <span class="math inline">\(\mathbb{R}^p\)</span> then <span class="math display">\[\textsf{Cov}[\mathbf{A}\mathbf{Z}+ \mathbf{b}] = \mathbf{A}\textsf{Cov}[\mathbf{Z}] \mathbf{A}^T \ge 0\]</span></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="variance-of-linear-unbiased-estimators" class="slide level2">
-<h2>Variance of Linear Unbiased Estimators</h2>
-<p>Let’s look at the variance of any LUE under assumption <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{I}_n\)</span></p>
-<ul>
-<li class="fragment"><p>for <span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\mathbf{Y}= \boldsymbol{\beta}+ (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\boldsymbol{\epsilon}\)</span> <span class="math display">\[\begin{align*}
-\textsf{Cov}[\hat{\boldsymbol{\beta}}] &amp; = \textsf{Cov}[\boldsymbol{\beta}+ (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\boldsymbol{\epsilon}] \\
-          &amp; =  (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\textsf{Cov}[\boldsymbol{\epsilon}] \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
-          &amp; = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
-          &amp; = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>Covariance is increasing in <span class="math inline">\(\sigma^2\)</span> and generally decreasing in <span class="math inline">\(n\)</span></p></li>
-<li class="fragment"><p>Rewrite <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> as <span class="math inline">\(\mathbf{X}^T\mathbf{X}= \sum_{i=1}^n \mathbf{x}_i \mathbf{x}_i^T\)</span> (a sum of <span class="math inline">\(n\)</span> outer-products)</p></li>
-</ul>
-</section>
-<section id="variance-of-arbitrary-lue" class="slide level2">
-<h2>Variance of Arbitrary LUE</h2>
-<ul>
-<li class="fragment"><p>for <span class="math inline">\(\tilde{\boldsymbol{\beta}}= \left((\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{H}^T \right)\mathbf{Y}= \boldsymbol{\beta}+ \left((\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{H}^T \right)\boldsymbol{\epsilon}\)</span></p></li>
-<li class="fragment"><p>recall <span class="math inline">\(\mathbf{X}_{MP}^- \equiv  (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\)</span> <span class="math display">\[\begin{align*}
-\textsf{Cov}[\tilde{\boldsymbol{\beta}}] &amp; = \textsf{Cov}[\left(\mathbf{X}_{MP}^- + \mathbf{H}^T \right)\boldsymbol{\epsilon}]  \\
-            &amp; = \sigma^2 \left(\mathbf{X}_{MP}^- + \mathbf{H}^T \right)\left(\mathbf{X}_{MP}^- + \mathbf{H}^T \right)^T \\
-            &amp; = \sigma^2\left( \mathbf{X}_{MP}^-(\mathbf{X}_{MP}^-)^T + \mathbf{X}_{MP}^-\mathbf{H}+
-                \mathbf{H}^T (\mathbf{X}_{MP}^-)^T + \mathbf{H}^T \mathbf{H}\right) \\
-            &amp; =   \sigma^2\left( (\mathbf{X}^T\mathbf{X})^{-1} +  \mathbf{H}^T \mathbf{H}\right)
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>Cross-product term <span class="math inline">\(\mathbf{H}^T(\mathbf{X}_{MP}^-)^T = \mathbf{H}^T\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} =  \mathbf{0}\)</span></p></li>
-<li class="fragment"><p>Therefor the <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\beta}}] = \textsf{Cov}[\hat{\boldsymbol{\beta}}] + \mathbf{H}^T\mathbf{H}\)</span></p></li>
-<li class="fragment"><p>the sum of a positive definite matrix plus a positive semi-definite matrix</p></li>
-</ul>
-</section>
-<section id="gauss-markov-theorem" class="slide level2">
-<h2>Gauss-Markov Theorem</h2>
-<p>Is <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\beta}}] \ge \textsf{Cov}[\hat{\boldsymbol{\beta}}]\)</span> in some sense?</p>
-<div class="fragment">
-<div id="loewner-ordering" class="Definition unnumbered" title="Loewner Ordering">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Loewner Ordering</summary><div>For two positive semi-definite matrices <span class="math inline">\(\boldsymbol{\Sigma}_1\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}_2\)</span>, we say that <span class="math inline">\(\boldsymbol{\Sigma}_1 &gt; \boldsymbol{\Sigma}_2\)</span> if <span class="math inline">\(\boldsymbol{\Sigma}_1 - \boldsymbol{\Sigma}_2\)</span> is positive definite, <span class="math inline">\(\mathbf{x}^T(\boldsymbol{\Sigma}_1 - \boldsymbol{\Sigma}_2)\mathbf{x}) &gt; 0\)</span>, and <span class="math inline">\(\boldsymbol{\Sigma}_1 \ge \boldsymbol{\Sigma}_2\)</span> if <span class="math inline">\(\boldsymbol{\Sigma}_1 - \boldsymbol{\Sigma}_2\)</span> is positive semi-definite, <span class="math inline">\(\mathbf{x}^T(\boldsymbol{\Sigma}_1 - \boldsymbol{\Sigma}_2)\mathbf{x}) \ge 0\)</span><p></p>
-</div></details>
-</div>
-<ul>
-<li class="fragment">Since <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\beta}}] - \textsf{Cov}[\hat{\boldsymbol{\beta}}] = \mathbf{H}^T\mathbf{H}\)</span>, we have that <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\beta}}] \ge \textsf{Cov}[\hat{\boldsymbol{\beta}}]\)</span></li>
-</ul>
-</div>
-<div class="fragment">
-<div id="gauss-markov" class="Theorem unnumbered" title="Gauss-Markov">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Gauss-Markov</summary><div>Let <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> be a linear unbiased estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> in a linear model where <span class="math inline">\(\textsf{E}[\mathbf{Y}] = \mathbf{X}\boldsymbol{\beta}, \boldsymbol{\beta}\in \mathbb{R}^p\)</span>, <span class="math inline">\(\mathbf{X}\)</span> rank <span class="math inline">\(p\)</span>, and <span class="math inline">\(\textsf{Cov}[\mathbf{Y}] = \sigma^2\mathbf{I}_n, \sigma^2 &gt; 0\)</span>. Then <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\beta}}] \ge \textsf{Cov}[\hat{\boldsymbol{\beta}}]\)</span> where <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is the OLS estimator and is the <strong>Best Linear Unbiased Estimator</strong> (BLUE) of <span class="math inline">\(\boldsymbol{\beta}\)</span>.<p></p>
-</div></details>
-</div>
-</div>
-</section>
-<section id="slide13-id" class="slide level2" data-menu-title="GM Theorem and Proof">
-<h2></h2>
-<div id="gauss-markov-theorem-classic" class="Theorem" title="Gauss-Markov Theorem (Classic)">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Gauss-Markov Theorem (Classic)</summary><div>For <span class="math inline">\(\mathbf{Y}= \boldsymbol{\mu}+ \boldsymbol{\epsilon}\)</span>, with <span class="math inline">\(\boldsymbol{\mu}\in \boldsymbol{{\cal M}}\)</span>, <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}]= \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] =\sigma^2 \mathbf{I}_n\)</span> and <span class="math inline">\(\mathbf{P}\)</span> the orthogonal projection onto <span class="math inline">\(\boldsymbol{{\cal M}}\)</span>, <span class="math inline">\(\mathbf{P}\mathbf{Y}= \hat{\boldsymbol{\mu}}\)</span> is the BLUE of <span class="math inline">\(\boldsymbol{\mu}\)</span> out of the class of LUEs <span class="math inline">\(\mathbf{A}\mathbf{Y}\)</span> where <span class="math inline">\(\textsf{E}[\mathbf{A}\mathbf{Y}] = \boldsymbol{\mu}\)</span>, <span class="math inline">\(\mathbf{A}\in \mathbb{R}^{n \times n}\)</span> equality iff <span class="math inline">\(\mathbf{A}= \mathbf{P}\)</span><p></p>
-</div></details>
-</div>
-<div id="Proof*-0.6" class="Proof">
-<details class="Proof fbx-simplebox fbx-default"><summary><strong>Proof</strong></summary><div>
-<ul>
-<li class="fragment"><p>write <span class="math inline">\(\mathbf{A}= \mathbf{P}+ \mathbf{H}^T\)</span> so <span class="math inline">\(\mathbf{H}^T = \mathbf{A}- \mathbf{P}\)</span></p></li>
-<li class="fragment"><p>since <span class="math inline">\(\mathbf{A}\boldsymbol{\mu}= \boldsymbol{\mu}\)</span>, <span class="math inline">\(\mathbf{H}^T\mu = \mathbf{0}_n\)</span> for <span class="math inline">\(\mu \in \boldsymbol{{\cal M}}\)</span> and <span class="math inline">\(\mathbf{H}^T \mathbf{P}= \mathbf{P}\mathbf{H}= \mathbf{0}\)</span> (columns of <span class="math inline">\(\mathbf{H}\in \boldsymbol{{\cal M}}^\perp\)</span>) <span class="math display">\[\begin{align*}
-\textsf{E}[\|\mathbf{A}\mathbf{Y}- \boldsymbol{\mu}\|^2]  &amp; =  \textsf{E}[\|\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu}) + \mathbf{H}^T(\mathbf{Y}- \boldsymbol{\mu})\|^2]  \\
-&amp; = \textsf{E}[\|\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})\|^2] + \underbrace{\textsf{E}[\|\mathbf{H}^T(\mathbf{Y}- \boldsymbol{\mu})\|^2]} + \underbrace{{\text{cross-product}}} \\
-&amp; \hspace{4.35in} \ge 0 \quad  + \hspace{1.25in} 0\\
-&amp; \ge \textsf{E}[\|\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})\|^2]
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>Cross-product is <span class="math inline">\(2\textsf{E}[(\mathbf{H}^T(\mathbf{Y}- \mu))^T\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})] = 0\)</span> (see last slide)</p></li>
-</ul>
-</div></details>
-</div>
-<div class="footer">
-
-</div>
-</section>
-<section id="estimation-of-linear-functionals-of-boldsymbolmu" class="slide level2">
-<h2>Estimation of Linear Functionals of <span class="math inline">\(\boldsymbol{\mu}\)</span></h2>
-<p>If <span class="math inline">\(\mathbf{P}\mathbf{Y}= \hat{\boldsymbol{\mu}}\)</span> is the BLUE of <span class="math inline">\(\boldsymbol{\mu}\)</span>, is <span class="math inline">\(\mathbf{B}\mathbf{P}\mathbf{Y}= \mathbf{B}\hat{\boldsymbol{\mu}}\)</span> the BLUE of <span class="math inline">\(\mathbf{B}\boldsymbol{\mu}\)</span>?</p>
-<div class="fragment">
-<p>Yes! Similar proof as above to show that out of the class of LUEs <span class="math inline">\(\mathbf{A}\mathbf{Y}\)</span> of <span class="math inline">\(\mathbf{B}\boldsymbol{\mu}\)</span> where <span class="math inline">\(\mathbf{A}\in \mathbb{R}^{d \times n}\)</span> that <span class="math display">\[\textsf{E}[\|\mathbf{A}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2] \ge \textsf{E}[\|\mathbf{B}\mathbf{P}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2]\]</span> with equality iff <span class="math inline">\(\mathbf{A}= \mathbf{B}\mathbf{P}\)</span>.</p>
-</div>
-<div class="fragment">
-<p>What about linear functionals of <span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\boldsymbol{\Lambda}^T \boldsymbol{\beta}\)</span>, for <span class="math inline">\(\mathbf{X}\)</span> rank <span class="math inline">\(r \le p\)</span>?</p>
-<ul>
-<li class="fragment"><span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is not unique if <span class="math inline">\(r &lt; p\)</span> even though <span class="math inline">\(\hat{\boldsymbol{\mu}}\)</span> is unique (<span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is not BLUE)</li>
-<li class="fragment">Since <span class="math inline">\(\mathbf{B}\boldsymbol{\mu}= \mathbf{B}\mathbf{X}\boldsymbol{\beta}\)</span> is always identifiable, the only linear functions of <span class="math inline">\(\boldsymbol{\beta}\)</span> that are identifiable and can be estimated uniquely are functions of <span class="math inline">\(\mathbf{X}\boldsymbol{\beta}\)</span>, i.e.&nbsp;estimates in the form <span class="math inline">\(\boldsymbol{\Lambda}^T \boldsymbol{\beta}= \mathbf{B}\mathbf{X}\boldsymbol{\beta}\)</span> or <span class="math inline">\(\boldsymbol{\Lambda}= \mathbf{X}^T \mathbf{B}^T\)</span>.</li>
-<li class="fragment">columns of <span class="math inline">\(\boldsymbol{\Lambda}\)</span> must be in the <span class="math inline">\(C(\mathbf{X}^T)\)</span></li>
-<li class="fragment">detailed discussion and proof in Christensen Ch. 2 for scalar functionals <span class="math inline">\(\lambda^T\beta\)</span>.</li>
-</ul>
-</div>
-</section>
-<section id="blue-of-boldsymbollambdat-boldsymbolbeta" class="slide level2">
-<h2>BLUE of <span class="math inline">\(\boldsymbol{\Lambda}^T \boldsymbol{\beta}\)</span></h2>
-<p>If <span class="math inline">\(\boldsymbol{\Lambda}^T= \mathbf{B}\mathbf{X}\)</span> for some matrix <span class="math inline">\(\mathbf{B}\)</span> then</p>
-<ul>
-<li class="fragment"><p><span class="math inline">\(\textsf{E}[\mathbf{B}\mathbf{P}\mathbf{Y}] = \textsf{E}[\boldsymbol{\Lambda}^T \hat{\boldsymbol{\beta}}] = \boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span></p></li>
-<li class="fragment"><p>The unique OLS estimate of <span class="math inline">\(\boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span> is <span class="math inline">\(\boldsymbol{\Lambda}^T\hat{\boldsymbol{\beta}}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\mathbf{B}\mathbf{P}\mathbf{Y}= \boldsymbol{\Lambda}^T\hat{\boldsymbol{\beta}}\)</span> is the BLUE of <span class="math inline">\(\boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span> <span class="math display">\[\begin{align*}
-&amp; \textsf{E}[\|\mathbf{B}\mathbf{P}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2]  \le \textsf{E}[\|\mathbf{A}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2] \\
-\Leftrightarrow &amp; \\
-&amp; \textsf{E}[\|\boldsymbol{\Lambda}^T\hat{\boldsymbol{\beta}}- \boldsymbol{\Lambda}^T\boldsymbol{\beta})\|^2]  \le \textsf{E}[\|\mathbf{L}^T\tilde{\boldsymbol{\beta}}- \boldsymbol{\Lambda}^T\boldsymbol{\beta}\|^2]
-\end{align*}\]</span> for LUE <span class="math inline">\(\mathbf{A}\mathbf{Y}= \mathbf{L}^T\tilde{\boldsymbol{\beta}}\)</span> of <span class="math inline">\(\boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span></p></li>
-<li class="fragment"><p>Proof proceeds as the classic case.</p></li>
-</ul>
-</section>
-<section id="proof-of-cross-product" class="slide level2">
-<h2>Proof of Cross-Product</h2>
-<p>Let <span class="math inline">\(\mathbf{D}= \mathbf{H}\mathbf{P}\)</span> and write <span class="math display">\[\begin{align*}
-\textsf{E}[(\mathbf{H}^T(\mathbf{Y}- \mu))^T\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})] &amp; = \textsf{E}[(\mathbf{Y}- \mu))^T\mathbf{H}\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})] \\
-&amp; = \textsf{E}[(\mathbf{Y}- \mu))^T\mathbf{D}(\mathbf{Y}- \boldsymbol{\mu})]
-\end{align*}\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[\begin{align*}
-\textsf{E}[(\mathbf{Y}- \mu))^T\mathbf{D}(\mathbf{Y}- \boldsymbol{\mu})] = &amp; \textsf{E}[\textsf{tr}(\mathbf{Y}- \mu))^T\mathbf{D}(\mathbf{Y}- \boldsymbol{\mu}))]  \\
-= &amp; \textsf{E}[\textsf{tr}(\mathbf{D}(\mathbf{Y}- \boldsymbol{\mu})(\mathbf{Y}- \mu)^T)] \\
-= &amp; \textsf{tr}(\textsf{E}[\mathbf{D}(\mathbf{Y}- \boldsymbol{\mu})(\mathbf{Y}- \mu)^T]) \\
-= &amp; \textsf{tr}(\mathbf{D}\textsf{E}[(\mathbf{Y}- \boldsymbol{\mu})(\mathbf{Y}- \mu)^T]) \\
-  = &amp; \sigma^2 \textsf{tr}(\mathbf{D}\mathbf{I}_n)\\
-\end{align*}\]</span></p>
-</div>
-<div class="fragment">
-<p>Since <span class="math inline">\(\textsf{tr}(\mathbf{D}) = \textsf{tr}(\mathbf{H}\mathbf{P}) = \textsf{tr}(\mathbf{P}\mathbf{H})\)</span> we can conclude that the cross-product term is zero.</p>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://sta721-F24.github.io/website/" class="uri">https://sta721-F24.github.io/website/</a></p>
-</div>
 </div>
 </div>
 </section>

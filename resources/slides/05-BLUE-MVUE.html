@@ -391,6 +391,18 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Proposition {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Proof {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   .Lemma {
     --color1: #948bde;
     --color2: #584eab;
@@ -403,19 +415,7 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Feature {
-    --color1: #c0c0c0;
-    --color2: #808080;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Proposition {
+  .Theorem {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -423,13 +423,13 @@
     --color1: #d999d3;
     --color2: #a01793;
   }
-  .Theorem {
-    --color1: #948bde;
-    --color2: #584eab;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
-  .Proof {
-    --color1: #948bde;
-    --color2: #584eab;
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
   }
   </style>
 </head>
@@ -521,8 +521,8 @@ Merlise Clyde (clyde@duke.edu)
 </section>
 <section id="lues-of-individual-beta_j" class="slide level2">
 <h2>LUEs of Individual <span class="math inline">\(\beta_j\)</span></h2>
-<div id="Proposition*-0.2" class="Proposition">
-<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition</strong></summary><div>For <span class="math inline">\(\boldsymbol{\mu}= \mathbf{X}\boldsymbol{\beta}= \sum_j \mathbf{X}_j \beta_j\)</span> <span class="math inline">\(\beta_j\)</span> is <strong>not identifiable</strong> if and only if there exists <span class="math inline">\(\alpha_j\)</span> such that <span class="math inline">\(\mathbf{X}_j = \sum_{i \neq j} \mathbf{X}_i \alpha_i\)</span><p></p>
+<div id="christensen-2.1.6" class="Proposition" title="Christensen 2.1.6">
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition: </strong>Christensen 2.1.6</summary><div>For <span class="math inline">\(\boldsymbol{\mu}= \mathbf{X}\boldsymbol{\beta}= \sum_j \mathbf{X}_j \beta_j\)</span> <span class="math inline">\(\beta_j\)</span> is <strong>not identifiable</strong> if and only if there exists <span class="math inline">\(\alpha_j\)</span> such that <span class="math inline">\(\mathbf{X}_j = \sum_{i \neq j} \mathbf{X}_i \alpha_i\)</span><p></p>
 </div></details>
 </div>
 <div class="fragment">
@@ -546,8 +546,8 @@ Merlise Clyde (clyde@duke.edu)
 </ul>
 </div>
 </section>
-<section id="examples" class="slide level2">
-<h2>Examples:</h2>
+<section id="examples-of-boldsymbollambda-of-interest" class="slide level2">
+<h2>Examples of <span class="math inline">\(\boldsymbol{\lambda}\)</span> of Interest:</h2>
 <ul>
 <li class="fragment"><p>A <span class="math inline">\(j\)</span>th element of <span class="math inline">\(\boldsymbol{\beta}\)</span>: <span class="math inline">\(\boldsymbol{\lambda}= (0, 0, \ldots,1, 0, \ldots, 0)^T\)</span>, <span class="math display">\[\boldsymbol{\lambda}^T\boldsymbol{\beta}= \beta_j\]</span></p></li>
 <li class="fragment"><p>Difference between two treatements: <span class="math inline">\(\tau_1 - \tau_2\)</span>: <span class="math inline">\(\boldsymbol{\lambda}= (0, 1, -1, \ldots, 0, \ldots, 0)^T\)</span>, <span class="math display">\[\boldsymbol{\lambda}^T\boldsymbol{\beta}= \tau_1 - \tau_2\]</span></p></li>
@@ -632,8 +632,8 @@ Merlise Clyde (clyde@duke.edu)
 <li class="fragment"><p>Suppose we have an arbitrary <span class="math inline">\(\boldsymbol{\lambda}= \boldsymbol{\lambda}_* + \mathbf{u}\)</span>, where <span class="math inline">\(\boldsymbol{\lambda}_*  \in C(\mathbf{X}^T)\)</span> and <span class="math inline">\(\mathbf{u}\in C(\mathbf{X}^T)^\perp\)</span> (orthogonal complement)</p></li>
 <li class="fragment"><p>Let <span class="math inline">\(\mathbf{P}_{\mathbf{X}^T}\)</span> denote an orthogonal projection onto <span class="math inline">\(C(\mathbf{X}^T)\)</span> then <span class="math inline">\(\mathbf{I}- \mathbf{P}_{\mathbf{X}^T}\)</span> is an orthogonal projection onto <span class="math inline">\(C(\mathbf{X}^T)^\perp\)</span></p></li>
 <li class="fragment"><p><span class="math inline">\((\mathbf{I}- \mathbf{P}_{\mathbf{X}^T})\boldsymbol{\lambda}= (\mathbf{I}- \mathbf{P}_{\mathbf{X}^T})\boldsymbol{\lambda}_* + (\mathbf{I}- \mathbf{P}_{\mathbf{X}^T})\mathbf{u}= \mathbf{0}_p + \mathbf{u}\)</span></p></li>
-<li class="fragment"><p>so if <span class="math inline">\(\boldsymbol{\lambda}\in C(\mathbf{X}^T)\)</span> we will have <span class="math inline">\((\mathbf{I}- \mathbf{P}_{\mathbf{X}^T})\boldsymbol{\lambda}= \mathbf{0}_p\)</span>!</p></li>
-<li class="fragment"><p>Note this is really just a generalization of Proposition 2.1.6 in Christensen that <span class="math inline">\(\beta_j\)</span> is identifiable iff there exist scalars such that <span class="math inline">\(\mathbf{X}_j \neq \sum_{i \neq j} \mathbf{X}_i \alpha_i\)</span></p></li>
+<li class="fragment"><p>so if <span class="math inline">\(\boldsymbol{\lambda}\in C(\mathbf{X}^T)\)</span> we will have <span class="math inline">\((\mathbf{I}- \mathbf{P}_{\mathbf{X}^T})\boldsymbol{\lambda}= \mathbf{0}_p\)</span>! (or <span class="math inline">\(\mathbf{P}_{\mathbf{X}^T} \boldsymbol{\lambda}= \boldsymbol{\lambda}\)</span>)</p></li>
+<li class="fragment"><p>Note this is really just a generalization of Proposition 2.1.6 in Christensen that <span class="math inline">\(\beta_j\)</span> is <strong>not</strong> identifiable iff there exist scalars such that <span class="math inline">\(\mathbf{X}_j = \sum_{i \neq j} \mathbf{X}_i \alpha_i\)</span></p></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -670,7 +670,7 @@ Merlise Clyde (clyde@duke.edu)
 <section id="mvue-minimum-variance-unbiased-estimators" class="slide level2">
 <h2>MVUE: Minimum Variance Unbiased Estimators</h2>
 <ul>
-<li class="fragment"><p>Gauss-Markov Theorem says that OLS has minimum variance in the class of all Linear Unbiased estimators for <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 |_n\)</span></p></li>
+<li class="fragment"><p>Gauss-Markov Theorem says that OLS has minimum variance in the class of all Linear Unbiased estimators for <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{I}_n\)</span></p></li>
 <li class="fragment"><p>Requires just first and second moments</p></li>
 <li class="fragment"><p>Additional assumption of normality and full rank, OLS of <span class="math inline">\(\boldsymbol{\beta}\)</span> is the same as MLEs and have minimum variance out of <strong>ALL</strong> unbiased estimators (MVUE); not just linear estimators (section 2.5 in Christensen)</p></li>
 <li class="fragment"><p>requires Complete Sufficient Statististics and Rao-Blackwell Theorem - next semester in STA732)</p></li>
@@ -694,7 +694,7 @@ Merlise Clyde (clyde@duke.edu)
 <section id="next-up" class="slide level2">
 <h2>Next Up</h2>
 <ul>
-<li class="fragment"><p>GLS under assumptions <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \boldsymbol{\Sigma}^2\)</span></p></li>
+<li class="fragment"><p>GLS under assumptions <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \boldsymbol{\Sigma}\)</span></p></li>
 <li class="fragment"><p>Oblique projections and orthogonality with other inner products on <span class="math inline">\(\mathbb{R}^n\)</span></p></li>
 <li class="fragment"><p>MLEs in Multivariate Normal setting</p></li>
 <li class="fragment"><p>Gauss-Markov</p></li>
