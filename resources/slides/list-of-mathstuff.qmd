@@ -1,6 +1,16 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
- [**Definition**](#identifiable): Identifiable\Pageref{identifiable}
+ [**Exercise**](#weighted-regression): Weighted Regression\Pageref{weighted-regression}
 
- [**Proposition**](#christensen-2.1.6): Christensen 2.1.6\Pageref{christensen-2.1.6}
+ [**Proposition**](#projection): Projection\Pageref{projection}
 
- [**Exercise**](#Exercise*-0.3)\Pageref{Exercise*-0.3}
+ [**Definition**](#oblique-projection): Oblique Projection\Pageref{oblique-projection}
+
+ [**Definition**](#orthogonal-projecton): Orthogonal Projecton\Pageref{orthogonal-projecton}
+
+ [**Exercise**](#Exercise*-0.5)\Pageref{Exercise*-0.5}
+
+ [**Theorem**](#gauss-markov-aitkin): Gauss-Markov-Aitkin\Pageref{gauss-markov-aitkin}
+
+ [**Theorem**](#Theorem*-0.7)\Pageref{Theorem*-0.7}
+
+ [**Corollary**](#Corollary*-0.8)\Pageref{Corollary*-0.8}

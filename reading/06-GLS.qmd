@@ -1,0 +1,22 @@
+---
+title: "Generalize Least Squares, MLEs, MVUEs and BUEs"
+editor: visual
+---
+
+We will develop GLS/MLE estimators when the covariance of the errors is is not a scale multiple of the identity matrix, and establish conditions for when the OLS and GLS are equivalent. Inthe case that the errors have a multivatiate normal distribution, the MLEs are equivalent to GLS and are not only the BLUE but are also Minimum Variance Unbiased Estimators or "BUE" out of all unbiased estimators linear or non-linear.
+
+Readings:
+
+-   Christensen Chapter 2 and 10 Appendix B
+
+-   Seber & Lee Chapter 3
+
+
+
+
+
+    			
+
+    		
+
+    	

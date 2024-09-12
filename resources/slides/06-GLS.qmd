@@ -1,0 +1,410 @@
+---
+subtitle: "STA 721: Lecture 6"
+title: "Generalized Least Squares, BLUES &  BUES"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"   
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+      numbered: false
+    Lemma:
+      group: thmlike
+      numbered: false
+    Corollary:
+      group: thmlike
+      numbered: false
+    Proposition:
+      group: thmlike
+      numbered: false      
+    Proof:
+      group: thmlike
+      numbered: false
+      collapse: true  
+    Exercise:
+      group: thmlike
+      numbered: false
+    Definition:
+      group: thmlike
+      numbered: false
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+- General Least Squares and MLEs
+- Gauss-Markov Theorem & BLUEs
+- MVUE
+
+
+
+. . .
+
+Readings: 
+
+- Christensen Chapter 2 and 10 (Appendix B as needed)
+ 
+- Seber & Lee Chapter 3
+ 
+## Other Error Distributions
+
+Model:  
+\begin{align} \Y & = \X\b + \eps  \quad
+              \E[\eps]  = \zero_n \\
+              \Cov[\eps] & = \sigma^2 \V
+\end{align}
+where $\sigma^2$ is a scalar and $\V$ is a $n \times n$ symmetric matrix
+
+. . .
+
+Examples:
+
+- Heteroscedasticity: $\V$ is a diagonal matrix with $[\V]_{ii} =  v_i$
+  - $v_{i} = 1/n_i$ if $y_i$ is the mean of $n_i$ observations
+  - survey weights or propogation of  measurement errors in physics models
+  
+  
+- Correlated data:
+  - time series; first order auto-regressive model with equally spaced data $\Cov[\eps] = \sigma^2 \V$, where $v_{ij} = \rho^{|i−j|}$.
+  
+- Hierarchical models with random effects
+
+## OLS under a General Covariance
+
+- Is it still unbiased? What's its variance?  Is it still the BLUE?
+
+- **Unbiasedness of** $\bhat$
+\begin{align}
+\E[\bhat] & = \E[(\XtX)^{-1} \X^T \Y] \\
+          & = (\XtX)^{-1} \X^T \E[\Y] =  (\XtX)^{-1} \X^T \E[\X\b + \eps] \\
+          & = \b + \zero_p = \b
+\end{align}
+
+-  **Covariance of** $\bhat$
+\begin{align}
+\Cov[\bhat] & = \Cov[(\XtX)^{-1} \X^T \Y] \\
+          & = (\XtX)^{-1} \X^T \Cov[\Y]  \X (\XtX)^{-1} \\
+          & = \sigma^2 (\XtX)^{-1} \X^T  \V \X (\XtX)^{-1}
+\end{align}
+
+- Not necessarily $\sigma^2 (\XtX)^{-1}$ unless $\V$ has a special form
+
+## GLS via Whitening
+
+Transform the data and reduce problem to one we have solved!
+
+- For $\V > 0$ use the Spectral Decomposition
+$$\V = \U \Lambdab \U^T = \U \Lambdab^{1/2} \Lambdab^{1/2} \U^T$$
+
+- define the symmetric square root of $\V$ as
+$$\V^{1/2} \equiv \U \Lambdab^{1/2} \U^T$$
+- transform model:
+\begin{align*}
+\V^{-1/2} \Y & = \V^{-1/2} \X\b + \V^{-1/2}\eps \\
+\tilde{\Y} & = \tilde{\X} \b + \tilde{\eps}
+\end{align*}
+
+- Since $\Cov[\tilde{\eps}] = \sigma^2\V^{-1/2} \V \V^{-1/2} = \sigma^2 \I_n$,
+we know that $\bhat_\V \equiv (\tX^T\tX)^{-1} \tX^T\tY$ is the BLUE for $\b$ based on $\tY$ ($\X$ full rank)
+
+## GLS
+
+- If $\V$ is known, then $\tY$ and $\Y$ are known linear transformations of each other
+
+- any estimator of $\b$ that is linear in $\Y$ is linear in $\tY$ and vice versa from previous results
+
+- $\bhat_\V$ is the BLUE of $\b$ based on either $\tY$ or  $\Y$!
+
+- Substituting back, we have 
+\begin{align}
+\bhat_\V & =  (\tX^T\tX)^{-1} \tX^T\tY \\
+         & = (\X^T \V^{-1/2}\V^{-1/2} \X)^{-1} \X^T\V^{-1/2}\V^{-1/2}\Y \\
+         & = (\X^T \V^{-1} \X)^{-1} \X^T\V^{-1}\Y 
+\end{align}
+which is the **Generalized Least Squares Estimator** of $\b$
+
+. . .
+
+::: {.Exercise}
+## Weighted Regression
+Consider the model $\Y = \beta \x + \eps$ where $\Cov[\eps]$ is a  known diagonal matrix $\V$.   Write out the GLS estimator in terms of sums and interpret.
+:::
+
+## GLS of $\mub$ (Full Rank Case)$^{\dagger}$
+
+- the OLS/MLE of $\mub \in C(\X)$ with transformed variables is 
+\begin{align*}
+\P_{\tX} \tY & = \tX \bhat_\V \\
+\tX \left(\tX^T\tX\right)^{-1}\tX^T \tY & = \tX \bhat_\V \\
+\V^{-1/2} \X \left(\X^T\V^{-1}\X\right)^{-1}\X^T \V^{-1} \Y  & = \V^{-1/2} \X \bhat_\V \end{align*}
+
+- since $\V$ is positive definite, multiple thru by $\V^{1/2}$, to show that $\bhat_\V$ is a GLS/MLE estimator of $\b$ iff
+$$\X \left(\X^T\V^{-1}\X\right)^{-1}\X^T \V^{-1} \Y = \X \bhat_\V$$
+ - Is $\P_\V \equiv \X \left(\X^T\V^{-1}\X\right)^{-1}\X^T \V^{-1}$ a projection onto $C(\X)$?  Is it an orthogonal projection onto $C(\X)$?
+
+::: footer
+$\dagger$ if $\X$ is not full rank replace $\left(\X^T\V^{-1}\X\right)^{-1}$ with $\left(\X^T\V^{-1}\X\right)^{-}$
+:::
+## Projections 
+
+We want to show that $\P_\V \equiv \X \left(\X^T\V^{-1}\X\right)^{-1}\X^T \V^{-1}$ is a projection onto $C(\X)$
+
+- from the definition of $\P_\V$ it follows that $\m \in C(\P_\v)$ implies that
+$\m = \P_\V \m = \X\left(\X^T\V^{-1}\X\right)^{-1}\X^T\m$ so $C(\P_\V) \subset C(\X)$
+
+- since $\P_\tX$ is a projection onto $C(\tX)$ we have 
+\begin{align*}
+\P_{\tX} \tX & = \tX \\
+\tX \left(\tX^T\tX\right)^{-1}\tX^T \tX & = \tX  \\
+\V^{-1/2} \X \left(\X^T\V^{-1}\X\right)^{-1}\X^T \V^{-1} \X & = \V^{-1/2} \X \\
+\V^{-1/2} \P_\V \X & = \V^{-1/2} \X 
+\end{align*}
+
+- We can multiply both sides by $\V^{1/2} > 0$, so that
+$\P_\V \X = \X$
+
+- for $\m \in C(\X)$, $\P_\V \m = \m$ and $C(\X) \subset C(\P_\V)$
+
+- $\quad \quad \therefore C(\P_\V) = C(\X)$ so that $\P_\V$ is a projection onto $C(\X)$ 
+
+
+::: footer
+:::
+
+## Oblique Projections 
+::: {.Proposition} 
+## Projection
+The $n \times n$ matrix $\P_\V \equiv \X \left(\X^T\V^{-1}\X\right)^{-1}\X^T \V^{-1}$ is a projection onto the $C(\X)$
+:::
+
+- Show that $\P_\V^2 = \P_\V$ (idempotent)
+
+- every vector $\y \in \bbR^n$ may be written as $\y = \m + \n$ where
+$\P_\v \y = \m$ and $(\I_n - \P_\v )\y = \n$ where $\m \in C(\P_\V)$ and 
+$\u \in N(\P_\V)$
+
+
+
+- Is $\P_\V$ an orthogonal projection onto $C(\X)$ for the inner product space $(\bbR^n, \langle \v, \u \rangle = \v^T\u)$?
+
+. . .
+
+::: {.Definition}
+## Oblique Projection
+For the inner product space $(\bbR^n, \langle \v, \u \rangle = \v^T\u)$, a projection $\P$  that is not an orthogonal projection is called an _oblique projection_
+:::
+
+
+
+## Loss Function
+
+The GLS estimator minimizes the following generalized squared error loss:
+\begin{align}
+\| \tY - \tX\b \|^2 & = (\tY - \tX\b)^T(\tY - \tX\b) \\
+                    & = (\Y - \X\b)^T \V^{-1/2}\V^{-1/2}(\Y - \X\b) \\
+                    & = (\Y - \X\b)^T \V^{-1}(\Y - \X\b)  \\
+                    & = \| \Y - \X\b\|^2_{\V^{-1}}
+\end{align}
+where we can change the inner product to be 
+$$\langle \u, \v \rangle_{\V^{-1}} \equiv \u^T\V^{-1} \v$$
+
+## Orthogonality in an Inner Product Space
+
+::: {.Definition}
+## Orthogonal Projecton
+For an inner product space,  ($\bbR^n, \langle , \rangle$). The projection $\P$ is an orthogonal projection if for every vector $\x$ and $\y$ in $\bbR^n$, 
+$$
+  \langle \P\x, (\I_n -\P)\y \rangle = \langle (\I_n - \P) \x ,\P \y \rangle = 0
+$$
+Equivalently:
+$$
+  \langle \x ,\P\y \rangle = \langle \P\x , \P\y \rangle =\langle \P\x,\y \rangle
+$$
+
+:::
+  
+::: {.Exercise}
+Show that $\P_\V$ is an orthogonal projection under the inner product $\langle \x, \y \rangle_{\V^{-1}} \equiv \x^T\V^{-1} \y$
+:::
+
+
+
+  
+
+## Variance of GLS
+
+- Variance of the GLS estimator $\bhat_\V =  (\X^T\V^{−1}\X)^{−1}\X^T\V^{−1}\Y$ is much simpler
+\begin{align}
+\Cov[\bhat_\V] & = (\X^T\V^{−1}\X)^{−1}\X^T\V^{−1}\Cov[\Y]\V^{−1}\X(\X^T\V^{−1}\X)^{−1} \\ 
+& = (\X^T\V^{−1}\X)^{−1}\X^T\V^{−1}\V\V^{−1}\X(\X^T\V^{−1}\X)^{−1} \\
+& = \sigma^2(\X^T\V^{−1}\X)^{−1}(\X^T\V^{−1}\X)(\X^T\V^{−1}\X)^{−1} \\
+& = \sigma^2(\X^T\V^{−1}\X)^{−1}
+\end{align}
+
+. . .
+
+::: {.Theorem}
+## Gauss-Markov-Aitkin
+Let $\btilde$ be a  linear unbiased estimator of $\b$ and $\bhat_\V$ be the GLS estimator of $\b$ in the linear model
+$\Y = \X\b + \eps$ with $\E[\eps] = \zero_n$ and $\Cov[\eps] = \sigma^2 \V$ with $\X$ and $\V >0$ known.  Then  $\bhat_\V$ is the BLUE where
+$$\Cov[\btilde] \ge  \sigma^2 (\X^T\V^{-1} \X)^{-1} = \Cov[\bhat_\V] $$  
+:::
+
+
+
+
+## When will OLS and GLS be Equal?
+- For what covariance matrices $\V$ will the OLS and GLS estimators be the same? 
+
+
+
+- Figuring this out can help us understand why the GLS estimator has a lower variance in general.
+
+. . .
+
+::: {.Theorem}
+The estimators $\bhat$ (OLS) and $\bhat_\V$ (GLS) are the same for all $\Y \in \bbR^n$ iff 
+$$\V = \X \Psib \X^T + \H \Phib \H^T$$ for some positive definite matrices $\Psib$ and $\Phib$ and a matrix $\H$ such that $\H^T \X = \zero$.
+
+:::
+
+
+## Outline of Proof
+
+We need to show that $\bhat$ and $\bhat_\V$ are the same for all $\Y$. Since both $\P$ and  $\P_\V$ are projections onto $C(\X)$, $\bhat$ and $\bhat_\V$ will be the same iff  
+
+1. Show that $\P = \P_V$ iff $C(\X) = C(\V^{-1} \X)$
+2. Show that $C(\X) = C(\V^{-1} \X)$ iff $C(\X) = C(\V\X)$
+3. Show that $C(\X) = C(\V\X)$ iff $\V$ can be written as 
+$$\V = \X \Psib \X^T + \H \Phib \H^T$$
+
+. . .
+
+
+See Proposition 2.7.5 and Proof in Christensen 
+
+::: {.Corollary}
+Suppose $\V = \X \Psib \X ^ T + \Omegab$.  Then $\bhat_\V = \bhat_\Omegab$
+:::
+
+
+## Some Intuition 
+
+For the linear model $\Y = \X\b + \eps$ with $\E[\eps] = \zero_n$ and $\Cov[\eps] = \sigma^2 \V$, we can always write
+
+\begin{align} \eps & = \P \eps + (\I - \P)\eps \\
+                   & = \eps_\X + \eps_N   
+\end{align} 
+
+- we can recover $\eps_N$ from the data $\Y$ but not $\eps_\X$:
+\begin{align} \P \Y  & = \P( \X\b + \eps_\X + \eps_n )\\
+                     & =  \X\b + \eps_\X  = \X\bhat \\
+      (\I_n - \P) \Y  & =  \eps_N = \hat{\eps} = \e     
+\end{align} 
+
+- Can $\eps_\N$ help us estimate $\X\b$? What if $\eps_N$ could tell us something about $\eps_X$?
+
+- Yes if they were highly correlated!  But if they were independent or uncorrelated then knowing $\eps_\N$ doesn't help us!
+
+## Intuition Continued
+
+- For what matrices are $\eps_\X$ and $\eps_N$ uncorrelated?
+
+- Under $\V = \I_n$:
+\begin{align}
+\E[\eps_X \eps_N] & = \P \E[\eps \eps^T](\I-\P) \\
+                  & = \sigma^2 \P(\I- \P) = \zero
+\end{align}
+so they are uncorrelated
+
+- For the $\V$ in the theorem, introduce
+  - $\Z_\X$ where $\E[\Z_\X]= \zero_n$ and $\Cov[\Z_\X] = \Psib$
+  - $\Z_\N$ where $\E[\Z_\N]= \zero_n$ and $\Cov[\Z_\N] = \Phib$
+  - $\Z_\X$ and $\Z_\N$ are uncorrelated, $\E[\Z_\X \Z_\N] = \zero$
+  - $\eps = \X \Z_\X + \H \Z_\N$ so that $\eps$ has the desired mean and covariance $\V$ in the theorem
+  
+## Intuition Continued  
+
+As a consequence we have  
+- $\eps_\X = \P\eps = \X\Z_\X$
+- $\eps_\N = (\I_n - \P)\eps = \H \Z_\N$
+- $\eps_\X$ and $\eps_\N$ are uncorrelated
+\begin{align}
+\E[\eps_\X \eps_\N] & = \E[\X \Z_\X \Z_\N^T \H^T] \\
+                    & = \X \zero \H^T \\
+                    & = \zero 
+\end{align}
+
+- so that $\eps_\X$ and $\eps_\N$ are uncorrelated with $\V = \X \Psib \X^T + \H\Phib \H$ ^T$ 
+
+- Alternative Statement of Theorem: $\bhat = \bhat_\V$ for all $\Y$ under $\Cov[\Y] = \sigma^2 \V$ iff $\P\Y$ and $(\I - \P)\Y$ are uncorrelated
+
+
+
+
+ 

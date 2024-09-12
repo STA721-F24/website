@@ -49,6 +49,7 @@
 \newcommand{\OFP}{(\Omega,\cF, \P)}
 \newcommand{\eps}{\boldsymbol{\epsilon}}
 \newcommand{\Psib}{\boldsymbol{\Psi}}
+\newcommand{\Omegab}{\boldsymbol{\Omega}}
 \newcommand{\1}{\mathbf{1}_n}
 \newcommand{\gap}{\vspace{8mm}}
 \newcommand{\ind}{\mathrel{\mathop{\sim}\limits^{\rm ind}}}
