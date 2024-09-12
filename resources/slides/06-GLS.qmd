@@ -336,21 +336,21 @@ $$\V = \X \Psib \X^T + \H \Phib \H^T$$ for some positive definite matrices $\Psi
 
 ## Outline of Proof
 
-We need to show that $\bhat$ and $\bhat_\V$ are the same for all $\Y$. Since both $\P$ and  $\P_\V$ are projections onto $C(\X)$, $\bhat$ and $\bhat_\V$ will be the same iff  
+We need to show that $\bhat$ and $\bhat_\V$ are the same for all $\Y$. Since both $\P$ and  $\P_\V$ are projections onto $C(\X)$, $\bhat$ and $\bhat_\V$ will be the same iff $\P_\V$ is an orthogonal projection onto $C(\X)$ so that $\P_\V \n = 0$ for $\n \in C(\X)^\perp$  (they have the same null spaces)
 
-1. Show that $\P = \P_V$ iff $C(\X) = C(\V^{-1} \X)$
-2. Show that $C(\X) = C(\V^{-1} \X)$ iff $C(\X) = C(\V\X)$
-3. Show that $C(\X) = C(\V\X)$ iff $\V$ can be written as 
+1. Show that $C(\X) = C(\V\X)$ iff $\V$ can be written as 
 $$\V = \X \Psib \X^T + \H \Phib \H^T$$
+(Show $C(\V \X) \subset C( \X)$ iff $\V$ has the above form and since the two subspaces have the same rank $C(\X) = C(\V\X)$
+
+2. Show that $C(\X) = C(\V^{-1} \X)$ iff $C(\X) = C(\V\X)$
+3. Show that $C(\X)^\perp = C(\V^{-1} \X)^\perp$ iff $C(\X) = C(\V^{-1} \X)$
+4. Show that $\n \in C(\X)^\perp$ iff $\n \in C(\V^{-1}\X)^\perp$ so $\P_\V \n = 0$
+
 
 . . .
 
-
 See Proposition 2.7.5 and Proof in Christensen 
 
-::: {.Corollary}
-Suppose $\V = \X \Psib \X ^ T + \Omegab$.  Then $\bhat_\V = \bhat_\Omegab$
-:::
 
 
 ## Some Intuition 
@@ -391,6 +391,7 @@ so they are uncorrelated
 ## Intuition Continued  
 
 As a consequence we have  
+
 - $\eps_\X = \P\eps = \X\Z_\X$
 - $\eps_\N = (\I_n - \P)\eps = \H \Z_\N$
 - $\eps_\X$ and $\eps_\N$ are uncorrelated
@@ -404,7 +405,13 @@ As a consequence we have
 
 - Alternative Statement of Theorem: $\bhat = \bhat_\V$ for all $\Y$ under $\Cov[\Y] = \sigma^2 \V$ iff $\P\Y$ and $(\I - \P)\Y$ are uncorrelated
 
+## Equivalence of GLS estimators
+
+The following corollary to the theorem establishes when two GLS estimators for different $\Cov[\eps]$ are equivalent :
+
+::: {.Corollary}
+Suppose $\V = \X \Psib \X ^ T + \Omegab$.  Then $\bhat_\V = \bhat_\Omegab$
+:::
 
 
-
- 
+- Can you construct an equivalent representation based on zero correlation of $\P_\Omegab \Y$ and $(\I_n - \P_\Omegab)\Y$ when $\Cov[\eps] = \sigma^2 \V?$
