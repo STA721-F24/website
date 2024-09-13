@@ -1,16 +1,8 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
- [**Exercise**](#weighted-regression): Weighted Regression\Pageref{weighted-regression}
+ [**Definition**](#Projection): Projection\Pageref{Projection}
 
- [**Proposition**](#projection): Projection\Pageref{projection}
+ [**Definition**](#OrthComp): Orthogonal Complement\Pageref{OrthComp}
 
- [**Definition**](#oblique-projection): Oblique Projection\Pageref{oblique-projection}
+ [**Definition**](#Nullspace): Null Space\Pageref{Nullspace}
 
- [**Definition**](#orthogonal-projecton): Orthogonal Projecton\Pageref{orthogonal-projecton}
-
- [**Exercise**](#Exercise*-0.5)\Pageref{Exercise*-0.5}
-
- [**Theorem**](#gauss-markov-aitkin): Gauss-Markov-Aitkin\Pageref{gauss-markov-aitkin}
-
- [**Theorem**](#Theorem*-0.7)\Pageref{Theorem*-0.7}
-
- [**Corollary**](#Corollary*-0.8)\Pageref{Corollary*-0.8}
+ [**Definition**](#orthproj): Orthogonal Projections\Pageref{orthproj}
