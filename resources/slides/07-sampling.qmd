@@ -254,7 +254,7 @@ $\bhat \sim \N\left(\b, \sigma^2( \XtX)^{-1}\right)$
 
 - won't be multivariate normal
 
-- need to relect uncertainty in estimating $\sigma^2$
+- need to reflect uncertainty in estimating $\sigma^2$
 
 - first show that $\bhat$ and $s^2$ are independent
 
@@ -460,7 +460,7 @@ $\bhat$ and $\RSS = \ehat^T\ehat$ are independent
 
 . . .
 
-This result will be critical for creating confidence regions and intervals for $\b$ and linear combinations of $\b$, $\lamda^T \b$ as well as testing hypotheses
+This result will be critical for creating confidence regions and intervals for $\b$ and linear combinations of $\b$, $\lambda^T \b$ as well as testing hypotheses
 
 ## Next Class
 
