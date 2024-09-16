@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – Generalized Least Squares, BLUES &amp; BUES</title>
+  <title>STA721-F24: Linear Models – Sampling Distributions and Distribution Theory</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -326,19 +326,19 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Lemma {
+  .Theorem {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Exercise {
+  .Proposition {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -346,11 +346,11 @@
     --color1: #c0c0c0;
     --color2: #808080;
   }
-  .Theorem {
-    --color1: #948bde;
-    --color2: #584eab;
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
-  .Proof {
+  .Corollary {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -358,11 +358,11 @@
     --color1: #d999d3;
     --color2: #a01793;
   }
-  .Corollary {
+  .Proof {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Proposition {
+  .Exercise {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -373,8 +373,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Generalized Least Squares, BLUES &amp; BUES</h1>
-  <p class="subtitle">STA 721: Lecture 6</p>
+  <h1 class="title">Sampling Distributions and Distribution Theory</h1>
+  <p class="subtitle">STA 721: Lecture 7</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -391,264 +391,323 @@ Merlise Clyde (clyde@duke.edu)
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
 <ul>
-<li class="fragment">General Least Squares and MLEs</li>
-<li class="fragment">Gauss-Markov Theorem &amp; BLUEs</li>
-<li class="fragment">MVUE</li>
+<li class="fragment"><p>distributions of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>, <span class="math inline">\(\hat{\mathbf{Y}}\)</span>, <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> under normality</p></li>
+<li class="fragment"><p>Unbiased Estimation of <span class="math inline">\(\sigma^2\)</span></p></li>
+<li class="fragment"><p>sampling distribution of <span class="math inline">\(\hat{\sigma^2}\)</span></p></li>
+<li class="fragment"><p>independence</p></li>
 </ul>
 <div class="fragment">
 <p>Readings:</p>
 <ul>
-<li class="fragment"><p>Christensen Chapter 2 and 10 (Appendix B as needed)</p></li>
-<li class="fragment"><p>Seber &amp; Lee Chapter 3</p></li>
+<li class="fragment">Christensen Chapter 1, 2.91 and Appendix C</li>
+<li class="fragment">Seber &amp; Lee Chapter 3.3 - 3.5</li>
 </ul>
 </div>
 </section>
-<section id="other-error-distributions" class="slide level2">
-<h2>Other Error Distributions</h2>
-<p>Model:<br>
-<span class="math display">\[\begin{align} \mathbf{Y}&amp; = \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\quad
-              \textsf{E}[\boldsymbol{\epsilon}]  = \mathbf{0}_n \\
-              \textsf{Cov}[\boldsymbol{\epsilon}] &amp; = \sigma^2 \mathbf{V}
-\end{align}\]</span> where <span class="math inline">\(\sigma^2\)</span> is a scalar and <span class="math inline">\(\mathbf{V}\)</span> is a <span class="math inline">\(n \times n\)</span> symmetric matrix</p>
-<div class="fragment">
-<p>Examples:</p>
+<section id="multivariate-normal" class="slide level2">
+<h2>Multivariate Normal</h2>
+<p>Under the linear model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\)</span>, <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{I}_n\)</span>, we had</p>
 <ul>
-<li class="fragment">Heteroscedasticity: <span class="math inline">\(\mathbf{V}\)</span> is a diagonal matrix with <span class="math inline">\([\mathbf{V}]_{ii} =  v_i\)</span>
-<ul>
-<li class="fragment"><span class="math inline">\(v_{i} = 1/n_i\)</span> if <span class="math inline">\(y_i\)</span> is the mean of <span class="math inline">\(n_i\)</span> observations</li>
-<li class="fragment">survey weights or propogation of measurement errors in physics models</li>
-</ul></li>
-<li class="fragment">Correlated data:
-<ul>
-<li class="fragment">time series; first order auto-regressive model with equally spaced data <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{V}\)</span>, where <span class="math inline">\(v_{ij} = \rho^{|i−j|}\)</span>.</li>
-</ul></li>
-<li class="fragment">Hierarchical models with random effects</li>
+<li class="fragment"><span class="math inline">\(\textsf{E}[\hat{\boldsymbol{\beta}}] = \boldsymbol{\beta}\)</span></li>
+<li class="fragment"><span class="math inline">\(\textsf{E}[\hat{\mathbf{Y}}] = \mathbf{P}_\mathbf{X}\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}\)</span></li>
+<li class="fragment"><span class="math inline">\(\textsf{E}[\hat{\boldsymbol{\epsilon}}] = (\mathbf{I}_n - \mathbf{P}_\mathbf{X}) \mathbf{Y}= \mathbf{0}_n\)</span></li>
+<li class="fragment">distributions if <span class="math inline">\(\epsilon_i \sim \textsf{N}(0, \sigma^2)\)</span>?</li>
 </ul>
+<div class="fragment">
+<p>For a <span class="math inline">\(d\)</span> dimensional <strong>multivariate normal</strong> random vector, we write <span class="math inline">\(\mathbf{Y}\sim \textsf{N}_d(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span></p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(\textsf{E}[\mathbf{Y}] = \boldsymbol{\mu}\)</span>: <span class="math inline">\(d\)</span> dimensional vector with means <span class="math inline">\(E[Y_j]\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\textsf{Cov}[\mathbf{Y}] = \boldsymbol{\Sigma}\)</span>: <span class="math inline">\(d \times d\)</span> matrix with diagonal elements that are the variances of <span class="math inline">\(Y_j\)</span> and off diagonal elements that are the covariances <span class="math inline">\(\textsf{E}[(Y_j - \mu_j)(Y_k - \mu_k)]\)</span></p></li>
+<li class="fragment"><p>If <span class="math inline">\(\boldsymbol{\Sigma}\)</span> is positive definite (<span class="math inline">\(\mathbf{x}'\boldsymbol{\Sigma}\mathbf{x}&gt; 0\)</span> for any <span class="math inline">\(\mathbf{x}\ne
+  0\)</span> in <span class="math inline">\(\mathbb{R}^d\)</span>) then <span class="math inline">\(\mathbf{Y}\)</span> has a density<span class="math inline">\(^\dagger\)</span> <span class="math display">\[p(\mathbf{Y}) = (2 \pi)^{-d/2} |\boldsymbol{\Sigma}|^{-1/2} \exp(-\frac{1}{2}(\mathbf{Y}- \boldsymbol{\mu})^T
+\boldsymbol{\Sigma}^{-1} (\mathbf{Y}- \boldsymbol{\mu}))\]</span></p></li>
+</ul>
+<div class="footer">
+<p><span class="math inline">\(\dagger\)</span> density with respect to Lebesgue measure on <span class="math inline">\(\mathbb{R}^d\)</span></p>
+</div>
 </div>
 </section>
-<section id="ols-under-a-general-covariance" class="slide level2">
-<h2>OLS under a General Covariance</h2>
-<ul>
-<li class="fragment"><p>Is it still unbiased? What’s its variance? Is it still the BLUE?</p></li>
-<li class="fragment"><p><strong>Unbiasedness of</strong> <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> <span class="math display">\[\begin{align}
-\textsf{E}[\hat{\boldsymbol{\beta}}] &amp; = \textsf{E}[(\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T \mathbf{Y}] \\
-        &amp; = (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T \textsf{E}[\mathbf{Y}] =  (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T \textsf{E}[\mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}] \\
-        &amp; = \boldsymbol{\beta}+ \mathbf{0}_p = \boldsymbol{\beta}
-\end{align}\]</span></p></li>
-<li class="fragment"><p><strong>Covariance of</strong> <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> <span class="math display">\[\begin{align}
-\textsf{Cov}[\hat{\boldsymbol{\beta}}] &amp; = \textsf{Cov}[(\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T \mathbf{Y}] \\
-       &amp; = (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T \textsf{Cov}[\mathbf{Y}]  \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
-       &amp; = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T  \mathbf{V}\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}
-\end{align}\]</span></p></li>
-<li class="fragment"><p>Not necessarily <span class="math inline">\(\sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}\)</span> unless <span class="math inline">\(\mathbf{V}\)</span> has a special form</p></li>
-</ul>
-</section>
-<section id="gls-via-whitening" class="slide level2">
-<h2>GLS via Whitening</h2>
-<p>Transform the data and reduce problem to one we have solved!</p>
-<ul>
-<li class="fragment"><p>For <span class="math inline">\(\mathbf{V}&gt; 0\)</span> use the Spectral Decomposition <span class="math display">\[\mathbf{V}= \mathbf{U}\boldsymbol{\Lambda}\mathbf{U}^T = \mathbf{U}\boldsymbol{\Lambda}^{1/2} \boldsymbol{\Lambda}^{1/2} \mathbf{U}^T\]</span></p></li>
-<li class="fragment"><p>define the symmetric square root of <span class="math inline">\(\mathbf{V}\)</span> as <span class="math display">\[\mathbf{V}^{1/2} \equiv \mathbf{U}\boldsymbol{\Lambda}^{1/2} \mathbf{U}^T\]</span></p></li>
-<li class="fragment"><p>transform model: <span class="math display">\[\begin{align*}
-\mathbf{V}^{-1/2} \mathbf{Y}&amp; = \mathbf{V}^{-1/2} \mathbf{X}\boldsymbol{\beta}+ \mathbf{V}^{-1/2}\boldsymbol{\epsilon}\\
-\tilde{\mathbf{Y}} &amp; = \tilde{\mathbf{X}} \boldsymbol{\beta}+ \tilde{\boldsymbol{\epsilon}}
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>Since <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\epsilon}}] = \sigma^2\mathbf{V}^{-1/2} \mathbf{V}\mathbf{V}^{-1/2} = \sigma^2 \mathbf{I}_n\)</span>, we know that <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\equiv (\tilde{\mathbf{X}}^T\tilde{\mathbf{X}})^{-1} \tilde{\mathbf{X}}^T\tilde{\mathbf{Y}}\)</span> is the BLUE for <span class="math inline">\(\boldsymbol{\beta}\)</span> based on <span class="math inline">\(\tilde{\mathbf{Y}}\)</span> (<span class="math inline">\(\mathbf{X}\)</span> full rank)</p></li>
-</ul>
-</section>
-<section id="gls" class="slide level2">
-<h2>GLS</h2>
-<ul>
-<li class="fragment"><p>If <span class="math inline">\(\mathbf{V}\)</span> is known, then <span class="math inline">\(\tilde{\mathbf{Y}}\)</span> and <span class="math inline">\(\mathbf{Y}\)</span> are known linear transformations of each other</p></li>
-<li class="fragment"><p>any estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> that is linear in <span class="math inline">\(\mathbf{Y}\)</span> is linear in <span class="math inline">\(\tilde{\mathbf{Y}}\)</span> and vice versa from previous results</p></li>
-<li class="fragment"><p><span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> is the BLUE of <span class="math inline">\(\boldsymbol{\beta}\)</span> based on either <span class="math inline">\(\tilde{\mathbf{Y}}\)</span> or <span class="math inline">\(\mathbf{Y}\)</span>!</p></li>
-<li class="fragment"><p>Substituting back, we have <span class="math display">\[\begin{align}
-\hat{\boldsymbol{\beta}}_\mathbf{V}&amp; =  (\tilde{\mathbf{X}}^T\tilde{\mathbf{X}})^{-1} \tilde{\mathbf{X}}^T\tilde{\mathbf{Y}}\\
-       &amp; = (\mathbf{X}^T \mathbf{V}^{-1/2}\mathbf{V}^{-1/2} \mathbf{X})^{-1} \mathbf{X}^T\mathbf{V}^{-1/2}\mathbf{V}^{-1/2}\mathbf{Y}\\
-       &amp; = (\mathbf{X}^T \mathbf{V}^{-1} \mathbf{X})^{-1} \mathbf{X}^T\mathbf{V}^{-1}\mathbf{Y}
-\end{align}\]</span> which is the <strong>Generalized Least Squares Estimator</strong> of <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
-</ul>
+<section id="transformations-of-normal-random-variables" class="slide level2">
+<h2>Transformations of Normal Random Variables</h2>
+<p>If <span class="math inline">\(\mathbf{Y}\sim \textsf{N}_n(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span> then for <span class="math inline">\(\mathbf{A}\)</span> <span class="math inline">\(m \times n\)</span> <span class="math display">\[\mathbf{A}\mathbf{Y}\sim \textsf{N}_m(\mathbf{A}\boldsymbol{\mu}, \mathbf{A}\boldsymbol{\Sigma}\mathbf{A}^T)\]</span></p>
 <div class="fragment">
-<div id="weighted-regression" class="Exercise" title="Weighted Regression">
-<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercise: </strong>Weighted Regression</summary><div>Consider the model <span class="math inline">\(\mathbf{Y}= \beta \mathbf{x}+ \boldsymbol{\epsilon}\)</span> where <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}]\)</span> is a known diagonal matrix <span class="math inline">\(\mathbf{V}\)</span>. Write out the GLS estimator in terms of sums and interpret.<p></p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\sim \textsf{N}(\boldsymbol{\beta}, \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1})\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\mathbf{Y}}= \mathbf{P}_\mathbf{X}\mathbf{Y}\sim \textsf{N}(\mathbf{X}\boldsymbol{\beta}, \sigma^2 \mathbf{P}_\mathbf{X})\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\boldsymbol{\epsilon}}= (\mathbf{I}_n - \mathbf{P}_\mathbf{X})\mathbf{Y}\sim \textsf{N}(\mathbf{0}, \sigma^2 (\mathbf{I}_n - \mathbf{P}_\mathbf{X}))\)</span></p></li>
+</ul>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\mathbf{A}\boldsymbol{\Sigma}\mathbf{A}^T\)</span> does not have to be positive definite! </p>
+</div>
+</section>
+<section id="singular-case" class="slide level2">
+<h2>Singular Case</h2>
+<p>If the covariance is singular then there is no density (on <span class="math inline">\(\mathbb{R}^n\)</span>), but claim that <span class="math inline">\(\mathbf{Y}\)</span> still has a multivariate normal distribution!</p>
+<div class="fragment">
+<div id="multivariate-normal-1" class="Definition" title="Multivariate Normal">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Multivariate Normal</summary><div><span class="math inline">\(\mathbf{Y}\in \mathbb{R}^n\)</span> has a multivariate normal distribution <span class="math inline">\(\textsf{N}(\boldsymbol{\mu},
+  \boldsymbol{\Sigma})\)</span> if for any <span class="math inline">\(\mathbf{v}\in \mathbb{R}^n\)</span> <span class="math inline">\(\mathbf{v}^T\mathbf{Y}\)</span> has a univariate normal distribution with mean <span class="math inline">\(\mathbf{v}^T\boldsymbol{\mu}\)</span> and variance <span class="math inline">\(\mathbf{v}^T\boldsymbol{\Sigma}\mathbf{v}\)</span><p></p>
 </div></details>
 </div>
 </div>
-</section>
-<section id="gls-of-boldsymbolmu-full-rank-casedagger" class="slide level2">
-<h2>GLS of <span class="math inline">\(\boldsymbol{\mu}\)</span> (Full Rank Case)<span class="math inline">\(^{\dagger}\)</span></h2>
+<div class="fragment">
+<div id="Proof*-0.2" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Use moment generating or characteristic functions which uniquely characterize distribution to show that <span class="math inline">\(\mathbf{v}^T\mathbf{Y}\)</span> has a univariate normal distribution.<p></p>
+</div></details>
+</div>
 <ul>
-<li class="fragment"><p>the OLS/MLE of <span class="math inline">\(\boldsymbol{\mu}\in C(\mathbf{X})\)</span> with transformed variables is <span class="math display">\[\begin{align*}
-\mathbf{P}_{\tilde{\mathbf{X}}} \tilde{\mathbf{Y}}&amp; = \tilde{\mathbf{X}}\hat{\boldsymbol{\beta}}_\mathbf{V}\\
-\tilde{\mathbf{X}}\left(\tilde{\mathbf{X}}^T\tilde{\mathbf{X}}\right)^{-1}\tilde{\mathbf{X}}^T \tilde{\mathbf{Y}}&amp; = \tilde{\mathbf{X}}\hat{\boldsymbol{\beta}}_\mathbf{V}\\
-\mathbf{V}^{-1/2} \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1} \mathbf{Y}&amp; = \mathbf{V}^{-1/2} \mathbf{X}\hat{\boldsymbol{\beta}}_\mathbf{V}\end{align*}\]</span></p></li>
-<li class="fragment"><p>since <span class="math inline">\(\mathbf{V}\)</span> is positive definite, multiple thru by <span class="math inline">\(\mathbf{V}^{1/2}\)</span>, to show that <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> is a GLS/MLE estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> iff <span class="math display">\[\mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1} \mathbf{Y}= \mathbf{X}\hat{\boldsymbol{\beta}}_\mathbf{V}\]</span></p></li>
-<li class="fragment"><p>Is <span class="math inline">\(\mathbf{P}_\mathbf{V}\equiv \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1}\)</span> a projection onto <span class="math inline">\(C(\mathbf{X})\)</span>? Is it an orthogonal projection onto <span class="math inline">\(C(\mathbf{X})\)</span>?</p></li>
+<li class="fragment">both <span class="math inline">\(\hat{\mathbf{Y}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> have multivariate normal distributions even though they do not have densities! (singular distributions)</li>
 </ul>
-<div class="footer">
-<p><span class="math inline">\(\dagger\)</span> if <span class="math inline">\(\mathbf{X}\)</span> is not full rank replace <span class="math inline">\(\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\)</span> with <span class="math inline">\(\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-}\)</span></p>
 </div>
 </section>
-<section id="projections" class="slide level2">
-<h2>Projections</h2>
-<p>We want to show that <span class="math inline">\(\mathbf{P}_\mathbf{V}\equiv \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1}\)</span> is a projection onto <span class="math inline">\(C(\mathbf{X})\)</span></p>
+<section id="distribution-of-mle-of-sigma2" class="slide level2">
+<h2>Distribution of MLE of <span class="math inline">\(\sigma^2\)</span></h2>
+<p>Recall we found the MLE of <span class="math inline">\(\sigma^2\)</span> <span class="math display">\[{\hat{\sigma}}^2= \frac{\hat{\boldsymbol{\epsilon}}^T\hat{\boldsymbol{\epsilon}}} {n}\]</span></p>
 <ul>
-<li class="fragment"><p>from the definition of <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> it follows that <span class="math inline">\(\mathbf{m}\in C(\mathbf{P}_\mathbf{v})\)</span> implies that <span class="math inline">\(\mathbf{m}= \mathbf{P}_\mathbf{V}\mathbf{m}= \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T\mathbf{m}\)</span> so <span class="math inline">\(C(\mathbf{P}_\mathbf{V}) \subset C(\mathbf{X})\)</span></p></li>
-<li class="fragment"><p>since <span class="math inline">\(\mathbf{P}_\tilde{\mathbf{X}}\)</span> is a projection onto <span class="math inline">\(C(\tilde{\mathbf{X}})\)</span> we have <span class="math display">\[\begin{align*}
-\mathbf{P}_{\tilde{\mathbf{X}}} \tilde{\mathbf{X}}&amp; = \tilde{\mathbf{X}}\\
-\tilde{\mathbf{X}}\left(\tilde{\mathbf{X}}^T\tilde{\mathbf{X}}\right)^{-1}\tilde{\mathbf{X}}^T \tilde{\mathbf{X}}&amp; = \tilde{\mathbf{X}}\\
-\mathbf{V}^{-1/2} \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1} \mathbf{X}&amp; = \mathbf{V}^{-1/2} \mathbf{X}\\
-\mathbf{V}^{-1/2} \mathbf{P}_\mathbf{V}\mathbf{X}&amp; = \mathbf{V}^{-1/2} \mathbf{X}
+<li class="fragment"><p>let <span class="math inline">\(\textsf{RSS}= \| \hat{\boldsymbol{\epsilon}}\|^2 = \hat{\boldsymbol{\epsilon}}^T\hat{\boldsymbol{\epsilon}}\)</span></p></li>
+<li class="fragment"><p>then <span class="math display">\[\begin{align*}
+\| \hat{\boldsymbol{\epsilon}}\|^2  &amp; = \hat{\boldsymbol{\epsilon}}^T\hat{\boldsymbol{\epsilon}}\\
+             &amp; = \boldsymbol{\epsilon}^T(\mathbf{I}_n - \mathbf{P}_\mathbf{X})^T (\mathbf{I}_n - \mathbf{P}_\mathbf{X}) \boldsymbol{\epsilon}\\
+             &amp; = \boldsymbol{\epsilon}^T(\mathbf{I}_n - \mathbf{P}_\mathbf{X}) \boldsymbol{\epsilon}\\
+             &amp; = \boldsymbol{\epsilon}^N \textsf{N}\textsf{N}^T \boldsymbol{\epsilon}\\
+             &amp; = \mathbf{e}^T\mathbf{e}
 \end{align*}\]</span></p></li>
-<li class="fragment"><p>We can multiply both sides by <span class="math inline">\(\mathbf{V}^{1/2} &gt; 0\)</span>, so that <span class="math inline">\(\mathbf{P}_\mathbf{V}\mathbf{X}= \mathbf{X}\)</span></p></li>
-<li class="fragment"><p>for <span class="math inline">\(\mathbf{m}\in C(\mathbf{X})\)</span>, <span class="math inline">\(\mathbf{P}_\mathbf{V}\mathbf{m}= \mathbf{m}\)</span> and <span class="math inline">\(C(\mathbf{X}) \subset C(\mathbf{P}_\mathbf{V})\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\quad \quad \therefore C(\mathbf{P}_\mathbf{V}) = C(\mathbf{X})\)</span> so that <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> is a projection onto <span class="math inline">\(C(\mathbf{X})\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\textsf{N}\)</span> is the matrix of the <span class="math inline">\((n - p)\)</span> eigen vectors from the spectral decomposition of <span class="math inline">\((\mathbf{I}_n - \mathbf{P}_\mathbf{X})\)</span> associated with the non-zero eigen-values.</p></li>
 </ul>
 <div class="footer">
 
 </div>
 </section>
-<section id="oblique-projections" class="slide level2">
-<h2>Oblique Projections</h2>
-<div id="projection" class="Proposition" title="Projection">
-<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition: </strong>Projection</summary><div>The <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{P}_\mathbf{V}\equiv \mathbf{X}\left(\mathbf{X}^T\mathbf{V}^{-1}\mathbf{X}\right)^{-1}\mathbf{X}^T \mathbf{V}^{-1}\)</span> is a projection onto the <span class="math inline">\(C(\mathbf{X})\)</span><p></p>
-</div></details>
-</div>
-<ul>
-<li class="fragment"><p>Show that <span class="math inline">\(\mathbf{P}_\mathbf{V}^2 = \mathbf{P}_\mathbf{V}\)</span> (idempotent)</p></li>
-<li class="fragment"><p>every vector <span class="math inline">\(\mathbf{y}\in \mathbb{R}^n\)</span> may be written as <span class="math inline">\(\mathbf{y}= \mathbf{m}+ \mathbf{n}\)</span> where <span class="math inline">\(\mathbf{P}_\mathbf{v}\mathbf{y}= \mathbf{m}\)</span> and <span class="math inline">\((\mathbf{I}_n - \mathbf{P}_\mathbf{v})\mathbf{y}= \mathbf{n}\)</span> where <span class="math inline">\(\mathbf{m}\in C(\mathbf{P}_\mathbf{V})\)</span> and <span class="math inline">\(\mathbf{u}\in N(\mathbf{P}_\mathbf{V})\)</span></p></li>
-<li class="fragment"><p>Is <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> an orthogonal projection onto <span class="math inline">\(C(\mathbf{X})\)</span> for the inner product space <span class="math inline">\((\mathbb{R}^n, \langle \mathbf{v}, \mathbf{u}\rangle = \mathbf{v}^T\mathbf{u})\)</span>?</p></li>
-</ul>
+<section id="distribution-of-textsfrss" class="slide level2">
+<h2>Distribution of <span class="math inline">\(\textsf{RSS}\)</span></h2>
+<p>Since <span class="math inline">\(\boldsymbol{\epsilon}\sim \textsf{N}(\mathbf{0}_n, \sigma^2 \mathbf{I}_n)\)</span> and <span class="math inline">\(\textsf{N}\in \mathbb{R}^{n \times (n - p)}\)</span>, <span class="math display">\[\textsf{N}^T \boldsymbol{\epsilon}= \mathbf{e}\sim \textsf{N}(\mathbf{0}_{n - p}, \sigma^2\textsf{N}^T\textsf{N}) = \textsf{N}(\mathbf{0}_{n - p}, \sigma^2\mathbf{I}_{n - p} )\]</span></p>
 <div class="fragment">
-<div id="oblique-projection" class="Definition" title="Oblique Projection">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Oblique Projection</summary><div>For the inner product space <span class="math inline">\((\mathbb{R}^n, \langle \mathbf{v}, \mathbf{u}\rangle = \mathbf{v}^T\mathbf{u})\)</span>, a projection <span class="math inline">\(\mathbf{P}\)</span> that is not an orthogonal projection is called an <em>oblique projection</em><p></p>
-</div></details>
+<p><span class="math display">\[\begin{align*}
+\textsf{RSS}&amp; =  \sum_{i = 1}^{n-p} e_i^2 \\
+     &amp; \mathrel{\mathop{=}\limits^{\rm D}}\sum_{i = 1}^{n-p} (\sigma z_i)^2  \quad \text{ where } \mathbf{Z}\sim \textsf{N}(\mathbf{0}_{n-p}, \mathbf{I}_{n-p}) \\
+     &amp; = \sigma^2 \sum_{i = 1}^{n-p} z_i^2 \\
+     &amp;\mathrel{\mathop{=}\limits^{\rm D}}\sigma^2 \chi^2_{n-p}
+     
+\end{align*}\]</span></p>
 </div>
-</div>
-</section>
-<section id="loss-function" class="slide level2">
-<h2>Loss Function</h2>
-<p>The GLS estimator minimizes the following generalized squared error loss: <span class="math display">\[\begin{align}
-\| \tilde{\mathbf{Y}}- \tilde{\mathbf{X}}\boldsymbol{\beta}\|^2 &amp; = (\tilde{\mathbf{Y}}- \tilde{\mathbf{X}}\boldsymbol{\beta})^T(\tilde{\mathbf{Y}}- \tilde{\mathbf{X}}\boldsymbol{\beta}) \\
-                    &amp; = (\mathbf{Y}- \mathbf{X}\boldsymbol{\beta})^T \mathbf{V}^{-1/2}\mathbf{V}^{-1/2}(\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}) \\
-                    &amp; = (\mathbf{Y}- \mathbf{X}\boldsymbol{\beta})^T \mathbf{V}^{-1}(\mathbf{Y}- \mathbf{X}\boldsymbol{\beta})  \\
-                    &amp; = \| \mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2_{\mathbf{V}^{-1}}
-\end{align}\]</span> where we can change the inner product to be <span class="math display">\[\langle \mathbf{u}, \mathbf{v}\rangle_{\mathbf{V}^{-1}} \equiv \mathbf{u}^T\mathbf{V}^{-1} \mathbf{v}\]</span></p>
-</section>
-<section id="orthogonality-in-an-inner-product-space" class="slide level2">
-<h2>Orthogonality in an Inner Product Space</h2>
-<div id="orthogonal-projecton" class="Definition" title="Orthogonal Projecton">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Orthogonal Projecton</summary><div>For an inner product space, (<span class="math inline">\(\mathbb{R}^n, \langle , \rangle\)</span>). The projection <span class="math inline">\(\mathbf{P}\)</span> is an orthogonal projection if for every vector <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> in <span class="math inline">\(\mathbb{R}^n\)</span>, <span class="math display">\[
-  \langle \mathbf{P}\mathbf{x}, (\mathbf{I}_n -\mathbf{P})\mathbf{y}\rangle = \langle (\mathbf{I}_n - \mathbf{P}) \mathbf{x},\mathbf{P}\mathbf{y}\rangle = 0
-\]</span> Equivalently: <span class="math display">\[
-  \langle \mathbf{x},\mathbf{P}\mathbf{y}\rangle = \langle \mathbf{P}\mathbf{x}, \mathbf{P}\mathbf{y}\rangle =\langle \mathbf{P}\mathbf{x},\mathbf{y}\rangle
-\]</span><p></p>
-</div></details>
-</div>
-<div id="Exercise*-0.5" class="Exercise">
-<p></p><details class="Exercise fbx-simplebox fbx-default" open=""><summary><strong>Exercise</strong></summary><div>Show that <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> is an orthogonal projection under the inner product <span class="math inline">\(\langle \mathbf{x}, \mathbf{y}\rangle_{\mathbf{V}^{-1}} \equiv \mathbf{x}^T\mathbf{V}^{-1} \mathbf{y}\)</span><p></p>
-</div></details>
-</div>
-</section>
-<section id="variance-of-gls" class="slide level2">
-<h2>Variance of GLS</h2>
-<ul>
-<li class="fragment">Variance of the GLS estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}=  (\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1}\mathbf{X}^T\mathbf{V}^{−1}\mathbf{Y}\)</span> is much simpler <span class="math display">\[\begin{align}
-\textsf{Cov}[\hat{\boldsymbol{\beta}}_\mathbf{V}] &amp; = (\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1}\mathbf{X}^T\mathbf{V}^{−1}\textsf{Cov}[\mathbf{Y}]\mathbf{V}^{−1}\mathbf{X}(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1} \\
-&amp; = (\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1}\mathbf{X}^T\mathbf{V}^{−1}\mathbf{V}\mathbf{V}^{−1}\mathbf{X}(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1} \\
-&amp; = \sigma^2(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1}(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1} \\
-&amp; = \sigma^2(\mathbf{X}^T\mathbf{V}^{−1}\mathbf{X})^{−1}
-\end{align}\]</span></li>
-</ul>
 <div class="fragment">
-<div id="gauss-markov-aitkin" class="Theorem" title="Gauss-Markov-Aitkin">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Gauss-Markov-Aitkin</summary><div>Let <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> be a linear unbiased estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> be the GLS estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> in the linear model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\)</span> with <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{V}\)</span> with <span class="math inline">\(\mathbf{X}\)</span> and <span class="math inline">\(\mathbf{V}&gt;0\)</span> known. Then <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> is the BLUE where <span class="math display">\[\textsf{Cov}[\tilde{\boldsymbol{\beta}}] \ge  \sigma^2 (\mathbf{X}^T\mathbf{V}^{-1} \mathbf{X})^{-1} = \textsf{Cov}[\hat{\boldsymbol{\beta}}_\mathbf{V}] \]</span><p></p>
-</div></details>
-</div>
+<p><strong>Background Theory:</strong> If <span class="math inline">\(\mathbf{Z}\sim \textsf{N}_d(\mathbf{0}_d, \mathbf{I}_d)\)</span>, then <span class="math inline">\(\mathbf{Z}^T\mathbf{Z}\sim \chi^2_{d}\)</span></p>
 </div>
 </section>
-<section id="when-will-ols-and-gls-be-equal" class="slide level2">
-<h2>When will OLS and GLS be Equal?</h2>
+<section id="unbiased-estimate-of-sigma2" class="slide level2">
+<h2>Unbiased Estimate of <span class="math inline">\(\sigma^2\)</span></h2>
 <ul>
-<li class="fragment"><p>For what covariance matrices <span class="math inline">\(\mathbf{V}\)</span> will the OLS and GLS estimators be the same?</p></li>
-<li class="fragment"><p>Figuring this out can help us understand why the GLS estimator has a lower variance in general.</p></li>
+<li class="fragment"><p>Expected value of a <span class="math inline">\(\chi^2_d\)</span> random variable is <span class="math inline">\(d\)</span> (the degrees of freedom)</p></li>
+<li class="fragment"><p><span class="math inline">\(\textsf{E}[\textsf{RSS}] = \textsf{E}[\sigma^2 \chi^2_{n-p}] = \sigma^2 (n-p)\)</span></p></li>
+<li class="fragment"><p>the expected value of the MLE is <span class="math display">\[{\hat{\sigma}}^2= \textsf{E}[\textsf{RSS}]/n = \sigma^2 \frac{(n-p)}{n}\]</span> so is biased</p></li>
+<li class="fragment"><p>an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>, is <span class="math inline">\(s^2 = \textsf{RSS}/(n-p)\)</span></p></li>
+<li class="fragment"><p>note: we can find the expectation of <span class="math inline">\({\hat{\sigma}}^2\)</span> or <span class="math inline">\(s^2\)</span> based on the covariance of <span class="math inline">\(\boldsymbol{\epsilon}\)</span> without assuming normality by exploiting properties of the trace.</p></li>
 </ul>
-<div class="fragment">
-<div id="Theorem*-0.7" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>The estimators <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> (OLS) and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> (GLS) are the same for all <span class="math inline">\(\mathbf{Y}\in \mathbb{R}^n\)</span> iff <span class="math display">\[\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^T + \mathbf{H}\boldsymbol{\Phi}\mathbf{H}^T\]</span> for some positive definite matrices <span class="math inline">\(\boldsymbol{\Psi}\)</span> and <span class="math inline">\(\boldsymbol{\Phi}\)</span> and a matrix <span class="math inline">\(\mathbf{H}\)</span> such that <span class="math inline">\(\mathbf{H}^T \mathbf{X}= \mathbf{0}\)</span>.<p></p>
-</div></details>
-</div>
-</div>
 </section>
-<section id="outline-of-proof" class="slide level2">
-<h2>Outline of Proof</h2>
-<p>We need to show that <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> are the same for all <span class="math inline">\(\mathbf{Y}\)</span>. Since both <span class="math inline">\(\mathbf{P}\)</span> and <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> are projections onto <span class="math inline">\(C(\mathbf{X})\)</span>, <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> will be the same iff <span class="math inline">\(\mathbf{P}_\mathbf{V}\)</span> is an orthogonal projection onto <span class="math inline">\(C(\mathbf{X})\)</span> so that <span class="math inline">\(\mathbf{P}_\mathbf{V}\mathbf{n}= 0\)</span> for <span class="math inline">\(\mathbf{n}\in C(\mathbf{X})^\perp\)</span> (they have the same null spaces)</p>
+<section id="distribution-of-hatboldsymbolbeta" class="slide level2">
+<h2>Distribution of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span></h2>
+<p><span class="math inline">\(\hat{\boldsymbol{\beta}}\sim \textsf{N}\left(\boldsymbol{\beta}, \sigma^2( \mathbf{X}^T\mathbf{X})^{-1}\right)\)</span></p>
+<ul>
+<li class="fragment"><p>do not know <span class="math inline">\(\sigma^2\)</span></p></li>
+<li class="fragment"><p>Need a distribution that does not depend on unknown parameters for deriving confidence intervals and hypothesis tests for <span class="math inline">\(\boldsymbol{\beta}\)</span>.</p></li>
+<li class="fragment"><p>what if we plug in <span class="math inline">\(s^2\)</span> or <span class="math inline">\({\hat{\sigma}}^2\)</span> for <span class="math inline">\(\sigma^2\)</span>?</p></li>
+<li class="fragment"><p>won’t be multivariate normal</p></li>
+<li class="fragment"><p>need to relect uncertainty in estimating <span class="math inline">\(\sigma^2\)</span></p></li>
+<li class="fragment"><p>first show that <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2\)</span> are independent</p></li>
+</ul>
+</section>
+<section id="independence-of-hatboldsymbolbeta-and-s2" class="slide level2">
+<h2>Independence of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2\)</span></h2>
+<p>If the distribution of <span class="math inline">\(\mathbf{Y}\)</span> is normal, then <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2\)</span> are statistically independent.</p>
+<ul>
+<li class="fragment"><p>The derivation of this result basically has three steps:</p>
 <ol type="1">
-<li class="fragment"><p>Show that <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}\mathbf{X})\)</span> iff <span class="math inline">\(\mathbf{V}\)</span> can be written as <span class="math display">\[\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^T + \mathbf{H}\boldsymbol{\Phi}\mathbf{H}^T\]</span> (Show <span class="math inline">\(C(\mathbf{V}\mathbf{X}) \subset C( \mathbf{X})\)</span> iff <span class="math inline">\(\mathbf{V}\)</span> has the above form and since the two subspaces have the same rank <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}\mathbf{X})\)</span></p></li>
-<li class="fragment"><p>Show that <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}^{-1} \mathbf{X})\)</span> iff <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}\mathbf{X})\)</span></p></li>
-<li class="fragment"><p>Show that <span class="math inline">\(C(\mathbf{X})^\perp = C(\mathbf{V}^{-1} \mathbf{X})^\perp\)</span> iff <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{V}^{-1} \mathbf{X})\)</span></p></li>
-<li class="fragment"><p>Show that <span class="math inline">\(\mathbf{n}\in C(\mathbf{X})^\perp\)</span> iff <span class="math inline">\(\mathbf{n}\in C(\mathbf{V}^{-1}\mathbf{X})^\perp\)</span> so <span class="math inline">\(\mathbf{P}_\mathbf{V}\mathbf{n}= 0\)</span></p></li>
-</ol>
+<li class="fragment"><span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> or <span class="math inline">\(\mathbf{e}\)</span> have zero covariance</li>
+<li class="fragment"><span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> or <span class="math inline">\(\mathbf{e}\)</span> are independent</li>
+<li class="fragment">Conclude <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\textsf{RSS}\)</span> (or <span class="math inline">\(s^2\)</span>) are independent</li>
+</ol></li>
+</ul>
 <div class="fragment">
-<p>See Proposition 2.7.5 and Proof in Christensen</p>
+<p><strong>Step 1:</strong></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\textsf{Cov}[\hat{\boldsymbol{\beta}}, \hat{\boldsymbol{\epsilon}}] &amp; = \textsf{E}[(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}) \hat{\boldsymbol{\epsilon}}^T] \\
+                   &amp; = \textsf{E}[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{\epsilon}\boldsymbol{\epsilon}^T (\mathbf{I}- \mathbf{P}_\mathbf{X})] \\
+                   &amp; = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T (\mathbf{I}- \mathbf{P}_\mathbf{X}) \\
+                   &amp; = \mathbf{0}
+\end{align*}\]</span></p>
 </div>
 </section>
-<section id="some-intuition" class="slide level2">
-<h2>Some Intuition</h2>
-<p>For the linear model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\)</span> with <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{V}\)</span>, we can always write</p>
-<p><span class="math display">\[\begin{align} \boldsymbol{\epsilon}&amp; = \mathbf{P}\boldsymbol{\epsilon}+ (\mathbf{I}- \mathbf{P})\boldsymbol{\epsilon}\\
-                   &amp; = \boldsymbol{\epsilon}_\mathbf{X}+ \boldsymbol{\epsilon}_N   
-\end{align}\]</span></p>
-<ul>
-<li class="fragment"><p>we can recover <span class="math inline">\(\boldsymbol{\epsilon}_N\)</span> from the data <span class="math inline">\(\mathbf{Y}\)</span> but not <span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}\)</span>: <span class="math display">\[\begin{align} \mathbf{P}\mathbf{Y}&amp; = \mathbf{P}( \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}_\mathbf{X}+ \boldsymbol{\epsilon}_n )\\
-                   &amp; =  \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}_\mathbf{X}= \mathbf{X}\hat{\boldsymbol{\beta}}\\
-    (\mathbf{I}_n - \mathbf{P}) \mathbf{Y}&amp; =  \boldsymbol{\epsilon}_N = \hat{\boldsymbol{\epsilon}} = \mathbf{e}
-\end{align}\]</span></p></li>
-<li class="fragment"><p>Can <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}\)</span> help us estimate <span class="math inline">\(\mathbf{X}\boldsymbol{\beta}\)</span>? What if <span class="math inline">\(\boldsymbol{\epsilon}_N\)</span> could tell us something about <span class="math inline">\(\boldsymbol{\epsilon}_X\)</span>?</p></li>
-<li class="fragment"><p>Yes if they were highly correlated! But if they were independent or uncorrelated then knowing <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}\)</span> doesn’t help us!</p></li>
-</ul>
+<section id="zero-covariance-leftrightarrow-independence-in-multivariate-normals" class="slide level2">
+<h2>Zero Covariance <span class="math inline">\(\Leftrightarrow\)</span> Independence in Multivariate Normals</h2>
+<p><strong>Step 2:</strong> <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> are independent</p>
+<div id="zero-correlation-and-independence" class="Theorem" title="Zero Correlation and Independence">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Zero Correlation and Independence</summary><div>For a random vector <span class="math inline">\(\mathbf{W}\sim \textsf{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span> partitioned as <span class="math display">\[
+\mathbf{W}= \left[
+  \begin{array}{c}
+\mathbf{W}_1  \\ \mathbf{W}_2 \end{array} \right]  \sim \textsf{N}\left( \left[
+  \begin{array}{c} \boldsymbol{\mu}_1  \\ \boldsymbol{\mu}_2 \end{array} \right],
+  \left[ \begin{array}{cc}
+\boldsymbol{\Sigma}_{11} &amp;  \boldsymbol{\Sigma}_{12}  \\
+\boldsymbol{\Sigma}_{21} &amp; \boldsymbol{\Sigma}_{22} \end{array} \right]
+\right)
+\]</span><br>
+then <span class="math inline">\(\textsf{Cov}(\mathbf{W}_1, \mathbf{W}_2) = \boldsymbol{\Sigma}_{12} = \boldsymbol{\Sigma}_{21}^T = \mathbf{0}\)</span> if and only if <span class="math inline">\(\mathbf{W}_1\)</span> and <span class="math inline">\(\mathbf{W}_2\)</span> are independent.<p></p>
+</div></details>
+</div>
 </section>
-<section id="intuition-continued" class="slide level2">
-<h2>Intuition Continued</h2>
+<section id="proof-independence-implies-zero-covariance" class="slide level2">
+<h2>Proof: Independence implies Zero Covariance</h2>
+<p>Easy direction</p>
 <ul>
-<li class="fragment"><p>For what matrices are <span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}\)</span> and <span class="math inline">\(\boldsymbol{\epsilon}_N\)</span> uncorrelated?</p></li>
-<li class="fragment"><p>Under <span class="math inline">\(\mathbf{V}= \mathbf{I}_n\)</span>: <span class="math display">\[\begin{align}
-\textsf{E}[\boldsymbol{\epsilon}_X \boldsymbol{\epsilon}_N] &amp; = \mathbf{P}\textsf{E}[\boldsymbol{\epsilon}\boldsymbol{\epsilon}^T](\mathbf{I}-\mathbf{P}) \\
-                &amp; = \sigma^2 \mathbf{P}(\mathbf{I}- \mathbf{P}) = \mathbf{0}
-\end{align}\]</span> so they are uncorrelated</p></li>
-<li class="fragment"><p>For the <span class="math inline">\(\mathbf{V}\)</span> in the theorem, introduce</p>
-<ul>
-<li class="fragment"><span class="math inline">\(\mathbf{Z}_\mathbf{X}\)</span> where <span class="math inline">\(\textsf{E}[\mathbf{Z}_\mathbf{X}]= \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\mathbf{Z}_\mathbf{X}] = \boldsymbol{\Psi}\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{Z}_\textsf{N}\)</span> where <span class="math inline">\(\textsf{E}[\mathbf{Z}_\textsf{N}]= \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\mathbf{Z}_\textsf{N}] = \boldsymbol{\Phi}\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{Z}_\mathbf{X}\)</span> and <span class="math inline">\(\mathbf{Z}_\textsf{N}\)</span> are uncorrelated, <span class="math inline">\(\textsf{E}[\mathbf{Z}_\mathbf{X}\mathbf{Z}_\textsf{N}] = \mathbf{0}\)</span></li>
-<li class="fragment"><span class="math inline">\(\boldsymbol{\epsilon}= \mathbf{X}\mathbf{Z}_\mathbf{X}+ \mathbf{H}\mathbf{Z}_\textsf{N}\)</span> so that <span class="math inline">\(\boldsymbol{\epsilon}\)</span> has the desired mean and covariance <span class="math inline">\(\mathbf{V}\)</span> in the theorem</li>
-</ul></li>
+<li class="fragment"><p><span class="math inline">\(\textsf{Cov}[\mathbf{W}_1, \mathbf{W}_2] = \textsf{E}[(\mathbf{W}_1 - \boldsymbol{\mu}_1)(\mathbf{W}_2 - \boldsymbol{\mu}_2)^T]\)</span></p></li>
+<li class="fragment"><p>since they are independent <span class="math display">\[\begin{align*}
+\textsf{Cov}[\mathbf{W}_1, \mathbf{W}_2] &amp; = \textsf{E}[(\mathbf{W}_1 - \boldsymbol{\mu}_1)] \textsf{E}[(\mathbf{W}_2 - \boldsymbol{\mu}_2)^T] \\
+&amp; = \mathbf{0}\mathbf{0}^T \\
+&amp; = \mathbf{0}
+\end{align*}\]</span></p></li>
 </ul>
+<div class="fragment">
+<p>so <span class="math inline">\(\mathbf{W}_1\)</span> and <span class="math inline">\(\mathbf{W}_2\)</span> are uncorrelated</p>
+</div>
 </section>
-<section id="intuition-continued-1" class="slide level2">
-<h2>Intuition Continued</h2>
-<p>As a consequence we have</p>
+<section id="zero-covariance-implies-independence" class="slide level2">
+<h2>Zero Covariance Implies Independence</h2>
+<div id="Proof*-0.4" class="Proof">
+<details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>
+<p>Assume <span class="math inline">\(\boldsymbol{\Sigma}_{12} = \mathbf{0}\)</span>:</p>
 <ul>
-<li class="fragment"><p><span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}= \mathbf{P}\boldsymbol{\epsilon}= \mathbf{X}\mathbf{Z}_\mathbf{X}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}= (\mathbf{I}_n - \mathbf{P})\boldsymbol{\epsilon}= \mathbf{H}\mathbf{Z}_\textsf{N}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}\)</span> and <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}\)</span> are uncorrelated <span class="math display">\[\begin{align}
-\textsf{E}[\boldsymbol{\epsilon}_\mathbf{X}\boldsymbol{\epsilon}_\textsf{N}] &amp; = \textsf{E}[\mathbf{X}\mathbf{Z}_\mathbf{X}\mathbf{Z}_\textsf{N}^T \mathbf{H}^T] \\
-                  &amp; = \mathbf{X}\mathbf{0}\mathbf{H}^T \\
-                  &amp; = \mathbf{0}
-\end{align}\]</span></p></li>
-<li class="fragment"><p>so that <span class="math inline">\(\boldsymbol{\epsilon}_\mathbf{X}\)</span> and <span class="math inline">\(\boldsymbol{\epsilon}_\textsf{N}\)</span> are uncorrelated with <span class="math inline">\(\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^T + \mathbf{H}\boldsymbol{\Phi}\mathbf{H}\)</span> ^T$</p></li>
-<li class="fragment"><p>Alternative Statement of Theorem: <span class="math inline">\(\hat{\boldsymbol{\beta}}= \hat{\boldsymbol{\beta}}_\mathbf{V}\)</span> for all <span class="math inline">\(\mathbf{Y}\)</span> under <span class="math inline">\(\textsf{Cov}[\mathbf{Y}] = \sigma^2 \mathbf{V}\)</span> iff <span class="math inline">\(\mathbf{P}\mathbf{Y}\)</span> and <span class="math inline">\((\mathbf{I}- \mathbf{P})\mathbf{Y}\)</span> are uncorrelated</p></li>
+<li class="fragment"><p>Choose an <span class="math display">\[\mathbf{A}= \left[
+\begin{array}{ll}
+  \mathbf{A}_1 &amp; \mathbf{0}\\
+  \mathbf{0}&amp; \mathbf{A}_2
+\end{array}
+\right]\]</span> such that <span class="math inline">\(\mathbf{A}_1 \mathbf{A}_1^T = \boldsymbol{\Sigma}_{11}\)</span>, <span class="math inline">\(\mathbf{A}_2 \mathbf{A}_2^T = \boldsymbol{\Sigma}_{22}\)</span></p></li>
+<li class="fragment"><p>Partition<br>
+<span class="math display">\[ \mathbf{Z}= \left[
+\begin{array}{c}
+  \mathbf{Z}_1 \\ \mathbf{Z}_2
+\end{array}
+\right] \sim \textsf{N}\left(
+\left[
+\begin{array}{c}
+  \mathbf{0}_1 \\ \mathbf{0}_2
+\end{array}
+\right],
+\left[
+\begin{array}{ll}
+  \mathbf{I}_1 &amp;\mathbf{0}\\
+\mathbf{0}&amp; \mathbf{I}_2
+\end{array}
+\right]
+\right)  \text{ and } \boldsymbol{\mu}= \left[
+\begin{array}{c}
+  \boldsymbol{\mu}_1 \\ \boldsymbol{\mu}_2
+\end{array}
+\right]\]</span></p></li>
+<li class="fragment"><p>then <span class="math inline">\(\mathbf{W}\mathrel{\mathop{=}\limits^{\rm D}}\mathbf{A}\mathbf{Z}+ \boldsymbol{\mu}\sim  \textsf{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span></p></li>
 </ul>
+</div></details>
+</div>
 </section>
-<section id="equivalence-of-gls-estimators" class="slide level2">
-<h2>Equivalence of GLS estimators</h2>
-<p>The following corollary to the theorem establishes when two GLS estimators for different <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}]\)</span> are equivalent :</p>
-<div id="Corollary*-0.8" class="Corollary">
-<p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary</strong></summary><div>Suppose <span class="math inline">\(\mathbf{V}= \mathbf{X}\boldsymbol{\Psi}\mathbf{X}^ T + \boldsymbol{\Phi}\mathbf{H}\boldsymbol{\Omega}\mathbf{H}^T \boldsymbol{\Phi}\)</span>. Then <span class="math inline">\(\hat{\boldsymbol{\beta}}_\mathbf{V}= \hat{\boldsymbol{\beta}}_\boldsymbol{\Phi}\)</span><p></p>
+<section class="slide level2">
+
+<div id="continued" class="Proof" title="continued">
+<details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof: </strong>continued</summary><div>
+<p><span class="math inline">\(\mathbf{W}\mathrel{\mathop{=}\limits^{\rm D}}\mathbf{A}\mathbf{Z}+ \boldsymbol{\mu}\sim  \textsf{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span></p>
+<p><span class="math display">\[\begin{align*}
+\left[
+  \begin{array}{c}
+    \mathbf{W}_1 \\ \mathbf{W}_2
+  \end{array}
+\right]  &amp; \mathrel{\mathop{=}\limits^{\rm D}}
+\left[  \begin{array}{cc}
+    \mathbf{A}_1 &amp; \mathbf{0}\\
+    \mathbf{0}&amp; \mathbf{A}_2
+  \end{array}
+\right]
+\left[
+  \begin{array}{c}
+    \mathbf{Z}_1 \\ \mathbf{Z}_2
+  \end{array}
+\right]
++ \left[
+  \begin{array}{c}
+    \boldsymbol{\mu}_1 \\ \boldsymbol{\mu}_2
+  \end{array}
+\right] \\
+&amp; =  \left[
+  \begin{array}{c}
+    \mathbf{A}_1\mathbf{Z}_1 + \boldsymbol{\mu}_1 \\ \mathbf{A}_2\mathbf{Z}_2 +\boldsymbol{\mu}_2
+  \end{array}
+\right]
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment">But <span class="math inline">\(\mathbf{Z}_1\)</span> and <span class="math inline">\(\mathbf{Z}_2\)</span> are independent</li>
+<li class="fragment">Functions of <span class="math inline">\(\mathbf{Z}_1\)</span> and <span class="math inline">\(\mathbf{Z}_2\)</span> are independent</li>
+<li class="fragment">Therefore <span class="math inline">\(\mathbf{W}_1\)</span> and <span class="math inline">\(\mathbf{W}_2\)</span> are independent<br>
+</li>
+</ul>
+</div></details>
+</div>
+<div class="fragment">
+<p>For Multivariate Normal Zero Covariance implies independence!</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div id="Corollary*-0.6" class="Corollary">
+<p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary</strong></summary><div>If <span class="math inline">\(\mathbf{Y}\sim \textsf{N}( \boldsymbol{\mu}, \sigma^2 \mathbf{I}_n)\)</span> and <span class="math inline">\(\mathbf{A}\mathbf{B}^T = \mathbf{0}\)</span> then <span class="math inline">\(\mathbf{A}\mathbf{Y}\)</span> and <span class="math inline">\(\mathbf{B}\mathbf{Y}\)</span> are independent.<p></p>
+</div></details>
+</div>
+<div class="fragment">
+<div id="Proof*-0.7" class="Proof">
+<details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>
+<p><span class="math display">\[
+\left[
+  \begin{array}{c}
+    \mathbf{W}_1 \\ \mathbf{W}_2
+  \end{array}
+\right]  = \left[
+  \begin{array}{c}
+    \mathbf{A}\\ \mathbf{B}
+  \end{array}
+\right]  \mathbf{Y}=  \left[
+  \begin{array}{c}
+    \mathbf{A}\mathbf{Y}\\ \mathbf{B}\mathbf{Y}
+  \end{array}
+\right]
+\]</span></p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(\textsf{Cov}(\mathbf{W}_1, \mathbf{W}_2) = \textsf{Cov}(\mathbf{A}\mathbf{Y}, \mathbf{B}\mathbf{Y}) = \sigma^2 \mathbf{A}\mathbf{B}^T\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\mathbf{A}\mathbf{Y}\)</span> and <span class="math inline">\(\mathbf{B}\mathbf{Y}\)</span> are independent if <span class="math inline">\(\mathbf{A}\mathbf{B}^T = \mathbf{0}\)</span></p></li>
+</ul>
 </div></details>
 </div>
 <ul>
-<li class="fragment">Can you construct an equivalent representation based on zero correlation of <span class="math inline">\(\mathbf{P}_\boldsymbol{\Phi}\mathbf{Y}\)</span> and <span class="math inline">\((\mathbf{I}_n - \mathbf{P}_\boldsymbol{\Phi})\mathbf{Y}\)</span> when <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{V}?\)</span></li>
+<li class="fragment">Since <span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{Y}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}= (\mathbf{I}- \mathbf{P}_\mathbf{X})\mathbf{Y}\)</span> have zero covariance, using the corollary we have that <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> are independent to show Step 2.</li>
+</ul>
+</div>
+</section>
+<section id="step-3" class="slide level2">
+<h2>Step 3:</h2>
+<p>Show <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\textsf{RSS}\)</span> are independent</p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{Y}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}= (\mathbf{I}- \mathbf{P}_\mathbf{X})\mathbf{Y}\)</span> are independent</p></li>
+<li class="fragment"><p>functions of independent random variables are independent so <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\textsf{RSS}= \hat{\boldsymbol{\epsilon}}^T\hat{\boldsymbol{\epsilon}}\)</span> are independent</p></li>
+<li class="fragment"><p>so <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2 = \textsf{RSS}/(n-p)\)</span> are independent</p></li>
+</ul>
+<div class="fragment">
+<p>This result will be critical for creating confidence regions and intervals for <span class="math inline">\(\boldsymbol{\beta}\)</span> and linear combinations of <span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\lamda^T \boldsymbol{\beta}\)</span> as well as testing hypotheses</p>
+</div>
+</section>
+<section id="next-class" class="slide level2">
+<h2>Next Class</h2>
+<ul>
+<li class="fragment"><p>shrinkage estimators</p></li>
+<li class="fragment"><p>Bayes and penalized loss functions</p></li>
 </ul>
 
 <div class="quarto-auto-generated-content">

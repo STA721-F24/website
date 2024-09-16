@@ -35,95 +35,319 @@
     "text": "Primary Textbooks\nThese textbooks are great resources for some of the topics we will cover.\n\nPlane Answers to Complex Questions, Ronald Christensen. eBook in Duke Library\nLinear Regression Analysis, George A.F Seber and Alan J. Lee eBook in Duke Library. Duke Library is aware the link is broken\nThe Linear Model and Hypothesis, George A. F. Seber eBook in Duke Library\n\n\n\nSupplementary Textbooks on Linear/Matrix Algebra\n\nGilbert Strang’s Online Course at MIT\nVideo Lectures\n\nIntroduction to Linear Algebra. Strang, Gilbert. 4th ed. Wellesley, MA: Wellesley-Cambridge Press, 2009. ISBN: 9780980232714. Buy @ Amazon\n\nMatrix Algebra from a Statistician’s Perspective. Harville, David A. eBook in Duke Library\n\n\n\nR and R Markdown Resources\nQuarto/R Markdown/LaTeX can be used to create high quality reports and presentations with embedded chunks of R code and LaTeX equations! You are required to use Quarto in RStudio to type up your homework assignments that involve Data Analysis/Simulation for this course, but you are welcome to use any word processor of your choice for those. To learn more about Quarto/R Markdown and for other resources for programming in R, see the links below.\n\nUsing R in Quarto for Documents\nR for Data Science (by Hadley Wickham & Garrett Grolemund)\nIntroduction to R Markdown (Article by Garrett Grolemund)\nIntroduction to R Markdown (Slides by Andrew Cho)\nR Markdown Cheat Sheet\nData Visualization with ggplot2 Cheat Sheet\nOther Useful Cheat Sheets\nA very (very!) basic R Markdown template\n\n\n\nLaTeX\nYou may also use LaTeX to type up your assignments. You may find it easier to create your TeX and LaTeX documents using online editors such as Overleaf (simply create a free account and you are good to go!). However, that need not be the case. If you prefer to create them locally/offline on your personal computers, you will need to download a TeX distribution (the most popular choices are MiKTeX for Windows and MacTeX for macOS) plus an editor (I personally prefer TeXstudio but feel free to download any editor of your choice). Follow the links below for some options, and to also learn how to use LaTeX.\n\nLearn LaTeX in 30 minutes\nChoosing a LaTeX Compiler.\n\n\n\nInteresting Articles\nI will add articles I find interesting below. These are articles I find useful as supplementary readings for topics covered in class, or as good sources that cover concepts I think you should know, but which we may not have time to cover. I strongly suggest you find time to (at the very least) take a “quick peek” at each article.\n\nEfron, B., 1986. Why isn’t everyone a Bayesian?. The American Statistician, 40(1), pp. 1-5.\nGelman, A., 2008. Objections to Bayesian statistics. Bayesian Analysis, 3(3), pp. 445-449.\nDiaconis, P., 1977. Finite forms of de Finetti’s theorem on exchangeability. Synthese, 36(2), pp. 271-281.\nGelman, A., Meng, X. L. and Stern, H., 1996. Posterior predictive assessment of model fitness via realized discrepancies. Statistica sinica, pp. 733-760.\nDunson, D. B., 2018. Statistics in the big data era: Failures of the machine. Statistics & Probability Letters, 136, pp. 4-9."
   },
   {
-    "objectID": "reading/01-introduction.html",
-    "href": "reading/01-introduction.html",
-    "title": "Lecture 1 Readings",
+    "objectID": "reading/07-sampling.html",
+    "href": "reading/07-sampling.html",
+    "title": "Sampling Dsistributions & Distribution Theory",
     "section": "",
-    "text": "links to eBooks are on the Home page of the website or Resources page."
+    "text": "Readings:\n\nChristensen Chapter 1, 2.91 and Appendix C\nSeber & Lee Chapter 3.3 3.5"
   },
   {
-    "objectID": "reading/01-introduction.html#introduction-to-linear-models",
-    "href": "reading/01-introduction.html#introduction-to-linear-models",
-    "title": "Lecture 1 Readings",
-    "section": "Introduction to Linear Models",
-    "text": "Introduction to Linear Models\n\nreview the course website and syllabus for policies"
-  },
-  {
-    "objectID": "reading/01-introduction.html#vector-spaces",
-    "href": "reading/01-introduction.html#vector-spaces",
-    "title": "Lecture 1 Readings",
-    "section": "Vector Spaces",
-    "text": "Vector Spaces\nChristensen: Read\n\nChapter 1: pages 1-3\nAppendix A in Christensen pages 411-413\nAppendix B section B.1\n\nSee also Seber & Lee Chapter 1."
-  },
-  {
-    "objectID": "reading/06-GLS.html",
-    "href": "reading/06-GLS.html",
-    "title": "Generalize Least Squares, MLEs, MVUEs and BUEs",
+    "objectID": "reading/04-BLUE.html",
+    "href": "reading/04-BLUE.html",
+    "title": "Best Linear Unbiased Estimation",
     "section": "",
-    "text": "We will develop GLS/MLE estimators when the covariance of the errors is is not a scale multiple of the identity matrix, and establish conditions for when the OLS and GLS are equivalent. Inthe case that the errors have a multivatiate normal distribution, the MLEs are equivalent to GLS and are not only the BLUE but are also Minimum Variance Unbiased Estimators or “BUE” out of all unbiased estimators linear or non-linear.\nReadings:\n\nChristensen Chapter 2 and 10 Appendix B\nSeber & Lee Chapter 3"
+    "text": "We will explore properties of MLEs/OLS and linear functionals of them. In particular characterizing the class of linear unbiased estimates and minimimum variances, cumulating with the Guass Markov Theorem for both the full rank case and rank deficient models and establing conditions under which OLS/MLE estimators are the Best Linear Unbiased Estimators under the assumption that the covariance of the errors is spherically symmetric.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
   },
   {
-    "objectID": "reading/03-non-full-rank.html",
-    "href": "reading/03-non-full-rank.html",
-    "title": "Rank Deficient Models",
+    "objectID": "reading/02-mles.html",
+    "href": "reading/02-mles.html",
+    "title": "MLEs & Projections",
     "section": "",
-    "text": "We will explore MLEs/OLS using rank deficient models using generalized inverses. We will characterize orthogonal projections using Spectral Decompositions and review how that is related to the Singular Value Decomposition of the model matrix.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
+    "text": "Readings:\n\nChristensen Chapter 1-2, Appendix A, and Appendix B\nSeber & Lee Chapter 3, Appendix B"
   },
   {
-    "objectID": "HW/hw-01.html",
-    "href": "HW/hw-01.html",
-    "title": "Homework 1",
+    "objectID": "HW/hw-03.html",
+    "href": "HW/hw-03.html",
+    "title": "Homework 3",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
-    "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
-    "title": "Homework 1",
+    "objectID": "HW/hw-03.html#due-1100pm-thurs-sept-19",
+    "href": "HW/hw-03.html#due-1100pm-thurs-sept-19",
+    "title": "Homework 3",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-01.html#rstudio",
-    "href": "HW/hw-01.html#rstudio",
-    "title": "Homework 1",
+    "objectID": "HW/hw-03.html#rstudio",
+    "href": "HW/hw-03.html#rstudio",
+    "title": "Homework 3",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-01.html#r-quarto",
-    "href": "HW/hw-01.html#r-quarto",
-    "title": "Homework 1",
-    "section": "R & Quarto",
-    "text": "R & Quarto\nYou are required to use the .qmd format to type up this report report. To get started see technical writing with Quarto. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts."
-  },
-  {
-    "objectID": "HW/hw-01.html#getting-started-with-github-classroom",
-    "href": "HW/hw-01.html#getting-started-with-github-classroom",
-    "title": "Homework 1",
+    "objectID": "HW/hw-03.html#getting-started-with-github-classroom",
+    "href": "HW/hw-03.html#getting-started-with-github-classroom",
+    "title": "Homework 3",
     "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW1\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw1.qmd file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW3\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-01.html#gradescope-submission",
-    "href": "HW/hw-01.html#gradescope-submission",
-    "title": "Homework 1",
+    "objectID": "HW/hw-03.html#r-rnw",
+    "href": "HW/hw-03.html#r-rnw",
+    "title": "Homework 3",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+  },
+  {
+    "objectID": "HW/hw-03.html#gradescope-submission",
+    "href": "HW/hw-03.html#gradescope-submission",
+    "title": "Homework 3",
     "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-01.html#grading",
-    "href": "HW/hw-01.html#grading",
-    "title": "Homework 1",
+    "objectID": "HW/hw-03.html#grading",
+    "href": "HW/hw-03.html#grading",
+    "title": "Homework 3",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "labs/lab-01.html",
-    "href": "labs/lab-01.html",
-    "title": "lab-01",
+    "objectID": "HW/hw-02.html",
+    "href": "HW/hw-02.html",
+    "title": "Homework 2",
     "section": "",
-    "text": "Please see the instructions for HW-01 and be preapred to ask questions in lab (using R, theory, etc)"
+    "text": "See Gradescope for any updates on due dates."
+  },
+  {
+    "objectID": "HW/hw-02.html#due-1100pm-thurs-sept-12",
+    "href": "HW/hw-02.html#due-1100pm-thurs-sept-12",
+    "title": "Homework 2",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates."
+  },
+  {
+    "objectID": "HW/hw-02.html#rstudio",
+    "href": "HW/hw-02.html#rstudio",
+    "title": "Homework 2",
+    "section": "RStudio",
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+  },
+  {
+    "objectID": "HW/hw-02.html#r-rnw",
+    "href": "HW/hw-02.html#r-rnw",
+    "title": "Homework 2",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+  },
+  {
+    "objectID": "HW/hw-02.html#getting-started-with-github-classroom",
+    "href": "HW/hw-02.html#getting-started-with-github-classroom",
+    "title": "Homework 2",
+    "section": "Getting started with Github Classroom",
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW2\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw2.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+  },
+  {
+    "objectID": "HW/hw-02.html#gradescope-submission",
+    "href": "HW/hw-02.html#gradescope-submission",
+    "title": "Homework 2",
+    "section": "Gradescope Submission",
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+  },
+  {
+    "objectID": "HW/hw-02.html#grading",
+    "href": "HW/hw-02.html#grading",
+    "title": "Homework 2",
+    "section": "Grading",
+    "text": "Grading\nTotal: 20 points."
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#outline",
+    "href": "resources/slides/05-BLUE-MVUE.html#outline",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "Outline",
+    "text": "Outline\n\nGauss-Markov Theorem for non-full rank \\(\\mathbf{X}\\) (recap)\nBest Linear Unbiased Estimators for Prediction\nMVUE\nDiscussion of recent papers on Best Unbiased Estimators beyond linearity\n\n\nReadings:\n\nChristensen Chapter 2 (Appendix B as needed)\nSeber & Lee Chapter 3\nFor the curious:\n\nAndersen (1962) Least squares and best unbiased estimates\nHansen (2022) A modern gauss-markov theorem\nWhat Estimators are Unbiased for Linear Models (2023) and references within"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#identifiability",
+    "href": "resources/slides/05-BLUE-MVUE.html#identifiability",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "Identifiability",
+    "text": "Identifiability\n\nDefinition: Identifiable\\(\\boldsymbol{\\beta}\\) and \\(\\sigma^2\\) are identifiable if the distribution of \\(\\mathbf{Y}\\), \\(f_\\mathbf{Y}(\\mathbf{y};\n\\boldsymbol{\\beta}_1, \\sigma^2_1) = f_\\mathbf{Y}(\\mathbf{y};\n\\boldsymbol{\\beta}_2, \\sigma^2_2)\\) implies that \\((\\boldsymbol{\\beta}_1, \\sigma^2_1)^T =  (\\boldsymbol{\\beta}_2, \\sigma^2_2)^T\\)\n\n\n\nFor linear models, equivalent definition is that \\(\\boldsymbol{\\beta}\\) is identifiable if for any \\(\\boldsymbol{\\beta}_1\\) and \\(\\boldsymbol{\\beta}_2\\), \\(\\mu(\\boldsymbol{\\beta}_1)  = \\mu(\\boldsymbol{\\beta}_2)\\) or \\(\\mathbf{X}\\boldsymbol{\\beta}_1 =\\mathbf{X}\\boldsymbol{\\beta}_2\\) implies that \\(\\boldsymbol{\\beta}_1 = \\boldsymbol{\\beta}_2\\).\nIf \\(r(\\mathbf{X}) = p\\) then \\(\\boldsymbol{\\beta}\\) is identifiable\nIf \\(\\mathbf{X}\\) is not full rank, there exists \\(\\boldsymbol{\\beta}_1 \\neq \\boldsymbol{\\beta}_2\\), but \\(\\mathbf{X}\\boldsymbol{\\beta}_1 =\n\\mathbf{X}\\boldsymbol{\\beta}_2\\) and hence \\(\\boldsymbol{\\beta}\\) is not identifiable!\nidentifiable linear functions of \\(\\boldsymbol{\\beta}\\), \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\) that have an unbiased estimator are historically referred to as estimable in linear models."
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#blue-of-boldsymbollambdat-boldsymbolbeta",
+    "href": "resources/slides/05-BLUE-MVUE.html#blue-of-boldsymbollambdat-boldsymbolbeta",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "BLUE of \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}\\)",
+    "text": "BLUE of \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}\\)\nIf \\(\\boldsymbol{\\Lambda}^T= \\mathbf{B}\\mathbf{X}\\) for some matrix \\(\\mathbf{B}\\) (or \\(\\boldsymbol{\\Lambda}= \\mathbf{X}^T\\mathbf{B}\\) then\n\n\\(\\textsf{E}[\\mathbf{B}\\mathbf{P}\\mathbf{Y}] = \\textsf{E}[\\mathbf{B}\\mathbf{X}\\hat{\\boldsymbol{\\beta}}] = \\textsf{E}[\\boldsymbol{\\Lambda}^T \\hat{\\boldsymbol{\\beta}}] = \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\)\nidentifiable as it is a function of \\(\\boldsymbol{\\mu}\\), linear and unbiased\nThe unique OLS estimate of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\) is \\(\\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}\\)\n\\(\\mathbf{B}\\mathbf{P}\\mathbf{Y}= \\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}\\) is the BLUE of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\) \\[\\begin{align*}\n& \\textsf{E}[\\|\\mathbf{B}\\mathbf{P}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2]  \\le \\textsf{E}[\\|\\mathbf{A}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2] \\\\\n\\Leftrightarrow & \\\\\n& \\textsf{E}[\\|\\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}- \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta})\\|^2]  \\le \\textsf{E}[\\|\\mathbf{L}^T\\tilde{\\boldsymbol{\\beta}}- \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\|^2]\n\\end{align*}\\] for LUE \\(\\mathbf{A}\\mathbf{Y}= \\mathbf{L}^T\\tilde{\\boldsymbol{\\beta}}\\) of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\)"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#non-identifiable-example",
+    "href": "resources/slides/05-BLUE-MVUE.html#non-identifiable-example",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "Non-Identifiable Example",
+    "text": "Non-Identifiable Example\nOne-way ANOVA model \\[\\mu_{ij} = \\mu + \\tau_j \\qquad \\boldsymbol{\\mu}= (\n    \\mu_{11}, \\ldots,\\mu_{n_1 1},\\mu_{12},\\ldots, \\mu_{n_2,2},\\ldots, \\mu_{1J},\n\\ldots,\n\\mu_{n_J J})^T \\]\n\nLet \\(\\boldsymbol{\\beta}_{1} = (\\mu, \\tau_1, \\ldots, \\tau_J)^T\\)\nLet \\(\\boldsymbol{\\beta}_{2} = (\\mu - 42, \\tau_1 + 42, \\ldots, \\tau_J + 42)^T\\)\nThen \\(\\boldsymbol{\\mu}_{1} = \\boldsymbol{\\mu}_{2}\\) even though \\(\\boldsymbol{\\beta}_1 \\neq \\boldsymbol{\\beta}_2\\)\n\\(\\boldsymbol{\\beta}\\) is not identifiable\nyet \\(\\boldsymbol{\\mu}\\) is identifiable, where \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}\\) (a linear combination of \\(\\boldsymbol{\\beta}\\))"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#lues-of-individual-beta_j",
+    "href": "resources/slides/05-BLUE-MVUE.html#lues-of-individual-beta_j",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "LUEs of Individual \\(\\beta_j\\)",
+    "text": "LUEs of Individual \\(\\beta_j\\)\n\nProposition: Christensen 2.1.6For \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}= \\sum_j \\mathbf{X}_j \\beta_j\\) \\(\\beta_j\\) is not identifiable if and only if there exists \\(\\alpha_j\\) such that \\(\\mathbf{X}_j = \\sum_{i \\neq j} \\mathbf{X}_i \\alpha_i\\)\n\n\n\nOne-way Anova Model: \\(Y_{ij} = \\mu + \\tau_j + \\epsilon_{ij}\\) \\[\\boldsymbol{\\mu}=  \\left[\n    \\begin{array}{lllll}\n\\mathbf{1}_{n_1} & \\mathbf{1}_{n_1} & \\mathbf{0}_{n_1} &  \\ldots & \\mathbf{0}_{n_1} \\\\\n\\mathbf{1}_{n_2} & \\mathbf{0}_{n_2} & \\mathbf{1}_{n_2} &  \\ldots & \\mathbf{0}_{n_2} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\mathbf{1}_{n_J} & \\mathbf{0}_{n_J} & \\mathbf{0}_{n_J} &  \\ldots & \\mathbf{1}_{n_J} \\\\\n    \\end{array} \\right]\n\\left(   \\begin{array}{l}\n      \\mu \\\\\n      \\tau_1 \\\\\n   \\tau_2 \\\\\n\\vdots \\\\\n\\tau_J\n    \\end{array} \\right)\n\\]\n\nAre any parameters \\(\\mu\\) or \\(\\tau_j\\) identifiable?"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#examples-of-boldsymbollambda-of-interest",
+    "href": "resources/slides/05-BLUE-MVUE.html#examples-of-boldsymbollambda-of-interest",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "Examples of \\(\\boldsymbol{\\lambda}\\) of Interest:",
+    "text": "Examples of \\(\\boldsymbol{\\lambda}\\) of Interest:\n\nA \\(j\\)th element of \\(\\boldsymbol{\\beta}\\): \\(\\boldsymbol{\\lambda}= (0, 0, \\ldots,1, 0, \\ldots, 0)^T\\), \\[\\boldsymbol{\\lambda}^T\\boldsymbol{\\beta}= \\beta_j\\]\nDifference between two treatements: \\(\\tau_1 - \\tau_2\\): \\(\\boldsymbol{\\lambda}= (0, 1, -1, \\ldots, 0, \\ldots, 0)^T\\), \\[\\boldsymbol{\\lambda}^T\\boldsymbol{\\beta}= \\tau_1 - \\tau_2\\]\nEstimation at observed \\(\\mathbf{x}_i\\): \\(\\boldsymbol{\\lambda}= \\mathbf{x}_i\\) \\[\\mu_i = \\mathbf{x}_i^T \\boldsymbol{\\beta}\\]\nEstimation or prediction at a new point \\(\\mathbf{x}_*\\): \\(\\boldsymbol{\\lambda}= \\mathbf{x}_*\\), \\[\\mu_* = \\mathbf{x}_*^T \\boldsymbol{\\beta}\\]"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#another-non-full-rank-example",
+    "href": "resources/slides/05-BLUE-MVUE.html#another-non-full-rank-example",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "Another Non-Full Rank Example",
+    "text": "Another Non-Full Rank Example\n\nx1 = -4:4\nx2 = c(-2, 1, -1, 2, 0, 2, -1, 1, -2)\nx3 = 3*x1  -2*x2\nx4 = x2 - x1 + 4\nY = 1+x1+x2+x3+x4 + c(-.5,.5,.5,-.5,0,.5,-.5,-.5,.5)\ndev.set = data.frame(Y, x1, x2, x3, x4)\n\n# Order 1\nlm1234 = lm(Y ~ x1 + x2 + x3 + x4, data=dev.set)\nround(coefficients(lm1234), 4)\n\n(Intercept)          x1          x2          x3          x4 \n          5           3           0          NA          NA \n\n# Order 2\nlm3412 = lm(Y ~ x3 + x4 + x1 + x2, data = dev.set)\nround(coefficients(lm3412), 4)\n\n(Intercept)          x3          x4          x1          x2 \n        -19           3           6          NA          NA"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#in-sample-predictions",
+    "href": "resources/slides/05-BLUE-MVUE.html#in-sample-predictions",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "In Sample Predictions",
+    "text": "In Sample Predictions\n\ncbind(dev.set, predict(lm1234), predict(lm3412))\n\n     Y x1 x2  x3 x4 predict(lm1234) predict(lm3412)\n1 -7.5 -4 -2  -8  6              -7              -7\n2 -3.5 -3  1 -11  8              -4              -4\n3 -0.5 -2 -1  -4  5              -1              -1\n4  1.5 -1  2  -7  7               2               2\n5  5.0  0  0   0  4               5               5\n6  8.5  1  2  -1  5               8               8\n7 10.5  2 -1   8  1              11              11\n8 13.5  3  1   7  2              14              14\n9 17.5  4 -2  16 -2              17              17\n\n\n\nBoth models agree for estimating the mean at the observed \\(\\mathbf{X}\\) points!"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#out-of-sample",
+    "href": "resources/slides/05-BLUE-MVUE.html#out-of-sample",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "Out of Sample",
+    "text": "Out of Sample\n\nout = data.frame(test.set,\n      Y1234=predict(lm1234, new=test.set),\n      Y3412=predict(lm3412, new=test.set))\nout\n\n  x1 x2 x3 x4 Y1234 Y3412\n1  3  1  7  2    14    14\n2  6  2 14  4    23    47\n3  6  2 14  0    23    23\n4  0  0  0  4     5     5\n5  0  0  0  0     5   -19\n6  1  2  3  4     8    14\n\n\n\nAgreement for cases 1, 3, and 4 only!\nCan we determine that without finding the predictions and comparing?\nConditions for general \\(\\boldsymbol{\\Lambda}\\) or \\(\\boldsymbol{\\lambda}\\) without findingn \\(\\mathbf{B}\\) (\\(\\boldsymbol{\\beta}^T\\))?"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#conditions-for-lue-of-boldsymbollambda",
+    "href": "resources/slides/05-BLUE-MVUE.html#conditions-for-lue-of-boldsymbollambda",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "Conditions for LUE of \\(\\boldsymbol{\\lambda}\\)",
+    "text": "Conditions for LUE of \\(\\boldsymbol{\\lambda}\\)\n\nGM requires that \\(\\boldsymbol{\\lambda}^T = \\mathbf{b}^T\\mathbf{X}\\Leftrightarrow \\boldsymbol{\\lambda}= \\mathbf{X}^T \\mathbf{b}\\) therefore \\(\\boldsymbol{\\lambda}\\in C(\\mathbf{X}^T)\\)\nSuppose we have an arbitrary \\(\\boldsymbol{\\lambda}= \\boldsymbol{\\lambda}_* + \\mathbf{u}\\), where \\(\\boldsymbol{\\lambda}_*  \\in C(\\mathbf{X}^T)\\) and \\(\\mathbf{u}\\in C(\\mathbf{X}^T)^\\perp\\) (orthogonal complement)\nLet \\(\\mathbf{P}_{\\mathbf{X}^T}\\) denote an orthogonal projection onto \\(C(\\mathbf{X}^T)\\) then \\(\\mathbf{I}- \\mathbf{P}_{\\mathbf{X}^T}\\) is an orthogonal projection onto \\(C(\\mathbf{X}^T)^\\perp\\)\n\\((\\mathbf{I}- \\mathbf{P}_{\\mathbf{X}^T})\\boldsymbol{\\lambda}= (\\mathbf{I}- \\mathbf{P}_{\\mathbf{X}^T})\\boldsymbol{\\lambda}_* + (\\mathbf{I}- \\mathbf{P}_{\\mathbf{X}^T})\\mathbf{u}= \\mathbf{0}_p + \\mathbf{u}\\)\nso if \\(\\boldsymbol{\\lambda}\\in C(\\mathbf{X}^T)\\) we will have \\((\\mathbf{I}- \\mathbf{P}_{\\mathbf{X}^T})\\boldsymbol{\\lambda}= \\mathbf{0}_p\\)! (or \\(\\mathbf{P}_{\\mathbf{X}^T} \\boldsymbol{\\lambda}= \\boldsymbol{\\lambda}\\))\nNote this is really just a generalization of Proposition 2.1.6 in Christensen that \\(\\beta_j\\) is not identifiable iff there exist scalars such that \\(\\mathbf{X}_j = \\sum_{i \\neq j} \\mathbf{X}_i \\alpha_i\\)"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#prediction-example-again",
+    "href": "resources/slides/05-BLUE-MVUE.html#prediction-example-again",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "Prediction Example Again",
+    "text": "Prediction Example Again\nFor prediction at a new \\(\\mathbf{x}_*\\), this is implemented in the R package estimability\n\nrequire(\"estimability\" )\ncbind(epredict(lm1234, test.set), epredict(lm3412, test.set))\n\n  [,1] [,2]\n1   14   14\n2   NA   NA\n3   23   23\n4    5    5\n5   NA   NA\n6   NA   NA\n\n\nRows 2, 5, and 6 do not have a unique best linear unbiased estimator, \\(\\mathbf{x}_*^T \\boldsymbol{\\beta}\\)"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#mvue-minimum-variance-unbiased-estimators",
+    "href": "resources/slides/05-BLUE-MVUE.html#mvue-minimum-variance-unbiased-estimators",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "MVUE: Minimum Variance Unbiased Estimators",
+    "text": "MVUE: Minimum Variance Unbiased Estimators\n\nGauss-Markov Theorem says that OLS has minimum variance in the class of all Linear Unbiased estimators for \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{I}_n\\)\nRequires just first and second moments\nAdditional assumption of normality and full rank, OLS of \\(\\boldsymbol{\\beta}\\) is the same as MLEs and have minimum variance out of ALL unbiased estimators (MVUE); not just linear estimators (section 2.5 in Christensen)\nrequires Complete Sufficient Statististics and Rao-Blackwell Theorem - next semester in STA732)\nso Best Unbiased Estimators (BUE) not just BLUE!"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#what-about",
+    "href": "resources/slides/05-BLUE-MVUE.html#what-about",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "What about ?",
+    "text": "What about ?\n\nare there nonlinear estimators that are better than OLS under the assumptions ?\nAnderson (1962) showed OLS is not generally the MVUE with \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{I}_n\\)\npointed out that linear-plus-quadratic (LPQ) estimators can outperform the OLS estimator for certain error distributions.\nOther assumptions on \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\boldsymbol{\\Sigma}\\)?\n\nGeneralized Least Squares are BLUE (not necessarily equivalent to OLS)\n\nmore recently Hansen (2022) concludes that OLS is BUE over the broader class of linear models with \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}]\\) finite and \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\)\nlively ongoing debate! - see What Estimators are Unbiased for Linear Models (2023) and references within"
+  },
+  {
+    "objectID": "resources/slides/05-BLUE-MVUE.html#next-up",
+    "href": "resources/slides/05-BLUE-MVUE.html#next-up",
+    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
+    "section": "Next Up",
+    "text": "Next Up\n\nGLS under assumptions \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\boldsymbol{\\Sigma}\\)\nOblique projections and orthogonality with other inner products on \\(\\mathbb{R}^n\\)\nMLEs in Multivariate Normal setting\nGauss-Markov\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#outline",
+    "href": "resources/slides/07-sampling.html#outline",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Outline",
+    "text": "Outline\n\ndistributions of \\(\\hat{\\boldsymbol{\\beta}}\\), \\(\\hat{\\mathbf{Y}}\\), \\(\\hat{\\boldsymbol{\\epsilon}}\\) under normality\nUnbiased Estimation of \\(\\sigma^2\\)\nsampling distribution of \\(\\hat{\\sigma^2}\\)\nindependence\n\n\nReadings:\n\nChristensen Chapter 1, 2.91 and Appendix C\nSeber & Lee Chapter 3.3 - 3.5"
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#multivariate-normal",
+    "href": "resources/slides/07-sampling.html#multivariate-normal",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Multivariate Normal",
+    "text": "Multivariate Normal\nUnder the linear model \\(\\mathbf{Y}= \\mathbf{X}\\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\\), \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{I}_n\\), we had\n\n\\(\\textsf{E}[\\hat{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\)\n\\(\\textsf{E}[\\hat{\\mathbf{Y}}] = \\mathbf{P}_\\mathbf{X}\\mathbf{Y}= \\mathbf{X}\\boldsymbol{\\beta}\\)\n\\(\\textsf{E}[\\hat{\\boldsymbol{\\epsilon}}] = (\\mathbf{I}_n - \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}= \\mathbf{0}_n\\)\ndistributions if \\(\\epsilon_i \\sim \\textsf{N}(0, \\sigma^2)\\)?\n\n\nFor a \\(d\\) dimensional multivariate normal random vector, we write \\(\\mathbf{Y}\\sim \\textsf{N}_d(\\boldsymbol{\\mu}, \\boldsymbol{\\Sigma})\\)\n\n\\(\\textsf{E}[\\mathbf{Y}] = \\boldsymbol{\\mu}\\): \\(d\\) dimensional vector with means \\(E[Y_j]\\)\n\\(\\textsf{Cov}[\\mathbf{Y}] = \\boldsymbol{\\Sigma}\\): \\(d \\times d\\) matrix with diagonal elements that are the variances of \\(Y_j\\) and off diagonal elements that are the covariances \\(\\textsf{E}[(Y_j - \\mu_j)(Y_k - \\mu_k)]\\)\nIf \\(\\boldsymbol{\\Sigma}\\) is positive definite (\\(\\mathbf{x}'\\boldsymbol{\\Sigma}\\mathbf{x}&gt; 0\\) for any \\(\\mathbf{x}\\ne\n  0\\) in \\(\\mathbb{R}^d\\)) then \\(\\mathbf{Y}\\) has a density\\(^\\dagger\\) \\[p(\\mathbf{Y}) = (2 \\pi)^{-d/2} |\\boldsymbol{\\Sigma}|^{-1/2} \\exp(-\\frac{1}{2}(\\mathbf{Y}- \\boldsymbol{\\mu})^T\n\\boldsymbol{\\Sigma}^{-1} (\\mathbf{Y}- \\boldsymbol{\\mu}))\\]\n\n\n\\(\\dagger\\) density with respect to Lebesgue measure on \\(\\mathbb{R}^d\\)"
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#transformations-of-normal-random-variables",
+    "href": "resources/slides/07-sampling.html#transformations-of-normal-random-variables",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Transformations of Normal Random Variables",
+    "text": "Transformations of Normal Random Variables\nIf \\(\\mathbf{Y}\\sim \\textsf{N}_n(\\boldsymbol{\\mu}, \\boldsymbol{\\Sigma})\\) then for \\(\\mathbf{A}\\) \\(m \\times n\\) \\[\\mathbf{A}\\mathbf{Y}\\sim \\textsf{N}_m(\\mathbf{A}\\boldsymbol{\\mu}, \\mathbf{A}\\boldsymbol{\\Sigma}\\mathbf{A}^T)\\]\n\n\n\\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{Y}\\sim \\textsf{N}(\\boldsymbol{\\beta}, \\sigma^2 (\\mathbf{X}^T\\mathbf{X})^{-1})\\)\n\\(\\hat{\\mathbf{Y}}= \\mathbf{P}_\\mathbf{X}\\mathbf{Y}\\sim \\textsf{N}(\\mathbf{X}\\boldsymbol{\\beta}, \\sigma^2 \\mathbf{P}_\\mathbf{X})\\)\n\\(\\hat{\\boldsymbol{\\epsilon}}= (\\mathbf{I}_n - \\mathbf{P}_\\mathbf{X})\\mathbf{Y}\\sim \\textsf{N}(\\mathbf{0}, \\sigma^2 (\\mathbf{I}_n - \\mathbf{P}_\\mathbf{X}))\\)\n\n\n\n\\(\\mathbf{A}\\boldsymbol{\\Sigma}\\mathbf{A}^T\\) does not have to be positive definite!"
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#singular-case",
+    "href": "resources/slides/07-sampling.html#singular-case",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Singular Case",
+    "text": "Singular Case\nIf the covariance is singular then there is no density (on \\(\\mathbb{R}^n\\)), but claim that \\(\\mathbf{Y}\\) still has a multivariate normal distribution!\n\n\nDefinition: Multivariate Normal\\(\\mathbf{Y}\\in \\mathbb{R}^n\\) has a multivariate normal distribution \\(\\textsf{N}(\\boldsymbol{\\mu},\n  \\boldsymbol{\\Sigma})\\) if for any \\(\\mathbf{v}\\in \\mathbb{R}^n\\) \\(\\mathbf{v}^T\\mathbf{Y}\\) has a univariate normal distribution with mean \\(\\mathbf{v}^T\\boldsymbol{\\mu}\\) and variance \\(\\mathbf{v}^T\\boldsymbol{\\Sigma}\\mathbf{v}\\)\n\n\n\n\n\nProofUse moment generating or characteristic functions which uniquely characterize distribution to show that \\(\\mathbf{v}^T\\mathbf{Y}\\) has a univariate normal distribution.\n\n\n\nboth \\(\\hat{\\mathbf{Y}}\\) and \\(\\hat{\\boldsymbol{\\epsilon}}\\) have multivariate normal distributions even though they do not have densities! (singular distributions)"
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#distribution-of-mle-of-sigma2",
+    "href": "resources/slides/07-sampling.html#distribution-of-mle-of-sigma2",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Distribution of MLE of \\(\\sigma^2\\)",
+    "text": "Distribution of MLE of \\(\\sigma^2\\)\nRecall we found the MLE of \\(\\sigma^2\\) \\[{\\hat{\\sigma}}^2= \\frac{\\hat{\\boldsymbol{\\epsilon}}^T\\hat{\\boldsymbol{\\epsilon}}} {n}\\]\n\nlet \\(\\textsf{RSS}= \\| \\hat{\\boldsymbol{\\epsilon}}\\|^2 = \\hat{\\boldsymbol{\\epsilon}}^T\\hat{\\boldsymbol{\\epsilon}}\\)\nthen \\[\\begin{align*}\n\\| \\hat{\\boldsymbol{\\epsilon}}\\|^2  & = \\hat{\\boldsymbol{\\epsilon}}^T\\hat{\\boldsymbol{\\epsilon}}\\\\\n             & = \\boldsymbol{\\epsilon}^T(\\mathbf{I}_n - \\mathbf{P}_\\mathbf{X})^T (\\mathbf{I}_n - \\mathbf{P}_\\mathbf{X}) \\boldsymbol{\\epsilon}\\\\\n             & = \\boldsymbol{\\epsilon}^T(\\mathbf{I}_n - \\mathbf{P}_\\mathbf{X}) \\boldsymbol{\\epsilon}\\\\\n             & = \\boldsymbol{\\epsilon}^N \\textsf{N}\\textsf{N}^T \\boldsymbol{\\epsilon}\\\\\n             & = \\mathbf{e}^T\\mathbf{e}\n\\end{align*}\\]\n\\(\\textsf{N}\\) is the matrix of the \\((n - p)\\) eigen vectors from the spectral decomposition of \\((\\mathbf{I}_n - \\mathbf{P}_\\mathbf{X})\\) associated with the non-zero eigen-values."
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#distribution-of-textsfrss",
+    "href": "resources/slides/07-sampling.html#distribution-of-textsfrss",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Distribution of \\(\\textsf{RSS}\\)",
+    "text": "Distribution of \\(\\textsf{RSS}\\)\nSince \\(\\boldsymbol{\\epsilon}\\sim \\textsf{N}(\\mathbf{0}_n, \\sigma^2 \\mathbf{I}_n)\\) and \\(\\textsf{N}\\in \\mathbb{R}^{n \\times (n - p)}\\), \\[\\textsf{N}^T \\boldsymbol{\\epsilon}= \\mathbf{e}\\sim \\textsf{N}(\\mathbf{0}_{n - p}, \\sigma^2\\textsf{N}^T\\textsf{N}) = \\textsf{N}(\\mathbf{0}_{n - p}, \\sigma^2\\mathbf{I}_{n - p} )\\]\n\n\\[\\begin{align*}\n\\textsf{RSS}& =  \\sum_{i = 1}^{n-p} e_i^2 \\\\\n     & \\mathrel{\\mathop{=}\\limits^{\\rm D}}\\sum_{i = 1}^{n-p} (\\sigma z_i)^2  \\quad \\text{ where } \\mathbf{Z}\\sim \\textsf{N}(\\mathbf{0}_{n-p}, \\mathbf{I}_{n-p}) \\\\\n     & = \\sigma^2 \\sum_{i = 1}^{n-p} z_i^2 \\\\\n     &\\mathrel{\\mathop{=}\\limits^{\\rm D}}\\sigma^2 \\chi^2_{n-p}\n     \n\\end{align*}\\]\n\n\nBackground Theory: If \\(\\mathbf{Z}\\sim \\textsf{N}_d(\\mathbf{0}_d, \\mathbf{I}_d)\\), then \\(\\mathbf{Z}^T\\mathbf{Z}\\sim \\chi^2_{d}\\)"
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#unbiased-estimate-of-sigma2",
+    "href": "resources/slides/07-sampling.html#unbiased-estimate-of-sigma2",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Unbiased Estimate of \\(\\sigma^2\\)",
+    "text": "Unbiased Estimate of \\(\\sigma^2\\)\n\nExpected value of a \\(\\chi^2_d\\) random variable is \\(d\\) (the degrees of freedom)\n\\(\\textsf{E}[\\textsf{RSS}] = \\textsf{E}[\\sigma^2 \\chi^2_{n-p}] = \\sigma^2 (n-p)\\)\nthe expected value of the MLE is \\[{\\hat{\\sigma}}^2= \\textsf{E}[\\textsf{RSS}]/n = \\sigma^2 \\frac{(n-p)}{n}\\] so is biased\nan unbiased estimator of \\(\\sigma^2\\), is \\(s^2 = \\textsf{RSS}/(n-p)\\)\nnote: we can find the expectation of \\({\\hat{\\sigma}}^2\\) or \\(s^2\\) based on the covariance of \\(\\boldsymbol{\\epsilon}\\) without assuming normality by exploiting properties of the trace."
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#distribution-of-hatboldsymbolbeta",
+    "href": "resources/slides/07-sampling.html#distribution-of-hatboldsymbolbeta",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Distribution of \\(\\hat{\\boldsymbol{\\beta}}\\)",
+    "text": "Distribution of \\(\\hat{\\boldsymbol{\\beta}}\\)\n\\(\\hat{\\boldsymbol{\\beta}}\\sim \\textsf{N}\\left(\\boldsymbol{\\beta}, \\sigma^2( \\mathbf{X}^T\\mathbf{X})^{-1}\\right)\\)\n\ndo not know \\(\\sigma^2\\)\nNeed a distribution that does not depend on unknown parameters for deriving confidence intervals and hypothesis tests for \\(\\boldsymbol{\\beta}\\).\nwhat if we plug in \\(s^2\\) or \\({\\hat{\\sigma}}^2\\) for \\(\\sigma^2\\)?\nwon’t be multivariate normal\nneed to relect uncertainty in estimating \\(\\sigma^2\\)\nfirst show that \\(\\hat{\\boldsymbol{\\beta}}\\) and \\(s^2\\) are independent"
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#independence-of-hatboldsymbolbeta-and-s2",
+    "href": "resources/slides/07-sampling.html#independence-of-hatboldsymbolbeta-and-s2",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Independence of \\(\\hat{\\boldsymbol{\\beta}}\\) and \\(s^2\\)",
+    "text": "Independence of \\(\\hat{\\boldsymbol{\\beta}}\\) and \\(s^2\\)\nIf the distribution of \\(\\mathbf{Y}\\) is normal, then \\(\\hat{\\boldsymbol{\\beta}}\\) and \\(s^2\\) are statistically independent.\n\nThe derivation of this result basically has three steps:\n\n\\(\\hat{\\boldsymbol{\\beta}}\\) and \\(\\hat{\\boldsymbol{\\epsilon}}\\) or \\(\\mathbf{e}\\) have zero covariance\n\\(\\hat{\\boldsymbol{\\beta}}\\) and \\(\\hat{\\boldsymbol{\\epsilon}}\\) or \\(\\mathbf{e}\\) are independent\nConclude \\(\\hat{\\boldsymbol{\\beta}}\\) and \\(\\textsf{RSS}\\) (or \\(s^2\\)) are independent\n\n\n\nStep 1:\n\n\n\\[\\begin{align*}\n\\textsf{Cov}[\\hat{\\boldsymbol{\\beta}}, \\hat{\\boldsymbol{\\epsilon}}] & = \\textsf{E}[(\\hat{\\boldsymbol{\\beta}}- \\boldsymbol{\\beta}) \\hat{\\boldsymbol{\\epsilon}}^T] \\\\\n                   & = \\textsf{E}[(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\boldsymbol{\\epsilon}\\boldsymbol{\\epsilon}^T (\\mathbf{I}- \\mathbf{P}_\\mathbf{X})] \\\\\n                   & = \\sigma^2 (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\\\\n                   & = \\mathbf{0}\n\\end{align*}\\]"
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#zero-covariance-leftrightarrow-independence-in-multivariate-normals",
+    "href": "resources/slides/07-sampling.html#zero-covariance-leftrightarrow-independence-in-multivariate-normals",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Zero Covariance \\(\\Leftrightarrow\\) Independence in Multivariate Normals",
+    "text": "Zero Covariance \\(\\Leftrightarrow\\) Independence in Multivariate Normals\nStep 2: \\(\\hat{\\boldsymbol{\\beta}}\\) and \\(\\hat{\\boldsymbol{\\epsilon}}\\) are independent\n\nTheorem: Zero Correlation and IndependenceFor a random vector \\(\\mathbf{W}\\sim \\textsf{N}(\\boldsymbol{\\mu}, \\boldsymbol{\\Sigma})\\) partitioned as \\[\n\\mathbf{W}= \\left[\n  \\begin{array}{c}\n\\mathbf{W}_1  \\\\ \\mathbf{W}_2 \\end{array} \\right]  \\sim \\textsf{N}\\left( \\left[\n  \\begin{array}{c} \\boldsymbol{\\mu}_1  \\\\ \\boldsymbol{\\mu}_2 \\end{array} \\right],\n  \\left[ \\begin{array}{cc}\n\\boldsymbol{\\Sigma}_{11} &  \\boldsymbol{\\Sigma}_{12}  \\\\\n\\boldsymbol{\\Sigma}_{21} & \\boldsymbol{\\Sigma}_{22} \\end{array} \\right]\n\\right)\n\\]\nthen \\(\\textsf{Cov}(\\mathbf{W}_1, \\mathbf{W}_2) = \\boldsymbol{\\Sigma}_{12} = \\boldsymbol{\\Sigma}_{21}^T = \\mathbf{0}\\) if and only if \\(\\mathbf{W}_1\\) and \\(\\mathbf{W}_2\\) are independent."
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#proof-independence-implies-zero-covariance",
+    "href": "resources/slides/07-sampling.html#proof-independence-implies-zero-covariance",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Proof: Independence implies Zero Covariance",
+    "text": "Proof: Independence implies Zero Covariance\nEasy direction\n\n\\(\\textsf{Cov}[\\mathbf{W}_1, \\mathbf{W}_2] = \\textsf{E}[(\\mathbf{W}_1 - \\boldsymbol{\\mu}_1)(\\mathbf{W}_2 - \\boldsymbol{\\mu}_2)^T]\\)\nsince they are independent \\[\\begin{align*}\n\\textsf{Cov}[\\mathbf{W}_1, \\mathbf{W}_2] & = \\textsf{E}[(\\mathbf{W}_1 - \\boldsymbol{\\mu}_1)] \\textsf{E}[(\\mathbf{W}_2 - \\boldsymbol{\\mu}_2)^T] \\\\\n& = \\mathbf{0}\\mathbf{0}^T \\\\\n& = \\mathbf{0}\n\\end{align*}\\]\n\n\nso \\(\\mathbf{W}_1\\) and \\(\\mathbf{W}_2\\) are uncorrelated"
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#zero-covariance-implies-independence",
+    "href": "resources/slides/07-sampling.html#zero-covariance-implies-independence",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Zero Covariance Implies Independence",
+    "text": "Zero Covariance Implies Independence\n\nProof\nAssume \\(\\boldsymbol{\\Sigma}_{12} = \\mathbf{0}\\):\n\nChoose an \\[\\mathbf{A}= \\left[\n\\begin{array}{ll}\n  \\mathbf{A}_1 & \\mathbf{0}\\\\\n  \\mathbf{0}& \\mathbf{A}_2\n\\end{array}\n\\right]\\] such that \\(\\mathbf{A}_1 \\mathbf{A}_1^T = \\boldsymbol{\\Sigma}_{11}\\), \\(\\mathbf{A}_2 \\mathbf{A}_2^T = \\boldsymbol{\\Sigma}_{22}\\)\nPartition\n\\[ \\mathbf{Z}= \\left[\n\\begin{array}{c}\n  \\mathbf{Z}_1 \\\\ \\mathbf{Z}_2\n\\end{array}\n\\right] \\sim \\textsf{N}\\left(\n\\left[\n\\begin{array}{c}\n  \\mathbf{0}_1 \\\\ \\mathbf{0}_2\n\\end{array}\n\\right],\n\\left[\n\\begin{array}{ll}\n  \\mathbf{I}_1 &\\mathbf{0}\\\\\n\\mathbf{0}& \\mathbf{I}_2\n\\end{array}\n\\right]\n\\right)  \\text{ and } \\boldsymbol{\\mu}= \\left[\n\\begin{array}{c}\n  \\boldsymbol{\\mu}_1 \\\\ \\boldsymbol{\\mu}_2\n\\end{array}\n\\right]\\]\nthen \\(\\mathbf{W}\\mathrel{\\mathop{=}\\limits^{\\rm D}}\\mathbf{A}\\mathbf{Z}+ \\boldsymbol{\\mu}\\sim  \\textsf{N}(\\boldsymbol{\\mu}, \\boldsymbol{\\Sigma})\\)"
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#step-3",
+    "href": "resources/slides/07-sampling.html#step-3",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Step 3:",
+    "text": "Step 3:\nShow \\(\\hat{\\boldsymbol{\\beta}}\\) and \\(\\textsf{RSS}\\) are independent\n\n\\(\\hat{\\boldsymbol{\\beta}}= (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{Y}\\) and \\(\\hat{\\boldsymbol{\\epsilon}}= (\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\\mathbf{Y}\\) are independent\nfunctions of independent random variables are independent so \\(\\hat{\\boldsymbol{\\beta}}\\) and \\(\\textsf{RSS}= \\hat{\\boldsymbol{\\epsilon}}^T\\hat{\\boldsymbol{\\epsilon}}\\) are independent\nso \\(\\hat{\\boldsymbol{\\beta}}\\) and \\(s^2 = \\textsf{RSS}/(n-p)\\) are independent\n\n\nThis result will be critical for creating confidence regions and intervals for \\(\\boldsymbol{\\beta}\\) and linear combinations of \\(\\boldsymbol{\\beta}\\), \\(\\lamda^T \\boldsymbol{\\beta}\\) as well as testing hypotheses"
+  },
+  {
+    "objectID": "resources/slides/07-sampling.html#next-class",
+    "href": "resources/slides/07-sampling.html#next-class",
+    "title": "Sampling Distributions and Distribution Theory",
+    "section": "Next Class",
+    "text": "Next Class\n\nshrinkage estimators\nBayes and penalized loss functions\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
     "objectID": "resources/slides/04-BLUE.html#outline",
@@ -361,7 +585,7 @@
     "href": "resources/slides/list-of-mathstuff.html",
     "title": "STA721-F24: Linear Models",
     "section": "",
-    "text": "Definition: Projection\nDefinition: Orthogonal Complement\nDefinition: Null Space\nDefinition: Orthogonal Projections"
+    "text": "Definition: Multivariate Normal\nProof\nTheorem: Zero Correlation and Independence\nProof\nProof: continued\nCorollary\nProof"
   },
   {
     "objectID": "resources/slides/02-mles.html#outline",
@@ -585,7 +809,7 @@
     "href": "resources/slides/06-GLS.html#equivalence-of-gls-estimators",
     "title": "Generalized Least Squares, BLUES & BUES",
     "section": "Equivalence of GLS estimators",
-    "text": "Equivalence of GLS estimators\nThe following corollary to the theorem establishes when two GLS estimators for different \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}]\\) are equivalent :\n\nCorollarySuppose \\(\\mathbf{V}= \\mathbf{X}\\boldsymbol{\\Psi}\\mathbf{X}^ T + \\boldsymbol{\\Omega}\\). Then \\(\\hat{\\boldsymbol{\\beta}}_\\mathbf{V}= \\hat{\\boldsymbol{\\beta}}_\\boldsymbol{\\Omega}\\)\n\n\n\nCan you construct an equivalent representation based on zero correlation of \\(\\mathbf{P}_\\boldsymbol{\\Omega}\\mathbf{Y}\\) and \\((\\mathbf{I}_n - \\mathbf{P}_\\boldsymbol{\\Omega})\\mathbf{Y}\\) when \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{V}?\\)\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Equivalence of GLS estimators\nThe following corollary to the theorem establishes when two GLS estimators for different \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}]\\) are equivalent :\n\nCorollarySuppose \\(\\mathbf{V}= \\mathbf{X}\\boldsymbol{\\Psi}\\mathbf{X}^ T + \\boldsymbol{\\Phi}\\mathbf{H}\\boldsymbol{\\Omega}\\mathbf{H}^T \\boldsymbol{\\Phi}\\). Then \\(\\hat{\\boldsymbol{\\beta}}_\\mathbf{V}= \\hat{\\boldsymbol{\\beta}}_\\boldsymbol{\\Phi}\\)\n\n\n\nCan you construct an equivalent representation based on zero correlation of \\(\\mathbf{P}_\\boldsymbol{\\Phi}\\mathbf{Y}\\) and \\((\\mathbf{I}_n - \\mathbf{P}_\\boldsymbol{\\Phi})\\mathbf{Y}\\) when \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{V}?\\)\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
     "objectID": "resources/slides/01-introduction.html#introduction-to-sta721",
@@ -693,214 +917,95 @@
     "text": "Philosophy\n\nfor many problems frequentist and Bayesian methods will give similar answers (more a matter of taste in interpretation)\n\nFor small problems, Bayesian methods allow us to incorporate prior information which provides better calibrated answers\n\nfor problems with complex designs and/or missing data Bayesian methods are often easier to implement (do not need to rely on asymptotics) \n\nFor problems involving hypothesis testing or model selection frequentist and Bayesian methods can be strikingly different.\n\nFrequentist methods often faster (particularly with “big data”) so great for exploratory analysis and for building a “data-sense”\n\nBayesian methods sit on top of Frequentist Likelihood\n\nGoemetric perspective important in both!\n\n\nImportant to understand advantages and problems of each perspective!\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#outline",
-    "href": "resources/slides/05-BLUE-MVUE.html#outline",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "Outline",
-    "text": "Outline\n\nGauss-Markov Theorem for non-full rank \\(\\mathbf{X}\\) (recap)\nBest Linear Unbiased Estimators for Prediction\nMVUE\nDiscussion of recent papers on Best Unbiased Estimators beyond linearity\n\n\nReadings:\n\nChristensen Chapter 2 (Appendix B as needed)\nSeber & Lee Chapter 3\nFor the curious:\n\nAndersen (1962) Least squares and best unbiased estimates\nHansen (2022) A modern gauss-markov theorem\nWhat Estimators are Unbiased for Linear Models (2023) and references within"
+    "objectID": "labs/lab-01.html",
+    "href": "labs/lab-01.html",
+    "title": "lab-01",
+    "section": "",
+    "text": "Please see the instructions for HW-01 and be preapred to ask questions in lab (using R, theory, etc)"
   },
   {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#identifiability",
-    "href": "resources/slides/05-BLUE-MVUE.html#identifiability",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "Identifiability",
-    "text": "Identifiability\n\nDefinition: Identifiable\\(\\boldsymbol{\\beta}\\) and \\(\\sigma^2\\) are identifiable if the distribution of \\(\\mathbf{Y}\\), \\(f_\\mathbf{Y}(\\mathbf{y};\n\\boldsymbol{\\beta}_1, \\sigma^2_1) = f_\\mathbf{Y}(\\mathbf{y};\n\\boldsymbol{\\beta}_2, \\sigma^2_2)\\) implies that \\((\\boldsymbol{\\beta}_1, \\sigma^2_1)^T =  (\\boldsymbol{\\beta}_2, \\sigma^2_2)^T\\)\n\n\n\nFor linear models, equivalent definition is that \\(\\boldsymbol{\\beta}\\) is identifiable if for any \\(\\boldsymbol{\\beta}_1\\) and \\(\\boldsymbol{\\beta}_2\\), \\(\\mu(\\boldsymbol{\\beta}_1)  = \\mu(\\boldsymbol{\\beta}_2)\\) or \\(\\mathbf{X}\\boldsymbol{\\beta}_1 =\\mathbf{X}\\boldsymbol{\\beta}_2\\) implies that \\(\\boldsymbol{\\beta}_1 = \\boldsymbol{\\beta}_2\\).\nIf \\(r(\\mathbf{X}) = p\\) then \\(\\boldsymbol{\\beta}\\) is identifiable\nIf \\(\\mathbf{X}\\) is not full rank, there exists \\(\\boldsymbol{\\beta}_1 \\neq \\boldsymbol{\\beta}_2\\), but \\(\\mathbf{X}\\boldsymbol{\\beta}_1 =\n\\mathbf{X}\\boldsymbol{\\beta}_2\\) and hence \\(\\boldsymbol{\\beta}\\) is not identifiable!\nidentifiable linear functions of \\(\\boldsymbol{\\beta}\\), \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\) that have an unbiased estimator are historically referred to as estimable in linear models."
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#blue-of-boldsymbollambdat-boldsymbolbeta",
-    "href": "resources/slides/05-BLUE-MVUE.html#blue-of-boldsymbollambdat-boldsymbolbeta",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "BLUE of \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}\\)",
-    "text": "BLUE of \\(\\boldsymbol{\\Lambda}^T \\boldsymbol{\\beta}\\)\nIf \\(\\boldsymbol{\\Lambda}^T= \\mathbf{B}\\mathbf{X}\\) for some matrix \\(\\mathbf{B}\\) (or \\(\\boldsymbol{\\Lambda}= \\mathbf{X}^T\\mathbf{B}\\) then\n\n\\(\\textsf{E}[\\mathbf{B}\\mathbf{P}\\mathbf{Y}] = \\textsf{E}[\\mathbf{B}\\mathbf{X}\\hat{\\boldsymbol{\\beta}}] = \\textsf{E}[\\boldsymbol{\\Lambda}^T \\hat{\\boldsymbol{\\beta}}] = \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\)\nidentifiable as it is a function of \\(\\boldsymbol{\\mu}\\), linear and unbiased\nThe unique OLS estimate of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\) is \\(\\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}\\)\n\\(\\mathbf{B}\\mathbf{P}\\mathbf{Y}= \\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}\\) is the BLUE of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\) \\[\\begin{align*}\n& \\textsf{E}[\\|\\mathbf{B}\\mathbf{P}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2]  \\le \\textsf{E}[\\|\\mathbf{A}\\mathbf{Y}- \\mathbf{B}\\boldsymbol{\\mu}\\|^2] \\\\\n\\Leftrightarrow & \\\\\n& \\textsf{E}[\\|\\boldsymbol{\\Lambda}^T\\hat{\\boldsymbol{\\beta}}- \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta})\\|^2]  \\le \\textsf{E}[\\|\\mathbf{L}^T\\tilde{\\boldsymbol{\\beta}}- \\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\|^2]\n\\end{align*}\\] for LUE \\(\\mathbf{A}\\mathbf{Y}= \\mathbf{L}^T\\tilde{\\boldsymbol{\\beta}}\\) of \\(\\boldsymbol{\\Lambda}^T\\boldsymbol{\\beta}\\)"
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#non-identifiable-example",
-    "href": "resources/slides/05-BLUE-MVUE.html#non-identifiable-example",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "Non-Identifiable Example",
-    "text": "Non-Identifiable Example\nOne-way ANOVA model \\[\\mu_{ij} = \\mu + \\tau_j \\qquad \\boldsymbol{\\mu}= (\n    \\mu_{11}, \\ldots,\\mu_{n_1 1},\\mu_{12},\\ldots, \\mu_{n_2,2},\\ldots, \\mu_{1J},\n\\ldots,\n\\mu_{n_J J})^T \\]\n\nLet \\(\\boldsymbol{\\beta}_{1} = (\\mu, \\tau_1, \\ldots, \\tau_J)^T\\)\nLet \\(\\boldsymbol{\\beta}_{2} = (\\mu - 42, \\tau_1 + 42, \\ldots, \\tau_J + 42)^T\\)\nThen \\(\\boldsymbol{\\mu}_{1} = \\boldsymbol{\\mu}_{2}\\) even though \\(\\boldsymbol{\\beta}_1 \\neq \\boldsymbol{\\beta}_2\\)\n\\(\\boldsymbol{\\beta}\\) is not identifiable\nyet \\(\\boldsymbol{\\mu}\\) is identifiable, where \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}\\) (a linear combination of \\(\\boldsymbol{\\beta}\\))"
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#lues-of-individual-beta_j",
-    "href": "resources/slides/05-BLUE-MVUE.html#lues-of-individual-beta_j",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "LUEs of Individual \\(\\beta_j\\)",
-    "text": "LUEs of Individual \\(\\beta_j\\)\n\nProposition: Christensen 2.1.6For \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}= \\sum_j \\mathbf{X}_j \\beta_j\\) \\(\\beta_j\\) is not identifiable if and only if there exists \\(\\alpha_j\\) such that \\(\\mathbf{X}_j = \\sum_{i \\neq j} \\mathbf{X}_i \\alpha_i\\)\n\n\n\nOne-way Anova Model: \\(Y_{ij} = \\mu + \\tau_j + \\epsilon_{ij}\\) \\[\\boldsymbol{\\mu}=  \\left[\n    \\begin{array}{lllll}\n\\mathbf{1}_{n_1} & \\mathbf{1}_{n_1} & \\mathbf{0}_{n_1} &  \\ldots & \\mathbf{0}_{n_1} \\\\\n\\mathbf{1}_{n_2} & \\mathbf{0}_{n_2} & \\mathbf{1}_{n_2} &  \\ldots & \\mathbf{0}_{n_2} \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\mathbf{1}_{n_J} & \\mathbf{0}_{n_J} & \\mathbf{0}_{n_J} &  \\ldots & \\mathbf{1}_{n_J} \\\\\n    \\end{array} \\right]\n\\left(   \\begin{array}{l}\n      \\mu \\\\\n      \\tau_1 \\\\\n   \\tau_2 \\\\\n\\vdots \\\\\n\\tau_J\n    \\end{array} \\right)\n\\]\n\nAre any parameters \\(\\mu\\) or \\(\\tau_j\\) identifiable?"
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#examples-of-boldsymbollambda-of-interest",
-    "href": "resources/slides/05-BLUE-MVUE.html#examples-of-boldsymbollambda-of-interest",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "Examples of \\(\\boldsymbol{\\lambda}\\) of Interest:",
-    "text": "Examples of \\(\\boldsymbol{\\lambda}\\) of Interest:\n\nA \\(j\\)th element of \\(\\boldsymbol{\\beta}\\): \\(\\boldsymbol{\\lambda}= (0, 0, \\ldots,1, 0, \\ldots, 0)^T\\), \\[\\boldsymbol{\\lambda}^T\\boldsymbol{\\beta}= \\beta_j\\]\nDifference between two treatements: \\(\\tau_1 - \\tau_2\\): \\(\\boldsymbol{\\lambda}= (0, 1, -1, \\ldots, 0, \\ldots, 0)^T\\), \\[\\boldsymbol{\\lambda}^T\\boldsymbol{\\beta}= \\tau_1 - \\tau_2\\]\nEstimation at observed \\(\\mathbf{x}_i\\): \\(\\boldsymbol{\\lambda}= \\mathbf{x}_i\\) \\[\\mu_i = \\mathbf{x}_i^T \\boldsymbol{\\beta}\\]\nEstimation or prediction at a new point \\(\\mathbf{x}_*\\): \\(\\boldsymbol{\\lambda}= \\mathbf{x}_*\\), \\[\\mu_* = \\mathbf{x}_*^T \\boldsymbol{\\beta}\\]"
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#another-non-full-rank-example",
-    "href": "resources/slides/05-BLUE-MVUE.html#another-non-full-rank-example",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "Another Non-Full Rank Example",
-    "text": "Another Non-Full Rank Example\n\nx1 = -4:4\nx2 = c(-2, 1, -1, 2, 0, 2, -1, 1, -2)\nx3 = 3*x1  -2*x2\nx4 = x2 - x1 + 4\nY = 1+x1+x2+x3+x4 + c(-.5,.5,.5,-.5,0,.5,-.5,-.5,.5)\ndev.set = data.frame(Y, x1, x2, x3, x4)\n\n# Order 1\nlm1234 = lm(Y ~ x1 + x2 + x3 + x4, data=dev.set)\nround(coefficients(lm1234), 4)\n\n(Intercept)          x1          x2          x3          x4 \n          5           3           0          NA          NA \n\n# Order 2\nlm3412 = lm(Y ~ x3 + x4 + x1 + x2, data = dev.set)\nround(coefficients(lm3412), 4)\n\n(Intercept)          x3          x4          x1          x2 \n        -19           3           6          NA          NA"
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#in-sample-predictions",
-    "href": "resources/slides/05-BLUE-MVUE.html#in-sample-predictions",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "In Sample Predictions",
-    "text": "In Sample Predictions\n\ncbind(dev.set, predict(lm1234), predict(lm3412))\n\n     Y x1 x2  x3 x4 predict(lm1234) predict(lm3412)\n1 -7.5 -4 -2  -8  6              -7              -7\n2 -3.5 -3  1 -11  8              -4              -4\n3 -0.5 -2 -1  -4  5              -1              -1\n4  1.5 -1  2  -7  7               2               2\n5  5.0  0  0   0  4               5               5\n6  8.5  1  2  -1  5               8               8\n7 10.5  2 -1   8  1              11              11\n8 13.5  3  1   7  2              14              14\n9 17.5  4 -2  16 -2              17              17\n\n\n\nBoth models agree for estimating the mean at the observed \\(\\mathbf{X}\\) points!"
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#out-of-sample",
-    "href": "resources/slides/05-BLUE-MVUE.html#out-of-sample",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "Out of Sample",
-    "text": "Out of Sample\n\nout = data.frame(test.set,\n      Y1234=predict(lm1234, new=test.set),\n      Y3412=predict(lm3412, new=test.set))\nout\n\n  x1 x2 x3 x4 Y1234 Y3412\n1  3  1  7  2    14    14\n2  6  2 14  4    23    47\n3  6  2 14  0    23    23\n4  0  0  0  4     5     5\n5  0  0  0  0     5   -19\n6  1  2  3  4     8    14\n\n\n\nAgreement for cases 1, 3, and 4 only!\nCan we determine that without finding the predictions and comparing?\nConditions for general \\(\\boldsymbol{\\Lambda}\\) or \\(\\boldsymbol{\\lambda}\\) without findingn \\(\\mathbf{B}\\) (\\(\\boldsymbol{\\beta}^T\\))?"
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#conditions-for-lue-of-boldsymbollambda",
-    "href": "resources/slides/05-BLUE-MVUE.html#conditions-for-lue-of-boldsymbollambda",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "Conditions for LUE of \\(\\boldsymbol{\\lambda}\\)",
-    "text": "Conditions for LUE of \\(\\boldsymbol{\\lambda}\\)\n\nGM requires that \\(\\boldsymbol{\\lambda}^T = \\mathbf{b}^T\\mathbf{X}\\Leftrightarrow \\boldsymbol{\\lambda}= \\mathbf{X}^T \\mathbf{b}\\) therefore \\(\\boldsymbol{\\lambda}\\in C(\\mathbf{X}^T)\\)\nSuppose we have an arbitrary \\(\\boldsymbol{\\lambda}= \\boldsymbol{\\lambda}_* + \\mathbf{u}\\), where \\(\\boldsymbol{\\lambda}_*  \\in C(\\mathbf{X}^T)\\) and \\(\\mathbf{u}\\in C(\\mathbf{X}^T)^\\perp\\) (orthogonal complement)\nLet \\(\\mathbf{P}_{\\mathbf{X}^T}\\) denote an orthogonal projection onto \\(C(\\mathbf{X}^T)\\) then \\(\\mathbf{I}- \\mathbf{P}_{\\mathbf{X}^T}\\) is an orthogonal projection onto \\(C(\\mathbf{X}^T)^\\perp\\)\n\\((\\mathbf{I}- \\mathbf{P}_{\\mathbf{X}^T})\\boldsymbol{\\lambda}= (\\mathbf{I}- \\mathbf{P}_{\\mathbf{X}^T})\\boldsymbol{\\lambda}_* + (\\mathbf{I}- \\mathbf{P}_{\\mathbf{X}^T})\\mathbf{u}= \\mathbf{0}_p + \\mathbf{u}\\)\nso if \\(\\boldsymbol{\\lambda}\\in C(\\mathbf{X}^T)\\) we will have \\((\\mathbf{I}- \\mathbf{P}_{\\mathbf{X}^T})\\boldsymbol{\\lambda}= \\mathbf{0}_p\\)! (or \\(\\mathbf{P}_{\\mathbf{X}^T} \\boldsymbol{\\lambda}= \\boldsymbol{\\lambda}\\))\nNote this is really just a generalization of Proposition 2.1.6 in Christensen that \\(\\beta_j\\) is not identifiable iff there exist scalars such that \\(\\mathbf{X}_j = \\sum_{i \\neq j} \\mathbf{X}_i \\alpha_i\\)"
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#prediction-example-again",
-    "href": "resources/slides/05-BLUE-MVUE.html#prediction-example-again",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "Prediction Example Again",
-    "text": "Prediction Example Again\nFor prediction at a new \\(\\mathbf{x}_*\\), this is implemented in the R package estimability\n\nrequire(\"estimability\" )\ncbind(epredict(lm1234, test.set), epredict(lm3412, test.set))\n\n  [,1] [,2]\n1   14   14\n2   NA   NA\n3   23   23\n4    5    5\n5   NA   NA\n6   NA   NA\n\n\nRows 2, 5, and 6 do not have a unique best linear unbiased estimator, \\(\\mathbf{x}_*^T \\boldsymbol{\\beta}\\)"
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#mvue-minimum-variance-unbiased-estimators",
-    "href": "resources/slides/05-BLUE-MVUE.html#mvue-minimum-variance-unbiased-estimators",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "MVUE: Minimum Variance Unbiased Estimators",
-    "text": "MVUE: Minimum Variance Unbiased Estimators\n\nGauss-Markov Theorem says that OLS has minimum variance in the class of all Linear Unbiased estimators for \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{I}_n\\)\nRequires just first and second moments\nAdditional assumption of normality and full rank, OLS of \\(\\boldsymbol{\\beta}\\) is the same as MLEs and have minimum variance out of ALL unbiased estimators (MVUE); not just linear estimators (section 2.5 in Christensen)\nrequires Complete Sufficient Statististics and Rao-Blackwell Theorem - next semester in STA732)\nso Best Unbiased Estimators (BUE) not just BLUE!"
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#what-about",
-    "href": "resources/slides/05-BLUE-MVUE.html#what-about",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "What about ?",
-    "text": "What about ?\n\nare there nonlinear estimators that are better than OLS under the assumptions ?\nAnderson (1962) showed OLS is not generally the MVUE with \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{I}_n\\)\npointed out that linear-plus-quadratic (LPQ) estimators can outperform the OLS estimator for certain error distributions.\nOther assumptions on \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\boldsymbol{\\Sigma}\\)?\n\nGeneralized Least Squares are BLUE (not necessarily equivalent to OLS)\n\nmore recently Hansen (2022) concludes that OLS is BUE over the broader class of linear models with \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}]\\) finite and \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\)\nlively ongoing debate! - see What Estimators are Unbiased for Linear Models (2023) and references within"
-  },
-  {
-    "objectID": "resources/slides/05-BLUE-MVUE.html#next-up",
-    "href": "resources/slides/05-BLUE-MVUE.html#next-up",
-    "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
-    "section": "Next Up",
-    "text": "Next Up\n\nGLS under assumptions \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\boldsymbol{\\Sigma}\\)\nOblique projections and orthogonality with other inner products on \\(\\mathbb{R}^n\\)\nMLEs in Multivariate Normal setting\nGauss-Markov\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
-  },
-  {
-    "objectID": "HW/hw-02.html",
-    "href": "HW/hw-02.html",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html",
+    "href": "HW/hw-01.html",
+    "title": "Homework 1",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-02.html#due-1100pm-thurs-sept-12",
-    "href": "HW/hw-02.html#due-1100pm-thurs-sept-12",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
+    "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
+    "title": "Homework 1",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-02.html#rstudio",
-    "href": "HW/hw-02.html#rstudio",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#rstudio",
+    "href": "HW/hw-01.html#rstudio",
+    "title": "Homework 1",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-02.html#r-rnw",
-    "href": "HW/hw-02.html#r-rnw",
-    "title": "Homework 2",
-    "section": "R & RNW",
-    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+    "objectID": "HW/hw-01.html#r-quarto",
+    "href": "HW/hw-01.html#r-quarto",
+    "title": "Homework 1",
+    "section": "R & Quarto",
+    "text": "R & Quarto\nYou are required to use the .qmd format to type up this report report. To get started see technical writing with Quarto. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts."
   },
   {
-    "objectID": "HW/hw-02.html#getting-started-with-github-classroom",
-    "href": "HW/hw-02.html#getting-started-with-github-classroom",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#getting-started-with-github-classroom",
+    "href": "HW/hw-01.html#getting-started-with-github-classroom",
+    "title": "Homework 1",
     "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW2\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw2.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW1\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw1.qmd file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-02.html#gradescope-submission",
-    "href": "HW/hw-02.html#gradescope-submission",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#gradescope-submission",
+    "href": "HW/hw-01.html#gradescope-submission",
+    "title": "Homework 1",
     "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+    "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-02.html#grading",
-    "href": "HW/hw-02.html#grading",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#grading",
+    "href": "HW/hw-01.html#grading",
+    "title": "Homework 1",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "HW/hw-03.html",
-    "href": "HW/hw-03.html",
-    "title": "Homework 3",
+    "objectID": "reading/03-non-full-rank.html",
+    "href": "reading/03-non-full-rank.html",
+    "title": "Rank Deficient Models",
     "section": "",
-    "text": "See Gradescope for any updates on due dates."
+    "text": "We will explore MLEs/OLS using rank deficient models using generalized inverses. We will characterize orthogonal projections using Spectral Decompositions and review how that is related to the Singular Value Decomposition of the model matrix.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
   },
   {
-    "objectID": "HW/hw-03.html#due-1100pm-thurs-sept-19",
-    "href": "HW/hw-03.html#due-1100pm-thurs-sept-19",
-    "title": "Homework 3",
+    "objectID": "reading/06-GLS.html",
+    "href": "reading/06-GLS.html",
+    "title": "Generalize Least Squares, MLEs, MVUEs and BUEs",
     "section": "",
-    "text": "See Gradescope for any updates on due dates."
+    "text": "We will develop GLS/MLE estimators when the covariance of the errors is is not a scale multiple of the identity matrix, and establish conditions for when the OLS and GLS are equivalent. Inthe case that the errors have a multivatiate normal distribution, the MLEs are equivalent to GLS and are not only the BLUE but are also Minimum Variance Unbiased Estimators or “BUE” out of all unbiased estimators linear or non-linear.\nReadings:\n\nChristensen Chapter 2 and 10 Appendix B\nSeber & Lee Chapter 3"
   },
   {
-    "objectID": "HW/hw-03.html#rstudio",
-    "href": "HW/hw-03.html#rstudio",
-    "title": "Homework 3",
-    "section": "RStudio",
-    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
-  },
-  {
-    "objectID": "HW/hw-03.html#getting-started-with-github-classroom",
-    "href": "HW/hw-03.html#getting-started-with-github-classroom",
-    "title": "Homework 3",
-    "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW3\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
-  },
-  {
-    "objectID": "HW/hw-03.html#r-rnw",
-    "href": "HW/hw-03.html#r-rnw",
-    "title": "Homework 3",
-    "section": "R & RNW",
-    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
-  },
-  {
-    "objectID": "HW/hw-03.html#gradescope-submission",
-    "href": "HW/hw-03.html#gradescope-submission",
-    "title": "Homework 3",
-    "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
-  },
-  {
-    "objectID": "HW/hw-03.html#grading",
-    "href": "HW/hw-03.html#grading",
-    "title": "Homework 3",
-    "section": "Grading",
-    "text": "Grading\nTotal: 20 points."
-  },
-  {
-    "objectID": "reading/02-mles.html",
-    "href": "reading/02-mles.html",
-    "title": "MLEs & Projections",
+    "objectID": "reading/01-introduction.html",
+    "href": "reading/01-introduction.html",
+    "title": "Lecture 1 Readings",
     "section": "",
-    "text": "Readings:\n\nChristensen Chapter 1-2, Appendix A, and Appendix B\nSeber & Lee Chapter 3, Appendix B"
+    "text": "links to eBooks are on the Home page of the website or Resources page."
   },
   {
-    "objectID": "reading/04-BLUE.html",
-    "href": "reading/04-BLUE.html",
-    "title": "Best Linear Unbiased Estimation",
-    "section": "",
-    "text": "We will explore properties of MLEs/OLS and linear functionals of them. In particular characterizing the class of linear unbiased estimates and minimimum variances, cumulating with the Guass Markov Theorem for both the full rank case and rank deficient models and establing conditions under which OLS/MLE estimators are the Best Linear Unbiased Estimators under the assumption that the covariance of the errors is spherically symmetric.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
+    "objectID": "reading/01-introduction.html#introduction-to-linear-models",
+    "href": "reading/01-introduction.html#introduction-to-linear-models",
+    "title": "Lecture 1 Readings",
+    "section": "Introduction to Linear Models",
+    "text": "Introduction to Linear Models\n\nreview the course website and syllabus for policies"
+  },
+  {
+    "objectID": "reading/01-introduction.html#vector-spaces",
+    "href": "reading/01-introduction.html#vector-spaces",
+    "title": "Lecture 1 Readings",
+    "section": "Vector Spaces",
+    "text": "Vector Spaces\nChristensen: Read\n\nChapter 1: pages 1-3\nAppendix A in Christensen pages 411-413\nAppendix B section B.1\n\nSee also Seber & Lee Chapter 1."
   },
   {
     "objectID": "reading/05-BLUE-MVUE.html",
@@ -914,7 +1019,7 @@
     "href": "schedule.html",
     "title": " Schedule",
     "section": "",
-    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\nLecture 3: Rank Deficient Models\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\nLecture 4: Best Linear Unbiased Estimation and Gauss-Markov Theorem\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\nLecture 5: BLUES for Prediction and MVUE\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\nLecture 6: Generalized Linear Squares\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\nLecture 7: Sampling Distributions\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\n\n\n\n\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\n\n\n\n\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\n\n\n\n\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTue, Oct 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\n\n\n\n\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\nReview for Midterm I\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nMidterm 1\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 24\n\n\n\n\n\n\n\n\n hw-08\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 31\n\n\n\n\n\n\n\n\n hw-09\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\nTues, Nov 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 7\n\n\n\n\n\n\n\n\n hw-10\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 12\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 14\nMidterm2\n\n\n\n\n\n\n hw-11\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 19\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\nTues, Nov 26\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
+    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\nLecture 3: Rank Deficient Models\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\nLecture 4: Best Linear Unbiased Estimation and Gauss-Markov Theorem\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\nLecture 5: BLUES for Prediction and MVUE\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\nLecture 6: Generalized Linear Squares\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\nLecture 7: Sampling Distributions & Distribution Theory\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\n\n\n\n\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\n\n\n\n\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\n\n\n\n\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTue, Oct 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\n\n\n\n\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\nReview for Midterm I\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nMidterm 1\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 24\n\n\n\n\n\n\n\n\n hw-08\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 31\n\n\n\n\n\n\n\n\n hw-09\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\nTues, Nov 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 7\n\n\n\n\n\n\n\n\n hw-10\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 12\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 14\nMidterm2\n\n\n\n\n\n\n hw-11\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 19\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\nTues, Nov 26\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
   },
   {
     "objectID": "syllabus.html",
