@@ -1,0 +1,469 @@
+---
+subtitle: "STA 721: Lecture 7"
+title: "Sampling Distributions and Distribution Theory"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"   
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+      numbered: false
+    Lemma:
+      group: thmlike
+      numbered: false
+    Corollary:
+      group: thmlike
+      numbered: false
+    Proposition:
+      group: thmlike
+      numbered: false      
+    Proof:
+      group: thmlike
+      numbered: false
+      collapse: false   
+    Exercise:
+      group: thmlike
+      numbered: false
+    Definition:
+      group: thmlike
+      numbered: false
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+
+
+- distributions of $\bhat$, $\Yhat$, $\hat{\eps}$ under normality 
+
+- Unbiased Estimation of $\sigma^2$
+
+- sampling distribution of $\hat{\sigma^2}$
+
+- independence
+
+. . .
+
+Readings:
+
+  -   Christensen Chapter 1, 2.91 and Appendix C
+  -   Seber & Lee Chapter 3.3 - 3.5
+
+
+## Multivariate Normal
+
+Under the linear model $\Y = \X\b + \eps$, $\E[\eps] = \zero_n$ and $\Cov[\eps] = \sigma^2 \I_n$, we had
+
+- $\E[\bhat] = \b$ 
+- $\E[\Yhat] = \P_\X \Y = \X\b$ 
+- $\E[\ehat] = (\I_n - \P_\X) \Y = \zero_n$
+- distributions if $\epsilon_i \sim \N(0, \sigma^2)$?
+
+. . .
+
+ For a $d$ dimensional **multivariate normal** random vector, we write
+  $\Y \sim \N_d(\mub, \Sigmab)$ 
+  
+  - $\E[\Y] = \mub$:  $d$ dimensional vector with means $E[Y_j]$ 
+  
+  - $\Cov[\Y] = \Sigmab$: $d \times d$ matrix with diagonal elements
+    that are the variances of $Y_j$ and off diagonal elements that are
+    the covariances $\E[(Y_j - \mu_j)(Y_k - \mu_k)]$ 
+    
+  -  If $\Sigmab$ is positive definite ($\x'\Sigmab \x > 0$ for any $\x \ne
+  0$ in $\bbR^d$) then $\Y$ has  a density$^\dagger$ 
+$$p(\Y) = (2 \pi)^{-d/2} |\Sigmab|^{-1/2} \exp(-\frac{1}{2}(\Y - \mub)^T
+\Sigmab^{-1} (\Y - \mub))$$
+
+
+::: footer
+$\dagger$ density with respect to Lebesgue
+  measure on $\bbR^d$ 
+:::  
+
+## Transformations of Normal Random Variables
+
+If $\Y \sim \N_n(\mub, \Sigmab)$   then for $\A$ $m \times n$
+$$\A \Y \sim \N_m(\A \mub, \A \Sigmab \A^T)$$ 
+
+. . . 
+
+
+- $\bhat = (\XtX)^{-1}\X^T\Y \sim \N(\b, \sigma^2 (\XtX)^{-1})$
+
+- $\Yhat = \P_\X \Y \sim \N(\X\b, \sigma^2 \P_\X)$
+
+- $\ehat = (\I_n - \P_\X)\Y \sim \N(\zero, \sigma^2 (\I_n - \P_\X))$
+
+
+. . .
+
+$\A \Sigmab \A^T$ does not have to be positive definite! \pause
+
+## Singular Case
+
+  If the covariance is singular then there is no density (on $\bbR^n$), but claim that
+  $\Y$ still has a multivariate normal distribution!  
+
+. . . 
+
+::: {.Definition}
+## Multivariate Normal 
+  $\Y \in \bbR^n$ has a  multivariate normal distribution $\N(\mub,
+  \Sigmab)$ if for any $\v \in \bbR^n$ $\v^T\Y$ has a univariate normal
+  distribution with mean $\v^T\mub$ and variance $\v^T\Sigmab \v$
+:::
+
+. . . 
+
+::: {.Proof}
+Use moment generating or characteristic functions which uniquely characterize distribution to show that $\v^T\Y$ has a univariate normal distribution.
+:::
+
+- both $\Yhat$ and $\ehat$ have multivariate normal distributions even though they do not have densities!   (singular distributions)
+
+## Distribution of MLE of $\sigma^2$
+
+Recall we found the MLE of $\sigma^2$
+$$\shat = \frac{\ehat^T\ehat} {n}$$
+
+- let $\RSS = \| \ehat \|^2 = \ehat^T\ehat$
+
+- then
+\begin{align*}
+\| \ehat \|^2  & = \ehat^T\ehat \\
+               & = \eps^T(\I_n - \P_\X)^T (\I_n - \P_\X) \eps \\
+               & = \eps^T(\I_n - \P_\X) \eps \\
+               & = \eps^N \N \N^T \eps \\
+               & = \e^T\e 
+\end{align*}
+
+- $\N$ is the matrix of the $(n - p)$ eigen vectors from the spectral decomposition of $(\I_n - \P_\X)$ associated with the non-zero eigen-values.
+
+::: footer
+:::
+
+## Distribution of $\RSS$
+
+Since $\eps \sim \N(\zero_n, \sigma^2 \I_n)$ and $\N \in \bbR^{n \times (n - p)}$, 
+$$\N^T \eps = \e \sim \N(\zero_{n - p}, \sigma^2\N^T\N ) = \N(\zero_{n - p}, \sigma^2\I_{n - p} )$$
+
+. . .
+
+
+\begin{align*}
+\RSS & =  \sum_{i = 1}^{n-p} e_i^2 \\
+     & \eqindis  \sum_{i = 1}^{n-p} (\sigma z_i)^2  \quad \text{ where } \Z \sim \N(\zero_{n-p}, \I_{n-p}) \\
+     & = \sigma^2 \sum_{i = 1}^{n-p} z_i^2 \\
+     &\eqindis  \sigma^2 \chi^2_{n-p}
+     
+\end{align*}
+
+. . .
+
+**Background Theory:** If $\Z \sim \N_d(\zero_d, \I_d)$, then $\Z^T\Z \sim \chi^2_{d}$
+
+## Unbiased Estimate of $\sigma^2$
+
+- Expected value of a $\chi^2_d$ random variable is $d$ (the degrees of freedom)
+
+- $\E[\RSS] = \E[\sigma^2 \chi^2_{n-p}] = \sigma^2 (n-p)$
+- the expected value of the MLE is $$\shat = \E[\RSS]/n = \sigma^2 \frac{(n-p)}{n}$$ so is biased
+
+- an unbiased estimator of $\sigma^2$, is $s^2 = \RSS/(n-p)$
+
+- note:  we can find the expectation of $\shat$ or $s^2$ based on the covariance of $\eps$ without assuming normality by exploiting properties of the trace.
+
+## Distribution of $\bhat$
+
+$\bhat \sim \N\left(\b, \sigma^2( \XtX)^{-1}\right)$
+
+
+
+- do not know $\sigma^2$
+
+- Need a distribution that does not depend on unknown parameters for deriving confidence intervals and hypothesis tests for $\b$.
+
+
+- what if we plug in $s^2$ or $\shat$ for $\sigma^2$? 
+
+- won't be multivariate normal
+
+- need to relect uncertainty in estimating $\sigma^2$
+
+- first show that $\bhat$ and $s^2$ are independent
+
+## Independence of $\bhat$ and $s^2$
+
+If the distribution of $\Y$ is normal, then $\bhat$ and $s^2$ are statistically independent. 
+
+
+- The derivation of this result basically has three steps:
+
+  1) $\bhat$ and $\ehat$ or $\e$ have zero covariance
+  2) $\bhat$ and $\ehat$ or $\e$ are independent
+  3) Conclude $\bhat$ and $\RSS$ (or $s^2$) are independent
+
+
+. . .
+
+**Step 1:**  
+
+. . .
+
+\begin{align*}
+\Cov[\bhat, \ehat] & = \E[(\bhat - \b) \ehat^T] \\
+                   & = \E[(\XtX)^{-1}\X^T\eps \eps^T (\I - \P_\X)] \\
+                   & = \sigma^2 (\XtX)^{-1}\X^T (\I - \P_\X) \\
+                   & = \zero
+\end{align*}
+
+
+
+## Zero Covariance $\Leftrightarrow$ Independence in Multivariate Normals
+
+**Step 2:**  $\bhat$ and $\ehat$ are independent
+
+::: {.Theorem}
+## Zero Correlation and Independence
+For a random vector $\W \sim \N(\mub, \Sigmab)$ partitioned as
+$$
+\W = \left[
+  \begin{array}{c}
+\W_1  \\ \W_2 \end{array} \right]  \sim \N\left( \left[
+  \begin{array}{c} \mub_1  \\ \mub_2 \end{array} \right],
+  \left[ \begin{array}{cc}
+\Sigmab_{11} &  \Sigmab_{12}  \\
+\Sigmab_{21} & \Sigmab_{22} \end{array} \right]
+ \right)
+ $$  
+then $\Cov(\W_1, \W_2) = \Sigmab_{12} = \Sigmab_{21}^T = \zero$  if and
+only if $\W_1$ and $\W_2$ are independent.
+:::
+
+## Proof:  Independence implies Zero Covariance 
+
+Easy direction 
+
+- $\Cov[\W_1, \W_2] = \E[(\W_1 - \mub_1)(\W_2 - \mub_2)^T]$
+
+- since they are independent
+\begin{align*}
+\Cov[\W_1, \W_2] & = \E[(\W_1 - \mub_1)] \E[(\W_2 - \mub_2)^T] \\
+ & = \zero \zero^T \\
+ & = \zero
+ \end{align*}
+
+. . . 
+
+so $\W_1$ and $\W_2$ are uncorrelated
+
+## Zero Covariance Implies  Independence
+::: {.Proof}
+
+Assume $\Sigmab_{12} = \zero$:
+
+
+
+- Choose an
+$$\A = \left[
+  \begin{array}{ll}
+    \A_1 & \zero \\
+    \zero & \A_2
+  \end{array}
+\right]$$
+ such that $\A_1 \A_1^T = \Sigmab_{11}$, $\A_2 \A_2^T = \Sigmab_{22}$
+
+
+
+- Partition  
+$$ \Z = \left[
+  \begin{array}{c}
+    \Z_1 \\ \Z_2
+  \end{array}
+\right] \sim \N\left(
+\left[
+  \begin{array}{c}
+    \zero_1 \\ \zero_2
+  \end{array}
+\right],
+\left[
+  \begin{array}{ll}
+    \I_1 &\zero \\
+\zero & \I_2
+  \end{array}
+\right]
+ \right)  \text{ and } \mub = \left[
+  \begin{array}{c}
+    \mub_1 \\ \mub_2
+  \end{array}
+\right]$$  
+
+- then
+       $\W \eqindis \A \Z + \mub \sim  \N(\mub, \Sigmab)$
+:::
+
+---
+
+::: {.Proof}
+### continued
+
+$\W \eqindis \A \Z + \mub \sim  \N(\mub, \Sigmab)$
+
+\begin{align*}
+\left[
+  \begin{array}{c}
+    \W_1 \\ \W_2
+  \end{array}
+\right]  & \eqindis 
+\left[  \begin{array}{cc}
+    \A_1 & \zero \\ 
+    \zero & \A_2
+  \end{array}
+\right]
+\left[
+  \begin{array}{c}
+    \Z_1 \\ \Z_2
+  \end{array}
+\right]
++ \left[
+  \begin{array}{c}
+    \mub_1 \\ \mub_2
+  \end{array}
+\right] \\
+& =  \left[
+  \begin{array}{c}
+    \A_1\Z_1 + \mub_1 \\ \A_2\Z_2 +\mub_2
+  \end{array}
+\right]
+\end{align*}
+
+- But $\Z_1$ and $\Z_2$ are independent 
+- Functions of $\Z_1$ and $\Z_2$ are independent 
+- Therefore $\W_1$ and $\W_2$ are independent  
+:::
+
+. . .
+
+For Multivariate Normal Zero Covariance implies independence!
+
+---
+
+::: {.Corollary}
+If $\Y \sim \N( \mub, \sigma^2 \I_n)$ and $\A \B^T = \zero$
+then $\A \Y$ and $\B \Y$ are independent.
+:::
+
+. . .
+
+::: {.Proof}
+$$
+\left[
+  \begin{array}{c}
+    \W_1 \\ \W_2
+  \end{array}
+\right]  = \left[
+  \begin{array}{c}
+    \A \\ \B
+  \end{array}
+\right]  \Y =  \left[
+  \begin{array}{c}
+    \A \Y \\ \B  \Y
+  \end{array}
+\right]
+$$ 
+
+
+-  $\Cov(\W_1, \W_2) = \Cov(\A \Y, \B \Y) = \sigma^2 \A \B^T$
+ 
+- $\A \Y$ and $\B \Y$ are independent if $\A \B^T = \zero$
+:::
+
+- Since $\bhat = (\XtX)^{-1}\Y$ and $\ehat = (\I- \P_\X)\Y$ have zero covariance, using the corollary we have that $\bhat$ and $\ehat$ are independent to show Step 2.
+
+## Step 3: 
+
+Show $\bhat$ and $\RSS$ are independent
+
+- $\bhat = (\XtX)^{-1}\Y$ and $\ehat = (\I- \P_\X)\Y$ are independent
+
+- functions of independent random variables are independent so
+$\bhat$ and $\RSS = \ehat^T\ehat$ are independent
+
+- so $\bhat$ and $s^2 = \RSS/(n-p)$ are independent
+
+
+. . .
+
+This result will be critical for creating confidence regions and intervals for $\b$ and linear combinations of $\b$, $\lamda^T \b$ as well as testing hypotheses
+
+## Next Class
+
+- shrinkage estimators 
+
+- Bayes and penalized loss functions

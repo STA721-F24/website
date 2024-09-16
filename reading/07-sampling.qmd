@@ -1,0 +1,21 @@
+---
+title: "Sampling Dsistributions & Distribution Theory"
+editor: visual
+---
+
+
+Readings:
+
+-   Christensen Chapter 1, 2.91 and Appendix C
+
+-   Seber & Lee Chapter 3.3 3.5
+
+
+
+
+
+    			
+
+    		
+
+    	

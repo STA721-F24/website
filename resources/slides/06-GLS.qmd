@@ -410,8 +410,8 @@ As a consequence we have
 The following corollary to the theorem establishes when two GLS estimators for different $\Cov[\eps]$ are equivalent :
 
 ::: {.Corollary}
-Suppose $\V = \X \Psib \X ^ T + \Omegab$.  Then $\bhat_\V = \bhat_\Omegab$
+Suppose $\V = \X \Psib \X ^ T + \Phib\H \Omegab \H^T \Phib$.  Then $\bhat_\V = \bhat_\Phib$
 :::
 
 
-- Can you construct an equivalent representation based on zero correlation of $\P_\Omegab \Y$ and $(\I_n - \P_\Omegab)\Y$ when $\Cov[\eps] = \sigma^2 \V?$
+- Can you construct an equivalent representation based on zero correlation of $\P_\Phib \Y$ and $(\I_n - \P_\Phib)\Y$ when $\Cov[\eps] = \sigma^2 \V?$

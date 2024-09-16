@@ -48,6 +48,7 @@
 \newcommand{\pperp}{\mathrel{{\rlap{$\,\perp$}\perp\,\,}}}
 \newcommand{\OFP}{(\Omega,\cF, \P)}
 \newcommand{\eps}{\boldsymbol{\epsilon}}
+\def\ehat{\hat{\boldsymbol{\epsilon}}}
 \newcommand{\Psib}{\boldsymbol{\Psi}}
 \newcommand{\Omegab}{\boldsymbol{\Omega}}
 \newcommand{\1}{\mathbf{1}_n}
