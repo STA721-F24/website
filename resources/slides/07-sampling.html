@@ -326,31 +326,19 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
+  .Proof {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   .Lemma {
     --color1: #948bde;
     --color2: #584eab;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Theorem {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Proposition {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Feature {
-    --color1: #c0c0c0;
-    --color2: #808080;
   }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Corollary {
+  .Theorem {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -358,13 +346,25 @@
     --color1: #d999d3;
     --color2: #a01793;
   }
-  .Proof {
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Proposition {
     --color1: #948bde;
     --color2: #584eab;
   }
   .Exercise {
     --color1: #948bde;
     --color2: #584eab;
+  }
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
   }
   </style>
 </head>
@@ -513,7 +513,7 @@ Merlise Clyde (clyde@duke.edu)
 <li class="fragment"><p>Need a distribution that does not depend on unknown parameters for deriving confidence intervals and hypothesis tests for <span class="math inline">\(\boldsymbol{\beta}\)</span>.</p></li>
 <li class="fragment"><p>what if we plug in <span class="math inline">\(s^2\)</span> or <span class="math inline">\({\hat{\sigma}}^2\)</span> for <span class="math inline">\(\sigma^2\)</span>?</p></li>
 <li class="fragment"><p>won’t be multivariate normal</p></li>
-<li class="fragment"><p>need to relect uncertainty in estimating <span class="math inline">\(\sigma^2\)</span></p></li>
+<li class="fragment"><p>need to reflect uncertainty in estimating <span class="math inline">\(\sigma^2\)</span></p></li>
 <li class="fragment"><p>first show that <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2\)</span> are independent</p></li>
 </ul>
 </section>
@@ -700,7 +700,7 @@ then <span class="math inline">\(\textsf{Cov}(\mathbf{W}_1, \mathbf{W}_2) = \bol
 <li class="fragment"><p>so <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2 = \textsf{RSS}/(n-p)\)</span> are independent</p></li>
 </ul>
 <div class="fragment">
-<p>This result will be critical for creating confidence regions and intervals for <span class="math inline">\(\boldsymbol{\beta}\)</span> and linear combinations of <span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\lamda^T \boldsymbol{\beta}\)</span> as well as testing hypotheses</p>
+<p>This result will be critical for creating confidence regions and intervals for <span class="math inline">\(\boldsymbol{\beta}\)</span> and linear combinations of <span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\lambda^T \boldsymbol{\beta}\)</span> as well as testing hypotheses</p>
 </div>
 </section>
 <section id="next-class" class="slide level2">
