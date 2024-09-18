@@ -1,0 +1,17 @@
+---
+title: "Bayesian Estimation and Shrinkage"
+---
+
+We study Bayes estimators of the regression coefficients, and show
+how these can be viewed as shrunken versions of the OLS estimator.
+We show how a particular shrinkage estimator, the ridge regression
+estimator, can reduce variance and estimation error in cases where
+the predictors are highly collinear. We show how this estimator and
+other biased estimators can be viewed as solutions to penalized least-
+squares problems.
+
+Readings:
+
+-   Christensen Chapter 2.9 and Chapter 15
+
+-   Seber & Lee Chapter 3.12
