@@ -1,14 +1,4 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
- [**Definition**](#multivariate-normal-1): Multivariate Normal\Pageref{multivariate-normal-1}
+ [**Definition**](#bayes-rule-and-bayes-risk): Bayes Rule and Bayes Risk\Pageref{bayes-rule-and-bayes-risk}
 
- [**Proof**](#Proof*-0.2)\Pageref{Proof*-0.2}
-
- [**Theorem**](#zero-correlation-and-independence): Zero Correlation and Independence\Pageref{zero-correlation-and-independence}
-
- [**Proof**](#Proof*-0.4)\Pageref{Proof*-0.4}
-
- [**Proof**](#continued): continued\Pageref{continued}
-
- [**Corollary**](#Corollary*-0.6)\Pageref{Corollary*-0.6}
-
- [**Proof**](#Proof*-0.7)\Pageref{Proof*-0.7}
+ [**Definition**](#bayes-action): Bayes Action\Pageref{bayes-action}

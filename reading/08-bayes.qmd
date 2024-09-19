@@ -2,16 +2,12 @@
 title: "Bayesian Estimation and Shrinkage"
 ---
 
-We study Bayes estimators of the regression coefficients, and show
-how these can be viewed as shrunken versions of the OLS estimator.
-We show how a particular shrinkage estimator, the ridge regression
-estimator, can reduce variance and estimation error in cases where
-the predictors are highly collinear. We show how this estimator and
-other biased estimators can be viewed as solutions to penalized least-
-squares problems.
+We study Bayes estimators of the regression coefficients, and show how these can be viewed as shrunken versions of the OLS estimator. We discuss two commonly used priors, the $g$-prior of Zellner (1986) and an independent prior. In the latter case, the posterior mean is equivalent to the classic ridge regression estimator of Hoerl and Kennedy.  The posterior mean in both cases may offer improvements over OLS.  Rigde regression in particular can reduce variance and estimation error in cases where the predictors are highly collinear.
 
 Readings:
 
--   Christensen Chapter 2.9 and Chapter 15
+- Christensen Chapter 2.9 and Chapter 15
 
--   Seber & Lee Chapter 3.12
+- Seber & Lee Chapter 3.12 and Chapter 12
+
+- Hoerl, A.E. and Kennard, R.W. (1970) Ridge regression: Biased estimation for nonorthogonal problems. _Technometrics_, 12(1):55–67

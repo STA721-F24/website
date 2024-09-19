@@ -1,0 +1,355 @@
+---
+subtitle: "STA 721: Lecture 8"
+title: "Bayesian Estimation in Linear Models"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"   
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+      numbered: false
+    Lemma:
+      group: thmlike
+      numbered: false
+    Corollary:
+      group: thmlike
+      numbered: false
+    Proposition:
+      group: thmlike
+      numbered: false      
+    Proof:
+      group: thmlike
+      numbered: false
+      collapse: false   
+    Exercise:
+      group: thmlike
+      numbered: false
+    Definition:
+      group: thmlike
+      numbered: false
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+
+
+
+
+. . .
+
+Readings:
+
+  -   Christensen Chapter 2.9 and Chapter 15
+  -   Seber & Lee Chapter 3.12
+
+
+## Bayes Estimation
+Model $\Y = \X \b + \eps$  with $\eps \sim \N(\zero_n , \sigma^2
+  \I_n)$ 
+is equivalent to
+$$
+\Y \sim \N(\X \b, \I_n/\phi)
+$$
+
+- $\phi = 1/\sigma^2$ is the **precision** of the data.
+
+- we might expect $\b$ to be close to some vector $\bv_0$
+
+- represent this _a priori_ with a **Prior Distribution** for $\b$, e.g.
+$$\b \sim \N(\bv_0, \Phib_0^{-1})$$
+- $\bv_0$ is the prior mean and $\Phib_0$ is the **prior precision** of $\b$ that captures how close $\b$ is to $\bv_0$
+
+- Similarly, we could represent prior uncertainty about $\sigma$, $\sigma^2$ or equivalently $\phi$ with a probability distribution
+
+- for now treat $\phi$ as fixed
+
+## Bayesian Inference
+
+- once we see data $\Y$, Bayesian inference proceeds by updating prior beliefs
+
+- represented by the **posterior distribution** of $\b$ which is the 
+conditional distribution of $\b$ given the data $\Y$ (and $\phi$ for now)
+
+- Posterior $p(\b \mid \Y, \phi)$
+$$p(\b \mid \Y) = \frac{p(\Y \mid \b, \phi) p(\b \mid \phi)}{c}$$
+- $c$ is a constant so that the posterior density integrates to $1$
+$$c = \int_{\bbR^p} p(\Y \mid \b, \phi) p(\b \mid \phi) d\, \b \equiv p(\Y)$$
+- since $c$ is a constant that doesn't depend on $\b$ just ignore
+
+- work with density up to constant of proportionality
+
+## Posterior Density
+Posterior for $\b$ is 
+$p(\b \mid \Y) \propto p(\Y \mid \b, \phi) p(\b \mid \phi)$
+
+- Likelihood for $\b$ is proportional to $p(\Y \mid \b, \phi$)
+
+. . .
+
+\begin{align*} p(\Y \mid \b, \phi) & = (2 \pi)^{-n/2} |\I_n / \phi |^{-1/2} 
+\exp\left\{-\frac{1}{2} \left( (\Y - \X\b)^T \phi \I_n (\Y - \X\b) \right) \right\} \\
+& \propto \exp\left\{-\frac{1}{2} \left( \phi \Y^T\Y - 2 \b^T \phi \X^T\Y + \phi \b \XtX \b \right) \right\} 
+\end{align*}
+
+- similarly expand prior
+\begin{align*}
+p(\b \mid \phi) & = (2 \pi)^{-p/2} |\Phib_0^{-1}|^{-1/2} 
+\exp\left\{-\frac{1}{2} \left( (\b - \bv_0)^T \Phib_0 (\b - \bv_0) \right) \right\} \\
+ & \propto \exp\left\{-\frac{1}{2} \left(  \bv_0^T \Phib_0\bv_0 - 2 \b^T\Phib_0 \bv_0 + \b \Phib_0 \b \right) \right\} 
+\end{align*}
+
+## Posterior Steps
+
+- Expand quadratics and regroup terms 
+\begin{align*}
+p(\b \mid \Y, \phi) 
+ & \propto e^{\left\{-\frac{1}{2} \left( \phi \b \XtX \b + \b \Phib_0 \b   - 2(\phi \b^T\X^T\Y + \b^T\Phib_0 \bv_0)  + \phi \Y^T\Y + \bv_0^T \Phib_0\bv_0 \right) \right\} } \\
+ &  \propto \exp\left\{-\frac{1}{2} \left( \b ( \phi\XtX  + \Phib_0) \b   - 2 \b^T(\phi \X^T\Y + \Phib_0 \bv_0)  \right) \right\}  
+\end{align*}
+
+. . .
+
+Kernel of a Multivariate Normal
+
+
+- Read off posterior precision from Quadratic in $\b$ 
+- Read off posterior precision $\times$ posterior mean from Linear term in $\b$  
+- will need to complete the quadratic in the posterior mean$^{\dagger}$
+
+::: footer
+$\dagger$ necessary to keep track of all terms for $\phi$ when we do not condition on $\phi$
+:::
+
+## Posterior Precision and Covariance
+$$ p(\b \mid \Y, \phi)  \propto \exp\left\{-\frac{1}{2} \left( \b ( \phi\XtX  + \Phib_0) \b   - 2 \b^T(\phi \X^T\Y + \Phib_0 \bv_0)  \right) \right\}
+$$
+
+- Posterior Precision 
+$$\Phib_n \equiv \phi\XtX  + \Phib_0$$
+
+- sum of data precision and prior precision
+- posterior Covariance 
+$$\Cov[\b \mid \Y, \phi] = \Phib_n^{-1} = (\phi\XtX  + \Phib_0)^{-1}$$
+- if $\Phib_0$ is full rank, then $\Cov[\b \mid \Y, \phi]$ is full rank even if $\XtX$ is not
+
+
+## Posterior Mean Updating 
+\begin{align*} p(\b \mid \Y, \phi) & \propto \exp\left\{\frac{1}{2} \left( \b ( \phi\XtX  + \Phib_0) \b   - 2 \b^T(\phi \X^T\Y + \Phib_0 \bv_0)  \right) \right\} \\
+ & \propto \exp\left\{\frac{1}{2} \left( \b ( \phi\XtX  + \Phib_0) \b   - 2 \b^T\Phib_n \Phib_n^{-1}(\phi \X^T\Y + \Phib_0 \bv_0)  \right) \right\} \\
+\end{align*}
+
+- posterior mean $\bv_n$
+\begin{align*}
+\bv_n & \equiv \Phib_n^{-1} (\phi \X^T\Y + \Phib_0 \bv_0 ) \\
+      & = (\phi\XtX  + \Phib_0)^{-1}\left(\phi (\XtX) (\XtX)^{-1} \X^T\Y + \Phib_0 \bv_0 \right) \\
+      & = (\phi\XtX  + \Phib_0)^{-1} \left( \phi (\XtX) \bhat + \Phib_0 \bv_0 \right)
+\end{align*}
+
+- a precision weighted linear combination of MLE and prior mean
+
+- first expression useful if $\X$ is not full rank!
+
+## Notes 
+
+Posterior is a Multivariate Normal
+$p(\b \mid \Y, \phi) \sim \N(\bv_n, \Phib_n^{-1})$
+
+- posterior mean: $\bv_n  =  \Phib_n^{-1} (\phi \X^T\Y + \Phib_0 \bv_0 )$
+
+- posterior precision: $\Phib_n = \phi\XtX  + \Phib_0$
+
+-  the posterior precision (inverse posterior variance) is the sum of the prior precision and the data precision.
+- the posterior mean is a linear combination of MLE/OLS and prior mean
+- if the prior precision $\Phib_n$ is very large compared to the data precision $\phi \XtX$, the posterior mean will be close to the prior mean $\bv_0$.
+-  if the prior precision $\Phib_n$ is very small compared to the data precision  $\phi \XtX$, the posterior mean will be close to the MLE/OLS estimator.
+- data precision will generally be increasing with sample size
+
+## Bayes Estimators
+
+A Bayes estimator is a potential value of $\b$ that is obtained from the posterior distribution in some principled way. 
+
+- Standard estimators include
+  - the posterior mean estimator, which is the minimizer of the Bayes risk under squared error loss
+  - the maximum a posteriori (MAP) estimator, the value $\b$ that maximizes the posterior density (or log posterior density)
+  
+- The first estimator is based on principles from classical decision theory, whereas the second can be related to penalized likelihood estimation. 
+
+- in the case of linear regression they turn out to be the same estimator!
+
+## Bayes Estimator under Squared Error Loss
+
+- the Frequentist Risk $R(\beta, \delta) \equiv \E_{\Y \mid \b}[\| \delta(\Y)− \b\|^2]$ is the expected loss of decision $\delta$ for a given $\b$
+
+. . .
+
+::: {.Definition}
+## Bayes Rule and Bayes Risk
+The Bayes rule under squared error loss is the function of $\Y$, $\delta^*(\Y)$, that minimizes the **Bayes risk** $B(p_\b, \delta)$ 
+$$\delta^*(\Y) =  \arg \min_{\delta \in \cal{D}} B(p_\b, \delta)$$
+
+$$B(p_\b, \delta) = \E_\b R(\b, \delta) = \E_{\b} \E_{\Y \mid \b}[\| \delta(\Y)− \b\|^2]$$
+where the expectation is with respect to the prior distribution, $p_\b$, over $\b$  and the conditional distribution of $\Y$ given $\b$
+:::
+
+
+## Bayes Estimators 
+::: {.Definition}
+## Bayes Action
+The Bayes Action is the action $a \in {\cal{A}}$ that minimizes the posterior expected loss:
+$$ \delta_B^*(\Y) = \arg \min_{\delta \in \cal{D}} E_{\b \mid \Y} [\| \delta − \b\|^2] 
+$$
+::: 
+
+- can show that the Bayes action that minimizes the posterior expected loss is the posterior mean $\b_n = (\phi \XtX + \Phib_0)^{-1}(\phi \X^T\Y + \Phib_0 \bv_0$ and is also the Bayes rule.
+
+- different values of $\bv_0$ and $\Phib_0$ will lead to different Bayes estimators as will different prior distributions besides the Normal
+
+- take $\bv_0 = \zero$; Bayes estimators are often referred to as shrinkage estimators
+$$\b_n = \left( \X^T\X + \Phib_0/\phi  \right)^{-1}  \X^T\Y$$
+as they shrink the MLE/OLS estimator towards $\zero$
+
+::: footer
+:::
+
+## Prior Choice
+
+One of the most common priors for the normal linear model is the **g-prior** of Zellner (1986) where $\Phib_0 = \frac{\phi}{g} \XtX$
+$$\b \mid \phi, g \sim \N(\zero, g/\phi (\XtX)^{-1})$$
+
+. . .
+
+\begin{align*}
+\bv_n & = \left( \X^T\X + \frac{\phi}{g} \frac{\XtX}{\phi} \right)^{-1} \X^T\Y \\
+  & = \left( \X^T\X + \frac{1}{g} \XtX \right)^{-1} \X^T\Y \\
+  & = \left( \frac{1 +g}{g} \XtX \right)^{-1} \X^T\Y \\
+  & = \frac{g}{1+g} \bhat
+\end{align*}
+
+- $g$ controls the amount of shrinkage where all of the MLEs are shrunk to zero by the same fraction $g/(1+g)$
+
+::: footer
+:::
+
+## Another Common Choice
+
+- another common choice is the independent prior
+$$\b \mid \phi \sim \N(\zero, \Phib_0^{-1})$$
+where $\Phib_0 = \phi \kappa \I_b$ for some $\kappa> 0$ 
+
+- the posterior mean is 
+\begin{align*}
+\b_n & = (\X^T\X + \kappa \I)^{-1} \X^T\Y \\
+     & =  (\X^T\X + \kappa \I)^{-1} \XtX \bhat
+\end{align*}     
+
+- this is also a shrinkage estimator but the amount of shrinkage is different for the different components of $\bv_n$ depending on the eigenvalues of $\XtX$
+
+- easiest to see this via an orthogonal rotation of the model
+
+## Rotated Regression
+- Use the singular value decomposition of $\X = \U \Lambdab\V^T$ and multiply thru by $\U^T$ to get the rotated model
+\begin{align*}
+\U^T \Y & =  \Lambdab \V^T\b + \U^T\eps \\
+\tY & = \Lambdab \alphav + \tilde{\eps} 
+\end{align*}
+where $\alphav = \V^T\b$ and $\tilde{\eps} = \U^T\eps$
+- the induced prior is still $\alphav \mid \phi \sim \N(\zero, (\phi \kappa)^{-1} \I)$
+- the posterior mean of $\alphav$ is
+\begin{align*}
+\a & =  (\Lambdab^2 + \kappa \I)^{-1} \Lambdab^2 \hat{\alphav}\\
+a_j & = \frac{\lambda_j^2}{\lambda_j^2 + \kappa} \hat{\alpha}_j
+\end{align*}
+
+- sets to zero the components of the OLS solution where eigenvalues are zero!
+
+::: footer
+:::
+
+## Connections to Frequentist Estimators
+- The posterior mean under this independent prior is the same as the classic **ridge regression** estimator of Hoerl and 
+
+
+- the variance of $\hat{\alpha}_j$ is $\sigma^2/\lambda_j^2$ while the variance of $a_j$ is $\sigma^2/(\lambda_j^2 + \kappa)$
+
+- clearly components of $\alphav$ with small eigenvalues will have large variances
+
+- ridge regression keeps those components from "blowing up" by shrinking them towards zero and having a finite variance
+
+- rotate back to get the ridge estimator for $\b$, $\bhat_R = \V \a$
+
+- ridge regression applies a high degree of shrinkage to the “parts” (linear combinations) of $\b$ that have high variability, and a low degree of shrinkage to the parts that are well-estimated.
+
+- turns out there always exists a value of $\kappa$ that will improve over OLS!  
+- Unfortunately no closed form solution except in orthogonal regression and then it depends on the unknown $\|\b\|^2$!
+
+## Next Class
+
+
+- Frequentist risk of Bayes estimators
+- Bayes and penalized loss functions
