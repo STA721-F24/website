@@ -11,3 +11,5 @@ Readings:
 - Seber & Lee Chapter 3.12 and Chapter 12
 
 - Hoerl, A.E. and Kennard, R.W. (1970) Ridge regression: Biased estimation for nonorthogonal problems. _Technometrics_, 12(1):55–67
+
+- Zellner, A. (1986) On assessing prior distributions and Bayesian regression analysis with $g$-prior distributions. In _Bayesian Inference and Decision Techniques: Essays in Honor of Bruno de Finetti_, eds. P. K. Goel and A. Zellner, 233–243. Amsterdam: North-Holland
