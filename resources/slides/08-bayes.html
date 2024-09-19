@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – template</title>
+  <title>STA721-F24: Linear Models – Bayesian Estimation in Linear Models</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -326,33 +326,45 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Feature {
-    --color1: #c0c0c0;
-    --color2: #808080;
+  .Proposition {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   .Definition {
     --color1: #d999d3;
     --color2: #a01793;
   }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   .Corollary {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Conjecture {
+  .Exercise {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
+  }
+  .Proof {
     --color1: #948bde;
     --color2: #584eab;
   }
   .Theorem {
     --color1: #948bde;
     --color2: #584eab;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
   </style>
 </head>
@@ -361,8 +373,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">template</h1>
-  <p class="subtitle">STA 721: Lecture ?</p>
+  <h1 class="title">Bayesian Estimation in Linear Models</h1>
+  <p class="subtitle">STA 721: Lecture 8</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -378,6 +390,231 @@ Merlise Clyde (clyde@duke.edu)
 </section>
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
+<div class="fragment">
+<p>Readings:</p>
+<ul>
+<li class="fragment">Christensen Chapter 2.9 and Chapter 15</li>
+<li class="fragment">Seber &amp; Lee Chapter 3.12</li>
+</ul>
+</div>
+</section>
+<section id="bayes-estimation" class="slide level2">
+<h2>Bayes Estimation</h2>
+<p>Model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\)</span> with <span class="math inline">\(\boldsymbol{\epsilon}\sim \textsf{N}(\mathbf{0}_n , \sigma^2
+  \mathbf{I}_n)\)</span> is equivalent to <span class="math display">\[
+\mathbf{Y}\sim \textsf{N}(\mathbf{X}\boldsymbol{\beta}, \mathbf{I}_n/\phi)
+\]</span></p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(\phi = 1/\sigma^2\)</span> is the <strong>precision</strong> of the data.</p></li>
+<li class="fragment"><p>we might expect <span class="math inline">\(\boldsymbol{\beta}\)</span> to be close to some vector <span class="math inline">\(\mathbf{b}_0\)</span></p></li>
+<li class="fragment"><p>represent this <em>a priori</em> with a <strong>Prior Distribution</strong> for <span class="math inline">\(\boldsymbol{\beta}\)</span>, e.g. <span class="math display">\[\boldsymbol{\beta}\sim \textsf{N}(\mathbf{b}_0, \boldsymbol{\Phi}_0^{-1})\]</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\mathbf{b}_0\)</span> is the prior mean and <span class="math inline">\(\boldsymbol{\Phi}_0\)</span> is the <strong>prior precision</strong> of <span class="math inline">\(\boldsymbol{\beta}\)</span> that captures how close <span class="math inline">\(\boldsymbol{\beta}\)</span> is to <span class="math inline">\(\mathbf{b}_0\)</span></p></li>
+<li class="fragment"><p>Similarly, we could represent prior uncertainty about <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\sigma^2\)</span> or equivalently <span class="math inline">\(\phi\)</span> with a probability distribution</p></li>
+<li class="fragment"><p>for now treat <span class="math inline">\(\phi\)</span> as fixed</p></li>
+</ul>
+</section>
+<section id="bayesian-inference" class="slide level2">
+<h2>Bayesian Inference</h2>
+<ul>
+<li class="fragment"><p>once we see data <span class="math inline">\(\mathbf{Y}\)</span>, Bayesian inference proceeds by updating prior beliefs</p></li>
+<li class="fragment"><p>represented by the <strong>posterior distribution</strong> of <span class="math inline">\(\boldsymbol{\beta}\)</span> which is the conditional distribution of <span class="math inline">\(\boldsymbol{\beta}\)</span> given the data <span class="math inline">\(\mathbf{Y}\)</span> (and <span class="math inline">\(\phi\)</span> for now)</p></li>
+<li class="fragment"><p>Posterior <span class="math inline">\(p(\boldsymbol{\beta}\mid \mathbf{Y}, \phi)\)</span> <span class="math display">\[p(\boldsymbol{\beta}\mid \mathbf{Y}) = \frac{p(\mathbf{Y}\mid \boldsymbol{\beta}, \phi) p(\boldsymbol{\beta}\mid \phi)}{c}\]</span></p></li>
+<li class="fragment"><p><span class="math inline">\(c\)</span> is a constant so that the posterior density integrates to <span class="math inline">\(1\)</span> <span class="math display">\[c = \int_{\mathbb{R}^p} p(\mathbf{Y}\mid \boldsymbol{\beta}, \phi) p(\boldsymbol{\beta}\mid \phi) d\, \boldsymbol{\beta}\equiv p(\mathbf{Y})\]</span></p></li>
+<li class="fragment"><p>since <span class="math inline">\(c\)</span> is a constant that doesn’t depend on <span class="math inline">\(\boldsymbol{\beta}\)</span> just ignore</p></li>
+<li class="fragment"><p>work with density up to constant of proportionality</p></li>
+</ul>
+</section>
+<section id="posterior-density" class="slide level2">
+<h2>Posterior Density</h2>
+<p>Posterior for <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(p(\boldsymbol{\beta}\mid \mathbf{Y}) \propto p(\mathbf{Y}\mid \boldsymbol{\beta}, \phi) p(\boldsymbol{\beta}\mid \phi)\)</span></p>
+<ul>
+<li class="fragment">Likelihood for <span class="math inline">\(\boldsymbol{\beta}\)</span> is proportional to <span class="math inline">\(p(\mathbf{Y}\mid \boldsymbol{\beta}, \phi\)</span>)</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*} p(\mathbf{Y}\mid \boldsymbol{\beta}, \phi) &amp; = (2 \pi)^{-n/2} |\mathbf{I}_n / \phi |^{-1/2}
+\exp\left\{-\frac{1}{2} \left( (\mathbf{Y}- \mathbf{X}\boldsymbol{\beta})^T \phi \mathbf{I}_n (\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}) \right) \right\} \\
+&amp; \propto \exp\left\{-\frac{1}{2} \left( \phi \mathbf{Y}^T\mathbf{Y}- 2 \boldsymbol{\beta}^T \phi \mathbf{X}^T\mathbf{Y}+ \phi \boldsymbol{\beta}\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}\right) \right\}
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment">similarly expand prior <span class="math display">\[\begin{align*}
+p(\boldsymbol{\beta}\mid \phi) &amp; = (2 \pi)^{-p/2} |\boldsymbol{\Phi}_0^{-1}|^{-1/2}
+\exp\left\{-\frac{1}{2} \left( (\boldsymbol{\beta}- \mathbf{b}_0)^T \boldsymbol{\Phi}_0 (\boldsymbol{\beta}- \mathbf{b}_0) \right) \right\} \\
+&amp; \propto \exp\left\{-\frac{1}{2} \left(  \mathbf{b}_0^T \boldsymbol{\Phi}_0\mathbf{b}_0 - 2 \boldsymbol{\beta}^T\boldsymbol{\Phi}_0 \mathbf{b}_0 + \boldsymbol{\beta}\boldsymbol{\Phi}_0 \boldsymbol{\beta}\right) \right\}
+\end{align*}\]</span></li>
+</ul>
+</div>
+</section>
+<section id="posterior-steps" class="slide level2">
+<h2>Posterior Steps</h2>
+<ul>
+<li class="fragment">Expand quadratics and regroup terms <span class="math display">\[\begin{align*}
+p(\boldsymbol{\beta}\mid \mathbf{Y}, \phi)
+&amp; \propto e^{\left\{-\frac{1}{2} \left( \phi \boldsymbol{\beta}\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\beta}\boldsymbol{\Phi}_0 \boldsymbol{\beta}- 2(\phi \boldsymbol{\beta}^T\mathbf{X}^T\mathbf{Y}+ \boldsymbol{\beta}^T\boldsymbol{\Phi}_0 \mathbf{b}_0)  + \phi \mathbf{Y}^T\mathbf{Y}+ \mathbf{b}_0^T \boldsymbol{\Phi}_0\mathbf{b}_0 \right) \right\} } \\
+&amp;  \propto \exp\left\{-\frac{1}{2} \left( \boldsymbol{\beta}( \phi\mathbf{X}^T\mathbf{X}+ \boldsymbol{\Phi}_0) \boldsymbol{\beta}- 2 \boldsymbol{\beta}^T(\phi \mathbf{X}^T\mathbf{Y}+ \boldsymbol{\Phi}_0 \mathbf{b}_0)  \right) \right\}  
+\end{align*}\]</span></li>
+</ul>
+<div class="fragment">
+<p>Kernel of a Multivariate Normal</p>
+<ul>
+<li class="fragment">Read off posterior precision from Quadratic in <span class="math inline">\(\boldsymbol{\beta}\)</span></li>
+<li class="fragment">Read off posterior precision <span class="math inline">\(\times\)</span> posterior mean from Linear term in <span class="math inline">\(\boldsymbol{\beta}\)</span><br>
+</li>
+<li class="fragment">will need to complete the quadratic in the posterior mean<span class="math inline">\(^{\dagger}\)</span></li>
+</ul>
+<div class="footer">
+<p><span class="math inline">\(\dagger\)</span> necessary to keep track of all terms for <span class="math inline">\(\phi\)</span> when we do not condition on <span class="math inline">\(\phi\)</span></p>
+</div>
+</div>
+</section>
+<section id="posterior-precision-and-covariance" class="slide level2">
+<h2>Posterior Precision and Covariance</h2>
+<p><span class="math display">\[ p(\boldsymbol{\beta}\mid \mathbf{Y}, \phi)  \propto \exp\left\{-\frac{1}{2} \left( \boldsymbol{\beta}( \phi\mathbf{X}^T\mathbf{X}+ \boldsymbol{\Phi}_0) \boldsymbol{\beta}- 2 \boldsymbol{\beta}^T(\phi \mathbf{X}^T\mathbf{Y}+ \boldsymbol{\Phi}_0 \mathbf{b}_0)  \right) \right\}
+\]</span></p>
+<ul>
+<li class="fragment"><p>Posterior Precision <span class="math display">\[\boldsymbol{\Phi}_n \equiv \phi\mathbf{X}^T\mathbf{X}+ \boldsymbol{\Phi}_0\]</span></p></li>
+<li class="fragment"><p>sum of data precision and prior precision</p></li>
+<li class="fragment"><p>posterior Covariance <span class="math display">\[\textsf{Cov}[\boldsymbol{\beta}\mid \mathbf{Y}, \phi] = \boldsymbol{\Phi}_n^{-1} = (\phi\mathbf{X}^T\mathbf{X}+ \boldsymbol{\Phi}_0)^{-1}\]</span></p></li>
+<li class="fragment"><p>if <span class="math inline">\(\boldsymbol{\Phi}_0\)</span> is full rank, then <span class="math inline">\(\textsf{Cov}[\boldsymbol{\beta}\mid \mathbf{Y}, \phi]\)</span> is full rank even if <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> is not</p></li>
+</ul>
+</section>
+<section id="posterior-mean-updating" class="slide level2">
+<h2>Posterior Mean Updating</h2>
+<p><span class="math display">\[\begin{align*} p(\boldsymbol{\beta}\mid \mathbf{Y}, \phi) &amp; \propto \exp\left\{\frac{1}{2} \left( \boldsymbol{\beta}( \phi\mathbf{X}^T\mathbf{X}+ \boldsymbol{\Phi}_0) \boldsymbol{\beta}- 2 \boldsymbol{\beta}^T(\phi \mathbf{X}^T\mathbf{Y}+ \boldsymbol{\Phi}_0 \mathbf{b}_0)  \right) \right\} \\
+&amp; \propto \exp\left\{\frac{1}{2} \left( \boldsymbol{\beta}( \phi\mathbf{X}^T\mathbf{X}+ \boldsymbol{\Phi}_0) \boldsymbol{\beta}- 2 \boldsymbol{\beta}^T\boldsymbol{\Phi}_n \boldsymbol{\Phi}_n^{-1}(\phi \mathbf{X}^T\mathbf{Y}+ \boldsymbol{\Phi}_0 \mathbf{b}_0)  \right) \right\} \\
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment"><p>posterior mean <span class="math inline">\(\mathbf{b}_n\)</span> <span class="math display">\[\begin{align*}
+\mathbf{b}_n &amp; \equiv \boldsymbol{\Phi}_n^{-1} (\phi \mathbf{X}^T\mathbf{Y}+ \boldsymbol{\Phi}_0 \mathbf{b}_0 ) \\
+    &amp; = (\phi\mathbf{X}^T\mathbf{X}+ \boldsymbol{\Phi}_0)^{-1}\left(\phi (\mathbf{X}^T\mathbf{X}) (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\mathbf{Y}+ \boldsymbol{\Phi}_0 \mathbf{b}_0 \right) \\
+    &amp; = (\phi\mathbf{X}^T\mathbf{X}+ \boldsymbol{\Phi}_0)^{-1} \left( \phi (\mathbf{X}^T\mathbf{X}) \hat{\boldsymbol{\beta}}+ \boldsymbol{\Phi}_0 \mathbf{b}_0 \right)
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>a precision weighted linear combination of MLE and prior mean</p></li>
+<li class="fragment"><p>first expression useful if <span class="math inline">\(\mathbf{X}\)</span> is not full rank!</p></li>
+</ul>
+</section>
+<section id="notes" class="slide level2">
+<h2>Notes</h2>
+<p>Posterior is a Multivariate Normal <span class="math inline">\(p(\boldsymbol{\beta}\mid \mathbf{Y}, \phi) \sim \textsf{N}(\mathbf{b}_n, \boldsymbol{\Phi}_n^{-1})\)</span></p>
+<ul>
+<li class="fragment"><p>posterior mean: <span class="math inline">\(\mathbf{b}_n  =  \boldsymbol{\Phi}_n^{-1} (\phi \mathbf{X}^T\mathbf{Y}+ \boldsymbol{\Phi}_0 \mathbf{b}_0 )\)</span></p></li>
+<li class="fragment"><p>posterior precision: <span class="math inline">\(\boldsymbol{\Phi}_n = \phi\mathbf{X}^T\mathbf{X}+ \boldsymbol{\Phi}_0\)</span></p></li>
+<li class="fragment"><p>the posterior precision (inverse posterior variance) is the sum of the prior precision and the data precision.</p></li>
+<li class="fragment"><p>the posterior mean is a linear combination of MLE/OLS and prior mean</p></li>
+<li class="fragment"><p>if the prior precision <span class="math inline">\(\boldsymbol{\Phi}_n\)</span> is very large compared to the data precision <span class="math inline">\(\phi \mathbf{X}^T\mathbf{X}\)</span>, the posterior mean will be close to the prior mean <span class="math inline">\(\mathbf{b}_0\)</span>.</p></li>
+<li class="fragment"><p>if the prior precision <span class="math inline">\(\boldsymbol{\Phi}_n\)</span> is very small compared to the data precision <span class="math inline">\(\phi \mathbf{X}^T\mathbf{X}\)</span>, the posterior mean will be close to the MLE/OLS estimator.</p></li>
+<li class="fragment"><p>data precision will generally be increasing with sample size</p></li>
+</ul>
+</section>
+<section id="bayes-estimators" class="slide level2">
+<h2>Bayes Estimators</h2>
+<p>A Bayes estimator is a potential value of <span class="math inline">\(\boldsymbol{\beta}\)</span> that is obtained from the posterior distribution in some principled way.</p>
+<ul>
+<li class="fragment"><p>Standard estimators include</p>
+<ul>
+<li class="fragment">the posterior mean estimator, which is the minimizer of the Bayes risk under squared error loss</li>
+<li class="fragment">the maximum a posteriori (MAP) estimator, the value <span class="math inline">\(\boldsymbol{\beta}\)</span> that maximizes the posterior density (or log posterior density)</li>
+</ul></li>
+<li class="fragment"><p>The first estimator is based on principles from classical decision theory, whereas the second can be related to penalized likelihood estimation.</p></li>
+<li class="fragment"><p>in the case of linear regression they turn out to be the same estimator!</p></li>
+</ul>
+</section>
+<section id="bayes-estimator-under-squared-error-loss" class="slide level2">
+<h2>Bayes Estimator under Squared Error Loss</h2>
+<ul>
+<li class="fragment">the Frequentist Risk <span class="math inline">\(R(\beta, \delta) \equiv \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\| \delta(\mathbf{Y})− \boldsymbol{\beta}\|^2]\)</span> is the expected loss of decision <span class="math inline">\(\delta\)</span> for a given <span class="math inline">\(\boldsymbol{\beta}\)</span></li>
+</ul>
+<div class="fragment">
+<div id="bayes-rule-and-bayes-risk" class="Definition" title="Bayes Rule and Bayes Risk">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Bayes Rule and Bayes Risk</summary><div>The Bayes rule under squared error loss is the function of <span class="math inline">\(\mathbf{Y}\)</span>, <span class="math inline">\(\delta^*(\mathbf{Y})\)</span>, that minimizes the <strong>Bayes risk</strong> <span class="math inline">\(B(p_\boldsymbol{\beta}, \delta)\)</span> <span class="math display">\[\delta^*(\mathbf{Y}) =  \arg \min_{\delta \in \cal{D}} B(p_\boldsymbol{\beta}, \delta)\]</span><p></p>
+<p><span class="math display">\[B(p_\boldsymbol{\beta}, \delta) = \textsf{E}_\boldsymbol{\beta}R(\boldsymbol{\beta}, \delta) = \textsf{E}_{\boldsymbol{\beta}} \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\| \delta(\mathbf{Y})− \boldsymbol{\beta}\|^2]\]</span> where the expectation is with respect to the prior distribution, <span class="math inline">\(p_\boldsymbol{\beta}\)</span>, over <span class="math inline">\(\boldsymbol{\beta}\)</span> and the conditional distribution of <span class="math inline">\(\mathbf{Y}\)</span> given <span class="math inline">\(\boldsymbol{\beta}\)</span></p>
+</div></details>
+</div>
+</div>
+</section>
+<section id="bayes-estimators-1" class="slide level2">
+<h2>Bayes Estimators</h2>
+<div id="bayes-action" class="Definition" title="Bayes Action">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Bayes Action</summary><div>The Bayes Action is the action <span class="math inline">\(a \in {\cal{A}}\)</span> that minimizes the posterior expected loss: <span class="math display">\[ \delta_B^*(\mathbf{Y}) = \arg \min_{\delta \in \cal{D}} E_{\boldsymbol{\beta}\mid \mathbf{Y}} [\| \delta − \boldsymbol{\beta}\|^2]
+\]</span><p></p>
+</div></details>
+</div>
+<ul>
+<li class="fragment"><p>can show that the Bayes action that minimizes the posterior expected loss is the posterior mean <span class="math inline">\(\boldsymbol{\beta}_n = (\phi \mathbf{X}^T\mathbf{X}+ \boldsymbol{\Phi}_0)^{-1}(\phi \mathbf{X}^T\mathbf{Y}+ \boldsymbol{\Phi}_0 \mathbf{b}_0\)</span> and is also the Bayes rule.</p></li>
+<li class="fragment"><p>different values of <span class="math inline">\(\mathbf{b}_0\)</span> and <span class="math inline">\(\boldsymbol{\Phi}_0\)</span> will lead to different Bayes estimators as will different prior distributions besides the Normal</p></li>
+<li class="fragment"><p>take <span class="math inline">\(\mathbf{b}_0 = \mathbf{0}\)</span>; Bayes estimators are often referred to as shrinkage estimators <span class="math display">\[\boldsymbol{\beta}_n = \left( \mathbf{X}^T\mathbf{X}+ \boldsymbol{\Phi}_0/\phi  \right)^{-1}  \mathbf{X}^T\mathbf{Y}\]</span> as they shrink the MLE/OLS estimator towards <span class="math inline">\(\mathbf{0}\)</span></p></li>
+</ul>
+<div class="footer">
+
+</div>
+</section>
+<section id="prior-choice" class="slide level2">
+<h2>Prior Choice</h2>
+<p>One of the most common priors for the normal linear model is the <strong>g-prior</strong> of Zellner (1986) where <span class="math inline">\(\boldsymbol{\Phi}_0 = \frac{\phi}{g} \mathbf{X}^T\mathbf{X}\)</span> <span class="math display">\[\boldsymbol{\beta}\mid \phi, g \sim \textsf{N}(\mathbf{0}, g/\phi (\mathbf{X}^T\mathbf{X})^{-1})\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\mathbf{b}_n &amp; = \left( \mathbf{X}^T\mathbf{X}+ \frac{\phi}{g} \frac{\mathbf{X}^T\mathbf{X}}{\phi} \right)^{-1} \mathbf{X}^T\mathbf{Y}\\
+  &amp; = \left( \mathbf{X}^T\mathbf{X}+ \frac{1}{g} \mathbf{X}^T\mathbf{X}\right)^{-1} \mathbf{X}^T\mathbf{Y}\\
+  &amp; = \left( \frac{1 +g}{g} \mathbf{X}^T\mathbf{X}\right)^{-1} \mathbf{X}^T\mathbf{Y}\\
+  &amp; = \frac{g}{1+g} \hat{\boldsymbol{\beta}}
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment"><span class="math inline">\(g\)</span> controls the amount of shrinkage where all of the MLEs are shrunk to zero by the same fraction <span class="math inline">\(g/(1+g)\)</span></li>
+</ul>
+<div class="footer">
+
+</div>
+</div>
+</section>
+<section id="another-common-choice" class="slide level2">
+<h2>Another Common Choice</h2>
+<ul>
+<li class="fragment"><p>another common choice is the independent prior <span class="math display">\[\boldsymbol{\beta}\mid \phi \sim \textsf{N}(\mathbf{0}, \boldsymbol{\Phi}_0^{-1})\]</span> where <span class="math inline">\(\boldsymbol{\Phi}_0 = \phi \kappa \mathbf{I}_b\)</span> for some <span class="math inline">\(\kappa&gt; 0\)</span></p></li>
+<li class="fragment"><p>the posterior mean is <span class="math display">\[\begin{align*}
+\boldsymbol{\beta}_n &amp; = (\mathbf{X}^T\mathbf{X}+ \kappa \mathbf{I})^{-1} \mathbf{X}^T\mathbf{Y}\\
+   &amp; =  (\mathbf{X}^T\mathbf{X}+ \kappa \mathbf{I})^{-1} \mathbf{X}^T\mathbf{X}\hat{\boldsymbol{\beta}}
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>this is also a shrinkage estimator but the amount of shrinkage is different for the different components of <span class="math inline">\(\mathbf{b}_n\)</span> depending on the eigenvalues of <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span></p></li>
+<li class="fragment"><p>easiest to see this via an orthogonal rotation of the model</p></li>
+</ul>
+</section>
+<section id="rotated-regression" class="slide level2">
+<h2>Rotated Regression</h2>
+<ul>
+<li class="fragment"><p>Use the singular value decomposition of <span class="math inline">\(\mathbf{X}= \mathbf{U}\boldsymbol{\Lambda}\mathbf{V}^T\)</span> and multiply thru by <span class="math inline">\(\mathbf{U}^T\)</span> to get the rotated model <span class="math display">\[\begin{align*}
+\mathbf{U}^T \mathbf{Y}&amp; =  \boldsymbol{\Lambda}\mathbf{V}^T\boldsymbol{\beta}+ \mathbf{U}^T\boldsymbol{\epsilon}\\
+\tilde{\mathbf{Y}}&amp; = \boldsymbol{\Lambda}\boldsymbol{\alpha}+ \tilde{\boldsymbol{\epsilon}}
+\end{align*}\]</span> where <span class="math inline">\(\boldsymbol{\alpha}= \mathbf{V}^T\boldsymbol{\beta}\)</span> and <span class="math inline">\(\tilde{\boldsymbol{\epsilon}} = \mathbf{U}^T\boldsymbol{\epsilon}\)</span></p></li>
+<li class="fragment"><p>the induced prior is still <span class="math inline">\(\boldsymbol{\alpha}\mid \phi \sim \textsf{N}(\mathbf{0}, (\phi \kappa)^{-1} \mathbf{I})\)</span></p></li>
+<li class="fragment"><p>the posterior mean of <span class="math inline">\(\boldsymbol{\alpha}\)</span> is <span class="math display">\[\begin{align*}
+\mathbf{a}&amp; =  (\boldsymbol{\Lambda}^2 + \kappa \mathbf{I})^{-1} \boldsymbol{\Lambda}^2 \hat{\boldsymbol{\alpha}}\\
+a_j &amp; = \frac{\lambda_j^2}{\lambda_j^2 + \kappa} \hat{\alpha}_j
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>sets to zero the components of the OLS solution where eigenvalues are zero!</p></li>
+</ul>
+<div class="footer">
+
+</div>
+</section>
+<section id="connections-to-frequentist-estimators" class="slide level2">
+<h2>Connections to Frequentist Estimators</h2>
+<ul>
+<li class="fragment"><p>The posterior mean under this independent prior is the same as the classic <strong>ridge regression</strong> estimator of Hoerl and</p></li>
+<li class="fragment"><p>the variance of <span class="math inline">\(\hat{\alpha}_j\)</span> is <span class="math inline">\(\sigma^2/\lambda_j^2\)</span> while the variance of <span class="math inline">\(a_j\)</span> is <span class="math inline">\(\sigma^2/(\lambda_j^2 + \kappa)\)</span></p></li>
+<li class="fragment"><p>clearly components of <span class="math inline">\(\boldsymbol{\alpha}\)</span> with small eigenvalues will have large variances</p></li>
+<li class="fragment"><p>ridge regression keeps those components from “blowing up” by shrinking them towards zero and having a finite variance</p></li>
+<li class="fragment"><p>rotate back to get the ridge estimator for <span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\hat{\boldsymbol{\beta}}_R = \mathbf{V}\mathbf{a}\)</span></p></li>
+<li class="fragment"><p>ridge regression applies a high degree of shrinkage to the “parts” (linear combinations) of <span class="math inline">\(\boldsymbol{\beta}\)</span> that have high variability, and a low degree of shrinkage to the parts that are well-estimated.</p></li>
+<li class="fragment"><p>turns out there always exists a value of <span class="math inline">\(\kappa\)</span> that will improve over OLS!<br>
+</p></li>
+<li class="fragment"><p>Unfortunately no closed form solution except in orthogonal regression and then it depends on the unknown <span class="math inline">\(\|\boldsymbol{\beta}\|^2\)</span>!</p></li>
+</ul>
+</section>
+<section id="next-class" class="slide level2">
+<h2>Next Class</h2>
+<ul>
+<li class="fragment">Frequentist risk of Bayes estimators</li>
+<li class="fragment">Bayes and penalized loss functions</li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
