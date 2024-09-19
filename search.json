@@ -511,6 +511,55 @@
     "text": "Course Topics\nCourse topics will be drawn (but subject to change) from\n\nMotivation for Studying Linear Models as Foundation\nRandom Vectors and Matrices\nMultivariate Normal Distribution Theory\nConditional Normal Distribution Theory\nLinear Models via Coordinate free representations (examples)\nMaximum Likelihood Estimation & Projections\nInterval Estimation: Distribution of Quadratic Forms\nGauss-Markov Theorem & Optimality of OLS/GLS\nFormulation of Bayesian Inference\nSubjective and Default Priors\nRelated Shrinkage Methods and Penalized Likelihoods (Ridge regression, lasso)\nModel Selection (comparison of classical and Bayesian approaches)\nBayes Factors\nBayesian Model Averaging\nModel Checking: Residual Analysis & Diagnostics\nRobust Methods for Outliers\nGeneralized Linear Model\nHierarchical Models\n\nPlease check the website for updates, slides and current readings."
   },
   {
+    "objectID": "HW/hw-04.html",
+    "href": "HW/hw-04.html",
+    "title": "Homework 4",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo from GitHub Classroom"
+  },
+  {
+    "objectID": "HW/hw-04.html#due-1100pm-thurs-sept-27",
+    "href": "HW/hw-04.html#due-1100pm-thurs-sept-27",
+    "title": "Homework 4",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo from GitHub Classroom"
+  },
+  {
+    "objectID": "HW/hw-04.html#rstudio",
+    "href": "HW/hw-04.html#rstudio",
+    "title": "Homework 4",
+    "section": "RStudio",
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+  },
+  {
+    "objectID": "HW/hw-04.html#getting-started-with-github-classroom",
+    "href": "HW/hw-04.html#getting-started-with-github-classroom",
+    "title": "Homework 4",
+    "section": "Getting started with Github Classroom",
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+  },
+  {
+    "objectID": "HW/hw-04.html#r-rnw",
+    "href": "HW/hw-04.html#r-rnw",
+    "title": "Homework 4",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+  },
+  {
+    "objectID": "HW/hw-04.html#gradescope-submission",
+    "href": "HW/hw-04.html#gradescope-submission",
+    "title": "Homework 4",
+    "section": "Gradescope Submission",
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+  },
+  {
+    "objectID": "HW/hw-04.html#grading",
+    "href": "HW/hw-04.html#grading",
+    "title": "Homework 4",
+    "section": "Grading",
+    "text": "Grading\nTotal: 20 points."
+  },
+  {
     "objectID": "HW/hw-02.html",
     "href": "HW/hw-02.html",
     "title": "Homework 2",
