@@ -1,6 +1,6 @@
 ---
-subtitle: "STA 721: Lecture 8"
-title: "Bayesian Estimation in Linear Models"
+subtitle: "STA 721: Lecture 9"
+title: "Bayesian Estimation and Frequentist Risk"
 author: "Merlise Clyde (clyde@duke.edu)"
 institute: "Duke University"
 format: 
