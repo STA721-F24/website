@@ -1,0 +1,304 @@
+---
+subtitle: "STA 721: Lecture 8"
+title: "Bayesian Estimation in Linear Models"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"   
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+      numbered: false
+    Lemma:
+      group: thmlike
+      numbered: false
+    Corollary:
+      group: thmlike
+      numbered: false
+    Proposition:
+      group: thmlike
+      numbered: false      
+    Proof:
+      group: thmlike
+      numbered: false
+      collapse: false   
+    Exercise:
+      group: thmlike
+      numbered: false
+    Definition:
+      group: thmlike
+      numbered: false
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+- Frequentist Risk of Bayes estimators
+- Bayes and Penalized Loss Functions
+- Generalized Ridge Regression
+- Hierarchical Bayes and Other Penalties
+
+
+. . .
+
+Readings:
+
+  -   Christensen Chapter 2.9 and Chapter 15
+  -   Seber & Lee Chapter 10.7.3 and Chapter 12
+
+
+## Frequentist Risk of Bayes Estimators
+
+Quadratic loss for estimating  $\b$ using estimator $\a$
+$$ L(\b, \a) =  ( \b - \a)^T(\b -\a)$$ 
+
+- Consider our expected loss (before we see the data) of taking an
+``action'' $\a$ (i.e. reporting $\a$ as the estimate of $\b$)
+$$ \E_{\Y \mid \b}[L(\b, \a)] =  \E_{\Y \mid \b}[( \b - \a)^T(\b -\a)]$$
+where the expectation is over the data $\Y$ given the true value of $\b$.
+
+## Expectation of Quadratic Forms
+
+::: {.Theorem}
+## Christensen Thm 1.3.2
+If $\W$ is a random variable with mean $\mub$ and covariance matrix $\Sigmab$ then 
+$$\E[\W^T\A\W] = \tr(\A\Sigmab) + \mub^T\A\mub$$
+:::
+
+. . .
+
+::: {.Proof}
+\begin{eqnarray*}
+(\W - \mub )^T\A(\W - \mub) & = & \W^T\A\W - 2\mub^T\A\W + \mub^T\A\mub \\
+\E[(\W - \mub )^T\A(\W - \mub)] & = & \E[\W^T\A\W ]  - 2 \mub^T\A\E[\W] + \mub^T\A\mub 
+\end{eqnarray*}
+
+Rearranging we have 
+$$\E[\W^T\A\W] =  \E[(\W - \mub )^T\A(\W - \mub)] + \mub^T\A\mub $$
+:::
+
+---
+
+::: {.Proof}
+## continued
+Recall
+\begin{align*}
+\E[(\W - \mub )^T\A(\W - \mub)] & = \E[\tr((\W - \mub)\A(\W - \mub)^T)] \\
+& = \tr(\E[\A(\W - \mub)(\W - \mub)^T]) \\
+& = \tr(\A\E[(\W - \mub)(\W - \mub)^T]) \\
+& = \tr(\A\Sigmab)
+\end{align*}
+Therefore the expectation is 
+$$\E[\W^T\A\W] = \tr(\A\Sigmab) + \mub^T\A\mub$$
+:::
+
+- Use Theorem to Explore Frequentist Risk of using a Bayesian estimator 
+$$\E_\Y[( \b - \a)^T(\b -\a)$$
+compared to the OLS estimator $\bhat$.
+
+## Steps to Evaluate Frequentist Risk
+
+-   MSE:  $\E_\Y[( \b - \a)^T(\b -\a) = \tr(\Sigmab_\a) + (\b - \E_{\Y \mid \b}[\a])^T(\b - \E_{\Y \mid \b}[\a])$
+- Bias of $\a$: $\E_{\Y \mid \b}[\a - \b] = \E_{\Y \mid \b}[\a] - \b$
+- Covariance of $\a$: $\Cov_{\Y \mid \b}[\a - \E[\a]$
+- Multivariate analog of MSE = Bias$^2$ + Variance in the univariate case 
+
+
+##   Mean Square Error of OLS Estimator
+-   MSE of OLS $\E_\Y[( \b - \bhat)^T(\b -\bhat)$
+- OLS is unbiased os mean of  $\b - \bhat$ is $\zero_p$ 
+- covariance is $\Cov[\b - \bhat] = \sigma^2 (\X^T\X)^{-1}$
+\begin{eqnarray*}
+\MSE(\b) \equiv \E_\Y[( \b - \bhat)^T(\b -\bhat) & = &\sigma^2
+  \tr[(\X^T\X)^{-1}]  \\
+  & = & \sigma^2 \tr \U \Lambda^{-1} \U^T \\
+  & = & \sigma^2 \sum_{j=1}^p \lambda_j^{-1}
+  \end{eqnarray*}
+where $\lambda_j$ are eigenvalues of $\X^T\X$.
+
+- If smallest $\lambda_j \to 0$ then MSE  $\to \infty$
+
+
+
+
+##   Mean Square Error using the $g$-prior
+
+- posterior mean is $\bhat_g = \frac{g}{1+g} \bhat$ (minimizes Bayes risk under squared error loss)
+- bias of  $\bhat_g$: 
+\begin{align*} 
+\E_{\Y \mid \b}[\b - \bhat_g] & = \b\left(1 - \frac{g}{1+g}\right)  = \frac{1}{1+g} \b
+\end{align*}
+
+- covariance of $\bhat_g$: $\Cov(\bhat_g) = \frac{g^2}{(1+g)^2} \sigma^2 (\X^T\X)^{-1}$
+
+- MSE of $\bhat_g$: 
+\begin{align*}
+\MSE(\b) = \frac{g^2}{(1+g)^2} \sigma^2 \tr(\X^T\X)^{-1} + \frac{1}{(1+g)^2} \|\b\|^2 \\
+= \frac{1}{(1+g)^2} \left( g^2 \sigma^2 \sum_{j=1}^p\lambda_j^{-1} + \|\b\|^2 \right)
+\end{align*}
+
+## Can Bayes Estimators have smaller MSE than OLS?
+
+-  MSE of OLS is $\E_\Y[( \b - \bhat)^T(\b -\bhat) = \sigma^2
+  \tr[(\X^T\X)^{-1}]$ (OLS has minimum MSE under squared error loss out of all _unbiased_ estimators)
+
+- MSE of $g$-prior estimator is  
+$$\MSE_g(\b) = \frac{1}{(1+g)^2} \left( g^2 \sigma^2 \tr[(\X^T\X)^{-1}] + \|\b\|^2 \right)$$
+- for fixed $\b$, what values of $g$ is the MSE of $\bhat_g$ lower than that of $\bhat$?
+
+- for fixed $g$, what values of $\b$ is the MSE of $\bhat_g$ lower than that of $\bhat$?
+
+- is there a value of $g$  that minimizes the MSE of $\bhat_g$?
+
+-  what is the MSE of $\bhat_g$ under the "optimal" $g$?
+- is the MSE of $\bhat_g$ using the "optimal" $g$ always lower than that of $\bhat$?
+
+##   Mean Square Error under Ridge Priors
+
+- MSE  with OLS and $g$-prior estimators depend on the eigenvalues of $\X^T\X$ and can be infinite if the smallest eigenvalue is zero.
+
+- Ridge regression estimator $\bhat_\kappa = (\X^T\X +  \kappa \I_p)^{-1} \X^T\Y$ has finite MSE for all $\kappa > 0$.  ($k = 0$ is OLS)
+ 
+ - MSE of Ridge estimator 
+ $\E_{\Y \mid \b}[( \b - \bhat_\kappa)^T(\b -\bhat_\kappa) = \E[(\alphav - \a)^T(\alphav - \a)]$
+ 
+ - bias of $a_j = \frac{\lambda_j}{\lambda_j + \kappa} \hat{\alpha}_j$ is $\frac{\kappa}{\lambda_j + \kappa} {\alpha}_j$
+ 
+ - variance $a_j = \sigma^2 \frac{\lambda_j^2}{(\lambda_j + \kappa)^2}$
+$$\MSE_R = \sigma^2 \sum_{j=1}^p \frac{\lambda_j^2}{(\lambda_j + \kappa)^2} + \sum_{j=1}^p \frac{\kappa^2}{(\lambda_j + \kappa)^2} \alpha_j^2$$
+
+- can show that the deriviate of the $\MSE_R$ with respect to $\kappa$ is negative at $k = 0$ so that there exists a $\kappa$ so the MSE of the Ridge estimator is always less than that of OLS.
+
+## Penalized Regression
+
+- Ridge regression is a special case of penalized regression where the penalty is $\kappa \|\b\|^2$ for some $\kappa > 0$.  (let $\kappa^* = \kappa/\phi$)
+
+- posterior mode maximizes the posterior density or log posterior density
+\begin{align*}
+\bhat_R = \arg \max_{\b} \cal{L}(\b) & = \log p(\b \mid \Y) \propto \log p(\Y \mid \b) + \log p(\b) \\
+ & = -\frac{\phi}{2} \|\Y - \X\b\|^2 - \frac{\kappa}{2} \|\b\|^2 \\
+ & = -\frac{\phi}{2} \left( \|\Y - \X\b\|^2 + \kappa^* \|\b\|^2 \right)
+\end{align*}
+
+
+- maximizing the posterior mode is equivalent to minimizing the penalized loss function 
+\begin{align*} 
+\bhat_R & =  \arg \max_{\b} -\left(\|\Y - \X\b\|^2 + \kappa^* \|\b\|^2 \right) \\
+& = \arg \min_{\b} \left(\|\Y - \X\b\|^2 + \kappa^* \|\b\|^2 \right) 
+\end{align*}
+
+::: footer
+:::
+
+## Scaling and Centering
+Note:  usually use Ridge regression after centering and scaling the columns of $\X$ so that the penalty is the same for all variables.
+$\Y_c = (\I - \P_1) \Y$  and $X_c$ the centered and standardized  $\X$ matrix
+
+- alternatively as a prior, we are assuming that the $\b_j$ are iid $\N(0, \kappa^*)$ so that the prior for $\b$ is $\N(\zero_p, \kappa^* \I_p)$
+
+- if the units/scales of the variables are different, then the variance or penality should be different for each variable.
+
+- standardizing the $\X$ so that $\X_c^T\X_c$ is a constant times the correlation matrix of $\X$  ensures that all $\b$'s have the same scale
+
+- centering the data forces the intercept to be 0 (so no shrinkage or penality) 
+
+## Alternative Motivation
+
+- If  $\bhat$ is unconstrained  expect high variance with nearly
+    singular $\X_c$ \pause
+ - Control how large coefficients may grow 
+    $$\arg \min_{\b} (\Y_c - \X_c \b)^T (\Y_c - \X_c\b)$$
+    subject to
+    $$ \sum \beta_j^2 \le t$$ 
+- Equivalent Quadratic Programming Problem
+    $$\bhat_{R} = \arg \min_{\b} \| \Y_c - \X_c \b\|^2 + \kappa^* \|\b\|^2$$ 
+
+- different approaches to selecting $\kappa^*$ from frequentist ane     Bayesian perspectives
+
+## Plot of Constrained Problem
+
+![](ridge-penalized-loss.png) 
+
+
+## Generalized Ridge Regression
+
+- rather than a common penalty for all variables, consider a different penalty for each variable
+
+- as a prior, we are assuming that the $\b_j$ are iid $\N(0, \frac{\kappa_j}{\phi})$ so that the prior for $\b$ is $\N(\zero_p, \phi^{-1} \Kb)$
+
+- hard enough to choose a single penalty, how to choose $p$ penalties?
+
+- place independent priors on each of the $\kappa_j$'s
+- a hierarchical Bayes model
+
+- if we can integrate out the $\kappa_j$'s we have a new prior for $\beta_j$
+
+- this leads to a new penalty!
+
+- examples include the Lasso (Double Exponential Prior) and Double Pareto Priors
+
+

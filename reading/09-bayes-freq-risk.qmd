@@ -1,0 +1,15 @@
+---
+title: "Bayesian and Frequentist Risk"
+---
+
+We study frequentist properties of Bayes estimators of the regression coefficients under the $g$-prior and independent normal prior that leads to ridge regression.  In particular, there are values of the hper-parameters in the prior that lead to Bayes estimators dominating OLS in terms of MSE.
+
+Readings:
+
+- Christensen Chapter 2.9 and Chapter 15
+
+- Seber & Lee Chapter 3.12, 10.7.3 and 12
+
+- Hoerl, A.E. and Kennard, R.W. (1970) Ridge regression: Biased estimation for nonorthogonal problems. _Technometrics_, 12(1):55–67
+
+- Zellner, A. (1986) On assessing prior distributions and Bayesian regression analysis with $g$-prior distributions. In _Bayesian Inference and Decision Techniques: Essays in Honor of Bruno de Finetti_, eds. P. K. Goel and A. Zellner, 233–243. Amsterdam: North-Holland
