@@ -387,91 +387,91 @@
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#outline",
     "href": "resources/slides/09-bayes-freq-risk.html#outline",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Outline",
     "text": "Outline\n\nFrequentist Risk of Bayes estimators\nBayes and Penalized Loss Functions\nGeneralized Ridge Regression\nHierarchical Bayes and Other Penalties\n\n\nReadings:\n\nChristensen Chapter 2.9 and Chapter 15\nSeber & Lee Chapter 10.7.3 and Chapter 12"
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#frequentist-risk-of-bayes-estimators",
     "href": "resources/slides/09-bayes-freq-risk.html#frequentist-risk-of-bayes-estimators",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Frequentist Risk of Bayes Estimators",
     "text": "Frequentist Risk of Bayes Estimators\nQuadratic loss for estimating \\(\\boldsymbol{\\beta}\\) using estimator \\(\\mathbf{a}\\) \\[ L(\\boldsymbol{\\beta}, \\mathbf{a}) =  ( \\boldsymbol{\\beta}- \\mathbf{a})^T(\\boldsymbol{\\beta}-\\mathbf{a})\\]\n\nConsider our expected loss (before we see the data) of taking an ``action’’ \\(\\mathbf{a}\\) (i.e. reporting \\(\\mathbf{a}\\) as the estimate of \\(\\boldsymbol{\\beta}\\)) \\[ \\textsf{E}_{\\mathbf{Y}\\mid \\boldsymbol{\\beta}}[L(\\boldsymbol{\\beta}, \\mathbf{a})] =  \\textsf{E}_{\\mathbf{Y}\\mid \\boldsymbol{\\beta}}[( \\boldsymbol{\\beta}- \\mathbf{a})^T(\\boldsymbol{\\beta}-\\mathbf{a})]\\] where the expectation is over the data \\(\\mathbf{Y}\\) given the true value of \\(\\boldsymbol{\\beta}\\)."
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#expectation-of-quadratic-forms",
     "href": "resources/slides/09-bayes-freq-risk.html#expectation-of-quadratic-forms",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Expectation of Quadratic Forms",
     "text": "Expectation of Quadratic Forms\n\nTheorem: Christensen Thm 1.3.2If \\(\\mathbf{W}\\) is a random variable with mean \\(\\boldsymbol{\\mu}\\) and covariance matrix \\(\\boldsymbol{\\Sigma}\\) then \\[\\textsf{E}[\\mathbf{W}^T\\mathbf{A}\\mathbf{W}] = \\textsf{tr}(\\mathbf{A}\\boldsymbol{\\Sigma}) + \\boldsymbol{\\mu}^T\\mathbf{A}\\boldsymbol{\\mu}\\]\n\n\n\n\nProof\\[\\begin{eqnarray*}\n(\\mathbf{W}- \\boldsymbol{\\mu})^T\\mathbf{A}(\\mathbf{W}- \\boldsymbol{\\mu}) & = & \\mathbf{W}^T\\mathbf{A}\\mathbf{W}- 2\\boldsymbol{\\mu}^T\\mathbf{A}\\mathbf{W}+ \\boldsymbol{\\mu}^T\\mathbf{A}\\boldsymbol{\\mu}\\\\\n\\textsf{E}[(\\mathbf{W}- \\boldsymbol{\\mu})^T\\mathbf{A}(\\mathbf{W}- \\boldsymbol{\\mu})] & = & \\textsf{E}[\\mathbf{W}^T\\mathbf{A}\\mathbf{W}]  - 2 \\boldsymbol{\\mu}^T\\mathbf{A}\\textsf{E}[\\mathbf{W}] + \\boldsymbol{\\mu}^T\\mathbf{A}\\boldsymbol{\\mu}\n\\end{eqnarray*}\\]\nRearranging we have \\[\\textsf{E}[\\mathbf{W}^T\\mathbf{A}\\mathbf{W}] =  \\textsf{E}[(\\mathbf{W}- \\boldsymbol{\\mu})^T\\mathbf{A}(\\mathbf{W}- \\boldsymbol{\\mu})] + \\boldsymbol{\\mu}^T\\mathbf{A}\\boldsymbol{\\mu}\\]"
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#steps-to-evaluate-frequentist-risk",
     "href": "resources/slides/09-bayes-freq-risk.html#steps-to-evaluate-frequentist-risk",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Steps to Evaluate Frequentist Risk",
     "text": "Steps to Evaluate Frequentist Risk\n\nMSE: \\(\\textsf{E}_\\mathbf{Y}[( \\boldsymbol{\\beta}- \\mathbf{a})^T(\\boldsymbol{\\beta}-\\mathbf{a}) = \\textsf{tr}(\\boldsymbol{\\Sigma}_\\mathbf{a}) + (\\boldsymbol{\\beta}- \\textsf{E}_{\\mathbf{Y}\\mid \\boldsymbol{\\beta}}[\\mathbf{a}])^T(\\boldsymbol{\\beta}- \\textsf{E}_{\\mathbf{Y}\\mid \\boldsymbol{\\beta}}[\\mathbf{a}])\\)\nBias of \\(\\mathbf{a}\\): \\(\\textsf{E}_{\\mathbf{Y}\\mid \\boldsymbol{\\beta}}[\\mathbf{a}- \\boldsymbol{\\beta}] = \\textsf{E}_{\\mathbf{Y}\\mid \\boldsymbol{\\beta}}[\\mathbf{a}] - \\boldsymbol{\\beta}\\)\nCovariance of \\(\\mathbf{a}\\): \\(\\textsf{Cov}_{\\mathbf{Y}\\mid \\boldsymbol{\\beta}}[\\mathbf{a}- \\textsf{E}[\\mathbf{a}]\\)\nMultivariate analog of MSE = Bias\\(^2\\) + Variance in the univariate case"
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#mean-square-error-of-ols-estimator",
     "href": "resources/slides/09-bayes-freq-risk.html#mean-square-error-of-ols-estimator",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Mean Square Error of OLS Estimator",
     "text": "Mean Square Error of OLS Estimator\n\nMSE of OLS \\(\\textsf{E}_\\mathbf{Y}[( \\boldsymbol{\\beta}- \\hat{\\boldsymbol{\\beta}})^T(\\boldsymbol{\\beta}-\\hat{\\boldsymbol{\\beta}})\\)\nOLS is unbiased os mean of \\(\\boldsymbol{\\beta}- \\hat{\\boldsymbol{\\beta}}\\) is \\(\\mathbf{0}_p\\)\ncovariance is \\(\\textsf{Cov}[\\boldsymbol{\\beta}- \\hat{\\boldsymbol{\\beta}}] = \\sigma^2 (\\mathbf{X}^T\\mathbf{X})^{-1}\\) \\[\\begin{eqnarray*}\n\\textsf{MSE}(\\boldsymbol{\\beta}) \\equiv \\textsf{E}_\\mathbf{Y}[( \\boldsymbol{\\beta}- \\hat{\\boldsymbol{\\beta}})^T(\\boldsymbol{\\beta}-\\hat{\\boldsymbol{\\beta}}) & = &\\sigma^2\n\\textsf{tr}[(\\mathbf{X}^T\\mathbf{X})^{-1}]  \\\\\n& = & \\sigma^2 \\textsf{tr}\\mathbf{U}\\Lambda^{-1} \\mathbf{U}^T \\\\\n& = & \\sigma^2 \\sum_{j=1}^p \\lambda_j^{-1}\n\\end{eqnarray*}\\] where \\(\\lambda_j\\) are eigenvalues of \\(\\mathbf{X}^T\\mathbf{X}\\).\nIf smallest \\(\\lambda_j \\to 0\\) then MSE \\(\\to \\infty\\)"
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#mean-square-error-using-the-g-prior",
     "href": "resources/slides/09-bayes-freq-risk.html#mean-square-error-using-the-g-prior",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Mean Square Error using the \\(g\\)-prior",
     "text": "Mean Square Error using the \\(g\\)-prior\n\nposterior mean is \\(\\hat{\\boldsymbol{\\beta}}_g = \\frac{g}{1+g} \\hat{\\boldsymbol{\\beta}}\\) (minimizes Bayes risk under squared error loss)\nbias of \\(\\hat{\\boldsymbol{\\beta}}_g\\): \\[\\begin{align*}\n\\textsf{E}_{\\mathbf{Y}\\mid \\boldsymbol{\\beta}}[\\boldsymbol{\\beta}- \\hat{\\boldsymbol{\\beta}}_g] & = \\boldsymbol{\\beta}\\left(1 - \\frac{g}{1+g}\\right)  = \\frac{1}{1+g} \\boldsymbol{\\beta}\n\\end{align*}\\]\ncovariance of \\(\\hat{\\boldsymbol{\\beta}}_g\\): \\(\\textsf{Cov}(\\hat{\\boldsymbol{\\beta}}_g) = \\frac{g^2}{(1+g)^2} \\sigma^2 (\\mathbf{X}^T\\mathbf{X})^{-1}\\)\nMSE of \\(\\hat{\\boldsymbol{\\beta}}_g\\): \\[\\begin{align*}\n\\textsf{MSE}(\\boldsymbol{\\beta}) = \\frac{g^2}{(1+g)^2} \\sigma^2 \\textsf{tr}(\\mathbf{X}^T\\mathbf{X})^{-1} + \\frac{1}{(1+g)^2} \\|\\boldsymbol{\\beta}\\|^2 \\\\\n= \\frac{1}{(1+g)^2} \\left( g^2 \\sigma^2 \\sum_{j=1}^p\\lambda_j^{-1} + \\|\\boldsymbol{\\beta}\\|^2 \\right)\n\\end{align*}\\]"
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#can-bayes-estimators-have-smaller-mse-than-ols",
     "href": "resources/slides/09-bayes-freq-risk.html#can-bayes-estimators-have-smaller-mse-than-ols",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Can Bayes Estimators have smaller MSE than OLS?",
     "text": "Can Bayes Estimators have smaller MSE than OLS?\n\nMSE of OLS is \\(\\textsf{E}_\\mathbf{Y}[( \\boldsymbol{\\beta}- \\hat{\\boldsymbol{\\beta}})^T(\\boldsymbol{\\beta}-\\hat{\\boldsymbol{\\beta}}) = \\sigma^2\n  \\textsf{tr}[(\\mathbf{X}^T\\mathbf{X})^{-1}]\\) (OLS has minimum MSE under squared error loss out of all unbiased estimators)\nMSE of \\(g\\)-prior estimator is\n\\[\\textsf{MSE}_g(\\boldsymbol{\\beta}) = \\frac{1}{(1+g)^2} \\left( g^2 \\sigma^2 \\textsf{tr}[(\\mathbf{X}^T\\mathbf{X})^{-1}] + \\|\\boldsymbol{\\beta}\\|^2 \\right)\\]\nfor fixed \\(\\boldsymbol{\\beta}\\), what values of \\(g\\) is the MSE of \\(\\hat{\\boldsymbol{\\beta}}_g\\) lower than that of \\(\\hat{\\boldsymbol{\\beta}}\\)?\nfor fixed \\(g\\), what values of \\(\\boldsymbol{\\beta}\\) is the MSE of \\(\\hat{\\boldsymbol{\\beta}}_g\\) lower than that of \\(\\hat{\\boldsymbol{\\beta}}\\)?\nis there a value of \\(g\\) that minimizes the MSE of \\(\\hat{\\boldsymbol{\\beta}}_g\\)?\nwhat is the MSE of \\(\\hat{\\boldsymbol{\\beta}}_g\\) under the “optimal” \\(g\\)?\nis the MSE of \\(\\hat{\\boldsymbol{\\beta}}_g\\) using the “optimal” \\(g\\) always lower than that of \\(\\hat{\\boldsymbol{\\beta}}\\)?"
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#mean-square-error-under-ridge-priors",
     "href": "resources/slides/09-bayes-freq-risk.html#mean-square-error-under-ridge-priors",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Mean Square Error under Ridge Priors",
     "text": "Mean Square Error under Ridge Priors\n\nMSE with OLS and \\(g\\)-prior estimators depend on the eigenvalues of \\(\\mathbf{X}^T\\mathbf{X}\\) and can be infinite if the smallest eigenvalue is zero.\nRidge regression estimator \\(\\hat{\\boldsymbol{\\beta}}_\\kappa = (\\mathbf{X}^T\\mathbf{X}+  \\kappa \\mathbf{I}_p)^{-1} \\mathbf{X}^T\\mathbf{Y}\\) has finite MSE for all \\(\\kappa &gt; 0\\). (\\(k = 0\\) is OLS)\nMSE of Ridge estimator \\(\\textsf{E}_{\\mathbf{Y}\\mid \\boldsymbol{\\beta}}[( \\boldsymbol{\\beta}- \\hat{\\boldsymbol{\\beta}}_\\kappa)^T(\\boldsymbol{\\beta}-\\hat{\\boldsymbol{\\beta}}_\\kappa) = \\textsf{E}[(\\boldsymbol{\\alpha}- \\mathbf{a})^T(\\boldsymbol{\\alpha}- \\mathbf{a})]\\)\nbias of \\(a_j = \\frac{\\lambda_j}{\\lambda_j + \\kappa} \\hat{\\alpha}_j\\) is \\(\\frac{\\kappa}{\\lambda_j + \\kappa} {\\alpha}_j\\)\nvariance \\(a_j = \\sigma^2 \\frac{\\lambda_j^2}{(\\lambda_j + \\kappa)^2}\\) \\[\\textsf{MSE}_R = \\sigma^2 \\sum_{j=1}^p \\frac{\\lambda_j^2}{(\\lambda_j + \\kappa)^2} + \\sum_{j=1}^p \\frac{\\kappa^2}{(\\lambda_j + \\kappa)^2} \\alpha_j^2\\]\ncan show that the deriviate of the \\(\\textsf{MSE}_R\\) with respect to \\(\\kappa\\) is negative at \\(k = 0\\) so that there exists a \\(\\kappa\\) so the MSE of the Ridge estimator is always less than that of OLS."
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#penalized-regression",
     "href": "resources/slides/09-bayes-freq-risk.html#penalized-regression",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Penalized Regression",
     "text": "Penalized Regression\n\nRidge regression is a special case of penalized regression where the penalty is \\(\\kappa \\|\\boldsymbol{\\beta}\\|^2\\) for some \\(\\kappa &gt; 0\\). (let \\(\\kappa^* = \\kappa/\\phi\\))\nposterior mode maximizes the posterior density or log posterior density \\[\\begin{align*}\n\\hat{\\boldsymbol{\\beta}}_R = \\arg \\max_{\\boldsymbol{\\beta}} \\cal{L}(\\boldsymbol{\\beta}) & = \\log p(\\boldsymbol{\\beta}\\mid \\mathbf{Y}) \\propto \\log p(\\mathbf{Y}\\mid \\boldsymbol{\\beta}) + \\log p(\\boldsymbol{\\beta}) \\\\\n& = -\\frac{\\phi}{2} \\|\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2 - \\frac{\\kappa}{2} \\|\\boldsymbol{\\beta}\\|^2 \\\\\n& = -\\frac{\\phi}{2} \\left( \\|\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2 + \\kappa^* \\|\\boldsymbol{\\beta}\\|^2 \\right)\n\\end{align*}\\]\nmaximizing the posterior mode is equivalent to minimizing the penalized loss function \\[\\begin{align*}\n\\hat{\\boldsymbol{\\beta}}_R & =  \\arg \\max_{\\boldsymbol{\\beta}} -\\left(\\|\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2 + \\kappa^* \\|\\boldsymbol{\\beta}\\|^2 \\right) \\\\\n& = \\arg \\min_{\\boldsymbol{\\beta}} \\left(\\|\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2 + \\kappa^* \\|\\boldsymbol{\\beta}\\|^2 \\right)\n\\end{align*}\\]"
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#scaling-and-centering",
     "href": "resources/slides/09-bayes-freq-risk.html#scaling-and-centering",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Scaling and Centering",
     "text": "Scaling and Centering\nNote: usually use Ridge regression after centering and scaling the columns of \\(\\mathbf{X}\\) so that the penalty is the same for all variables. \\(\\mathbf{Y}_c = (\\mathbf{I}- \\mathbf{P}_1) \\mathbf{Y}\\) and \\(X_c\\) the centered and standardized \\(\\mathbf{X}\\) matrix\n\nalternatively as a prior, we are assuming that the \\(\\boldsymbol{\\beta}_j\\) are iid \\(\\textsf{N}(0, \\kappa^*)\\) so that the prior for \\(\\boldsymbol{\\beta}\\) is \\(\\textsf{N}(\\mathbf{0}_p, \\kappa^* \\mathbf{I}_p)\\)\nif the units/scales of the variables are different, then the variance or penality should be different for each variable.\nstandardizing the \\(\\mathbf{X}\\) so that \\(\\mathbf{X}_c^T\\mathbf{X}_c\\) is a constant times the correlation matrix of \\(\\mathbf{X}\\) ensures that all \\(\\boldsymbol{\\beta}\\)’s have the same scale\ncentering the data forces the intercept to be 0 (so no shrinkage or penality)"
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#alternative-motivation",
     "href": "resources/slides/09-bayes-freq-risk.html#alternative-motivation",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Alternative Motivation",
     "text": "Alternative Motivation\n\nIf \\(\\hat{\\boldsymbol{\\beta}}\\) is unconstrained expect high variance with nearly singular \\(\\mathbf{X}_c\\) \nControl how large coefficients may grow \\[\\arg \\min_{\\boldsymbol{\\beta}} (\\mathbf{Y}_c - \\mathbf{X}_c \\boldsymbol{\\beta})^T (\\mathbf{Y}_c - \\mathbf{X}_c\\boldsymbol{\\beta})\\] subject to \\[ \\sum \\beta_j^2 \\le t\\]\nEquivalent Quadratic Programming Problem \\[\\hat{\\boldsymbol{\\beta}}_{R} = \\arg \\min_{\\boldsymbol{\\beta}} \\| \\mathbf{Y}_c - \\mathbf{X}_c \\boldsymbol{\\beta}\\|^2 + \\kappa^* \\|\\boldsymbol{\\beta}\\|^2\\]\ndifferent approaches to selecting \\(\\kappa^*\\) from frequentist ane Bayesian perspectives"
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#plot-of-constrained-problem",
     "href": "resources/slides/09-bayes-freq-risk.html#plot-of-constrained-problem",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Plot of Constrained Problem",
     "text": "Plot of Constrained Problem"
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#generalized-ridge-regression",
     "href": "resources/slides/09-bayes-freq-risk.html#generalized-ridge-regression",
-    "title": "Bayesian Estimation in Linear Models",
+    "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Generalized Ridge Regression",
     "text": "Generalized Ridge Regression\n\nrather than a common penalty for all variables, consider a different penalty for each variable\nas a prior, we are assuming that the \\(\\boldsymbol{\\beta}_j\\) are iid \\(\\textsf{N}(0, \\frac{\\kappa_j}{\\phi})\\) so that the prior for \\(\\boldsymbol{\\beta}\\) is \\(\\textsf{N}(\\mathbf{0}_p, \\phi^{-1} \\Kb)\\)\nhard enough to choose a single penalty, how to choose \\(p\\) penalties?\nplace independent priors on each of the \\(\\kappa_j\\)’s\na hierarchical Bayes model\nif we can integrate out the \\(\\kappa_j\\)’s we have a new prior for \\(\\beta_j\\)\nthis leads to a new penalty!\nexamples include the Lasso (Double Exponential Prior) and Double Pareto Priors\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
