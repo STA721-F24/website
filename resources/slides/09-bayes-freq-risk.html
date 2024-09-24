@@ -326,23 +326,15 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Proposition {
+  .Exercise {
     --color1: #948bde;
     --color2: #584eab;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Lemma {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Proof {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -350,21 +342,29 @@
     --color1: #c0c0c0;
     --color2: #808080;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Proposition {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Proof {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   .Theorem {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Lemma {
     --color1: #948bde;
     --color2: #584eab;
   }
   .Definition {
     --color1: #d999d3;
     --color2: #a01793;
-  }
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
   }
   </style>
 </head>
@@ -432,7 +432,7 @@ Merlise Clyde (clyde@duke.edu)
 
 <div id="continued" class="Proof" title="continued">
 <p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof: </strong>continued</summary><div>Recall <span class="math display">\[\begin{align*}
-\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})] &amp; = \textsf{E}[\textsf{tr}((\mathbf{W}- \boldsymbol{\mu})\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})^T)] \\
+\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})] &amp; = \textsf{E}[\textsf{tr}((\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})^T)] \\
 &amp; = \textsf{tr}(\textsf{E}[\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})(\mathbf{W}- \boldsymbol{\mu})^T]) \\
 &amp; = \textsf{tr}(\mathbf{A}\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})(\mathbf{W}- \boldsymbol{\mu})^T]) \\
 &amp; = \textsf{tr}(\mathbf{A}\boldsymbol{\Sigma})
@@ -527,7 +527,7 @@ Merlise Clyde (clyde@duke.edu)
 <h2>Scaling and Centering</h2>
 <p>Note: usually use Ridge regression after centering and scaling the columns of <span class="math inline">\(\mathbf{X}\)</span> so that the penalty is the same for all variables. <span class="math inline">\(\mathbf{Y}_c = (\mathbf{I}- \mathbf{P}_1) \mathbf{Y}\)</span> and <span class="math inline">\(X_c\)</span> the centered and standardized <span class="math inline">\(\mathbf{X}\)</span> matrix</p>
 <ul>
-<li class="fragment"><p>alternatively as a prior, we are assuming that the <span class="math inline">\(\boldsymbol{\beta}_j\)</span> are iid <span class="math inline">\(\textsf{N}(0, \kappa^*)\)</span> so that the prior for <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{N}(\mathbf{0}_p, \kappa^* \mathbf{I}_p)\)</span></p></li>
+<li class="fragment"><p>alternatively as a prior, we are assuming that the <span class="math inline">\(\boldsymbol{\beta}_j\)</span> are iid <span class="math inline">\(\textsf{N}(0, 1/\kappa^*)\)</span> so that the prior for <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{N}(\mathbf{0}_p, \mathbf{I}_p/\kappa^* )\)</span></p></li>
 <li class="fragment"><p>if the units/scales of the variables are different, then the variance or penality should be different for each variable.</p></li>
 <li class="fragment"><p>standardizing the <span class="math inline">\(\mathbf{X}\)</span> so that <span class="math inline">\(\mathbf{X}_c^T\mathbf{X}_c\)</span> is a constant times the correlation matrix of <span class="math inline">\(\mathbf{X}\)</span> ensures that all <span class="math inline">\(\boldsymbol{\beta}\)</span>’s have the same scale</p></li>
 <li class="fragment"><p>centering the data forces the intercept to be 0 (so no shrinkage or penality)</p></li>
@@ -550,7 +550,7 @@ Merlise Clyde (clyde@duke.edu)
 <h2>Generalized Ridge Regression</h2>
 <ul>
 <li class="fragment"><p>rather than a common penalty for all variables, consider a different penalty for each variable</p></li>
-<li class="fragment"><p>as a prior, we are assuming that the <span class="math inline">\(\boldsymbol{\beta}_j\)</span> are iid <span class="math inline">\(\textsf{N}(0, \frac{\kappa_j}{\phi})\)</span> so that the prior for <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{N}(\mathbf{0}_p, \phi^{-1} \mathbf{K})\)</span> where <span class="math inline">\(\mathbf{K}= \textsf{diag}(\kappa_1, \ldots, \kappa_p)\)</span></p></li>
+<li class="fragment"><p>as a prior, we are assuming that the <span class="math inline">\(\boldsymbol{\beta}_j\)</span> are iid <span class="math inline">\(\textsf{N}(0, \frac{\kappa_j}{\phi})\)</span> so that the prior for <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{N}(\mathbf{0}_p, \phi^{-1} \mathbf{K}^{-1})\)</span> where <span class="math inline">\(\mathbf{K}= \textsf{diag}(\kappa_1, \ldots, \kappa_p)\)</span></p></li>
 <li class="fragment"><p>hard enough to choose a single penalty, how to choose <span class="math inline">\(p\)</span> penalties?</p></li>
 <li class="fragment"><p>place independent priors on each of the <span class="math inline">\(\kappa_j\)</span>’s</p></li>
 <li class="fragment"><p>a hierarchical Bayes model</p></li>
