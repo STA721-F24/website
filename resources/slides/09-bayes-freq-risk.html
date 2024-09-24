@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – Best Linear Unbiased Estimators</title>
+  <title>STA721-F24: Linear Models – Bayesian Estimation in Linear Models</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,71 +30,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -391,11 +326,23 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
   }
-  .Corollary {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
+  }
+  .Proposition {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Proof {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -403,23 +350,19 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
-  }
   .Feature {
     --color1: #c0c0c0;
     --color2: #808080;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Lemma {
+  .Corollary {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Proof {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Exercise {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -430,8 +373,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Best Linear Unbiased Estimators</h1>
-  <p class="subtitle">STA 721: Lecture 4</p>
+  <h1 class="title">Bayesian Estimation in Linear Models</h1>
+  <p class="subtitle">STA 721: Lecture 8</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -448,273 +391,178 @@ Merlise Clyde (clyde@duke.edu)
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
 <ul>
-<li class="fragment">Characterizing Linear Unbiased Estimators</li>
-<li class="fragment">Gauss-Markov Theorem</li>
-<li class="fragment">Best Linear Unbiased Estimators</li>
+<li class="fragment">Frequentist Risk of Bayes estimators</li>
+<li class="fragment">Bayes and Penalized Loss Functions</li>
+<li class="fragment">Generalized Ridge Regression</li>
+<li class="fragment">Hierarchical Bayes and Other Penalties</li>
 </ul>
 <div class="fragment">
-<p>Readings: - Christensen Chapter 1-2 and Appendix B - Seber &amp; Lee Chapter 3</p>
+<p>Readings:</p>
+<ul>
+<li class="fragment">Christensen Chapter 2.9 and Chapter 15</li>
+<li class="fragment">Seber &amp; Lee Chapter 10.7.3 and Chapter 12</li>
+</ul>
 </div>
 </section>
-<section id="full-rank-case" class="slide level2">
-<h2>Full Rank Case</h2>
+<section id="frequentist-risk-of-bayes-estimators" class="slide level2">
+<h2>Frequentist Risk of Bayes Estimators</h2>
+<p>Quadratic loss for estimating <span class="math inline">\(\boldsymbol{\beta}\)</span> using estimator <span class="math inline">\(\mathbf{a}\)</span> <span class="math display">\[ L(\boldsymbol{\beta}, \mathbf{a}) =  ( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a})\]</span></p>
 <ul>
-<li class="fragment"><p>Model: <span class="math inline">\(\mathbf{Y}= \boldsymbol{\mu}+ \boldsymbol{\epsilon}\)</span></p></li>
-<li class="fragment"><p>Minimal Assumptions:</p>
-<ul>
-<li class="fragment">Mean <span class="math inline">\(\boldsymbol{\mu}\in C(\mathbf{X})\)</span> for <span class="math inline">\(\mathbf{X}\in \mathbb{R}^{n \times p}\)</span></li>
-<li class="fragment">Errors <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span></li>
-</ul></li>
+<li class="fragment">Consider our expected loss (before we see the data) of taking an ``action’’ <span class="math inline">\(\mathbf{a}\)</span> (i.e.&nbsp;reporting <span class="math inline">\(\mathbf{a}\)</span> as the estimate of <span class="math inline">\(\boldsymbol{\beta}\)</span>) <span class="math display">\[ \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[L(\boldsymbol{\beta}, \mathbf{a})] =  \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a})]\]</span> where the expectation is over the data <span class="math inline">\(\mathbf{Y}\)</span> given the true value of <span class="math inline">\(\boldsymbol{\beta}\)</span>.</li>
 </ul>
+</section>
+<section id="expectation-of-quadratic-forms" class="slide level2">
+<h2>Expectation of Quadratic Forms</h2>
+<div id="christensen-thm-1.3.2" class="Theorem" title="Christensen Thm 1.3.2">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Christensen Thm 1.3.2</summary><div>If <span class="math inline">\(\mathbf{W}\)</span> is a random variable with mean <span class="math inline">\(\boldsymbol{\mu}\)</span> and covariance matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> then <span class="math display">\[\textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}] = \textsf{tr}(\mathbf{A}\boldsymbol{\Sigma}) + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\]</span><p></p>
+</div></details>
+</div>
 <div class="fragment">
-<div id="linear-unbiased-estimators-lues" class="Definition unnumbered" title="Linear Unbiased Estimators (LUEs)">
-<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Linear Unbiased Estimators (LUEs)</summary><div>
-<p>An estimator <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> is a <strong>Linear Unbiased Estimator</strong> (LUE) of <span class="math inline">\(\boldsymbol{\beta}\)</span> if</p>
-<ol type="1">
-<li class="fragment">linearity: <span class="math inline">\(\tilde{\boldsymbol{\beta}}= \mathbf{A}\mathbf{Y}\)</span> for <span class="math inline">\(\mathbf{A}\in \mathbb{R}^{p \times n}\)</span></li>
-<li class="fragment">unbiasedness: <span class="math inline">\(\textsf{E}[\tilde{\boldsymbol{\beta}}] = \boldsymbol{\beta}\)</span> for all <span class="math inline">\(\boldsymbol{\beta}\in \mathbb{R}^p\)</span></li>
-</ol>
+<div id="Proof*-0.2" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div><span class="math display">\[\begin{eqnarray*}
+(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu}) &amp; = &amp; \mathbf{W}^T\mathbf{A}\mathbf{W}- 2\boldsymbol{\mu}^T\mathbf{A}\mathbf{W}+ \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\\
+\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})] &amp; = &amp; \textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}]  - 2 \boldsymbol{\mu}^T\mathbf{A}\textsf{E}[\mathbf{W}] + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}
+\end{eqnarray*}\]</span><p></p>
+<p>Rearranging we have <span class="math display">\[\textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}] =  \textsf{E}[(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})] + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\]</span></p>
 </div></details>
 </div>
 </div>
-<div class="fragment">
-<p>The class of linear unbiased estimators is the same for every model with parameter space <span class="math inline">\(\boldsymbol{\beta}\in \mathbb{R}^p\)</span> and <span class="math inline">\(P \in \cal{P}\)</span>, for any collection <span class="math inline">\(\cal{P}\)</span> of mean-zero distributions over <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
-</div>
 </section>
-<section id="linear-unbiased-estimators-lues-1" class="slide level2">
-<h2>Linear Unbiased Estimators (LUEs)</h2>
+<section class="slide level2">
+
+<div id="continued" class="Proof" title="continued">
+<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof: </strong>continued</summary><div>Recall <span class="math display">\[\begin{align*}
+\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})] &amp; = \textsf{E}[\textsf{tr}((\mathbf{W}- \boldsymbol{\mu})\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})^T)] \\
+&amp; = \textsf{tr}(\textsf{E}[\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})(\mathbf{W}- \boldsymbol{\mu})^T]) \\
+&amp; = \textsf{tr}(\mathbf{A}\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})(\mathbf{W}- \boldsymbol{\mu})^T]) \\
+&amp; = \textsf{tr}(\mathbf{A}\boldsymbol{\Sigma})
+\end{align*}\]</span> Therefore the expectation is <span class="math display">\[\textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}] = \textsf{tr}(\mathbf{A}\boldsymbol{\Sigma}) + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\]</span><p></p>
+</div></details>
+</div>
 <ul>
-<li class="fragment">Let <span class="math inline">\(\textsf{N}\)</span> be an ONB for <span class="math inline">\(\boldsymbol{{\cal N}}= \boldsymbol{{\cal M}}^\perp = N(\mathbf{X}^T)\)</span>:
-<ul>
-<li class="fragment"><span class="math inline">\(\textsf{N}^T\mathbf{m}=  \textsf{N}^T\mathbf{X}\mathbf{b}= \mathbf{0}\quad \forall \mathbf{m}=\mathbf{X}\mathbf{b}\in \boldsymbol{{\cal M}}\)</span></li>
-<li class="fragment"><span class="math inline">\(\textsf{N}^T\textsf{N}= \mathbf{I}_{n-p}\)</span></li>
-</ul></li>
+<li class="fragment">Use Theorem to Explore Frequentist Risk of using a Bayesian estimator <span class="math display">\[\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a})\]</span> compared to the OLS estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>.</li>
 </ul>
-<div class="fragment">
-<p>Consider another linear estimator <span class="math inline">\(\tilde{\boldsymbol{\beta}}= \mathbf{A}\mathbf{Y}\)</span></p>
+</section>
+<section id="steps-to-evaluate-frequentist-risk" class="slide level2">
+<h2>Steps to Evaluate Frequentist Risk</h2>
 <ul>
-<li class="fragment"><p>Difference between <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> (OLS/MLE): <span class="math display">\[\begin{align*}
-  \mathbf{\delta}= \tilde{\boldsymbol{\beta}}- \hat{\boldsymbol{\beta}}&amp; = \left(\mathbf{A}- (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T \right)\mathbf{Y}\\
-                  &amp; \equiv \mathbf{H}^T \mathbf{Y}
+<li class="fragment">MSE: <span class="math inline">\(\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a}) = \textsf{tr}(\boldsymbol{\Sigma}_\mathbf{a}) + (\boldsymbol{\beta}- \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}])^T(\boldsymbol{\beta}- \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}])\)</span></li>
+<li class="fragment">Bias of <span class="math inline">\(\mathbf{a}\)</span>: <span class="math inline">\(\textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}- \boldsymbol{\beta}] = \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}] - \boldsymbol{\beta}\)</span></li>
+<li class="fragment">Covariance of <span class="math inline">\(\mathbf{a}\)</span>: <span class="math inline">\(\textsf{Cov}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}- \textsf{E}[\mathbf{a}]\)</span></li>
+<li class="fragment">Multivariate analog of MSE = Bias<span class="math inline">\(^2\)</span> + Variance in the univariate case</li>
+</ul>
+</section>
+<section id="mean-square-error-of-ols-estimator" class="slide level2">
+<h2>Mean Square Error of OLS Estimator</h2>
+<ul>
+<li class="fragment"><p>MSE of OLS <span class="math inline">\(\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}})\)</span></p></li>
+<li class="fragment"><p>OLS is unbiased os mean of <span class="math inline">\(\boldsymbol{\beta}- \hat{\boldsymbol{\beta}}\)</span> is <span class="math inline">\(\mathbf{0}_p\)</span></p></li>
+<li class="fragment"><p>covariance is <span class="math inline">\(\textsf{Cov}[\boldsymbol{\beta}- \hat{\boldsymbol{\beta}}] = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}\)</span> <span class="math display">\[\begin{eqnarray*}
+\textsf{MSE}(\boldsymbol{\beta}) \equiv \textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}}) &amp; = &amp;\sigma^2
+\textsf{tr}[(\mathbf{X}^T\mathbf{X})^{-1}]  \\
+&amp; = &amp; \sigma^2 \textsf{tr}\mathbf{U}\Lambda^{-1} \mathbf{U}^T \\
+&amp; = &amp; \sigma^2 \sum_{j=1}^p \lambda_j^{-1}
+\end{eqnarray*}\]</span> where <span class="math inline">\(\lambda_j\)</span> are eigenvalues of <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span>.</p></li>
+<li class="fragment"><p>If smallest <span class="math inline">\(\lambda_j \to 0\)</span> then MSE <span class="math inline">\(\to \infty\)</span></p></li>
+</ul>
+</section>
+<section id="mean-square-error-using-the-g-prior" class="slide level2">
+<h2>Mean Square Error using the <span class="math inline">\(g\)</span>-prior</h2>
+<ul>
+<li class="fragment"><p>posterior mean is <span class="math inline">\(\hat{\boldsymbol{\beta}}_g = \frac{g}{1+g} \hat{\boldsymbol{\beta}}\)</span> (minimizes Bayes risk under squared error loss)</p></li>
+<li class="fragment"><p>bias of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>: <span class="math display">\[\begin{align*}
+\textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\boldsymbol{\beta}- \hat{\boldsymbol{\beta}}_g] &amp; = \boldsymbol{\beta}\left(1 - \frac{g}{1+g}\right)  = \frac{1}{1+g} \boldsymbol{\beta}
 \end{align*}\]</span></p></li>
-<li class="fragment"><p>Since both <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> are unbiased, <span class="math inline">\(\textsf{E}[\mathbf{\delta}] = \mathbf{0}_p \quad \forall \boldsymbol{\beta}\in \mathbb{R}^p\)</span> <span class="math display">\[\mathbf{0}_p = \textsf{E}[\mathbf{H}^T \mathbf{Y}] = \mathbf{H}^T \mathbf{X}\boldsymbol{\beta}\quad \forall \boldsymbol{\beta}\in \mathbb{R}^p\]</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\mathbf{X}^T \mathbf{H}= \mathbf{0}\)</span> so each column of <span class="math inline">\(\mathbf{H}\)</span> is in <span class="math inline">\(\boldsymbol{{\cal M}}^\perp \equiv \boldsymbol{{\cal N}}\)</span></p></li>
+<li class="fragment"><p>covariance of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>: <span class="math inline">\(\textsf{Cov}(\hat{\boldsymbol{\beta}}_g) = \frac{g^2}{(1+g)^2} \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}\)</span></p></li>
+<li class="fragment"><p>MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>: <span class="math display">\[\begin{align*}
+\textsf{MSE}(\boldsymbol{\beta}) = \frac{g^2}{(1+g)^2} \sigma^2 \textsf{tr}(\mathbf{X}^T\mathbf{X})^{-1} + \frac{1}{(1+g)^2} \|\boldsymbol{\beta}\|^2 \\
+= \frac{1}{(1+g)^2} \left( g^2 \sigma^2 \sum_{j=1}^p\lambda_j^{-1} + \|\boldsymbol{\beta}\|^2 \right)
+\end{align*}\]</span></p></li>
+</ul>
+</section>
+<section id="can-bayes-estimators-have-smaller-mse-than-ols" class="slide level2">
+<h2>Can Bayes Estimators have smaller MSE than OLS?</h2>
+<ul>
+<li class="fragment"><p>MSE of OLS is <span class="math inline">\(\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}}) = \sigma^2
+  \textsf{tr}[(\mathbf{X}^T\mathbf{X})^{-1}]\)</span> (OLS has minimum MSE under squared error loss out of all <em>unbiased</em> estimators)</p></li>
+<li class="fragment"><p>MSE of <span class="math inline">\(g\)</span>-prior estimator is<br>
+<span class="math display">\[\textsf{MSE}_g(\boldsymbol{\beta}) = \frac{1}{(1+g)^2} \left( g^2 \sigma^2 \textsf{tr}[(\mathbf{X}^T\mathbf{X})^{-1}] + \|\boldsymbol{\beta}\|^2 \right)\]</span></p></li>
+<li class="fragment"><p>for fixed <span class="math inline">\(\boldsymbol{\beta}\)</span>, what values of <span class="math inline">\(g\)</span> is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> lower than that of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>?</p></li>
+<li class="fragment"><p>for fixed <span class="math inline">\(g\)</span>, what values of <span class="math inline">\(\boldsymbol{\beta}\)</span> is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> lower than that of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>?</p></li>
+<li class="fragment"><p>is there a value of <span class="math inline">\(g\)</span> that minimizes the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>?</p></li>
+<li class="fragment"><p>what is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> under the “optimal” <span class="math inline">\(g\)</span>?</p></li>
+<li class="fragment"><p>is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> using the “optimal” <span class="math inline">\(g\)</span> always lower than that of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>?</p></li>
+</ul>
+</section>
+<section id="mean-square-error-under-ridge-priors" class="slide level2">
+<h2>Mean Square Error under Ridge Priors</h2>
+<ul>
+<li class="fragment"><p>MSE with OLS and <span class="math inline">\(g\)</span>-prior estimators depend on the eigenvalues of <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> and can be infinite if the smallest eigenvalue is zero.</p></li>
+<li class="fragment"><p>Ridge regression estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}_\kappa = (\mathbf{X}^T\mathbf{X}+  \kappa \mathbf{I}_p)^{-1} \mathbf{X}^T\mathbf{Y}\)</span> has finite MSE for all <span class="math inline">\(\kappa &gt; 0\)</span>. (<span class="math inline">\(k = 0\)</span> is OLS)</p></li>
+<li class="fragment"><p>MSE of Ridge estimator <span class="math inline">\(\textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}}_\kappa)^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}}_\kappa) = \textsf{E}[(\boldsymbol{\alpha}- \mathbf{a})^T(\boldsymbol{\alpha}- \mathbf{a})]\)</span></p></li>
+<li class="fragment"><p>bias of <span class="math inline">\(a_j = \frac{\lambda_j}{\lambda_j + \kappa} \hat{\alpha}_j\)</span> is <span class="math inline">\(\frac{\kappa}{\lambda_j + \kappa} {\alpha}_j\)</span></p></li>
+<li class="fragment"><p>variance <span class="math inline">\(a_j = \sigma^2 \frac{\lambda_j^2}{(\lambda_j + \kappa)^2}\)</span> <span class="math display">\[\textsf{MSE}_R = \sigma^2 \sum_{j=1}^p \frac{\lambda_j^2}{(\lambda_j + \kappa)^2} + \sum_{j=1}^p \frac{\kappa^2}{(\lambda_j + \kappa)^2} \alpha_j^2\]</span></p></li>
+<li class="fragment"><p>can show that the deriviate of the <span class="math inline">\(\textsf{MSE}_R\)</span> with respect to <span class="math inline">\(\kappa\)</span> is negative at <span class="math inline">\(k = 0\)</span> so that there exists a <span class="math inline">\(\kappa\)</span> so the MSE of the Ridge estimator is always less than that of OLS.</p></li>
+</ul>
+</section>
+<section id="penalized-regression" class="slide level2">
+<h2>Penalized Regression</h2>
+<ul>
+<li class="fragment"><p>Ridge regression is a special case of penalized regression where the penalty is <span class="math inline">\(\kappa \|\boldsymbol{\beta}\|^2\)</span> for some <span class="math inline">\(\kappa &gt; 0\)</span>. (let <span class="math inline">\(\kappa^* = \kappa/\phi\)</span>)</p></li>
+<li class="fragment"><p>posterior mode maximizes the posterior density or log posterior density <span class="math display">\[\begin{align*}
+\hat{\boldsymbol{\beta}}_R = \arg \max_{\boldsymbol{\beta}} \cal{L}(\boldsymbol{\beta}) &amp; = \log p(\boldsymbol{\beta}\mid \mathbf{Y}) \propto \log p(\mathbf{Y}\mid \boldsymbol{\beta}) + \log p(\boldsymbol{\beta}) \\
+&amp; = -\frac{\phi}{2} \|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 - \frac{\kappa}{2} \|\boldsymbol{\beta}\|^2 \\
+&amp; = -\frac{\phi}{2} \left( \|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2 \right)
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>maximizing the posterior mode is equivalent to minimizing the penalized loss function <span class="math display">\[\begin{align*}
+\hat{\boldsymbol{\beta}}_R &amp; =  \arg \max_{\boldsymbol{\beta}} -\left(\|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2 \right) \\
+&amp; = \arg \min_{\boldsymbol{\beta}} \left(\|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2 \right)
+\end{align*}\]</span></p></li>
 </ul>
 <div class="footer">
 
 </div>
-</div>
 </section>
-<section id="lues-continued" class="slide level2">
-<h2>LUEs continued</h2>
-<p>Since each column of <span class="math inline">\(\mathbf{H}\)</span> is in <span class="math inline">\(\boldsymbol{{\cal N}}\)</span> there exists a <span class="math inline">\(\mathbf{G}\in \mathbb{R}^{p \times (n-p)} \ni \mathbf{H}= \textsf{N}\mathbf{G}^T\)</span></p>
-<div class="fragment">
-<p>Rewriting <span class="math inline">\(\mathbf{\delta}= \tilde{\boldsymbol{\beta}}- \hat{\boldsymbol{\beta}}\)</span>: <span class="math display">\[\begin{align*}
-\tilde{\boldsymbol{\beta}}&amp; = \hat{\boldsymbol{\beta}}+ \mathbf{\delta}\\
-         &amp; = \hat{\boldsymbol{\beta}}+ \mathbf{H}^T\mathbf{Y}\\
-         &amp; = \hat{\boldsymbol{\beta}}+ \mathbf{G}\textsf{N}^T\mathbf{Y}
-\end{align*}\]</span></p>
+<section id="scaling-and-centering" class="slide level2">
+<h2>Scaling and Centering</h2>
+<p>Note: usually use Ridge regression after centering and scaling the columns of <span class="math inline">\(\mathbf{X}\)</span> so that the penalty is the same for all variables. <span class="math inline">\(\mathbf{Y}_c = (\mathbf{I}- \mathbf{P}_1) \mathbf{Y}\)</span> and <span class="math inline">\(X_c\)</span> the centered and standardized <span class="math inline">\(\mathbf{X}\)</span> matrix</p>
 <ul>
-<li class="fragment">therefore <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> is linear and unbiased: <span class="math display">\[\begin{align*}
-\textsf{E}[\tilde{\boldsymbol{\beta}}] &amp; = \textsf{E}[\hat{\boldsymbol{\beta}}+ \mathbf{G}\textsf{N}^T\mathbf{Y}] \\
-           &amp; =  \textsf{E}[\hat{\boldsymbol{\beta}}] + \textsf{E}[\mathbf{G}\textsf{N}^T\mathbf{Y}] \\
-           &amp; =  \boldsymbol{\beta}+ \mathbf{G}\textsf{N}^T\mathbf{X}\boldsymbol{\beta}\\
-           &amp; = \boldsymbol{\beta}
-\end{align*}\]</span></li>
-</ul>
-</div>
-</section>
-<section id="characterization-of-lues" class="slide level2">
-<h2>Characterization of LUEs</h2>
-<p>Summary of previous results:</p>
-<div id="Theorem*-0.2" class="Theorem unnumbered">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem</strong></summary><div>An estimator <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> is a linear unbiased estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> in a linear statistical model if and only if <span class="math display">\[\tilde{\boldsymbol{\beta}}= \hat{\boldsymbol{\beta}}+ \mathbf{H}^T\mathbf{Y}\]</span> for some <span class="math inline">\(\mathbf{H}\in \mathbb{R}^{n \times p}\)</span> such that <span class="math inline">\(\mathbf{X}^T \mathbf{H}= \mathbf{0}\)</span> or equivalently for some <span class="math inline">\(\mathbf{G}\in \mathbb{R}^{p \times (n-p)}\)</span> <span class="math display">\[\tilde{\boldsymbol{\beta}}= \hat{\boldsymbol{\beta}}+ \mathbf{G}\textsf{N}^T\mathbf{Y}\]</span><p></p>
-</div></details>
-</div>
-</section>
-<section id="numerical" class="slide level2">
-<h2>Numerical</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># X is model matrix; Y is response</span></span>
-<span id="cb1-2"><a></a>  p <span class="ot">=</span> <span class="fu">ncol</span>(X)</span>
-<span id="cb1-3"><a></a>  n <span class="ot">=</span> <span class="fu">nrow</span>(X)</span>
-<span id="cb1-4"><a></a>  G <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(p<span class="sc">*</span>(n<span class="sc">-</span>p)), <span class="at">nrow=</span>p, <span class="at">ncol=</span>n<span class="sc">-</span>p)</span>
-<span id="cb1-5"><a></a>  H <span class="ot">=</span> MASS<span class="sc">::</span><span class="fu">Null</span>(X) <span class="sc">%*%</span> <span class="fu">t</span>(G)</span>
-<span id="cb1-6"><a></a>  btilde <span class="ot">=</span> bhat <span class="sc">+</span> <span class="fu">t</span>(H) <span class="sc">%*%</span> Y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>infinite number of LUEs!</p>
-</section>
-<section id="lues-via-generalized-inverses" class="slide level2">
-<h2>LUEs via Generalized Inverses</h2>
-<p>Let <span class="math inline">\(\tilde{\boldsymbol{\beta}}= \mathbf{A}\mathbf{Y}\)</span> be a LUE in the statistical linear model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\)</span> with <span class="math inline">\(\mathbf{X}\)</span> full column rank <span class="math inline">\(p\)</span> <span class="math display">\[\begin{align*}
-\textsf{E}[\tilde{\boldsymbol{\beta}}] &amp; = \textsf{E}[\mathbf{A}\mathbf{Y}] \\
-            &amp; = \mathbf{A}\textsf{E}[\mathbf{Y}] \\
-            &amp; = \mathbf{A}\mathbf{X}\boldsymbol{\beta}\quad \forall \boldsymbol{\beta}\in \mathbb{R}^p
-\end{align*}\]</span></p>
-<ul>
-<li class="fragment">Must have <span class="math inline">\(\mathbf{A}\mathbf{X}= \mathbf{I}_p\)</span> (<span class="math inline">\(\mathbf{A}\)</span> is a generalized inverse of <span class="math inline">\(\mathbf{X}\)</span>)</li>
-<li class="fragment"><span class="math inline">\(\mathbf{X}\mathbf{X}^- \mathbf{X}= \mathbf{X}\)</span></li>
-<li class="fragment">one generalized inverse is <span class="math inline">\(\mathbf{X}_{MP}^- = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{X}_{MP}^- = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T = \mathbf{V}\boldsymbol{\Delta}^{-1} \mathbf{U}^T\)</span> (using SVD of <span class="math inline">\(\mathbf{X}= \mathbf{U}\boldsymbol{\Delta}\mathbf{V}^T\)</span>)</li>
-<li class="fragment"><span class="math inline">\(\mathbf{A}\)</span> is a generalized inverse of <span class="math inline">\(\mathbf{X}\)</span> iff <span class="math inline">\(\mathbf{A}= \mathbf{X}_{MP}^- + \mathbf{H}^T\)</span> for <span class="math inline">\(\mathbf{H}\in \mathbb{R}^{n \times p} \ni \mathbf{H}^T \mathbf{U}= \mathbf{0}\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{A}\mathbf{Y}= (\mathbf{X}_{MP}^- + \mathbf{H}^T)\mathbf{Y}= \hat{\boldsymbol{\beta}}+  \mathbf{H}^T \mathbf{Y}\)</span></li>
+<li class="fragment"><p>alternatively as a prior, we are assuming that the <span class="math inline">\(\boldsymbol{\beta}_j\)</span> are iid <span class="math inline">\(\textsf{N}(0, \kappa^*)\)</span> so that the prior for <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{N}(\mathbf{0}_p, \kappa^* \mathbf{I}_p)\)</span></p></li>
+<li class="fragment"><p>if the units/scales of the variables are different, then the variance or penality should be different for each variable.</p></li>
+<li class="fragment"><p>standardizing the <span class="math inline">\(\mathbf{X}\)</span> so that <span class="math inline">\(\mathbf{X}_c^T\mathbf{X}_c\)</span> is a constant times the correlation matrix of <span class="math inline">\(\mathbf{X}\)</span> ensures that all <span class="math inline">\(\boldsymbol{\beta}\)</span>’s have the same scale</p></li>
+<li class="fragment"><p>centering the data forces the intercept to be 0 (so no shrinkage or penality)</p></li>
 </ul>
 </section>
-<section id="best-linear-unbiased-estimators" class="slide level2">
-<h2>Best Linear Unbiased Estimators</h2>
+<section id="alternative-motivation" class="slide level2">
+<h2>Alternative Motivation</h2>
 <ul>
-<li class="fragment"><p>the distribution of values of any unbiased estimator is <em>centered</em> around <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
-<li class="fragment"><p>out of the infinite number of LUEs is there one that is more <em>concentrated</em> around <span class="math inline">\(\boldsymbol{\beta}\)</span>?</p></li>
-<li class="fragment"><p>is there an unbiased estimator that has a lower variance than all other unbiased estimators?</p></li>
-<li class="fragment"><p>Recall variance-covariance matrix of a random vector <span class="math inline">\(\mathbf{Z}\)</span> with mean <span class="math inline">\(\boldsymbol{\theta}\)</span> <span class="math display">\[\begin{align*}
-\textsf{Cov}[\mathbf{Z}]      &amp; \equiv \textsf{E}[(\mathbf{Z}- \boldsymbol{\theta})(\mathbf{Z}- \boldsymbol{\theta})^T] \\
-\textsf{Cov}[\mathbf{Z}]_{ij} &amp;  =     \textsf{E}[(z_i - \theta_i)(z_j - \theta_j)]
-\end{align*}\]</span></p></li>
-</ul>
-<div class="fragment">
-<div title="Lemma">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Lemma</strong></p>
-</div>
-<div class="callout-content">
-<p>Let <span class="math inline">\(\mathbf{A}\in \mathbb{R}^{q \times p}\)</span> and <span class="math inline">\(\mathbf{b}\in \mathbb{R}^q\)</span> with <span class="math inline">\(\mathbf{Z}\)</span> a random vector in <span class="math inline">\(\mathbb{R}^p\)</span> then <span class="math display">\[\textsf{Cov}[\mathbf{A}\mathbf{Z}+ \mathbf{b}] = \mathbf{A}\textsf{Cov}[\mathbf{Z}] \mathbf{A}^T \ge 0\]</span></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="variance-of-linear-unbiased-estimators" class="slide level2">
-<h2>Variance of Linear Unbiased Estimators</h2>
-<p>Let’s look at the variance of any LUE under assumption <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{I}_n\)</span></p>
-<ul>
-<li class="fragment"><p>for <span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\mathbf{Y}= \boldsymbol{\beta}+ (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\boldsymbol{\epsilon}\)</span> <span class="math display">\[\begin{align*}
-\textsf{Cov}[\hat{\boldsymbol{\beta}}] &amp; = \textsf{Cov}[\boldsymbol{\beta}+ (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\boldsymbol{\epsilon}] \\
-          &amp; =  (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\textsf{Cov}[\boldsymbol{\epsilon}] \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
-          &amp; = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \\
-          &amp; = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>Covariance is increasing in <span class="math inline">\(\sigma^2\)</span> and generally decreasing in <span class="math inline">\(n\)</span></p></li>
-<li class="fragment"><p>Rewrite <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> as <span class="math inline">\(\mathbf{X}^T\mathbf{X}= \sum_{i=1}^n \mathbf{x}_i \mathbf{x}_i^T\)</span> (a sum of <span class="math inline">\(n\)</span> outer-products)</p></li>
+<li class="fragment"><p>If <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is unconstrained expect high variance with nearly singular <span class="math inline">\(\mathbf{X}_c\)</span> </p></li>
+<li class="fragment"><p>Control how large coefficients may grow <span class="math display">\[\arg \min_{\boldsymbol{\beta}} (\mathbf{Y}_c - \mathbf{X}_c \boldsymbol{\beta})^T (\mathbf{Y}_c - \mathbf{X}_c\boldsymbol{\beta})\]</span> subject to <span class="math display">\[ \sum \beta_j^2 \le t\]</span></p></li>
+<li class="fragment"><p>Equivalent Quadratic Programming Problem <span class="math display">\[\hat{\boldsymbol{\beta}}_{R} = \arg \min_{\boldsymbol{\beta}} \| \mathbf{Y}_c - \mathbf{X}_c \boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2\]</span></p></li>
+<li class="fragment"><p>different approaches to selecting <span class="math inline">\(\kappa^*\)</span> from frequentist ane Bayesian perspectives</p></li>
 </ul>
 </section>
-<section id="variance-of-arbitrary-lue" class="slide level2">
-<h2>Variance of Arbitrary LUE</h2>
-<ul>
-<li class="fragment"><p>for <span class="math inline">\(\tilde{\boldsymbol{\beta}}= \left((\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{H}^T \right)\mathbf{Y}= \boldsymbol{\beta}+ \left((\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T + \mathbf{H}^T \right)\boldsymbol{\epsilon}\)</span></p></li>
-<li class="fragment"><p>recall <span class="math inline">\(\mathbf{X}_{MP}^- \equiv  (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\)</span> <span class="math display">\[\begin{align*}
-\textsf{Cov}[\tilde{\boldsymbol{\beta}}] &amp; = \textsf{Cov}[\left(\mathbf{X}_{MP}^- + \mathbf{H}^T \right)\boldsymbol{\epsilon}]  \\
-            &amp; = \sigma^2 \left(\mathbf{X}_{MP}^- + \mathbf{H}^T \right)\left(\mathbf{X}_{MP}^- + \mathbf{H}^T \right)^T \\
-            &amp; = \sigma^2\left( \mathbf{X}_{MP}^-(\mathbf{X}_{MP}^-)^T + \mathbf{X}_{MP}^-\mathbf{H}+
-                \mathbf{H}^T (\mathbf{X}_{MP}^-)^T + \mathbf{H}^T \mathbf{H}\right) \\
-            &amp; =   \sigma^2\left( (\mathbf{X}^T\mathbf{X})^{-1} +  \mathbf{H}^T \mathbf{H}\right)
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>Cross-product term <span class="math inline">\(\mathbf{H}^T(\mathbf{X}_{MP}^-)^T = \mathbf{H}^T\mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} =  \mathbf{0}\)</span></p></li>
-<li class="fragment"><p>Therefor the <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\beta}}] = \textsf{Cov}[\hat{\boldsymbol{\beta}}] + \mathbf{H}^T\mathbf{H}\)</span></p></li>
-<li class="fragment"><p>the sum of a positive definite matrix plus a positive semi-definite matrix</p></li>
-</ul>
-</section>
-<section id="gauss-markov-theorem" class="slide level2">
-<h2>Gauss-Markov Theorem</h2>
-<p>Is <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\beta}}] \ge \textsf{Cov}[\hat{\boldsymbol{\beta}}]\)</span> in some sense?</p>
-<div class="fragment">
-<div id="loewner-ordering" class="Definition unnumbered" title="Loewner Ordering">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Loewner Ordering</summary><div>For two positive semi-definite matrices <span class="math inline">\(\boldsymbol{\Sigma}_1\)</span> and <span class="math inline">\(\boldsymbol{\Sigma}_2\)</span>, we say that <span class="math inline">\(\boldsymbol{\Sigma}_1 &gt; \boldsymbol{\Sigma}_2\)</span> if <span class="math inline">\(\boldsymbol{\Sigma}_1 - \boldsymbol{\Sigma}_2\)</span> is positive definite, <span class="math inline">\(\mathbf{x}^T(\boldsymbol{\Sigma}_1 - \boldsymbol{\Sigma}_2)\mathbf{x}) &gt; 0\)</span>, and <span class="math inline">\(\boldsymbol{\Sigma}_1 \ge \boldsymbol{\Sigma}_2\)</span> if <span class="math inline">\(\boldsymbol{\Sigma}_1 - \boldsymbol{\Sigma}_2\)</span> is positive semi-definite, <span class="math inline">\(\mathbf{x}^T(\boldsymbol{\Sigma}_1 - \boldsymbol{\Sigma}_2)\mathbf{x}) \ge 0\)</span><p></p>
-</div></details>
-</div>
-<ul>
-<li class="fragment">Since <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\beta}}] - \textsf{Cov}[\hat{\boldsymbol{\beta}}] = \mathbf{H}^T\mathbf{H}\)</span>, we have that <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\beta}}] \ge \textsf{Cov}[\hat{\boldsymbol{\beta}}]\)</span></li>
-</ul>
-</div>
-<div class="fragment">
-<div id="gauss-markov" class="Theorem unnumbered" title="Gauss-Markov">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Gauss-Markov</summary><div>Let <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> be a linear unbiased estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> in a linear model where <span class="math inline">\(\textsf{E}[\mathbf{Y}] = \mathbf{X}\boldsymbol{\beta}, \boldsymbol{\beta}\in \mathbb{R}^p\)</span>, <span class="math inline">\(\mathbf{X}\)</span> rank <span class="math inline">\(p\)</span>, and <span class="math inline">\(\textsf{Cov}[\mathbf{Y}] = \sigma^2\mathbf{I}_n, \sigma^2 &gt; 0\)</span>. Then <span class="math inline">\(\textsf{Cov}[\tilde{\boldsymbol{\beta}}] \ge \textsf{Cov}[\hat{\boldsymbol{\beta}}]\)</span> where <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is the OLS estimator and is the <strong>Best Linear Unbiased Estimator</strong> (BLUE) of <span class="math inline">\(\boldsymbol{\beta}\)</span>.<p></p>
-</div></details>
-</div>
-</div>
-</section>
-<section id="slide13-id" class="slide level2" data-menu-title="GM Theorem and Proof">
-<h2></h2>
-<div id="gauss-markov-theorem-classic" class="Theorem" title="Gauss-Markov Theorem (Classic)">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Gauss-Markov Theorem (Classic)</summary><div>For <span class="math inline">\(\mathbf{Y}= \boldsymbol{\mu}+ \boldsymbol{\epsilon}\)</span>, with <span class="math inline">\(\boldsymbol{\mu}\in \boldsymbol{{\cal M}}\)</span>, <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}]= \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] =\sigma^2 \mathbf{I}_n\)</span> and <span class="math inline">\(\mathbf{P}\)</span> the orthogonal projection onto <span class="math inline">\(\boldsymbol{{\cal M}}\)</span>, <span class="math inline">\(\mathbf{P}\mathbf{Y}= \hat{\boldsymbol{\mu}}\)</span> is the BLUE of <span class="math inline">\(\boldsymbol{\mu}\)</span> out of the class of LUEs <span class="math inline">\(\mathbf{A}\mathbf{Y}\)</span> where <span class="math inline">\(\textsf{E}[\mathbf{A}\mathbf{Y}] = \boldsymbol{\mu}\)</span>, <span class="math inline">\(\mathbf{A}\in \mathbb{R}^{n \times n}\)</span> equality iff <span class="math inline">\(\mathbf{A}= \mathbf{P}\)</span><p></p>
-</div></details>
-</div>
-<div id="Proof*-0.6" class="Proof">
-<details class="Proof fbx-simplebox fbx-default"><summary><strong>Proof</strong></summary><div>
-<ul>
-<li class="fragment"><p>write <span class="math inline">\(\mathbf{A}= \mathbf{P}+ \mathbf{H}^T\)</span> so <span class="math inline">\(\mathbf{H}^T = \mathbf{A}- \mathbf{P}\)</span></p></li>
-<li class="fragment"><p>since <span class="math inline">\(\mathbf{A}\boldsymbol{\mu}= \boldsymbol{\mu}\)</span>, <span class="math inline">\(\mathbf{H}^T\mu = \mathbf{0}_n\)</span> for <span class="math inline">\(\mu \in \boldsymbol{{\cal M}}\)</span> and <span class="math inline">\(\mathbf{H}^T \mathbf{P}= \mathbf{P}\mathbf{H}= \mathbf{0}\)</span> (columns of <span class="math inline">\(\mathbf{H}\in \boldsymbol{{\cal M}}^\perp\)</span>) <span class="math display">\[\begin{align*}
-\textsf{E}[\|\mathbf{A}\mathbf{Y}- \boldsymbol{\mu}\|^2]  &amp; =  \textsf{E}[\|\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu}) + \mathbf{H}^T(\mathbf{Y}- \boldsymbol{\mu})\|^2]  \\
-&amp; = \textsf{E}[\|\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})\|^2] + \underbrace{\textsf{E}[\|\mathbf{H}^T(\mathbf{Y}- \boldsymbol{\mu})\|^2]} + \underbrace{{\text{cross-product}}} \\
-&amp; \hspace{4.35in} \ge 0 \quad  + \hspace{1.25in} 0\\
-&amp; \ge \textsf{E}[\|\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})\|^2]
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>Cross-product is <span class="math inline">\(2\textsf{E}[(\mathbf{H}^T(\mathbf{Y}- \mu))^T\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})] = 0\)</span> (see last slide)</p></li>
-</ul>
-</div></details>
-</div>
-<div class="footer">
+<section id="plot-of-constrained-problem" class="slide level2">
+<h2>Plot of Constrained Problem</h2>
 
-</div>
-</section>
-<section id="estimation-of-linear-functionals-of-boldsymbolmu" class="slide level2">
-<h2>Estimation of Linear Functionals of <span class="math inline">\(\boldsymbol{\mu}\)</span></h2>
-<p>If <span class="math inline">\(\mathbf{P}\mathbf{Y}= \hat{\boldsymbol{\mu}}\)</span> is the BLUE of <span class="math inline">\(\boldsymbol{\mu}\)</span>, is <span class="math inline">\(\mathbf{B}\mathbf{P}\mathbf{Y}= \mathbf{B}\hat{\boldsymbol{\mu}}\)</span> the BLUE of <span class="math inline">\(\mathbf{B}\boldsymbol{\mu}\)</span>?</p>
-<div class="fragment">
-<p>Yes! Similar proof as above to show that out of the class of LUEs <span class="math inline">\(\mathbf{A}\mathbf{Y}\)</span> of <span class="math inline">\(\mathbf{B}\boldsymbol{\mu}\)</span> where <span class="math inline">\(\mathbf{A}\in \mathbb{R}^{d \times n}\)</span> that <span class="math display">\[\textsf{E}[\|\mathbf{A}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2] \ge \textsf{E}[\|\mathbf{B}\mathbf{P}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2]\]</span> with equality iff <span class="math inline">\(\mathbf{A}= \mathbf{B}\mathbf{P}\)</span>.</p>
-</div>
-<div class="fragment">
-<p>What about linear functionals of <span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\boldsymbol{\Lambda}^T \boldsymbol{\beta}\)</span>, for <span class="math inline">\(\mathbf{X}\)</span> rank <span class="math inline">\(r \le p\)</span>?</p>
+<img data-src="ridge-penalized-loss.png" class="r-stretch"></section>
+<section id="generalized-ridge-regression" class="slide level2">
+<h2>Generalized Ridge Regression</h2>
 <ul>
-<li class="fragment"><span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is not unique if <span class="math inline">\(r &lt; p\)</span> even though <span class="math inline">\(\hat{\boldsymbol{\mu}}\)</span> is unique (<span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is not BLUE)</li>
-<li class="fragment">Since <span class="math inline">\(\mathbf{B}\boldsymbol{\mu}= \mathbf{B}\mathbf{X}\boldsymbol{\beta}\)</span> is always identifiable, the only linear functions of <span class="math inline">\(\boldsymbol{\beta}\)</span> that are identifiable and can be estimated uniquely are functions of <span class="math inline">\(\mathbf{X}\boldsymbol{\beta}\)</span>, i.e.&nbsp;estimates in the form <span class="math inline">\(\boldsymbol{\Lambda}^T \boldsymbol{\beta}= \mathbf{B}\mathbf{X}\boldsymbol{\beta}\)</span> or <span class="math inline">\(\boldsymbol{\Lambda}= \mathbf{X}^T \mathbf{B}^T\)</span>.</li>
-<li class="fragment">columns of <span class="math inline">\(\boldsymbol{\Lambda}\)</span> must be in the <span class="math inline">\(C(\mathbf{X}^T)\)</span></li>
-<li class="fragment">detailed discussion and proof in Christensen Ch. 2 for scalar functionals <span class="math inline">\(\lambda^T\beta\)</span>.</li>
+<li class="fragment"><p>rather than a common penalty for all variables, consider a different penalty for each variable</p></li>
+<li class="fragment"><p>as a prior, we are assuming that the <span class="math inline">\(\boldsymbol{\beta}_j\)</span> are iid <span class="math inline">\(\textsf{N}(0, \frac{\kappa_j}{\phi})\)</span> so that the prior for <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{N}(\mathbf{0}_p, \phi^{-1} \Kb)\)</span></p></li>
+<li class="fragment"><p>hard enough to choose a single penalty, how to choose <span class="math inline">\(p\)</span> penalties?</p></li>
+<li class="fragment"><p>place independent priors on each of the <span class="math inline">\(\kappa_j\)</span>’s</p></li>
+<li class="fragment"><p>a hierarchical Bayes model</p></li>
+<li class="fragment"><p>if we can integrate out the <span class="math inline">\(\kappa_j\)</span>’s we have a new prior for <span class="math inline">\(\beta_j\)</span></p></li>
+<li class="fragment"><p>this leads to a new penalty!</p></li>
+<li class="fragment"><p>examples include the Lasso (Double Exponential Prior) and Double Pareto Priors</p></li>
 </ul>
-</div>
-</section>
-<section id="blue-of-boldsymbollambdat-boldsymbolbeta" class="slide level2">
-<h2>BLUE of <span class="math inline">\(\boldsymbol{\Lambda}^T \boldsymbol{\beta}\)</span></h2>
-<p>If <span class="math inline">\(\boldsymbol{\Lambda}^T= \mathbf{B}\mathbf{X}\)</span> for some matrix <span class="math inline">\(\mathbf{B}\)</span> then</p>
-<ul>
-<li class="fragment"><p><span class="math inline">\(\textsf{E}[\mathbf{B}\mathbf{P}\mathbf{Y}] = \textsf{E}[\boldsymbol{\Lambda}^T \hat{\boldsymbol{\beta}}] = \boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span></p></li>
-<li class="fragment"><p>The unique OLS estimate of <span class="math inline">\(\boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span> is <span class="math inline">\(\boldsymbol{\Lambda}^T\hat{\boldsymbol{\beta}}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\mathbf{B}\mathbf{P}\mathbf{Y}= \boldsymbol{\Lambda}^T\hat{\boldsymbol{\beta}}\)</span> is the BLUE of <span class="math inline">\(\boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span> <span class="math display">\[\begin{align*}
-&amp; \textsf{E}[\|\mathbf{B}\mathbf{P}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2]  \le \textsf{E}[\|\mathbf{A}\mathbf{Y}- \mathbf{B}\boldsymbol{\mu}\|^2] \\
-\Leftrightarrow &amp; \\
-&amp; \textsf{E}[\|\boldsymbol{\Lambda}^T\hat{\boldsymbol{\beta}}- \boldsymbol{\Lambda}^T\boldsymbol{\beta})\|^2]  \le \textsf{E}[\|\mathbf{L}^T\tilde{\boldsymbol{\beta}}- \boldsymbol{\Lambda}^T\boldsymbol{\beta}\|^2]
-\end{align*}\]</span> for LUE <span class="math inline">\(\mathbf{A}\mathbf{Y}= \mathbf{L}^T\tilde{\boldsymbol{\beta}}\)</span> of <span class="math inline">\(\boldsymbol{\Lambda}^T\boldsymbol{\beta}\)</span></p></li>
-<li class="fragment"><p>Proof proceeds as the classic case.</p></li>
-</ul>
-</section>
-<section id="proof-of-cross-product" class="slide level2">
-<h2>Proof of Cross-Product</h2>
-<p>Let <span class="math inline">\(\mathbf{D}= \mathbf{H}\mathbf{P}\)</span> and write <span class="math display">\[\begin{align*}
-\textsf{E}[(\mathbf{H}^T(\mathbf{Y}- \mu))^T\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})] &amp; = \textsf{E}[(\mathbf{Y}- \mu))^T\mathbf{H}\mathbf{P}(\mathbf{Y}- \boldsymbol{\mu})] \\
-&amp; = \textsf{E}[(\mathbf{Y}- \mu))^T\mathbf{D}(\mathbf{Y}- \boldsymbol{\mu})]
-\end{align*}\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[\begin{align*}
-\textsf{E}[(\mathbf{Y}- \mu))^T\mathbf{D}(\mathbf{Y}- \boldsymbol{\mu})] = &amp; \textsf{E}[\textsf{tr}(\mathbf{Y}- \mu))^T\mathbf{D}(\mathbf{Y}- \boldsymbol{\mu}))]  \\
-= &amp; \textsf{E}[\textsf{tr}(\mathbf{D}(\mathbf{Y}- \boldsymbol{\mu})(\mathbf{Y}- \mu)^T)] \\
-= &amp; \textsf{tr}(\textsf{E}[\mathbf{D}(\mathbf{Y}- \boldsymbol{\mu})(\mathbf{Y}- \mu)^T]) \\
-= &amp; \textsf{tr}(\mathbf{D}\textsf{E}[(\mathbf{Y}- \boldsymbol{\mu})(\mathbf{Y}- \mu)^T]) \\
-  = &amp; \sigma^2 \textsf{tr}(\mathbf{D}\mathbf{I}_n)\\
-\end{align*}\]</span></p>
-</div>
-<div class="fragment">
-<p>Since <span class="math inline">\(\textsf{tr}(\mathbf{D}) = \textsf{tr}(\mathbf{H}\mathbf{P}) = \textsf{tr}(\mathbf{P}\mathbf{H})\)</span> we can conclude that the cross-product term is zero.</p>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://sta721-F24.github.io/website/" class="uri">https://sta721-F24.github.io/website/</a></p>
-</div>
 </div>
 </div>
 </section>
