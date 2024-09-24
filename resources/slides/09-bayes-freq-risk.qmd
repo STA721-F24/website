@@ -288,7 +288,7 @@ $\Y_c = (\I - \P_1) \Y$  and $X_c$ the centered and standardized  $\X$ matrix
 
 - rather than a common penalty for all variables, consider a different penalty for each variable
 
-- as a prior, we are assuming that the $\b_j$ are iid $\N(0, \frac{\kappa_j}{\phi})$ so that the prior for $\b$ is $\N(\zero_p, \phi^{-1} \Kb)$
+- as a prior, we are assuming that the $\b_j$ are iid $\N(0, \frac{\kappa_j}{\phi})$ so that the prior for $\b$ is $\N(\zero_p, \phi^{-1} \K)$ where $\K = \diag(\kappa_1, \ldots, \kappa_p)$
 
 - hard enough to choose a single penalty, how to choose $p$ penalties?
 
