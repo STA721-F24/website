@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – Maximum Likelihood Estimation</title>
+  <title>STA721-F24: Linear Models – James-Stein Estimation and Shrinkage</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -326,23 +326,23 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Conjecture {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Corollary {
+  .Theorem {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
+  .Proposition {
+    --color1: #948bde;
+    --color2: #584eab;
   }
-  .Theorem {
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Exercise {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -350,9 +350,21 @@
     --color1: #c0c0c0;
     --color2: #808080;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .Proof {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
   }
   </style>
 </head>
@@ -361,8 +373,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Maximum Likelihood Estimation</h1>
-  <p class="subtitle">STA 721: Lecture 2</p>
+  <h1 class="title">James-Stein Estimation and Shrinkage</h1>
+  <p class="subtitle">STA 721: Lecture 10</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -379,293 +391,150 @@ Merlise Clyde (clyde@duke.edu)
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
 <ul>
-<li class="fragment">Likelihood Function</li>
-<li class="fragment">Projections</li>
-<li class="fragment">Maximum Likelihood Estimates</li>
+<li class="fragment">Frequentist Risk in Orthogonal Regression</li>
+<li class="fragment">James-Stein Estimation</li>
 </ul>
 <div class="fragment">
-<p>Readings: Christensen Chapter 1-2, Appendix A, and Appendix B</p>
-</div>
-</section>
-<section id="normal-model" class="slide level2">
-<h2>Normal Model</h2>
-<p>Take an random vector <span class="math inline">\(\mathbf{Y}\in \mathbb{R}^n\)</span> which is observable and decompose<br>
-<span class="math display">\[ \mathbf{Y}= \boldsymbol{\mu}+ \boldsymbol{\epsilon}\]</span></p>
+<p>Readings:</p>
 <ul>
-<li class="fragment"><span class="math inline">\(\boldsymbol{\mu}\in \mathbb{R}^n\)</span> (unknown, fixed)<br>
-</li>
-<li class="fragment"><span class="math inline">\(\boldsymbol{\epsilon}\in \mathbb{R}^n\)</span> unobservable error vector (random)</li>
+<li class="fragment">Seber &amp; Lee Chapter Chapter 12</li>
 </ul>
-<div class="fragment">
-<p>Usual assumptions?</p>
+</div>
+</section>
+<section id="orthogonal-regression" class="slide level2">
+<h2>Orthogonal Regression</h2>
 <ul>
-<li class="fragment"><span class="math inline">\(E[\epsilon_i] = 0 \ \forall i \Leftrightarrow \textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}\)</span> <span class="math inline">\(\quad \Rightarrow \textsf{E}[\mathbf{Y}] = \boldsymbol{\mu}\)</span> (mean vector)</li>
-<li class="fragment"><span class="math inline">\(\epsilon_i\)</span> independent with <span class="math inline">\(\textsf{Var}(\epsilon_i) = \sigma^2\)</span> and <span class="math inline">\(\textsf{Cov}(\epsilon_i, \epsilon_j) = 0\)</span></li>
-<li class="fragment">Matrix version <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] \equiv \left[ (\textsf{E}\left[(\epsilon_i -\textsf{E}[\epsilon_i])(\epsilon_j - \textsf{E}[\epsilon_j])\right]\right]_{ij} = \sigma^2 \mathbf{I}_n
-\quad \Rightarrow \textsf{Cov}[\mathbf{Y}] = \sigma^2 \mathbf{I}_n\)</span> (errors are uncorrelated)</li>
-<li class="fragment"><span class="math inline">\(\boldsymbol{\epsilon}_i \mathrel{\mathop{\sim}\limits^{\rm iid}}\textsf{N}(0, \sigma^2)\)</span> implies that <span class="math inline">\(Y_i \mathrel{\mathop{\sim}\limits^{\rm ind}}\textsf{N}(\mu_i, \sigma^2)\)</span></li>
+<li class="fragment"><p>Consider the model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \mathbf{e}\)</span> where <span class="math inline">\(\mathbf{X}\)</span> is <span class="math inline">\(n \times p\)</span> with <span class="math inline">\(n &gt; p\)</span> and <span class="math inline">\(\mathbf{X}^T\mathbf{X}= \mathbf{I}_p\)</span>.</p></li>
+<li class="fragment"><p>If <span class="math inline">\(\mathbf{X}\)</span> has orthogonal columns, then <span class="math inline">\(\hat{\boldsymbol{\beta}}= \mathbf{X}^T\mathbf{Y}\)</span> is the OLS estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span>.</p></li>
+<li class="fragment"><p>The OLS estimator is unbiased and has minimum variance among all</p></li>
+<li class="fragment"><p>The MSE for estimating <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}})] = \sigma^2
+  \textsf{tr}[(\mathbf{X}^T\mathbf{X})^{-1}] = p\sigma^2\)</span></p></li>
+<li class="fragment"><p>Can always take a general regression problem and transform design so that the model matrix has orthogonal columns <span class="math display">\[\mathbf{X}\boldsymbol{\beta}= \mathbf{U}\boldsymbol{\Delta}\mathbf{V}^T \boldsymbol{\beta}= \mathbf{U}\boldsymbol{\alpha}\]</span> where new parameters are <span class="math inline">\(\boldsymbol{\alpha}= \boldsymbol{\Delta}\mathbf{V}^T \boldsymbol{\beta}\)</span> and <span class="math inline">\(\mathbf{U}^T\mathbf{U}= \mathbf{I}_p\)</span>.</p></li>
+<li class="fragment"><p>Orthogonal polynomials, Fourier bases and wavelet regression are other examples.</p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\boldsymbol{\alpha}} = \mathbf{U}^T\mathbf{Y}\)</span> and MSE of <span class="math inline">\(\hat{\boldsymbol{\alpha}}\)</span> is <span class="math inline">\(p\sigma^2\)</span></p></li>
+<li class="fragment"><p>so WLOG we will assume that <span class="math inline">\(\mathbf{X}\)</span> has orthogonal columns</p></li>
 </ul>
-</div>
 </section>
-<section id="likelihood-function" class="slide level2">
-<h2>Likelihood Function</h2>
-<p>The likelihood function for <span class="math inline">\(\boldsymbol{\mu}, \sigma^2\)</span> is proportional to the sampling distribution of the data</p>
-<p><span class="math display">\[\begin{eqnarray*}
-{\cal{L}}(\boldsymbol{\mu}, \sigma^2) &amp; \propto &amp; \prod_{i = 1}^n \frac{1}{\sqrt{(2 \pi
-                                 \sigma^2)}} \exp{- \frac{1}{2}
-                                 \left\{ \frac{( Y_i
-                                 - \mu_i)^2}{\sigma^2} \right\}}
-                                 \\
-&amp; \propto &amp; ({2 \pi} \sigma^2)^{-n/2}
-\exp{\left\{ - \frac 1 2  \frac{ \sum_i(Y_i - \mu_i)^2 )}{\sigma^2}
-\right\}}   \\
-   &amp; \propto &amp; (\sigma^2)^{-n/2}
-\exp{\left\{ - \frac 1 2 \frac{\| \mathbf{Y}- \boldsymbol{\mu}\|^2}{\sigma^2}
-\right\}} \\
-  &amp; \propto &amp;  (2 \pi)^{-n/2}
-| \mathbf{I}_n\sigma^2|^{-1/2}
-\exp{\left\{ - \frac 1 2 \frac{\| \mathbf{Y}- \boldsymbol{\mu}\|^2}{\sigma^2}
-\right\}}  
-\end{eqnarray*}\]</span></p>
-<div class="fragment">
-<p>Last line is the density of <span class="math inline">\(\mathbf{Y}\sim \textsf{N}_n\left(\boldsymbol{\mu}, \sigma^2 \mathbf{I}_n\right)\)</span></p>
-</div>
-</section>
-<section id="mles" class="slide level2">
-<h2>MLEs</h2>
-<p>Find values of <span class="math inline">\(\hat{\boldsymbol{\mu}}\)</span> and <span class="math inline">\({\hat{\sigma}}^2\)</span> that maximize the likelihood <span class="math inline">\({\cal{L}}(\boldsymbol{\mu}, \sigma^2)\)</span> for <span class="math inline">\(\boldsymbol{\mu}\in \mathbb{R}^n\)</span> and <span class="math inline">\(\sigma^2 \in \mathbb{R}^+\)</span> <span class="math display">\[\begin{eqnarray*}
-{\cal{L}}(\boldsymbol{\mu}, \sigma^2)
-    &amp; \propto &amp; (\sigma^2)^{-n/2}
-\exp{\left\{ - \frac 1 2 \frac{\| \mathbf{Y}- \boldsymbol{\mu}\|^2}{\sigma^2}
-\right\}} \\
-\log({\cal{L}}(\boldsymbol{\mu}, \sigma^2) )
-   &amp; \propto &amp; -\frac{n}{2} \log(\sigma^2)  - \frac 1 2 \frac{\| \mathbf{Y}- \boldsymbol{\mu}\|^2}{\sigma^2}
-\\
-\end{eqnarray*}\]</span> or equivalently the log likelihood</p>
+<section id="shrinkage-estimators" class="slide level2">
+<h2>Shrinkage Estimators</h2>
 <ul>
-<li class="fragment"><p>Clearly, <span class="math inline">\(\hat{\boldsymbol{\mu}}= \mathbf{Y}\)</span> but <span class="math inline">\({\hat{\sigma}}^2= 0\)</span> is outside the parameter space</p></li>
-<li class="fragment"><p>If <span class="math inline">\(\boldsymbol{\mu}= \mathbf{X}\boldsymbol{\beta}\)</span>, can show that <span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\)</span> is the MLE/OLS estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\mu}}= \mathbf{X}\hat{\boldsymbol{\beta}}\)</span> if <span class="math inline">\(\mathbf{X}\)</span> is full column rank.</p></li>
-<li class="fragment"><p>show via projections</p></li>
+<li class="fragment">the <span class="math inline">\(g\)</span>-prior and Ridge prior are equivalent in the orthogonal case <span class="math display">\[\boldsymbol{\beta}\sim \textsf{N}(\mathbf{0}_p, \sigma^2 \mathbf{I}_p/\kappa)\]</span> using the ridge parameterization of the prior <span class="math inline">\(\kappa = 1/g\)</span></li>
+<li class="fragment">Bayes estimator in this case is <span class="math display">\[\hat{\boldsymbol{\beta}}_\kappa = \frac{1}{1+\kappa} \hat{\boldsymbol{\beta}}\]</span></li>
+<li class="fragment">MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_\kappa\)</span> is <span class="math display">\[\textsf{MSE}(\hat{\boldsymbol{\beta}}_\kappa) = \frac{1}{(1+\kappa)^2} \sigma^2 p + \frac{\kappa^2}{(1 + \kappa)^2} \sum_{j=1}^{p} \beta_j^2\]</span></li>
+<li class="fragment">squared bias term grows with <span class="math inline">\(\kappa\)</span> and variance term decreases with <span class="math inline">\(\kappa\)</span></li>
 </ul>
 </section>
-<section id="projections" class="slide level2">
-<h2>Projections</h2>
-<p>take any point <span class="math inline">\(\mathbf{y}\in \mathbb{R}^n\)</span> and “project” it onto <span class="math inline">\(C(\mathbf{X}) = \boldsymbol{{\cal M}}\)</span></p>
+<section id="shrinkage" class="slide level2">
+<h2>Shrinkage</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li class="fragment"><p>any point already in <span class="math inline">\(\boldsymbol{{\cal M}}\)</span> stays the same</p></li>
-<li class="fragment"><p>so if <span class="math inline">\(\mathbf{P}_\mathbf{X}\)</span> is a projection onto the column space of <span class="math inline">\(\mathbf{X}\)</span> then for <span class="math inline">\(\mathbf{m}\in C(\mathbf{X})\)</span> <span class="math inline">\(\mathbf{P}_\mathbf{X}\mathbf{m}= \mathbf{m}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\mathbf{P}_\mathbf{X}\)</span> is a linear transformation from <span class="math inline">\(\mathbb{R}^n \to \mathbb{R}^n\)</span></p></li>
-<li class="fragment"><p>maps vectors in <span class="math inline">\(\mathbb{R}^n\)</span> into <span class="math inline">\(C(\mathbf{X})\)</span></p></li>
-<li class="fragment"><p>if <span class="math inline">\(\mathbf{z}\in \mathbb{R}^n\)</span> then <span class="math inline">\(\mathbf{P}_\mathbf{X}\mathbf{z}= \mathbf{X}\mathbf{a}\in C(\mathbf{X})\)</span> for some <span class="math inline">\(\mathbf{a}\in \mathbb{R}^p\)</span></p></li>
+<li class="fragment"><p>in principle, with the right choice of <span class="math inline">\(\kappa\)</span> we can get a better estimator and reduce the MSE</p></li>
+<li class="fragment"><p>while not unbiased, what we pay for bias we can make up for with a reduction in variance</p></li>
+<li class="fragment"><p>the variance-bias decomposition of MSE based on the plot suggests there is an optimal value of <span class="math inline">\(\kappa\)</span> the improves over OLS in terms of MSE</p></li>
+<li class="fragment"><p>“optimal” <span class="math inline">\(\kappa\)</span> <span class="math display">\[\kappa = \frac{p \sigma^2}{\|\boldsymbol{\beta}^*\|^2}\]</span> where <span class="math inline">\(\boldsymbol{\beta}^*\)</span> is the true value of <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
+<li class="fragment"><p>but never know that in practice!</p></li>
 </ul>
-<div class="fragment">
-<div class="callout callout-note callout-titled callout-style-simple">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Example</strong></p>
-</div>
-<div class="callout-content">
-<p>For <span class="math inline">\(\mathbf{X}\in \mathbb{R}^{n \times p}\)</span>, rank <span class="math inline">\(p\)</span>, <span class="math inline">\(\mathbf{P}_\mathbf{X}= \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}\)</span> is a projection onto the <span class="math inline">\(p\)</span> dimensional subspace <span class="math inline">\(\boldsymbol{{\cal M}}= C(\mathbf{X})\)</span></p>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="10-james-stein_files/figure-revealjs/shrinkage-1.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
 </div>
 </div>
 </div>
-</div>
+</div></div>
 </section>
-<section id="idempotent-matrix" class="slide level2">
-<h2>Idempotent Matrix</h2>
-<p>What if we project a projection?</p>
+<section id="estimating-kappa" class="slide level2">
+<h2>Estimating <span class="math inline">\(\kappa\)</span></h2>
 <ul>
-<li class="fragment"><span class="math inline">\(\mathbf{P}_\mathbf{X}\mathbf{z}= \mathbf{X}\mathbf{a}\in C(\mathbf{X})\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{P}_\mathbf{X}\mathbf{X}\mathbf{a}= \mathbf{X}\mathbf{a}\)</span></li>
-<li class="fragment">since <span class="math inline">\(\mathbf{P}_\mathbf{X}^2 \mathbf{z}=  \mathbf{P}_\mathbf{X}\mathbf{z}\)</span> for all <span class="math inline">\(\mathbf{z}\in \mathbb{R}^n\)</span> we have <span class="math inline">\(\mathbf{P}_\mathbf{X}^2 = \mathbf{P}_\mathbf{X}\)</span></li>
+<li class="fragment"><p>if we use the optimal <span class="math inline">\(\kappa\)</span>, the shrinkage estimator can be written as <span class="math display">\[\tilde{\boldsymbol{\beta}}= \frac{\|\boldsymbol{\beta}\|^2}{p \sigma^2 + \|\boldsymbol{\beta}\|^2} \hat{\boldsymbol{\beta}}\]</span> or <span class="math display">\[\tilde{\boldsymbol{\beta}}= \left(1 - \frac{p\sigma^2}{p\sigma^2 + \|\boldsymbol{\beta}\|^2} \right) \hat{\boldsymbol{\beta}}\]</span></p></li>
+<li class="fragment"><p>but note that <span class="math inline">\(\textsf{E}\|\hat{\boldsymbol{\beta}}\|^2 = p \sigma^2 + \|\boldsymbol{\beta}\|^2\)</span> (the denominator)</p></li>
+<li class="fragment"><p>plugging in <span class="math inline">\(\|\hat{\boldsymbol{\beta}}\|^2\)</span> for the denominator leads to an estimator that we can compute! <span class="math display">\[\tilde{\boldsymbol{\beta}}= \left(1 - \frac{p\sigma^2}{\|\hat{\boldsymbol{\beta}}\|^2} \right) \hat{\boldsymbol{\beta}}\]</span></p></li>
 </ul>
-<div class="fragment">
-<div id="Projection" class="Definition unnumbered" title="Projection">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Projection</summary><div>For a matrix <span class="math inline">\(\mathbf{P}\)</span> in <span class="math inline">\(\mathbb{R}^{n \times n}\)</span> is a projection matrix if <span class="math inline">\(\mathbf{P}^2 = \mathbf{P}\)</span>. That is all projections <span class="math inline">\(\mathbf{P}\)</span> are idempotent matrix.<p></p>
-</div></details>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-note callout-titled callout-style-simple">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<p>For <span class="math inline">\(\mathbf{X}\in \mathbb{R}^{n \times p}\)</span>, rank <span class="math inline">\(p\)</span>, if <span class="math inline">\(\mathbf{P}_\mathbf{X}= \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}\)</span> use the definition to show that it is a projection onto the <span class="math inline">\(p\)</span> dimensional subspace <span class="math inline">\(\boldsymbol{{\cal M}}= C(\mathbf{X})\)</span></p>
-</div>
-</div>
-</div>
-</div>
 </section>
-<section id="null-space" class="slide level2">
-<h2>Null Space</h2>
-<div id="OrthComp" class="Definition unnumbered" title="Orthogonal Complement">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Orthogonal Complement</summary><div>The set of all vectors that are orthogonal to a given subspace <span class="math inline">\(\boldsymbol{{\cal M}}\)</span> is called the <em>orthogonal complement</em> of the subspace denoted as <span class="math inline">\(\boldsymbol{{\cal M}}^\perp\)</span>. Under the usual inner product, <span class="math inline">\(\boldsymbol{{\cal M}}^\perp \equiv \{\mathbf{n}\in \mathbb{R}^n \ni \mathbf{m}^T\mathbf{n}= 0 {\text{ for }} \mathbf{m}\in \boldsymbol{{\cal M}}\}\)</span><p></p>
-</div></details>
-</div>
-<div class="fragment">
-<div id="Nullspace" class="Definition unnumbered" title="Null Space">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Null Space</summary><div>For a matrix <span class="math inline">\(\mathbf{A}\)</span>, the <em>null space</em> of <span class="math inline">\(\mathbf{A}\)</span> is defined as <span class="math inline">\(N(\mathbf{A}) = \{\mathbf{n}\ni \mathbf{A}\mathbf{n}= \mathbf{0}\}\)</span><p></p>
-</div></details>
-</div>
-</div>
-<div class="fragment">
-<div class="callout callout-note callout-titled callout-style-simple">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<p>Show that <span class="math inline">\(C(\mathbf{X})^\perp\)</span> (the <em>orthogonal complement</em> of <span class="math inline">\(C(\mathbf{X})\)</span>) is the <em>null space</em> of <span class="math inline">\(\mathbf{X}^T\)</span>, <span class="math inline">\(\, N(\mathbf{X}^T)\)</span>.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="orthogonal-projection" class="slide level2">
-<h2>Orthogonal Projection</h2>
-<div id="orthproj" class="Definition unnumbered" title="Orthogonal Projections">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Orthogonal Projections</summary><div>For a vector space <span class="math inline">\({\cal V}\)</span> with an inner product <span class="math inline">\(\langle \mathbf{x}, \mathbf{y}\rangle\)</span> for <span class="math inline">\(\mathbf{x}, \mathbf{y}\in {\cal V}\)</span>, <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> are orthogonal if <span class="math inline">\(\langle \mathbf{x}, \mathbf{y}\rangle = 0\)</span>. A projection <span class="math inline">\(\mathbf{P}\)</span> is an <em>orthogonal projection</em> onto a subspace <span class="math inline">\(\boldsymbol{{\cal M}}\)</span> of <span class="math inline">\({\cal V}\)</span> if for any <span class="math inline">\(\mathbf{m}\in {\cal V}\)</span>, <span class="math inline">\(\mathbf{P}\mathbf{m}= \mathbf{m}\)</span> and for any <span class="math inline">\(\mathbf{n}\in \boldsymbol{{\cal M}}^\perp\)</span>, <span class="math inline">\(\mathbf{P}\mathbf{n}= \mathbf{0}\)</span>.<p></p>
-<p>The null space of <span class="math inline">\(\mathbf{P}\)</span> is the orthogonal complement of <span class="math inline">\(\boldsymbol{{\cal M}}\)</span></p>
-</div></details>
-</div>
-<div class="fragment">
-<p>For <span class="math inline">\(\mathbb{R}^N\)</span> with the inner product, <span class="math inline">\(\langle \mathbf{x}, \mathbf{y}\rangle = \mathbf{x}^T\mathbf{y}\)</span>, <span class="math inline">\(\mathbf{P}\)</span> is an orthogonal projection onto <span class="math inline">\(\boldsymbol{{\cal M}}\)</span> if <span class="math inline">\(\mathbf{P}\)</span> is a projection (<span class="math inline">\(\mathbf{P}^2 = \mathbf{P}\)</span>) and it is symmetric (<span class="math inline">\(\mathbf{P}= \mathbf{P}^T\)</span>)</p>
-</div>
-<div class="fragment">
-<div class="callout callout-note callout-titled callout-style-simple">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<p>Show that <span class="math inline">\(\mathbf{P}_\mathbf{X}\)</span> is an orthogonal projection on <span class="math inline">\(C(\mathbf{X})\)</span>.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="decompsition" class="slide level2">
-<h2>Decompsition</h2>
+<section id="james-stein-estimators" class="slide level2">
+<h2>James-Stein Estimators</h2>
+<p>in James and Stein (1961) proposed a shrinkage estimator that dominated the MLE for the mean of a multivariate normal distribution <span class="math display">\[\tilde{\boldsymbol{\beta}}_{JS} = \left(1 - \frac{(p-2)\sigma^2}{\|\hat{\boldsymbol{\beta}}\|^2} \right) \hat{\boldsymbol{\beta}}\]</span> (equivalent to our orthogonal regression case; just multiply everything by <span class="math inline">\(\mathbf{X}^T\)</span> to show)</p>
 <ul>
-<li class="fragment"><p>For any <span class="math inline">\(\mathbf{y}\in \mathbb{R}^n\)</span>, we can write it uniquely as a vector <span class="math display">\[ \mathbf{y}= \mathbf{m}+ \mathbf{n}, \quad \mathbf{m}\in \boldsymbol{{\cal M}}\quad \mathbf{n}\in \boldsymbol{{\cal M}}^\perp\]</span></p></li>
-<li class="fragment"><p>write <span class="math inline">\(\mathbf{y}= \mathbf{P}\mathbf{y}+ (\mathbf{y}- \mathbf{P}\mathbf{y}) = \mathbf{P}\mathbf{y}+ (\mathbf{I}- \mathbf{P})\mathbf{y}\)</span></p></li>
-<li class="fragment"><p>claim that if <span class="math inline">\(\mathbf{P}\)</span> is an orthogonal projection, <span class="math inline">\((\mathbf{I}- \mathbf{P})\)</span> is an orthogonal projection onto <span class="math inline">\(\boldsymbol{{\cal M}}^\perp\)</span></p></li>
-<li class="fragment"><p>if <span class="math inline">\(\mathbf{n}\in \boldsymbol{{\cal M}}^\perp\)</span>, then <span class="math inline">\((\mathbf{I}- \mathbf{P})\mathbf{n}= \mathbf{n}- \mathbf{P}\mathbf{n}= \mathbf{n}\)</span></p></li>
+<li class="fragment"><p>they showed that this is the best (in terms of smallest MSE) of all estimators of the form <span class="math inline">\(\left(1- \frac{b}{\|\hat{\boldsymbol{\beta}}\|^2} \right) \hat{\boldsymbol{\beta}}\)</span></p></li>
+<li class="fragment"><p>it is possible to show that the MSE of the James-Stein estimator is <span class="math display">\[\textsf{MSE}(\tilde{\boldsymbol{\beta}}_{JS}) = 2\sigma^2\]</span> which is less than the MSE of the OLS estimator if <span class="math inline">\(p &gt; 2\)</span>! (more on this in STA732)</p></li>
 </ul>
-</section>
-<section id="back-to-mles" class="slide level2">
-<h2>Back to MLEs</h2>
-<ul>
-<li class="fragment"><p><span class="math inline">\(\mathbf{Y}\sim \textsf{N}(\boldsymbol{\mu}, \sigma^2 \mathbf{I}_n)\)</span> with <span class="math inline">\(\boldsymbol{\mu}= \mathbf{X}\boldsymbol{\beta}\)</span> and <span class="math inline">\(\mathbf{X}\)</span> full column rank</p></li>
-<li class="fragment"><p>Claim: Maximum Likelihood Estimator (MLE) of <span class="math inline">\(\boldsymbol{\mu}\)</span> is <span class="math inline">\(\mathbf{P}_\mathbf{X}\mathbf{Y}\)</span></p></li>
-<li class="fragment"><p>Log Likelihood: <span class="math display">\[ \log {\cal{L}}(\boldsymbol{\mu}, \sigma^2) =
--\frac{n}{2} \log(\sigma^2)
-- \frac 1 2 \frac{\| \mathbf{Y}- \boldsymbol{\mu}\|^2}{\sigma^2}
-\]</span></p></li>
-<li class="fragment"><p>Decompose <span class="math inline">\(\mathbf{Y}= \mathbf{P}_\mathbf{X}\mathbf{Y}+ (\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}\)</span><br>
-</p></li>
-<li class="fragment"><p>Use <span class="math inline">\(\mathbf{P}_\mathbf{X}\boldsymbol{\mu}= \boldsymbol{\mu}\)</span><br>
-</p></li>
-<li class="fragment"><p>Simplify <span class="math inline">\(\| \mathbf{Y}- \boldsymbol{\mu}\|^2\)</span></p></li>
-</ul>
-</section>
-<section id="expand" class="slide level2">
-<h2>Expand</h2>
-<p><span class="math display">\[\begin{eqnarray*}
-    \| \mathbf{Y}- \boldsymbol{\mu}\|^2 &amp; = &amp; \|  { (\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}+ \mathbf{P}_x \mathbf{Y}} -
-    \boldsymbol{\mu}\|^2  \\
-  &amp; = &amp; \| (\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}+ \mathbf{P}_x \mathbf{Y}- {\mathbf{P}_\mathbf{X}}\boldsymbol{\mu}\|^2  \\
-  &amp; = &amp; {\|(\mathbf{I}-\mathbf{P}_\mathbf{x})}\mathbf{Y}+  {\mathbf{P}_\mathbf{X}}(\mathbf{Y}- \boldsymbol{\mu})
-  \|^2 \\
-&amp; = &amp; {\|(\mathbf{I}-\mathbf{P}_\mathbf{x})\mathbf{Y}\|^2} +  {\|
-   {\mathbf{P}_\mathbf{X}}(\mathbf{Y}- \boldsymbol{\mu}) \|^2}  + {\small{2 (\mathbf{Y}-
-\boldsymbol{\mu})^T \mathbf{P}_\mathbf{X}^T (\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}}}\\
-&amp; = &amp; \|(\mathbf{I}-\mathbf{P}_\mathbf{x})\mathbf{Y}\|^2 +  \| {\mathbf{P}_\mathbf{X}}(\mathbf{Y}- \boldsymbol{\mu}) \|^2 + {0}
-\\
-&amp; = &amp; \|(\mathbf{I}-\mathbf{P}_\mathbf{x})\mathbf{Y}\|^2 +  \| {\mathbf{P}_\mathbf{X}}\mathbf{Y}- \boldsymbol{\mu}\|^2
-  \end{eqnarray*}\]</span></p>
-<div class="fragment">
-<p>Crossproduct term is zero: <span class="math display">\[\begin{eqnarray*}
-  \mathbf{P}_\mathbf{X}^T (\mathbf{I}- \mathbf{P}_\mathbf{X}) &amp; = &amp;  \mathbf{P}_\mathbf{X}(\mathbf{I}- \mathbf{P}_\mathbf{X})  \\
-  &amp; = &amp;  \mathbf{P}_\mathbf{X}- \mathbf{P}_\mathbf{X}\mathbf{P}_\mathbf{X}\\
-&amp; = &amp;  \mathbf{P}_\mathbf{X}- \mathbf{P}_\mathbf{X}\\
-&amp; = &amp; \mathbf{0}
-\end{eqnarray*}\]</span></p>
+<div class="footer">
+
 </div>
 </section>
-<section id="log-likelihood" class="slide level2">
-<h2>Log Likelihood</h2>
-<p>Substitute decomposition into log likelihood <span class="math display">\[\begin{eqnarray*}
-\log {\cal{L}}(\boldsymbol{\mu}, \sigma^2)  &amp; = &amp;
--\frac{n}{2} \log(\sigma^2) - \frac 1 2 \frac{\| \mathbf{Y}- \boldsymbol{\mu}\|^2}{\sigma^2}  \\
-  &amp; = &amp; -\frac{n}{2} \log(\sigma^2)  - \frac 1 2 \left( \frac{\|(\mathbf{I}- \mathbf{P}_\mathbf{X})
-  \mathbf{Y}\|^2}{\sigma^2} + \frac{\| \mathbf{P}_\mathbf{X}\mathbf{Y}- \boldsymbol{\mu}\|^2 } {\sigma^2} \right)   \\
-&amp; = &amp;  \underbrace { -\frac{n}{2} \log(\sigma^2)  - \frac 1 2  \frac{\|(\mathbf{I}- \mathbf{P}_\mathbf{X})
-  \mathbf{Y}\|^2}{\sigma^2} }  +  \underbrace{- \frac 1 2  \frac{\| \mathbf{P}_\mathbf{X}\mathbf{Y}-
-  \boldsymbol{\mu}\|^2 } {\sigma^2}}   \\
-&amp; = &amp;  \text{ constant with respect to } \boldsymbol{\mu}\qquad  \leq 0
-\end{eqnarray*}\]</span></p>
+<section id="negative-shrinkage" class="slide level2">
+<h2>Negative Shrinkage?</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
 <ul>
-<li class="fragment"><p>Maximize with respect to <span class="math inline">\(\boldsymbol{\mu}\)</span> for each <span class="math inline">\(\sigma^2\)</span></p></li>
-<li class="fragment"><p>RHS is largest when <span class="math inline">\(\boldsymbol{\mu}= \mathbf{P}_\mathbf{X}\mathbf{Y}\)</span> for any choice of <span class="math inline">\(\sigma^2\)</span> <span class="math display">\[\therefore \quad \hat{\boldsymbol{\mu}}= \mathbf{P}_\mathbf{X}\mathbf{Y}\]</span> is the MLE of <span class="math inline">\(\boldsymbol{\mu}\)</span> (fitted values <span class="math inline">\(\hat{\mathbf{Y}}= \mathbf{P}_\mathbf{X}\mathbf{Y}\)</span>)</p></li>
+<li class="fragment"><p>one potential problem with the James-Stein estimator <span class="math display">\[\tilde{\boldsymbol{\beta}}_{JS} = \left(1 - \frac{(p-2)\sigma^2}{\|\hat{\boldsymbol{\beta}}\|^2} \right) \hat{\boldsymbol{\beta}}\]</span> is that the term in the parentheses can be negative if <span class="math inline">\(\|\hat{\boldsymbol{\beta}}\|^2 &lt; (p-2)\sigma^2\)</span></p></li>
+<li class="fragment"><p>How likely is this to happen?</p></li>
+<li class="fragment"><p>Suppose that each of the parameters <span class="math inline">\(\beta_j\)</span> are actually zero, then <span class="math inline">\(\hat{\boldsymbol{\beta}}\sim \textsf{N}(\mathbf{0}_p, \sigma^2 \mathbf{I}_p)\)</span> then <span class="math inline">\(\|\hat{\boldsymbol{\beta}}\|^2 /\sigma^2 \sim  \chi^2_p\)</span></p></li>
+<li class="fragment"><p>compute the probability that <span class="math inline">\(\chi^2_p &lt; (p-2)\)</span></p></li>
+<li class="fragment"><p>so if the model is full of small effects, the James-Stein can lead to negative shrinkage!</p></li>
 </ul>
-</section>
-<section id="mle-of-boldsymbolbeta" class="slide level2">
-<h2>MLE of <span class="math inline">\(\boldsymbol{\beta}\)</span></h2>
-<p><span class="math display">\[{\cal{L}}(\boldsymbol{\mu}, \sigma^2)   =  -\frac{n}{2} \log(\sigma^2)  - \frac 1 2 \left( \frac{\|(\mathbf{I}- \mathbf{P}_\mathbf{X})
-  \mathbf{Y}\|^2}{\sigma^2} + \frac{\| \mathbf{P}_\mathbf{X}\mathbf{Y}- \boldsymbol{\mu}\|^2 } {\sigma^2} \right)\]</span></p>
-<div class="fragment">
-<p>Rewrite as likeloood function for <span class="math inline">\(\boldsymbol{\beta}, \sigma^2\)</span>: <span class="math display">\[{\cal{L}}(\boldsymbol{\beta}, \sigma^2 )  =  -\frac{n}{2} \log(\sigma^2)  - \frac 1 2 \left( \frac{\|(\mathbf{I}- \mathbf{P}_\mathbf{X})
-  \mathbf{Y}\|^2}{\sigma^2} + \frac{\| \mathbf{P}_\mathbf{X}\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 } {\sigma^2}
-\right)\]</span></p>
+</div><div class="column" style="width:35%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="10-james-stein_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" style="width:8in;height:5in"></p>
+</figure>
 </div>
-<div class="fragment">
+</div>
+</div>
+</div></div>
+</section>
+<section id="positive-part-james-stein-estimator" class="slide level2">
+<h2>Positive Part James-Stein Estimator</h2>
 <ul>
-<li class="fragment">Similar argument to show that RHS is maximized by minimizing <span class="math display">\[\| \mathbf{P}_\mathbf{X}
-\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2\]</span> </li>
-<li class="fragment">Therefore <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is a MLE of <span class="math inline">\(\boldsymbol{\beta}\)</span> if and only if satisfies <span class="math display">\[\mathbf{P}_\mathbf{X}\mathbf{Y}= \mathbf{X}\hat{\boldsymbol{\beta}}\]</span></li>
-<li class="fragment">If <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> is full rank, the MLE of <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\((\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}= \hat{\boldsymbol{\beta}}\)</span></li>
+<li class="fragment"><p>any shrinkage estimator of the form <span class="math inline">\(\tilde{\boldsymbol{\beta}}= (1 - b) \hat{\boldsymbol{\beta}}\)</span> is inadmissible if the shrinkage factor is negative or greater than one (there is a better estimator)</p></li>
+<li class="fragment"><p>Baranchik (1964) proposed the positive part James-Stein estimator <span class="math display">\[\tilde{\boldsymbol{\beta}}_{PPJS} = \left(1 - \frac{(p-2)\sigma^2}{\|\hat{\boldsymbol{\beta}}\|^2} \right)^+ \hat{\boldsymbol{\beta}}\]</span> where <span class="math inline">\((x)^+ = \max(x, 0)\)</span></p></li>
+<li class="fragment"><p>This is the same as the James-Stein estimator if the shrinkage factor is positive and zero otherwise. (related to testing the null hypothesis that all the <span class="math inline">\(\beta_j\)</span> are zero)</p></li>
+<li class="fragment"><p>it turns out this is also inadmissible! ie there is another estimator that has smaller MSE!</p></li>
+<li class="fragment"><p>if we care about admissibility, we may want to stick to Bayes rules that do not depend on the data!</p></li>
+<li class="fragment"><p>more on admissibility &amp; minimaxity in STA732!</p></li>
 </ul>
+<div class="footer">
+
 </div>
 </section>
-<section id="mle-of-sigma2" class="slide level2">
-<h2>MLE of <span class="math inline">\(\sigma^2\)</span></h2>
+<section id="bayes-and-admissibilty" class="slide level2">
+<h2>Bayes and Admissibilty</h2>
 <ul>
-<li class="fragment">Plug-in MLE of <span class="math inline">\(\hat{\boldsymbol{\mu}}\)</span> for <span class="math inline">\(\boldsymbol{\mu}\)</span> <span class="math display">\[ \log {\cal{L}}(\hat{\boldsymbol{\mu}}, \sigma^2)  =   -\frac{n}{2} \log \sigma^2 - \frac 1 2
-\frac{\| (\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}\|^2  }{\sigma^2}\]</span></li>
-<li class="fragment">Differentiate with respect to <span class="math inline">\(\sigma^2\)</span> <span class="math display">\[\frac{\partial \, \log {\cal{L}}(\hat{\boldsymbol{\mu}}, \sigma^2)}{\partial \, \sigma^2} =  -\frac{n}{2} \frac{1}{\sigma^2}  +  \frac 1 2
-\| (\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}\|^2 \left(\frac{1}{\sigma^2}\right)^2 \]</span></li>
-<li class="fragment">Set derivative to zero and solve for MLE <span class="math display">\[\begin{eqnarray*}
-0 &amp; = &amp;  -\frac{n}{2} \frac{1}{{\hat{\sigma}}^2}  +  \frac 1 2
-\| (\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}\|^2 \left(\frac{1}{{\hat{\sigma}}^2}\right)^2  \\
-\frac{n}{2} {\hat{\sigma}}^2&amp; = &amp; \frac 1 2
-\| (\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}\|^2 \\
-{\hat{\sigma}}^2&amp; = &amp; \frac{\| (\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}\|^2}{n}
-\end{eqnarray*}\]</span></li>
+<li class="fragment"><p>Bayes rules based on proper priors are generally always admissible (see Christian Robert (2007) The Bayesian Choice for more details)</p></li>
+<li class="fragment"><p>unique Bayes rules are admissible</p></li>
+<li class="fragment"><p>Generalized Bayes rules based on improper priors may not be inadmissible, but this will depend on the loss function and the prior</p></li>
+<li class="fragment"><p>under regularity conditions, limits of Bayes rules will be admissible</p></li>
+<li class="fragment"><p>the Positive-Part James-Stein estimator fails to be admissible under squared error loss as Bayes risk is not continuous</p></li>
 </ul>
 </section>
-<section id="mle-estimate-of-sigma2" class="slide level2">
-<h2>MLE Estimate of <span class="math inline">\(\sigma^2\)</span></h2>
-<p>Maximum Likelihood Estimate of <span class="math inline">\(\sigma^2\)</span> <span class="math display">\[\begin{eqnarray*}
-    {\hat{\sigma}}^2&amp; = &amp; \frac{\| (\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}\|^2}{n} \\
-      &amp; = &amp; \frac{\mathbf{Y}^T(\mathbf{I}- \mathbf{P}_\mathbf{X})^T(\mathbf{I}-\mathbf{P}_\mathbf{X}) \mathbf{Y}}{n} \\
-&amp; = &amp; \frac{ \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}}{n} \\
-&amp; = &amp; \frac{\mathbf{e}^T\mathbf{e}} {n}
-  \end{eqnarray*}\]</span> where <span class="math inline">\(\mathbf{e}= (\mathbf{I}- \mathbf{P}_\mathbf{X})\mathbf{Y}\)</span> are the <em>residuals</em> from the regression of <span class="math inline">\(\mathbf{Y}\)</span> on <span class="math inline">\(\mathbf{X}\)</span></p>
+<section id="positive-part-james-stein-estimator-and-testimators" class="slide level2">
+<h2>Positive Part James-Stein Estimator and Testimators</h2>
+<ul>
+<li class="fragment"><p>the positive part James-Stein estimator can be shown to be related to <strong>testimators</strong> where if we fail to reject the hypothesis that all the <span class="math inline">\(\beta_j\)</span> are zero at some level, we set all coefficients to zero, and otherwise we shrink the coefficients by an amount that depends on how large the test statistic (<span class="math inline">\(\|\hat{\boldsymbol{\beta}}\|^2\)</span>) is.</p></li>
+<li class="fragment"><p>note this can shrink all the coefficients to zero if the majority are small so increased bias for large coefficients that are not zero!</p></li>
+<li class="fragment"><p>this is a form of <strong>model selection</strong> where we are selecting the model that has all the coefficients zero!</p></li>
+</ul>
+</section>
+<section id="lasso-estimator" class="slide level2">
+<h2>LASSO Estimator</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><p>an alternative estimator that allows for shrinkage and selection is the LASSO (Least Absolute Shrinkage and Selection Operator).</p></li>
+<li class="fragment"><p>the LASSO replaces the penalty term in the ridge regression with an <span class="math inline">\(L_1\)</span> penalty term <span class="math display">\[\hat{\boldsymbol{\beta}}_{LASSO} = \mathop{\mathrm{argmin}}_{\boldsymbol{\beta}} \left\{ \|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 + \lambda \|\boldsymbol{\beta}\|_1 \right\}\]</span></p></li>
+<li class="fragment"><p>the LASSO can also be shown to be the posterior mode of a Bayesian model with independent Laplace or double exponential prior distributions on the coefficients.</p></li>
+<li class="fragment"><p>as the double exponential prior is a “scale” mixture of normals, this provides a generalization of the ridge regression.</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><img data-src="img/lasso.png"></p>
+<p>from <a href="https://livebook.manning.com/book/machine-learning-with-r-the-tidyverse-and-mlr/chapter-11/">Machine Learning with R</a></p>
+</div></div>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
