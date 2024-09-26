@@ -276,6 +276,20 @@ $$\btilde_{PPJS} = \left(1 - \frac{(p-2)\sigma^2}{\|\bhat\|^2} \right)^+ \bhat$$
 ::: footer
 :::
 
+## Bayes and Admissibilty
+
+- Bayes rules based on proper priors are generally always admissible 
+(see Christian Robert (2007) The Bayesian Choice for more details)
+
+- unique Bayes rules are admissible
+
+- Generalized Bayes rules based on improper priors may not be inadmissible, but this will depend on the loss function and the prior
+
+- under regularity conditions, limits of Bayes rules will be admissible
+
+- the Positive-Part James-Stein estimator fails to be admissible under squared error loss as Bayes risk is  not continuous
+
+
 ## Positive Part James-Stein Estimator and Testimators
 
 - the positive part James-Stein estimator can be shown to be related to  **testimators** where if we fail to reject the hypothesis that all the $\beta_j$ are zero at some level,  we set all coefficients to zero, and otherwise we 
@@ -284,6 +298,7 @@ shrink the coefficients by an amount that depends on how large the test statisti
 - note this can shrink all the coefficients to zero if the majority are small so increased bias for large coefficients that are not zero!
 
 - this is a form of **model selection** where we are selecting the model that has all the coefficients zero!
+
 
 ## LASSO Estimator
 
