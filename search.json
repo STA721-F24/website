@@ -616,74 +616,53 @@
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "HW/hw-01.html",
-    "href": "HW/hw-01.html",
-    "title": "Homework 1",
+    "objectID": "HW/hw-02.html",
+    "href": "HW/hw-02.html",
+    "title": "Homework 2",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
-    "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
-    "title": "Homework 1",
+    "objectID": "HW/hw-02.html#due-1100pm-thurs-sept-12",
+    "href": "HW/hw-02.html#due-1100pm-thurs-sept-12",
+    "title": "Homework 2",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-01.html#rstudio",
-    "href": "HW/hw-01.html#rstudio",
-    "title": "Homework 1",
+    "objectID": "HW/hw-02.html#rstudio",
+    "href": "HW/hw-02.html#rstudio",
+    "title": "Homework 2",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-01.html#r-quarto",
-    "href": "HW/hw-01.html#r-quarto",
-    "title": "Homework 1",
-    "section": "R & Quarto",
-    "text": "R & Quarto\nYou are required to use the .qmd format to type up this report report. To get started see technical writing with Quarto. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts."
+    "objectID": "HW/hw-02.html#r-rnw",
+    "href": "HW/hw-02.html#r-rnw",
+    "title": "Homework 2",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
   },
   {
-    "objectID": "HW/hw-01.html#getting-started-with-github-classroom",
-    "href": "HW/hw-01.html#getting-started-with-github-classroom",
-    "title": "Homework 1",
+    "objectID": "HW/hw-02.html#getting-started-with-github-classroom",
+    "href": "HW/hw-02.html#getting-started-with-github-classroom",
+    "title": "Homework 2",
     "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW1\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw1.qmd file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW2\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw2.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-01.html#gradescope-submission",
-    "href": "HW/hw-01.html#gradescope-submission",
-    "title": "Homework 1",
+    "objectID": "HW/hw-02.html#gradescope-submission",
+    "href": "HW/hw-02.html#gradescope-submission",
+    "title": "Homework 2",
     "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-01.html#grading",
-    "href": "HW/hw-01.html#grading",
-    "title": "Homework 1",
+    "objectID": "HW/hw-02.html#grading",
+    "href": "HW/hw-02.html#grading",
+    "title": "Homework 2",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
-  },
-  {
-    "objectID": "index.html#course-description",
-    "href": "index.html#course-description",
-    "title": "STA721: Linear Models (Fall 2024)",
-    "section": "Course Description",
-    "text": "Course Description\nThis course introduces students to linear models and extensions for model building from the frequentist (OLS/MLE and penalized likelihoods) and Bayesian paradigms, with an emphasis on a geometric perspective. Course topics include optimal estimation and prediction, distributional assumptions and model checking, hypothesis testing and model selection including Bayes factors and intrinsic Bayes factors, and Bayesian Model Averaging. Students should have a strong background in matrix algebra and distribution theory. Co-requisite: STA 602L, 702L or equivalent."
-  },
-  {
-    "objectID": "index.html#course-info",
-    "href": "index.html#course-info",
-    "title": "STA721: Linear Models (Fall 2024)",
-    "section": "Course Info",
-    "text": "Course Info\n\nTextbooks\n\n\n\nTextbook\nOrdering Information\n\n\n\n\n\nPlane Answers to Complex Questions Ronald Christensen (2011) 4th Edition Springer-Verlag, NY. The textbook is freely available as an eBook thru the Duke Library. You’re welcomed to read on screen or print it out. If you prefer a paperback version you can buy it at the cost of printing from Springer or purchase a hardback version at your favorite vendor.\n\n\n\nLinear Regression Analysis, George A.F Seber and Alan J. Lee (2003) 2nd Edition, Wiley eBook in Duke Library. Duke Library is aware the link to the ebook is broken See the\n\n\n\nCanvas site for a pdf version until the links are fixed.\n\n\nLecture\n   Tuesday and Thursday\n   1:25pm - 2:40pm\n   Old Chemistry 123 \n\n\nLabs\n   Fridays\n  10:05am - 11:20pm\n   LINK 088 (Clasroom 4) \n\n\nFinal Exam\n   December 15\n   9:00am - 12:00pm\n   Old Chemistry 123 \n\n\nInstructional Team and Office Hours\n\n\n\nRole\nName\nEmail\nOffice Hours\nLocation\n\n\n\n\nInstructor\nDr Merlise Clyde\n\nTues 2:45 - 3:45  or by appointment \n223E Old Chem\n\n\nTA\nBongjung Sung\n\nMon 9:30-11:30am\n203B Old Chem"
-  },
-  {
-    "objectID": "index.html#course-topics",
-    "href": "index.html#course-topics",
-    "title": "STA721: Linear Models (Fall 2024)",
-    "section": "Course Topics",
-    "text": "Course Topics\nCourse topics will be drawn (but subject to change) from\n\nMotivation for Studying Linear Models as Foundation\nRandom Vectors and Matrices\nMultivariate Normal Distribution Theory\nConditional Normal Distribution Theory\nLinear Models via Coordinate free representations (examples)\nMaximum Likelihood Estimation & Projections\nInterval Estimation: Distribution of Quadratic Forms\nGauss-Markov Theorem & Optimality of OLS/GLS\nFormulation of Bayesian Inference\nSubjective and Default Priors\nRelated Shrinkage Methods and Penalized Likelihoods (Ridge regression, lasso)\nModel Selection (comparison of classical and Bayesian approaches)\nBayes Factors\nBayesian Model Averaging\nModel Checking: Residual Analysis & Diagnostics\nRobust Methods for Outliers\nGeneralized Linear Model\nHierarchical Models\n\nPlease check the website for updates, slides and current readings."
   },
   {
     "objectID": "HW/hw-04.html",
@@ -735,51 +714,121 @@
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "HW/hw-02.html",
-    "href": "HW/hw-02.html",
-    "title": "Homework 2",
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "STA721: Linear Models (Fall 2024)",
+    "section": "Course Description",
+    "text": "Course Description\nThis course introduces students to linear models and extensions for model building from the frequentist (OLS/MLE and penalized likelihoods) and Bayesian paradigms, with an emphasis on a geometric perspective. Course topics include optimal estimation and prediction, distributional assumptions and model checking, hypothesis testing and model selection including Bayes factors and intrinsic Bayes factors, and Bayesian Model Averaging. Students should have a strong background in matrix algebra and distribution theory. Co-requisite: STA 602L, 702L or equivalent."
+  },
+  {
+    "objectID": "index.html#course-info",
+    "href": "index.html#course-info",
+    "title": "STA721: Linear Models (Fall 2024)",
+    "section": "Course Info",
+    "text": "Course Info\n\nTextbooks\n\n\n\nTextbook\nOrdering Information\n\n\n\n\n\nPlane Answers to Complex Questions Ronald Christensen (2011) 4th Edition Springer-Verlag, NY. The textbook is freely available as an eBook thru the Duke Library. You’re welcomed to read on screen or print it out. If you prefer a paperback version you can buy it at the cost of printing from Springer or purchase a hardback version at your favorite vendor.\n\n\n\nLinear Regression Analysis, George A.F Seber and Alan J. Lee (2003) 2nd Edition, Wiley eBook in Duke Library. Duke Library is aware the link to the ebook is broken See the\n\n\n\nCanvas site for a pdf version until the links are fixed.\n\n\nLecture\n   Tuesday and Thursday\n   1:25pm - 2:40pm\n   Old Chemistry 123 \n\n\nLabs\n   Fridays\n  10:05am - 11:20pm\n   LINK 088 (Clasroom 4) \n\n\nFinal Exam\n   December 15\n   9:00am - 12:00pm\n   Old Chemistry 123 \n\n\nInstructional Team and Office Hours\n\n\n\nRole\nName\nEmail\nOffice Hours\nLocation\n\n\n\n\nInstructor\nDr Merlise Clyde\n\nTues 2:45 - 3:45  or by appointment \n223E Old Chem\n\n\nTA\nBongjung Sung\n\nMon 9:30-11:30am\n203B Old Chem"
+  },
+  {
+    "objectID": "index.html#course-topics",
+    "href": "index.html#course-topics",
+    "title": "STA721: Linear Models (Fall 2024)",
+    "section": "Course Topics",
+    "text": "Course Topics\nCourse topics will be drawn (but subject to change) from\n\nMotivation for Studying Linear Models as Foundation\nRandom Vectors and Matrices\nMultivariate Normal Distribution Theory\nConditional Normal Distribution Theory\nLinear Models via Coordinate free representations (examples)\nMaximum Likelihood Estimation & Projections\nInterval Estimation: Distribution of Quadratic Forms\nGauss-Markov Theorem & Optimality of OLS/GLS\nFormulation of Bayesian Inference\nSubjective and Default Priors\nRelated Shrinkage Methods and Penalized Likelihoods (Ridge regression, lasso)\nModel Selection (comparison of classical and Bayesian approaches)\nBayes Factors\nBayesian Model Averaging\nModel Checking: Residual Analysis & Diagnostics\nRobust Methods for Outliers\nGeneralized Linear Model\nHierarchical Models\n\nPlease check the website for updates, slides and current readings."
+  },
+  {
+    "objectID": "HW/hw-01.html",
+    "href": "HW/hw-01.html",
+    "title": "Homework 1",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-02.html#due-1100pm-thurs-sept-12",
-    "href": "HW/hw-02.html#due-1100pm-thurs-sept-12",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
+    "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
+    "title": "Homework 1",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-02.html#rstudio",
-    "href": "HW/hw-02.html#rstudio",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#rstudio",
+    "href": "HW/hw-01.html#rstudio",
+    "title": "Homework 1",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-02.html#r-rnw",
-    "href": "HW/hw-02.html#r-rnw",
-    "title": "Homework 2",
-    "section": "R & RNW",
-    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+    "objectID": "HW/hw-01.html#r-quarto",
+    "href": "HW/hw-01.html#r-quarto",
+    "title": "Homework 1",
+    "section": "R & Quarto",
+    "text": "R & Quarto\nYou are required to use the .qmd format to type up this report report. To get started see technical writing with Quarto. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts."
   },
   {
-    "objectID": "HW/hw-02.html#getting-started-with-github-classroom",
-    "href": "HW/hw-02.html#getting-started-with-github-classroom",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#getting-started-with-github-classroom",
+    "href": "HW/hw-01.html#getting-started-with-github-classroom",
+    "title": "Homework 1",
     "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW2\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw2.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW1\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw1.qmd file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-02.html#gradescope-submission",
-    "href": "HW/hw-02.html#gradescope-submission",
-    "title": "Homework 2",
+    "objectID": "HW/hw-01.html#gradescope-submission",
+    "href": "HW/hw-01.html#gradescope-submission",
+    "title": "Homework 1",
+    "section": "Gradescope Submission",
+    "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+  },
+  {
+    "objectID": "HW/hw-01.html#grading",
+    "href": "HW/hw-01.html#grading",
+    "title": "Homework 1",
+    "section": "Grading",
+    "text": "Grading\nTotal: 20 points."
+  },
+  {
+    "objectID": "HW/hw-05.html",
+    "href": "HW/hw-05.html",
+    "title": "Homework 5",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
+  },
+  {
+    "objectID": "HW/hw-05.html#due-1000pm-fri-oct-4",
+    "href": "HW/hw-05.html#due-1000pm-fri-oct-4",
+    "title": "Homework 5",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
+  },
+  {
+    "objectID": "HW/hw-05.html#rstudio",
+    "href": "HW/hw-05.html#rstudio",
+    "title": "Homework 5",
+    "section": "RStudio",
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+  },
+  {
+    "objectID": "HW/hw-05.html#getting-started-with-github-classroom",
+    "href": "HW/hw-05.html#getting-started-with-github-classroom",
+    "title": "Homework 5",
+    "section": "Getting started with Github Classroom",
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+  },
+  {
+    "objectID": "HW/hw-05.html#r-rnw",
+    "href": "HW/hw-05.html#r-rnw",
+    "title": "Homework 5",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+  },
+  {
+    "objectID": "HW/hw-05.html#gradescope-submission",
+    "href": "HW/hw-05.html#gradescope-submission",
+    "title": "Homework 5",
     "section": "Gradescope Submission",
     "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-02.html#grading",
-    "href": "HW/hw-02.html#grading",
-    "title": "Homework 2",
+    "objectID": "HW/hw-05.html#grading",
+    "href": "HW/hw-05.html#grading",
+    "title": "Homework 5",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
   },

@@ -2,142 +2,146 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://STA721-F24.github.io/website/reading/01-introduction.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/10-james-stein.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/03-non-full-rank.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/05-BLUE-MVUE.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/08-bayes.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/syllabus.html</loc>
-    <lastmod>2024-09-26T14:36:08.122Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.204Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/labs/lab-01.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/schedule.html</loc>
-    <lastmod>2024-09-26T14:36:08.122Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.204Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/list-of-mathstuff.html</loc>
-    <lastmod>2024-09-26T14:37:11.829Z</lastmod>
+    <lastmod>2024-09-26T19:09:54.510Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/10-james-stein.html</loc>
-    <lastmod>2024-09-26T14:36:08.115Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.197Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/03-non-full-rank.html</loc>
-    <lastmod>2024-09-26T14:36:08.109Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.191Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/09-bayes-freq-risk.html</loc>
-    <lastmod>2024-09-26T14:36:08.115Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.197Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/07-sampling.html</loc>
-    <lastmod>2024-09-26T14:36:08.113Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.195Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/macros.html</loc>
-    <lastmod>2024-09-26T14:36:08.121Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.203Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/06-GLS.html</loc>
-    <lastmod>2024-09-26T14:36:08.113Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.195Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/HW/hw-03.html</loc>
-    <lastmod>2024-09-26T14:36:08.012Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/HW/hw-01.html</loc>
-    <lastmod>2024-09-26T14:36:08.012Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/index.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
-  </url>
-  <url>
-    <loc>https://STA721-F24.github.io/website/HW/hw-04.html</loc>
-    <lastmod>2024-09-26T14:36:08.013Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.094Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/HW/hw-02.html</loc>
-    <lastmod>2024-09-26T14:36:08.012Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.094Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/HW/hw-04.html</loc>
+    <lastmod>2024-09-26T19:08:39.094Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/index.html</loc>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/HW/hw-01.html</loc>
+    <lastmod>2024-09-26T19:08:39.094Z</lastmod>
+  </url>
+  <url>
+    <loc>https://STA721-F24.github.io/website/HW/hw-05.html</loc>
+    <lastmod>2024-09-26T19:08:39.094Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/example.html</loc>
-    <lastmod>2024-09-26T14:36:08.115Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.197Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/template.html</loc>
-    <lastmod>2024-09-26T14:36:08.122Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.204Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/08-bayes.html</loc>
-    <lastmod>2024-09-26T14:36:08.114Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.196Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/05-BLUE-MVUE.html</loc>
-    <lastmod>2024-09-26T14:36:08.112Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.194Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/list-of-stilltodo.html</loc>
-    <lastmod>2024-09-26T14:37:11.829Z</lastmod>
+    <lastmod>2024-09-26T19:09:54.510Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/02-mles.html</loc>
-    <lastmod>2024-09-26T14:36:08.108Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.190Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/04-BLUE.html</loc>
-    <lastmod>2024-09-26T14:36:08.111Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.193Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources/slides/01-introduction.html</loc>
-    <lastmod>2024-09-26T14:36:08.098Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.180Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/resources.html</loc>
-    <lastmod>2024-09-26T14:36:08.094Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.176Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/about.html</loc>
-    <lastmod>2024-09-26T14:36:08.076Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.158Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/06-GLS.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/07-sampling.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/09-bayes-freq-risk.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/02-mles.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
   </url>
   <url>
     <loc>https://STA721-F24.github.io/website/reading/04-BLUE.html</loc>
-    <lastmod>2024-09-26T14:36:08.085Z</lastmod>
+    <lastmod>2024-09-26T19:08:39.167Z</lastmod>
   </url>
 </urlset>
