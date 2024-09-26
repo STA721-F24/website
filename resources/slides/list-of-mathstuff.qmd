@@ -1,6 +1,1 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
- [**Theorem**](#christensen-thm-1.3.2): Christensen Thm 1.3.2\Pageref{christensen-thm-1.3.2}
-
- [**Proof**](#Proof*-0.2)\Pageref{Proof*-0.2}
-
- [**Proof**](#continued): continued\Pageref{continued}

@@ -1,0 +1,316 @@
+---
+subtitle: "STA 721: Lecture 10"
+title: "James-Stein Estimation and Shrinkage"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"   
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+      numbered: false
+    Lemma:
+      group: thmlike
+      numbered: false
+    Corollary:
+      group: thmlike
+      numbered: false
+    Proposition:
+      group: thmlike
+      numbered: false      
+    Proof:
+      group: thmlike
+      numbered: false
+      collapse: false   
+    Exercise:
+      group: thmlike
+      numbered: false
+    Definition:
+      group: thmlike
+      numbered: false
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+- Frequentist Risk in Orthogonal Regression
+- James-Stein Estimation
+
+
+. . .
+
+Readings:
+
+  -   Seber & Lee Chapter  Chapter 12
+
+## Orthogonal Regression
+
+-   Consider the model $\Y = \X \b + \e$ where $\X$ is $n \times p$ with
+    $n > p$ and $\X^T\X = \I_p$.
+    
+- If $\X$ has orthogonal columns, then $\bhat = \X^T\Y$ is the OLS estimator of
+    $\b$.
+    
+-   The OLS estimator is unbiased and has minimum variance among all
+
+-   The MSE for estimating $\b$ is $\E_\Y[( \b - \bhat)^T(\b -\bhat)] = \sigma^2
+  \tr[(\X^T\X)^{-1}] = p\sigma^2$
+  
+- Can always take a general regression problem and transform design so that the model matrix has orthogonal columns 
+$$\X \b = \U \D \V^T \b = \U \alphav$$
+where new parameters are $\alphav = \D \V^T \b$ and $\U^T\U = \I_p$.
+
+- Orthogonal polynomials, Fourier bases and wavelet regression are other examples. 
+
+- $\hat{\alphav} = \U^T\Y$ and MSE of $\hat{\alphav}$ is $p\sigma^2$
+
+- so WLOG we will assume that $\X$ has orthogonal columns
+
+## Shrinkage Estimators
+
+- the $g$-prior and Ridge prior are equivalent in the orthogonal case
+$$\b \sim \N(\zero_p, \sigma^2 \I_p/\kappa)$$
+using the ridge parameterization of the prior $\kappa = 1/g$
+- Bayes estimator in this case is
+$$\bhat_\kappa = \frac{1}{1+\kappa} \bhat$$
+- MSE of $\bhat_\kappa$ is
+$$\MSE(\bhat_\kappa) = \frac{1}{(1+\kappa)^2} \sigma^2 p + \frac{\kappa^2}{(1 + \kappa)^2} \sum_{j=1}^{p} \beta_j^2$$
+- squared bias term grows with $\kappa$ and variance term decreases with $\kappa$
+
+## Shrinkage
+
+:::: {.columns}
+::: {.column width="60%"}
+- in principle, with the right choice of $\kappa$ we can get a better estimator and reduce the MSE
+
+- while not unbiased, what we pay for bias we can make up for with a reduction in variance
+
+- the variance-bias decomposition of MSE based on the plot suggests there is an optimal value of $\kappa$ the improves over OLS in terms of MSE
+
+- "optimal" $\kappa$
+$$\kappa = \frac{p \sigma^2}{\|\b^*\|^2}$$
+where $\b^*$ is the true value of $\b$
+
+- but never know that in practice!
+:::
+
+::: {.column width="40%"}
+
+```{r shrinkage}
+#| echo: FALSE
+#| fig-width: 5
+#| fig-height: 5
+#| out-width: 5in
+#| out-height: 5in
+
+mse = function(k, p =5, sigma=1, b2 =  5) {
+  (1/(1+k)^2)*p*sigma^2 + k^2/(1+k)*b2
+}
+
+k = seq(0, 3, length=100)
+p = 5; sigma = 1; b2 = 10
+plot(k, mse(k,p=p, b2=b2), type='l', xlab=expression(kappa), ylab='MSE', 
+     main='Shrinkage Estimator',
+     ylim=c(0, 6), col="purple",
+     lwd=2)
+abline(h=p, col='black', lty=4)
+lines(k, p*sigma^2/(1 + k)^2, col='blue', lwd=2, lty=2)
+lines(k, k^2*b2/(1 + k)^2, col='red', lwd=2, lty = 3)
+legend('topright', c('MSE', 'Variance', 'Bias^2', 'OLS'), col=c('purple', 'blue', 'red', 'black'), lty=1:4)
+```
+:::
+::::
+
+## Estimating $\kappa$
+
+- if we use the optimal $\kappa$, the shrinkage estimator can be written as
+$$\btilde = \frac{\|\b\|^2}{p \sigma^2 + \|\b\|^2} \bhat$$
+or 
+$$\btilde = \left(1 - \frac{p\sigma^2}{p\sigma^2 + \|\b\|^2} \right) \bhat$$
+- but note that $\E\|\bhat\|^2 = p \sigma^2 + \|\b\|^2$ (the denominator)
+
+- plugging in $\|\bhat\|^2$ for the denominator leads to an estimator that we can compute!
+$$\btilde = \left(1 - \frac{p\sigma^2}{\|\bhat\|^2} \right) \bhat$$
+
+
+
+## James-Stein Estimators
+
+in James and Stein (1961) proposed a shrinkage estimator that dominated the MLE for the mean of a multivariate normal distribution 
+$$\btilde_{JS} = \left(1 - \frac{(p-2)\sigma^2}{\|\bhat\|^2} \right) \bhat$$
+(equivalent to our orthogonal regression case; just multiply everything by $\X^T$ to show)
+
+-  they showed that this is  the best (in terms of smallest MSE) of all estimators of the form 
+$\left(1- \frac{b}{\|\bhat\|^2} \right) \bhat$
+
+- it is possible to show that the MSE of the James-Stein estimator is 
+$$\MSE(\btilde_{JS}) = 2\sigma^2$$
+which is less than the MSE of the OLS estimator if $p > 2$!  (more on this in STA732)
+
+::: footer
+:::
+
+## Negative Shrinkage?
+
+:::: {.columns}
+::: {.column width="65%"}
+- one potential problem with the James-Stein estimator
+$$\btilde_{JS} = \left(1 - \frac{(p-2)\sigma^2}{\|\bhat\|^2} \right) \bhat$$
+is that the term in the parentheses can be negative if $\|\bhat\|^2 < (p-2)\sigma^2$
+
+- How likely is this to happen?
+
+- Suppose that each of the parameters $\beta_j$ are actually zero, then $\bhat \sim \N(\zero_p, \sigma^2 \I_p)$  then $\|\bhat\|^2 /\sigma^2 \sim  \chi^2_p$
+
+- compute the probability that $\chi^2_p < (p-2)$
+
+- so if the model is full of small effects, the James-Stein can lead to negative shrinkage!
+
+:::
+
+
+
+::: {.column width="35%"}
+
+
+
+```{r}
+#| out.width: 8in
+#| out.height: 5in
+#| fig.width: 8
+#| fig.height: 5
+p = seq(1, 1000)
+plot(p, pchisq(p-2,p, lower.tail = TRUE), 
+     type='l', xlab='p', 
+     ylab=expression(P(chi[2]^2 < p-2)),
+     col='blue', lwd=2)
+
+```
+
+
+:::
+
+::::
+
+
+## Positive Part James-Stein Estimator
+
+- any shrinkage estimator of the form $\btilde = (1 - b) \bhat$ is inadmissible if the shrinkage factor is negative or greater than one
+(there is a better estimator)
+
+- Baranchik (1964) proposed the positive part James-Stein estimator
+$$\btilde_{PPJS} = \left(1 - \frac{(p-2)\sigma^2}{\|\bhat\|^2} \right)^+ \bhat$$ where $(x)^+ = \max(x, 0)$
+
+- This is the same as the James-Stein estimator if the shrinkage factor is positive and zero otherwise. (related to testing the null hypothesis that all the $\beta_j$ are zero)
+
+- it turns out this is also inadmissible! ie there is another estimator that has smaller MSE!
+
+- if we care about admissibility, we may want to stick to Bayes rules that do not depend on the data!
+
+- more on admissibility & minimaxity in STA732!
+
+::: footer
+:::
+
+## Positive Part James-Stein Estimator and Testimators
+
+- the positive part James-Stein estimator can be shown to be related to  **testimators** where if we fail to reject the hypothesis that all the $\beta_j$ are zero at some level,  we set all coefficients to zero, and otherwise we 
+shrink the coefficients by an amount that depends on how large the test statistic ($\|\bhat\|^2$) is.
+
+- note this can shrink all the coefficients to zero if the majority are small so increased bias for large coefficients that are not zero!
+
+- this is a form of **model selection** where we are selecting the model that has all the coefficients zero!
+
+## LASSO Estimator
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- an alternative estimator that allows for shrinkage and selection is the LASSO (Least Absolute Shrinkage and Selection Operator).
+
+- the LASSO replaces the penalty term in the ridge regression with an $L_1$ penalty term
+$$\bhat_{LASSO} = \argmin_{\b} \left\{ \|\Y - \X \b\|^2 + \lambda \|\b\|_1 \right\}$$
+- the LASSO can also be shown to be the posterior mode of a Bayesian model with independent Laplace or double exponential prior distributions on the coefficients.
+
+- as the double exponential prior is a "scale" mixture of normals, this provides a generalization of the ridge regression.
+
+:::
+
+::: {.column width="40%"}
+
+![](img/lasso.png)
+
+from [Machine Learning with R](https://livebook.manning.com/book/machine-learning-with-r-the-tidyverse-and-mlr/chapter-11/)
+:::
+
+:::
+
+
+
+
+
+
