@@ -1,0 +1,18 @@
+---
+title: "James-Stein Estimation"
+---
+
+We discuss properties of the James-Stein shrinkage estimator and its relationship to Empirical Bayes in the case of ridge regression and the $g$-prior in regression with orthonormal predictors.
+While the James-Stein and positive-part James-Stein shrinkage estimators dominate the MLE/OLS estimator, they are not admissible.
+
+Readings:
+
+- Christensen Chapter 15
+
+- Seber & Lee Chapter  12
+
+- [James and Stein (1961) "Estimation with Quadratic Loss"](James-Stein-1961.pdf)
+
+- [Efron & Morris (1973) "Stein's Estimation Rule and its Competitors"](efron-morris-1973.pdf)
+
+- Robert, C. (2007) "The Bayesian Choice" Chapter 5
