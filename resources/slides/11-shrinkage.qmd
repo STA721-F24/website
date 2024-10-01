@@ -1,0 +1,521 @@
+---
+subtitle: "STA 721: Lecture 11"
+title: "Shrinkage Estimators and Hierarchical Bayes"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"   
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+      numbered: false
+    Lemma:
+      group: thmlike
+      numbered: false
+    Corollary:
+      group: thmlike
+      numbered: false
+    Proposition:
+      group: thmlike
+      numbered: false      
+    Proof:
+      group: thmlike
+      numbered: false
+      collapse: false   
+    Exercise:
+      group: thmlike
+      numbered: false
+    Definition:
+      group: thmlike
+      numbered: false
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+require(lars, monomvn)
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+- Lasso
+- Bayesian Lasso
+
+. . .
+
+- Readings (see reading link)
+
+  - Seber & Lee Chapter  Chapter 12
+  - Tibshirani (JRSS B 1996)
+  - Park & Casella (JASA 2008) 
+  - Hans (Biometrika 2010)
+  - Carvalho, Polson & Scott (Biometrika 2010)
+
+
+\end{itemize}
+
+## LASSO Estimator
+
+:::: {.columns}
+
+::: {.column width="60%"}
+Tibshirani (JRSS B 1996) proposed estimating coefficients through
+$L_1$ constrained least squares via the **L**east **A**bsolute **S**hrinkage and
+**S**election **O**perator or _lasso_ 
+$$\bhat_{L} = \argmin_{\b} \left\{ \|\Y_c - \X_s \b\|^2 + \lambda \|\b\|_1 \right\}$$
+
+    
+- $\Y_c$ is the centered $\Y$, $\Y_c =    \Y - \bar{\Y} \one$ 
+- $\X_s$ is the centered and standardized $\X$ matrix so that the diagonal elements of $\X_s^T\X_s = c$. 
+
+- use the `scale` function but standardization usually handled within packages
+
+
+
+
+
+
+
+
+:::
+
+::: {.column width="40%"}
+
+![](img/lasso.png)
+
+- Control how large coefficients may grow 
+    $$\arg \min_{\b} (\Y_c - \X_s \b)^T (\Y_c - \X_s\b)$$
+       
+    $$ \text{ subject to } \sum |\beta_j| \le t$$ 
+    
+    
+
+
+
+
+:::
+
+::::
+
+
+::: footer
+
+image from [Machine Learning with R](https://livebook.manning.com/book/machine-learning-with-r-the-tidyverse-and-mlr/chapter-11/)
+:::
+
+## Lasso Solutions
+
+The entire path of solutions can be easily found using the
+   ``Least Angle Regression'' Algorithm of Efron et al (Annals of
+   Statistics 2004)
+```{r}
+#| include: true
+#| echo: true
+#| results: hide
+library(lars); datasets::longley
+longley.lars = lars(as.matrix(longley[,-7]), longley[,7], type="lasso")
+
+```
+
+```{r}
+#| fig.height:  4.5 
+#| fig.width: 7
+#| out.height: "4.5in"
+#| out.width: "7in"
+plot(longley.lars)
+```
+
+::: footer
+:::
+
+## Coefficients
+
+
+```{r}
+#| out.width: "8in"
+#| echo: true
+round(coef(longley.lars),4)
+```
+
+
+## Selecting a Solution from the Path
+
+:::: {.columns}
+::: {.column width="50%"}
+```{r}
+#| echo: true
+summary(longley.lars)
+
+```
+
+:::
+
+::: {.column width="50%"}
+- For $p$ predictors, 
+$$C_p = \frac{\SSE_p}{s^2} -n + 2p$$
+
+- $s^2$ is the residual variance from the full model
+- $\SSE_p$ is the sum of squared errors for the model with $p$ predictors (RSS)
+- if the model includes all the predictors with non-zero coefficients, then $C_p \approx p$
+
+- choose minimum $C_p \approx p$
+
+- in practice use Cross-validation or Generalized Cross Validation (GCV) to choose $\lambda$
+
+:::
+::::
+
+## Features and Issues
+
+- Combines shrinkage (like Ridge Regression) with Variable Selection to deal with collinearity
+
+- Can be used for prediction or variable selection
+
+- not invariant under linear transformations of the predictors
+
+- typically no uncertainty estimates for the coefficients or predictions
+
+- ignores uncertainty in the choice of $\lambda$
+
+- may overshrink large coefficients
+
+
+
+## Bayesian LASSO
+
+- Equivalent to finding posterior mode with a Double Laplace Prior
+  $$
+\argmax_{\b} -\frac{\phi}{2} \{ \| \Y_c - \X_s \b\|^2 + \lambda^* \|\b\|_1 \}
+$$
+
+-  Park & Casella (JASA 2008) and Hans (Biometrika 2010) propose
+  Bayesian versions of the Lasso 
+\begin{eqnarray*}
+ \Y \mid \alpha, \b, \phi & \sim & \N(\one_n \alpha + \X^s \b^s, \I_n/\phi) \\
+ \b \mid \alpha, \phi, \taub & \sim & \N(\zero, \diag(\taub^2)/\phi)  \\
+ \tau_1^2 \ldots, \tau_p^2 \mid \alpha, \phi & \iid & \Ex(\lambda^2/2)  \\
+  p(\alpha, \phi) & \propto& 1/\phi  \\
+\end{eqnarray*}
+
+- Generalizes Ridge Priors to allow different prior variances for each coefficient 
+
+## Double Exponential or Double Laplace Prior
+- Marginal distribution of $\beta_j$ 
+\begin{eqnarray*}
+ \b \mid \alpha, \phi, \taub & \sim & \N(\zero, \diag(\taub^2)/\phi)  \\
+ \tau_1^2 \ldots, \tau_p^2 \mid \alpha, \phi & \iid & \Ex(\lambda^2/2)  \\
+ p(\beta_j \mid \phi, \lambda) & = & \int_0^\infty p(\beta_i \mid \phi, \tau^2_j) p(\tau^2_j \mid \phi, \lambda) \, d\tau^2 \\
+\end{eqnarray*}
+
+- Can show that $\beta_j \mid \phi, \lambda \iid DE(\lambda \sqrt{\phi})$
+$$\int_0^\infty \frac{1}{\sqrt{2 \pi t}}
+  e^{-\frac{1}{2} \phi \frac{\beta^2}{t }}
+  \, \frac{\lambda^2}{2} e^{- \frac{\lambda^2 t}{2}}\, dt =
+  \frac{\lambda \phi^{1/2}}{2} e^{-\lambda \phi^{1/2} |\beta|}
+$$  
+
+- Scale Mixture of Normals  (Andrews and Mallows 1974)
+
+##  Gibbs Sampler
+
+- Integrate out $\alpha$: $\alpha \mid \Y, \phi \sim \N(\ybar,
+    1/(n \phi)$  
+- $\b \mid \taub, \phi, \lambda, \Y_c \sim \N(, )$  
+- $\phi \mid \taub, \b, \lambda, \Y_c \sim \G( , )$  
+- $1/\tau_j^2 \mid \b, \phi, \lambda, \Y \sim \textsf{InvGaussian}(
+  , )$  
+
+- $X \sim \textsf{InvGaussian}(\mu,  \lambda)$ has density
+$$
+f(x) =  \sqrt{\frac{\lambda^2}{2 \pi}}  x^{-3/2} e^{- \frac{1}{2} \frac{
+    \lambda^2( x - \mu)^2} {\mu^2 x}} \qquad x > 0
+$$
+
+- Homework:  Derive the full conditionals for $\b^s$, $\phi$,
+$1/\tau^2$ 
+
+- see [Casella & Park](http://www.stat.ufl.edu/~casella/Papers/Lasso.pdf)
+
+## Horseshoe Priors
+  Carvalho, Polson & Scott (2010) propose an alternative shrinkage prior 
+\begin{align*}
+\b \mid \phi & \sim \N(\zero_p, \frac{\diag(\tau^2)}{ \phi
+    }) \\
+\tau_j^2 \mid \lambda & \iid C^+(0, \lambda) \\ 
+\lambda & \sim \Ca^+(0, 1/\phi) \\
+p(\alpha, \phi) & \propto 1/\phi
+\end{align*}
+
+- $C^+(0, \lambda)$ is the half-Cauchy distribution with scale $\lambda$ 
+$$
+p(\tau_j^2 \mid \lambda) = \frac{2}{\pi} \frac{\lambda}{\lambda^2 + \tau_j^2}
+$$
+- $\Ca^+(0, 1/\phi)$ is the half-Cauchy distribution with scale $1/\phi$
+
+## Special Case
+
+:::: {.columns}
+::: {.column width="60%"}
+In the case $\lambda = \phi = 1$ and with $\X^t\X = \I$, $\Y^* =
+\X^T\Y$ \pause
+\begin{align*}
+E[\beta_i \mid \Y] & = \E_{\kappa_i \mid \Y}[ \E_{\beta_i \mid \kappa_i, \Y}[\beta_i \mid \Y] \\
+& = \int_0^1 (1 - \kappa_i) y^*_i p(\kappa_i \mid \Y)
+\ d\kappa_i \\
+& = (1 - \E[\kappa \mid y^*_i]) y^*_i
+\end{align*}
+where $\kappa_i = 1/(1 + \tau_i^2)$ is the shrinkage factor (like in James-Stein)
+
+- Half-Cauchy prior induces a Beta(1/2, 1/2) distribution on $\kappa_i$
+a priori  (change of variables)
+
+
+:::
+
+::: {.column width="40%"}
+```{r}
+#| out.height: 5in
+#| fig.height: 5
+#| out.width:  5in
+#| fig.width: 5
+
+kappa = seq(0.0000001, .9999999, length=10000)
+density = dbeta(kappa, 1/2, 1/2)
+plot(kappa, density, type="l", xlab=expression(kappa), ylab="Density", main="Beta(1/2, 1/2) Prior")
+
+```
+
+:::
+::::
+
+## Features and Issues
+
+:::: {.columns}
+::: {.column width="60%"}
+- the posterior mode also induces shrinkage and variable selection if the mode is at zero
+
+- the posterior mean is a shrinkage estimator (no selection) 
+
+- the tails of the distribution are heavier than the Laplace prior (like a Cauchy distribution) so that there is less shrinkage of large $|\bhat|$.
+
+- Desirable  in the orthogonal case, where lasso is more like ridge regression (related to bounded influence)
+
+- MCMC is slow to mix using programs like `stan` but specialized `R` packages like `horseshoe` and `monomvm::bhs`are available
+
+:::
+
+::: {.column width="40%"}
+
+![](img/densities.png)
+
+
+:::
+
+::::
+
+## Bounded Influence and Posterior Mean
+
+:::: {.columns}
+::: {.column width="60%}
+Posterior mean of $\beta$ may also be written as 
+$$E[\beta_i \mid y^*_i] = y^*_i + \frac{d} {d y} \log m(y^*_i)$$
+where $m(y)$ is the predictive density $y^*_i$ under the prior (known $\lambda$) 
+
+-  HS has Bounded Influence: $$\lim_{|y| \to \infty} \frac{d}{dy} \log m(y) = 0$$ 
+
+-  $\lim_{|y_i^*| \to \infty} E[\beta_i \mid y^*_i) \to y^*_i$ (the MLE)
+
+- since the MLE $\to \beta_i^*$ as $n \to \infty$, the HS is asymptotically consistent
+
+
+
+:::
+
+::: {.column width="40%"}
+![](img/shrinkage.png)
+
+- the DE also has bounded influence, but the bound does not decay to zero in tails so that the posterior mean does not shrink to the MLE 
+
+:::
+
+::::
+
+::: footer
+:::
+
+## Comparison
+
+:::: {.columns}
+::: {.column width="60%"}
+
+- Diabetes data (from the `lars` package)
+
+- 64 predictors: 10 main effects, 2-way interactions and quadratic 
+terms 
+```{r}
+#| label: diabetes-data
+data("diabetes")
+```
+
+
+- sample size of `{r} length(diabetes$y)`
+
+- split into training and test sets
+
+- compare MSE for out-of-sample prediction
+using OLS, lasso and horseshoe priors
+
+- Root MSE for prediction for left out data based on 25 different random splits with 100 test cases
+
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| label: diabetes-sim
+#| results: hide
+#| cache: true
+
+library(lars)
+library(monomvn)
+
+data(diabetes)  
+
+
+yf = diabetes$y 
+Xf = diabetes$x2  # 64 variables from all 10 main effects,
+                  # two-way interactions and quadradics
+Xf = scale(Xf)    # rescale so that all variables have mean 0 and sd 1
+n = length(yf)
+n.test = 100
+
+set.seed(42)
+nsim= 25
+mse.ols = rep(NA, nsim)
+mse.lasso = rep(NA, nsim)
+mse.bhs = rep(NA, nsim)
+for (i in 1:nsim) {
+  in.test = sample(1:n, n.test)  # random test cases
+  in.train = (1:n)[-in.test]  # remaining training data
+  y = yf[in.train]
+  x = Xf[in.train,]
+  db.lars = lars(x,y, type="lasso")
+  Cp = summary(db.lars)$Cp
+  best = (1:length(Cp))[Cp == min(Cp)]     # step with smallest Cp
+  y.pred = predict(db.lars, s=best, newx=Xf[in.test,])
+  mse.lasso[i] =  sum((yf[in.test] - y.pred$fit)^2)/n.test
+
+  y.pred = predict(lm(y ~ x), Xf[in.test,]) # old predictions    
+  mse.ols[i] = sum((yf[in.test] - y.pred)^2)/n.test
+
+  bhs = blasso(x, y, case="hs", RJ=FALSE, normalize=F) #already normalized
+  y.pred = mean(bhs$mu) + Xf[in.test,] %*% apply(bhs$beta, 2, mean)
+  mse.bhs[i] = sum((yf[in.test] - y.pred)^2)/n.test
+#  print(c(i, mse.ols[i], mse.lasso[i], mse.bhs[i]))
+}
+
+```
+
+```{r}
+#| label: diabetes-plot-mse
+#| out.width: "7in"
+#| out.height: "6in"
+#| fig.height: 6
+#| fig.width: 7
+
+efficiency = function(x) {x/min(x)}
+rmse = sqrt(cbind(mse.ols, mse.lasso, mse.bhs))
+eff = apply(rmse, 2, efficiency)
+boxplot(rmse, names=c("OLS", "LASSO","HORSESHOE"), ylab="RMSE")
+
+```
+
+
+:::
+
+::::
+
+## Summary 
+
+The literature on shrinkage estimators (with or without selection) is vast
+
+- Elastic Net (Zou & Hastie 2005)
+- SCAD (Fan & Li 2001)
+- Generalized Double Pareto Prior (Armagan, Dunson & Lee 2013)
+- Spike-and-Slab Lasso (Rockova & George 2018)
+
+. . . 
+
+For Bayes, choice of estimator
+
+- posterior mean (easy via MCMC)
+- posterior mode (optimization)
+- posterior median (via MCMC)
+
+. . .
+
+Properties?  
+
+- Fan & Li (JASA 2001) discuss variable
+selection via non-concave penalties and oracle properties
+(next time ...)

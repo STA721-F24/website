@@ -322,7 +322,7 @@ $$\bhat_{LASSO} = \argmin_{\b} \left\{ \|\Y - \X \b\|^2 + \lambda \|\b\|_1 \righ
 from [Machine Learning with R](https://livebook.manning.com/book/machine-learning-with-r-the-tidyverse-and-mlr/chapter-11/)
 :::
 
-:::
+::::
 
 
 
