@@ -112,7 +112,6 @@ require(lars, monomvn)
   - Carvalho, Polson & Scott (Biometrika 2010)
 
 
-\end{itemize}
 
 ## LASSO Estimator
 

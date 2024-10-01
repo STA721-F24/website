@@ -1,0 +1,23 @@
+---
+title: "Shrinkage and Hierarchical Bayes"
+---
+
+We discuss properties of the shrinkage estimators that provide both shrinkage and selection from frequentist and Bayesian paradigms. 
+
+Readings:
+
+
+- Seber & Lee Chapter  12
+
+- [Tibshirani (1996) "Regression Shrinkage and Selection via the Lasso"](https://www.jstor.org/stable/2346178) 
+
+- [Park & Casella (2008) "The Bayesian Lasso"](https://www.tandfonline.com/doi/epdf/10.1198/016214508000000337?needAccess=true)
+
+- [Hans (2010) "Model uncertainty and variable selection in Bayesian lasso regression"](hans-2010-bayesian-lasso.pdf)
+
+- [Carvalho, Polson & Scott (2009) "Handling Sparsity via the Horseshoe"](https://www.jstor.org/stable/25734098)
+
+- Armagan, Dunson & Lee (2013) "Generalized Double Pareto Shrinkage"
+
+
+- Robert, C. (2007) "The Bayesian Choice" Chapter 5
