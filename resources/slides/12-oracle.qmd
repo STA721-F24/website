@@ -494,8 +494,8 @@ $$
 - Scale mixtures of Normals representation
 \begin{align*}
  \beta \mid \tau_j & \sim \N(0, \tau_j) \\
- \tau_j \mid \lambda & \sim \Exp(\lambda^2/2) \\
-  \lambda & \sim \Gam(\alpha, \eta) \\
+ \tau_j \mid \lambda_j & \sim \Exp(\lambda_^2/2) \\
+  \lambda_j & \sim \Gam(\alpha, \eta) \\
   \beta_j & \sim \textsf{GDP}(\xi = \eta/\alpha, \alpha)
 \end{align*}
 
