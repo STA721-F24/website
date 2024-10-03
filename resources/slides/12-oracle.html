@@ -326,19 +326,11 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .Definition {
     --color1: #d999d3;
     --color2: #a01793;
   }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Proof {
+  .Proposition {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -346,7 +338,11 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Proposition {
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Exercise {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -354,17 +350,21 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Proof {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   .Feature {
     --color1: #c0c0c0;
     --color2: #808080;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
   </style>
 </head>
@@ -626,8 +626,8 @@ p(\beta_j \mid \xi, \alpha) = \frac{1}{2 \xi} \left(1 + \frac{\beta_j}{\alpha \x
 <li class="fragment"><p>express as <span class="math inline">\(\beta_j \mid \xi, \alpha \sim \textsf{GDP}(\xi, \alpha)\)</span></p></li>
 <li class="fragment"><p>Scale mixtures of Normals representation <span class="math display">\[\begin{align*}
 \beta \mid \tau_j &amp; \sim \textsf{N}(0, \tau_j) \\
-\tau_j \mid \lambda &amp; \sim \textsf{Exp}(\lambda^2/2) \\
-\lambda &amp; \sim \textsf{Gamma}(\alpha, \eta) \\
+\tau_j \mid \lambda_j &amp; \sim \textsf{Exp}(\lambda_^2/2) \\
+\lambda_j &amp; \sim \textsf{Gamma}(\alpha, \eta) \\
 \beta_j &amp; \sim \textsf{GDP}(\xi = \eta/\alpha, \alpha)
 \end{align*}\]</span></p></li>
 <li class="fragment"><p>is this a thresholding rule? unbiasedness? continuity?</p></li>
