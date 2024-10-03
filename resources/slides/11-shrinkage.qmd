@@ -300,14 +300,14 @@ $1/\tau^2$
 \begin{align*}
 \b \mid \phi & \sim \N(\zero_p, \frac{\diag(\tau^2)}{ \phi
     }) \\
-\tau_j^2 \mid \lambda & \iid C^+(0, \lambda) \\ 
+\tau \mid \lambda & \iid C^+(0, \lambda) \\ 
 \lambda & \sim \Ca^+(0, 1/\phi) \\
 p(\alpha, \phi) & \propto 1/\phi
 \end{align*}
 
 - $C^+(0, \lambda)$ is the half-Cauchy distribution with scale $\lambda$ 
 $$
-p(\tau_j^2 \mid \lambda) = \frac{2}{\pi} \frac{\lambda}{\lambda^2 + \tau_j^2}
+p(\tau \mid \lambda) = \frac{2}{\pi} \frac{\lambda}{\lambda^2 + \tau_j^2}
 $$
 - $\Ca^+(0, 1/\phi)$ is the half-Cauchy distribution with scale $1/\phi$
 

@@ -1,0 +1,20 @@
+---
+title: "Optimal Shrinkage/Selection and Oracle Properties"
+---
+
+We discuss properties of the shrinkage estimators that provide both shrinkage and selection from frequentist and Bayesian paradigms. 
+
+Readings:
+
+
+- Seber & Lee Chapter  12
+
+- [Fan & Li (2001) "Variable Selection via Nonconcave Penalized Likelihood and its Oracle Properties"](https://www.jstor.org/stable/3085904)
+
+- [Tibshirani (1996) "Regression Shrinkage and Selection via the Lasso"](https://www.jstor.org/stable/2346178) 
+
+- [Carvalho, Polson & Scott (2009) "Handling Sparsity via the Horseshoe"](https://www.jstor.org/stable/25734098)
+
+- [Armagan, Dunson & Lee (2013) "Generalized Double Pareto Shrinkage"](https://www.jstor.org/stable/24310517)
+
+

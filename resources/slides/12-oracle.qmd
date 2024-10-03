@@ -1,0 +1,547 @@
+---
+subtitle: "STA 721: Lecture 12"
+title: "Optimal Shrinkage/Selection and Oracle Properties"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"   
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+      numbered: false
+    Lemma:
+      group: thmlike
+      numbered: false
+    Corollary:
+      group: thmlike
+      numbered: false
+    Proposition:
+      group: thmlike
+      numbered: false      
+    Proof:
+      group: thmlike
+      numbered: false
+      collapse: false   
+    Exercise:
+      group: thmlike
+      numbered: false
+    Definition:
+      group: thmlike
+      numbered: false
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+require("lars", "monomvn")
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+- Bounded Influence and Posterior Mean
+- Shrinkage properties and nonconcave penalties
+- conditions for optimal shrinkage and selection
+. . .
+
+- Readings (see reading link)
+
+
+  - Tibshirani (JRSS B 1996)
+  - [Carvalho, Polson & Scott (Biometrika 2010)](https://www.jstor.org/stable/25734098)
+  - [Armagan, Dunson & Lee (Statistica Sinica 2013)](https://www.jstor.org/stable/24310517)
+  - [Fan & Li (JASA 2001)](https://www.jstor.org/stable/3085904)
+
+
+
+
+## Horseshoe Priors
+  Carvalho, Polson & Scott (2010) propose an alternative shrinkage prior 
+\begin{align*}
+\b \mid \phi & \sim \N(\zero_p, \frac{\diag(\tau^2)}{ \phi
+    }) \\
+\tau \mid \lambda & \iid C^+(0, \lambda) \\ 
+\lambda & \sim \Ca^+(0, 1/\phi) \\
+p(\alpha, \phi) & \propto 1/\phi
+\end{align*}
+
+- $C^+(0, \lambda)$ is the half-Cauchy distribution with scale $\lambda$ 
+$$
+p(\tau \mid \lambda) = \frac{2}{\pi} \frac{\lambda}{\lambda^2 + \tau_j^2}
+$$
+- $\Ca^+(0, 1/\phi)$ is the half-Cauchy distribution with scale $1/\phi$
+
+## Special Case: Orthonormal Regression 
+
+:::: {.columns}
+::: {.column width="60%"}
+In the case $\lambda = \phi = 1$ and with $\X^t\X = \I$, $\Y^* =
+\X^T\Y$ \pause
+\begin{align*}
+E[\beta_i \mid \Y] & = \E_{\kappa_i \mid \Y}[ \E_{\beta_i \mid \kappa_i, \Y}[\beta_i \mid \Y] \\
+& = \int_0^1 (1 - \kappa_i) y^*_i p(\kappa_i \mid \Y)
+\ d\kappa_i \\
+& = (1 - \E[\kappa \mid y^*_i]) y^*_i
+\end{align*}
+where $\kappa_i = 1/(1 + \tau_i^2)$ is the shrinkage factor (like in James-Stein)
+
+- Half-Cauchy prior induces a Beta(1/2, 1/2) distribution on $\kappa_i$
+a priori  (change of variables)
+
+- marginal prior (after integrating out )
+:::
+
+::: {.column width="40%"}
+```{r}
+#| out.height: 5in
+#| fig.height: 5
+#| out.width:  5in
+#| fig.width: 5
+
+kappa = seq(0.0000001, .9999999, length=10000)
+density = dbeta(kappa, 1/2, 1/2)
+plot(kappa, density, type="l", xlab=expression(kappa), ylab="Density", main="Beta(1/2, 1/2) Prior")
+
+```
+
+:::
+::::
+
+## Bounded Influence ($\XtX = \I$)
+
+:::: {.columns}
+::: {.column width="60%}
+- Posterior mean of $\beta_i$  may be written as 
+$$E[\beta_i \mid y^*_i] = y^*_i + \frac{d} {d y} \log m(y^*_i)$$
+where $m(y)$ is the predictive density $y^*_i$ under the prior (known $\lambda$) 
+
+- Bounded Influence of the prior (in this setting) means that $$\lim_{|y| \to \infty} \frac{d}{dy} \log m(y) = c$$
+
+-  For HS $\lim_{|y| \to \infty} \frac{d}{dy} \log m(y) = 0$
+
+-  $\lim_{|y_i^*| \to \infty} E[\beta_i \mid y^*_i) \to y^*_i$ (the MLE)
+
+- unbiasedness for large $|y_i^*|$
+:::
+
+::: {.column width="40%"}
+![](img/shrinkage.png)
+
+- DE has bounded influence, but bound does not decay to zero in tails so the posterior mean does not shrink to the MLE (bounded away)
+:::
+::::
+
+::: footer
+:::
+
+## Comparison
+
+:::: {.columns}
+::: {.column width="60%"}
+
+- Diabetes data (from the `lars` package)
+
+- 64 predictors: 10 main effects, 2-way interactions and quadratic 
+terms 
+```{r}
+#| label: diabetes-data
+library("lars")
+data("diabetes")
+```
+
+
+- sample size of `{r} length(diabetes$y)`
+
+- split into training and test sets
+
+- compare MSE for out-of-sample prediction
+using OLS, lasso and horseshoe priors
+
+- Root MSE for prediction for left out data based on 25 different random splits with 100 test cases
+
+- both Lasso and Horseshoe much better than OLS
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| label: diabetes-sim
+#| results: hide
+#| cache: true
+
+
+library("monomvn")
+
+
+
+yf = diabetes$y 
+Xf = diabetes$x2  # 64 variables from all 10 main effects,
+                  # two-way interactions and quadradics
+Xf = scale(Xf)    # rescale so that all variables have mean 0 and sd 1
+n = length(yf)
+n.test = 100
+
+set.seed(42)
+nsim= 25
+mse.ols = rep(NA, nsim)
+mse.lasso = rep(NA, nsim)
+mse.bhs = rep(NA, nsim)
+for (i in 1:nsim) {
+  in.test = sample(1:n, n.test)  # random test cases
+  in.train = (1:n)[-in.test]  # remaining training data
+  y = yf[in.train]
+  x = Xf[in.train,]
+  db.lars = lars(x,y, type="lasso")
+  Cp = summary(db.lars)$Cp
+  best = (1:length(Cp))[Cp == min(Cp)]     # step with smallest Cp
+  y.pred = predict(db.lars, s=best, newx=Xf[in.test,])
+  mse.lasso[i] =  sum((yf[in.test] - y.pred$fit)^2)/n.test
+
+  y.pred = predict(lm(y ~ x), Xf[in.test,]) # old predictions    
+  mse.ols[i] = sum((yf[in.test] - y.pred)^2)/n.test
+
+  bhs = blasso(x, y, case="hs", RJ=FALSE, normalize=F) #already normalized
+  y.pred = mean(bhs$mu) + Xf[in.test,] %*% apply(bhs$beta, 2, mean)
+  mse.bhs[i] = sum((yf[in.test] - y.pred)^2)/n.test
+#  print(c(i, mse.ols[i], mse.lasso[i], mse.bhs[i]))
+}
+
+```
+
+```{r}
+#| label: diabetes-plot-mse
+#| out.width: "7in"
+#| out.height: "6in"
+#| fig.height: 6
+#| fig.width: 7
+
+efficiency = function(x) {x/min(x)}
+rmse = sqrt(cbind(mse.ols, mse.lasso, mse.bhs))
+eff = apply(rmse, 2, efficiency)
+boxplot(rmse, names=c("OLS", "LASSO","HORSESHOE"), ylab="RMSE")
+
+```
+
+
+:::
+
+::::
+
+## Duality for Modal Estimators
+- Model $Y = \X \b + \eps$ with $\XtX = \I_p$ and $\bhat = \X^T \Y \equiv \Y^*$ (take $\sigma^2 = 1$)
+
+-   Penalized Least Squares 
+$$
+\argmin_{\b} \ \frac{1}{2}\| \Y - \X \bhat \|^2 + \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2 + \sum_j \pen_\lambda(\beta_j)
+$$ 
+
+-  Bayes posterior mode (conditional) with prior $p(\b \mid \lambda) = \prod_j p(\beta_j \mid \lambda)$
+\begin{align*}
+& \argmax_{\b} -\frac{1}{2}  \| \Y - \X \bhat \|^2 - \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2 + \sum_j \log(p(\beta_j \mid \lambda)) \\
+& = \argmin_{\b}  \frac{1}{2}\| \Y - \X \bhat \|^2 + \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2  -  \sum_j\log(p(\beta_j \mid \lambda)) \\
+& = \argmin_{\b}  \frac{1}{2}\| \Y - \X \bhat \|^2 + \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2  + \sum_j\pen_\lambda(\beta_j) \\
+\end{align*} 
+
+
+::: footer
+:::
+
+## Properties for Modal Estimates
+Fan \& Li (JASA 2001) discuss variable
+selection via nonconcave penalties and oracle properties  in the context of penalized likelihoods in this setting
+
+- with duality of the negative log prior as their penalty we can extend to Bayesian modal estimates where the prior is a function of $|\beta_j|$
+$$\frac 1 2 \sum(\beta_i - y_i^*)^2 + \frac 1 2 \sum_j(\beta_j - \hat{\beta}_j)^2 +  \sum_j \pen_\lambda(|\beta_j|)$$ 
+
+-  Requirements on penality 
+   -  Unbiasedness: The resulting estimator is nearly unbiased when the true unknown parameter is large (avoid unnecessary modeling bias).
+   -  Sparsity: thresholding rule sets small coefficients to 0 (avoid model complexity)
+   -  Continuity:  continuous in the data $\hat{\beta}_j = y_i^*$ (avoid instability in model prediction)
+
+## Conditions for Unbiasedness
+
+To find the optimal estimator take derivative of  $\frac 1 2 \sum_j(\beta_j - \hat{\beta}_j)^2 +  \sum_j \pen_\lambda(|\beta_j|)$ componentwise and set to zero
+
+- Derivative is 
+\begin{align*}
+\frac{d}{d\,\beta_j} \left\{\frac 1 2 (\beta_j - \hat{\beta}_j)^2 +   \pen_\lambda(|\beta_j|)\right\}
+& = (\beta_j - \hat{\beta}_j) + \sgn(\beta_j)\pen^\prime_\lambda(|\beta_j|) \\
+& = \sgn(\beta_j)\left\{|\beta_j| + \pen^\prime_\lambda(|\beta_j|) \right\} - \hat{\beta}_j
+\end{align*}
+
+- setting derivative to zero gives $\hat{\beta}_j = \sgn(\beta_j)\left\{|\beta_j| + \pen^\prime_\lambda(|\beta_j|) \right\}$
+- if $\lim_{|\beta_j| \to \infty} p^\prime_\lambda(|\beta|) = 0$
+   then 
+  $\hat{\beta}_j = \sgn(\beta_j) |\beta_j| = \beta_j$
+- for large   $|\beta_j|$, $|\hat{\beta}_j|$ is large with high probability 
+- as MLE is unbiased, the optimal estimator is approximately unbiased for large $|\beta_j|$ 
+
+
+
+## Conditions for Thresholding & Continuity
+
+:::: {.columns}
+::: {.column width="60%"}
+As sufficient condition for a thresholding rule $\hat{\beta}_\lambda = 0$ is if 
+$$0 < \min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|)\right\}$$ 
+
+- if $|\hat{\beta}_j| < \min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|) \right\}$
+then the derivative is positive for all positive $\beta_j$ and negative for all negative $\beta_j$ so $\hat{\beta}_j^\lambda = 0$ is a local minimum
+
+
+- if $|\hat{\beta}_j| > \min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|) \right\}$ multiple crossings (local roots)
+
+- a sufficient and necessary condition for continuity is that the  minimum of $|\beta_j| + p^\prime_\lambda(|\beta_j|)$ is obtained at zero
+
+:::
+::: {.column width="40%"}
+```{r}
+#| out.width: 4.5in
+#| out.height: 5in
+#| fig.width: 4.5
+#| fig.height: 5
+#| label: threshold-condition
+
+
+z = 2.5
+lambda = 2
+theta = seq(0,5, length=1000)
+
+fun =  (theta - z)^2  + 2.5*theta  - 3
+
+plot(theta, fun, type="l",
+     ylab = expression(abs(beta) +   d * p[lambda] (beta)/ d*beta),
+     xlab=expression(beta), ylim = c(0, 6))
+title(expression(abs(beta) +   d * p[lambda] (beta)/ d*beta))
+abline(h=3)
+abline(h=1)
+```
+
+:::
+
+::::
+
+
+## Example: Gaussian Prior 
+
+:::: {.columns}
+::: {.column width="60%"}
+ 
+- Prior $\N(0, 1/\lambda^2)$
+- Penalty: $\pen_\lambda(|\beta_j|) = \frac{1}{2} \lambda |\beta_j|^2$
+- Unbiasedness: for large $|\beta_j|$?
+  - Derivative of $\pen_\lambda(|\beta_j|) = \lambda \beta_j = \sgn(\beta_j) \lambda |\beta_j|$
+  - does not go to zero as $|\beta_j| \to \infty$ 
+  - No!  (bias towards zero)
+
+- not a thresholding rule as 
+$$\min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|)\right\}  = (1 + \lambda)|\beta_j|$$
+is zero  
+
+- is continuous as minimum is at zero
+:::
+
+::: {.column width="40%"}
+
+```{r}
+#| out.width: 5in
+#| out.height: 5in
+#| fig.width: 5
+#| fig.height: 5
+#| label: ridge-derivative
+lambda = .75; z = 1
+theta = seq(-4,4, length=1000)
+plambda = lambda *abs(theta)
+condition =  abs(theta)  + plambda
+derivative = sign(theta)* condition  - z
+plot(theta, condition, type="l",
+     xlab= expression(beta), ylim =c(0, 5),
+     ylab = "")
+title(expression(abs(beta) +   d * p[lambda] (beta)/ d*beta))
+abline(h=0)
+```
+
+:::
+::::
+
+## Example: Lasso Prior
+
+:::: {.columns}
+::: {.column width="60%"}
+
+- Penalty: $\pen_\lambda(|\beta_j|) =  \lambda |\beta_j|$
+- Unbiasedness: for large $|\beta_j|$?
+  - Derivative of $\pen_\lambda(|\beta_j|) = \lambda \sgn(\beta_j)$
+  - does not go to zero as $|\beta_j| \to \infty$ 
+  - No!  (bias towards zero)
+
+- Is a thresholding rule as 
+$$\min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|)\right\}  = (|\beta_j| +  \lambda) > 0 $$
+
+- is continuous as minimum is at $\beta_j = 0$
+:::
+
+::: {.column width="40%"}
+```{r}
+#| out.width: 3.5in
+#| out.height: 7in
+#| fig.width: 3.5
+#| fig.height: 7
+#| label: lasso-condition
+
+par(mfrow=c(2,1),
+  mai = c(1, 0.1, .5, 0.1), 
+  oma = c(1.5, 3.5, .5, 0))
+
+z = 2.5
+theta = seq(0,5, length=1000)
+
+fun =  (abs(theta) + lambda)
+
+plot(theta, fun, type="l",
+     ylab = expression(abs(beta) +   d * p[lambda] (beta)/ d*beta),
+     xlab=expression(beta), ylim = c(0, 6))
+title(expression(abs(beta) +   d * p[lambda] (beta)/ d*beta))
+abline(h=3)
+abline(h=1)
+
+
+z = 2.5
+lambda = 2
+theta = seq(-5,5, length=1000)
+
+sgn = function(x) {ifelse(x > 0, 1, -1)}
+fun =  sgn(theta)*(abs(theta) + lambda)
+
+plot(theta, fun, type="l",
+     ylab = expression(abs(beta) +   d * p[lambda] (beta)/ d*beta),
+     xlab=expression(beta))
+title(expression(sign(beta)* abs(beta) +   d * p[lambda] (beta)/ d*beta))
+abline(h=-lambda)
+abline(h=lambda)
+```
+:::
+::::
+
+## Generalized Double Pareto Prior
+
+The Generalized Double Pareto of Armagan, Dunson & Lee (2013)  
+has a prior density for $\beta_j$ of the form
+$$
+p(\beta_j \mid \xi, \alpha) = \frac{1}{2 \xi} \left(1 + \frac{\beta_j}{\alpha \xi}\right)^{-(1 + \alpha)}  
+$$
+
+- express as $\beta_j \mid \xi, \alpha \sim \textsf{GDP}(\xi, \alpha)$
+- Scale mixtures of Normals representation
+\begin{align*}
+ \beta \mid \tau_j & \sim \N(0, \tau_j) \\
+ \tau_j \mid \lambda & \sim \Exp(\lambda^2/2) \\
+  \lambda & \sim \Gam(\alpha, \eta) \\
+  \beta_j & \sim \textsf{GDP}(\xi = \eta/\alpha, \alpha)
+\end{align*}
+
+- is this a thresholding rule? unbiasedness? continuity?
+- for all parameters or are there restrictions?
+
+## Choice of Penalty/Prior and  Conditions
+
+- Ridge:  none
+- Lasso: does not satisfy conditions for unbiasedness
+- GDP: Can show that Generalized Double Pareto does for some choices of hyperparameters
+- Horseshoe: need marginal distribution of $\beta_j$ for penalty 
+   - marginal generally not available in closed form
+   - can show for a special case where there is an analytic expression for the marginal density ($\lambda = \phi = 1$)
+$$p(\beta) = k \exp(\beta^2/2) E_1(\beta^2/2)$$
+- where $E_n(x) = \int_1^\infty \frac{e^{-xt}}{t^n} dt$ for $n = 1, 2, \ldots$
+- $E_n^\prime(x) = -E_{n-1}(x)$ for $n = 1, 2, \ldots$
+
+
+
+## Shrinkage Estimators
+
+The literature on shrinkage estimators (with or without selection) is extensive 
+
+- Ridge
+- Lasso
+- Elastic Net (Zou & Hastie 2005)
+- SCAD (Fan & Li 2001)
+- Generalized Double Pareto Prior (Armagan, Dunson & Lee 2013)
+- Spike-and-Slab Lasso (Rockova & George 2018)
+
+. . . 
+
+For Bayes, choice of estimator
+
+- posterior mean (easy via MCMC)
+- posterior mode (optimization)
+- posterior median (via MCMC)
+
+## Selection and Uncertainty
+
+- Prior/Posterior do not put any probability on the event $\beta_j = 0$
+
+- Uncertainty that the coefficient is zero?
+
+- Selection solved as a post-analysis decision problem 
+- Selection part of model uncertainty 
+  - add prior probability that $\beta_j = 0$ 
+  - combine with decision problem

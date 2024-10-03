@@ -8,6 +8,7 @@
 \newcommand{\F}{\mathbf{F}}
 \newcommand{\R}{\textsf{R}}
 \newcommand{\mat}[1] {\mathbf{#1}}
+\newcommand{\pen}{\textsf{pen}}
 \newcommand{\E}{\textsf{E}}
 \newcommand{\SE}{\textsf{SE}}
 \newcommand{\SSE}{\textsf{SSE}}
