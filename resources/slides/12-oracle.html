@@ -326,26 +326,6 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
-  }
-  .Proposition {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Lemma {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .Theorem {
     --color1: #948bde;
     --color2: #584eab;
@@ -354,17 +334,37 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
+  }
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   .Feature {
     --color1: #c0c0c0;
     --color2: #808080;
   }
+  .Proposition {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Exercise {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   </style>
 </head>
@@ -499,10 +499,10 @@ E[\beta_i \mid \mathbf{Y}] &amp; = \textsf{E}_{\kappa_i \mid \mathbf{Y}}[ \texts
 <ul>
 <li class="fragment"><p>Model <span class="math inline">\(Y = \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\)</span> with <span class="math inline">\(\mathbf{X}^T\mathbf{X}= \mathbf{I}_p\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}= \mathbf{X}^T \mathbf{Y}\equiv \mathbf{Y}^*\)</span> (take <span class="math inline">\(\sigma^2 = 1\)</span>)</p></li>
 <li class="fragment"><p>Penalized Least Squares <span class="math display">\[
-\mathop{\mathrm{argmin}}_{\boldsymbol{\beta}} \ \frac{1}{2}\| \mathbf{Y}- \mathbf{X}\hat{\boldsymbol{\beta}}\|^2 + \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2 + \sum_j \textsf{pen}_\lambda(\beta_j)
+\hat{\boldsymbol{\beta}}_j^\lambda = \mathop{\mathrm{argmin}}_{\boldsymbol{\beta}} \ \frac{1}{2}\| \mathbf{Y}- \mathbf{X}\hat{\boldsymbol{\beta}}\|^2 + \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2 + \sum_j \textsf{pen}_\lambda(\beta_j)
 \]</span></p></li>
 <li class="fragment"><p>Bayes posterior mode (conditional) with prior <span class="math inline">\(p(\boldsymbol{\beta}\mid \lambda) = \prod_j p(\beta_j \mid \lambda)\)</span> <span class="math display">\[\begin{align*}
-&amp; \mathop{\mathrm{argmax}}_{\boldsymbol{\beta}} -\frac{1}{2}  \| \mathbf{Y}- \mathbf{X}\hat{\boldsymbol{\beta}}\|^2 - \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2 + \sum_j \log(p(\beta_j \mid \lambda)) \\
+\hat{\boldsymbol{\beta}}_j^\lambda &amp; =\mathop{\mathrm{argmax}}_{\boldsymbol{\beta}} -\frac{1}{2}  \| \mathbf{Y}- \mathbf{X}\hat{\boldsymbol{\beta}}\|^2 - \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2 + \sum_j \log(p(\beta_j \mid \lambda)) \\
 &amp; = \mathop{\mathrm{argmin}}_{\boldsymbol{\beta}}  \frac{1}{2}\| \mathbf{Y}- \mathbf{X}\hat{\boldsymbol{\beta}}\|^2 + \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2  -  \sum_j\log(p(\beta_j \mid \lambda)) \\
 &amp; = \mathop{\mathrm{argmin}}_{\boldsymbol{\beta}}  \frac{1}{2}\| \mathbf{Y}- \mathbf{X}\hat{\boldsymbol{\beta}}\|^2 + \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2  + \sum_j\textsf{pen}_\lambda(\beta_j) \\
 \end{align*}\]</span></p></li>
@@ -534,7 +534,7 @@ E[\beta_i \mid \mathbf{Y}] &amp; = \textsf{E}_{\kappa_i \mid \mathbf{Y}}[ \texts
 &amp; = \mathop{\mathrm{sgn}}(\beta_j)\left\{|\beta_j| + \textsf{pen}^\prime_\lambda(|\beta_j|) \right\} - \hat{\beta}_j
 \end{align*}\]</span></p></li>
 <li class="fragment"><p>setting derivative to zero gives <span class="math inline">\(\hat{\beta}_j = \mathop{\mathrm{sgn}}(\beta_j)\left\{|\beta_j| + \textsf{pen}^\prime_\lambda(|\beta_j|) \right\}\)</span></p></li>
-<li class="fragment"><p>if <span class="math inline">\(\lim_{|\beta_j| \to \infty} p^\prime_\lambda(|\beta|) = 0\)</span> then <span class="math inline">\(\hat{\beta}_j = \mathop{\mathrm{sgn}}(\beta_j) |\beta_j| = \beta_j\)</span></p></li>
+<li class="fragment"><p>if <span class="math inline">\(\lim_{|\beta_j| \to \infty} \textsf{pen}^\prime_\lambda(|\beta|) = 0\)</span> then <span class="math inline">\(\hat{\beta}_j = \mathop{\mathrm{sgn}}(\beta_j) |\beta_j| = \beta_j\)</span></p></li>
 <li class="fragment"><p>for large <span class="math inline">\(|\beta_j|\)</span>, <span class="math inline">\(|\hat{\beta}_j|\)</span> is large with high probability</p></li>
 <li class="fragment"><p>as MLE is unbiased, the optimal estimator is approximately unbiased for large <span class="math inline">\(|\beta_j|\)</span></p></li>
 </ul>
@@ -543,11 +543,11 @@ E[\beta_i \mid \mathbf{Y}] &amp; = \textsf{E}_{\kappa_i \mid \mathbf{Y}}[ \texts
 <h2>Conditions for Thresholding &amp; Continuity</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>As sufficient condition for a thresholding rule <span class="math inline">\(\hat{\beta}_\lambda = 0\)</span> is if <span class="math display">\[0 &lt; \min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|)\right\}\]</span></p>
+<p>As sufficient condition for a thresholding rule <span class="math inline">\(\hat{\boldsymbol{\beta}}_j^\lambda = 0\)</span> is if <span class="math display">\[0 &lt; \min \left\{ |\beta_j| + \textsf{pen}^\prime_\lambda(|\beta_j|)\right\}\]</span></p>
 <ul>
-<li class="fragment"><p>if <span class="math inline">\(|\hat{\beta}_j| &lt; \min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|) \right\}\)</span> then the derivative is positive for all positive <span class="math inline">\(\beta_j\)</span> and negative for all negative <span class="math inline">\(\beta_j\)</span> so <span class="math inline">\(\hat{\beta}_j^\lambda = 0\)</span> is a local minimum</p></li>
-<li class="fragment"><p>if <span class="math inline">\(|\hat{\beta}_j| &gt; \min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|) \right\}\)</span> multiple crossings (local roots)</p></li>
-<li class="fragment"><p>a sufficient and necessary condition for continuity is that the minimum of <span class="math inline">\(|\beta_j| + p^\prime_\lambda(|\beta_j|)\)</span> is obtained at zero</p></li>
+<li class="fragment"><p>if <span class="math inline">\(|\hat{\beta}_j| &lt; \min \left\{ |\beta_j| + \textsf{pen}^\prime_\lambda(|\beta_j|) \right\}\)</span> then the derivative is positive for all positive <span class="math inline">\(\beta_j\)</span> and negative for all negative <span class="math inline">\(\beta_j\)</span> so <span class="math inline">\(\hat{\beta}_j^\lambda = 0\)</span> is a local minimum</p></li>
+<li class="fragment"><p>if <span class="math inline">\(|\hat{\beta}_j| &gt; \min \left\{ |\beta_j| + \textsf{pen}^\prime_\lambda(|\beta_j|) \right\}\)</span> multiple crossings (local roots)</p></li>
+<li class="fragment"><p>a sufficient and necessary condition for continuity is that the minimum of <span class="math inline">\(|\beta_j| + \textsf{pen}^\prime_\lambda(|\beta_j|)\)</span> is obtained at zero</p></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="cell" data-layout-align="center">
@@ -574,7 +574,7 @@ E[\beta_i \mid \mathbf{Y}] &amp; = \textsf{E}_{\kappa_i \mid \mathbf{Y}}[ \texts
 <li class="fragment">does not go to zero as <span class="math inline">\(|\beta_j| \to \infty\)</span></li>
 <li class="fragment">No! (bias towards zero)</li>
 </ul></li>
-<li class="fragment"><p>not a thresholding rule as <span class="math display">\[\min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|)\right\}  = (1 + \lambda)|\beta_j|\]</span> is zero</p></li>
+<li class="fragment"><p>not a thresholding rule as <span class="math display">\[\min \left\{ |\beta_j| + \textsf{pen}^\prime_\lambda(|\beta_j|)\right\}  = (1 + \lambda)|\beta_j|\]</span> is zero</p></li>
 <li class="fragment"><p>is continuous as minimum is at zero</p></li>
 </ul>
 </div><div class="column" style="width:40%;">
@@ -601,7 +601,7 @@ E[\beta_i \mid \mathbf{Y}] &amp; = \textsf{E}_{\kappa_i \mid \mathbf{Y}}[ \texts
 <li class="fragment">does not go to zero as <span class="math inline">\(|\beta_j| \to \infty\)</span></li>
 <li class="fragment">No! (bias towards zero)</li>
 </ul></li>
-<li class="fragment"><p>Is a thresholding rule as <span class="math display">\[\min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|)\right\}  = (|\beta_j| +  \lambda) &gt; 0 \]</span></p></li>
+<li class="fragment"><p>Is a thresholding rule as <span class="math display">\[\min \left\{ |\beta_j| + \textsf{pen}^\prime_\lambda(|\beta_j|)\right\}  = (|\beta_j| +  \lambda) &gt; 0 \]</span></p></li>
 <li class="fragment"><p>is continuous as minimum is at <span class="math inline">\(\beta_j = 0\)</span></p></li>
 </ul>
 </div><div class="column" style="width:40%;">
@@ -626,13 +626,16 @@ p(\beta_j \mid \xi, \alpha) = \frac{1}{2 \xi} \left(1 + \frac{\beta_j}{\alpha \x
 <li class="fragment"><p>express as <span class="math inline">\(\beta_j \mid \xi, \alpha \sim \textsf{GDP}(\xi, \alpha)\)</span></p></li>
 <li class="fragment"><p>Scale mixtures of Normals representation <span class="math display">\[\begin{align*}
 \beta \mid \tau_j &amp; \sim \textsf{N}(0, \tau_j) \\
-\tau_j \mid \lambda_j &amp; \sim \textsf{Exp}(\lambda_^2/2) \\
+\tau_j \mid \lambda_j &amp; \sim \textsf{Exp}(\lambda_j^2/2) \\
 \lambda_j &amp; \sim \textsf{Gamma}(\alpha, \eta) \\
 \beta_j &amp; \sim \textsf{GDP}(\xi = \eta/\alpha, \alpha)
 \end{align*}\]</span></p></li>
 <li class="fragment"><p>is this a thresholding rule? unbiasedness? continuity?</p></li>
 <li class="fragment"><p>for all parameters or are there restrictions?</p></li>
 </ul>
+<div class="footer">
+
+</div>
 </section>
 <section id="choice-of-penaltyprior-and-conditions" class="slide level2">
 <h2>Choice of Penalty/Prior and Conditions</h2>
