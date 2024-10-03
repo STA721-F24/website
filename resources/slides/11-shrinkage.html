@@ -391,33 +391,17 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Proposition {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Proof {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .Corollary {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
   .Feature {
     --color1: #c0c0c0;
     --color2: #808080;
+  }
+  .Theorem {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   .Definition {
     --color1: #d999d3;
@@ -427,9 +411,25 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Theorem {
+  .Proposition {
     --color1: #948bde;
     --color2: #584eab;
+  }
+  .Proof {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Exercise {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
   </style>
 </head>
@@ -634,13 +634,13 @@ f(x) =  \sqrt{\frac{\lambda^2}{2 \pi}}  x^{-3/2} e^{- \frac{1}{2} \frac{
 <p>Carvalho, Polson &amp; Scott (2010) propose an alternative shrinkage prior <span class="math display">\[\begin{align*}
 \boldsymbol{\beta}\mid \phi &amp; \sim \textsf{N}(\mathbf{0}_p, \frac{\textsf{diag}(\tau^2)}{ \phi
     }) \\
-\tau_j^2 \mid \lambda &amp; \mathrel{\mathop{\sim}\limits^{\rm iid}}C^+(0, \lambda) \\
+\tau \mid \lambda &amp; \mathrel{\mathop{\sim}\limits^{\rm iid}}C^+(0, \lambda) \\
 \lambda &amp; \sim \textsf{C}^+(0, 1/\phi) \\
 p(\alpha, \phi) &amp; \propto 1/\phi
 \end{align*}\]</span></p>
 <ul>
 <li class="fragment"><span class="math inline">\(C^+(0, \lambda)\)</span> is the half-Cauchy distribution with scale <span class="math inline">\(\lambda\)</span> <span class="math display">\[
-p(\tau_j^2 \mid \lambda) = \frac{2}{\pi} \frac{\lambda}{\lambda^2 + \tau_j^2}
+p(\tau \mid \lambda) = \frac{2}{\pi} \frac{\lambda}{\lambda^2 + \tau_j^2}
 \]</span></li>
 <li class="fragment"><span class="math inline">\(\textsf{C}^+(0, 1/\phi)\)</span> is the half-Cauchy distribution with scale <span class="math inline">\(1/\phi\)</span></li>
 </ul>

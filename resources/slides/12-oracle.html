@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – Sampling Distributions and Distribution Theory</title>
+  <title>STA721-F24: Linear Models – Optimal Shrinkage/Selection and Oracle Properties</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -326,31 +326,23 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
+  .Exercise {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   .Definition {
     --color1: #d999d3;
     --color2: #a01793;
-  }
-  .Feature {
-    --color1: #c0c0c0;
-    --color2: #808080;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
   }
   .Corollary {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Lemma {
+  .Proof {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Exercise {
+  .Lemma {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -362,9 +354,17 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Proof {
-    --color1: #948bde;
-    --color2: #584eab;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   </style>
 </head>
@@ -373,8 +373,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Sampling Distributions and Distribution Theory</h1>
-  <p class="subtitle">STA 721: Lecture 7</p>
+  <h1 class="title">Optimal Shrinkage/Selection and Oracle Properties</h1>
+  <p class="subtitle">STA 721: Lecture 12</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -391,323 +391,295 @@ Merlise Clyde (clyde@duke.edu)
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
 <ul>
-<li class="fragment"><p>distributions of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>, <span class="math inline">\(\hat{\mathbf{Y}}\)</span>, <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> under normality</p></li>
-<li class="fragment"><p>Unbiased Estimation of <span class="math inline">\(\sigma^2\)</span></p></li>
-<li class="fragment"><p>sampling distribution of <span class="math inline">\(\hat{\sigma^2}\)</span></p></li>
-<li class="fragment"><p>independence</p></li>
-</ul>
-<div class="fragment">
-<p>Readings:</p>
+<li class="fragment"><p>Bounded Influence and Posterior Mean</p></li>
+<li class="fragment"><p>Shrinkage properties and nonconcave penalties</p></li>
+<li class="fragment"><p>conditions for optimal shrinkage and selection . . .</p></li>
+<li class="fragment"><p>Readings (see reading link)</p>
 <ul>
-<li class="fragment">Christensen Chapter 1, 2.91 and Appendix C</li>
-<li class="fragment">Seber &amp; Lee Chapter 3.3 - 3.5</li>
+<li class="fragment">Tibshirani (JRSS B 1996)</li>
+<li class="fragment"><a href="https://www.jstor.org/stable/25734098">Carvalho, Polson &amp; Scott (Biometrika 2010)</a></li>
+<li class="fragment"><a href="https://www.jstor.org/stable/24310517">Armagan, Dunson &amp; Lee (Statistica Sinica 2013)</a></li>
+<li class="fragment"><a href="https://www.jstor.org/stable/3085904">Fan &amp; Li (JASA 2001)</a></li>
+</ul></li>
 </ul>
-</div>
 </section>
-<section id="multivariate-normal" class="slide level2">
-<h2>Multivariate Normal</h2>
-<p>Under the linear model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\)</span>, <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{Cov}[\boldsymbol{\epsilon}] = \sigma^2 \mathbf{I}_n\)</span>, we had</p>
+<section id="horseshoe-priors" class="slide level2">
+<h2>Horseshoe Priors</h2>
+<p>Carvalho, Polson &amp; Scott (2010) propose an alternative shrinkage prior <span class="math display">\[\begin{align*}
+\boldsymbol{\beta}\mid \phi &amp; \sim \textsf{N}(\mathbf{0}_p, \frac{\textsf{diag}(\tau^2)}{ \phi
+    }) \\
+\tau \mid \lambda &amp; \mathrel{\mathop{\sim}\limits^{\rm iid}}C^+(0, \lambda) \\
+\lambda &amp; \sim \textsf{C}^+(0, 1/\phi) \\
+p(\alpha, \phi) &amp; \propto 1/\phi
+\end{align*}\]</span></p>
 <ul>
-<li class="fragment"><span class="math inline">\(\textsf{E}[\hat{\boldsymbol{\beta}}] = \boldsymbol{\beta}\)</span></li>
-<li class="fragment"><span class="math inline">\(\textsf{E}[\hat{\mathbf{Y}}] = \mathbf{P}_\mathbf{X}\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}\)</span></li>
-<li class="fragment"><span class="math inline">\(\textsf{E}[\hat{\boldsymbol{\epsilon}}] = (\mathbf{I}_n - \mathbf{P}_\mathbf{X}) \mathbf{Y}= \mathbf{0}_n\)</span></li>
-<li class="fragment">distributions if <span class="math inline">\(\epsilon_i \sim \textsf{N}(0, \sigma^2)\)</span>?</li>
+<li class="fragment"><span class="math inline">\(C^+(0, \lambda)\)</span> is the half-Cauchy distribution with scale <span class="math inline">\(\lambda\)</span> <span class="math display">\[
+p(\tau \mid \lambda) = \frac{2}{\pi} \frac{\lambda}{\lambda^2 + \tau_j^2}
+\]</span></li>
+<li class="fragment"><span class="math inline">\(\textsf{C}^+(0, 1/\phi)\)</span> is the half-Cauchy distribution with scale <span class="math inline">\(1/\phi\)</span></li>
 </ul>
-<div class="fragment">
-<p>For a <span class="math inline">\(d\)</span> dimensional <strong>multivariate normal</strong> random vector, we write <span class="math inline">\(\mathbf{Y}\sim \textsf{N}_d(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span></p>
-<ul>
-<li class="fragment"><p><span class="math inline">\(\textsf{E}[\mathbf{Y}] = \boldsymbol{\mu}\)</span>: <span class="math inline">\(d\)</span> dimensional vector with means <span class="math inline">\(E[Y_j]\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\textsf{Cov}[\mathbf{Y}] = \boldsymbol{\Sigma}\)</span>: <span class="math inline">\(d \times d\)</span> matrix with diagonal elements that are the variances of <span class="math inline">\(Y_j\)</span> and off diagonal elements that are the covariances <span class="math inline">\(\textsf{E}[(Y_j - \mu_j)(Y_k - \mu_k)]\)</span></p></li>
-<li class="fragment"><p>If <span class="math inline">\(\boldsymbol{\Sigma}\)</span> is positive definite (<span class="math inline">\(\mathbf{x}'\boldsymbol{\Sigma}\mathbf{x}&gt; 0\)</span> for any <span class="math inline">\(\mathbf{x}\ne
-  0\)</span> in <span class="math inline">\(\mathbb{R}^d\)</span>) then <span class="math inline">\(\mathbf{Y}\)</span> has a density<span class="math inline">\(^\dagger\)</span> <span class="math display">\[p(\mathbf{Y}) = (2 \pi)^{-d/2} |\boldsymbol{\Sigma}|^{-1/2} \exp(-\frac{1}{2}(\mathbf{Y}- \boldsymbol{\mu})^T
-\boldsymbol{\Sigma}^{-1} (\mathbf{Y}- \boldsymbol{\mu}))\]</span></p></li>
-</ul>
-<div class="footer">
-<p><span class="math inline">\(\dagger\)</span> density with respect to Lebesgue measure on <span class="math inline">\(\mathbb{R}^d\)</span></p>
-</div>
-</div>
 </section>
-<section id="transformations-of-normal-random-variables" class="slide level2">
-<h2>Transformations of Normal Random Variables</h2>
-<p>If <span class="math inline">\(\mathbf{Y}\sim \textsf{N}_n(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span> then for <span class="math inline">\(\mathbf{A}\)</span> <span class="math inline">\(m \times n\)</span> <span class="math display">\[\mathbf{A}\mathbf{Y}\sim \textsf{N}_m(\mathbf{A}\boldsymbol{\mu}, \mathbf{A}\boldsymbol{\Sigma}\mathbf{A}^T)\]</span></p>
-<div class="fragment">
+<section id="special-case-orthonormal-regression" class="slide level2">
+<h2>Special Case: Orthonormal Regression</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>In the case <span class="math inline">\(\lambda = \phi = 1\)</span> and with <span class="math inline">\(\mathbf{X}^t\mathbf{X}= \mathbf{I}\)</span>, <span class="math inline">\(\mathbf{Y}^* =
+\mathbf{X}^T\mathbf{Y}\)</span> <span class="math display">\[\begin{align*}
+E[\beta_i \mid \mathbf{Y}] &amp; = \textsf{E}_{\kappa_i \mid \mathbf{Y}}[ \textsf{E}_{\beta_i \mid \kappa_i, \mathbf{Y}}[\beta_i \mid \mathbf{Y}] \\
+&amp; = \int_0^1 (1 - \kappa_i) y^*_i p(\kappa_i \mid \mathbf{Y})
+\ d\kappa_i \\
+&amp; = (1 - \textsf{E}[\kappa \mid y^*_i]) y^*_i
+\end{align*}\]</span> where <span class="math inline">\(\kappa_i = 1/(1 + \tau_i^2)\)</span> is the shrinkage factor (like in James-Stein)</p>
 <ul>
-<li class="fragment"><p><span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\sim \textsf{N}(\boldsymbol{\beta}, \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1})\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\hat{\mathbf{Y}}= \mathbf{P}_\mathbf{X}\mathbf{Y}\sim \textsf{N}(\mathbf{X}\boldsymbol{\beta}, \sigma^2 \mathbf{P}_\mathbf{X})\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\hat{\boldsymbol{\epsilon}}= (\mathbf{I}_n - \mathbf{P}_\mathbf{X})\mathbf{Y}\sim \textsf{N}(\mathbf{0}, \sigma^2 (\mathbf{I}_n - \mathbf{P}_\mathbf{X}))\)</span></p></li>
+<li class="fragment"><p>Half-Cauchy prior induces a Beta(1/2, 1/2) distribution on <span class="math inline">\(\kappa_i\)</span> a priori (change of variables)</p></li>
+<li class="fragment"><p>marginal prior (after integrating out )</p></li>
 </ul>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="12-oracle_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
 </div>
-<div class="fragment">
-<p><span class="math inline">\(\mathbf{A}\boldsymbol{\Sigma}\mathbf{A}^T\)</span> does not have to be positive definite! </p>
 </div>
+</div>
+</div></div>
 </section>
-<section id="singular-case" class="slide level2">
-<h2>Singular Case</h2>
-<p>If the covariance is singular then there is no density (on <span class="math inline">\(\mathbb{R}^n\)</span>), but claim that <span class="math inline">\(\mathbf{Y}\)</span> still has a multivariate normal distribution!</p>
-<div class="fragment">
-<div id="multivariate-normal-1" class="Definition" title="Multivariate Normal">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Multivariate Normal</summary><div><span class="math inline">\(\mathbf{Y}\in \mathbb{R}^n\)</span> has a multivariate normal distribution <span class="math inline">\(\textsf{N}(\boldsymbol{\mu},
-  \boldsymbol{\Sigma})\)</span> if for any <span class="math inline">\(\mathbf{v}\in \mathbb{R}^n\)</span> <span class="math inline">\(\mathbf{v}^T\mathbf{Y}\)</span> has a univariate normal distribution with mean <span class="math inline">\(\mathbf{v}^T\boldsymbol{\mu}\)</span> and variance <span class="math inline">\(\mathbf{v}^T\boldsymbol{\Sigma}\mathbf{v}\)</span><p></p>
-</div></details>
-</div>
-</div>
-<div class="fragment">
-<div id="Proof*-0.2" class="Proof">
-<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Use moment generating or characteristic functions which uniquely characterize distribution to show that <span class="math inline">\(\mathbf{v}^T\mathbf{Y}\)</span> has a univariate normal distribution.<p></p>
-</div></details>
-</div>
+<section id="bounded-influence-mathbfxtmathbfx-mathbfi" class="slide level2">
+<h2>Bounded Influence (<span class="math inline">\(\mathbf{X}^T\mathbf{X}= \mathbf{I}\)</span>)</h2>
+<div class="columns">
+<div class="column" style="width:&quot;60%;">
 <ul>
-<li class="fragment">both <span class="math inline">\(\hat{\mathbf{Y}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> have multivariate normal distributions even though they do not have densities! (singular distributions)</li>
+<li class="fragment"><p>Posterior mean of <span class="math inline">\(\beta_i\)</span> may be written as <span class="math display">\[E[\beta_i \mid y^*_i] = y^*_i + \frac{d} {d y} \log m(y^*_i)\]</span> where <span class="math inline">\(m(y)\)</span> is the predictive density <span class="math inline">\(y^*_i\)</span> under the prior (known <span class="math inline">\(\lambda\)</span>)</p></li>
+<li class="fragment"><p>Bounded Influence of the prior (in this setting) means that <span class="math display">\[\lim_{|y| \to \infty} \frac{d}{dy} \log m(y) = c\]</span></p></li>
+<li class="fragment"><p>For HS <span class="math inline">\(\lim_{|y| \to \infty} \frac{d}{dy} \log m(y) = 0\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\lim_{|y_i^*| \to \infty} E[\beta_i \mid y^*_i) \to y^*_i\)</span> (the MLE)</p></li>
+<li class="fragment"><p>unbiasedness for large <span class="math inline">\(|y_i^*|\)</span></p></li>
 </ul>
-</div>
-</section>
-<section id="distribution-of-mle-of-sigma2" class="slide level2">
-<h2>Distribution of MLE of <span class="math inline">\(\sigma^2\)</span></h2>
-<p>Recall we found the MLE of <span class="math inline">\(\sigma^2\)</span> <span class="math display">\[{\hat{\sigma}}^2= \frac{\hat{\boldsymbol{\epsilon}}^T\hat{\boldsymbol{\epsilon}}} {n}\]</span></p>
+</div><div class="column" style="width:40%;">
+<p><img data-src="img/shrinkage.png"></p>
 <ul>
-<li class="fragment"><p>let <span class="math inline">\(\textsf{RSS}= \| \hat{\boldsymbol{\epsilon}}\|^2 = \hat{\boldsymbol{\epsilon}}^T\hat{\boldsymbol{\epsilon}}\)</span></p></li>
-<li class="fragment"><p>then <span class="math display">\[\begin{align*}
-\| \hat{\boldsymbol{\epsilon}}\|^2  &amp; = \hat{\boldsymbol{\epsilon}}^T\hat{\boldsymbol{\epsilon}}\\
-             &amp; = \boldsymbol{\epsilon}^T(\mathbf{I}_n - \mathbf{P}_\mathbf{X})^T (\mathbf{I}_n - \mathbf{P}_\mathbf{X}) \boldsymbol{\epsilon}\\
-             &amp; = \boldsymbol{\epsilon}^T(\mathbf{I}_n - \mathbf{P}_\mathbf{X}) \boldsymbol{\epsilon}\\
-             &amp; = \boldsymbol{\epsilon}^N \textsf{N}\textsf{N}^T \boldsymbol{\epsilon}\\
-             &amp; = \mathbf{e}^T\mathbf{e}
-\end{align*}\]</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\textsf{N}\)</span> is the matrix of the <span class="math inline">\((n - p)\)</span> eigen vectors from the spectral decomposition of <span class="math inline">\((\mathbf{I}_n - \mathbf{P}_\mathbf{X})\)</span> associated with the non-zero eigen-values.</p></li>
+<li class="fragment">DE has bounded influence, but bound does not decay to zero in tails so the posterior mean does not shrink to the MLE (bounded away)</li>
 </ul>
+</div></div>
 <div class="footer">
 
 </div>
 </section>
-<section id="distribution-of-textsfrss" class="slide level2">
-<h2>Distribution of <span class="math inline">\(\textsf{RSS}\)</span></h2>
-<p>Since <span class="math inline">\(\boldsymbol{\epsilon}\sim \textsf{N}(\mathbf{0}_n, \sigma^2 \mathbf{I}_n)\)</span> and <span class="math inline">\(\textsf{N}\in \mathbb{R}^{n \times (n - p)}\)</span>, <span class="math display">\[\textsf{N}^T \boldsymbol{\epsilon}= \mathbf{e}\sim \textsf{N}(\mathbf{0}_{n - p}, \sigma^2\textsf{N}^T\textsf{N}) = \textsf{N}(\mathbf{0}_{n - p}, \sigma^2\mathbf{I}_{n - p} )\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[\begin{align*}
-\textsf{RSS}&amp; =  \sum_{i = 1}^{n-p} e_i^2 \\
-     &amp; \mathrel{\mathop{=}\limits^{\rm D}}\sum_{i = 1}^{n-p} (\sigma z_i)^2  \quad \text{ where } \mathbf{Z}\sim \textsf{N}(\mathbf{0}_{n-p}, \mathbf{I}_{n-p}) \\
-     &amp; = \sigma^2 \sum_{i = 1}^{n-p} z_i^2 \\
-     &amp;\mathrel{\mathop{=}\limits^{\rm D}}\sigma^2 \chi^2_{n-p}
-     
-\end{align*}\]</span></p>
-</div>
-<div class="fragment">
-<p><strong>Background Theory:</strong> If <span class="math inline">\(\mathbf{Z}\sim \textsf{N}_d(\mathbf{0}_d, \mathbf{I}_d)\)</span>, then <span class="math inline">\(\mathbf{Z}^T\mathbf{Z}\sim \chi^2_{d}\)</span></p>
-</div>
-</section>
-<section id="unbiased-estimate-of-sigma2" class="slide level2">
-<h2>Unbiased Estimate of <span class="math inline">\(\sigma^2\)</span></h2>
+<section id="comparison" class="slide level2">
+<h2>Comparison</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li class="fragment"><p>Expected value of a <span class="math inline">\(\chi^2_d\)</span> random variable is <span class="math inline">\(d\)</span> (the degrees of freedom)</p></li>
-<li class="fragment"><p><span class="math inline">\(\textsf{E}[\textsf{RSS}] = \textsf{E}[\sigma^2 \chi^2_{n-p}] = \sigma^2 (n-p)\)</span></p></li>
-<li class="fragment"><p>the expected value of the MLE is <span class="math display">\[{\hat{\sigma}}^2= \textsf{E}[\textsf{RSS}]/n = \sigma^2 \frac{(n-p)}{n}\]</span> so is biased</p></li>
-<li class="fragment"><p>an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>, is <span class="math inline">\(s^2 = \textsf{RSS}/(n-p)\)</span></p></li>
-<li class="fragment"><p>note: we can find the expectation of <span class="math inline">\({\hat{\sigma}}^2\)</span> or <span class="math inline">\(s^2\)</span> based on the covariance of <span class="math inline">\(\boldsymbol{\epsilon}\)</span> without assuming normality by exploiting properties of the trace.</p></li>
+<li class="fragment"><p>Diabetes data (from the <code>lars</code> package)</p></li>
+<li class="fragment"><p>64 predictors: 10 main effects, 2-way interactions and quadratic terms</p></li>
 </ul>
-</section>
-<section id="distribution-of-hatboldsymbolbeta" class="slide level2">
-<h2>Distribution of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span></h2>
-<p><span class="math inline">\(\hat{\boldsymbol{\beta}}\sim \textsf{N}\left(\boldsymbol{\beta}, \sigma^2( \mathbf{X}^T\mathbf{X})^{-1}\right)\)</span></p>
 <ul>
-<li class="fragment"><p>do not know <span class="math inline">\(\sigma^2\)</span></p></li>
-<li class="fragment"><p>Need a distribution that does not depend on unknown parameters for deriving confidence intervals and hypothesis tests for <span class="math inline">\(\boldsymbol{\beta}\)</span>.</p></li>
-<li class="fragment"><p>what if we plug in <span class="math inline">\(s^2\)</span> or <span class="math inline">\({\hat{\sigma}}^2\)</span> for <span class="math inline">\(\sigma^2\)</span>?</p></li>
-<li class="fragment"><p>won’t be multivariate normal</p></li>
-<li class="fragment"><p>need to reflect uncertainty in estimating <span class="math inline">\(\sigma^2\)</span></p></li>
-<li class="fragment"><p>first show that <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2\)</span> are independent</p></li>
+<li class="fragment"><p>sample size of 442</p></li>
+<li class="fragment"><p>split into training and test sets</p></li>
+<li class="fragment"><p>compare MSE for out-of-sample prediction using OLS, lasso and horseshoe priors</p></li>
+<li class="fragment"><p>Root MSE for prediction for left out data based on 25 different random splits with 100 test cases</p></li>
+<li class="fragment"><p>both Lasso and Horseshoe much better than OLS</p></li>
 </ul>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="12-oracle_files/figure-revealjs/diabetes-plot-mse-1.png" class="quarto-figure quarto-figure-center" style="width:7in;height:6in"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
 </section>
-<section id="independence-of-hatboldsymbolbeta-and-s2" class="slide level2">
-<h2>Independence of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2\)</span></h2>
-<p>If the distribution of <span class="math inline">\(\mathbf{Y}\)</span> is normal, then <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2\)</span> are statistically independent.</p>
+<section id="duality-for-modal-estimators" class="slide level2">
+<h2>Duality for Modal Estimators</h2>
 <ul>
-<li class="fragment"><p>The derivation of this result basically has three steps:</p>
-<ol type="1">
-<li class="fragment"><span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> or <span class="math inline">\(\mathbf{e}\)</span> have zero covariance</li>
-<li class="fragment"><span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> or <span class="math inline">\(\mathbf{e}\)</span> are independent</li>
-<li class="fragment">Conclude <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\textsf{RSS}\)</span> (or <span class="math inline">\(s^2\)</span>) are independent</li>
-</ol></li>
-</ul>
-<div class="fragment">
-<p><strong>Step 1:</strong></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[\begin{align*}
-\textsf{Cov}[\hat{\boldsymbol{\beta}}, \hat{\boldsymbol{\epsilon}}] &amp; = \textsf{E}[(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}) \hat{\boldsymbol{\epsilon}}^T] \\
-                   &amp; = \textsf{E}[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{\epsilon}\boldsymbol{\epsilon}^T (\mathbf{I}- \mathbf{P}_\mathbf{X})] \\
-                   &amp; = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T (\mathbf{I}- \mathbf{P}_\mathbf{X}) \\
-                   &amp; = \mathbf{0}
-\end{align*}\]</span></p>
-</div>
-</section>
-<section id="zero-covariance-leftrightarrow-independence-in-multivariate-normals" class="slide level2">
-<h2>Zero Covariance <span class="math inline">\(\Leftrightarrow\)</span> Independence in Multivariate Normals</h2>
-<p><strong>Step 2:</strong> <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> are independent</p>
-<div id="zero-correlation-and-independence" class="Theorem" title="Zero Correlation and Independence">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Zero Correlation and Independence</summary><div>For a random vector <span class="math inline">\(\mathbf{W}\sim \textsf{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span> partitioned as <span class="math display">\[
-\mathbf{W}= \left[
-  \begin{array}{c}
-\mathbf{W}_1  \\ \mathbf{W}_2 \end{array} \right]  \sim \textsf{N}\left( \left[
-  \begin{array}{c} \boldsymbol{\mu}_1  \\ \boldsymbol{\mu}_2 \end{array} \right],
-  \left[ \begin{array}{cc}
-\boldsymbol{\Sigma}_{11} &amp;  \boldsymbol{\Sigma}_{12}  \\
-\boldsymbol{\Sigma}_{21} &amp; \boldsymbol{\Sigma}_{22} \end{array} \right]
-\right)
-\]</span><br>
-then <span class="math inline">\(\textsf{Cov}(\mathbf{W}_1, \mathbf{W}_2) = \boldsymbol{\Sigma}_{12} = \boldsymbol{\Sigma}_{21}^T = \mathbf{0}\)</span> if and only if <span class="math inline">\(\mathbf{W}_1\)</span> and <span class="math inline">\(\mathbf{W}_2\)</span> are independent.<p></p>
-</div></details>
-</div>
-</section>
-<section id="proof-independence-implies-zero-covariance" class="slide level2">
-<h2>Proof: Independence implies Zero Covariance</h2>
-<p>Easy direction</p>
-<ul>
-<li class="fragment"><p><span class="math inline">\(\textsf{Cov}[\mathbf{W}_1, \mathbf{W}_2] = \textsf{E}[(\mathbf{W}_1 - \boldsymbol{\mu}_1)(\mathbf{W}_2 - \boldsymbol{\mu}_2)^T]\)</span></p></li>
-<li class="fragment"><p>since they are independent <span class="math display">\[\begin{align*}
-\textsf{Cov}[\mathbf{W}_1, \mathbf{W}_2] &amp; = \textsf{E}[(\mathbf{W}_1 - \boldsymbol{\mu}_1)] \textsf{E}[(\mathbf{W}_2 - \boldsymbol{\mu}_2)^T] \\
-&amp; = \mathbf{0}\mathbf{0}^T \\
-&amp; = \mathbf{0}
+<li class="fragment"><p>Model <span class="math inline">\(Y = \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\)</span> with <span class="math inline">\(\mathbf{X}^T\mathbf{X}= \mathbf{I}_p\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}= \mathbf{X}^T \mathbf{Y}\equiv \mathbf{Y}^*\)</span> (take <span class="math inline">\(\sigma^2 = 1\)</span>)</p></li>
+<li class="fragment"><p>Penalized Least Squares <span class="math display">\[
+\mathop{\mathrm{argmin}}_{\boldsymbol{\beta}} \ \frac{1}{2}\| \mathbf{Y}- \mathbf{X}\hat{\boldsymbol{\beta}}\|^2 + \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2 + \sum_j \textsf{pen}_\lambda(\beta_j)
+\]</span></p></li>
+<li class="fragment"><p>Bayes posterior mode (conditional) with prior <span class="math inline">\(p(\boldsymbol{\beta}\mid \lambda) = \prod_j p(\beta_j \mid \lambda)\)</span> <span class="math display">\[\begin{align*}
+&amp; \mathop{\mathrm{argmax}}_{\boldsymbol{\beta}} -\frac{1}{2}  \| \mathbf{Y}- \mathbf{X}\hat{\boldsymbol{\beta}}\|^2 - \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2 + \sum_j \log(p(\beta_j \mid \lambda)) \\
+&amp; = \mathop{\mathrm{argmin}}_{\boldsymbol{\beta}}  \frac{1}{2}\| \mathbf{Y}- \mathbf{X}\hat{\boldsymbol{\beta}}\|^2 + \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2  -  \sum_j\log(p(\beta_j \mid \lambda)) \\
+&amp; = \mathop{\mathrm{argmin}}_{\boldsymbol{\beta}}  \frac{1}{2}\| \mathbf{Y}- \mathbf{X}\hat{\boldsymbol{\beta}}\|^2 + \frac{1}{2} \sum_j(\beta_j -\hat{\beta}_j)^2  + \sum_j\textsf{pen}_\lambda(\beta_j) \\
 \end{align*}\]</span></p></li>
 </ul>
-<div class="fragment">
-<p>so <span class="math inline">\(\mathbf{W}_1\)</span> and <span class="math inline">\(\mathbf{W}_2\)</span> are uncorrelated</p>
-</div>
-</section>
-<section id="zero-covariance-implies-independence" class="slide level2">
-<h2>Zero Covariance Implies Independence</h2>
-<div id="Proof*-0.4" class="Proof">
-<details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>
-<p>Assume <span class="math inline">\(\boldsymbol{\Sigma}_{12} = \mathbf{0}\)</span>:</p>
-<ul>
-<li class="fragment"><p>Choose an <span class="math display">\[\mathbf{A}= \left[
-\begin{array}{ll}
-  \mathbf{A}_1 &amp; \mathbf{0}\\
-  \mathbf{0}&amp; \mathbf{A}_2
-\end{array}
-\right]\]</span> such that <span class="math inline">\(\mathbf{A}_1 \mathbf{A}_1^T = \boldsymbol{\Sigma}_{11}\)</span>, <span class="math inline">\(\mathbf{A}_2 \mathbf{A}_2^T = \boldsymbol{\Sigma}_{22}\)</span></p></li>
-<li class="fragment"><p>Partition<br>
-<span class="math display">\[ \mathbf{Z}= \left[
-\begin{array}{c}
-  \mathbf{Z}_1 \\ \mathbf{Z}_2
-\end{array}
-\right] \sim \textsf{N}\left(
-\left[
-\begin{array}{c}
-  \mathbf{0}_1 \\ \mathbf{0}_2
-\end{array}
-\right],
-\left[
-\begin{array}{ll}
-  \mathbf{I}_1 &amp;\mathbf{0}\\
-\mathbf{0}&amp; \mathbf{I}_2
-\end{array}
-\right]
-\right)  \text{ and } \boldsymbol{\mu}= \left[
-\begin{array}{c}
-  \boldsymbol{\mu}_1 \\ \boldsymbol{\mu}_2
-\end{array}
-\right]\]</span></p></li>
-<li class="fragment"><p>then <span class="math inline">\(\mathbf{W}\mathrel{\mathop{=}\limits^{\rm D}}\mathbf{A}\mathbf{Z}+ \boldsymbol{\mu}\sim  \textsf{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span></p></li>
-</ul>
-</div></details>
-</div>
-</section>
-<section class="slide level2">
+<div class="footer">
 
-<div id="continued" class="Proof" title="continued">
-<details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof: </strong>continued</summary><div>
-<p><span class="math inline">\(\mathbf{W}\mathrel{\mathop{=}\limits^{\rm D}}\mathbf{A}\mathbf{Z}+ \boldsymbol{\mu}\sim  \textsf{N}(\boldsymbol{\mu}, \boldsymbol{\Sigma})\)</span></p>
-<p><span class="math display">\[\begin{align*}
-\left[
-  \begin{array}{c}
-    \mathbf{W}_1 \\ \mathbf{W}_2
-  \end{array}
-\right]  &amp; \mathrel{\mathop{=}\limits^{\rm D}}
-\left[  \begin{array}{cc}
-    \mathbf{A}_1 &amp; \mathbf{0}\\
-    \mathbf{0}&amp; \mathbf{A}_2
-  \end{array}
-\right]
-\left[
-  \begin{array}{c}
-    \mathbf{Z}_1 \\ \mathbf{Z}_2
-  \end{array}
-\right]
-+ \left[
-  \begin{array}{c}
-    \boldsymbol{\mu}_1 \\ \boldsymbol{\mu}_2
-  \end{array}
-\right] \\
-&amp; =  \left[
-  \begin{array}{c}
-    \mathbf{A}_1\mathbf{Z}_1 + \boldsymbol{\mu}_1 \\ \mathbf{A}_2\mathbf{Z}_2 +\boldsymbol{\mu}_2
-  \end{array}
-\right]
-\end{align*}\]</span></p>
-<ul>
-<li class="fragment">But <span class="math inline">\(\mathbf{Z}_1\)</span> and <span class="math inline">\(\mathbf{Z}_2\)</span> are independent</li>
-<li class="fragment">Functions of <span class="math inline">\(\mathbf{Z}_1\)</span> and <span class="math inline">\(\mathbf{Z}_2\)</span> are independent</li>
-<li class="fragment">Therefore <span class="math inline">\(\mathbf{W}_1\)</span> and <span class="math inline">\(\mathbf{W}_2\)</span> are independent<br>
-</li>
-</ul>
-</div></details>
-</div>
-<div class="fragment">
-<p>For Multivariate Normal Zero Covariance implies independence!</p>
 </div>
 </section>
-<section class="slide level2">
-
-<div id="Corollary*-0.6" class="Corollary">
-<p></p><details class="Corollary fbx-simplebox fbx-default" open=""><summary><strong>Corollary</strong></summary><div>If <span class="math inline">\(\mathbf{Y}\sim \textsf{N}( \boldsymbol{\mu}, \sigma^2 \mathbf{I}_n)\)</span> and <span class="math inline">\(\mathbf{A}\mathbf{B}^T = \mathbf{0}\)</span> then <span class="math inline">\(\mathbf{A}\mathbf{Y}\)</span> and <span class="math inline">\(\mathbf{B}\mathbf{Y}\)</span> are independent.<p></p>
-</div></details>
+<section id="properties-for-modal-estimates" class="slide level2">
+<h2>Properties for Modal Estimates</h2>
+<p>Fan &amp; Li (JASA 2001) discuss variable selection via nonconcave penalties and oracle properties in the context of penalized likelihoods in this setting</p>
+<ul>
+<li class="fragment"><p>with duality of the negative log prior as their penalty we can extend to Bayesian modal estimates where the prior is a function of <span class="math inline">\(|\beta_j|\)</span> <span class="math display">\[\frac 1 2 \sum(\beta_i - y_i^*)^2 + \frac 1 2 \sum_j(\beta_j - \hat{\beta}_j)^2 +  \sum_j \textsf{pen}_\lambda(|\beta_j|)\]</span></p></li>
+<li class="fragment"><p>Requirements on penality</p>
+<ul>
+<li class="fragment">Unbiasedness: The resulting estimator is nearly unbiased when the true unknown parameter is large (avoid unnecessary modeling bias).</li>
+<li class="fragment">Sparsity: thresholding rule sets small coefficients to 0 (avoid model complexity)</li>
+<li class="fragment">Continuity: continuous in the data <span class="math inline">\(\hat{\beta}_j = y_i^*\)</span> (avoid instability in model prediction)</li>
+</ul></li>
+</ul>
+</section>
+<section id="conditions-for-unbiasedness" class="slide level2">
+<h2>Conditions for Unbiasedness</h2>
+<p>To find the optimal estimator take derivative of <span class="math inline">\(\frac 1 2 \sum_j(\beta_j - \hat{\beta}_j)^2 +  \sum_j \textsf{pen}_\lambda(|\beta_j|)\)</span> componentwise and set to zero</p>
+<ul>
+<li class="fragment"><p>Derivative is <span class="math display">\[\begin{align*}
+\frac{d}{d\,\beta_j} \left\{\frac 1 2 (\beta_j - \hat{\beta}_j)^2 +   \textsf{pen}_\lambda(|\beta_j|)\right\}
+&amp; = (\beta_j - \hat{\beta}_j) + \mathop{\mathrm{sgn}}(\beta_j)\textsf{pen}^\prime_\lambda(|\beta_j|) \\
+&amp; = \mathop{\mathrm{sgn}}(\beta_j)\left\{|\beta_j| + \textsf{pen}^\prime_\lambda(|\beta_j|) \right\} - \hat{\beta}_j
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>setting derivative to zero gives <span class="math inline">\(\hat{\beta}_j = \mathop{\mathrm{sgn}}(\beta_j)\left\{|\beta_j| + \textsf{pen}^\prime_\lambda(|\beta_j|) \right\}\)</span></p></li>
+<li class="fragment"><p>if <span class="math inline">\(\lim_{|\beta_j| \to \infty} p^\prime_\lambda(|\beta|) = 0\)</span> then <span class="math inline">\(\hat{\beta}_j = \mathop{\mathrm{sgn}}(\beta_j) |\beta_j| = \beta_j\)</span></p></li>
+<li class="fragment"><p>for large <span class="math inline">\(|\beta_j|\)</span>, <span class="math inline">\(|\hat{\beta}_j|\)</span> is large with high probability</p></li>
+<li class="fragment"><p>as MLE is unbiased, the optimal estimator is approximately unbiased for large <span class="math inline">\(|\beta_j|\)</span></p></li>
+</ul>
+</section>
+<section id="conditions-for-thresholding-continuity" class="slide level2">
+<h2>Conditions for Thresholding &amp; Continuity</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>As sufficient condition for a thresholding rule <span class="math inline">\(\hat{\beta}_\lambda = 0\)</span> is if <span class="math display">\[0 &lt; \min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|)\right\}\]</span></p>
+<ul>
+<li class="fragment"><p>if <span class="math inline">\(|\hat{\beta}_j| &lt; \min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|) \right\}\)</span> then the derivative is positive for all positive <span class="math inline">\(\beta_j\)</span> and negative for all negative <span class="math inline">\(\beta_j\)</span> so <span class="math inline">\(\hat{\beta}_j^\lambda = 0\)</span> is a local minimum</p></li>
+<li class="fragment"><p>if <span class="math inline">\(|\hat{\beta}_j| &gt; \min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|) \right\}\)</span> multiple crossings (local roots)</p></li>
+<li class="fragment"><p>a sufficient and necessary condition for continuity is that the minimum of <span class="math inline">\(|\beta_j| + p^\prime_\lambda(|\beta_j|)\)</span> is obtained at zero</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="12-oracle_files/figure-revealjs/threshold-condition-1.png" class="quarto-figure quarto-figure-center" style="width:4.5in;height:5in"></p>
+</figure>
 </div>
-<div class="fragment">
-<div id="Proof*-0.7" class="Proof">
-<details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>
-<p><span class="math display">\[
-\left[
-  \begin{array}{c}
-    \mathbf{W}_1 \\ \mathbf{W}_2
-  \end{array}
-\right]  = \left[
-  \begin{array}{c}
-    \mathbf{A}\\ \mathbf{B}
-  \end{array}
-\right]  \mathbf{Y}=  \left[
-  \begin{array}{c}
-    \mathbf{A}\mathbf{Y}\\ \mathbf{B}\mathbf{Y}
-  \end{array}
-\right]
+</div>
+</div>
+</div></div>
+</section>
+<section id="example-gaussian-prior" class="slide level2">
+<h2>Example: Gaussian Prior</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><p>Prior <span class="math inline">\(\textsf{N}(0, 1/\lambda^2)\)</span></p></li>
+<li class="fragment"><p>Penalty: <span class="math inline">\(\textsf{pen}_\lambda(|\beta_j|) = \frac{1}{2} \lambda |\beta_j|^2\)</span></p></li>
+<li class="fragment"><p>Unbiasedness: for large <span class="math inline">\(|\beta_j|\)</span>?</p>
+<ul>
+<li class="fragment">Derivative of <span class="math inline">\(\textsf{pen}_\lambda(|\beta_j|) = \lambda \beta_j = \mathop{\mathrm{sgn}}(\beta_j) \lambda |\beta_j|\)</span></li>
+<li class="fragment">does not go to zero as <span class="math inline">\(|\beta_j| \to \infty\)</span></li>
+<li class="fragment">No! (bias towards zero)</li>
+</ul></li>
+<li class="fragment"><p>not a thresholding rule as <span class="math display">\[\min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|)\right\}  = (1 + \lambda)|\beta_j|\]</span> is zero</p></li>
+<li class="fragment"><p>is continuous as minimum is at zero</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="12-oracle_files/figure-revealjs/ridge-derivative-1.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="example-lasso-prior" class="slide level2">
+<h2>Example: Lasso Prior</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><p>Penalty: <span class="math inline">\(\textsf{pen}_\lambda(|\beta_j|) =  \lambda |\beta_j|\)</span></p></li>
+<li class="fragment"><p>Unbiasedness: for large <span class="math inline">\(|\beta_j|\)</span>?</p>
+<ul>
+<li class="fragment">Derivative of <span class="math inline">\(\textsf{pen}_\lambda(|\beta_j|) = \lambda \mathop{\mathrm{sgn}}(\beta_j)\)</span></li>
+<li class="fragment">does not go to zero as <span class="math inline">\(|\beta_j| \to \infty\)</span></li>
+<li class="fragment">No! (bias towards zero)</li>
+</ul></li>
+<li class="fragment"><p>Is a thresholding rule as <span class="math display">\[\min \left\{ |\beta_j| + p^\prime_\lambda(|\beta_j|)\right\}  = (|\beta_j| +  \lambda) &gt; 0 \]</span></p></li>
+<li class="fragment"><p>is continuous as minimum is at <span class="math inline">\(\beta_j = 0\)</span></p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="12-oracle_files/figure-revealjs/lasso-condition-1.png" class="quarto-figure quarto-figure-center" style="width:3.5in;height:7in"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="generalized-double-pareto-prior" class="slide level2">
+<h2>Generalized Double Pareto Prior</h2>
+<p>The Generalized Double Pareto of Armagan, Dunson &amp; Lee (2013)<br>
+has a prior density for <span class="math inline">\(\beta_j\)</span> of the form <span class="math display">\[
+p(\beta_j \mid \xi, \alpha) = \frac{1}{2 \xi} \left(1 + \frac{\beta_j}{\alpha \xi}\right)^{-(1 + \alpha)}  
 \]</span></p>
 <ul>
-<li class="fragment"><p><span class="math inline">\(\textsf{Cov}(\mathbf{W}_1, \mathbf{W}_2) = \textsf{Cov}(\mathbf{A}\mathbf{Y}, \mathbf{B}\mathbf{Y}) = \sigma^2 \mathbf{A}\mathbf{B}^T\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\mathbf{A}\mathbf{Y}\)</span> and <span class="math inline">\(\mathbf{B}\mathbf{Y}\)</span> are independent if <span class="math inline">\(\mathbf{A}\mathbf{B}^T = \mathbf{0}\)</span></p></li>
+<li class="fragment"><p>express as <span class="math inline">\(\beta_j \mid \xi, \alpha \sim \textsf{GDP}(\xi, \alpha)\)</span></p></li>
+<li class="fragment"><p>Scale mixtures of Normals representation <span class="math display">\[\begin{align*}
+\beta \mid \tau_j &amp; \sim \textsf{N}(0, \tau_j) \\
+\tau_j \mid \lambda &amp; \sim \textsf{Exp}(\lambda^2/2) \\
+\lambda &amp; \sim \textsf{Gamma}(\alpha, \eta) \\
+\beta_j &amp; \sim \textsf{GDP}(\xi = \eta/\alpha, \alpha)
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>is this a thresholding rule? unbiasedness? continuity?</p></li>
+<li class="fragment"><p>for all parameters or are there restrictions?</p></li>
 </ul>
-</div></details>
-</div>
-<ul>
-<li class="fragment">Since <span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{Y}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}= (\mathbf{I}- \mathbf{P}_\mathbf{X})\mathbf{Y}\)</span> have zero covariance, using the corollary we have that <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}\)</span> are independent to show Step 2.</li>
-</ul>
-</div>
 </section>
-<section id="step-3" class="slide level2">
-<h2>Step 3:</h2>
-<p>Show <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\textsf{RSS}\)</span> are independent</p>
+<section id="choice-of-penaltyprior-and-conditions" class="slide level2">
+<h2>Choice of Penalty/Prior and Conditions</h2>
 <ul>
-<li class="fragment"><p><span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{Y}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\epsilon}}= (\mathbf{I}- \mathbf{P}_\mathbf{X})\mathbf{Y}\)</span> are independent</p></li>
-<li class="fragment"><p>functions of independent random variables are independent so <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(\textsf{RSS}= \hat{\boldsymbol{\epsilon}}^T\hat{\boldsymbol{\epsilon}}\)</span> are independent</p></li>
-<li class="fragment"><p>so <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2 = \textsf{RSS}/(n-p)\)</span> are independent</p></li>
+<li class="fragment">Ridge: none</li>
+<li class="fragment">Lasso: does not satisfy conditions for unbiasedness</li>
+<li class="fragment">GDP: Can show that Generalized Double Pareto does for some choices of hyperparameters</li>
+<li class="fragment">Horseshoe: need marginal distribution of <span class="math inline">\(\beta_j\)</span> for penalty
+<ul>
+<li class="fragment">marginal generally not available in closed form</li>
+<li class="fragment">can show for a special case where there is an analytic expression for the marginal density (<span class="math inline">\(\lambda = \phi = 1\)</span>) <span class="math display">\[p(\beta) = k \exp(\beta^2/2) E_1(\beta^2/2)\]</span></li>
+</ul></li>
+<li class="fragment">where <span class="math inline">\(E_n(x) = \int_1^\infty \frac{e^{-xt}}{t^n} dt\)</span> for <span class="math inline">\(n = 1, 2, \ldots\)</span></li>
+<li class="fragment"><span class="math inline">\(E_n^\prime(x) = -E_{n-1}(x)\)</span> for <span class="math inline">\(n = 1, 2, \ldots\)</span></li>
+</ul>
+</section>
+<section id="shrinkage-estimators" class="slide level2">
+<h2>Shrinkage Estimators</h2>
+<p>The literature on shrinkage estimators (with or without selection) is extensive</p>
+<ul>
+<li class="fragment">Ridge</li>
+<li class="fragment">Lasso</li>
+<li class="fragment">Elastic Net (Zou &amp; Hastie 2005)</li>
+<li class="fragment">SCAD (Fan &amp; Li 2001)</li>
+<li class="fragment">Generalized Double Pareto Prior (Armagan, Dunson &amp; Lee 2013)</li>
+<li class="fragment">Spike-and-Slab Lasso (Rockova &amp; George 2018)</li>
 </ul>
 <div class="fragment">
-<p>This result will be critical for creating confidence regions and intervals for <span class="math inline">\(\boldsymbol{\beta}\)</span> and linear combinations of <span class="math inline">\(\boldsymbol{\beta}\)</span>, <span class="math inline">\(\lambda^T \boldsymbol{\beta}\)</span> as well as testing hypotheses</p>
+<p>For Bayes, choice of estimator</p>
+<ul>
+<li class="fragment">posterior mean (easy via MCMC)</li>
+<li class="fragment">posterior mode (optimization)</li>
+<li class="fragment">posterior median (via MCMC)</li>
+</ul>
 </div>
 </section>
-<section id="next-class" class="slide level2">
-<h2>Next Class</h2>
+<section id="selection-and-uncertainty" class="slide level2">
+<h2>Selection and Uncertainty</h2>
 <ul>
-<li class="fragment"><p>shrinkage estimators</p></li>
-<li class="fragment"><p>Bayes and penalized loss functions</p></li>
+<li class="fragment"><p>Prior/Posterior do not put any probability on the event <span class="math inline">\(\beta_j = 0\)</span></p></li>
+<li class="fragment"><p>Uncertainty that the coefficient is zero?</p></li>
+<li class="fragment"><p>Selection solved as a post-analysis decision problem</p></li>
+<li class="fragment"><p>Selection part of model uncertainty</p>
+<ul>
+<li class="fragment">add prior probability that <span class="math inline">\(\beta_j = 0\)</span></li>
+<li class="fragment">combine with decision problem</li>
+</ul></li>
 </ul>
 
 <div class="quarto-auto-generated-content">
