@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – James-Stein Estimation and Shrinkage</title>
+  <title>STA721-F24: Linear Models – Hypothesis Testing</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -323,21 +323,16 @@
       margin-right: 0; 
     }
   </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        tags: 'ams'  // should be 'ams', 'none', or 'all'
+      }
+    };
+  </script>
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Lemma {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Theorem {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .Proposition {
     --color1: #948bde;
     --color2: #584eab;
@@ -346,9 +341,13 @@
     --color1: #c0c0c0;
     --color2: #808080;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   .Exercise {
     --color1: #948bde;
@@ -358,13 +357,21 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
-  }
   .Corollary {
     --color1: #948bde;
     --color2: #584eab;
+  }
+  .Theorem {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
   }
   </style>
 </head>
@@ -373,8 +380,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">James-Stein Estimation and Shrinkage</h1>
-  <p class="subtitle">STA 721: Lecture 10</p>
+  <h1 class="title">Hypothesis Testing</h1>
+  <p class="subtitle">STA 721: Lecture 13</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -390,156 +397,321 @@ Merlise Clyde (clyde@duke.edu)
 </section>
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
+<p>Hypothesis Testing:</p>
 <ul>
-<li class="fragment">Frequentist Risk in Orthogonal Regression</li>
-<li class="fragment">James-Stein Estimation</li>
+<li class="fragment"><p>The hypothesis of no effects</p>
+<ul>
+<li class="fragment">Likelihood ratio tests</li>
+<li class="fragment">F-tests</li>
+<li class="fragment">Null distribution</li>
+<li class="fragment">Decision procedure</li>
+</ul></li>
+<li class="fragment"><p>Testing submodels</p>
+<ul>
+<li class="fragment">Extra sum of squares</li>
+</ul></li>
 </ul>
 <div class="fragment">
 <p>Readings:</p>
 <ul>
-<li class="fragment">Seber &amp; Lee Chapter Chapter 12</li>
+<li class="fragment">Christensen Appendix C, Chapter 3</li>
 </ul>
 </div>
 </section>
-<section id="orthogonal-regression" class="slide level2">
-<h2>Orthogonal Regression</h2>
+<section id="the-hypothesis-of-no-effects" class="slide level2">
+<h2>The Hypothesis of No Effects</h2>
+<p>Suppose we believe the model <span class="math display">\[
+{\text{M1}} \quad \quad\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\quad \quad \boldsymbol{\epsilon}\sim \textsf{N}(0, \sigma^2 \mathbf{I}_n)  
+\]</span> but hypothesize that there is no effect of the <span class="math inline">\(\mathbf{X}\)</span> variables on <span class="math inline">\(\mathbf{Y}\)</span></p>
 <ul>
-<li class="fragment"><p>Consider the model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \mathbf{e}\)</span> where <span class="math inline">\(\mathbf{X}\)</span> is <span class="math inline">\(n \times p\)</span> with <span class="math inline">\(n &gt; p\)</span> and <span class="math inline">\(\mathbf{X}^T\mathbf{X}= \mathbf{I}_p\)</span>.</p></li>
-<li class="fragment"><p>If <span class="math inline">\(\mathbf{X}\)</span> has orthogonal columns, then <span class="math inline">\(\hat{\boldsymbol{\beta}}= \mathbf{X}^T\mathbf{Y}\)</span> is the OLS estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span>.</p></li>
-<li class="fragment"><p>The OLS estimator is unbiased and has minimum variance among all</p></li>
-<li class="fragment"><p>The MSE for estimating <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}})] = \sigma^2
-  \textsf{tr}[(\mathbf{X}^T\mathbf{X})^{-1}] = p\sigma^2\)</span></p></li>
-<li class="fragment"><p>Can always take a general regression problem and transform design so that the model matrix has orthogonal columns <span class="math display">\[\mathbf{X}\boldsymbol{\beta}= \mathbf{U}\boldsymbol{\Delta}\mathbf{V}^T \boldsymbol{\beta}= \mathbf{U}\boldsymbol{\alpha}\]</span> where new parameters are <span class="math inline">\(\boldsymbol{\alpha}= \boldsymbol{\Delta}\mathbf{V}^T \boldsymbol{\beta}\)</span> and <span class="math inline">\(\mathbf{U}^T\mathbf{U}= \mathbf{I}_p\)</span>.</p></li>
-<li class="fragment"><p>Orthogonal polynomials, Fourier bases and wavelet regression are other examples.</p></li>
-<li class="fragment"><p><span class="math inline">\(\hat{\boldsymbol{\alpha}} = \mathbf{U}^T\mathbf{Y}\)</span> and MSE of <span class="math inline">\(\hat{\boldsymbol{\alpha}}\)</span> is <span class="math inline">\(p\sigma^2\)</span></p></li>
-<li class="fragment"><p>so WLOG we will assume that <span class="math inline">\(\mathbf{X}\)</span> has orthogonal columns</p></li>
+<li class="fragment"><p>If this were true, then the distribution for <span class="math inline">\(\mathbf{Y}\)</span> would be <span class="math display">\[
+\quad \quad  \quad \quad \quad {\text{  M0}} \quad \quad \mathbf{Y}\sim \quad \quad \boldsymbol{\epsilon}\sim \textsf{N}(0, \sigma^2 \mathbf{I}_n)
+\]</span></p></li>
+<li class="fragment"><p>For M1, the distribution of <span class="math inline">\(\mathbf{Y}\)</span> is a collection of normal distributions with <span class="math inline">\(\boldsymbol{\mu}\in C(\mathbf{X})\)</span> and Covariance a scalar multiple of the <span class="math inline">\(\mathbf{I}\)</span></p></li>
+<li class="fragment"><p>the distributions for the data <span class="math inline">\(\mathbf{Y}\)</span> under M0 is a subset of the distributions under M1 or <em>submodel</em> of M1 with <span class="math inline">\(\boldsymbol{\mu}= \mathbf{0}\)</span></p></li>
+<li class="fragment"><p>Observations <span class="math inline">\(\mathbf{Y}\)</span> may give us evidence that supports or rejects our hypothesis that the null model, M0, is true</p></li>
 </ul>
 </section>
-<section id="shrinkage-estimators" class="slide level2">
-<h2>Shrinkage Estimators</h2>
+<section id="goal" class="slide level2">
+<h2>Goal</h2>
+<p>Our goals are to</p>
 <ul>
-<li class="fragment">the <span class="math inline">\(g\)</span>-prior and Ridge prior are equivalent in the orthogonal case <span class="math display">\[\boldsymbol{\beta}\sim \textsf{N}(\mathbf{0}_p, \sigma^2 \mathbf{I}_p/\kappa)\]</span> using the ridge parameterization of the prior <span class="math inline">\(\kappa = 1/g\)</span></li>
-<li class="fragment">Bayes estimator in this case is <span class="math display">\[\hat{\boldsymbol{\beta}}_\kappa = \frac{1}{1+\kappa} \hat{\boldsymbol{\beta}}\]</span></li>
-<li class="fragment">MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_\kappa\)</span> is <span class="math display">\[\textsf{MSE}(\hat{\boldsymbol{\beta}}_\kappa) = \frac{1}{(1+\kappa)^2} \sigma^2 p + \frac{\kappa^2}{(1 + \kappa)^2} \sum_{j=1}^{p} \beta_j^2\]</span></li>
-<li class="fragment">squared bias term grows with <span class="math inline">\(\kappa\)</span> and variance term decreases with <span class="math inline">\(\kappa\)</span></li>
+<li class="fragment">obtain a numerical summary of the evidence</li>
+<li class="fragment">come up with a decision-making procedure that decides between M1 and M0,</li>
+<li class="fragment">(frequentist) control the probability of making a certain type of incorrect decision</li>
+</ul>
+<div class="fragment">
+<p>Procedure based on the following steps:</p>
+<ol type="1">
+<li class="fragment">Test statistic: compute a statistic <span class="math inline">\(t(\mathbf{Y},\mathbf{X})\)</span>, a function of observable data;</li>
+<li class="fragment">Null distribution: compare <span class="math inline">\(t(\mathbf{Y},\mathbf{X})\)</span> to the types of values we would expect if M0 is true</li>
+<li class="fragment">Decision rule: accept M0 if <span class="math inline">\(t(\mathbf{Y},\mathbf{X})\)</span> is in accord with its distribution under M0, otherwise reject the submodel M0</li>
+</ol>
+</div>
+</section>
+<section id="intuition" class="slide level2">
+<h2>Intuition</h2>
+<p>If <span class="math inline">\(\hat{\boldsymbol{\beta}}\approx \boldsymbol{\beta}\)</span> then</p>
+<ul>
+<li class="fragment"><p>if <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span>, then <span class="math inline">\(\mathbf{X}\hat{\boldsymbol{\beta}}\approx \mathbf{0}\)</span></p></li>
+<li class="fragment"><p>if <span class="math inline">\(\boldsymbol{\beta}\ne \mathbf{0}\)</span>, then <span class="math inline">\(\mathbf{X}\hat{\boldsymbol{\beta}}\not \approx \mathbf{0}\)</span></p></li>
+<li class="fragment"><p>If the null model M0 is correct, then <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2\)</span> should be small</p></li>
+<li class="fragment"><p>If incorrect, <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2\)</span> should be big</p></li>
+<li class="fragment"><p>We need to quantify this intuition</p></li>
 </ul>
 </section>
-<section id="shrinkage" class="slide level2">
-<h2>Shrinkage</h2>
+<section id="decomposition" class="slide level2">
+<h2>Decomposition</h2>
+<p><span class="math display">\[\begin{align*}
+\mathbf{X}\hat{\boldsymbol{\beta}}&amp; = \mathbf{P}_{\mathbf{X}} \mathbf{Y}\\
+&amp; =  \mathbf{X}\boldsymbol{\beta}+ \mathbf{P}\boldsymbol{\epsilon}
+\end{align*}\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2 &amp; = (\mathbf{X}\boldsymbol{\beta}+ \mathbf{P}\boldsymbol{\epsilon})^T(\mathbf{X}\boldsymbol{\beta}+ \mathbf{P}\boldsymbol{\epsilon}) \\
+              &amp; = \boldsymbol{\beta}^T \mathbf{X}^T  \mathbf{X}\boldsymbol{\beta}+ 2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{P}\boldsymbol{\epsilon}+ \boldsymbol{\epsilon}^T \mathbf{P}\boldsymbol{\epsilon}\\
+              &amp; = \| \mathbf{X}\boldsymbol{\beta}\|^2 + 2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{\epsilon}+ \boldsymbol{\epsilon}^T \mathbf{P}\boldsymbol{\epsilon}
+\end{align*}\]</span></p>
+</div>
+<div class="fragment">
+<p>How big is <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2\)</span> on average? How big do we expect it to be under our two models?</p>
+</div>
+<div class="fragment">
+<p>Take expectations:</p>
+<p><span class="math display">\[\begin{align*}
+\textsf{E}[\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2] &amp; = \|\boldsymbol{\beta}\mathbf{X}^T\|^2 + \textsf{E}[2 \boldsymbol{\beta}^T \mathbf{X}^T  \boldsymbol{\epsilon}] + \textsf{E}[\boldsymbol{\epsilon}^T \mathbf{P}\boldsymbol{\epsilon}] \\
+&amp; = \|\mathbf{X}\boldsymbol{\beta}\|^2 + 0 + \sigma^2 \textsf{tr}(\mathbf{P}) = \|\mathbf{X}\boldsymbol{\beta}\|^2 + \sigma^2 p
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment">if <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span>, then <span class="math inline">\(\textsf{E}[\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2] = \sigma^2 p\)</span></li>
+</ul>
+</div>
+</section>
+<section id="comparison" class="slide level2">
+<h2>Comparison</h2>
+<p>If we knew <span class="math inline">\(\sigma^2\)</span>, then</p>
+<ul>
+<li class="fragment"><p>if <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p \approx \sigma^2\)</span>, we might decide M0 would be reasonable</p></li>
+<li class="fragment"><p>if <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p \gg \sigma^2\)</span>, then we might decide M0 is unreasonable</p></li>
+</ul>
+<div class="fragment">
+<p>But we do not know <span class="math inline">\(\sigma^2\)</span></p>
+<ul>
+<li class="fragment"><p>if we estimate <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(s^2 = \frac{\mathbf{Y}^T(\mathbf{I}- \mathbf{P})\mathbf{Y}}{n - p}\)</span>, then</p>
+<ul>
+<li class="fragment"><p>if <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p \approx s^2\)</span>, we might decide M0 would be reasonable</p></li>
+<li class="fragment"><p>if <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p \gg s^2\)</span>, then we might decide M0 is unreasonable</p></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="test-statistic" class="slide level2">
+<h2>Test Statistic</h2>
+<p>Note: if the null model M0 is correct (<span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span>), then <strong>both</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|/p\)</span></li>
+<li class="fragment"><span class="math inline">\(\textsf{SSE}/(n-p) = \frac{\mathbf{Y}^T(\mathbf{I}- \mathbf{P})\mathbf{Y}}{n - p}\)</span></li>
+</ul>
+<div class="fragment">
+<p>are unbiased estimates of <span class="math inline">\(\sigma^2\)</span></p>
+</div>
+<div class="fragment">
+<p>If the null model is not correct, but the linear model M1 is correct, then</p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(s^2\)</span> is still an unbiased estimate of <span class="math inline">\(\sigma^2\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p\)</span> is expected to be bigger than <span class="math inline">\(\sigma^2\)</span></p></li>
+<li class="fragment"><p>We can use the ratio of the two quantities to form a test statistic <span class="math display">\[t(\mathbf{Y}, \mathbf{X}) = \frac{\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p}{\textsf{SSE}/(n-p)} = \frac{\textsf{RSS}/p}{\textsf{SSE}/(n-p)}\]</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\textsf{RSS}\)</span> is the regression or model sum of squares</p></li>
+</ul>
+<div class="footer">
+
+</div>
+</div>
+</section>
+<section id="distributions-under-the-null-model-m0" class="slide level2">
+<h2>Distributions under the Null Model M0</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\textsf{SSE}\sim \sigma^2 \chi^2_{n-p}\)</span></li>
+<li class="fragment"><span class="math inline">\(\|\mathbf{X}(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta})\|^2 \sim \sigma^2 \chi^2_p\)</span></li>
+</ul>
+<div class="fragment">
+<p>so under the null model M0 (<span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span>), we have</p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(\textsf{SSE}\sim \sigma^2 \chi^2_{n-p}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2 \sim \sigma^2 \chi^2_p\)</span></p></li>
+<li class="fragment"><p>they are statistically independent (why?)</p></li>
+<li class="fragment"><p>so the ratio <span class="math display">\[\begin{align*}
+t(\mathbf{Y}, \mathbf{X}) &amp; = \frac{\textsf{RSS}/p}{\textsf{SSE}/(n-p)} = \frac{(\textsf{RSS}/\sigma^2)/p}{(\textsf{SSE}/\sigma^2)/(n-p)} \\
+&amp; \mathrel{\mathop{=}\limits^{\rm D}}\frac{\chi^2_p/p}{\chi^2_{n-p}/(n-p)} \quad \text{ is independent of } \sigma^2
+\end{align*}\]</span> is independent of <span class="math inline">\(\sigma^2\)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="f-distribution" class="slide level2">
+<h2>F Distribution</h2>
+<div id="f-distribution-1" class="Definition" title="F distribution">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>F distribution</summary><div>If <span class="math inline">\(X_1 \sim \chi^2_{d1}\)</span> and <span class="math inline">\(X_2 \sim \chi^2_{d2}\)</span> and are independent, then the ratio <span class="math display">\[F = \frac{X_1/d1}{X_2/d2}\]</span> has an <span class="math inline">\(F_{d1, d2}\)</span> distribution with <span class="math inline">\(d1\)</span> and <span class="math inline">\(d2\)</span> degrees of freedom.<p></p>
+</div></details>
+</div>
+<div class="fragment">
+<ul>
+<li class="fragment"><span class="math inline">\(F(\mathbf{Y}) \equiv t(\mathbf{Y}, \mathbf{X}) = \frac{\textsf{RSS}/p}{\textsf{SSE}/(n-p)}\)</span> has an <span class="math inline">\(F_{p, n-p}\)</span> distribution under the null model M0</li>
+</ul>
+</div>
+</section>
+<section id="decision-procedure" class="slide level2">
+<h2>Decision Procedure</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
+<p>We will accept M0 that <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span> unless <span class="math inline">\(F(\mathbf{Y})\)</span> is large compared to an <span class="math inline">\(F_{p,n−p}\)</span> distribution.</p>
 <ul>
-<li class="fragment"><p>in principle, with the right choice of <span class="math inline">\(\kappa\)</span> we can get a better estimator and reduce the MSE</p></li>
-<li class="fragment"><p>while not unbiased, what we pay for bias we can make up for with a reduction in variance</p></li>
-<li class="fragment"><p>the variance-bias decomposition of MSE based on the plot suggests there is an optimal value of <span class="math inline">\(\kappa\)</span> the improves over OLS in terms of MSE</p></li>
-<li class="fragment"><p>“optimal” <span class="math inline">\(\kappa\)</span> <span class="math display">\[\kappa = \frac{p \sigma^2}{\|\boldsymbol{\beta}^*\|^2}\]</span> where <span class="math inline">\(\boldsymbol{\beta}^*\)</span> is the true value of <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
-<li class="fragment"><p>but never know that in practice!</p></li>
+<li class="fragment"><p>accept M0: <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span> if <span class="math inline">\(F(\mathbf{Y}) &lt; F_{p,n−p,1−\alpha}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(F_{p,n−p,1−\alpha}\)</span> is the <span class="math inline">\(1 − \alpha\)</span> quantile of a <span class="math inline">\(F_{p,n−p}\)</span></p></li>
+<li class="fragment"><p>reject M0: <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span> if <span class="math inline">\(F(\mathbf{Y}) &gt; F_{p,n−p,1−\alpha}\)</span></p></li>
+<li class="fragment"><p>the probability that we reject M0 when it is true, is <span class="math display">\[\begin{align*}
+\Pr( \text{ reject M0} &amp; \mid \text{ M0 true})\\
+&amp; = \Pr(F(\mathbf{Y}) &gt; F_{p,n−p,1−\alpha} \mid \boldsymbol{\beta}= \mathbf{0}) \\
+&amp; = \alpha
+\end{align*}\]</span></p></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="10-james-stein_files/figure-revealjs/shrinkage-1.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+<p><img data-src="13-testing_files/figure-revealjs/F-distribution-1.png" class="quarto-figure quarto-figure-center" style="width:3.5in;height:3.5in"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="estimating-kappa" class="slide level2">
-<h2>Estimating <span class="math inline">\(\kappa\)</span></h2>
-<ul>
-<li class="fragment"><p>if we use the optimal <span class="math inline">\(\kappa\)</span>, the shrinkage estimator can be written as <span class="math display">\[\tilde{\boldsymbol{\beta}}= \frac{\|\boldsymbol{\beta}\|^2}{p \sigma^2 + \|\boldsymbol{\beta}\|^2} \hat{\boldsymbol{\beta}}\]</span> or <span class="math display">\[\tilde{\boldsymbol{\beta}}= \left(1 - \frac{p\sigma^2}{p\sigma^2 + \|\boldsymbol{\beta}\|^2} \right) \hat{\boldsymbol{\beta}}\]</span></p></li>
-<li class="fragment"><p>but note that <span class="math inline">\(\textsf{E}\|\hat{\boldsymbol{\beta}}\|^2 = p \sigma^2 + \|\boldsymbol{\beta}\|^2\)</span> (the denominator)</p></li>
-<li class="fragment"><p>plugging in <span class="math inline">\(\|\hat{\boldsymbol{\beta}}\|^2\)</span> for the denominator leads to an estimator that we can compute! <span class="math display">\[\tilde{\boldsymbol{\beta}}= \left(1 - \frac{p\sigma^2}{\|\hat{\boldsymbol{\beta}}\|^2} \right) \hat{\boldsymbol{\beta}}\]</span></p></li>
-</ul>
-</section>
-<section id="james-stein-estimators" class="slide level2">
-<h2>James-Stein Estimators</h2>
-<p>in James and Stein (1961) proposed a shrinkage estimator that dominated the MLE for the mean of a multivariate normal distribution <span class="math display">\[\tilde{\boldsymbol{\beta}}_{JS} = \left(1 - \frac{(p-2)\sigma^2}{\|\hat{\boldsymbol{\beta}}\|^2} \right) \hat{\boldsymbol{\beta}}\]</span> (equivalent to our orthogonal regression case; just multiply everything by <span class="math inline">\(\mathbf{X}^T\)</span> to show)</p>
-<ul>
-<li class="fragment"><p>they showed that this is the best (in terms of smallest MSE) of all estimators of the form <span class="math inline">\(\left(1- \frac{b}{\|\hat{\boldsymbol{\beta}}\|^2} \right) \hat{\boldsymbol{\beta}}\)</span></p></li>
-<li class="fragment"><p>it is possible to show that the MSE of the James-Stein estimator is <span class="math display">\[\textsf{MSE}(\tilde{\boldsymbol{\beta}}_{JS}) = 2\sigma^2\]</span> which is less than the MSE of the OLS estimator if <span class="math inline">\(p &gt; 2\)</span>! (more on this in STA732)</p></li>
-</ul>
-<div class="footer">
-
-</div>
-</section>
-<section id="negative-shrinkage" class="slide level2">
-<h2>Negative Shrinkage?</h2>
+<section id="p-values" class="slide level2">
+<h2>P-values</h2>
 <div class="columns">
-<div class="column" style="width:65%;">
+<div class="column" style="width:60%;">
+<p>Instead of just declaring that M0 is true or false, statistical analyses report how extreme <span class="math inline">\(F(\mathbf{Y})\)</span> is compared to its null distribution.</p>
 <ul>
-<li class="fragment"><p>one potential problem with the James-Stein estimator <span class="math display">\[\tilde{\boldsymbol{\beta}}_{JS} = \left(1 - \frac{(p-2)\sigma^2}{\|\hat{\boldsymbol{\beta}}\|^2} \right) \hat{\boldsymbol{\beta}}\]</span> is that the term in the parentheses can be negative if <span class="math inline">\(\|\hat{\boldsymbol{\beta}}\|^2 &lt; (p-2)\sigma^2\)</span></p></li>
-<li class="fragment"><p>How likely is this to happen?</p></li>
-<li class="fragment"><p>Suppose that each of the parameters <span class="math inline">\(\beta_j\)</span> are actually zero, then <span class="math inline">\(\hat{\boldsymbol{\beta}}\sim \textsf{N}(\mathbf{0}_p, \sigma^2 \mathbf{I}_p)\)</span> then <span class="math inline">\(\|\hat{\boldsymbol{\beta}}\|^2 /\sigma^2 \sim  \chi^2_p\)</span></p></li>
-<li class="fragment"><p>compute the probability that <span class="math inline">\(\chi^2_p &lt; (p-2)\)</span></p></li>
-<li class="fragment"><p>so if the model is full of small effects, the James-Stein can lead to negative shrinkage!</p></li>
+<li class="fragment"><p>This is usually reported in terms of the p-value:</p>
+<ul>
+<li class="fragment"><p>the value <span class="math inline">\(p \in(0,1)\)</span> such that <span class="math inline">\(F(\mathbf{Y})\)</span> is the <span class="math inline">\((1−p)\)</span> quantile of the <span class="math inline">\(F_{p,n−p}\)</span> distribution</p></li>
+<li class="fragment"><p>the probability that a random variable <span class="math inline">\(F \sim F_{p,n−p}\)</span> is larger than the observed value <span class="math inline">\(F(\mathbf{Y})\)</span>, if the null model is true</p></li>
+</ul></li>
+<li class="fragment"><p>it is not the <span class="math inline">\(\Pr(\text{M0 is true})\)</span> based on the observed data</p></li>
 </ul>
-</div><div class="column" style="width:35%;">
+</div><div class="column" style="width:40%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="10-james-stein_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" style="width:8in;height:5in"></p>
+<p><img data-src="13-testing_files/figure-revealjs/p-value-1.png" class="quarto-figure quarto-figure-center" style="width:3.5in;height:3.5in"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="positive-part-james-stein-estimator" class="slide level2">
-<h2>Positive Part James-Stein Estimator</h2>
+<section id="testing-submodels" class="slide level2">
+<h2>Testing SubModels</h2>
+<p>We are usually not interested in testing that all of the coefficients are zero if there is an intercept in the model</p>
 <ul>
-<li class="fragment"><p>any shrinkage estimator of the form <span class="math inline">\(\tilde{\boldsymbol{\beta}}= (1 - b) \hat{\boldsymbol{\beta}}\)</span> is inadmissible if the shrinkage factor is negative or greater than one (there is a better estimator)</p></li>
-<li class="fragment"><p>Baranchik (1964) proposed the positive part James-Stein estimator <span class="math display">\[\tilde{\boldsymbol{\beta}}_{PPJS} = \left(1 - \frac{(p-2)\sigma^2}{\|\hat{\boldsymbol{\beta}}\|^2} \right)^+ \hat{\boldsymbol{\beta}}\]</span> where <span class="math inline">\((x)^+ = \max(x, 0)\)</span></p></li>
-<li class="fragment"><p>This is the same as the James-Stein estimator if the shrinkage factor is positive and zero otherwise. (related to testing the null hypothesis that all the <span class="math inline">\(\beta_j\)</span> are zero)</p></li>
-<li class="fragment"><p>it turns out this is also inadmissible! ie there is another estimator that has smaller MSE!</p></li>
-<li class="fragment"><p>if we care about admissibility, we may want to stick to Bayes rules that do not depend on the data!</p></li>
-<li class="fragment"><p>more on admissibility &amp; minimaxity in STA732!</p></li>
+<li class="fragment"><p>But we can use the same idea to test submodels</p></li>
+<li class="fragment"><p>We assume the Gaussian Linear Model <span class="math display">\[\quad \quad \quad \quad \quad \quad \quad \quad M1 \quad \mathbf{Y}∼ \textsf{N}(\mathbf{W}\boldsymbol{\alpha}+ \mathbf{X}\boldsymbol{\beta}, \sigma^2\mathbf{I}) \equiv \textsf{N}(\mathbf{Z}\boldsymbol{\theta}, \sigma^2\mathbf{I})\]</span> where <span class="math inline">\(\mathbf{W}\)</span> is <span class="math inline">\(n \times q\)</span>, <span class="math inline">\(\mathbf{X}\)</span> is <span class="math inline">\(n \times p\)</span>, <span class="math inline">\(\mathbf{Z}= [\mathbf{W}\mathbf{X}]\)</span>,</p></li>
+<li class="fragment"><p>We wish to evaluate the hypothesis <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span></p></li>
+<li class="fragment"><p>equivalent to comparing M1 to M0: <span class="math display">\[M0 \quad \mathbf{Y}∼ \textsf{N}(\mathbf{W}\boldsymbol{\alpha}, \sigma^2\mathbf{I})\]</span></p></li>
 </ul>
-<div class="footer">
-
+</section>
+<section id="intuition-1" class="slide level2">
+<h2>Intuition</h2>
+<p>Devise a test statistic and procedure by</p>
+<ul>
+<li class="fragment"><p>fitting the full model M1 <span class="math inline">\(\mathbf{Y}\sim \textsf{N}(\mathbf{W}\boldsymbol{\alpha}+ \mathbf{X}\boldsymbol{\beta}, \sigma^2\mathbf{I})\)</span></p></li>
+<li class="fragment"><p>fitting the reduced/null model M0 <span class="math inline">\(\mathbf{Y}\sim \textsf{N}(\mathbf{W}\boldsymbol{\alpha}, \sigma^2\mathbf{I})\)</span></p></li>
+<li class="fragment"><p>accept M0 if the null model fits about as well as the full model</p></li>
+<li class="fragment"><p>reject M0 if the null model fits much worse than the full model</p></li>
+<li class="fragment"><p>measure fit through <span class="math inline">\(\textsf{SSE}_{M0}\)</span> and <span class="math inline">\(\textsf{SSE}_{M1}\)</span> <span class="math display">\[\begin{align*}
+\textsf{SSE}_{M1} &amp; = \min_{\boldsymbol{\alpha}, \boldsymbol{\beta}}
+\|\mathbf{Y}- (\mathbf{W}\boldsymbol{\alpha}+ \mathbf{X}\boldsymbol{\beta})\|^2 \\
+        &amp; = \min_{\boldsymbol{\theta}} \|\mathbf{Y}- \mathbf{Z}\boldsymbol{\theta}\|^2 = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}})\mathbf{Y}\\
+\textsf{SSE}_{M0} &amp; = \min_{\boldsymbol{\alpha}} \|\mathbf{Y}- \mathbf{W}\boldsymbol{\alpha}\|^2 = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
+\end{align*}\]</span></p></li>
+</ul>
+</section>
+<section id="extra-sum-of-squares" class="slide level2">
+<h2>Extra Sum of Squares</h2>
+<p>Approach 1: accept/choose the null model if <span class="math inline">\(\textsf{SSE}_{M0} &lt; \textsf{SSE}_{M1}\)</span>, and choose the full model if <span class="math inline">\(\textsf{SSE}_{M1} &lt; \textsf{SSE}_{M0}\)</span>.</p>
+<ul>
+<li class="fragment">but <span class="math inline">\(\textsf{SSE}_{M1}\)</span> is always less than <span class="math inline">\(\textsf{SSE}_{M0}\)</span></li>
+</ul>
+<div class="fragment">
+<p>Approach 2: instead reject M1 <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span> if <span class="math inline">\(\textsf{SSE}_{M0}\)</span> is much bigger than <span class="math inline">\(\textsf{SSE}_{M1}\)</span>.</p>
+<ul>
+<li class="fragment">Specifically, reject M1 <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span> if <span class="math inline">\(\textsf{SSE}_{M0} - \textsf{SSE}_{M1}\)</span> is much bigger than what we would expect if the null hypothesis M0 were true.</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Need:</p>
+<ul>
+<li class="fragment">the null distribution of <span class="math inline">\(\textsf{SSE}_{M0}\)</span></li>
+<li class="fragment">the null distribution of <span class="math inline">\(\textsf{SSE}_{M1}\)</span></li>
+<li class="fragment">the null distribution of their difference <span class="math inline">\(\textsf{SSE}_{M0} - \textsf{SSE}_{M1}\)</span></li>
+</ul>
 </div>
 </section>
-<section id="bayes-and-admissibilty" class="slide level2">
-<h2>Bayes and Admissibilty</h2>
+<section id="distributions" class="slide level2">
+<h2>Distributions</h2>
+<p><strong>Distribution under the full model M1</strong> <span class="math display">\[ \textsf{SSE}_{M1} = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}})\mathbf{Y}\sim \sigma^2 \chi^2_{n - q - p}\]</span></p>
 <ul>
-<li class="fragment"><p>Bayes rules based on proper priors are generally always admissible (see Christian Robert (2007) The Bayesian Choice for more details)</p></li>
-<li class="fragment"><p>unique Bayes rules are admissible</p></li>
-<li class="fragment"><p>Generalized Bayes rules based on improper priors may not be inadmissible, but this will depend on the loss function and the prior</p></li>
-<li class="fragment"><p>under regularity conditions, limits of Bayes rules will be admissible</p></li>
-<li class="fragment"><p>the Positive-Part James-Stein estimator fails to be admissible under squared error loss as Bayes risk is not continuous</p></li>
+<li class="fragment">true whether or not <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span></li>
+<li class="fragment"><span class="math inline">\(\textsf{E}[\textsf{SSE}_{M1}] = E[\mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}})\mathbf{Y}] = \sigma^2(n - q - p)\)</span></li>
+</ul>
+<div class="fragment">
+<p><strong>Distribution under the null model M0</strong> <span class="math display">\[\textsf{SSE}_{M0} = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}\sim \sigma^2 \chi^2_{n - q}\]</span></p>
+<ul>
+<li class="fragment">true if <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span></li>
+<li class="fragment"><span class="math inline">\(\textsf{E}[\textsf{SSE}_{M0}] = E[\mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}] = \sigma^2(n - q)\)</span></li>
+<li class="fragment">if <span class="math inline">\(\boldsymbol{\beta}\neq \mathbf{0}\)</span> then <span class="math inline">\(\textsf{SSE}_{M0}\)</span> has a non-central <span class="math inline">\(\chi^2_{n-q}\)</span> distribution</li>
+</ul>
+</div>
+</section>
+<section id="expected-value-of-textsfsse_m0-under-m1" class="slide level2">
+<h2>Expected Value of <span class="math inline">\(\textsf{SSE}_{M0}\)</span> under M1</h2>
+<ul>
+<li class="fragment"><p>Rewrite <span class="math inline">\((\mathbf{I}- \mathbf{P}_{\mathbf{W}}\mathbf{Y}\)</span> under M1: <span class="math display">\[\begin{align*}
+(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}&amp; = (\mathbf{I}- \mathbf{P}_{\mathbf{W}})(\mathbf{W}\boldsymbol{\alpha}+ \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}) \\
+&amp; = (\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}+ (\mathbf{I}- \mathbf{P}_{\mathbf{W}})\boldsymbol{\epsilon}
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>compute <span class="math inline">\(\textsf{E}[\textsf{SSE}_{M0}]\)</span> under M1: <span class="math display">\[\begin{align*}
+\textsf{E}[\mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}] &amp; = \boldsymbol{\beta}^T\mathbf{X}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}+ \textsf{E}[\boldsymbol{\epsilon}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\boldsymbol{\epsilon}] \\
+&amp; = \boldsymbol{\beta}^T\mathbf{X}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}+ \sigma^2 \textsf{tr}(\mathbf{I}- \mathbf{P}_{\mathbf{W}}) \\
+&amp;  = \boldsymbol{\beta}^T\mathbf{X}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}+ \sigma^2(n - q)
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>under M0, both <span class="math inline">\(\textsf{SSE}_{M0}/(n-q)\)</span> and <span class="math inline">\(\textsf{SSE}_{M1}/(n- q - p)\)</span> are unbiased estimates of <span class="math inline">\(\sigma^2\)</span></p></li>
+<li class="fragment"><p>but does the ratio <span class="math inline">\(\frac{\textsf{SSE}_{M0}/(n-q)}{\textsf{SSE}_{M1}/(n- q - p)}\)</span> have a F distribution?</p></li>
 </ul>
 </section>
-<section id="positive-part-james-stein-estimator-and-testimators" class="slide level2">
-<h2>Positive Part James-Stein Estimator and Testimators</h2>
+<section id="extra-sum-of-squares-1" class="slide level2">
+<h2>Extra Sum of Squares</h2>
+<p>Rewrite <span class="math inline">\(\textsf{SSE}_{M0}\)</span>: <span class="math display">\[\begin{align*}
+\textsf{SSE}_{M0} &amp; = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
+          &amp; = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}} + \mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
+          &amp; = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}})\mathbf{Y}+ \mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
+          &amp; = \textsf{SSE}_{M1} + \mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}
+\end{align*}\]</span></p>
+<div class="fragment">
+<p>Extra Sum of Squares: <span class="math display">\[\textsf{SSE}_{M0} - \textsf{SSE}_{M1}  = \mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\]</span></p>
 <ul>
-<li class="fragment"><p>the positive part James-Stein estimator can be shown to be related to <strong>testimators</strong> where if we fail to reject the hypothesis that all the <span class="math inline">\(\beta_j\)</span> are zero at some level, we set all coefficients to zero, and otherwise we shrink the coefficients by an amount that depends on how large the test statistic (<span class="math inline">\(\|\hat{\boldsymbol{\beta}}\|^2\)</span>) is.</p></li>
-<li class="fragment"><p>note this can shrink all the coefficients to zero if the majority are small so increased bias for large coefficients that are not zero!</p></li>
-<li class="fragment"><p>this is a form of <strong>model selection</strong> where we are selecting the model that has all the coefficients zero!</p></li>
+<li class="fragment">is <span class="math inline">\(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}}\)</span> is a projection matrix?</li>
+<li class="fragment">onto what space? along what space ?</li>
+<li class="fragment">what is the distribution of <span class="math inline">\(\textsf{SSE}_{M0} - \textsf{SSE}_{M1}\)</span> under the null model M0? under M1?</li>
+<li class="fragment">is it independent of <span class="math inline">\(\textsf{SSE}_{M1}\)</span>?</li>
 </ul>
-</section>
-<section id="lasso-estimator" class="slide level2">
-<h2>LASSO Estimator</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<ul>
-<li class="fragment"><p>an alternative estimator that allows for shrinkage and selection is the LASSO (Least Absolute Shrinkage and Selection Operator).</p></li>
-<li class="fragment"><p>the LASSO replaces the penalty term in the ridge regression with an <span class="math inline">\(L_1\)</span> penalty term <span class="math display">\[\hat{\boldsymbol{\beta}}_{LASSO} = \mathop{\mathrm{argmin}}_{\boldsymbol{\beta}} \left\{ \|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 + \lambda \|\boldsymbol{\beta}\|_1 \right\}\]</span></p></li>
-<li class="fragment"><p>the LASSO can also be shown to be the posterior mode of a Bayesian model with independent Laplace or double exponential prior distributions on the coefficients.</p></li>
-<li class="fragment"><p>as the double exponential prior is a “scale” mixture of normals, this provides a generalization of the ridge regression.</p></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<p><img data-src="img/lasso.png"></p>
-<p>from <a href="https://livebook.manning.com/book/machine-learning-with-r-the-tidyverse-and-mlr/chapter-11/">Machine Learning with R</a></p>
-</div></div>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://sta721-F24.github.io/website/" class="uri">https://sta721-F24.github.io/website/</a></p>
+</div>
 </div>
 </div>
 </section>
