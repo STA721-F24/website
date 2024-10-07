@@ -1,0 +1,12 @@
+---
+title: "Testing Hypotheses"
+---
+
+We develop an F-test for testing hypotheses about the coefficients in a linear model. 
+
+
+Readings:
+
+
+
+- Christensen Chapter 3, Appendix C

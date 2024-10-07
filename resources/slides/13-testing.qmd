@@ -1,0 +1,483 @@
+---
+subtitle: "STA 721: Lecture 13"
+title: "Hypothesis Testing"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+    include-in-header: mathjax-eq.html
+html-math-method:
+    method: mathjax
+    url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+      numbered: false
+    Lemma:
+      group: thmlike
+      numbered: false
+    Corollary:
+      group: thmlike
+      numbered: false
+    Proposition:
+      group: thmlike
+      numbered: false      
+    Proof:
+      group: thmlike
+      numbered: false
+      collapse: false   
+    Exercise:
+      group: thmlike
+      numbered: false
+    Definition:
+      group: thmlike
+      numbered: false
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+require("lars", "monomvn")
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+Hypothesis Testing:
+
+- The hypothesis of no effects
+
+  - Likelihood ratio tests
+  - F-tests 
+  - Null distribution
+  - Decision procedure 
+  
+- Testing submodels 
+  - Extra sum of squares 
+
+
+. . .
+
+Readings:
+
+- Christensen Appendix C, Chapter 3
+
+## The Hypothesis of No Effects
+
+Suppose we believe the model
+$$
+{\text{M1}} \quad \quad\Y = \X\b + \eps \quad \quad \eps \sim \N(0, \sigma^2 \I_n)  
+$$
+but hypothesize that there is no effect of the $\X$ variables on $\Y$
+
+- If this were true, then the distribution for $\Y$ would be 
+$$
+\quad \quad  \quad \quad \quad {\text{  M0}} \quad \quad \Y \sim \quad \quad \eps \sim \N(0, \sigma^2 \I_n) 
+$$
+
+- For M1, the distribution of $\Y$ is a collection of normal distributions with $\mub \in C(\X)$ and Covariance a scalar multiple of the $\I$
+
+- the distributions for the data $\Y$ under M0 is a subset of the distributions under M1 or _submodel_ of M1 with $\mub = \zero$
+
+- Observations $\Y$ may give us evidence that supports or rejects our hypothesis that the null model, M0, is true
+
+## Goal
+
+Our goals are to 
+
+- obtain a numerical summary of the evidence 
+- come up with a decision-making procedure that decides between M1 and M0, 
+- (frequentist) control the probability of making a certain type of incorrect decision
+
+. . .
+
+Procedure based on the following steps:
+
+1. Test statistic: compute a statistic $t(\Y,\X)$, a function of observable data;
+2. Null distribution: compare $t(\Y,\X)$ to the types of values we would expect if M0 is true
+3. Decision rule: accept M0 if $t(\Y,\X)$ is in accord with its distribution under M0, otherwise reject the submodel M0
+
+## Intuition
+
+If $\bhat \approx \b$ then
+
+- if $\b = \zero$, then $\X \bhat \approx \zero$
+- if $\b \ne \zero$, then $\X \bhat \not \approx \zero$
+
+
+
+- If  the null model M0 is correct, then $\|\X\bhat\|^2$ should be small 
+
+- If incorrect, $\|\X\bhat\|^2$ should be big
+
+- We need to quantify this intuition
+
+## Decomposition
+
+\begin{align*} 
+\X\bhat & = \P_{\X} \Y \\ 
+& =  \X\b + \P\eps
+\end{align*}
+
+. . .
+
+\begin{align*}
+\|\X\bhat\|^2 & = (\X\b + \P\eps)^T(\X\b + \P\eps) \\
+              & = \b^T \X^T  \X \b + 2 \b^T \X^T \P \eps + \eps^T \P \eps \\
+              & = \| \X\b \|^2 + 2 \b^T \X^T \eps + \eps^T \P \eps
+\end{align*}
+
+
+. . .
+
+How big is $\|\X\bhat\|^2$  on average? How big do we expect it to be under our two models?
+
+. . .
+
+Take expectations:
+
+\begin{align*}
+\E[\|\X\bhat\|^2] & = \|\b\X^T\|^2 + \E[2 \b^T \X^T  \eps] + \E[\eps^T \P \eps] \\
+& = \|\X\b \|^2 + 0 + \sigma^2 \tr(\P) = \|\X\b \|^2 + \sigma^2 p
+\end{align*}
+
+- if $\b = \zero$, then $\E[\|\X\bhat\|^2] = \sigma^2 p$
+
+## Comparison
+
+If we knew $\sigma^2$, then 
+
+- if $\|\X\bhat\|^2/p \approx \sigma^2$, we might decide M0 would be reasonable 
+
+- if $\|\X\bhat\|^2/p \gg \sigma^2$, then we might decide M0 is unreasonable
+
+. . .
+
+But we do not know $\sigma^2$
+
+- if we estimate $\sigma^2$ by $s^2 = \frac{\Y^T(\I - \P)\Y}{n - p}$,  then
+  
+  - if $\|\X\bhat\|^2/p \approx s^2$, we might decide M0 would be reasonable 
+
+  - if $\|\X\bhat\|^2/p \gg s^2$, then we might decide M0 is unreasonable
+  
+## Test Statistic
+
+Note:  if the null model M0 is correct ($\b = \zero$), then **both** 
+
+- $\|\X\bhat\|/p$ 
+- $\SSE/(n-p) = \frac{\Y^T(\I - \P)\Y}{n - p}$ 
+
+. . .
+
+are unbiased estimates of $\sigma^2$
+
+. . .
+
+If the null model is not correct, but the linear model M1 is correct, then 
+
+- $s^2$ is still an unbiased estimate of $\sigma^2$
+- $\|\X\bhat\|^2/p$ is expected to be bigger than $\sigma^2$
+
+
+
+- We can use the ratio of the two quantities to form a test statistic
+$$t(\Y, \X) = \frac{\|\X\bhat\|^2/p}{\SSE/(n-p)} = \frac{\RSS/p}{\SSE/(n-p)}$$
+- $\RSS$ is the regression or model sum of squares
+
+::: footer
+:::
+
+## Distributions under the Null Model M0
+
+- $\SSE \sim \sigma^2 \chi^2_{n-p}$ 
+- $\|\X(\bhat - \b)\|^2 \sim \sigma^2 \chi^2_p$
+
+. . .
+
+so under the null model M0 ($\b = \zero$), we have
+
+- $\SSE \sim \sigma^2 \chi^2_{n-p}$ 
+- $\|\X\bhat\|^2 \sim \sigma^2 \chi^2_p$
+- they are statistically independent (why?)
+
+- so the ratio
+\begin{align*}
+t(\Y, \X) & = \frac{\RSS/p}{\SSE/(n-p)} = \frac{(\RSS/\sigma^2)/p}{(\SSE/\sigma^2)/(n-p)} \\
+ & \eqindis \frac{\chi^2_p/p}{\chi^2_{n-p}/(n-p)} \quad \text{ is independent of } \sigma^2
+\end{align*}
+is independent of $\sigma^2$
+
+## F Distribution
+
+::: {.Definition}
+## F distribution
+
+If $X_1 \sim \chi^2_{d1}$ and $X_2 \sim \chi^2_{d2}$ and are independent, then the ratio
+$$F = \frac{X_1/d1}{X_2/d2}$$
+has an $F_{d1, d2}$ distribution with $d1$ and $d2$ degrees of freedom.
+:::
+
+. . .
+
+- $F(\Y) \equiv t(\Y, \X) = \frac{\RSS/p}{\SSE/(n-p)}$ has an $F_{p, n-p}$ distribution under the null model M0
+
+## Decision Procedure
+
+
+:::: {.columns}
+
+::: {.column width=60%}
+
+We will accept M0 that $\b = \zero$ unless $F(\Y)$ is large compared to an $F_{p,n−p}$ distribution. 
+
+- accept M0: $\b = \zero$ if $F(\Y) < F_{p,n−p,1−\alpha}$
+- $F_{p,n−p,1−\alpha}$ is the $1 − \alpha$ quantile of a $F_{p,n−p}$
+
+- reject M0: $\b = \zero$ if $F(\Y) > F_{p,n−p,1−\alpha}$
+
+- the probability that we reject M0 when it is true, is 
+\begin{align*}
+\Pr( \text{ reject M0} & \mid \text{ M0 true})\\
+& = \Pr(F(\Y) > F_{p,n−p,1−\alpha} \mid \b = \zero) \\
+& = \alpha
+\end{align*}
+:::
+::: {.column width=40%}
+
+```{r}
+#| label: F-distribution
+#| out.width: 3.5in
+#| out.height: 3.5in
+#| fig.height:  3.5
+#| fig.width:  3.5
+alpha = 0.05
+F = seq(0, 5.5, length=1000)
+density = df(F, 3, 10, ncp=0)
+plot(F, density, type='l', col='blue', lwd=2, xlab='F', ylab='Density', main='F(3,10)')
+Fcrit = qf(1-alpha, 3, 10, ncp=0)
+segments(x0= Fcrit, y0 = 0, x1 = Fcrit, y1 = df(Fcrit, 3, 10, ncp=0), col='slateblue', lty=2)
+polygon(c(Fcrit,F[F >= Fcrit], max(F)),
+        c(0, density[F >= Fcrit],0),
+        col = "slateblue1", density=NA,
+        border = 1, lwd=2)
+#fill_between(F, df(F, 3, 10, ncp=0), 0, F < Fcrit, col='blue', alpha=0.5)
+text(Fcrit+.2, 0.1, expression(alpha), pos=4)
+```
+
+:::
+::::
+
+
+## P-values
+
+:::: {.columns}
+::: {.column width=60%}
+Instead of just declaring that M0 is true or false, statistical analyses report how extreme $F(\Y)$ is compared to its null distribution. 
+
+
+
+
+- This is usually reported in terms of the p-value:
+
+  - the value $p \in(0,1)$ such that $F(\Y)$ is the $(1−p)$ quantile of the $F_{p,n−p}$ distribution
+
+  - the probability that a random variable $F \sim F_{p,n−p}$ is larger than the observed value $F(\Y)$, if the null model is true
+
+- it is not the $\Pr(\text{M0 is true})$ based on the observed data
+
+:::
+::: {.column width=40%}
+
+```{r}
+#| label: p-value
+#| out.width: 3.5in
+#| out.height: 3.5in
+#| fig.height:  3.5
+#| fig.width:  3.5
+set.seed(42)
+alpha = 0.05
+F = seq(0, 5.5, length=1000)
+density = df(F, 3, 10, ncp=0)
+plot(F, density, type='l', col='blue', lwd=2, xlab='F', ylab='Density', main='F(3,10)')
+Fobs = rf(1,3, 10, ncp=0)
+pvalue = 1 - pf(Fobs, 3, 10, ncp=0)
+segments(x0= Fobs, y0 = 0, x1 = Fobs, y1 = df(Fobs, 3, 10, ncp=0), col='slateblue', lty=2)
+polygon(c(Fobs,F[F >= Fobs], max(F)),
+        c(0, density[F >= Fobs],0),
+        col = "slateblue1", density=NA,
+        border = 1, lwd=2)
+#fill_between(F, df(F, 3, 10, ncp=0), 0, F < Fcrit, col='blue', alpha=0.5)
+text(Fobs+.2, 0.1, paste0("p=", round(pvalue,3)), pos=4)
+```
+:::
+::::
+
+## Testing SubModels
+
+We are usually not interested in testing that all of the coefficients are zero if there is an intercept in the model
+
+- But we can use the same idea to test submodels
+
+-  We assume the Gaussian Linear Model
+$$\quad \quad \quad \quad \quad \quad \quad \quad M1 \quad \Y ∼ \N(\W\alphav + \X\b, \sigma^2\I) \equiv \N(\Z\tb, \sigma^2\I)$$
+where $\W$ is $n \times q$, $\X$ is $n \times p$, $\Z = [\W \X]$, 
+
+- We wish to evaluate the hypothesis $\b = \zero$ 
+
+- equivalent to comparing M1 to M0:
+$$M0 \quad \Y ∼ \N(\W\alphav, \sigma^2\I)$$
+
+## Intuition
+
+Devise a test statistic and procedure by
+
+- fitting the full model M1 $\Y \sim \N(\W\alphav + \X\b, \sigma^2\I)$
+
+- fitting the reduced/null model M0 $\Y \sim \N(\W\alphav, \sigma^2\I)$
+
+- accept M0 if the null model fits about as well as the full model
+
+- reject M0 if the null model fits much worse than the full model
+
+- measure fit through $\SSE_{M0}$ and $\SSE_{M1}$
+\begin{align*}
+\SSE_{M1} & = \min_{\alphav, \b} 
+\|\Y - (\W\alphav + \X\b)\|^2 \\
+          & = \min_{\tb} \|\Y - \Z\tb\|^2 = \Y^T(\I - \P_{\Z})\Y \\
+\SSE_{M0} & = \min_{\alphav} \|\Y - \W\alphav\|^2 = \Y^T(\I - \P_{\W})\Y \\
+\end{align*}
+
+## Extra Sum of Squares
+
+Approach 1:  accept/choose the null model if $\SSE_{M0} < \SSE_{M1}$, and choose the full model if  $\SSE_{M1} < \SSE_{M0}$.  
+
+  - but $\SSE_{M1}$  is always less than $\SSE_{M0}$
+  
+. . .
+
+Approach 2:  instead reject M1 $\b = \zero$ if $\SSE_{M0}$ is much bigger than $\SSE_{M1}$.
+
+  - Specifically, reject  M1 $\b = \zero$ if $\SSE_{M0} - \SSE_{M1}$ is much bigger than what we would expect if the null hypothesis M0 were true. 
+  
+. . .
+
+Need:
+
+- the null distribution of $\SSE_{M0}$
+- the null distribution of $\SSE_{M1}$
+- the null distribution of their difference $\SSE_{M0} - \SSE_{M1}$
+
+## Distributions
+
+**Distribution under the full model M1**
+  $$ \SSE_{M1} = \Y^T(\I - \P_{\Z})\Y \sim \sigma^2 \chi^2_{n - q - p}$$
+
+- true whether or not  $\b = \zero$
+- $\E[\SSE_{M1}] = E[\Y^T(\I - \P_{\Z})\Y] = \sigma^2(n - q - p)$
+
+. . .
+
+**Distribution under the null model M0**
+  $$\SSE_{M0} = \Y^T(\I - \P_{\W})\Y \sim \sigma^2 \chi^2_{n - q}$$
+
+- true if $\b = \zero$
+- $\E[\SSE_{M0}] = E[\Y^T(\I - \P_{\W})\Y] = \sigma^2(n - q)$
+- if $\b \neq \zero$ then $\SSE_{M0}$ has a non-central 
+  $\chi^2_{n-q}$ distribution
+  
+## Expected Value of $\SSE_{M0}$ under M1
+
+- Rewrite  $(\I - \P_{\W}\Y$ under M1:
+\begin{align*}
+(\I - \P_{\W})\Y & = (\I - \P_{\W})(\W \alphav + \X\b + \eps) \\
+& = (\I - \P_{\W})\X\b + (\I - \P_{\W})\eps 
+\end{align*}
+
+- compute $\E[\SSE_{M0}]$ under M1:
+\begin{align*}
+\E[\Y^T(\I - \P_{\W})\Y] & = \b^T\X^T(\I - \P_{\W})\X\b + \E[\eps^T(\I - \P_{\W})\eps] \\
+& = \b^T\X^T(\I - \P_{\W})\X\b + \sigma^2 \tr(\I - \P_{\W}) \\
+&  = \b^T\X^T(\I - \P_{\W})\X\b + \sigma^2(n - q)
+\end{align*}
+
+- under M0, both $\SSE_{M0}/(n-q)$ and $\SSE_{M1}/(n- q - p)$ are unbiased estimates of $\sigma^2$
+
+- but does the ratio $\frac{\SSE_{M0}/(n-q)}{\SSE_{M1}/(n- q - p)}$ have a F distribution?
+
+## Extra Sum of Squares
+
+Rewrite $\SSE_{M0}$:
+\begin{align*}
+\SSE_{M0} & = \Y^T(\I - \P_{\W})\Y \\
+          & = \Y^T(\I - \P_{\Z} + \P_{\Z} - \P_{\W})\Y \\
+          & = \Y^T(\I - \P_{\Z})\Y + \Y^T(\P_{\Z} - \P_{\W})\Y \\
+          & = \SSE_{M1} + \Y^T(\P_{\Z} - \P_{\W})\Y 
+\end{align*}
+
+. . .
+
+Extra Sum of Squares:
+$$\SSE_{M0} - \SSE_{M1}  = \Y^T(\P_{\Z} - \P_{\W})\Y$$
+
+- is $\P_{\Z} - \P_{\W}$ is a projection matrix?
+- onto what space? along what space ?
+- what is the distribution of $\SSE_{M0} - \SSE_{M1}$ under the null model M0? under M1?
+- is it independent of $\SSE_{M1}$?
+  

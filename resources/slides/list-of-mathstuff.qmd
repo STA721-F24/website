@@ -1,1 +1,2 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
+ [**Definition**](#f-distribution-1): F distribution\Pageref{f-distribution-1}
