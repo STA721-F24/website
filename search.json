@@ -60,7 +60,7 @@
     "href": "reading/14-testing-submodels.html",
     "title": "Testing Hypotheses about Submodels",
     "section": "",
-    "text": "We continue discussion of \\(F\\)-tests with testing hypotheses about submodels of a linear model and connections to \\(t\\)-tests for individual coefficients.\nReadings:\n\nChristensen Chapter 3, Appendix C"
+    "text": "We continue discussion of \\(F\\)-tests with testing hypotheses about submodels of a linear model and connections to \\(t\\)-tests for individual coefficients as well as likelihood ratio tests.\nReadings:\n\nChristensen Chapter 3, Appendix C"
   },
   {
     "objectID": "syllabus.html",
@@ -81,14 +81,14 @@
     "href": "schedule.html",
     "title": " Schedule",
     "section": "",
-    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\nLecture 3: Rank Deficient Models\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\nLecture 4: Best Linear Unbiased Estimation and Gauss-Markov Theorem\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\nLecture 5: BLUES for Prediction and MVUE\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\nLecture 6: Generalized Linear Squares\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\nLecture 7: Sampling Distributions & Distribution Theory\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\nLecture 8: Bayesian Estimation\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\nLecture 9: Bayes and Frequentist Risk\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\nLecture 10: James-Stein\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\nLecture 11: Shrinkage Estimators and Hierarchical Bayes\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\nLecture 12: Shrinkage/Selection and Oracle Properties\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTues, Oct 8\nLec 13: Testing Hypotheses\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\nLec 14: Testing Submodels\n\n\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nNO CLASS - Use time for review\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\nMidterm 1\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\n\n\n\n\n\n\n\n\n hw-08\n\n\n\n\nThur, Oct 24\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\n\n\n\n\n\n\n\n\n hw-09\n\n\n\n\nThur, Oct 31\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\nTues, Nov 5\n\n\n\n\n\n\n\n\n hw-10\n\n\n\n\nThurs, Nov 7\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 12\n\n\n\n\n\n\n\n\n hw-11\n\n\n\n\nThurs, Nov 14\nMidterm2\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 19\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\nTues, Nov 26\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
+    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\nLecture 3: Rank Deficient Models\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\nLecture 4: Best Linear Unbiased Estimation and Gauss-Markov Theorem\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\nLecture 5: BLUES for Prediction and MVUE\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\nLecture 6: Generalized Linear Squares\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\nLecture 7: Sampling Distributions & Distribution Theory\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\nLecture 8: Bayesian Estimation\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\nLecture 9: Bayes and Frequentist Risk\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\nLecture 10: James-Stein\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\nLecture 11: Shrinkage Estimators and Hierarchical Bayes\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\nLecture 12: Shrinkage/Selection and Oracle Properties\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTues, Oct 8\nLec 13: Testing Hypotheses\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\nLec 14: Testing Submodels\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nNO CLASS - Use time for review\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\nMidterm 1\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\n\n\n\n\n\n\n\n\n hw-08\n\n\n\n\nThur, Oct 24\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\n\n\n\n\n\n\n\n\n hw-09\n\n\n\n\nThur, Oct 31\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\nTues, Nov 5\n\n\n\n\n\n\n\n\n hw-10\n\n\n\n\nThurs, Nov 7\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 12\n\n\n\n\n\n\n\n\n hw-11\n\n\n\n\nThurs, Nov 14\nMidterm2\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 19\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\nTues, Nov 26\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
   },
   {
     "objectID": "resources/slides/list-of-mathstuff.html",
     "href": "resources/slides/list-of-mathstuff.html",
     "title": "STA721-F24: Linear Models",
     "section": "",
-    "text": "Definition: F distribution"
+    "text": "Theorem: Student \\(t\\) Distribution"
   },
   {
     "objectID": "resources/slides/10-james-stein.html#outline",
@@ -574,335 +574,6 @@
     "text": "Next Class\n\nFrequentist risk of Bayes estimators\nBayes and penalized loss functions\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
-    "objectID": "resources/slides/template.html#outline",
-    "href": "resources/slides/template.html#outline",
-    "title": "template",
-    "section": "Outline",
-    "text": "Outline\n\n\n\n\nhttps://sta721-F24.github.io/website/"
-  },
-  {
-    "objectID": "resources/slides/example.html",
-    "href": "resources/slides/example.html",
-    "title": "Custom blocks and crossreferencing",
-    "section": "",
-    "text": "Custom blocks and crossreferencing\nWith this filter, you can define custom div classes (environments) that come with numbering, such as theorems, examples, exercises. The filter supports output formats pdf and html.\n\n\nNumbering\nNumbering is (currently) within section for single documents, or within chapter for books. Grouped classes share the same counter, and the same default style.\nNumbered custom blocks can be cross-referenced with \\ref.\nDefault numbering can be switched off for the whole class by setting the numbered to false, or for an individual block by adding the class unnumbered.\nCrossreferences my need a re-run to update.\n\n\nBoxes can be nested\nHowever, inner boxes are not numbered – it would be hard to put them in a sequence with outer boxes anyway.\n\n\n\nThe default style for custom divs is foldbox: a collapsible similar to quarto’s callouts, with a collapse button at the bottom that makes it easier collapse long boxes, and box open to the right. It comes with the variant foldbox.simple, with closed box and no additional close button. (needs a fix for the moment)\n\n\nCustom styles\n\ncreate an API for user defined block styles\nprovide an example\nand documentation\n\n\n\nCustom list of blocks\nGenerate .qmd files that contains a list of selected block classes, intermitted with headers from the document for easy customization and commenting. This way, one can make a list of all definitions, examples, or {theorems, propositions and lemmas} etc., edit it later and attach to the main document. If you edit, make sure to rename the autogenerated list first, otherwise it will get overwritten in the next run and all work is lost …\nCurrently, you need to give a key listin for any class or group of classes that should appear in a list of things. The value of this key is an array of names, also if only one list is to be generated. These names are turned into files list-of-name.qmd. I am considering replacing the yaml interface by a sub-key to custom-numbered-classes. This would allow to define arbitrary classes that can be attached to any custom div block, such as .important.\n\n\n\nPseudomath examples\n\n\nF\\(\\alpha\\)ncybox\nA box is called f\\(\\alpha\\)ncybox if it looks quite fancy.\nIn this context, by fancy we mean that the title of the box appears as a clickable button when rendered as html, where clickable implies that it throws a small shadow that becomes bigger when hovering over it.\n\n\n\nBy Definition \\(\\ref{fancy}\\), foldboxes are fancyboxes.\n\n\nStudents are lured into clicking on the title and unfolding the fancybox.\n\n\nThis extension has been written by a teacher who hopes that students read the course notes…\n\nTheorem \\(\\ref{TeacherHopes}\\) is suggested by Conjecture \\(\\ref{TeachersHope}\\), but it cannot be proven theoretically. It does give rise to more conjectures, though.\n\nThe teacher mentioned in Theorem \\(\\ref{TeacherHopes}\\) is a statistician who got addicted to quarto due to James J Balamuta’s web-r extension, and desparately wanted to have a common counter for theorem and alike. She got also convinced that everything is possible in quarto by the many nice extensions from Shafayet Khan Shafee."
-  },
-  {
-    "objectID": "HW/hw-05.html",
-    "href": "HW/hw-05.html",
-    "title": "Homework 5",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
-  },
-  {
-    "objectID": "HW/hw-05.html#due-1000pm-fri-oct-4",
-    "href": "HW/hw-05.html#due-1000pm-fri-oct-4",
-    "title": "Homework 5",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
-  },
-  {
-    "objectID": "HW/hw-05.html#rstudio",
-    "href": "HW/hw-05.html#rstudio",
-    "title": "Homework 5",
-    "section": "RStudio",
-    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
-  },
-  {
-    "objectID": "HW/hw-05.html#getting-started-with-github-classroom",
-    "href": "HW/hw-05.html#getting-started-with-github-classroom",
-    "title": "Homework 5",
-    "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
-  },
-  {
-    "objectID": "HW/hw-05.html#r-rnw",
-    "href": "HW/hw-05.html#r-rnw",
-    "title": "Homework 5",
-    "section": "R & RNW",
-    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
-  },
-  {
-    "objectID": "HW/hw-05.html#gradescope-submission",
-    "href": "HW/hw-05.html#gradescope-submission",
-    "title": "Homework 5",
-    "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
-  },
-  {
-    "objectID": "HW/hw-05.html#grading",
-    "href": "HW/hw-05.html#grading",
-    "title": "Homework 5",
-    "section": "Grading",
-    "text": "Grading\nTotal: 20 points."
-  },
-  {
-    "objectID": "HW/hw-01.html",
-    "href": "HW/hw-01.html",
-    "title": "Homework 1",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates."
-  },
-  {
-    "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
-    "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
-    "title": "Homework 1",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates."
-  },
-  {
-    "objectID": "HW/hw-01.html#rstudio",
-    "href": "HW/hw-01.html#rstudio",
-    "title": "Homework 1",
-    "section": "RStudio",
-    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
-  },
-  {
-    "objectID": "HW/hw-01.html#r-quarto",
-    "href": "HW/hw-01.html#r-quarto",
-    "title": "Homework 1",
-    "section": "R & Quarto",
-    "text": "R & Quarto\nYou are required to use the .qmd format to type up this report report. To get started see technical writing with Quarto. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts."
-  },
-  {
-    "objectID": "HW/hw-01.html#getting-started-with-github-classroom",
-    "href": "HW/hw-01.html#getting-started-with-github-classroom",
-    "title": "Homework 1",
-    "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW1\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw1.qmd file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
-  },
-  {
-    "objectID": "HW/hw-01.html#gradescope-submission",
-    "href": "HW/hw-01.html#gradescope-submission",
-    "title": "Homework 1",
-    "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
-  },
-  {
-    "objectID": "HW/hw-01.html#grading",
-    "href": "HW/hw-01.html#grading",
-    "title": "Homework 1",
-    "section": "Grading",
-    "text": "Grading\nTotal: 20 points."
-  },
-  {
-    "objectID": "HW/hw-06.html",
-    "href": "HW/hw-06.html",
-    "title": "Homework 5",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
-  },
-  {
-    "objectID": "HW/hw-06.html#due-1000pm-fri-oct-4",
-    "href": "HW/hw-06.html#due-1000pm-fri-oct-4",
-    "title": "Homework 5",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
-  },
-  {
-    "objectID": "HW/hw-06.html#rstudio",
-    "href": "HW/hw-06.html#rstudio",
-    "title": "Homework 5",
-    "section": "RStudio",
-    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
-  },
-  {
-    "objectID": "HW/hw-06.html#getting-started-with-github-classroom",
-    "href": "HW/hw-06.html#getting-started-with-github-classroom",
-    "title": "Homework 5",
-    "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
-  },
-  {
-    "objectID": "HW/hw-06.html#r-rnw",
-    "href": "HW/hw-06.html#r-rnw",
-    "title": "Homework 5",
-    "section": "R & RNW",
-    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
-  },
-  {
-    "objectID": "HW/hw-06.html#gradescope-submission",
-    "href": "HW/hw-06.html#gradescope-submission",
-    "title": "Homework 5",
-    "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
-  },
-  {
-    "objectID": "HW/hw-06.html#grading",
-    "href": "HW/hw-06.html#grading",
-    "title": "Homework 5",
-    "section": "Grading",
-    "text": "Grading\nTotal: 20 points."
-  },
-  {
-    "objectID": "index.html#course-description",
-    "href": "index.html#course-description",
-    "title": "STA721: Linear Models (Fall 2024)",
-    "section": "Course Description",
-    "text": "Course Description\nThis course introduces students to linear models and extensions for model building from the frequentist (OLS/MLE and penalized likelihoods) and Bayesian paradigms, with an emphasis on a geometric perspective. Course topics include optimal estimation and prediction, distributional assumptions and model checking, hypothesis testing and model selection including Bayes factors and intrinsic Bayes factors, and Bayesian Model Averaging. Students should have a strong background in matrix algebra and distribution theory. Co-requisite: STA 602L, 702L or equivalent."
-  },
-  {
-    "objectID": "index.html#course-info",
-    "href": "index.html#course-info",
-    "title": "STA721: Linear Models (Fall 2024)",
-    "section": "Course Info",
-    "text": "Course Info\n\nTextbooks\n\n\n\nTextbook\nOrdering Information\n\n\n\n\n\nPlane Answers to Complex Questions Ronald Christensen (2011) 4th Edition Springer-Verlag, NY. The textbook is freely available as an eBook thru the Duke Library. You’re welcomed to read on screen or print it out. If you prefer a paperback version you can buy it at the cost of printing from Springer or purchase a hardback version at your favorite vendor.\n\n\n\nLinear Regression Analysis, George A.F Seber and Alan J. Lee (2003) 2nd Edition, Wiley eBook in Duke Library. Duke Library is aware the link to the ebook is broken See the\n\n\n\nCanvas site for a pdf version until the links are fixed.\n\n\nLecture\n   Tuesday and Thursday\n   1:25pm - 2:40pm\n   Old Chemistry 123 \n\n\nLabs\n   Fridays\n  10:05am - 11:20pm\n   LINK 088 (Clasroom 4) \n\n\nFinal Exam\n   December 15\n   9:00am - 12:00pm\n   Old Chemistry 123 \n\n\nInstructional Team and Office Hours\n\n\n\nRole\nName\nEmail\nOffice Hours\nLocation\n\n\n\n\nInstructor\nDr Merlise Clyde\n\nTues 2:45 - 3:45  or by appointment \n223E Old Chem\n\n\nTA\nBongjung Sung\n\nMon 9:30-11:30am\n203B Old Chem"
-  },
-  {
-    "objectID": "index.html#course-topics",
-    "href": "index.html#course-topics",
-    "title": "STA721: Linear Models (Fall 2024)",
-    "section": "Course Topics",
-    "text": "Course Topics\nCourse topics will be drawn (but subject to change) from\n\nMotivation for Studying Linear Models as Foundation\nRandom Vectors and Matrices\nMultivariate Normal Distribution Theory\nConditional Normal Distribution Theory\nLinear Models via Coordinate free representations (examples)\nMaximum Likelihood Estimation & Projections\nInterval Estimation: Distribution of Quadratic Forms\nGauss-Markov Theorem & Optimality of OLS/GLS\nFormulation of Bayesian Inference\nSubjective and Default Priors\nRelated Shrinkage Methods and Penalized Likelihoods (Ridge regression, lasso)\nModel Selection (comparison of classical and Bayesian approaches)\nBayes Factors\nBayesian Model Averaging\nModel Checking: Residual Analysis & Diagnostics\nRobust Methods for Outliers\nGeneralized Linear Model\nHierarchical Models\n\nPlease check the website for updates, slides and current readings."
-  },
-  {
-    "objectID": "HW/hw-04.html",
-    "href": "HW/hw-04.html",
-    "title": "Homework 4",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates.\nCreate your repo from GitHub Classroom"
-  },
-  {
-    "objectID": "HW/hw-04.html#due-1100pm-thurs-sept-27",
-    "href": "HW/hw-04.html#due-1100pm-thurs-sept-27",
-    "title": "Homework 4",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates.\nCreate your repo from GitHub Classroom"
-  },
-  {
-    "objectID": "HW/hw-04.html#rstudio",
-    "href": "HW/hw-04.html#rstudio",
-    "title": "Homework 4",
-    "section": "RStudio",
-    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
-  },
-  {
-    "objectID": "HW/hw-04.html#getting-started-with-github-classroom",
-    "href": "HW/hw-04.html#getting-started-with-github-classroom",
-    "title": "Homework 4",
-    "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
-  },
-  {
-    "objectID": "HW/hw-04.html#r-rnw",
-    "href": "HW/hw-04.html#r-rnw",
-    "title": "Homework 4",
-    "section": "R & RNW",
-    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
-  },
-  {
-    "objectID": "HW/hw-04.html#gradescope-submission",
-    "href": "HW/hw-04.html#gradescope-submission",
-    "title": "Homework 4",
-    "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
-  },
-  {
-    "objectID": "HW/hw-04.html#grading",
-    "href": "HW/hw-04.html#grading",
-    "title": "Homework 4",
-    "section": "Grading",
-    "text": "Grading\nTotal: 20 points."
-  },
-  {
-    "objectID": "HW/hw-02.html",
-    "href": "HW/hw-02.html",
-    "title": "Homework 2",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates."
-  },
-  {
-    "objectID": "HW/hw-02.html#due-1100pm-thurs-sept-12",
-    "href": "HW/hw-02.html#due-1100pm-thurs-sept-12",
-    "title": "Homework 2",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates."
-  },
-  {
-    "objectID": "HW/hw-02.html#rstudio",
-    "href": "HW/hw-02.html#rstudio",
-    "title": "Homework 2",
-    "section": "RStudio",
-    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
-  },
-  {
-    "objectID": "HW/hw-02.html#r-rnw",
-    "href": "HW/hw-02.html#r-rnw",
-    "title": "Homework 2",
-    "section": "R & RNW",
-    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
-  },
-  {
-    "objectID": "HW/hw-02.html#getting-started-with-github-classroom",
-    "href": "HW/hw-02.html#getting-started-with-github-classroom",
-    "title": "Homework 2",
-    "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW2\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw2.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
-  },
-  {
-    "objectID": "HW/hw-02.html#gradescope-submission",
-    "href": "HW/hw-02.html#gradescope-submission",
-    "title": "Homework 2",
-    "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
-  },
-  {
-    "objectID": "HW/hw-02.html#grading",
-    "href": "HW/hw-02.html#grading",
-    "title": "Homework 2",
-    "section": "Grading",
-    "text": "Grading\nTotal: 20 points."
-  },
-  {
-    "objectID": "HW/hw-03.html",
-    "href": "HW/hw-03.html",
-    "title": "Homework 3",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates."
-  },
-  {
-    "objectID": "HW/hw-03.html#due-1100pm-thurs-sept-19",
-    "href": "HW/hw-03.html#due-1100pm-thurs-sept-19",
-    "title": "Homework 3",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates."
-  },
-  {
-    "objectID": "HW/hw-03.html#rstudio",
-    "href": "HW/hw-03.html#rstudio",
-    "title": "Homework 3",
-    "section": "RStudio",
-    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
-  },
-  {
-    "objectID": "HW/hw-03.html#getting-started-with-github-classroom",
-    "href": "HW/hw-03.html#getting-started-with-github-classroom",
-    "title": "Homework 3",
-    "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW3\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
-  },
-  {
-    "objectID": "HW/hw-03.html#r-rnw",
-    "href": "HW/hw-03.html#r-rnw",
-    "title": "Homework 3",
-    "section": "R & RNW",
-    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
-  },
-  {
-    "objectID": "HW/hw-03.html#gradescope-submission",
-    "href": "HW/hw-03.html#gradescope-submission",
-    "title": "Homework 3",
-    "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
-  },
-  {
-    "objectID": "HW/hw-03.html#grading",
-    "href": "HW/hw-03.html#grading",
-    "title": "Homework 3",
-    "section": "Grading",
-    "text": "Grading\nTotal: 20 points."
-  },
-  {
     "objectID": "resources/slides/06-GLS.html#outline",
     "href": "resources/slides/06-GLS.html#outline",
     "title": "Generalized Least Squares, BLUES & BUES",
@@ -1020,6 +691,447 @@
     "title": "Generalized Least Squares, BLUES & BUES",
     "section": "Equivalence of GLS estimators",
     "text": "Equivalence of GLS estimators\nThe following corollary to the theorem establishes when two GLS estimators for different \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}]\\) are equivalent :\n\nCorollarySuppose \\(\\mathbf{V}= \\mathbf{X}\\boldsymbol{\\Psi}\\mathbf{X}^ T + \\boldsymbol{\\Phi}\\mathbf{H}\\boldsymbol{\\Omega}\\mathbf{H}^T \\boldsymbol{\\Phi}\\). Then \\(\\hat{\\boldsymbol{\\beta}}_\\mathbf{V}= \\hat{\\boldsymbol{\\beta}}_\\boldsymbol{\\Phi}\\)\n\n\n\nCan you construct an equivalent representation based on zero correlation of \\(\\mathbf{P}_\\boldsymbol{\\Phi}\\mathbf{Y}\\) and \\((\\mathbf{I}_n - \\mathbf{P}_\\boldsymbol{\\Phi})\\mathbf{Y}\\) when \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{V}?\\)\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+  },
+  {
+    "objectID": "HW/hw-03.html",
+    "href": "HW/hw-03.html",
+    "title": "Homework 3",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates."
+  },
+  {
+    "objectID": "HW/hw-03.html#due-1100pm-thurs-sept-19",
+    "href": "HW/hw-03.html#due-1100pm-thurs-sept-19",
+    "title": "Homework 3",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates."
+  },
+  {
+    "objectID": "HW/hw-03.html#rstudio",
+    "href": "HW/hw-03.html#rstudio",
+    "title": "Homework 3",
+    "section": "RStudio",
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+  },
+  {
+    "objectID": "HW/hw-03.html#getting-started-with-github-classroom",
+    "href": "HW/hw-03.html#getting-started-with-github-classroom",
+    "title": "Homework 3",
+    "section": "Getting started with Github Classroom",
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW3\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+  },
+  {
+    "objectID": "HW/hw-03.html#r-rnw",
+    "href": "HW/hw-03.html#r-rnw",
+    "title": "Homework 3",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+  },
+  {
+    "objectID": "HW/hw-03.html#gradescope-submission",
+    "href": "HW/hw-03.html#gradescope-submission",
+    "title": "Homework 3",
+    "section": "Gradescope Submission",
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+  },
+  {
+    "objectID": "HW/hw-03.html#grading",
+    "href": "HW/hw-03.html#grading",
+    "title": "Homework 3",
+    "section": "Grading",
+    "text": "Grading\nTotal: 20 points."
+  },
+  {
+    "objectID": "HW/hw-02.html",
+    "href": "HW/hw-02.html",
+    "title": "Homework 2",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates."
+  },
+  {
+    "objectID": "HW/hw-02.html#due-1100pm-thurs-sept-12",
+    "href": "HW/hw-02.html#due-1100pm-thurs-sept-12",
+    "title": "Homework 2",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates."
+  },
+  {
+    "objectID": "HW/hw-02.html#rstudio",
+    "href": "HW/hw-02.html#rstudio",
+    "title": "Homework 2",
+    "section": "RStudio",
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+  },
+  {
+    "objectID": "HW/hw-02.html#r-rnw",
+    "href": "HW/hw-02.html#r-rnw",
+    "title": "Homework 2",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+  },
+  {
+    "objectID": "HW/hw-02.html#getting-started-with-github-classroom",
+    "href": "HW/hw-02.html#getting-started-with-github-classroom",
+    "title": "Homework 2",
+    "section": "Getting started with Github Classroom",
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW2\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw2.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+  },
+  {
+    "objectID": "HW/hw-02.html#gradescope-submission",
+    "href": "HW/hw-02.html#gradescope-submission",
+    "title": "Homework 2",
+    "section": "Gradescope Submission",
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+  },
+  {
+    "objectID": "HW/hw-02.html#grading",
+    "href": "HW/hw-02.html#grading",
+    "title": "Homework 2",
+    "section": "Grading",
+    "text": "Grading\nTotal: 20 points."
+  },
+  {
+    "objectID": "HW/hw-04.html",
+    "href": "HW/hw-04.html",
+    "title": "Homework 4",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo from GitHub Classroom"
+  },
+  {
+    "objectID": "HW/hw-04.html#due-1100pm-thurs-sept-27",
+    "href": "HW/hw-04.html#due-1100pm-thurs-sept-27",
+    "title": "Homework 4",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo from GitHub Classroom"
+  },
+  {
+    "objectID": "HW/hw-04.html#rstudio",
+    "href": "HW/hw-04.html#rstudio",
+    "title": "Homework 4",
+    "section": "RStudio",
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+  },
+  {
+    "objectID": "HW/hw-04.html#getting-started-with-github-classroom",
+    "href": "HW/hw-04.html#getting-started-with-github-classroom",
+    "title": "Homework 4",
+    "section": "Getting started with Github Classroom",
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+  },
+  {
+    "objectID": "HW/hw-04.html#r-rnw",
+    "href": "HW/hw-04.html#r-rnw",
+    "title": "Homework 4",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+  },
+  {
+    "objectID": "HW/hw-04.html#gradescope-submission",
+    "href": "HW/hw-04.html#gradescope-submission",
+    "title": "Homework 4",
+    "section": "Gradescope Submission",
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+  },
+  {
+    "objectID": "HW/hw-04.html#grading",
+    "href": "HW/hw-04.html#grading",
+    "title": "Homework 4",
+    "section": "Grading",
+    "text": "Grading\nTotal: 20 points."
+  },
+  {
+    "objectID": "index.html#course-description",
+    "href": "index.html#course-description",
+    "title": "STA721: Linear Models (Fall 2024)",
+    "section": "Course Description",
+    "text": "Course Description\nThis course introduces students to linear models and extensions for model building from the frequentist (OLS/MLE and penalized likelihoods) and Bayesian paradigms, with an emphasis on a geometric perspective. Course topics include optimal estimation and prediction, distributional assumptions and model checking, hypothesis testing and model selection including Bayes factors and intrinsic Bayes factors, and Bayesian Model Averaging. Students should have a strong background in matrix algebra and distribution theory. Co-requisite: STA 602L, 702L or equivalent."
+  },
+  {
+    "objectID": "index.html#course-info",
+    "href": "index.html#course-info",
+    "title": "STA721: Linear Models (Fall 2024)",
+    "section": "Course Info",
+    "text": "Course Info\n\nTextbooks\n\n\n\nTextbook\nOrdering Information\n\n\n\n\n\nPlane Answers to Complex Questions Ronald Christensen (2011) 4th Edition Springer-Verlag, NY. The textbook is freely available as an eBook thru the Duke Library. You’re welcomed to read on screen or print it out. If you prefer a paperback version you can buy it at the cost of printing from Springer or purchase a hardback version at your favorite vendor.\n\n\n\nLinear Regression Analysis, George A.F Seber and Alan J. Lee (2003) 2nd Edition, Wiley eBook in Duke Library. Duke Library is aware the link to the ebook is broken See the\n\n\n\nCanvas site for a pdf version until the links are fixed.\n\n\nLecture\n   Tuesday and Thursday\n   1:25pm - 2:40pm\n   Old Chemistry 123 \n\n\nLabs\n   Fridays\n  10:05am - 11:20pm\n   LINK 088 (Clasroom 4) \n\n\nFinal Exam\n   December 15\n   9:00am - 12:00pm\n   Old Chemistry 123 \n\n\nInstructional Team and Office Hours\n\n\n\nRole\nName\nEmail\nOffice Hours\nLocation\n\n\n\n\nInstructor\nDr Merlise Clyde\n\nTues 2:45 - 3:45  or by appointment \n223E Old Chem\n\n\nTA\nBongjung Sung\n\nMon 9:30-11:30am\n203B Old Chem"
+  },
+  {
+    "objectID": "index.html#course-topics",
+    "href": "index.html#course-topics",
+    "title": "STA721: Linear Models (Fall 2024)",
+    "section": "Course Topics",
+    "text": "Course Topics\nCourse topics will be drawn (but subject to change) from\n\nMotivation for Studying Linear Models as Foundation\nRandom Vectors and Matrices\nMultivariate Normal Distribution Theory\nConditional Normal Distribution Theory\nLinear Models via Coordinate free representations (examples)\nMaximum Likelihood Estimation & Projections\nInterval Estimation: Distribution of Quadratic Forms\nGauss-Markov Theorem & Optimality of OLS/GLS\nFormulation of Bayesian Inference\nSubjective and Default Priors\nRelated Shrinkage Methods and Penalized Likelihoods (Ridge regression, lasso)\nModel Selection (comparison of classical and Bayesian approaches)\nBayes Factors\nBayesian Model Averaging\nModel Checking: Residual Analysis & Diagnostics\nRobust Methods for Outliers\nGeneralized Linear Model\nHierarchical Models\n\nPlease check the website for updates, slides and current readings."
+  },
+  {
+    "objectID": "HW/hw-06.html",
+    "href": "HW/hw-06.html",
+    "title": "Homework 5",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
+  },
+  {
+    "objectID": "HW/hw-06.html#due-1000pm-fri-oct-4",
+    "href": "HW/hw-06.html#due-1000pm-fri-oct-4",
+    "title": "Homework 5",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
+  },
+  {
+    "objectID": "HW/hw-06.html#rstudio",
+    "href": "HW/hw-06.html#rstudio",
+    "title": "Homework 5",
+    "section": "RStudio",
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+  },
+  {
+    "objectID": "HW/hw-06.html#getting-started-with-github-classroom",
+    "href": "HW/hw-06.html#getting-started-with-github-classroom",
+    "title": "Homework 5",
+    "section": "Getting started with Github Classroom",
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+  },
+  {
+    "objectID": "HW/hw-06.html#r-rnw",
+    "href": "HW/hw-06.html#r-rnw",
+    "title": "Homework 5",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+  },
+  {
+    "objectID": "HW/hw-06.html#gradescope-submission",
+    "href": "HW/hw-06.html#gradescope-submission",
+    "title": "Homework 5",
+    "section": "Gradescope Submission",
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+  },
+  {
+    "objectID": "HW/hw-06.html#grading",
+    "href": "HW/hw-06.html#grading",
+    "title": "Homework 5",
+    "section": "Grading",
+    "text": "Grading\nTotal: 20 points."
+  },
+  {
+    "objectID": "HW/hw-01.html",
+    "href": "HW/hw-01.html",
+    "title": "Homework 1",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates."
+  },
+  {
+    "objectID": "HW/hw-01.html#due-1100pm-thurs-sept-5",
+    "href": "HW/hw-01.html#due-1100pm-thurs-sept-5",
+    "title": "Homework 1",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates."
+  },
+  {
+    "objectID": "HW/hw-01.html#rstudio",
+    "href": "HW/hw-01.html#rstudio",
+    "title": "Homework 1",
+    "section": "RStudio",
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+  },
+  {
+    "objectID": "HW/hw-01.html#r-quarto",
+    "href": "HW/hw-01.html#r-quarto",
+    "title": "Homework 1",
+    "section": "R & Quarto",
+    "text": "R & Quarto\nYou are required to use the .qmd format to type up this report report. To get started see technical writing with Quarto. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts."
+  },
+  {
+    "objectID": "HW/hw-01.html#getting-started-with-github-classroom",
+    "href": "HW/hw-01.html#getting-started-with-github-classroom",
+    "title": "Homework 1",
+    "section": "Getting started with Github Classroom",
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW1\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw1.qmd file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+  },
+  {
+    "objectID": "HW/hw-01.html#gradescope-submission",
+    "href": "HW/hw-01.html#gradescope-submission",
+    "title": "Homework 1",
+    "section": "Gradescope Submission",
+    "text": "Gradescope Submission\nYou MUST submit both your final .qmd .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to Render to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+  },
+  {
+    "objectID": "HW/hw-01.html#grading",
+    "href": "HW/hw-01.html#grading",
+    "title": "Homework 1",
+    "section": "Grading",
+    "text": "Grading\nTotal: 20 points."
+  },
+  {
+    "objectID": "HW/hw-05.html",
+    "href": "HW/hw-05.html",
+    "title": "Homework 5",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
+  },
+  {
+    "objectID": "HW/hw-05.html#due-1000pm-fri-oct-4",
+    "href": "HW/hw-05.html#due-1000pm-fri-oct-4",
+    "title": "Homework 5",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
+  },
+  {
+    "objectID": "HW/hw-05.html#rstudio",
+    "href": "HW/hw-05.html#rstudio",
+    "title": "Homework 5",
+    "section": "RStudio",
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+  },
+  {
+    "objectID": "HW/hw-05.html#getting-started-with-github-classroom",
+    "href": "HW/hw-05.html#getting-started-with-github-classroom",
+    "title": "Homework 5",
+    "section": "Getting started with Github Classroom",
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+  },
+  {
+    "objectID": "HW/hw-05.html#r-rnw",
+    "href": "HW/hw-05.html#r-rnw",
+    "title": "Homework 5",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+  },
+  {
+    "objectID": "HW/hw-05.html#gradescope-submission",
+    "href": "HW/hw-05.html#gradescope-submission",
+    "title": "Homework 5",
+    "section": "Gradescope Submission",
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+  },
+  {
+    "objectID": "HW/hw-05.html#grading",
+    "href": "HW/hw-05.html#grading",
+    "title": "Homework 5",
+    "section": "Grading",
+    "text": "Grading\nTotal: 20 points."
+  },
+  {
+    "objectID": "resources/slides/example.html",
+    "href": "resources/slides/example.html",
+    "title": "Custom blocks and crossreferencing",
+    "section": "",
+    "text": "Custom blocks and crossreferencing\nWith this filter, you can define custom div classes (environments) that come with numbering, such as theorems, examples, exercises. The filter supports output formats pdf and html.\n\n\nNumbering\nNumbering is (currently) within section for single documents, or within chapter for books. Grouped classes share the same counter, and the same default style.\nNumbered custom blocks can be cross-referenced with \\ref.\nDefault numbering can be switched off for the whole class by setting the numbered to false, or for an individual block by adding the class unnumbered.\nCrossreferences my need a re-run to update.\n\n\nBoxes can be nested\nHowever, inner boxes are not numbered – it would be hard to put them in a sequence with outer boxes anyway.\n\n\n\nThe default style for custom divs is foldbox: a collapsible similar to quarto’s callouts, with a collapse button at the bottom that makes it easier collapse long boxes, and box open to the right. It comes with the variant foldbox.simple, with closed box and no additional close button. (needs a fix for the moment)\n\n\nCustom styles\n\ncreate an API for user defined block styles\nprovide an example\nand documentation\n\n\n\nCustom list of blocks\nGenerate .qmd files that contains a list of selected block classes, intermitted with headers from the document for easy customization and commenting. This way, one can make a list of all definitions, examples, or {theorems, propositions and lemmas} etc., edit it later and attach to the main document. If you edit, make sure to rename the autogenerated list first, otherwise it will get overwritten in the next run and all work is lost …\nCurrently, you need to give a key listin for any class or group of classes that should appear in a list of things. The value of this key is an array of names, also if only one list is to be generated. These names are turned into files list-of-name.qmd. I am considering replacing the yaml interface by a sub-key to custom-numbered-classes. This would allow to define arbitrary classes that can be attached to any custom div block, such as .important.\n\n\n\nPseudomath examples\n\n\nF\\(\\alpha\\)ncybox\nA box is called f\\(\\alpha\\)ncybox if it looks quite fancy.\nIn this context, by fancy we mean that the title of the box appears as a clickable button when rendered as html, where clickable implies that it throws a small shadow that becomes bigger when hovering over it.\n\n\n\nBy Definition \\(\\ref{fancy}\\), foldboxes are fancyboxes.\n\n\nStudents are lured into clicking on the title and unfolding the fancybox.\n\n\nThis extension has been written by a teacher who hopes that students read the course notes…\n\nTheorem \\(\\ref{TeacherHopes}\\) is suggested by Conjecture \\(\\ref{TeachersHope}\\), but it cannot be proven theoretically. It does give rise to more conjectures, though.\n\nThe teacher mentioned in Theorem \\(\\ref{TeacherHopes}\\) is a statistician who got addicted to quarto due to James J Balamuta’s web-r extension, and desparately wanted to have a common counter for theorem and alike. She got also convinced that everything is possible in quarto by the many nice extensions from Shafayet Khan Shafee."
+  },
+  {
+    "objectID": "resources/slides/template.html#outline",
+    "href": "resources/slides/template.html#outline",
+    "title": "template",
+    "section": "Outline",
+    "text": "Outline\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#outline",
+    "href": "resources/slides/14-testing-submodels.html#outline",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Outline",
+    "text": "Outline\nHypothesis Testing:\n\nTesting submodels\n\nExtra sum of squares\nF-tests\nNull distribution\nDecision procedure\nP-values\n\nTesting individual coefficients\n\nt-tests\n\nLikelihood Ratio Tests\n\n\nReadings:\n\nChristensen Appendix C, Chapter 3"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#testing-recap",
+    "href": "resources/slides/14-testing-submodels.html#testing-recap",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Testing Recap",
+    "text": "Testing Recap\n\nWe assume the Gaussian Linear Model \\[\\quad \\quad \\quad \\quad \\quad \\quad \\quad \\quad \\text{M1} \\quad \\mathbf{Y}∼ \\textsf{N}(\\mathbf{W}\\boldsymbol{\\alpha}+ \\mathbf{X}\\boldsymbol{\\beta}, \\sigma^2\\mathbf{I}) \\equiv \\textsf{N}(\\mathbf{Z}\\boldsymbol{\\theta}, \\sigma^2\\mathbf{I})\\] where \\(\\mathbf{W}\\) is \\(n \\times q\\), \\(\\mathbf{X}\\) is \\(n \\times p\\), \\(\\mathbf{Z}= [\\mathbf{W}\\mathbf{X}]\\),\nWe wish to evaluate the hypothesis \\(\\boldsymbol{\\beta}= \\mathbf{0}\\)\nequivalent to comparing M1 to M0: \\[\\text{M0} \\quad \\mathbf{Y}∼ \\textsf{N}(\\mathbf{W}\\boldsymbol{\\alpha}, \\sigma^2\\mathbf{I})\\]\n\\(\\textsf{SSE}_{M0}/(n-q)\\) and \\(\\textsf{SSE}_{M1}/(n- q - p)\\) are unbiased estimates of \\(\\sigma^2\\) under null model M0\nbut the ratio \\(\\frac{\\textsf{SSE}_{M0}/(n-q)}{\\textsf{SSE}_{M1}/(n- q - p)}\\) does not have a F distribution"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#extra-sum-of-squares",
+    "href": "resources/slides/14-testing-submodels.html#extra-sum-of-squares",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Extra Sum of Squares",
+    "text": "Extra Sum of Squares\nRewrite \\(\\textsf{SSE}_{M0}\\): \\[\\begin{align*}\n\\textsf{SSE}_{M0} & = \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\\\\n          & = \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{Z}} + \\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\\\\n          & = \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{Z}})\\mathbf{Y}+ \\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\\\\n          & = \\textsf{SSE}_{M1} + \\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\n\\end{align*}\\]\n\nExtra Sum of Squares: \\[\\textsf{SSE}_{M0} - \\textsf{SSE}_{M1}  = \\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\]"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#expectation-of-extra-sum-of-squares",
+    "href": "resources/slides/14-testing-submodels.html#expectation-of-extra-sum-of-squares",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Expectation of Extra Sum of Squares",
+    "text": "Expectation of Extra Sum of Squares\n\\(\\textsf{E}[\\textsf{SSE}_{M0} - \\textsf{SSE}_{M1}] = \\textsf{E}[\\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}]\\)\n\nunder M0: \\(\\boldsymbol{\\mu}= \\mathbf{W}\\boldsymbol{\\alpha}\\) \\[\\begin{align*}\n\\textsf{E}[(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}] & = \\mathbf{P}_{\\mathbf{Z}}\\mathbf{W}\\boldsymbol{\\alpha}- \\mathbf{P}_{\\mathbf{W}}\\mathbf{W}\\boldsymbol{\\alpha}\\\\\n& = \\mathbf{W}\\boldsymbol{\\alpha}\\mathbf{W}_\\boldsymbol{\\alpha}\\\\\n& = \\mathbf{0}\\\\\n\\textsf{E}[\\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}] & = \\sigma^2(\\textsf{tr}\\mathbf{P}_\\mathbf{Z}+ \\textsf{tr}\\mathbf{P}_\\mathbf{W}) \\\\\n& = \\sigma^2 (q + p - q) = p \\sigma^2\n\\end{align*}\\]\nunder M1: \\(\\boldsymbol{\\mu}= \\mathbf{X}\\boldsymbol{\\beta}+ \\mathbf{W}\\boldsymbol{\\alpha}\\) \\[\\begin{align*}\n\\textsf{E}[(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}] & = \\mathbf{X}\\boldsymbol{\\beta}+ \\mathbf{W}\\boldsymbol{\\alpha}- \\mathbf{P}_{\\mathbf{W}}\\mathbf{X}\\boldsymbol{\\beta}- \\mathbf{W}\\boldsymbol{\\alpha}\\\\\n& = (\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{X}\\boldsymbol{\\beta}\\\\\n\\textsf{E}[\\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}] & = p \\sigma^2 + \\boldsymbol{\\beta}^T\\mathbf{X}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{X}\\boldsymbol{\\beta}\n\\end{align*}\\]"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#test-statistic",
+    "href": "resources/slides/14-testing-submodels.html#test-statistic",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Test Statistic",
+    "text": "Test Statistic\nPropose ratio: \\[F = \\frac{(\\textsf{SSE}_{M0} - \\textsf{SSE}_{M1})/p} {\\textsf{SSE}_{M1}/(n - q - p)} = \\frac{\\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}/p}{\\textsf{SSE}_{M1}/(n - q - p)}\\] as a test statistic.\n\nDoes \\(F\\) have an F distribution under M0?\n\ndenominator \\(\\textsf{SSE}_{M1}/\\sigma^2\\) does have a \\(\\chi^2\\) distribution?\ndoes numerator \\(\\textsf{SSE}_{M0}/\\sigma^2\\) have a \\(\\chi^2\\) distribution?\nare they independent?"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#properties-of-mathbfp_mathbfz---mathbfp_mathbfw",
+    "href": "resources/slides/14-testing-submodels.html#properties-of-mathbfp_mathbfz---mathbfp_mathbfw",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Properties of \\(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}}\\)",
+    "text": "Properties of \\(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}}\\)\nTo show that \\(\\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\) has a \\(\\chi^2\\) distribution under M0 or M1, we need to show that \\(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}}\\) is a projection matrix.\n\nsymmetric?\nidempotent?\n\n\n\\[\\begin{align*}\n(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})^2 & = \\mathbf{P}_{\\mathbf{Z}}^2 - \\mathbf{P}_{\\mathbf{Z}}\\mathbf{P}_{\\mathbf{W}} - \\mathbf{P}_{\\mathbf{W}}\\mathbf{P}_{\\mathbf{Z}} + \\mathbf{P}_{\\mathbf{W}}^2 \\\\\n& = \\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{Z}}\\mathbf{P}_{\\mathbf{W}} - \\mathbf{P}_{\\mathbf{W}}\\mathbf{P}_{\\mathbf{Z}} + \\mathbf{P}_{\\mathbf{W}} \\\\\n& = \\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{Z}}\\mathbf{P}_{\\mathbf{W}} - (\\mathbf{P}_{\\mathbf{Z}}\\mathbf{P}_{\\mathbf{W}})^T + \\mathbf{P}_{\\mathbf{W}} \\\\\n& = \\mathbf{P}_{\\mathbf{Z}} - 2\\mathbf{P}_{\\mathbf{W}}  + \\mathbf{P}_{\\mathbf{W}} \\\\\n& = \\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}}\n\\end{align*}\\]\n\nNote: we are using \\(\\mathbf{P}_{\\mathbf{Z}}\\mathbf{P}_{\\mathbf{W}} = \\mathbf{P}_{\\mathbf{W}}\\) as each column of \\(\\mathbf{P}_{\\mathbf{W}}\\) is in \\(C(\\mathbf{W})\\) and hence also in \\(C(\\mathbf{Z})\\)\n\n\n\nSo \\(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}}\\) is a projection matrix"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#projection-matrix-mathbfp_mathbfz---mathbfp_mathbfw",
+    "href": "resources/slides/14-testing-submodels.html#projection-matrix-mathbfp_mathbfz---mathbfp_mathbfw",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Projection Matrix \\(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}}\\)",
+    "text": "Projection Matrix \\(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}}\\)\nOnto what space is it projecting?\n\nIntuitively, it is projecting onto the part of \\(\\mathbf{X}\\) that is not in \\(\\mathbf{W}\\), \\(\\tilde{\\mathbf{X}}= (\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{X}\\) (the part of \\(\\mathbf{X}\\) that is orthogonal to \\(\\mathbf{W}\\))\n\\(C(\\tilde{\\mathbf{X}})\\) and \\(C(\\mathbf{W})\\) are complementary orthogonal subspaces of \\(C(\\mathbf{Z})\\)\n\\(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}}\\) is a projection matrix onto \\(C(\\tilde{\\mathbf{X}})\\) along \\(C(\\mathbf{W})\\)\nwe are decomposing \\(C(\\mathbf{Z})\\) into two orthogonal subspaces \\(C(\\mathbf{W})\\) and \\(C(\\tilde{\\mathbf{X}})\\)\nWe can write \\(\\mathbf{P}_{\\mathbf{Z}} = \\mathbf{P}_{\\tilde{\\mathbf{X}}} + \\mathbf{P}_{\\mathbf{W}}\\) where \\(\\mathbf{P}_{\\tilde{\\mathbf{X}}} \\mathbf{P}_{\\mathbf{W}} = \\mathbf{P}_{\\mathbf{W}} \\mathbf{P}_{\\tilde{\\mathbf{X}}} = \\mathbf{0}\\)\n\n\nNote: we can always write \\[\\begin{align*}\n\\boldsymbol{\\mu}& = \\mathbf{W}\\boldsymbol{\\alpha}+ \\mathbf{X}\\boldsymbol{\\beta}\\\\\n     & = \\mathbf{W}\\boldsymbol{\\alpha}+ (\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{X}\\boldsymbol{\\beta}+ \\mathbf{P}_{\\mathbf{W}}\\mathbf{X}\\boldsymbol{\\beta}\\\\\n     & = \\mathbf{W}\\tilde{\\boldsymbol{\\alpha}} + \\tilde{\\mathbf{X}}\\boldsymbol{\\beta}\n\\end{align*}\\]"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#distribution-of-extra-sum-of-squares",
+    "href": "resources/slides/14-testing-submodels.html#distribution-of-extra-sum-of-squares",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Distribution of Extra Sum of Squares",
+    "text": "Distribution of Extra Sum of Squares\n\nSince \\(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}}\\) is a projection matrix\n\\(\\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}/\\sigma^2\\) has a \\(\\chi^2_p\\) distribution under M0\n\n\n\\[\\begin{align*}\n\\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}& = \\|(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\|^2 \\\\\n& = \\|(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})(\\mathbf{X}\\boldsymbol{\\beta}+ \\mathbf{W}\\alpha + \\boldsymbol{\\epsilon}\\|^2 \\\\\n& = \\|(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})(\\mathbf{X}\\boldsymbol{\\beta}\\boldsymbol{\\epsilon}\\|^2 \\\\\n& = \\|(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\boldsymbol{\\epsilon}\\|^2 \\quad \\text{ if } \\boldsymbol{\\beta}= \\mathbf{0}\\\\\n& = \\boldsymbol{\\epsilon}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\boldsymbol{\\epsilon}\\\\\n& \\sim \\sigma^2 \\chi^2_p \\quad \\text{ if } \\boldsymbol{\\beta}= \\mathbf{0}\n\\end{align*}\\]\n\nshow that \\(\\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\) and \\(\\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{Z}})\\mathbf{Y}\\) are independent"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#f-statistic",
+    "href": "resources/slides/14-testing-submodels.html#f-statistic",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "F-Statistic",
+    "text": "F-Statistic\nUnder M1: \\(\\boldsymbol{\\beta}= \\mathbf{0}\\)\n\\[\\begin{align*}\nF(\\mathbf{Y}) & = \\frac{(\\textsf{SSE}_{M0} - \\textsf{SSE}_{M1})/p}{\\textsf{SSE}_{M1}/(n - q - p)} \\\\\n      & = \\frac{(\\textsf{SSE}_{M0} - \\textsf{SSE}_{M1})/\\sigma^2p}{\\textsf{SSE}_{M1}/\\sigma^2(n - q - p)} \\\\\n      & \\mathrel{\\mathop{=}\\limits^{\\rm D}}\\frac{\\chi^2_p/p}{\\chi^2_{n-q-p}/(n-q-p)} \\\\\n      & \\mathrel{\\mathop{=}\\limits^{\\rm D}}F_{p, n-q-p}\n\\end{align*}\\]\n\nUnder M1, \\(\\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}/\\sigma^2\\) has a non-central \\(\\chi^2_{p, \\eta}\\) where the non-centrality parameter \\(\\eta = \\boldsymbol{\\beta}^T\\mathbf{X}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{X}\\boldsymbol{\\beta}/2\\sigma^2\\).\n\\(F\\) has a non-central F distribution with \\(p\\) and \\(n-q-p\\) degrees of freedom and non-centrality parameter \\(\\eta = \\boldsymbol{\\beta}^T\\mathbf{X}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{X}\\boldsymbol{\\beta}/2\\sigma^2\\) (See Christensen Theorem 3.2.1 and Appendix C)"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#testing-individual-coefficients",
+    "href": "resources/slides/14-testing-submodels.html#testing-individual-coefficients",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Testing Individual Coefficients",
+    "text": "Testing Individual Coefficients\nConsider the model with \\(p = 1\\), \\(\\mathbf{Y}= \\mathbf{W}\\boldsymbol{\\alpha}+ \\mathbf{x}\\beta + \\boldsymbol{\\epsilon}\\) and we want to test that \\(\\beta = 0\\) (M0)\n\nfit the full model and compute \\(\\textsf{SSE}_{M1}\\)\nfit the reduced model and compute \\(\\textsf{SSE}_{M0}\\)\ncalculate the \\(F\\) statistic and \\(p\\)-value\n\n\nIt turns out that we can obtain this \\(F\\) statistic by fitting the full model and the test reduces to a familiar \\(t\\)-test\n\n\n\\[\\begin{align*}\n\\hspace{-1in}{\\text{Note: }} \\hspace{1in} \\textsf{SSE}_{M0} - \\textsf{SSE}_{M1} & =  \\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\\\\n& = \\|(\\mathbf{P}_{\\tilde{\\mathbf{X}}} + \\mathbf{P}_{\\mathbf{W}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\|^2 \\\\\n& = \\|\\mathbf{P}_{\\tilde{\\mathbf{X}}}\\mathbf{Y}\\|^2 \\\\\n& = \\|(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{X}\\hat{\\boldsymbol{\\beta}}\\|^2 \\\\\n& = \\hat{\\boldsymbol{\\beta}}^T\\mathbf{X}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{X}\\hat{\\boldsymbol{\\beta}}\n\\end{align*}\\]"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#testing-individual-coefficients-1",
+    "href": "resources/slides/14-testing-submodels.html#testing-individual-coefficients-1",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Testing Individual Coefficients",
+    "text": "Testing Individual Coefficients\nFor \\(p = 1\\), the \\(F\\) statistic\n\\[\\begin{align*}\nF(\\mathbf{Y}) & = \\frac{(\\textsf{SSE}_{M0} - \\textsf{SSE}_{M1})/1}{\\textsf{SSE}_{M1}/(n - q - 1)} \\\\\n  & = \\frac{\\hat{\\beta}^T\\mathbf{x}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{x}\\hat{\\beta}}{s^2} \\\\\n  & = \\frac{\\hat{\\beta}^2}{s^2/\\mathbf{x}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{x}} \\\\\nF(\\mathbf{Y})   & \\sim F_{1, n - q - 1}  \\quad \\text{ under } \\beta = 0\n\\end{align*}\\]\n\n\nvariance of \\(\\hat{\\beta}\\): \\[\\begin{align*}\n\\textsf{var}[\\hat{\\beta}] & = \\sigma^2/\\mathbf{x}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{x}= \\sigma^2 v\\\\\nv & = 1/\\mathbf{x}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{x}\n\\end{align*}\\]"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#t-statistic",
+    "href": "resources/slides/14-testing-submodels.html#t-statistic",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "\\(t\\)-statistic",
+    "text": "\\(t\\)-statistic\n\\[\\begin{align*}\nF(\\mathbf{Y}) & = \\frac{\\hat{\\beta}^2}{s^2/\\mathbf{x}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{x}}\n= \\left(\\frac{\\hat{\\beta}}{s \\sqrt{v}}\\right)^2\n=  t(\\mathbf{Y})^2\n\\end{align*}\\]\n\nSince \\(F(\\mathbf{Y}) \\sim F(1, n - q - 1)\\) under M0: \\(\\beta = 0\\), \\(t(\\mathbf{Y})^2 \\sim F(1,n - q - 1)\\) under M0: \\(\\beta = 0\\)\nwhat is distribution of \\(t(\\mathbf{Y})\\) under M0: \\(\\beta \\ne 0\\)?\n\n\nRecall that under M0: \\(\\beta = 0\\),\n\n\\(\\hat{\\beta}/\\sqrt{v\\sigma^2} \\sim \\textsf{N}(0, 1)\\)\n\\((n-q-1)s^2/\\sigma^2 \\sim \\chi^2_{n-q-1}\\)\n\\(\\hat{\\beta}\\) and \\(s^2\\) are independent"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#student-t-distribution",
+    "href": "resources/slides/14-testing-submodels.html#student-t-distribution",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Student \\(t\\) Distribution",
+    "text": "Student \\(t\\) Distribution\n\nTheorem: Student \\(t\\) DistributionA random variable \\(T\\) has a Student \\(t\\) distribution with \\(\\nu\\) degrees of freedom if \\[T \\mathrel{\\mathop{=}\\limits^{\\rm D}}\\frac{Z}{X/\\nu}\\]\nwhere \\[\\begin{align*}\nZ & \\sim \\textsf{N}(0,1) \\\\\nX & \\sim \\chi^2_\\nu \\\\\nZ &\\text{ and }  X \\text{ are independent }\n\\end{align*}\\]\n\n\n\n\\(\\therefore \\, t(\\mathbf{Y}) = \\hat{\\beta}/\\sqrt{v\\sigma^2}\\) has a Student \\(t\\) distribution with \\(n - q - 1\\) degrees of freedom under M0: \\(\\beta = 0\\)"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#decision-rules-and-p-values",
+    "href": "resources/slides/14-testing-submodels.html#decision-rules-and-p-values",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Decision rules and \\(p\\)-values",
+    "text": "Decision rules and \\(p\\)-values\n\n\n\nan \\(F_{1, \\nu}\\) is equal in distribution to the square of Student \\(t_{\\nu}\\) distribution under the null model (also equal in distribution under the full model, but have a non-centrality parameter)\nDecision rule was to reject M0 if \\(F(\\mathbf{Y}) &gt; F_{1, n - q - 1, \\alpha}\\)\n\\(p\\)-value is \\(\\Pr(F_{1, n - q - 1} &gt; F(\\mathbf{Y})\\); the probability of observing a value of \\(F\\) as extreme as the observed value under the null model\nusing a t-distribution, the equivalent decision rule is to reject M0 if \\(|t(\\mathbf{Y})| &gt; t_{n - q - 1, \\alpha/2}\\)\n\\(p\\)-value is \\(\\Pr(|T_{n - q - 1}| &gt; |t(\\mathbf{Y})|)\\)\nequal-tailed \\(t\\)-test"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#likelihood-ratio-tests",
+    "href": "resources/slides/14-testing-submodels.html#likelihood-ratio-tests",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Likelihood Ratio Tests",
+    "text": "Likelihood Ratio Tests\n\nwe derived the \\(F\\)-test heurestically, but the formally this test may be derived as a likelihood ratio test.\nconsider a statistical model \\(\\mathbf{Y}\\sim P,  P \\in \\{P_\\boldsymbol{\\theta}: \\boldsymbol{\\theta}\\in \\boldsymbol{\\Theta}\\}\\)\n\\(P\\) is the true unknown distribution for \\(\\mathbf{Y}\\)\n\\(\\{P_\\boldsymbol{\\theta}: \\boldsymbol{\\theta}\\in \\boldsymbol{\\Theta}\\}\\) is the model, the set of possible distributions for \\(\\mathbf{Y}\\) with \\(\\boldsymbol{\\Theta}\\) the parameter space\nwe might hypothesize that \\(\\boldsymbol{\\theta}\\subset \\boldsymbol{\\Theta}_0 \\subset \\boldsymbol{\\Theta}\\)\nfor our linear model this translates as \\(\\boldsymbol{\\theta}= (\\boldsymbol{\\alpha}, \\boldsymbol{\\beta}, \\sigma^2) \\subset \\mathbb{R}^q \\times \\{\\mathbf{0}\\} \\times \\mathbb{R}^+ \\subset \\mathbb{R}^g \\times \\mathbb{R}^p \\times \\mathbb{R}^+\\)\ncompute the likelihood ratio statistic \\[R(\\mathbf{Y}) = \\frac{\\sup_{\\boldsymbol{\\theta}\\in \\boldsymbol{\\Theta}_0} p_\\boldsymbol{\\theta}(\\mathbf{Y}))}{\\sup_{\\boldsymbol{\\theta}\\in \\boldsymbol{\\Theta}} p_\\boldsymbol{\\theta}(\\mathbf{Y}))}\\]"
+  },
+  {
+    "objectID": "resources/slides/14-testing-submodels.html#likelihood-ratio-tests-1",
+    "href": "resources/slides/14-testing-submodels.html#likelihood-ratio-tests-1",
+    "title": "Hypothesis Testing Related to SubModels",
+    "section": "Likelihood Ratio Tests",
+    "text": "Likelihood Ratio Tests\nEquivalently, we can look at -2 times the log likelihood ratio statistic \\[\\lambda(\\mathbf{Y}) = -2\\log(R(\\mathbf{Y})) = -2 [\\sup_{\\boldsymbol{\\theta}\\in \\boldsymbol{\\Theta}_0} \\cal{l}(\\boldsymbol{\\theta})- \\sup_{\\boldsymbol{\\theta}\\in \\boldsymbol{\\Theta}} \\cal{l}(\\boldsymbol{\\theta})]\\] where \\(\\cal{l}(\\boldsymbol{\\theta}) \\propto \\log p_\\boldsymbol{\\theta}(\\mathbf{Y})\\) (the log likelihood)\n\nSteps:\n\nFind the MLEs of \\(\\boldsymbol{\\theta}\\) in the reduced model \\(\\boldsymbol{\\Theta}_0\\), \\(\\hat{\\boldsymbol{\\theta}}_0\\)\nFind the MLEs of $the full model \\(\\boldsymbol{\\Theta}\\), \\(\\hat{\\boldsymbol{\\theta}}\\)\nCompute \\(\\lambda(\\mathbf{Y}) = -2 [\\cal{l}(\\hat{\\boldsymbol{\\theta}}_0)- \\cal{l}(\\hat{\\boldsymbol{\\theta}})]\\)\nFind the distribution of \\(\\lambda(\\mathbf{Y})\\) under the reduced model\n\n\n\nwith some rearranging and 1-to-1 transformations, can show that this is equivalent to the \\(F\\)-test!\n\n\n\n\nhttps://sta721-F24.github.io/website/"
   },
   {
     "objectID": "resources/slides/07-sampling.html#outline",

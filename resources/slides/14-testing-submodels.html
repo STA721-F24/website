@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – Rank Deficient Models</title>
+  <title>STA721-F24: Linear Models – Hypothesis Testing Related to SubModels</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -323,10 +323,25 @@
       margin-right: 0; 
     }
   </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        tags: 'ams'  // should be 'ams', 'none', or 'all'
+      }
+    };
+  </script>
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Conjecture {
+  .Exercise {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Proposition {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Theorem {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -334,25 +349,29 @@
     --color1: #c0c0c0;
     --color2: #808080;
   }
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
-  }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
   }
   .Definition {
     --color1: #d999d3;
     --color2: #a01793;
   }
-  .Theorem {
+  .Corollary {
     --color1: #948bde;
     --color2: #584eab;
   }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
+  }
+  .Proof {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   </style>
 </head>
@@ -361,8 +380,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Rank Deficient Models</h1>
-  <p class="subtitle">STA 721: Lecture 3</p>
+  <h1 class="title">Hypothesis Testing Related to SubModels</h1>
+  <p class="subtitle">STA 721: Lecture 14</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -378,305 +397,286 @@ Merlise Clyde (clyde@duke.edu)
 </section>
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
+<p>Hypothesis Testing:</p>
 <ul>
-<li class="fragment">Rank Deficient Models</li>
-<li class="fragment">Generalized Inverses, Projections and MLEs/OLS</li>
-<li class="fragment">Class of Unbiased Estimators</li>
-</ul>
-<div class="fragment">
-<p>Readings: - Christensen Chapter 2 and Appendix B - Seber &amp; Lee Chapter 3</p>
-</div>
-</section>
-<section id="geometric-view" class="slide level2">
-<h2>Geometric View</h2>
-
-<img data-src="img/OLS.jpg" class="r-stretch"></section>
-<section id="non-full-rank-case" class="slide level2">
-<h2>Non-Full Rank Case</h2>
+<li class="fragment">Testing submodels
 <ul>
-<li class="fragment"><p>Model: <span class="math inline">\(\mathbf{Y}= \boldsymbol{\mu}+ \boldsymbol{\epsilon}\)</span></p></li>
-<li class="fragment"><p>Assumption: <span class="math inline">\(\boldsymbol{\mu}\in C(\mathbf{X})\)</span> for <span class="math inline">\(\mathbf{X}\in \mathbb{R}^{n \times p}\)</span></p></li>
-<li class="fragment"><p>What if the rank of <span class="math inline">\(\mathbf{X}\)</span>, <span class="math inline">\(r(\mathbf{X}) \equiv r \ne p\)</span>?</p></li>
-<li class="fragment"><p>Still have result that the OLS/MLE solution satisfies <span class="math display">\[\mathbf{P}_\mathbf{X}\mathbf{Y}= \mathbf{X}\hat{\boldsymbol{\beta}}\]</span></p></li>
-<li class="fragment"><p>How can we characterize <span class="math inline">\(\mathbf{P}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> in this case? 2 cases</p></li>
-</ul>
-<div class="fragment">
-<ol type="1">
-<li class="fragment"><span class="math inline">\(p \le n\)</span>, <span class="math inline">\(r(\mathbf{X}) \ne p\)</span> <span class="math inline">\(\Rightarrow r(\mathbf{X}) &lt; p\)</span></li>
-<li class="fragment"><span class="math inline">\(p \gt n\)</span>, <span class="math inline">\(r(\mathbf{X}) \ne p\)</span></li>
-</ol>
-</div>
-<div class="fragment">
-<p>Focus on the first case for OLS/MLE for now…</p>
-</div>
-</section>
-<section id="model-space" class="slide level2">
-<h2>Model Space</h2>
-<ul>
-<li class="fragment"><p><span class="math inline">\(\boldsymbol{{\cal M}}= C(\mathbf{X})\)</span> is an <span class="math inline">\(r\)</span>-dimensional subspace of <span class="math inline">\(\mathbb{R}^n\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\boldsymbol{{\cal M}}\)</span> has an <span class="math inline">\((n - r)\)</span>-dimensional orthogonal complement <span class="math inline">\(\boldsymbol{{\cal N}}\)</span></p></li>
-<li class="fragment"><p>each <span class="math inline">\(\mathbf{y}\in \mathbb{R}^n\)</span> has a unique representation as <span class="math display">\[ \mathbf{y}= \hat{\mathbf{y}}+ \mathbf{e}\]</span> for <span class="math inline">\(\hat{\mathbf{y}}\in \boldsymbol{{\cal M}}\)</span> and <span class="math inline">\(\mathbf{e}\in \boldsymbol{{\cal N}}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\hat{\mathbf{y}}\)</span> is the orthogonal projection of <span class="math inline">\(\mathbf{y}\)</span> onto <span class="math inline">\(\boldsymbol{{\cal M}}\)</span> and is the OLS/MLE estimate of <span class="math inline">\(\boldsymbol{\mu}\)</span> that satisfies <span class="math display">\[\mathbf{P}_\mathbf{X}\mathbf{y}= \mathbf{X}\hat{\boldsymbol{\beta}}= \hat{\mathbf{y}}\]</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> is not invertible so need another way to represent <span class="math inline">\(\mathbf{P}_\mathbf{X}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span></p></li>
-</ul>
-</section>
-<section id="spectral-decomposition-sd" class="slide level2">
-<h2>Spectral Decomposition (SD)</h2>
-<p>Every symmetric <span class="math inline">\(n \times n\)</span> matrix, <span class="math inline">\({\mathbf{S}}\)</span>, has an eigen decomposition <span class="math inline">\({\mathbf{S}}= \mathbf{U}\boldsymbol{\Lambda}\mathbf{U}^T\)</span></p>
-<ul>
-<li class="fragment"><span class="math inline">\(\boldsymbol{\Lambda}\)</span> is a diagonal matrix with eigenvalues <span class="math inline">\((\lambda_1, \ldots, \lambda_n)\)</span> of <span class="math inline">\({\mathbf{S}}\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{U}\)</span> is a <span class="math inline">\(n \times n\)</span> <em>orthogonal</em> matrix <span class="math inline">\(\mathbf{U}^T\mathbf{U}= \mathbf{U}\mathbf{U}^T = \mathbf{I}_n\)</span> ( <span class="math inline">\(\mathbf{U}^{-1} = \mathbf{U}^T\)</span>)</li>
-<li class="fragment">the columns of <span class="math inline">\(\mathbf{U}\)</span> from an Orthonormal Basis (ONB) for <span class="math inline">\(\mathbb{R}^n\)</span></li>
-<li class="fragment">the columns of <span class="math inline">\(\mathbf{U}\)</span> associated with non-zero eigenvalues form an ONB for <span class="math inline">\(C({\mathbf{S}})\)</span></li>
-<li class="fragment">the number of non-zero eigenvalues is the rank of <span class="math inline">\({\mathbf{S}}\)</span></li>
-<li class="fragment">the columns of <span class="math inline">\(\mathbf{U}\)</span> associated with zero eigenvalues form an ONB for <span class="math inline">\(C({\mathbf{S}})^\perp\)</span></li>
-<li class="fragment"><span class="math inline">\({\mathbf{S}}^d = \mathbf{U}\boldsymbol{\Lambda}^d \mathbf{U}^T\)</span> (matrix powers)</li>
-</ul>
-</section>
-<section id="positive-definite-and-non-negative-definite-matrices" class="slide level2">
-<h2>Positive Definite and Non-Negative Definite Matrices</h2>
-<div id="PD" class="Definition unnumbered" title="B.21 Positive Definite and Non-Negative Definite">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>B.21 Positive Definite and Non-Negative Definite</summary><div>A symmetric matrix <span class="math inline">\({\mathbf{S}}\)</span> is <em>positive definite</em> (<span class="math inline">\({\mathbf{S}}\gt 0\)</span>) if and only if <span class="math inline">\(\mathbf{x}^T{\mathbf{S}}\mathbf{x}&gt; 0\)</span> for <span class="math inline">\(\mathbf{x}\in \mathbb{R}^n\)</span>, <span class="math inline">\(\mathbf{x}\ne \mathbf{0}_n\)</span>, and <em>positive semi-definite</em> or <em>non-negative definite</em> (<span class="math inline">\({\mathbf{S}}\ge 0\)</span>) if and only if <span class="math inline">\(\mathbf{x}^T{\mathbf{S}}\mathbf{x}\ge 0\)</span> for <span class="math inline">\(\mathbf{x}\in \mathbb{R}^n\)</span>, <span class="math inline">\(\mathbf{x}\ne \mathbf{0}_n\)</span><p></p>
-</div></details>
-</div>
-<div class="fragment">
-<div class="callout callout-note callout-titled callout-style-simple">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<p>Show that a symmetric matrix <span class="math inline">\({\mathbf{S}}\)</span> is positive definite if and only if its eigenvalues are all strictly greater than zero, and positive semi-definite if all the eigenvalues are non-negative.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="projections" class="slide level2">
-<h2>Projections</h2>
-<p>Let <span class="math inline">\(\mathbf{P}\)</span> be an orthogonal projection matrix onto <span class="math inline">\(\boldsymbol{{\cal M}}\)</span>, then</p>
-<ol type="1">
-<li class="fragment"><p>the eigenvalues of <span class="math inline">\(\mathbf{P}\)</span>, <span class="math inline">\(\lambda_i\)</span>, are either zero or one</p></li>
-<li class="fragment"><p>the trace of <span class="math inline">\(\mathbf{P}\)</span> is the rank of <span class="math inline">\(\mathbf{P}\)</span></p></li>
-<li class="fragment"><p>the dimension of the subspace that <span class="math inline">\(\mathbf{P}\)</span> projects onto is the rank of <span class="math inline">\(\mathbf{P}\)</span></p></li>
-<li class="fragment"><p>the columns of <span class="math inline">\(\mathbf{U}_r = [u_1, u_2, \ldots u_r]\)</span> form an ONB for the <span class="math inline">\(C(\mathbf{P})\)</span></p></li>
-<li class="fragment"><p>the projection <span class="math inline">\(\mathbf{P}\)</span> has the representation <span class="math inline">\(\mathbf{P}= \mathbf{U}_r \mathbf{U}_r^T = \sum_{i = 1}^r u_i u_i^T\)</span> (the sum of <span class="math inline">\(r\)</span> rank <span class="math inline">\(1\)</span> projections)</p></li>
-<li class="fragment"><p>the projection <span class="math inline">\(\mathbf{I}_n - \mathbf{P}= \mathbf{I}- \mathbf{U}_r \mathbf{U}_r^T = \mathbf{U}_\perp \mathbf{U}_\perp^T\)</span> where <span class="math inline">\(\mathbf{U}_\perp = [u_{r+1}, \ldots u_n]\)</span> is an orthogonal projection onto <span class="math inline">\(\boldsymbol{{\cal N}}\)</span></p></li>
-</ol>
-<div class="fragment">
-<p>MLE/OLS:</p>
-<ul>
-<li class="fragment"><span class="math inline">\(\mathbf{P}_X \mathbf{y}= \mathbf{U}_r \mathbf{U}_r^T \mathbf{y}= \mathbf{U}_r \tilde{\boldsymbol{\beta}}\)</span></li>
-<li class="fragment">Claim <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> is a MLE/OLS estimate of <span class="math inline">\(\boldsymbol{\beta}\)</span> where <span class="math inline">\(\tilde{\mathbf{X}}= \mathbf{U}_r\)</span>.</li>
-</ul>
-</div>
-</section>
-<section id="singular-value-decomposition-connections-to-spectral-decompositions" class="slide level2">
-<h2>Singular Value Decomposition &amp; Connections to Spectral Decompositions</h2>
-<p>A matrix <span class="math inline">\(\mathbf{X}\in \mathbb{R}^{n \times p}\)</span>, <span class="math inline">\(p \le n\)</span> has a <em>singular value decomposition</em> <span class="math display">\[\mathbf{X}= \mathbf{U}_p \mathbf{D}\mathbf{V}^T\]</span></p>
-<ul>
-<li class="fragment"><span class="math inline">\(\mathbf{U}_p\)</span> is a <span class="math inline">\(n \times p\)</span> matrix with the first <span class="math inline">\(p\)</span> eigenvectors in <span class="math inline">\(\mathbf{U}\)</span> associated with the <span class="math inline">\(p\)</span> largest eigenvectors of <span class="math inline">\(\mathbf{X}\mathbf{X}^T = \mathbf{U}\boldsymbol{\Lambda}\mathbf{U}^T\)</span> with <span class="math inline">\(\mathbf{U}_p^T\mathbf{U}_p = I_p\)</span> but <span class="math inline">\(\mathbf{U}_p \mathbf{U}_p^T \ne \mathbf{I}_n\)</span> (or <span class="math inline">\(\mathbf{P}_p\)</span>)</li>
-<li class="fragment"><span class="math inline">\(\mathbf{V}\)</span> is a <span class="math inline">\(p \times p\)</span> orthogonal matrix associated with the <span class="math inline">\(p\)</span> eigenvectors of <span class="math inline">\(\mathbf{X}^T\mathbf{X}= \mathbf{V}\boldsymbol{\Lambda}_p \mathbf{V}^T\)</span> where <span class="math inline">\(\boldsymbol{\Lambda}_p\)</span> is the diagonal matrix of eigenvalues associated with the <span class="math inline">\(p\)</span> largest eigenvalues of <span class="math inline">\(\boldsymbol{\Lambda}\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{D}\)</span> = <span class="math inline">\(\boldsymbol{\Lambda}_p^{1/2}\)</span> are the singular values</li>
-<li class="fragment">if <span class="math inline">\(\mathbf{X}\)</span> has rank <span class="math inline">\(r &lt; p\)</span>, then <span class="math inline">\(C(\mathbf{X}) = C(\mathbf{U}_p) = C(\mathbf{U}_r)\)</span>, where <span class="math inline">\(\mathbf{U}_r\)</span> are the eigenvectors of <span class="math inline">\(\mathbf{U}\)</span> or <span class="math inline">\(\mathbf{U}_p\)</span> associated with the non-zero eigenvalues.</li>
-<li class="fragment"><span class="math inline">\(\mathbf{U}_r\)</span> is an ONB for <span class="math inline">\(C(X)\)</span></li>
-</ul>
-</section>
-<section id="mleols-for-non-full-rank-case" class="slide level2">
-<h2>MLE/OLS for non-full rank case</h2>
-<ul>
-<li class="fragment"><p>if <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> is invertible, <span class="math inline">\(\mathbf{P}_X = \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is the unique estimator that satisfies <span class="math inline">\(\mathbf{P}_\mathbf{X}\mathbf{y}= \mathbf{X}\hat{\boldsymbol{\beta}}\)</span> or <span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{X}^T\mathbf{y}\)</span></p></li>
-<li class="fragment"><p>if <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> is not invertible, replace <span class="math inline">\(\mathbf{X}\)</span> by <span class="math inline">\(\tilde{\mathbf{X}}\)</span> that is rank <span class="math inline">\(r\)</span></p></li>
-<li class="fragment"><p>or represent <span class="math inline">\(\mathbf{P}_\mathbf{X}= \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-} \mathbf{X}^T\)</span> where <span class="math inline">\((\mathbf{X}^T\mathbf{X})^{-}\)</span> is a generalized inverse of <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> and <span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-}\mathbf{X}^T \mathbf{y}\)</span></p></li>
-</ul>
-</section>
-<section id="generalized-inverses" class="slide level2">
-<h2>Generalized Inverses</h2>
-<div id="Generalized-Inverse" class="Definition unnumbered" title="Generalized-Inverse (B.36)">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Generalized-Inverse (B.36)</summary><div>A generalized inverse of any matrix <span class="math inline">\(\mathbf{A}\)</span>: <span class="math inline">\(\mathbf{A}^{-}\)</span> satisfies <span class="math inline">\(\mathbf{A}\mathbf{A}^- \mathbf{A}= \mathbf{A}\)</span><p></p>
-</div></details>
-</div>
-<ul>
-<li class="fragment">A generalized inverse of <span class="math inline">\(\mathbf{A}\)</span> symmetric always exists!</li>
-</ul>
-<div class="fragment">
-<div id="Th-Generalized-Inverse" class="Theorem unnumbered" title="Christensen B.39">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Christensen B.39</summary><div>If <span class="math inline">\(\mathbf{G}_1\)</span> and <span class="math inline">\(\mathbf{G}_2\)</span> are generalized inverses of <span class="math inline">\(\mathbf{A}\)</span> then <span class="math inline">\(\mathbf{G}_1 \mathbf{A}\mathbf{G}_2\)</span> is also a generalized inverse of <span class="math inline">\(\mathbf{A}\)</span><p></p>
-</div></details>
-</div>
-<ul>
-<li class="fragment">if <span class="math inline">\(\mathbf{A}\)</span> is symmetric, then <span class="math inline">\(\mathbf{A}^-\)</span> need not be!</li>
-</ul>
-</div>
-</section>
-<section id="orthogonal-projections-in-general" class="slide level2">
-<h2>Orthogonal Projections in General</h2>
-<div title="Lemma B.43">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Lemma B.43</strong></p>
-</div>
-<div class="callout-content">
-<p>If <span class="math inline">\(\mathbf{G}\)</span> and <span class="math inline">\(\mathbf{H}\)</span> are generalized inverses of <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> then <span class="math display">\[\begin{align*}
-\mathbf{X}\mathbf{G}\mathbf{X}^T \mathbf{X}&amp; = \mathbf{X}\mathbf{H}\mathbf{X}^T \mathbf{X}= \mathbf{X}\\
-\mathbf{X}\mathbf{G}\mathbf{X}^T &amp; = \mathbf{X}\mathbf{H}\mathbf{X}^T
-\end{align*}\]</span></p>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div id="b.44" class="Theorem unnumbered" title="B.44">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>B.44</summary><div><span class="math inline">\(\mathbf{X}(\mathbf{X}^T\mathbf{X})^-\mathbf{X}^T\)</span> is an orthogonal projection onto <span class="math inline">\(C(\mathbf{X})\)</span>.<p></p>
-</div></details>
-</div>
-</div>
-<div class="fragment">
-<div class="Proof unnumbered">
-<p>We need to show that (i) <span class="math inline">\(\mathbf{P}\mathbf{m}= \mathbf{m}\)</span> for <span class="math inline">\(\mathbf{m}\in C(\mathbf{X})\)</span> and (ii) <span class="math inline">\(\mathbf{P}\mathbf{n}= 0\)</span> for <span class="math inline">\(\mathbf{n}\in C(\mathbf{X})^\perp\)</span>.</p>
-<ol type="i">
-<li class="fragment"><p>For <span class="math inline">\(\mathbf{m}\in C(\mathbf{X})\)</span>, write <span class="math inline">\(\mathbf{m}= \mathbf{X}\mathbf{b}\)</span>. Then <span class="math inline">\(\mathbf{P}\mathbf{m}= \mathbf{P}\mathbf{X}\mathbf{b}= \mathbf{X}(\mathbf{X}^T\mathbf{X})^-\mathbf{X}^T \mathbf{X}\mathbf{b}\)</span> and by Lemma B43, we have that <span class="math inline">\(\mathbf{X}(\mathbf{X}^T\mathbf{X})^-\mathbf{X}^T \mathbf{X}\mathbf{b}= \mathbf{X}\mathbf{b}= \mathbf{m}\)</span></p></li>
-<li class="fragment"><p>For <span class="math inline">\(\mathbf{n}\perp C(\mathbf{X})\)</span>, <span class="math inline">\(\mathbf{P}\mathbf{n}= \mathbf{X}(\mathbf{X}^T\mathbf{X})^-\mathbf{X}^T \mathbf{n}= \mathbf{0}_n\)</span> as <span class="math inline">\(C(\mathbf{X})^\perp = N(\mathbf{X}^T)\)</span>.</p></li>
-</ol>
-</div>
-</div>
-</section>
-<section id="mles-ols" class="slide level2">
-<h2>MLEs &amp; OLS</h2>
-<p>MLE/OLS satisfies</p>
-<ul>
-<li class="fragment"><span class="math inline">\(\mathbf{P}\mathbf{y}= \mathbf{X}\hat{\boldsymbol{\beta}}\)</span></li>
-<li class="fragment"><span class="math inline">\(\mathbf{P}\mathbf{y}= \mathbf{X}(\mathbf{X}^T\mathbf{X})^-\mathbf{X}^T \mathbf{X}\hat{\boldsymbol{\beta}}= \mathbf{X}\hat{\boldsymbol{\beta}}\)</span> (does not depend on choice of generalized inverse)</li>
-<li class="fragment"><span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^-\mathbf{X}^T \mathbf{y}\)</span></li>
-<li class="fragment"><span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is not unique - does depend on choice of generalized inverse unless <span class="math inline">\(\mathbf{X}\)</span> is full rank</li>
-</ul>
-</section>
-<section id="moore-penrose-generalized-inverse" class="slide level2">
-<h2>Moore-Penrose Generalized Inverse:</h2>
-<ul>
-<li class="fragment">Decompose symmetric <span class="math inline">\(\mathbf{A}= \mathbf{U}\boldsymbol{\Lambda}\mathbf{U}^T\)</span> (i.e <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span>)</li>
-<li class="fragment"><span class="math inline">\(\mathbf{A}^-_{MP} = \mathbf{U}\boldsymbol{\Lambda}^- \mathbf{U}^T\)</span><br>
-</li>
-<li class="fragment"><span class="math inline">\(\boldsymbol{\Lambda}^-\)</span> is diagonal with <span class="math display">\[ \lambda_i^- = \left\{
-\begin{array}{l}
-1/\lambda_i \text{ if } \lambda_i \neq 0 \\
-0 \quad \, \text{  if } \lambda_i = 0
-\end{array}
-\right.\]</span><br>
-</li>
-<li class="fragment">Symmetric <span class="math inline">\(\mathbf{A}^-_{MP} = (\mathbf{A}^-_{MP})^T\)</span><br>
-</li>
-<li class="fragment">Reflexive <span class="math inline">\(\mathbf{A}^-_{MP}\mathbf{A}\mathbf{A}^-_{MP} = \mathbf{A}^-_{MP}\)</span></li>
-</ul>
-<div class="fragment">
-<ul>
-<li class="fragment"><p>Show that <span class="math inline">\(\mathbf{A}_{MP}^-\)</span> is a generalized inverse of <span class="math inline">\(\mathbf{A}\)</span></p></li>
-<li class="fragment"><p>Can you construct another generalized inverse of <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> ?</p></li>
-<li class="fragment"><p>Can you find the Moore-Penrose generalized inverse of <span class="math inline">\(\mathbf{X}\in \mathbb{R}^{n \times p}\)</span>?</p></li>
-</ul>
-</div>
-</section>
-<section id="properties-of-ols-full-rank-case" class="slide level2">
-<h2>Properties of OLS (full rank case)</h2>
-<p>How good is <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> as an estimator of <span class="math inline">\(\beta\)</span></p>
-<ul>
-<li class="fragment"><span class="math inline">\(\hat{\boldsymbol{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T \mathbf{Y}=  (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T \mathbf{X}\boldsymbol{\beta}+ (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{\epsilon}= \boldsymbol{\beta}+  (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{\epsilon}\)</span></li>
-<li class="fragment">don’t know <span class="math inline">\(\boldsymbol{\epsilon}\)</span>, but can talk about behavior on average over
-<ul>
-<li class="fragment">different runs of an experiment</li>
-<li class="fragment">different samples from a population</li>
-<li class="fragment">different values of <span class="math inline">\(\boldsymbol{\epsilon}\)</span></li>
+<li class="fragment">Extra sum of squares</li>
+<li class="fragment">F-tests</li>
+<li class="fragment">Null distribution</li>
+<li class="fragment">Decision procedure</li>
+<li class="fragment">P-values</li>
 </ul></li>
-<li class="fragment">with minimal assumption <span class="math inline">\(\textsf{E}[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span>, <span class="math display">\[\begin{align*}
-\textsf{E}[\hat{\boldsymbol{\beta}}] &amp; = \textsf{E}[(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}+ (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\boldsymbol{\epsilon}]\\
-&amp; = \boldsymbol{\beta}+ (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\textsf{E}[\boldsymbol{\epsilon}] \\
-&amp; = \boldsymbol{\beta}
-\end{align*}\]</span></li>
-<li class="fragment"><em>Bias</em> of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>, <span class="math inline">\(\text{Bias}[\hat{\boldsymbol{\beta}}] =  \textsf{E}[\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}] = \mathbf{0}_p\)</span></li>
-<li class="fragment"><span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is an unbiased estimator of <span class="math inline">\(\boldsymbol{\beta}\)</span> if <span class="math inline">\(\boldsymbol{\mu}\in C(\mathbf{X})\)</span></li>
+<li class="fragment">Testing individual coefficients
+<ul>
+<li class="fragment">t-tests</li>
+</ul></li>
+<li class="fragment">Likelihood Ratio Tests</li>
 </ul>
-<div class="footer">
-
+<div class="fragment">
+<p>Readings:</p>
+<ul>
+<li class="fragment">Christensen Appendix C, Chapter 3</li>
+</ul>
 </div>
 </section>
-<section id="class-of-unbiased-estimators" class="slide level2">
-<h2>Class of Unbiased Estimators</h2>
-<p>Class of linear statistical models: <span class="math display">\[\begin{align*}
-\mathbf{Y}&amp; = \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\\
-\boldsymbol{\epsilon}&amp; \sim P \\
-P &amp; \in \cal{P}
+<section id="testing-recap" class="slide level2">
+<h2>Testing Recap</h2>
+<ul>
+<li class="fragment"><p>We assume the Gaussian Linear Model <span class="math display">\[\quad \quad \quad \quad \quad \quad \quad \quad \text{M1} \quad \mathbf{Y}∼ \textsf{N}(\mathbf{W}\boldsymbol{\alpha}+ \mathbf{X}\boldsymbol{\beta}, \sigma^2\mathbf{I}) \equiv \textsf{N}(\mathbf{Z}\boldsymbol{\theta}, \sigma^2\mathbf{I})\]</span> where <span class="math inline">\(\mathbf{W}\)</span> is <span class="math inline">\(n \times q\)</span>, <span class="math inline">\(\mathbf{X}\)</span> is <span class="math inline">\(n \times p\)</span>, <span class="math inline">\(\mathbf{Z}= [\mathbf{W}\mathbf{X}]\)</span>,</p></li>
+<li class="fragment"><p>We wish to evaluate the hypothesis <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span></p></li>
+<li class="fragment"><p>equivalent to comparing M1 to M0: <span class="math display">\[\text{M0} \quad \mathbf{Y}∼ \textsf{N}(\mathbf{W}\boldsymbol{\alpha}, \sigma^2\mathbf{I})\]</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\textsf{SSE}_{M0}/(n-q)\)</span> and <span class="math inline">\(\textsf{SSE}_{M1}/(n- q - p)\)</span> are unbiased estimates of <span class="math inline">\(\sigma^2\)</span> under null model M0</p></li>
+<li class="fragment"><p>but the ratio <span class="math inline">\(\frac{\textsf{SSE}_{M0}/(n-q)}{\textsf{SSE}_{M1}/(n- q - p)}\)</span> does not have a F distribution</p></li>
+</ul>
+</section>
+<section id="extra-sum-of-squares" class="slide level2">
+<h2>Extra Sum of Squares</h2>
+<p>Rewrite <span class="math inline">\(\textsf{SSE}_{M0}\)</span>: <span class="math display">\[\begin{align*}
+\textsf{SSE}_{M0} &amp; = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
+          &amp; = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}} + \mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
+          &amp; = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}})\mathbf{Y}+ \mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
+          &amp; = \textsf{SSE}_{M1} + \mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}
 \end{align*}\]</span></p>
 <div class="fragment">
-<p>An estimator <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> is unbiased for <span class="math inline">\(\boldsymbol{\beta}\)</span> if <span class="math inline">\(\textsf{E}_P[\tilde{\boldsymbol{\beta}}] = \boldsymbol{\beta}\quad \forall \boldsymbol{\beta}\in \mathbb{R}^p\)</span> and <span class="math inline">\(P \in \cal{P}\)</span></p>
-</div>
-<div class="fragment">
-<p>Examples:</p>
-</div>
-<div class="fragment">
-<p><span class="math inline">\(\cal{P}_1= \{P = \textsf{N}(\mathbf{0}_n ,\mathbf{I}_n)\}\)</span></p>
-</div>
-<div class="fragment">
-<p><span class="math inline">\(\cal{P}_2 = \{P = \textsf{N}(\mathbf{0}_n ,\sigma^2 \mathbf{I}_n), \sigma^2 &gt;0\}\)</span></p>
-</div>
-<div class="fragment">
-<p><span class="math inline">\(\cal{P}_3 = \{P = \textsf{N}(\mathbf{0}_n ,\boldsymbol{\Sigma}), \boldsymbol{\Sigma}\in \cal{{\cal{S}}}^+ \}\)</span> (<span class="math inline">\(\cal{{\cal{S}}}^+\)</span> is the set of all <span class="math inline">\(n \times n\)</span> symmetric positive definite matrices.)</p>
-</div>
-<div class="fragment">
-<p><span class="math inline">\(\cal{P}_4\)</span> is the set of distributions with <span class="math inline">\(\textsf{E}_P[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{E}_P[\boldsymbol{\epsilon}\boldsymbol{\epsilon}^T] \gt 0\)</span></p>
-</div>
-<div class="fragment">
-<p><span class="math inline">\(\cal{P}_5\)</span> is the set of distributions with <span class="math inline">\(\textsf{E}_P[\boldsymbol{\epsilon}] = \mathbf{0}_n\)</span> and <span class="math inline">\(\textsf{E}_P[\boldsymbol{\epsilon}\boldsymbol{\epsilon}^T] \ge 0\)</span></p>
+<p>Extra Sum of Squares: <span class="math display">\[\textsf{SSE}_{M0} - \textsf{SSE}_{M1}  = \mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\]</span></p>
 </div>
 </section>
-<section id="linear-unbiased-estimation" class="slide level2">
-<h2>Linear Unbiased Estimation</h2>
-<div title="Exercise">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Exercise</strong></p>
-</div>
-<div class="callout-content">
-<ol type="1">
-<li class="fragment"><p>Explain why an estimator that is unbiased for the model with parameter space <span class="math inline">\(\boldsymbol{\beta}\in \mathbb{R}^p\)</span> and <span class="math inline">\(P \in  \cal{P}_{k+1}\)</span> is unbiased for the model with parameter space <span class="math inline">\(\boldsymbol{\beta}\in \mathbb{R}^p\)</span> and <span class="math inline">\(P \in  \cal{P}_{k}\)</span> .</p></li>
-<li class="fragment"><p>Find an estimator that is unbiased for <span class="math inline">\(\boldsymbol{\beta}\in \mathbb{R}^p\)</span> and <span class="math inline">\(P \in  \cal{P}_{1}\)</span> that but is biased for <span class="math inline">\(\boldsymbol{\beta}\in \mathbb{R}^p\)</span> and <span class="math inline">\(P \in  \cal{P}_{2}\)</span>.</p></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>Restrict attention to <strong>linear</strong> unbiased estimators</p>
-</div>
-<div class="fragment">
-<div id="linear-unbiased-estimators-lues" class="Definition unnumbered" title="Linear Unbiased Estimators (LUEs)">
-<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Linear Unbiased Estimators (LUEs)</summary><div>
-<p>An estimator <span class="math inline">\(\tilde{\boldsymbol{\beta}}\)</span> is a <strong>Linear Unbiased Estimator</strong> (LUE) of <span class="math inline">\(\boldsymbol{\beta}\)</span> if</p>
-<ol type="1">
-<li class="fragment">linearity: <span class="math inline">\(\tilde{\boldsymbol{\beta}}= \mathbf{A}\mathbf{Y}\)</span> for <span class="math inline">\(\mathbf{A}\in \mathbb{R}^{p \times n}\)</span></li>
-<li class="fragment">unbiasedness: <span class="math inline">\(\textsf{E}[\tilde{\boldsymbol{\beta}}] = \boldsymbol{\beta}\)</span> for all <span class="math inline">\(\boldsymbol{\beta}\in \mathbb{R}^p\)</span></li>
-</ol>
-</div></details>
-</div>
-</div>
-<div class="fragment">
+<section id="expectation-of-extra-sum-of-squares" class="slide level2">
+<h2>Expectation of Extra Sum of Squares</h2>
+<p><span class="math inline">\(\textsf{E}[\textsf{SSE}_{M0} - \textsf{SSE}_{M1}] = \textsf{E}[\mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}]\)</span></p>
 <ul>
-<li class="fragment">Are there other LUEs besides the OLS/MLE estimator?</li>
-<li class="fragment">Which is “best”? (and in what sense?)</li>
+<li class="fragment"><p>under M0: <span class="math inline">\(\boldsymbol{\mu}= \mathbf{W}\boldsymbol{\alpha}\)</span> <span class="math display">\[\begin{align*}
+\textsf{E}[(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}] &amp; = \mathbf{P}_{\mathbf{Z}}\mathbf{W}\boldsymbol{\alpha}- \mathbf{P}_{\mathbf{W}}\mathbf{W}\boldsymbol{\alpha}\\
+&amp; = \mathbf{W}\boldsymbol{\alpha}\mathbf{W}_\boldsymbol{\alpha}\\
+&amp; = \mathbf{0}\\
+\textsf{E}[\mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}] &amp; = \sigma^2(\textsf{tr}\mathbf{P}_\mathbf{Z}+ \textsf{tr}\mathbf{P}_\mathbf{W}) \\
+&amp; = \sigma^2 (q + p - q) = p \sigma^2
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>under M1: <span class="math inline">\(\boldsymbol{\mu}= \mathbf{X}\boldsymbol{\beta}+ \mathbf{W}\boldsymbol{\alpha}\)</span> <span class="math display">\[\begin{align*}
+\textsf{E}[(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}] &amp; = \mathbf{X}\boldsymbol{\beta}+ \mathbf{W}\boldsymbol{\alpha}- \mathbf{P}_{\mathbf{W}}\mathbf{X}\boldsymbol{\beta}- \mathbf{W}\boldsymbol{\alpha}\\
+&amp; = (\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}\\
+\textsf{E}[\mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}] &amp; = p \sigma^2 + \boldsymbol{\beta}^T\mathbf{X}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}
+\end{align*}\]</span></p></li>
+</ul>
+</section>
+<section id="test-statistic" class="slide level2">
+<h2>Test Statistic</h2>
+<p>Propose ratio: <span class="math display">\[F = \frac{(\textsf{SSE}_{M0} - \textsf{SSE}_{M1})/p} {\textsf{SSE}_{M1}/(n - q - p)} = \frac{\mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}/p}{\textsf{SSE}_{M1}/(n - q - p)}\]</span> as a test statistic.</p>
+<div class="fragment">
+<p>Does <span class="math inline">\(F\)</span> have an F distribution under M0?</p>
+<ul>
+<li class="fragment">denominator <span class="math inline">\(\textsf{SSE}_{M1}/\sigma^2\)</span> does have a <span class="math inline">\(\chi^2\)</span> distribution?</li>
+<li class="fragment">does numerator <span class="math inline">\(\textsf{SSE}_{M0}/\sigma^2\)</span> have a <span class="math inline">\(\chi^2\)</span> distribution?</li>
+<li class="fragment">are they independent?</li>
+</ul>
+</div>
+</section>
+<section id="properties-of-mathbfp_mathbfz---mathbfp_mathbfw" class="slide level2">
+<h2>Properties of <span class="math inline">\(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}}\)</span></h2>
+<p>To show that <span class="math inline">\(\mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\)</span> has a <span class="math inline">\(\chi^2\)</span> distribution under M0 or M1, we need to show that <span class="math inline">\(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}}\)</span> is a projection matrix.</p>
+<ul>
+<li class="fragment">symmetric?</li>
+<li class="fragment">idempotent?</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})^2 &amp; = \mathbf{P}_{\mathbf{Z}}^2 - \mathbf{P}_{\mathbf{Z}}\mathbf{P}_{\mathbf{W}} - \mathbf{P}_{\mathbf{W}}\mathbf{P}_{\mathbf{Z}} + \mathbf{P}_{\mathbf{W}}^2 \\
+&amp; = \mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{Z}}\mathbf{P}_{\mathbf{W}} - \mathbf{P}_{\mathbf{W}}\mathbf{P}_{\mathbf{Z}} + \mathbf{P}_{\mathbf{W}} \\
+&amp; = \mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{Z}}\mathbf{P}_{\mathbf{W}} - (\mathbf{P}_{\mathbf{Z}}\mathbf{P}_{\mathbf{W}})^T + \mathbf{P}_{\mathbf{W}} \\
+&amp; = \mathbf{P}_{\mathbf{Z}} - 2\mathbf{P}_{\mathbf{W}}  + \mathbf{P}_{\mathbf{W}} \\
+&amp; = \mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}}
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment">Note: we are using <span class="math inline">\(\mathbf{P}_{\mathbf{Z}}\mathbf{P}_{\mathbf{W}} = \mathbf{P}_{\mathbf{W}}\)</span> as each column of <span class="math inline">\(\mathbf{P}_{\mathbf{W}}\)</span> is in <span class="math inline">\(C(\mathbf{W})\)</span> and hence also in <span class="math inline">\(C(\mathbf{Z})\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<p>So <span class="math inline">\(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}}\)</span> is a projection matrix</p>
+<div class="footer">
+
+</div>
+</div>
+</section>
+<section id="projection-matrix-mathbfp_mathbfz---mathbfp_mathbfw" class="slide level2">
+<h2>Projection Matrix <span class="math inline">\(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}}\)</span></h2>
+<p>Onto what space is it projecting?</p>
+<ul>
+<li class="fragment"><p>Intuitively, it is projecting onto the part of <span class="math inline">\(\mathbf{X}\)</span> that is not in <span class="math inline">\(\mathbf{W}\)</span>, <span class="math inline">\(\tilde{\mathbf{X}}= (\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\)</span> (the part of <span class="math inline">\(\mathbf{X}\)</span> that is orthogonal to <span class="math inline">\(\mathbf{W}\)</span>)</p></li>
+<li class="fragment"><p><span class="math inline">\(C(\tilde{\mathbf{X}})\)</span> and <span class="math inline">\(C(\mathbf{W})\)</span> are complementary orthogonal subspaces of <span class="math inline">\(C(\mathbf{Z})\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}}\)</span> is a projection matrix onto <span class="math inline">\(C(\tilde{\mathbf{X}})\)</span> along <span class="math inline">\(C(\mathbf{W})\)</span></p></li>
+<li class="fragment"><p>we are decomposing <span class="math inline">\(C(\mathbf{Z})\)</span> into two orthogonal subspaces <span class="math inline">\(C(\mathbf{W})\)</span> and <span class="math inline">\(C(\tilde{\mathbf{X}})\)</span></p></li>
+<li class="fragment"><p>We can write <span class="math inline">\(\mathbf{P}_{\mathbf{Z}} = \mathbf{P}_{\tilde{\mathbf{X}}} + \mathbf{P}_{\mathbf{W}}\)</span> where <span class="math inline">\(\mathbf{P}_{\tilde{\mathbf{X}}} \mathbf{P}_{\mathbf{W}} = \mathbf{P}_{\mathbf{W}} \mathbf{P}_{\tilde{\mathbf{X}}} = \mathbf{0}\)</span></p></li>
+</ul>
+<div class="fragment">
+<p>Note: we can always write <span class="math display">\[\begin{align*}
+\boldsymbol{\mu}&amp; = \mathbf{W}\boldsymbol{\alpha}+ \mathbf{X}\boldsymbol{\beta}\\
+     &amp; = \mathbf{W}\boldsymbol{\alpha}+ (\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}+ \mathbf{P}_{\mathbf{W}}\mathbf{X}\boldsymbol{\beta}\\
+     &amp; = \mathbf{W}\tilde{\boldsymbol{\alpha}} + \tilde{\mathbf{X}}\boldsymbol{\beta}
+\end{align*}\]</span></p>
+</div>
+</section>
+<section id="distribution-of-extra-sum-of-squares" class="slide level2">
+<h2>Distribution of Extra Sum of Squares</h2>
+<ul>
+<li class="fragment">Since <span class="math inline">\(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}}\)</span> is a projection matrix</li>
+<li class="fragment"><span class="math inline">\(\mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}/\sigma^2\)</span> has a <span class="math inline">\(\chi^2_p\)</span> distribution under M0</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}&amp; = \|(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\|^2 \\
+&amp; = \|(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})(\mathbf{X}\boldsymbol{\beta}+ \mathbf{W}\alpha + \boldsymbol{\epsilon}\|^2 \\
+&amp; = \|(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})(\mathbf{X}\boldsymbol{\beta}\boldsymbol{\epsilon}\|^2 \\
+&amp; = \|(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\boldsymbol{\epsilon}\|^2 \quad \text{ if } \boldsymbol{\beta}= \mathbf{0}\\
+&amp; = \boldsymbol{\epsilon}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\boldsymbol{\epsilon}\\
+&amp; \sim \sigma^2 \chi^2_p \quad \text{ if } \boldsymbol{\beta}= \mathbf{0}
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment">show that <span class="math inline">\(\mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\)</span> and <span class="math inline">\(\mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}})\mathbf{Y}\)</span> are independent</li>
+</ul>
+</div>
+</section>
+<section id="f-statistic" class="slide level2">
+<h2>F-Statistic</h2>
+<p>Under M1: <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span></p>
+<p><span class="math display">\[\begin{align*}
+F(\mathbf{Y}) &amp; = \frac{(\textsf{SSE}_{M0} - \textsf{SSE}_{M1})/p}{\textsf{SSE}_{M1}/(n - q - p)} \\
+      &amp; = \frac{(\textsf{SSE}_{M0} - \textsf{SSE}_{M1})/\sigma^2p}{\textsf{SSE}_{M1}/\sigma^2(n - q - p)} \\
+      &amp; \mathrel{\mathop{=}\limits^{\rm D}}\frac{\chi^2_p/p}{\chi^2_{n-q-p}/(n-q-p)} \\
+      &amp; \mathrel{\mathop{=}\limits^{\rm D}}F_{p, n-q-p}
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment"><p>Under M1, <span class="math inline">\(\mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}/\sigma^2\)</span> has a non-central <span class="math inline">\(\chi^2_{p, \eta}\)</span> where the non-centrality parameter <span class="math inline">\(\eta = \boldsymbol{\beta}^T\mathbf{X}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}/2\sigma^2\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(F\)</span> has a non-central F distribution with <span class="math inline">\(p\)</span> and <span class="math inline">\(n-q-p\)</span> degrees of freedom and non-centrality parameter <span class="math inline">\(\eta = \boldsymbol{\beta}^T\mathbf{X}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}/2\sigma^2\)</span> (See Christensen Theorem 3.2.1 and Appendix C)</p></li>
 </ul>
 <div class="footer">
 
 </div>
+</section>
+<section id="testing-individual-coefficients" class="slide level2">
+<h2>Testing Individual Coefficients</h2>
+<p>Consider the model with <span class="math inline">\(p = 1\)</span>, <span class="math inline">\(\mathbf{Y}= \mathbf{W}\boldsymbol{\alpha}+ \mathbf{x}\beta + \boldsymbol{\epsilon}\)</span> and we want to test that <span class="math inline">\(\beta = 0\)</span> (M0)</p>
+<ol type="1">
+<li class="fragment">fit the full model and compute <span class="math inline">\(\textsf{SSE}_{M1}\)</span></li>
+<li class="fragment">fit the reduced model and compute <span class="math inline">\(\textsf{SSE}_{M0}\)</span></li>
+<li class="fragment">calculate the <span class="math inline">\(F\)</span> statistic and <span class="math inline">\(p\)</span>-value</li>
+</ol>
+<div class="fragment">
+<p>It turns out that we can obtain this <span class="math inline">\(F\)</span> statistic by fitting the full model and the test reduces to a familiar <span class="math inline">\(t\)</span>-test</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\hspace{-1in}{\text{Note: }} \hspace{1in} \textsf{SSE}_{M0} - \textsf{SSE}_{M1} &amp; =  \mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
+&amp; = \|(\mathbf{P}_{\tilde{\mathbf{X}}} + \mathbf{P}_{\mathbf{W}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\|^2 \\
+&amp; = \|\mathbf{P}_{\tilde{\mathbf{X}}}\mathbf{Y}\|^2 \\
+&amp; = \|(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\hat{\boldsymbol{\beta}}\|^2 \\
+&amp; = \hat{\boldsymbol{\beta}}^T\mathbf{X}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\hat{\boldsymbol{\beta}}
+\end{align*}\]</span></p>
+</div>
+</section>
+<section id="testing-individual-coefficients-1" class="slide level2">
+<h2>Testing Individual Coefficients</h2>
+<p>For <span class="math inline">\(p = 1\)</span>, the <span class="math inline">\(F\)</span> statistic</p>
+<p><span class="math display">\[\begin{align*}
+F(\mathbf{Y}) &amp; = \frac{(\textsf{SSE}_{M0} - \textsf{SSE}_{M1})/1}{\textsf{SSE}_{M1}/(n - q - 1)} \\
+  &amp; = \frac{\hat{\beta}^T\mathbf{x}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{x}\hat{\beta}}{s^2} \\
+  &amp; = \frac{\hat{\beta}^2}{s^2/\mathbf{x}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{x}} \\
+F(\mathbf{Y})   &amp; \sim F_{1, n - q - 1}  \quad \text{ under } \beta = 0
+\end{align*}\]</span></p>
+<div class="fragment">
+<ul>
+<li class="fragment">variance of <span class="math inline">\(\hat{\beta}\)</span>: <span class="math display">\[\begin{align*}
+\textsf{var}[\hat{\beta}] &amp; = \sigma^2/\mathbf{x}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{x}= \sigma^2 v\\
+v &amp; = 1/\mathbf{x}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{x}
+\end{align*}\]</span></li>
+</ul>
+</div>
+</section>
+<section id="t-statistic" class="slide level2">
+<h2><span class="math inline">\(t\)</span>-statistic</h2>
+<p><span class="math display">\[\begin{align*}
+F(\mathbf{Y}) &amp; = \frac{\hat{\beta}^2}{s^2/\mathbf{x}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{x}}
+= \left(\frac{\hat{\beta}}{s \sqrt{v}}\right)^2
+=  t(\mathbf{Y})^2
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment"><p>Since <span class="math inline">\(F(\mathbf{Y}) \sim F(1, n - q - 1)\)</span> under M0: <span class="math inline">\(\beta = 0\)</span>, <span class="math inline">\(t(\mathbf{Y})^2 \sim F(1,n - q - 1)\)</span> under M0: <span class="math inline">\(\beta = 0\)</span></p></li>
+<li class="fragment"><p>what is distribution of <span class="math inline">\(t(\mathbf{Y})\)</span> under M0: <span class="math inline">\(\beta \ne 0\)</span>?</p></li>
+</ul>
+<div class="fragment">
+<p>Recall that under M0: <span class="math inline">\(\beta = 0\)</span>,</p>
+<ol type="1">
+<li class="fragment"><span class="math inline">\(\hat{\beta}/\sqrt{v\sigma^2} \sim \textsf{N}(0, 1)\)</span></li>
+<li class="fragment"><span class="math inline">\((n-q-1)s^2/\sigma^2 \sim \chi^2_{n-q-1}\)</span></li>
+<li class="fragment"><span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(s^2\)</span> are independent</li>
+</ol>
+</div>
+</section>
+<section id="student-t-distribution" class="slide level2">
+<h2>Student <span class="math inline">\(t\)</span> Distribution</h2>
+<div id="student-t-distribution-1" class="Theorem" title="Student t Distribution">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Student <span class="math inline">\(t\)</span> Distribution</summary><div>A random variable <span class="math inline">\(T\)</span> has a Student <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(\nu\)</span> degrees of freedom if <span class="math display">\[T \mathrel{\mathop{=}\limits^{\rm D}}\frac{Z}{X/\nu}\]</span><p></p>
+<p>where <span class="math display">\[\begin{align*}
+Z &amp; \sim \textsf{N}(0,1) \\
+X &amp; \sim \chi^2_\nu \\
+Z &amp;\text{ and }  X \text{ are independent }
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<ul>
+<li class="fragment"><span class="math inline">\(\therefore \, t(\mathbf{Y}) = \hat{\beta}/\sqrt{v\sigma^2}\)</span> has a Student <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n - q - 1\)</span> degrees of freedom under M0: <span class="math inline">\(\beta = 0\)</span></li>
+</ul>
+</section>
+<section id="decision-rules-and-p-values" class="slide level2">
+<h2>Decision rules and <span class="math inline">\(p\)</span>-values</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li class="fragment"><p>an <span class="math inline">\(F_{1, \nu}\)</span> is equal in distribution to the square of Student <span class="math inline">\(t_{\nu}\)</span> distribution under the null model (also equal in distribution under the full model, but have a non-centrality parameter)</p></li>
+<li class="fragment"><p>Decision rule was to reject M0 if <span class="math inline">\(F(\mathbf{Y}) &gt; F_{1, n - q - 1, \alpha}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(p\)</span>-value is <span class="math inline">\(\Pr(F_{1, n - q - 1} &gt; F(\mathbf{Y})\)</span>; the probability of observing a value of <span class="math inline">\(F\)</span> as extreme as the observed value under the null model</p></li>
+<li class="fragment"><p>using a t-distribution, the equivalent decision rule is to reject M0 if <span class="math inline">\(|t(\mathbf{Y})| &gt; t_{n - q - 1, \alpha/2}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(p\)</span>-value is <span class="math inline">\(\Pr(|T_{n - q - 1}| &gt; |t(\mathbf{Y})|)\)</span></p></li>
+<li class="fragment"><p>equal-tailed <span class="math inline">\(t\)</span>-test</p></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="14-testing-submodels_files/figure-revealjs/p-value-1.png" class="quarto-figure quarto-figure-center" style="width:3.5in;height:6.5in"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="likelihood-ratio-tests" class="slide level2">
+<h2>Likelihood Ratio Tests</h2>
+<ul>
+<li class="fragment"><p>we derived the <span class="math inline">\(F\)</span>-test heurestically, but the formally this test may be derived as a likelihood ratio test.</p></li>
+<li class="fragment"><p>consider a statistical model <span class="math inline">\(\mathbf{Y}\sim P,  P \in \{P_\boldsymbol{\theta}: \boldsymbol{\theta}\in \boldsymbol{\Theta}\}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(P\)</span> is the true unknown distribution for <span class="math inline">\(\mathbf{Y}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\{P_\boldsymbol{\theta}: \boldsymbol{\theta}\in \boldsymbol{\Theta}\}\)</span> is the model, the set of possible distributions for <span class="math inline">\(\mathbf{Y}\)</span> with <span class="math inline">\(\boldsymbol{\Theta}\)</span> the parameter space</p></li>
+<li class="fragment"><p>we might hypothesize that <span class="math inline">\(\boldsymbol{\theta}\subset \boldsymbol{\Theta}_0 \subset \boldsymbol{\Theta}\)</span></p></li>
+<li class="fragment"><p>for our linear model this translates as <span class="math inline">\(\boldsymbol{\theta}= (\boldsymbol{\alpha}, \boldsymbol{\beta}, \sigma^2) \subset \mathbb{R}^q \times \{\mathbf{0}\} \times \mathbb{R}^+ \subset \mathbb{R}^g \times \mathbb{R}^p \times \mathbb{R}^+\)</span></p></li>
+<li class="fragment"><p>compute the <strong>likelihood ratio statistic</strong> <span class="math display">\[R(\mathbf{Y}) = \frac{\sup_{\boldsymbol{\theta}\in \boldsymbol{\Theta}_0} p_\boldsymbol{\theta}(\mathbf{Y}))}{\sup_{\boldsymbol{\theta}\in \boldsymbol{\Theta}} p_\boldsymbol{\theta}(\mathbf{Y}))}\]</span></p></li>
+</ul>
+</section>
+<section id="likelihood-ratio-tests-1" class="slide level2">
+<h2>Likelihood Ratio Tests</h2>
+<p>Equivalently, we can look at <strong>-2 times the log likelihood ratio statistic</strong> <span class="math display">\[\lambda(\mathbf{Y}) = -2\log(R(\mathbf{Y})) = -2 [\sup_{\boldsymbol{\theta}\in \boldsymbol{\Theta}_0} \cal{l}(\boldsymbol{\theta})- \sup_{\boldsymbol{\theta}\in \boldsymbol{\Theta}} \cal{l}(\boldsymbol{\theta})]\]</span> where <span class="math inline">\(\cal{l}(\boldsymbol{\theta}) \propto \log p_\boldsymbol{\theta}(\mathbf{Y})\)</span> (the log likelihood)</p>
+<div class="fragment">
+<p>Steps:</p>
+<ol type="1">
+<li class="fragment">Find the MLEs of <span class="math inline">\(\boldsymbol{\theta}\)</span> in the reduced model <span class="math inline">\(\boldsymbol{\Theta}_0\)</span>, <span class="math inline">\(\hat{\boldsymbol{\theta}}_0\)</span></li>
+<li class="fragment">Find the MLEs of $the full model <span class="math inline">\(\boldsymbol{\Theta}\)</span>, <span class="math inline">\(\hat{\boldsymbol{\theta}}\)</span></li>
+<li class="fragment">Compute <span class="math inline">\(\lambda(\mathbf{Y}) = -2 [\cal{l}(\hat{\boldsymbol{\theta}}_0)- \cal{l}(\hat{\boldsymbol{\theta}})]\)</span></li>
+<li class="fragment">Find the distribution of <span class="math inline">\(\lambda(\mathbf{Y})\)</span> under the reduced model</li>
+</ol>
+</div>
+<div class="fragment">
+<p>with some rearranging and 1-to-1 transformations, can show that this is equivalent to the <span class="math inline">\(F\)</span>-test!</p>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
