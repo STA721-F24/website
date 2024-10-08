@@ -103,7 +103,7 @@ Hypothesis Testing:
 
 - The hypothesis of no effects
 
-  - Likelihood ratio tests
+
   - F-tests 
   - Null distribution
   - Decision procedure 
@@ -128,7 +128,7 @@ but hypothesize that there is no effect of the $\X$ variables on $\Y$
 
 - If this were true, then the distribution for $\Y$ would be 
 $$
-\quad \quad  \quad \quad \quad {\text{  M0}} \quad \quad \Y \sim \quad \quad \eps \sim \N(0, \sigma^2 \I_n) 
+\quad \quad  \quad \quad \quad {\text{  M0}} \quad \quad \Y = \eps  \quad \quad \eps \sim \N(0, \sigma^2 \I_n) 
 $$
 
 - For M1, the distribution of $\Y$ is a collection of normal distributions with $\mub \in C(\X)$ and Covariance a scalar multiple of the $\I$
@@ -193,7 +193,7 @@ How big is $\|\X\bhat\|^2$  on average? How big do we expect it to be under our 
 Take expectations:
 
 \begin{align*}
-\E[\|\X\bhat\|^2] & = \|\b\X^T\|^2 + \E[2 \b^T \X^T  \eps] + \E[\eps^T \P \eps] \\
+\E[\|\X\bhat\|^2] & = \|\X\b\|^2 + \E[2 \b^T \X^T  \eps] + \E[\eps^T \P \eps] \\
 & = \|\X\b \|^2 + 0 + \sigma^2 \tr(\P) = \|\X\b \|^2 + \sigma^2 p
 \end{align*}
 
@@ -444,7 +444,7 @@ Need:
   
 ## Expected Value of $\SSE_{M0}$ under M1
 
-- Rewrite  $(\I - \P_{\W}\Y$ under M1:
+- Rewrite  $(\I - \P_{\W})\Y$ under M1:
 \begin{align*}
 (\I - \P_{\W})\Y & = (\I - \P_{\W})(\W \alphav + \X\b + \eps) \\
 & = (\I - \P_{\W})\X\b + (\I - \P_{\W})\eps 
