@@ -1,0 +1,461 @@
+---
+subtitle: "STA 721: Lecture 14"
+title: "Hypothesis Testing Related to SubModels"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+    include-in-header: mathjax-eq.html
+html-math-method:
+    method: mathjax
+    url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+      numbered: false
+    Lemma:
+      group: thmlike
+      numbered: false
+    Corollary:
+      group: thmlike
+      numbered: false
+    Proposition:
+      group: thmlike
+      numbered: false      
+    Proof:
+      group: thmlike
+      numbered: false
+      collapse: false   
+    Exercise:
+      group: thmlike
+      numbered: false
+    Definition:
+      group: thmlike
+      numbered: false
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+require("lars", "monomvn")
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+Hypothesis Testing:
+
+
+  
+- Testing submodels 
+  - Extra sum of squares 
+  - F-tests 
+  - Null distribution
+  - Decision procedure 
+  - P-values
+  
+- Testing individual coefficients
+  - t-tests
+
+- Likelihood Ratio Tests
+
+  
+. . .
+
+Readings:
+
+- Christensen Appendix C, Chapter 3
+
+
+## Testing Recap
+
+-  We assume the Gaussian Linear Model
+$$\quad \quad \quad \quad \quad \quad \quad \quad \text{M1} \quad \Y ∼ \N(\W\alphav + \X\b, \sigma^2\I) \equiv \N(\Z\tb, \sigma^2\I)$$
+where $\W$ is $n \times q$, $\X$ is $n \times p$, $\Z = [\W \X]$, 
+
+- We wish to evaluate the hypothesis $\b = \zero$ 
+
+- equivalent to comparing M1 to M0:
+$$\text{M0} \quad \Y ∼ \N(\W\alphav, \sigma^2\I)$$
+- $\SSE_{M0}/(n-q)$ and $\SSE_{M1}/(n- q - p)$ are unbiased estimates of $\sigma^2$ under null model M0
+
+- but the ratio $\frac{\SSE_{M0}/(n-q)}{\SSE_{M1}/(n- q - p)}$ does not have a F distribution
+
+
+
+
+## Extra Sum of Squares
+
+Rewrite $\SSE_{M0}$:
+\begin{align*}
+\SSE_{M0} & = \Y^T(\I - \P_{\W})\Y \\
+          & = \Y^T(\I - \P_{\Z} + \P_{\Z} - \P_{\W})\Y \\
+          & = \Y^T(\I - \P_{\Z})\Y + \Y^T(\P_{\Z} - \P_{\W})\Y \\
+          & = \SSE_{M1} + \Y^T(\P_{\Z} - \P_{\W})\Y 
+\end{align*}
+
+. . .
+
+Extra Sum of Squares:
+$$\SSE_{M0} - \SSE_{M1}  = \Y^T(\P_{\Z} - \P_{\W})\Y$$
+
+## Expectation of Extra Sum of Squares
+
+
+$\E[\SSE_{M0} - \SSE_{M1}] = \E[\Y^T(\P_{\Z} - \P_{\W})\Y]$
+
+- under M0: $\mub = \W\alphav$
+\begin{align*} 
+\E[(\P_{\Z} - \P_{\W})\Y] & = \P_{\Z}\W\alphav - \P_{\W}\W\alphav \\
+ & = \W\alphav \W_\alphav  \\ 
+ & = \zero \\
+\E[\Y^T(\P_{\Z} - \P_{\W})\Y] & = \sigma^2(\tr \P_\Z + \tr \P_\W) \\
+ & = \sigma^2 (q + p - q) = p \sigma^2
+\end{align*}
+
+- under M1: $\mub = \X\b + \W\alphav$
+\begin{align*} 
+\E[(\P_{\Z} - \P_{\W})\Y] & = \X\b + \W\alphav - \P_{\W}\X\b - \W\alphav \\
+ & = (\I - \P_{\W})\X\b \\
+\E[\Y^T(\P_{\Z} - \P_{\W})\Y] & = p \sigma^2 + \b^T\X^T(\I - \P_{\W})\X\b
+\end{align*}
+
+## Test Statistic
+
+Propose ratio:
+$$F = \frac{(\SSE_{M0} - \SSE_{M1})/p} {\SSE_{M1}/(n - q - p)} = \frac{\Y^T(\P_{\Z} - \P_{\W})\Y/p}{\SSE_{M1}/(n - q - p)}$$
+as a test statistic.
+
+. . .
+
+Does $F$ have an F distribution under M0? 
+
+  - denominator $\SSE_{M1}/\sigma^2$ does have a $\chi^2$ distribution?
+  - does numerator $\SSE_{M0}/\sigma^2$ have a $\chi^2$ distribution?
+  - are they independent?
+ 
+ 
+## Properties of $\P_{\Z} - \P_{\W}$
+
+To show that $\Y^T(\P_{\Z} - \P_{\W})\Y$ has a $\chi^2$ distribution under M0 or M1, we need to show that $\P_{\Z} - \P_{\W}$ is a projection matrix.
+
+- symmetric?
+- idempotent?
+
+. . .
+
+\begin{align*}
+(\P_{\Z} - \P_{\W})^2 & = \P_{\Z}^2 - \P_{\Z}\P_{\W} - \P_{\W}\P_{\Z} + \P_{\W}^2 \\
+ & = \P_{\Z} - \P_{\Z}\P_{\W} - \P_{\W}\P_{\Z} + \P_{\W} \\
+ & = \P_{\Z} - \P_{\Z}\P_{\W} - (\P_{\Z}\P_{\W})^T + \P_{\W} \\
+ & = \P_{\Z} - 2\P_{\W}  + \P_{\W} \\
+ & = \P_{\Z} - \P_{\W}
+\end{align*} 
+
+- Note: we are using $\P_{\Z}\P_{\W} = \P_{\W}$ as each column of $\P_{\W}$
+is in $C(\W)$ and hence also in $C(\Z)$
+
+. . .
+
+So $\P_{\Z} - \P_{\W}$ is a projection matrix
+
+::: footer
+:::
+
+## Projection Matrix $\P_{\Z} - \P_{\W}$
+  
+Onto what space is it projecting? 
+
+- Intuitively, it is projecting onto the part of $\X$ that is not in $\W$, $\tX = (\I - \P_{\W})\X$ (the part of $\X$ that is orthogonal to $\W$)
+
+- $C(\tX)$ and $C(\W)$ are complementary orthogonal subspaces of $C(\Z)$
+
+- $\P_{\Z} - \P_{\W}$ is a projection matrix onto $C(\tX)$ along $C(\W)$
+
+- we are decomposing $C(\Z)$ into two orthogonal subspaces $C(\W)$ and $C(\tX)$
+
+- We can write $\P_{\Z} = \P_{\tX} + \P_{\W}$  where $\P_{\tX} \P_{\W} = \P_{\W} \P_{\tX} = \zero$ 
+
+. . .
+
+Note: we can always write 
+\begin{align*}
+\mub & = \W\alphav + \X\b \\
+     & = \W\alphav + (\I - \P_{\W})\X\b + \P_{\W}\X\b \\
+     & = \W \tilde{\alphav} + \tX\b
+\end{align*}
+
+## Distribution of Extra Sum of Squares
+
+- Since $\P_{\Z} - \P_{\W}$ is a projection matrix 
+- $\Y^T(\P_{\Z} - \P_{\W})\Y/\sigma^2$ has a $\chi^2_p$ distribution under M0
+
+. . .
+
+\begin{align*}
+\Y^T(\P_{\Z} - \P_{\W})\Y & = \|(\P_{\Z} - \P_{\W})\Y\|^2 \\
+ & = \|(\P_{\Z} - \P_{\W})(\X\b + \W\alpha + \eps\|^2 \\
+& = \|(\P_{\Z} - \P_{\W})(\X\b \eps\|^2 \\
+ & = \|(\P_{\Z} - \P_{\W})\eps\|^2 \quad \text{ if } \b = \zero\\
+ & = \eps^T(\P_{\Z} - \P_{\W})\eps \\
+ & \sim \sigma^2 \chi^2_p \quad \text{ if } \b = \zero
+\end{align*} 
+
+- show that $\Y^T(\P_{\Z} - \P_{\W})\Y$ and $\Y^T(\I - \P_{\Z})\Y$ are independent
+
+## F-Statistic
+Under M1: $\b = \zero$
+
+\begin{align*}
+F(\Y) & = \frac{(\SSE_{M0} - \SSE_{M1})/p}{\SSE_{M1}/(n - q - p)} \\
+      & = \frac{(\SSE_{M0} - \SSE_{M1})/\sigma^2p}{\SSE_{M1}/\sigma^2(n - q - p)} \\
+      & \eqindis \frac{\chi^2_p/p}{\chi^2_{n-q-p}/(n-q-p)} \\
+      & \eqindis F_{p, n-q-p}
+\end{align*}
+
+- Under M1, $\Y^T(\P_{\Z} - \P_{\W})\Y/\sigma^2$ has a non-central $\chi^2_{p, \eta}$ where the non-centrality parameter $\eta = \b^T\X^T(\I - \P_{\W})\X\b/2\sigma^2$. 
+
+- $F$ has a non-central F distribution with $p$ and $n-q-p$ degrees of freedom and non-centrality parameter $\eta = \b^T\X^T(\I - \P_{\W})\X\b/2\sigma^2$
+(See Christensen Theorem 3.2.1 and Appendix C)
+
+::: footer
+:::
+
+## Testing Individual Coefficients
+
+Consider the model with $p = 1$, $\Y = \W\alphav + \x\beta + \eps$  and we want to test that $\beta = 0$ (M0)
+
+1. fit the full model and compute $\SSE_{M1}$
+2. fit the reduced model and compute $\SSE_{M0}$
+3. calculate the $F$ statistic and $p$-value
+
+. . .
+
+It turns out that we can obtain this $F$ statistic by fitting the full model  and the test reduces to a familiar $t$-test
+
+. . .
+
+\begin{align*}
+\hspace{-1in}{\text{Note: }} \hspace{1in} \SSE_{M0} - \SSE_{M1} & =  \Y^T(\P_{\Z} - \P_{\W})\Y  \\
+& = \|(\P_{\tX} + \P_{\W} - \P_{\W})\Y\|^2 \\
+& = \|\P_{\tX}\Y\|^2 \\
+& = \|(\I - \P_{\W})\X\bhat\|^2 \\
+& = \bhat^T\X^T(\I - \P_{\W})\X\bhat
+\end{align*}
+
+## Testing Individual Coefficients
+
+For $p = 1$, the $F$ statistic
+
+\begin{align*}
+F(\Y) & = \frac{(\SSE_{M0} - \SSE_{M1})/1}{\SSE_{M1}/(n - q - 1)} \\
+  & = \frac{\hat{\beta}^T\x^T(\I - \P_{\W})\x\hat{\beta}}{s^2} \\
+  & = \frac{\hat{\beta}^2}{s^2/\x^T(\I - \P_{\W})\x} \\
+F(\Y)   & \sim F_{1, n - q - 1}  \quad \text{ under } \beta = 0
+\end{align*}
+
+. . .
+
+- variance of $\hat{\beta}$:
+\begin{align*}
+\var[\hat{\beta}] & = \sigma^2/\x^T(\I - \P_{\W})\x = \sigma^2 v\\
+v & = 1/\x^T(\I - \P_{\W})\x
+\end{align*}
+
+## $t$-statistic
+
+\begin{align*}
+F(\Y) & = \frac{\hat{\beta}^2}{s^2/\x^T(\I - \P_{\W})\x} 
+= \left(\frac{\hat{\beta}}{s \sqrt{v}}\right)^2 
+=  t(\Y)^2
+\end{align*}
+
+- Since $F(\Y) \sim F(1, n - q - 1)$ under M0: $\beta = 0$, 
+$t(\Y)^2 \sim F(1,n - q - 1)$ under M0: $\beta = 0$
+
+- what is distribution of $t(\Y)$ under M0: $\beta \ne 0$?
+
+. . .
+
+Recall that under M0: $\beta = 0$, 
+
+1. $\hat{\beta}/\sqrt{v\sigma^2} \sim \N(0, 1)$
+2. $(n-q-1)s^2/\sigma^2 \sim \chi^2_{n-q-1}$
+3. $\hat{\beta}$ and $s^2$ are independent
+
+
+## Student $t$ Distribution
+
+::: {.Theorem}
+### Student $t$ Distribution
+A random variable $T$ has a Student $t$ distribution with $\nu$ degrees of freedom if 
+$$T \eqindis \frac{Z}{X/\nu}$$
+
+where 
+\begin{align*}
+Z & \sim \N(0,1) \\
+X & \sim \chi^2_\nu \\
+Z &\text{ and }  X \text{ are independent }
+\end{align*}
+:::
+
+
+
+
+- $\therefore \, t(\Y) = \hat{\beta}/\sqrt{v\sigma^2}$ has a Student $t$ distribution with $n - q - 1$
+degrees of freedom under M0: $\beta = 0$
+
+## Decision rules and $p$-values
+
+::: {.columns}
+:::: {.column width=60%}
+- an $F_{1, \nu}$ is equal in distribution to the square of Student $t_{\nu}$ distribution
+under the null model (also equal in distribution under the full model, but have a non-centrality parameter)
+
+- Decision rule was to reject M0 if $F(\Y) > F_{1, n - q - 1, \alpha}$
+
+- $p$-value is $\Pr(F_{1, n - q - 1} > F(\Y)$; the probability of observing a value of $F$ as extreme as the observed value under the null model
+
+- using a t-distribution, the equivalent decision rule is to reject M0 if $|t(\Y)| > t_{n - q - 1, \alpha/2}$
+
+- $p$-value is $\Pr(|T_{n - q - 1}| > |t(\Y)|)$
+
+- equal-tailed $t$-test
+:::
+:::: {.column width=40%}
+
+```{r}
+#| label: p-value
+#| out.width:  3.5in
+#| out.height: 6.5in
+#| fig.height: 6.5
+#| fig.width:  3.5
+set.seed(42)
+alpha = 0.05
+F = seq(0, 5.5, length=1000)
+t = seq(-5.5, 5.5, length=2000)
+density = df(F, 1, 10, ncp=0)
+density.t = dt(t, 10, ncp=0)
+par(mfrow=c(2,1))
+plot(F, density, type='l', col='blue', lwd=2, xlab='F', ylab='Density', main='F(1,10)')
+Fobs = rf(1,3, 10, ncp=0)
+pvalue = 1 - pf(Fobs, 1, 10, ncp=0)
+segments(x0= Fobs, y0 = 0, x1 = Fobs, y1 = df(Fobs, 1, 10, ncp=0), col='slateblue', lty=2)
+polygon(c(Fobs,F[F >= Fobs], max(F)),
+        c(0, density[F >= Fobs],0),
+        col = "slateblue1", density=NA,
+        border = 1, lwd=2)
+#fill_between(F, df(F, 3, 10, ncp=0), 0, F < Fcrit, col='blue', alpha=0.5)
+text(Fobs+.1, 0.5, paste0("p=", round(pvalue,4)), pos=4)
+
+plot(t, density.t, type='l', col='blue', lwd=2, xlab='t', ylab='Density', main='t(10)')
+tobs = sqrt(Fobs)
+pvalue = 2*pt(-abs(tobs), 10)
+segments(x0= tobs, y0 = 0, x1 = tobs, y1 = dt(tobs, 10), col='slateblue', lty=2)
+segments(x0= -tobs, y0 = 0, x1 = -tobs, y1 = dt(tobs, 10), col='slateblue', lty=2)
+polygon(c(tobs,t[t >= tobs], max(t)),
+        c(0, density.t[t >= tobs],0),
+        col = "slateblue1", density=NA,
+        border = 1, lwd=2)
+polygon(c(-tobs,-t[t >= tobs]),
+        c(0, density.t[t >= tobs]),
+        col = "slateblue1", density=NA,
+        border = 1, lwd=2)
+text(tobs, 0.15, paste0(round(pvalue/2,4)), pos=4)
+text(-5, 0.15, paste0(round(pvalue/2,4)), pos=4)
+```
+:::
+::::
+
+## Likelihood Ratio Tests
+
+- we derived the $F$-test heurestically, but the formally this test may be derived as a likelihood ratio test.
+
+- consider a statistical model $\Y \sim P,  P \in \{P_\tb: \tb \in \Tb\}$
+
+- $P$ is the true unknown distribution for $\Y$
+
+- $\{P_\tb: \tb \in \Tb\}$ is the model, the set of possible distributions for $\Y$ with $\Tb$ the parameter space
+
+- we might hypothesize that $\tb \subset \Tb_0 \subset \Tb$
+
+- for our linear model this translates as $\tb = (\alphav, \b, \sigma^2) \subset \bbR^q \times \{\zero\} \times \bbR ^+ \subset \bbR^g \times \bbR^p \times \bbR^+$
+
+- compute the **likelihood ratio statistic**
+$$R(\Y) = \frac{\sup_{\tb \in \Tb_0} p_\tb(\Y))}{\sup_{\tb \in \Tb} p_\tb(\Y))}$$
+
+## Likelihood Ratio Tests
+
+Equivalently, we can look at **-2 times the log likelihood ratio statistic**
+$$\lambda(\Y) = -2\log(R(\Y)) = -2 [\sup_{\tb \in \Tb_0} \cal{l}(\tb)- \sup_{\tb \in \Tb} \cal{l}(\tb)]$$
+where $\cal{l}(\tb) \propto \log p_\tb(\Y)$ (the log likelihood)
+
+. . .
+
+
+Steps: 
+
+  1. Find the MLEs of $\tb$ in the reduced model $\Tb_0$, $\hat{\tb}_0$
+  2. Find the MLEs of $\tb the full model $\Tb$, $\hat{\tb}$
+  3. Compute $\lambda(\Y) = -2 [\cal{l}(\hat{\tb}_0)- \cal{l}(\hat{\tb})]$
+  4. Find the distribution of $\lambda(\Y)$ under the reduced model
+
+. . .
+
+with some rearranging and 1-to-1 transformations, can show that this is equivalent to the $F$-test!  

@@ -2,7 +2,7 @@
 title: "Testing Hypotheses about Submodels"
 ---
 
-We continue discussion of $F$-tests with testing hypotheses about submodels of a linear model and connections to $t$-tests for individual coefficients.
+We continue discussion of $F$-tests with testing hypotheses about submodels of a linear model and connections to $t$-tests for individual coefficients as well as likelihood ratio tests.
 
 
 Readings:
