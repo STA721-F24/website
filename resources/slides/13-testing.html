@@ -333,13 +333,33 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
   .Proposition {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Feature {
-    --color1: #c0c0c0;
-    --color2: #808080;
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
+  }
+  .Exercise {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Theorem {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Proof {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   .TODO {
     --color1: #e7b1b4;
@@ -349,29 +369,9 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Proof {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Theorem {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
   }
   </style>
 </head>
@@ -401,7 +401,6 @@ Merlise Clyde (clyde@duke.edu)
 <ul>
 <li class="fragment"><p>The hypothesis of no effects</p>
 <ul>
-<li class="fragment">Likelihood ratio tests</li>
 <li class="fragment">F-tests</li>
 <li class="fragment">Null distribution</li>
 <li class="fragment">Decision procedure</li>
@@ -425,7 +424,7 @@ Merlise Clyde (clyde@duke.edu)
 \]</span> but hypothesize that there is no effect of the <span class="math inline">\(\mathbf{X}\)</span> variables on <span class="math inline">\(\mathbf{Y}\)</span></p>
 <ul>
 <li class="fragment"><p>If this were true, then the distribution for <span class="math inline">\(\mathbf{Y}\)</span> would be <span class="math display">\[
-\quad \quad  \quad \quad \quad {\text{  M0}} \quad \quad \mathbf{Y}\sim \quad \quad \boldsymbol{\epsilon}\sim \textsf{N}(0, \sigma^2 \mathbf{I}_n)
+\quad \quad  \quad \quad \quad {\text{  M0}} \quad \quad \mathbf{Y}= \boldsymbol{\epsilon}\quad \quad \boldsymbol{\epsilon}\sim \textsf{N}(0, \sigma^2 \mathbf{I}_n)
 \]</span></p></li>
 <li class="fragment"><p>For M1, the distribution of <span class="math inline">\(\mathbf{Y}\)</span> is a collection of normal distributions with <span class="math inline">\(\boldsymbol{\mu}\in C(\mathbf{X})\)</span> and Covariance a scalar multiple of the <span class="math inline">\(\mathbf{I}\)</span></p></li>
 <li class="fragment"><p>the distributions for the data <span class="math inline">\(\mathbf{Y}\)</span> under M0 is a subset of the distributions under M1 or <em>submodel</em> of M1 with <span class="math inline">\(\boldsymbol{\mu}= \mathbf{0}\)</span></p></li>
@@ -479,7 +478,7 @@ Merlise Clyde (clyde@duke.edu)
 <div class="fragment">
 <p>Take expectations:</p>
 <p><span class="math display">\[\begin{align*}
-\textsf{E}[\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2] &amp; = \|\boldsymbol{\beta}\mathbf{X}^T\|^2 + \textsf{E}[2 \boldsymbol{\beta}^T \mathbf{X}^T  \boldsymbol{\epsilon}] + \textsf{E}[\boldsymbol{\epsilon}^T \mathbf{P}\boldsymbol{\epsilon}] \\
+\textsf{E}[\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2] &amp; = \|\mathbf{X}\boldsymbol{\beta}\|^2 + \textsf{E}[2 \boldsymbol{\beta}^T \mathbf{X}^T  \boldsymbol{\epsilon}] + \textsf{E}[\boldsymbol{\epsilon}^T \mathbf{P}\boldsymbol{\epsilon}] \\
 &amp; = \|\mathbf{X}\boldsymbol{\beta}\|^2 + 0 + \sigma^2 \textsf{tr}(\mathbf{P}) = \|\mathbf{X}\boldsymbol{\beta}\|^2 + \sigma^2 p
 \end{align*}\]</span></p>
 <ul>
@@ -677,7 +676,7 @@ t(\mathbf{Y}, \mathbf{X}) &amp; = \frac{\textsf{RSS}/p}{\textsf{SSE}/(n-p)} = \f
 <section id="expected-value-of-textsfsse_m0-under-m1" class="slide level2">
 <h2>Expected Value of <span class="math inline">\(\textsf{SSE}_{M0}\)</span> under M1</h2>
 <ul>
-<li class="fragment"><p>Rewrite <span class="math inline">\((\mathbf{I}- \mathbf{P}_{\mathbf{W}}\mathbf{Y}\)</span> under M1: <span class="math display">\[\begin{align*}
+<li class="fragment"><p>Rewrite <span class="math inline">\((\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}\)</span> under M1: <span class="math display">\[\begin{align*}
 (\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}&amp; = (\mathbf{I}- \mathbf{P}_{\mathbf{W}})(\mathbf{W}\boldsymbol{\alpha}+ \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}) \\
 &amp; = (\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}+ (\mathbf{I}- \mathbf{P}_{\mathbf{W}})\boldsymbol{\epsilon}
 \end{align*}\]</span></p></li>
