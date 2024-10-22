@@ -1,0 +1,12 @@
+---
+title: "Confidence and Credible Regions"
+---
+
+We present confidence and credible regions for parameters in the linear model
+
+
+Readings:
+
+
+
+- Christensen Chapter 3, Appendix C

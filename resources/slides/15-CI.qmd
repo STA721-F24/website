@@ -1,6 +1,6 @@
 ---
 subtitle: "STA 721: Lecture 15"
-title: "Confidence Regions"
+title: "Confidence & Credible Regions"
 author: "Merlise Clyde (clyde@duke.edu)"
 institute: "Duke University"
 format: 
