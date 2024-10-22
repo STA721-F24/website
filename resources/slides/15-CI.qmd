@@ -1,0 +1,341 @@
+---
+subtitle: "STA 721: Lecture 15"
+title: "Confidence Regions"
+author: "Merlise Clyde (clyde@duke.edu)"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+    include-in-header: mathjax-eq.html
+html-math-method:
+    method: mathjax
+    url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+      numbered: false
+    Lemma:
+      group: thmlike
+      numbered: false
+    Corollary:
+      group: thmlike
+      numbered: false
+    Proposition:
+      group: thmlike
+      numbered: false      
+    Proof:
+      group: thmlike
+      numbered: false
+      collapse: false   
+    Exercise:
+      group: thmlike
+      numbered: false
+    Definition:
+      group: thmlike
+      numbered: false
+      colors: [d999d3, a01793]
+    Feature: 
+       numbered: false
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+#  
+
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+require("lars", "monomvn")
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+- Confidence Interverals from Test Statistics
+
+- Pivotal Quantities
+
+- Confidence intervals for parameters
+
+- Prediction Intervals
+
+. . .
+
+Readings:
+
+- Christensen Appendix C, Chapter 3
+
+
+
+## Goals
+
+For the regression model $\Y = \X\b +\eps$ we usually want to do more than just
+testing that $\b$ is zero
+
+- what is a plausible range for $\beta_j$?
+
+- what is a plausible set of values for $\beta_j$ and $\beta_k$?
+
+- what is a a plausible range of values for $\x\b$ for a particular $\x$?
+
+- what is a plausible range of values for $\Y_{n+1}$ for a given value of $\x_{n+1}$?
+
+. . . 
+
+Look at confidence intervals, confidence regions, prediction regions and Bayesian regions
+
+## Confidence Sets 
+
+For a random variable $\Y \sim \P \in \{P_{\tb}: \tb \in \Tb\}$
+
+::: {.Definition}
+## Confidence Region
+A set valued function $C$ is a $(1 - \alpha) \times 100\%$ confidence region for $\tb$
+if $$P_{\tb}(\{\tb \in C(\Y)\}) = 1- \alpha \, \forall \, \tb \in \Tb$$
+:::
+
+- In this case we say $C(Y)$ is a $1 - \alpha$ confidence region for the parameter $\tb$
+
+- there is some true value of $\tb$, and the confidence region will cover it with probability
+$1- \alpha$ no matter what it is.
+
+- the randomness is due to $\Y$ and $C(\Y)$ 
+
+- once we observe $\Y$ everything is fixed, so region may not include the true $\tb$
+
+## Hypothesis Tests and Rejection/Acceptance Regions
+Recall for a level $\alpha$ test of a point null hypothesis
+
+- we reject $H$ with probability $\alpha$ when $H$ is true
+
+- for each test we can construct:
+  - a rejection region $R(\tb) \subset \cal{Y}$, the $Y$ values for which we reject $H$
+  - an acceptance region $A(\tb)  \subset \cal{Y}$, the $Y$ values for which we accept $H$
+
+- these sets are complements of each other (for non-randomized tests)
+
+. . .
+
+$$\Pr(\Y \in A(\tb) \mid \tb) =  1 - \alpha$$
+
+## Duality of Hypothesis-Testing/Confidence Regions
+
+Suppose we have a level $\alpha$ test for every possible valuse of $\tb$
+
+- for each $\tb \in \Tb$, let $A(\tb)$ be the acceptance region of the test $\Y \sim P_{\tb}$
+
+- then $P(\Y \in A(\tb) \mid \tb) = 1 - \alpha$ for each $\tb \in \Tb$
+
+- This collection of hypothesis tests can be “inverted” to construct a confidence region for θ, as follows: 
+
+- define $C(\Y) = \{ \tb \in \Tb: \Y \in A(\tb) \}$
+
+- this is the set of $\tb$ values that are not rejected when $\Y = \y$ is observed
+
+- then $C$ is a $1 - \alpha$ confidence region for $\tb$
+
+
+## Confidence Intervals for Regression Parameters
+
+For the linear model $\Y \sim \N(\X\b, \sigma^2 \I)$, confidence intervals for $\beta_j$ can be constructed from  inverting the approriate $t$-test.
+
+- suppose you are testing $H: \beta_j = 0$
+
+- if $H$ is true, then
+  - $\hat{\beta}_j - \beta_j \sim \N(0, \sigma^2 v_{jj})$ where $v_{jj}$ is the $j$th diagonal element of $(\X^T\X)^{-1}$
+  - $s^2 \sim \sigma^2 \chi^2_{n-p}/(n-p)$
+  - $\hat{\beta}_j$ and $s^2$ are independent
+- therefore if $H$ is true
+$$t_j = \frac{\hat{\beta}_j - \beta_j}{s\sqrt{v_{jj}}} \sim t_{n-p}$$
+
+
+## Acceptance Region & Confidence Interval
+- define the acceptance region 
+$A(\beta_j) = \{ \hat{\beta}_j, s^2: |t_j| < t_{n-p, 1 - \alpha/2}\}$  
+- we have that $H$ is accepted if 
+$$t_j \in A(\beta_j) \Leftrightarrow \frac{|\hat{\beta}_j - \beta_j|}{s\sqrt{v_{jj}}} < t_{n-p, 1-\alpha/2}$$
+- Now construct a confidence interval for the true value by inverting the tests: 
+\begin{align*}
+C(\hat{\beta}_j, s^2) & =  (\hat{\beta_j}, s^2) \in A(\beta_j) \\
+ & = \left\{ \beta_j: |\hat{\beta}_j - \beta_j| < s\sqrt{v_{jj}} t_{n-p, 1 - \alpha/2} \right\}\\
+& = \left\{ \beta_j: \hat{\beta}_j - s\sqrt{v_{jj}} t_{n-p, 1 - \alpha/2} < \beta_j < \hat{\beta}_j + s\sqrt{v_{jj}} t_{n-p, 1 - \alpha/2} \right\} \\
+& = \hat{\beta}_j \pm s\sqrt{v_{jj}}\, t_{n-p, 1 - \alpha/2}
+\end{align*}
+
+- for $\alpha = 0.05$ and large $n$, $t_{n-p,0.975} \approx 2$, so CI is approximately $\hat{\beta}_j \pm 2s\sqrt{v_{jj}}$
+
+::: footer
+:::
+
+## Confidence Intervals for Linear Functions
+
+For a linear function of the parameters $\lambda = \a^T \b$ we can construct a confidence interval by inverting the appropriate $t$-test
+
+- most important example $\a^T\b = \x^T\b = \E[\Y \mid \x]$ 
+- suppose you are testing $H: \a^T\b = m$
+- If $H$ is true, $\a^T\b - m \sim \N(0, \sigma^2 v)$ where $v=\a^T(\X^T\X)^{-1}\a)$
+- $s^2 \sim \sigma^2 \chi^2_{n-p}/(n-p)$ independent of $\a^T\hat{\b}$
+- then $t = \frac{\a^T\hat{\b} - m}{s\sqrt{v}} \sim t_{n-p}$
+- a $1-\alpha$ confidence interval for $\a^T\b$ is
+$$\a^T\hat{\b} \pm s\sqrt{v}\, t_{n-p, 1 - \alpha/2}$$
+
+## Prediction Regions and Intervals
+
+Related to CI for $\E[Y \mid \x] = \x^T\b$, we may wish to construct a prediction interval for a new observation $Y^*$ at $\x_*$
+
+- a $1-\alpha$ prediction interval for $Y^*$ is a set valued function of $\Y$, $C(\Y)$ such that $$\Pr(\Y^* \in C(\Y) \mid \b,\sigma^2) = 1 - \alpha$$
+where the distribution is computed using the distribution of $\Y^*$
+
+- this use the idea of a _pivotal quantity_: a function of the data and the parameters that has a known distribution that does not depend on any unknown parameters.
+
+- for prediction, $Y^* = \x_*^T\b + \eps^*$ where $\eps^* \sim \N(0, \sigma^2)$ independent of $\eps$
+
+. . .
+
+\begin{align*}
+\E[Y^* - \x_*^T\bhat]   & = \x_*^T\b - \x_*^T\b = 0 \\
+\Var(Y^* - \x_*^T\bhat) & = \Var(\eps^*)  + \Var(\x_*^T\bhat)   
+                         = \sigma^2 + \sigma^2 \x_*^T(\X^T\X)^{-1}\x_* \\
+Y^* - \x_*^T\bhat & \sim \N(0, \sigma^2(1 + \x_*^T(\X^T\X)^{-1}\x_*))
+\end{align*}
+
+::: footer
+:::
+
+## Pivotal Quantity and Prediction Intervals
+
+Since $\bhat$ and $s^2$ are independent, we can construct a pivotal quantity for $Y^* - \x_*^T\bhat$:
+$$\frac{Y^* - \x_*^T\bhat}{s\sqrt{1 + \x_*^T(\X^T\X)^{-1}\x_*}} \sim t_{n-p}$$
+
+- therefore 
+$$\Pr\left(\frac{|Y^* - \x_*^T\bhat|}{s\sqrt{1 + \x_*^T(\X^T\X)^{-1}\x_*}} < t_{n-p, 1-\alpha/2} \right) = 1 - \alpha$$
+
+- Rearranging gives a $1-\alpha$ prediction interval for $Y^*$:
+$$\x_*^T\bhat \pm s\sqrt{1 + \x_*^T(\X^T\X)^{-1}\x_*} t_{n-p, 1-\alpha/2}$$
+
+## Joint Confidence Regions for $\b$
+
+- we can construct a joint confidence region for $\b$ based on inverting a test $H: \b = \b_0$. Recall:
+
+. . .
+
+\begin{align*}
+\bhat - \b & \sim \N(0, \sigma^2 (\X^T\X)^{-1}) \\
+(\XtX)^{-1/2}(\bhat - \b) & \sim \N(0, \sigma^2 \I) \\
+(\bhat - \b)^T(\XtX)^{-1}(\bhat - \b) & \sim \sigma^2 \chi^2_p 
+\end{align*}
+
+- since $s^2$ is independent of $\bhat$ we can construct a CI based on the $F$-distribution
+$$\frac{(\bhat - \b_0)^T(\XtX)^{-1}(\bhat - \b_0)/p}{s^2} \sim F_{p, n-p}$$
+- inverting the $F$-test gives a $1-\alpha$ confidence region for $\b$:
+$$\{ \b: (\bhat - \b_0)^T(\XtX)^{-1}(\bhat - \b_0)/s^2 < p F_{p, n-p, 1-\alpha} \}$$
+
+::: footer
+:::
+
+
+
+## Bayesian Credible Regions
+
+- In a Bayesian setting, we have a posterior distribution for $\b$ given the data $\Y$
+
+- a set $C \in \bbR^p$ is a $1-\alpha$ posterior credible region (sometimes called a  Bayesian confidence region) if $\Pr(\b \in C \mid \Y) = 1 - \alpha$
+
+- lots of sets have this property, but we usually want the most probable values of $\b$ given the data
+
+- this motivates looking at the highest posterior density (HPD) region which is a $1-\alpha$ credible set $C$ such that the values in $C$ have higher posterior density than those outside of $C$ 
+
+- the HPD region is the smallest region that contains $1-\alpha$ of the posterior probability
+
+## Bayesian Credible Regions
+
+- For a normal prior and normal likelihood, the posterior for $\b$ conditional on $\sigma^2$ 
+  is normal with say posterior mean $\bv_n$ and posterior precision $\Phib_n$
+
+- the posterior density as a function of $\b$ for a fixed $\sigma^2$ is
+$$p(\b \mid \Y) \propto \exp\left\{ -(\b - \bv_n)^T \Phib_n (\b - \bv_n)/2 \right\}$$
+- so a highest posterior density region has the form
+$$C = \{ \b: (\b - \bv_n)^T\Phib_n^{-1}(\b - \bv_n)  < q \}$$
+
+. . .
+
+\begin{align*}
+\b - \b_n \mid \sigma^2 & \sim \N(0, \Phib_n^{-1}) \\
+\Phib_n^{1/2}(\b - \b_n) \mid \sigma^2 & \sim \N(0, \I) \\
+(\b - \b_n)^T \Phib_n (\b - \b_n) \mid \sigma^2 & \sim  \chi^2_p
+\end{align*}
+
+- setting $q = \chi^2_{p, 1-\alpha}$ gives a Credible Region for  $\Pr(\b \in C \mid \Y) = 1 - \alpha$
+
+::: footer
+:::
+
+## Bayesian HPD Regions For Unknown $\sigma^2$
+
+- For unknown $\sigma^2$ we need to integrate out $\sigma^2$ to get the marginal posterior for $\b$
+
+- for conjugate priors, $\b \mid \phi \sim \N(\bv_0, (\phi \Phib_0)^{-1})$ and $\phi \mid \Y \sim \G(a_n/2, b_n/2)$, then 
+\begin{align*}
+\b \mid \phi, \Y & \sim \N(\bv_n, (\phi \Phib_n)^{-1}) \\
+\phi \mid \Y & \sim \G(a_n/2, b_n/2) \\
+\b \mid \Y & \sim \St(a_n, \bv_n, \hat{\phi}\Phib_n)
+\end{align*}
+where $\St(a_n, \bv_n, (\hat{\phi}\Phib_n)^{-1})$ is a multivariate Student-t distribution with $a_n$ degrees of freedom location $\bv_n$ and scale matrix $(\hat{\phi}\Phib_n)^{-1}$ with $\hat{\phi} = b_n/a_n$
+
+- Since $\phi (\b - \bv_n)^T \Phib_n (\b - \bv_n) \sim \chi^2_p$, show that the distribution of 
+$$\frac{\phi (\b - \bv_n)^T \Phib_n (\b - \bv_n)/p}{\phi \hat{\phi}} \sim F(p, a_n)$$
+- take $c = F_{p, a_n, 1-\alpha}$ to get a $1-\alpha$ HPD region for $\b$
+
+
+
+
+
+  

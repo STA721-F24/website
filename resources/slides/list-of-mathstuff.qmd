@@ -1,2 +1,2 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
- [**Theorem**](#student-t-distribution-1): Student $t$ Distribution\Pageref{student-t-distribution-1}
+ [**Definition**](#confidence-region): Confidence Region\Pageref{confidence-region}
