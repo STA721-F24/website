@@ -326,16 +326,42 @@ $$C = \{ \b: (\b - \bv_n)^T\Phib_n^{-1}(\b - \bv_n)  < q \}$$
 \begin{align*}
 \b \mid \phi, \Y & \sim \N(\bv_n, (\phi \Phib_n)^{-1}) \\
 \phi \mid \Y & \sim \G(a_n/2, b_n/2) \\
-\b \mid \Y & \sim \St(a_n, \bv_n, \hat{\phi}\Phib_n)
+\b \mid \Y & \sim \St(a_n, \bv_n, \hat{\sigma}^2\Phib_n^{-1})
 \end{align*}
-where $\St(a_n, \bv_n, (\hat{\phi}\Phib_n)^{-1})$ is a multivariate Student-t distribution with $a_n$ degrees of freedom location $\bv_n$ and scale matrix $(\hat{\phi}\Phib_n)^{-1}$ with $\hat{\phi} = b_n/a_n$
-
-- Since $\phi (\b - \bv_n)^T \Phib_n (\b - \bv_n) \sim \chi^2_p$, show that the distribution of 
-$$\frac{\phi (\b - \bv_n)^T \Phib_n (\b - \bv_n)/p}{\phi \hat{\phi}} \sim F(p, a_n)$$
-- take $c = F_{p, a_n, 1-\alpha}$ to get a $1-\alpha$ HPD region for $\b$
+where $\St(a_n, \bv_n, (\hat{\sigma}^2\Phib_n)^{-1})$ is a multivariate Student-t distribution with $a_n$ degrees of freedom location $\bv_n$ and scale matrix $\hat{\sigma}^2\Phib_n^{-1}$ with $\hat{\sigma}^2 = b_n/a_n$
 
 
+- density of $\b$ is
+$$p(\b \mid \Y) \propto \left(1 + \frac{(\b - \bv_n)^T\Phib_n^{-1}(\b - \bv_n)}{a_n \hat{\sigma}^2 } \right)^{-(a_n + p)/2}$$
 
 
+
+
+## Reference Posterior Distribution
+
+For the reference prior $\pi(\b,\phi) \propto 1/\phi$ and the likelihood $p(\Y \mid \b)$, the posterior is proportional to the likelihood times $\phi^{-1}$
+
+- (generalized) posterior distribution:
+\begin{align*}
+\b \mid \phi, \Y & \sim \N(\bhat, (\phi \XtX)^{-1}) \\
+\phi \mid \Y & \sim \G((n-p)/2, \SSE/2)
+\end{align*}
+if $n > p$
+
+- marginal posterior distribution for $\b$ is multivariate  Student-t with $n-p$ degrees of freedom, location $\bhat$ and scale matrix $\hat{\sigma}^2\XtX^{-1}$
+
+## Duality
+
+- the posterior density $\b$ is a monotonically decreasing function of $Q(\b) \equiv (\b - \bhat)^T\XtX(\b - \bhat)$ so contours of $p(\b \mid \Y)$ are ellipsoidal in the parameter space of $\b$
+
+- the quantity 
+$Q(\b)/p \hat{\sigma}^2$ is distributed _a posteriori_ 
+$$ Q(\b)/p \hat{\sigma}^2 \sim F(p, n-p)$$ and the ellipsoidal contour of $p(\b \mid \Y)$ is defined as $\frac{Q(\b)}{p \hat{\sigma}^2} = F(p, n-p, \alpha)$. (Box & Tiao 1973)
+
+- then HPD regions for $\b$ are the same as confidence regions for $\b$ based on the $F$-distribution 
+
+- marginals of $\beta_j$, $\x^T\b$ and $Y^*$ are also univariate Student-t with $n-p$ degrees of freedom
+
+- difference is in the interpretation of the regions i.e posterior probability that $\b$ is in the given the data vs the probability _a priori that the region covers the true $\b$ 
 
   
