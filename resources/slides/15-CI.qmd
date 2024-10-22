@@ -107,6 +107,8 @@ require("lars", "monomvn")
 
 - Prediction Intervals
 
+- Bayesian Credible Regions and Intervals
+
 . . .
 
 Readings:
@@ -124,13 +126,13 @@ testing that $\b$ is zero
 
 - what is a plausible set of values for $\beta_j$ and $\beta_k$?
 
-- what is a a plausible range of values for $\x\b$ for a particular $\x$?
+- what is a a plausible range of values for $\x^T\b$ for a particular $\x$?
 
 - what is a plausible range of values for $\Y_{n+1}$ for a given value of $\x_{n+1}$?
 
 . . . 
 
-Look at confidence intervals, confidence regions, prediction regions and Bayesian regions
+Look at confidence intervals, confidence regions, prediction regions and Bayesian credible regions/intervals
 
 ## Confidence Sets 
 
@@ -322,17 +324,17 @@ $$C = \{ \b: (\b - \bv_n)^T\Phib_n^{-1}(\b - \bv_n)  < q \}$$
 
 - For unknown $\sigma^2$ we need to integrate out $\sigma^2$ to get the marginal posterior for $\b$
 
-- for conjugate priors, $\b \mid \phi \sim \N(\bv_0, (\phi \Phib_0)^{-1})$ and $\phi \mid \Y \sim \G(a_n/2, b_n/2)$, then 
+- for conjugate priors, $\b \mid \phi \sim \N(\bv_0, (\phi \Phib_0)^{-1})$ and $\phi \sim \G(a_0/2, b_0/2)$, then 
 \begin{align*}
 \b \mid \phi, \Y & \sim \N(\bv_n, (\phi \Phib_n)^{-1}) \\
 \phi \mid \Y & \sim \G(a_n/2, b_n/2) \\
 \b \mid \Y & \sim \St(a_n, \bv_n, \hat{\sigma}^2\Phib_n^{-1})
 \end{align*}
-where $\St(a_n, \bv_n, (\hat{\sigma}^2\Phib_n)^{-1})$ is a multivariate Student-t distribution with $a_n$ degrees of freedom location $\bv_n$ and scale matrix $\hat{\sigma}^2\Phib_n^{-1}$ with $\hat{\sigma}^2 = b_n/a_n$
+where $\St(a_n, \bv_n, \hat{\sigma}^2\Phib_n^{-1})$ is a multivariate Student-t distribution with $a_n$ degrees of freedom location $\bv_n$ and scale matrix $\hat{\sigma}^2\Phib_n^{-1}$ with $\hat{\sigma}^2 = b_n/a_n$
 
 
 - density of $\b$ is
-$$p(\b \mid \Y) \propto \left(1 + \frac{(\b - \bv_n)^T\Phib_n^{-1}(\b - \bv_n)}{a_n \hat{\sigma}^2 } \right)^{-(a_n + p)/2}$$
+$$p(\b \mid \Y) \propto \left(1 + \frac{(\b - \bv_n)^T\Phib_n(\b - \bv_n)}{a_n \hat{\sigma}^2 } \right)^{-(a_n + p)/2}$$
 
 
 
@@ -362,6 +364,6 @@ $$ Q(\b)/p \hat{\sigma}^2 \sim F(p, n-p)$$ and the ellipsoidal contour of $p(\b 
 
 - marginals of $\beta_j$, $\x^T\b$ and $Y^*$ are also univariate Student-t with $n-p$ degrees of freedom
 
-- difference is in the interpretation of the regions i.e posterior probability that $\b$ is in the given the data vs the probability _a priori that the region covers the true $\b$ 
+- difference is in the interpretation of the regions i.e posterior probability that $\b$ is in the given the data vs the probability _a priori_ that the region covers the true $\b$ 
 
   
