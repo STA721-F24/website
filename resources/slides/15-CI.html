@@ -333,19 +333,31 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Proof {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   .Definition {
     --color1: #d999d3;
     --color2: #a01793;
   }
-  .Proof {
+  .Lemma {
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Lemma {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Exercise {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -360,18 +372,6 @@
   .Feature {
     --color1: #c0c0c0;
     --color2: #808080;
-  }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
   }
   </style>
 </head>
@@ -595,10 +595,30 @@ Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}&amp; \sim \textsf{N}(0, \sigma^2(1 
 <li class="fragment"><p>for conjugate priors, <span class="math inline">\(\boldsymbol{\beta}\mid \phi \sim \textsf{N}(\mathbf{b}_0, (\phi \boldsymbol{\Phi}_0)^{-1})\)</span> and <span class="math inline">\(\phi \mid \mathbf{Y}\sim \mathbf{G}(a_n/2, b_n/2)\)</span>, then <span class="math display">\[\begin{align*}
 \boldsymbol{\beta}\mid \phi, \mathbf{Y}&amp; \sim \textsf{N}(\mathbf{b}_n, (\phi \boldsymbol{\Phi}_n)^{-1}) \\
 \phi \mid \mathbf{Y}&amp; \sim \mathbf{G}(a_n/2, b_n/2) \\
-\boldsymbol{\beta}\mid \mathbf{Y}&amp; \sim \textsf{St}(a_n, \mathbf{b}_n, \hat{\phi}\boldsymbol{\Phi}_n)
-\end{align*}\]</span> where <span class="math inline">\(\textsf{St}(a_n, \mathbf{b}_n, (\hat{\phi}\boldsymbol{\Phi}_n)^{-1})\)</span> is a multivariate Student-t distribution with <span class="math inline">\(a_n\)</span> degrees of freedom location <span class="math inline">\(\mathbf{b}_n\)</span> and scale matrix <span class="math inline">\((\hat{\phi}\boldsymbol{\Phi}_n)^{-1}\)</span> with <span class="math inline">\(\hat{\phi} = b_n/a_n\)</span></p></li>
-<li class="fragment"><p>Since <span class="math inline">\(\phi (\boldsymbol{\beta}- \mathbf{b}_n)^T \boldsymbol{\Phi}_n (\boldsymbol{\beta}- \mathbf{b}_n) \sim \chi^2_p\)</span>, show that the distribution of <span class="math display">\[\frac{\phi (\boldsymbol{\beta}- \mathbf{b}_n)^T \boldsymbol{\Phi}_n (\boldsymbol{\beta}- \mathbf{b}_n)/p}{\phi \hat{\phi}} \sim F(p, a_n)\]</span></p></li>
-<li class="fragment"><p>take <span class="math inline">\(c = F_{p, a_n, 1-\alpha}\)</span> to get a <span class="math inline">\(1-\alpha\)</span> HPD region for <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
+\boldsymbol{\beta}\mid \mathbf{Y}&amp; \sim \textsf{St}(a_n, \mathbf{b}_n, \hat{\sigma}^2\boldsymbol{\Phi}_n^{-1})
+\end{align*}\]</span> where <span class="math inline">\(\textsf{St}(a_n, \mathbf{b}_n, (\hat{\sigma}^2\boldsymbol{\Phi}_n)^{-1})\)</span> is a multivariate Student-t distribution with <span class="math inline">\(a_n\)</span> degrees of freedom location <span class="math inline">\(\mathbf{b}_n\)</span> and scale matrix <span class="math inline">\(\hat{\sigma}^2\boldsymbol{\Phi}_n^{-1}\)</span> with <span class="math inline">\(\hat{\sigma}^2 = b_n/a_n\)</span></p></li>
+<li class="fragment"><p>density of <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math display">\[p(\boldsymbol{\beta}\mid \mathbf{Y}) \propto \left(1 + \frac{(\boldsymbol{\beta}- \mathbf{b}_n)^T\boldsymbol{\Phi}_n^{-1}(\boldsymbol{\beta}- \mathbf{b}_n)}{a_n \hat{\sigma}^2 } \right)^{-(a_n + p)/2}\]</span></p></li>
+</ul>
+</section>
+<section id="reference-posterior-distribution" class="slide level2">
+<h2>Reference Posterior Distribution</h2>
+<p>For the reference prior <span class="math inline">\(\pi(\boldsymbol{\beta},\phi) \propto 1/\phi\)</span> and the likelihood <span class="math inline">\(p(\mathbf{Y}\mid \boldsymbol{\beta})\)</span>, the posterior is proportional to the likelihood times <span class="math inline">\(\phi^{-1}\)</span></p>
+<ul>
+<li class="fragment"><p>(generalized) posterior distribution: <span class="math display">\[\begin{align*}
+\boldsymbol{\beta}\mid \phi, \mathbf{Y}&amp; \sim \textsf{N}(\hat{\boldsymbol{\beta}}, (\phi \mathbf{X}^T\mathbf{X})^{-1}) \\
+\phi \mid \mathbf{Y}&amp; \sim \mathbf{G}((n-p)/2, \textsf{SSE}/2)
+\end{align*}\]</span> if <span class="math inline">\(n &gt; p\)</span></p></li>
+<li class="fragment"><p>marginal posterior distribution for <span class="math inline">\(\boldsymbol{\beta}\)</span> is multivariate Student-t with <span class="math inline">\(n-p\)</span> degrees of freedom, location <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and scale matrix <span class="math inline">\(\hat{\sigma}^2\mathbf{X}^T\mathbf{X}^{-1}\)</span></p></li>
+</ul>
+</section>
+<section id="duality" class="slide level2">
+<h2>Duality</h2>
+<ul>
+<li class="fragment"><p>the posterior density <span class="math inline">\(\boldsymbol{\beta}\)</span> is a monotonically decreasing function of <span class="math inline">\(Q(\boldsymbol{\beta}) \equiv (\boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T\mathbf{X}^T\mathbf{X}(\boldsymbol{\beta}- \hat{\boldsymbol{\beta}})\)</span> so contours of <span class="math inline">\(p(\boldsymbol{\beta}\mid \mathbf{Y})\)</span> are ellipsoidal in the parameter space of <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
+<li class="fragment"><p>the quantity <span class="math inline">\(Q(\boldsymbol{\beta})/p \hat{\sigma}^2\)</span> is distributed <em>a posteriori</em> <span class="math display">\[ Q(\boldsymbol{\beta})/p \hat{\sigma}^2 \sim F(p, n-p)\]</span> and the ellipsoidal contour of <span class="math inline">\(p(\boldsymbol{\beta}\mid \mathbf{Y})\)</span> is defined as <span class="math inline">\(\frac{Q(\boldsymbol{\beta})}{p \hat{\sigma}^2} = F(p, n-p, \alpha)\)</span>. (Box &amp; Tiao 1973)</p></li>
+<li class="fragment"><p>then HPD regions for <span class="math inline">\(\boldsymbol{\beta}\)</span> are the same as confidence regions for <span class="math inline">\(\boldsymbol{\beta}\)</span> based on the <span class="math inline">\(F\)</span>-distribution</p></li>
+<li class="fragment"><p>marginals of <span class="math inline">\(\beta_j\)</span>, <span class="math inline">\(\mathbf{x}^T\boldsymbol{\beta}\)</span> and <span class="math inline">\(Y^*\)</span> are also univariate Student-t with <span class="math inline">\(n-p\)</span> degrees of freedom</p></li>
+<li class="fragment"><p>difference is in the interpretation of the regions i.e posterior probability that <span class="math inline">\(\boldsymbol{\beta}\)</span> is in the given the data vs the probability _a priori that the region covers the true <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
 </ul>
 
 <div class="quarto-auto-generated-content">
