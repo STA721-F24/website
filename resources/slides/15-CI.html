@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – Hypothesis Testing</title>
+  <title>STA721-F24: Linear Models – Confidence Regions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -333,29 +333,21 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Corollary {
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
+  }
+  .Proof {
     --color1: #948bde;
     --color2: #584eab;
   }
   .Lemma {
     --color1: #948bde;
     --color2: #584eab;
-  }
-  .Proof {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Feature {
-    --color1: #c0c0c0;
-    --color2: #808080;
   }
   .Proposition {
     --color1: #948bde;
@@ -365,13 +357,21 @@
     --color1: #948bde;
     --color2: #584eab;
   }
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
+  }
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
+  .Exercise {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   </style>
 </head>
@@ -380,8 +380,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Hypothesis Testing</h1>
-  <p class="subtitle">STA 721: Lecture 13</p>
+  <h1 class="title">Confidence Regions</h1>
+  <p class="subtitle">STA 721: Lecture 15</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -397,18 +397,11 @@ Merlise Clyde (clyde@duke.edu)
 </section>
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
-<p>Hypothesis Testing:</p>
 <ul>
-<li class="fragment"><p>The hypothesis of no effects</p>
-<ul>
-<li class="fragment">F-tests</li>
-<li class="fragment">Null distribution</li>
-<li class="fragment">Decision procedure</li>
-</ul></li>
-<li class="fragment"><p>Testing submodels</p>
-<ul>
-<li class="fragment">Extra sum of squares</li>
-</ul></li>
+<li class="fragment"><p>Confidence Interverals from Test Statistics</p></li>
+<li class="fragment"><p>Pivotal Quantities</p></li>
+<li class="fragment"><p>Confidence intervals for parameters</p></li>
+<li class="fragment"><p>Prediction Intervals</p></li>
 </ul>
 <div class="fragment">
 <p>Readings:</p>
@@ -417,300 +410,201 @@ Merlise Clyde (clyde@duke.edu)
 </ul>
 </div>
 </section>
-<section id="the-hypothesis-of-no-effects" class="slide level2">
-<h2>The Hypothesis of No Effects</h2>
-<p>Suppose we believe the model <span class="math display">\[
-{\text{M1}} \quad \quad\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}\quad \quad \boldsymbol{\epsilon}\sim \textsf{N}(0, \sigma^2 \mathbf{I}_n)  
-\]</span> but hypothesize that there is no effect of the <span class="math inline">\(\mathbf{X}\)</span> variables on <span class="math inline">\(\mathbf{Y}\)</span></p>
+<section id="goals" class="slide level2">
+<h2>Goals</h2>
+<p>For the regression model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+\boldsymbol{\epsilon}\)</span> we usually want to do more than just testing that <span class="math inline">\(\boldsymbol{\beta}\)</span> is zero</p>
 <ul>
-<li class="fragment"><p>If this were true, then the distribution for <span class="math inline">\(\mathbf{Y}\)</span> would be <span class="math display">\[
-\quad \quad  \quad \quad \quad {\text{  M0}} \quad \quad \mathbf{Y}= \boldsymbol{\epsilon}\quad \quad \boldsymbol{\epsilon}\sim \textsf{N}(0, \sigma^2 \mathbf{I}_n)
-\]</span></p></li>
-<li class="fragment"><p>For M1, the distribution of <span class="math inline">\(\mathbf{Y}\)</span> is a collection of normal distributions with <span class="math inline">\(\boldsymbol{\mu}\in C(\mathbf{X})\)</span> and Covariance a scalar multiple of the <span class="math inline">\(\mathbf{I}\)</span></p></li>
-<li class="fragment"><p>the distributions for the data <span class="math inline">\(\mathbf{Y}\)</span> under M0 is a subset of the distributions under M1 or <em>submodel</em> of M1 with <span class="math inline">\(\boldsymbol{\mu}= \mathbf{0}\)</span></p></li>
-<li class="fragment"><p>Observations <span class="math inline">\(\mathbf{Y}\)</span> may give us evidence that supports or rejects our hypothesis that the null model, M0, is true</p></li>
-</ul>
-</section>
-<section id="goal" class="slide level2">
-<h2>Goal</h2>
-<p>Our goals are to</p>
-<ul>
-<li class="fragment">obtain a numerical summary of the evidence</li>
-<li class="fragment">come up with a decision-making procedure that decides between M1 and M0,</li>
-<li class="fragment">(frequentist) control the probability of making a certain type of incorrect decision</li>
+<li class="fragment"><p>what is a plausible range for <span class="math inline">\(\beta_j\)</span>?</p></li>
+<li class="fragment"><p>what is a plausible set of values for <span class="math inline">\(\beta_j\)</span> and <span class="math inline">\(\beta_k\)</span>?</p></li>
+<li class="fragment"><p>what is a a plausible range of values for <span class="math inline">\(\mathbf{x}\boldsymbol{\beta}\)</span> for a particular <span class="math inline">\(\mathbf{x}\)</span>?</p></li>
+<li class="fragment"><p>what is a plausible range of values for <span class="math inline">\(\mathbf{Y}_{n+1}\)</span> for a given value of <span class="math inline">\(\mathbf{x}_{n+1}\)</span>?</p></li>
 </ul>
 <div class="fragment">
-<p>Procedure based on the following steps:</p>
-<ol type="1">
-<li class="fragment">Test statistic: compute a statistic <span class="math inline">\(t(\mathbf{Y},\mathbf{X})\)</span>, a function of observable data;</li>
-<li class="fragment">Null distribution: compare <span class="math inline">\(t(\mathbf{Y},\mathbf{X})\)</span> to the types of values we would expect if M0 is true</li>
-<li class="fragment">Decision rule: accept M0 if <span class="math inline">\(t(\mathbf{Y},\mathbf{X})\)</span> is in accord with its distribution under M0, otherwise reject the submodel M0</li>
-</ol>
+<p>Look at confidence intervals, confidence regions, prediction regions and Bayesian regions</p>
 </div>
 </section>
-<section id="intuition" class="slide level2">
-<h2>Intuition</h2>
-<p>If <span class="math inline">\(\hat{\boldsymbol{\beta}}\approx \boldsymbol{\beta}\)</span> then</p>
+<section id="confidence-sets" class="slide level2">
+<h2>Confidence Sets</h2>
+<p>For a random variable <span class="math inline">\(\mathbf{Y}\sim \mathbf{P}\in \{P_{\boldsymbol{\theta}}: \boldsymbol{\theta}\in \boldsymbol{\Theta}\}\)</span></p>
+<div id="confidence-region" class="Definition" title="Confidence Region">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Confidence Region</summary><div>A set valued function <span class="math inline">\(C\)</span> is a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence region for <span class="math inline">\(\boldsymbol{\theta}\)</span> if <span class="math display">\[P_{\boldsymbol{\theta}}(\{\boldsymbol{\theta}\in C(\mathbf{Y})\}) = 1- \alpha \, \forall \, \boldsymbol{\theta}\in \boldsymbol{\Theta}\]</span><p></p>
+</div></details>
+</div>
 <ul>
-<li class="fragment"><p>if <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span>, then <span class="math inline">\(\mathbf{X}\hat{\boldsymbol{\beta}}\approx \mathbf{0}\)</span></p></li>
-<li class="fragment"><p>if <span class="math inline">\(\boldsymbol{\beta}\ne \mathbf{0}\)</span>, then <span class="math inline">\(\mathbf{X}\hat{\boldsymbol{\beta}}\not \approx \mathbf{0}\)</span></p></li>
-<li class="fragment"><p>If the null model M0 is correct, then <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2\)</span> should be small</p></li>
-<li class="fragment"><p>If incorrect, <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2\)</span> should be big</p></li>
-<li class="fragment"><p>We need to quantify this intuition</p></li>
+<li class="fragment"><p>In this case we say <span class="math inline">\(C(Y)\)</span> is a <span class="math inline">\(1 - \alpha\)</span> confidence region for the parameter <span class="math inline">\(\boldsymbol{\theta}\)</span></p></li>
+<li class="fragment"><p>there is some true value of <span class="math inline">\(\boldsymbol{\theta}\)</span>, and the confidence region will cover it with probability <span class="math inline">\(1- \alpha\)</span> no matter what it is.</p></li>
+<li class="fragment"><p>the randomness is due to <span class="math inline">\(\mathbf{Y}\)</span> and <span class="math inline">\(C(\mathbf{Y})\)</span></p></li>
+<li class="fragment"><p>once we observe <span class="math inline">\(\mathbf{Y}\)</span> everything is fixed, so region may not include the true <span class="math inline">\(\boldsymbol{\theta}\)</span></p></li>
 </ul>
 </section>
-<section id="decomposition" class="slide level2">
-<h2>Decomposition</h2>
-<p><span class="math display">\[\begin{align*}
-\mathbf{X}\hat{\boldsymbol{\beta}}&amp; = \mathbf{P}_{\mathbf{X}} \mathbf{Y}\\
-&amp; =  \mathbf{X}\boldsymbol{\beta}+ \mathbf{P}\boldsymbol{\epsilon}
-\end{align*}\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[\begin{align*}
-\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2 &amp; = (\mathbf{X}\boldsymbol{\beta}+ \mathbf{P}\boldsymbol{\epsilon})^T(\mathbf{X}\boldsymbol{\beta}+ \mathbf{P}\boldsymbol{\epsilon}) \\
-              &amp; = \boldsymbol{\beta}^T \mathbf{X}^T  \mathbf{X}\boldsymbol{\beta}+ 2 \boldsymbol{\beta}^T \mathbf{X}^T \mathbf{P}\boldsymbol{\epsilon}+ \boldsymbol{\epsilon}^T \mathbf{P}\boldsymbol{\epsilon}\\
-              &amp; = \| \mathbf{X}\boldsymbol{\beta}\|^2 + 2 \boldsymbol{\beta}^T \mathbf{X}^T \boldsymbol{\epsilon}+ \boldsymbol{\epsilon}^T \mathbf{P}\boldsymbol{\epsilon}
-\end{align*}\]</span></p>
-</div>
-<div class="fragment">
-<p>How big is <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2\)</span> on average? How big do we expect it to be under our two models?</p>
-</div>
-<div class="fragment">
-<p>Take expectations:</p>
-<p><span class="math display">\[\begin{align*}
-\textsf{E}[\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2] &amp; = \|\mathbf{X}\boldsymbol{\beta}\|^2 + \textsf{E}[2 \boldsymbol{\beta}^T \mathbf{X}^T  \boldsymbol{\epsilon}] + \textsf{E}[\boldsymbol{\epsilon}^T \mathbf{P}\boldsymbol{\epsilon}] \\
-&amp; = \|\mathbf{X}\boldsymbol{\beta}\|^2 + 0 + \sigma^2 \textsf{tr}(\mathbf{P}) = \|\mathbf{X}\boldsymbol{\beta}\|^2 + \sigma^2 p
-\end{align*}\]</span></p>
+<section id="hypothesis-tests-and-rejectionacceptance-regions" class="slide level2">
+<h2>Hypothesis Tests and Rejection/Acceptance Regions</h2>
+<p>Recall for a level <span class="math inline">\(\alpha\)</span> test of a point null hypothesis</p>
 <ul>
-<li class="fragment">if <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span>, then <span class="math inline">\(\textsf{E}[\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2] = \sigma^2 p\)</span></li>
-</ul>
-</div>
-</section>
-<section id="comparison" class="slide level2">
-<h2>Comparison</h2>
-<p>If we knew <span class="math inline">\(\sigma^2\)</span>, then</p>
+<li class="fragment"><p>we reject <span class="math inline">\(H\)</span> with probability <span class="math inline">\(\alpha\)</span> when <span class="math inline">\(H\)</span> is true</p></li>
+<li class="fragment"><p>for each test we can construct:</p>
 <ul>
-<li class="fragment"><p>if <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p \approx \sigma^2\)</span>, we might decide M0 would be reasonable</p></li>
-<li class="fragment"><p>if <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p \gg \sigma^2\)</span>, then we might decide M0 is unreasonable</p></li>
-</ul>
-<div class="fragment">
-<p>But we do not know <span class="math inline">\(\sigma^2\)</span></p>
-<ul>
-<li class="fragment"><p>if we estimate <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(s^2 = \frac{\mathbf{Y}^T(\mathbf{I}- \mathbf{P})\mathbf{Y}}{n - p}\)</span>, then</p>
-<ul>
-<li class="fragment"><p>if <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p \approx s^2\)</span>, we might decide M0 would be reasonable</p></li>
-<li class="fragment"><p>if <span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p \gg s^2\)</span>, then we might decide M0 is unreasonable</p></li>
+<li class="fragment">a rejection region <span class="math inline">\(R(\boldsymbol{\theta}) \subset \cal{Y}\)</span>, the <span class="math inline">\(Y\)</span> values for which we reject <span class="math inline">\(H\)</span></li>
+<li class="fragment">an acceptance region <span class="math inline">\(A(\boldsymbol{\theta})  \subset \cal{Y}\)</span>, the <span class="math inline">\(Y\)</span> values for which we accept <span class="math inline">\(H\)</span></li>
 </ul></li>
+<li class="fragment"><p>these sets are complements of each other (for non-randomized tests)</p></li>
 </ul>
+<div class="fragment">
+<p><span class="math display">\[\Pr(\mathbf{Y}\in A(\boldsymbol{\theta}) \mid \boldsymbol{\theta}) =  1 - \alpha\]</span></p>
 </div>
 </section>
-<section id="test-statistic" class="slide level2">
-<h2>Test Statistic</h2>
-<p>Note: if the null model M0 is correct (<span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span>), then <strong>both</strong></p>
+<section id="duality-of-hypothesis-testingconfidence-regions" class="slide level2">
+<h2>Duality of Hypothesis-Testing/Confidence Regions</h2>
+<p>Suppose we have a level <span class="math inline">\(\alpha\)</span> test for every possible valuse of <span class="math inline">\(\boldsymbol{\theta}\)</span></p>
 <ul>
-<li class="fragment"><span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|/p\)</span></li>
-<li class="fragment"><span class="math inline">\(\textsf{SSE}/(n-p) = \frac{\mathbf{Y}^T(\mathbf{I}- \mathbf{P})\mathbf{Y}}{n - p}\)</span></li>
+<li class="fragment"><p>for each <span class="math inline">\(\boldsymbol{\theta}\in \boldsymbol{\Theta}\)</span>, let <span class="math inline">\(A(\boldsymbol{\theta})\)</span> be the acceptance region of the test <span class="math inline">\(\mathbf{Y}\sim P_{\boldsymbol{\theta}}\)</span></p></li>
+<li class="fragment"><p>then <span class="math inline">\(P(\mathbf{Y}\in A(\boldsymbol{\theta}) \mid \boldsymbol{\theta}) = 1 - \alpha\)</span> for each <span class="math inline">\(\boldsymbol{\theta}\in \boldsymbol{\Theta}\)</span></p></li>
+<li class="fragment"><p>This collection of hypothesis tests can be “inverted” to construct a confidence region for θ, as follows:</p></li>
+<li class="fragment"><p>define <span class="math inline">\(C(\mathbf{Y}) = \{ \boldsymbol{\theta}\in \boldsymbol{\Theta}: \mathbf{Y}\in A(\boldsymbol{\theta}) \}\)</span></p></li>
+<li class="fragment"><p>this is the set of <span class="math inline">\(\boldsymbol{\theta}\)</span> values that are not rejected when <span class="math inline">\(\mathbf{Y}= \mathbf{y}\)</span> is observed</p></li>
+<li class="fragment"><p>then <span class="math inline">\(C\)</span> is a <span class="math inline">\(1 - \alpha\)</span> confidence region for <span class="math inline">\(\boldsymbol{\theta}\)</span></p></li>
+</ul>
+</section>
+<section id="confidence-intervals-for-regression-parameters" class="slide level2">
+<h2>Confidence Intervals for Regression Parameters</h2>
+<p>For the linear model <span class="math inline">\(\mathbf{Y}\sim \textsf{N}(\mathbf{X}\boldsymbol{\beta}, \sigma^2 \mathbf{I})\)</span>, confidence intervals for <span class="math inline">\(\beta_j\)</span> can be constructed from inverting the approriate <span class="math inline">\(t\)</span>-test.</p>
+<ul>
+<li class="fragment"><p>suppose you are testing <span class="math inline">\(H: \beta_j = 0\)</span></p></li>
+<li class="fragment"><p>if <span class="math inline">\(H\)</span> is true, then</p>
+<ul>
+<li class="fragment"><span class="math inline">\(\hat{\beta}_j - \beta_j \sim \textsf{N}(0, \sigma^2 v_{jj})\)</span> where <span class="math inline">\(v_{jj}\)</span> is the <span class="math inline">\(j\)</span>th diagonal element of <span class="math inline">\((\mathbf{X}^T\mathbf{X})^{-1}\)</span></li>
+<li class="fragment"><span class="math inline">\(s^2 \sim \sigma^2 \chi^2_{n-p}/(n-p)\)</span></li>
+<li class="fragment"><span class="math inline">\(\hat{\beta}_j\)</span> and <span class="math inline">\(s^2\)</span> are independent</li>
+</ul></li>
+<li class="fragment"><p>therefore if <span class="math inline">\(H\)</span> is true <span class="math display">\[t_j = \frac{\hat{\beta}_j - \beta_j}{s\sqrt{v_{jj}}} \sim t_{n-p}\]</span></p></li>
+</ul>
+</section>
+<section id="acceptance-region-confidence-interval" class="slide level2">
+<h2>Acceptance Region &amp; Confidence Interval</h2>
+<ul>
+<li class="fragment"><p>define the acceptance region <span class="math inline">\(A(\beta_j) = \{ \hat{\beta}_j, s^2: |t_j| &lt; t_{n-p, 1 - \alpha/2}\}\)</span><br>
+</p></li>
+<li class="fragment"><p>we have that <span class="math inline">\(H\)</span> is accepted if <span class="math display">\[t_j \in A(\beta_j) \Leftrightarrow \frac{|\hat{\beta}_j - \beta_j|}{s\sqrt{v_{jj}}} &lt; t_{n-p, 1-\alpha/2}\]</span></p></li>
+<li class="fragment"><p>Now construct a confidence interval for the true value by inverting the tests: <span class="math display">\[\begin{align*}
+C(\hat{\beta}_j, s^2) &amp; =  (\hat{\beta_j}, s^2) \in A(\beta_j) \\
+&amp; = \left\{ \beta_j: |\hat{\beta}_j - \beta_j| &lt; s\sqrt{v_{jj}} t_{n-p, 1 - \alpha/2} \right\}\\
+&amp; = \left\{ \beta_j: \hat{\beta}_j - s\sqrt{v_{jj}} t_{n-p, 1 - \alpha/2} &lt; \beta_j &lt; \hat{\beta}_j + s\sqrt{v_{jj}} t_{n-p, 1 - \alpha/2} \right\} \\
+&amp; = \hat{\beta}_j \pm s\sqrt{v_{jj}}\, t_{n-p, 1 - \alpha/2}
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>for <span class="math inline">\(\alpha = 0.05\)</span> and large <span class="math inline">\(n\)</span>, <span class="math inline">\(t_{n-p,0.975} \approx 2\)</span>, so CI is approximately <span class="math inline">\(\hat{\beta}_j \pm 2s\sqrt{v_{jj}}\)</span></p></li>
+</ul>
+<div class="footer">
+
+</div>
+</section>
+<section id="confidence-intervals-for-linear-functions" class="slide level2">
+<h2>Confidence Intervals for Linear Functions</h2>
+<p>For a linear function of the parameters <span class="math inline">\(\lambda = \mathbf{a}^T \boldsymbol{\beta}\)</span> we can construct a confidence interval by inverting the appropriate <span class="math inline">\(t\)</span>-test</p>
+<ul>
+<li class="fragment">most important example <span class="math inline">\(\mathbf{a}^T\boldsymbol{\beta}= \mathbf{x}^T\boldsymbol{\beta}= \textsf{E}[\mathbf{Y}\mid \mathbf{x}]\)</span></li>
+<li class="fragment">suppose you are testing <span class="math inline">\(H: \mathbf{a}^T\boldsymbol{\beta}= m\)</span></li>
+<li class="fragment">If <span class="math inline">\(H\)</span> is true, <span class="math inline">\(\mathbf{a}^T\boldsymbol{\beta}- m \sim \textsf{N}(0, \sigma^2 v)\)</span> where <span class="math inline">\(v=\mathbf{a}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{a})\)</span></li>
+<li class="fragment"><span class="math inline">\(s^2 \sim \sigma^2 \chi^2_{n-p}/(n-p)\)</span> independent of <span class="math inline">\(\mathbf{a}^T\hat{\boldsymbol{\beta}}\)</span></li>
+<li class="fragment">then <span class="math inline">\(t = \frac{\mathbf{a}^T\hat{\boldsymbol{\beta}} - m}{s\sqrt{v}} \sim t_{n-p}\)</span></li>
+<li class="fragment">a <span class="math inline">\(1-\alpha\)</span> confidence interval for <span class="math inline">\(\mathbf{a}^T\boldsymbol{\beta}\)</span> is <span class="math display">\[\mathbf{a}^T\hat{\boldsymbol{\beta}} \pm s\sqrt{v}\, t_{n-p, 1 - \alpha/2}\]</span></li>
+</ul>
+</section>
+<section id="prediction-regions-and-intervals" class="slide level2">
+<h2>Prediction Regions and Intervals</h2>
+<p>Related to CI for <span class="math inline">\(\textsf{E}[Y \mid \mathbf{x}] = \mathbf{x}^T\boldsymbol{\beta}\)</span>, we may wish to construct a prediction interval for a new observation <span class="math inline">\(Y^*\)</span> at <span class="math inline">\(\mathbf{x}_*\)</span></p>
+<ul>
+<li class="fragment"><p>a <span class="math inline">\(1-\alpha\)</span> prediction interval for <span class="math inline">\(Y^*\)</span> is a set valued function of <span class="math inline">\(\mathbf{Y}\)</span>, <span class="math inline">\(C(\mathbf{Y})\)</span> such that <span class="math display">\[\Pr(\mathbf{Y}^* \in C(\mathbf{Y}) \mid \boldsymbol{\beta},\sigma^2) = 1 - \alpha\]</span> where the distribution is computed using the distribution of <span class="math inline">\(\mathbf{Y}^*\)</span></p></li>
+<li class="fragment"><p>this use the idea of a <em>pivotal quantity</em>: a function of the data and the parameters that has a known distribution that does not depend on any unknown parameters.</p></li>
+<li class="fragment"><p>for prediction, <span class="math inline">\(Y^* = \mathbf{x}_*^T\boldsymbol{\beta}+ \boldsymbol{\epsilon}^*\)</span> where <span class="math inline">\(\boldsymbol{\epsilon}^* \sim \textsf{N}(0, \sigma^2)\)</span> independent of <span class="math inline">\(\boldsymbol{\epsilon}\)</span></p></li>
 </ul>
 <div class="fragment">
-<p>are unbiased estimates of <span class="math inline">\(\sigma^2\)</span></p>
+<p><span class="math display">\[\begin{align*}
+\textsf{E}[Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}]   &amp; = \mathbf{x}_*^T\boldsymbol{\beta}- \mathbf{x}_*^T\boldsymbol{\beta}= 0 \\
+\textsf{Var}(Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}) &amp; = \textsf{Var}(\boldsymbol{\epsilon}^*)  + \textsf{Var}(\mathbf{x}_*^T\hat{\boldsymbol{\beta}})   
+                         = \sigma^2 + \sigma^2 \mathbf{x}_*^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_* \\
+Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}&amp; \sim \textsf{N}(0, \sigma^2(1 + \mathbf{x}_*^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_*))
+\end{align*}\]</span></p>
+<div class="footer">
+
 </div>
-<div class="fragment">
-<p>If the null model is not correct, but the linear model M1 is correct, then</p>
+</div>
+</section>
+<section id="pivotal-quantity-and-prediction-intervals" class="slide level2">
+<h2>Pivotal Quantity and Prediction Intervals</h2>
+<p>Since <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2\)</span> are independent, we can construct a pivotal quantity for <span class="math inline">\(Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}\)</span>: <span class="math display">\[\frac{Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}}{s\sqrt{1 + \mathbf{x}_*^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_*}} \sim t_{n-p}\]</span></p>
 <ul>
-<li class="fragment"><p><span class="math inline">\(s^2\)</span> is still an unbiased estimate of <span class="math inline">\(\sigma^2\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p\)</span> is expected to be bigger than <span class="math inline">\(\sigma^2\)</span></p></li>
-<li class="fragment"><p>We can use the ratio of the two quantities to form a test statistic <span class="math display">\[t(\mathbf{Y}, \mathbf{X}) = \frac{\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2/p}{\textsf{SSE}/(n-p)} = \frac{\textsf{RSS}/p}{\textsf{SSE}/(n-p)}\]</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\textsf{RSS}\)</span> is the regression or model sum of squares</p></li>
+<li class="fragment"><p>therefore <span class="math display">\[\Pr\left(\frac{|Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}|}{s\sqrt{1 + \mathbf{x}_*^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_*}} &lt; t_{n-p, 1-\alpha/2} \right) = 1 - \alpha\]</span></p></li>
+<li class="fragment"><p>Rearranging gives a <span class="math inline">\(1-\alpha\)</span> prediction interval for <span class="math inline">\(Y^*\)</span>: <span class="math display">\[\mathbf{x}_*^T\hat{\boldsymbol{\beta}}\pm s\sqrt{1 + \mathbf{x}_*^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_*} t_{n-p, 1-\alpha/2}\]</span></p></li>
+</ul>
+</section>
+<section id="joint-confidence-regions-for-boldsymbolbeta" class="slide level2">
+<h2>Joint Confidence Regions for <span class="math inline">\(\boldsymbol{\beta}\)</span></h2>
+<ul>
+<li class="fragment">we can construct a joint confidence region for <span class="math inline">\(\boldsymbol{\beta}\)</span> based on inverting a test <span class="math inline">\(H: \boldsymbol{\beta}= \boldsymbol{\beta}_0\)</span>. Recall:</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}&amp; \sim \textsf{N}(0, \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}) \\
+(\mathbf{X}^T\mathbf{X})^{-1/2}(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}) &amp; \sim \textsf{N}(0, \sigma^2 \mathbf{I}) \\
+(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta})^T(\mathbf{X}^T\mathbf{X})^{-1}(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}) &amp; \sim \sigma^2 \chi^2_p
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment">since <span class="math inline">\(s^2\)</span> is independent of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> we can construct a CI based on the <span class="math inline">\(F\)</span>-distribution <span class="math display">\[\frac{(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}_0)^T(\mathbf{X}^T\mathbf{X})^{-1}(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}_0)/p}{s^2} \sim F_{p, n-p}\]</span></li>
+<li class="fragment">inverting the <span class="math inline">\(F\)</span>-test gives a <span class="math inline">\(1-\alpha\)</span> confidence region for <span class="math inline">\(\boldsymbol{\beta}\)</span>: <span class="math display">\[\{ \boldsymbol{\beta}: (\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}_0)^T(\mathbf{X}^T\mathbf{X})^{-1}(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}_0)/s^2 &lt; p F_{p, n-p, 1-\alpha} \}\]</span></li>
 </ul>
 <div class="footer">
 
 </div>
 </div>
 </section>
-<section id="distributions-under-the-null-model-m0" class="slide level2">
-<h2>Distributions under the Null Model M0</h2>
+<section id="bayesian-credible-regions" class="slide level2">
+<h2>Bayesian Credible Regions</h2>
 <ul>
-<li class="fragment"><span class="math inline">\(\textsf{SSE}\sim \sigma^2 \chi^2_{n-p}\)</span></li>
-<li class="fragment"><span class="math inline">\(\|\mathbf{X}(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta})\|^2 \sim \sigma^2 \chi^2_p\)</span></li>
+<li class="fragment"><p>In a Bayesian setting, we have a posterior distribution for <span class="math inline">\(\boldsymbol{\beta}\)</span> given the data <span class="math inline">\(\mathbf{Y}\)</span></p></li>
+<li class="fragment"><p>a set <span class="math inline">\(C \in \mathbb{R}^p\)</span> is a <span class="math inline">\(1-\alpha\)</span> posterior credible region (sometimes called a Bayesian confidence region) if <span class="math inline">\(\Pr(\boldsymbol{\beta}\in C \mid \mathbf{Y}) = 1 - \alpha\)</span></p></li>
+<li class="fragment"><p>lots of sets have this property, but we usually want the most probable values of <span class="math inline">\(\boldsymbol{\beta}\)</span> given the data</p></li>
+<li class="fragment"><p>this motivates looking at the highest posterior density (HPD) region which is a <span class="math inline">\(1-\alpha\)</span> credible set <span class="math inline">\(C\)</span> such that the values in <span class="math inline">\(C\)</span> have higher posterior density than those outside of <span class="math inline">\(C\)</span></p></li>
+<li class="fragment"><p>the HPD region is the smallest region that contains <span class="math inline">\(1-\alpha\)</span> of the posterior probability</p></li>
+</ul>
+</section>
+<section id="bayesian-credible-regions-1" class="slide level2">
+<h2>Bayesian Credible Regions</h2>
+<ul>
+<li class="fragment"><p>For a normal prior and normal likelihood, the posterior for <span class="math inline">\(\boldsymbol{\beta}\)</span> conditional on <span class="math inline">\(\sigma^2\)</span> is normal with say posterior mean <span class="math inline">\(\mathbf{b}_n\)</span> and posterior precision <span class="math inline">\(\boldsymbol{\Phi}_n\)</span></p></li>
+<li class="fragment"><p>the posterior density as a function of <span class="math inline">\(\boldsymbol{\beta}\)</span> for a fixed <span class="math inline">\(\sigma^2\)</span> is <span class="math display">\[p(\boldsymbol{\beta}\mid \mathbf{Y}) \propto \exp\left\{ -(\boldsymbol{\beta}- \mathbf{b}_n)^T \boldsymbol{\Phi}_n (\boldsymbol{\beta}- \mathbf{b}_n)/2 \right\}\]</span></p></li>
+<li class="fragment"><p>so a highest posterior density region has the form <span class="math display">\[C = \{ \boldsymbol{\beta}: (\boldsymbol{\beta}- \mathbf{b}_n)^T\boldsymbol{\Phi}_n^{-1}(\boldsymbol{\beta}- \mathbf{b}_n)  &lt; q \}\]</span></p></li>
 </ul>
 <div class="fragment">
-<p>so under the null model M0 (<span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span>), we have</p>
-<ul>
-<li class="fragment"><p><span class="math inline">\(\textsf{SSE}\sim \sigma^2 \chi^2_{n-p}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\|\mathbf{X}\hat{\boldsymbol{\beta}}\|^2 \sim \sigma^2 \chi^2_p\)</span></p></li>
-<li class="fragment"><p>they are statistically independent (why?)</p></li>
-<li class="fragment"><p>so the ratio <span class="math display">\[\begin{align*}
-t(\mathbf{Y}, \mathbf{X}) &amp; = \frac{\textsf{RSS}/p}{\textsf{SSE}/(n-p)} = \frac{(\textsf{RSS}/\sigma^2)/p}{(\textsf{SSE}/\sigma^2)/(n-p)} \\
-&amp; \mathrel{\mathop{=}\limits^{\rm D}}\frac{\chi^2_p/p}{\chi^2_{n-p}/(n-p)} \quad \text{ is independent of } \sigma^2
-\end{align*}\]</span> is independent of <span class="math inline">\(\sigma^2\)</span></p></li>
-</ul>
-</div>
-</section>
-<section id="f-distribution" class="slide level2">
-<h2>F Distribution</h2>
-<div id="f-distribution-1" class="Definition" title="F distribution">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>F distribution</summary><div>If <span class="math inline">\(X_1 \sim \chi^2_{d1}\)</span> and <span class="math inline">\(X_2 \sim \chi^2_{d2}\)</span> and are independent, then the ratio <span class="math display">\[F = \frac{X_1/d1}{X_2/d2}\]</span> has an <span class="math inline">\(F_{d1, d2}\)</span> distribution with <span class="math inline">\(d1\)</span> and <span class="math inline">\(d2\)</span> degrees of freedom.<p></p>
-</div></details>
-</div>
-<div class="fragment">
-<ul>
-<li class="fragment"><span class="math inline">\(F(\mathbf{Y}) \equiv t(\mathbf{Y}, \mathbf{X}) = \frac{\textsf{RSS}/p}{\textsf{SSE}/(n-p)}\)</span> has an <span class="math inline">\(F_{p, n-p}\)</span> distribution under the null model M0</li>
-</ul>
-</div>
-</section>
-<section id="decision-procedure" class="slide level2">
-<h2>Decision Procedure</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>We will accept M0 that <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span> unless <span class="math inline">\(F(\mathbf{Y})\)</span> is large compared to an <span class="math inline">\(F_{p,n−p}\)</span> distribution.</p>
-<ul>
-<li class="fragment"><p>accept M0: <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span> if <span class="math inline">\(F(\mathbf{Y}) &lt; F_{p,n−p,1−\alpha}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(F_{p,n−p,1−\alpha}\)</span> is the <span class="math inline">\(1 − \alpha\)</span> quantile of a <span class="math inline">\(F_{p,n−p}\)</span></p></li>
-<li class="fragment"><p>reject M0: <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span> if <span class="math inline">\(F(\mathbf{Y}) &gt; F_{p,n−p,1−\alpha}\)</span></p></li>
-<li class="fragment"><p>the probability that we reject M0 when it is true, is <span class="math display">\[\begin{align*}
-\Pr( \text{ reject M0} &amp; \mid \text{ M0 true})\\
-&amp; = \Pr(F(\mathbf{Y}) &gt; F_{p,n−p,1−\alpha} \mid \boldsymbol{\beta}= \mathbf{0}) \\
-&amp; = \alpha
-\end{align*}\]</span></p></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="13-testing_files/figure-revealjs/F-distribution-1.png" class="quarto-figure quarto-figure-center" style="width:3.5in;height:3.5in"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="p-values" class="slide level2">
-<h2>P-values</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p>Instead of just declaring that M0 is true or false, statistical analyses report how extreme <span class="math inline">\(F(\mathbf{Y})\)</span> is compared to its null distribution.</p>
-<ul>
-<li class="fragment"><p>This is usually reported in terms of the p-value:</p>
-<ul>
-<li class="fragment"><p>the value <span class="math inline">\(p \in(0,1)\)</span> such that <span class="math inline">\(F(\mathbf{Y})\)</span> is the <span class="math inline">\((1−p)\)</span> quantile of the <span class="math inline">\(F_{p,n−p}\)</span> distribution</p></li>
-<li class="fragment"><p>the probability that a random variable <span class="math inline">\(F \sim F_{p,n−p}\)</span> is larger than the observed value <span class="math inline">\(F(\mathbf{Y})\)</span>, if the null model is true</p></li>
-</ul></li>
-<li class="fragment"><p>it is not the <span class="math inline">\(\Pr(\text{M0 is true})\)</span> based on the observed data</p></li>
-</ul>
-</div><div class="column" style="width:40%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="13-testing_files/figure-revealjs/p-value-1.png" class="quarto-figure quarto-figure-center" style="width:3.5in;height:3.5in"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="testing-submodels" class="slide level2">
-<h2>Testing SubModels</h2>
-<p>We are usually not interested in testing that all of the coefficients are zero if there is an intercept in the model</p>
-<ul>
-<li class="fragment"><p>But we can use the same idea to test submodels</p></li>
-<li class="fragment"><p>We assume the Gaussian Linear Model <span class="math display">\[\quad \quad \quad \quad \quad \quad \quad \quad M1 \quad \mathbf{Y}∼ \textsf{N}(\mathbf{W}\boldsymbol{\alpha}+ \mathbf{X}\boldsymbol{\beta}, \sigma^2\mathbf{I}) \equiv \textsf{N}(\mathbf{Z}\boldsymbol{\theta}, \sigma^2\mathbf{I})\]</span> where <span class="math inline">\(\mathbf{W}\)</span> is <span class="math inline">\(n \times q\)</span>, <span class="math inline">\(\mathbf{X}\)</span> is <span class="math inline">\(n \times p\)</span>, <span class="math inline">\(\mathbf{Z}= [\mathbf{W}\mathbf{X}]\)</span>,</p></li>
-<li class="fragment"><p>We wish to evaluate the hypothesis <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span></p></li>
-<li class="fragment"><p>equivalent to comparing M1 to M0: <span class="math display">\[M0 \quad \mathbf{Y}∼ \textsf{N}(\mathbf{W}\boldsymbol{\alpha}, \sigma^2\mathbf{I})\]</span></p></li>
-</ul>
-</section>
-<section id="intuition-1" class="slide level2">
-<h2>Intuition</h2>
-<p>Devise a test statistic and procedure by</p>
-<ul>
-<li class="fragment"><p>fitting the full model M1 <span class="math inline">\(\mathbf{Y}\sim \textsf{N}(\mathbf{W}\boldsymbol{\alpha}+ \mathbf{X}\boldsymbol{\beta}, \sigma^2\mathbf{I})\)</span></p></li>
-<li class="fragment"><p>fitting the reduced/null model M0 <span class="math inline">\(\mathbf{Y}\sim \textsf{N}(\mathbf{W}\boldsymbol{\alpha}, \sigma^2\mathbf{I})\)</span></p></li>
-<li class="fragment"><p>accept M0 if the null model fits about as well as the full model</p></li>
-<li class="fragment"><p>reject M0 if the null model fits much worse than the full model</p></li>
-<li class="fragment"><p>measure fit through <span class="math inline">\(\textsf{SSE}_{M0}\)</span> and <span class="math inline">\(\textsf{SSE}_{M1}\)</span> <span class="math display">\[\begin{align*}
-\textsf{SSE}_{M1} &amp; = \min_{\boldsymbol{\alpha}, \boldsymbol{\beta}}
-\|\mathbf{Y}- (\mathbf{W}\boldsymbol{\alpha}+ \mathbf{X}\boldsymbol{\beta})\|^2 \\
-        &amp; = \min_{\boldsymbol{\theta}} \|\mathbf{Y}- \mathbf{Z}\boldsymbol{\theta}\|^2 = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}})\mathbf{Y}\\
-\textsf{SSE}_{M0} &amp; = \min_{\boldsymbol{\alpha}} \|\mathbf{Y}- \mathbf{W}\boldsymbol{\alpha}\|^2 = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
-\end{align*}\]</span></p></li>
-</ul>
-</section>
-<section id="extra-sum-of-squares" class="slide level2">
-<h2>Extra Sum of Squares</h2>
-<p>Approach 1: accept/choose the null model if <span class="math inline">\(\textsf{SSE}_{M0} &lt; \textsf{SSE}_{M1}\)</span>, and choose the full model if <span class="math inline">\(\textsf{SSE}_{M1} &lt; \textsf{SSE}_{M0}\)</span>.</p>
-<ul>
-<li class="fragment">but <span class="math inline">\(\textsf{SSE}_{M1}\)</span> is always less than <span class="math inline">\(\textsf{SSE}_{M0}\)</span></li>
-</ul>
-<div class="fragment">
-<p>Approach 2: instead reject M1 <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span> if <span class="math inline">\(\textsf{SSE}_{M0}\)</span> is much bigger than <span class="math inline">\(\textsf{SSE}_{M1}\)</span>.</p>
-<ul>
-<li class="fragment">Specifically, reject M1 <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span> if <span class="math inline">\(\textsf{SSE}_{M0} - \textsf{SSE}_{M1}\)</span> is much bigger than what we would expect if the null hypothesis M0 were true.</li>
-</ul>
-</div>
-<div class="fragment">
-<p>Need:</p>
-<ul>
-<li class="fragment">the null distribution of <span class="math inline">\(\textsf{SSE}_{M0}\)</span></li>
-<li class="fragment">the null distribution of <span class="math inline">\(\textsf{SSE}_{M1}\)</span></li>
-<li class="fragment">the null distribution of their difference <span class="math inline">\(\textsf{SSE}_{M0} - \textsf{SSE}_{M1}\)</span></li>
-</ul>
-</div>
-</section>
-<section id="distributions" class="slide level2">
-<h2>Distributions</h2>
-<p><strong>Distribution under the full model M1</strong> <span class="math display">\[ \textsf{SSE}_{M1} = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}})\mathbf{Y}\sim \sigma^2 \chi^2_{n - q - p}\]</span></p>
-<ul>
-<li class="fragment">true whether or not <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span></li>
-<li class="fragment"><span class="math inline">\(\textsf{E}[\textsf{SSE}_{M1}] = E[\mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}})\mathbf{Y}] = \sigma^2(n - q - p)\)</span></li>
-</ul>
-<div class="fragment">
-<p><strong>Distribution under the null model M0</strong> <span class="math display">\[\textsf{SSE}_{M0} = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}\sim \sigma^2 \chi^2_{n - q}\]</span></p>
-<ul>
-<li class="fragment">true if <span class="math inline">\(\boldsymbol{\beta}= \mathbf{0}\)</span></li>
-<li class="fragment"><span class="math inline">\(\textsf{E}[\textsf{SSE}_{M0}] = E[\mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}] = \sigma^2(n - q)\)</span></li>
-<li class="fragment">if <span class="math inline">\(\boldsymbol{\beta}\neq \mathbf{0}\)</span> then <span class="math inline">\(\textsf{SSE}_{M0}\)</span> has a non-central <span class="math inline">\(\chi^2_{n-q}\)</span> distribution</li>
-</ul>
-</div>
-</section>
-<section id="expected-value-of-textsfsse_m0-under-m1" class="slide level2">
-<h2>Expected Value of <span class="math inline">\(\textsf{SSE}_{M0}\)</span> under M1</h2>
-<ul>
-<li class="fragment"><p>Rewrite <span class="math inline">\((\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}\)</span> under M1: <span class="math display">\[\begin{align*}
-(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}&amp; = (\mathbf{I}- \mathbf{P}_{\mathbf{W}})(\mathbf{W}\boldsymbol{\alpha}+ \mathbf{X}\boldsymbol{\beta}+ \boldsymbol{\epsilon}) \\
-&amp; = (\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}+ (\mathbf{I}- \mathbf{P}_{\mathbf{W}})\boldsymbol{\epsilon}
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>compute <span class="math inline">\(\textsf{E}[\textsf{SSE}_{M0}]\)</span> under M1: <span class="math display">\[\begin{align*}
-\textsf{E}[\mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}] &amp; = \boldsymbol{\beta}^T\mathbf{X}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}+ \textsf{E}[\boldsymbol{\epsilon}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\boldsymbol{\epsilon}] \\
-&amp; = \boldsymbol{\beta}^T\mathbf{X}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}+ \sigma^2 \textsf{tr}(\mathbf{I}- \mathbf{P}_{\mathbf{W}}) \\
-&amp;  = \boldsymbol{\beta}^T\mathbf{X}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{X}\boldsymbol{\beta}+ \sigma^2(n - q)
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>under M0, both <span class="math inline">\(\textsf{SSE}_{M0}/(n-q)\)</span> and <span class="math inline">\(\textsf{SSE}_{M1}/(n- q - p)\)</span> are unbiased estimates of <span class="math inline">\(\sigma^2\)</span></p></li>
-<li class="fragment"><p>but does the ratio <span class="math inline">\(\frac{\textsf{SSE}_{M0}/(n-q)}{\textsf{SSE}_{M1}/(n- q - p)}\)</span> have a F distribution?</p></li>
-</ul>
-</section>
-<section id="extra-sum-of-squares-1" class="slide level2">
-<h2>Extra Sum of Squares</h2>
-<p>Rewrite <span class="math inline">\(\textsf{SSE}_{M0}\)</span>: <span class="math display">\[\begin{align*}
-\textsf{SSE}_{M0} &amp; = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
-          &amp; = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}} + \mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
-          &amp; = \mathbf{Y}^T(\mathbf{I}- \mathbf{P}_{\mathbf{Z}})\mathbf{Y}+ \mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\\
-          &amp; = \textsf{SSE}_{M1} + \mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}
+<p><span class="math display">\[\begin{align*}
+\boldsymbol{\beta}- \boldsymbol{\beta}_n \mid \sigma^2 &amp; \sim \textsf{N}(0, \boldsymbol{\Phi}_n^{-1}) \\
+\boldsymbol{\Phi}_n^{1/2}(\boldsymbol{\beta}- \boldsymbol{\beta}_n) \mid \sigma^2 &amp; \sim \textsf{N}(0, \mathbf{I}) \\
+(\boldsymbol{\beta}- \boldsymbol{\beta}_n)^T \boldsymbol{\Phi}_n (\boldsymbol{\beta}- \boldsymbol{\beta}_n) \mid \sigma^2 &amp; \sim  \chi^2_p
 \end{align*}\]</span></p>
-<div class="fragment">
-<p>Extra Sum of Squares: <span class="math display">\[\textsf{SSE}_{M0} - \textsf{SSE}_{M1}  = \mathbf{Y}^T(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}})\mathbf{Y}\]</span></p>
 <ul>
-<li class="fragment">is <span class="math inline">\(\mathbf{P}_{\mathbf{Z}} - \mathbf{P}_{\mathbf{W}}\)</span> is a projection matrix?</li>
-<li class="fragment">onto what space? along what space ?</li>
-<li class="fragment">what is the distribution of <span class="math inline">\(\textsf{SSE}_{M0} - \textsf{SSE}_{M1}\)</span> under the null model M0? under M1?</li>
-<li class="fragment">is it independent of <span class="math inline">\(\textsf{SSE}_{M1}\)</span>?</li>
+<li class="fragment">setting <span class="math inline">\(q = \chi^2_{p, 1-\alpha}\)</span> gives a Credible Region for <span class="math inline">\(\Pr(\boldsymbol{\beta}\in C \mid \mathbf{Y}) = 1 - \alpha\)</span></li>
+</ul>
+<div class="footer">
+
+</div>
+</div>
+</section>
+<section id="bayesian-hpd-regions-for-unknown-sigma2" class="slide level2">
+<h2>Bayesian HPD Regions For Unknown <span class="math inline">\(\sigma^2\)</span></h2>
+<ul>
+<li class="fragment"><p>For unknown <span class="math inline">\(\sigma^2\)</span> we need to integrate out <span class="math inline">\(\sigma^2\)</span> to get the marginal posterior for <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
+<li class="fragment"><p>for conjugate priors, <span class="math inline">\(\boldsymbol{\beta}\mid \phi \sim \textsf{N}(\mathbf{b}_0, (\phi \boldsymbol{\Phi}_0)^{-1})\)</span> and <span class="math inline">\(\phi \mid \mathbf{Y}\sim \mathbf{G}(a_n/2, b_n/2)\)</span>, then <span class="math display">\[\begin{align*}
+\boldsymbol{\beta}\mid \phi, \mathbf{Y}&amp; \sim \textsf{N}(\mathbf{b}_n, (\phi \boldsymbol{\Phi}_n)^{-1}) \\
+\phi \mid \mathbf{Y}&amp; \sim \mathbf{G}(a_n/2, b_n/2) \\
+\boldsymbol{\beta}\mid \mathbf{Y}&amp; \sim \textsf{St}(a_n, \mathbf{b}_n, \hat{\phi}\boldsymbol{\Phi}_n)
+\end{align*}\]</span> where <span class="math inline">\(\textsf{St}(a_n, \mathbf{b}_n, (\hat{\phi}\boldsymbol{\Phi}_n)^{-1})\)</span> is a multivariate Student-t distribution with <span class="math inline">\(a_n\)</span> degrees of freedom location <span class="math inline">\(\mathbf{b}_n\)</span> and scale matrix <span class="math inline">\((\hat{\phi}\boldsymbol{\Phi}_n)^{-1}\)</span> with <span class="math inline">\(\hat{\phi} = b_n/a_n\)</span></p></li>
+<li class="fragment"><p>Since <span class="math inline">\(\phi (\boldsymbol{\beta}- \mathbf{b}_n)^T \boldsymbol{\Phi}_n (\boldsymbol{\beta}- \mathbf{b}_n) \sim \chi^2_p\)</span>, show that the distribution of <span class="math display">\[\frac{\phi (\boldsymbol{\beta}- \mathbf{b}_n)^T \boldsymbol{\Phi}_n (\boldsymbol{\beta}- \mathbf{b}_n)/p}{\phi \hat{\phi}} \sim F(p, a_n)\]</span></p></li>
+<li class="fragment"><p>take <span class="math inline">\(c = F_{p, a_n, 1-\alpha}\)</span> to get a <span class="math inline">\(1-\alpha\)</span> HPD region for <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
 </ul>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://sta721-F24.github.io/website/" class="uri">https://sta721-F24.github.io/website/</a></p>
-</div>
 </div>
 </div>
 </section>
