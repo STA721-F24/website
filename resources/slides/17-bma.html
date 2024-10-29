@@ -11,8 +11,8 @@
 <link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – Confidence &amp; Credible Regions</title>
+  <meta name="author" content="Merlise Clyde">
+  <title>STA721-F24: Linear Models – Lecture 17: Bayesian Variable Selection and Model Averaging</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -323,48 +388,9 @@
       margin-right: 0; 
     }
   </style>
-  <script>
-    window.MathJax = {
-      tex: {
-        tags: 'ams'  // should be 'ams', 'none', or 'all'
-      }
-    };
-  </script>
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Feature {
-    --color1: #c0c0c0;
-    --color2: #808080;
-  }
-  .Lemma {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Proposition {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Proof {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Theorem {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .Definition {
     --color1: #d999d3;
     --color2: #a01793;
@@ -373,6 +399,26 @@
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
+  .Conjecture {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Theorem {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
+  }
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   </style>
 </head>
 <body class="quarto-light">
@@ -380,13 +426,13 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Confidence &amp; Credible Regions</h1>
-  <p class="subtitle">STA 721: Lecture 15</p>
+  <h1 class="title">Lecture 17: Bayesian Variable Selection and Model Averaging</h1>
+  <p class="subtitle">STA702</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Merlise Clyde (clyde@duke.edu) 
+Merlise Clyde 
 </div>
         <p class="quarto-title-affiliation">
             Duke University
@@ -395,237 +441,296 @@ Merlise Clyde (clyde@duke.edu)
 </div>
 
 </section>
-<section id="outline" class="slide level2">
-<h2>Outline</h2>
+<section id="normal-regression-model" class="slide level2">
+<h2>Normal Regression Model</h2>
+<p>Centered regression model where <span class="math inline">\(\mathbf{X}^c\)</span> is the <span class="math inline">\(n \times p\)</span> centered design matrix where all variables have had their means subtracted (may or may not need to be standardized)</p>
+<p><span class="math display">\[\mathbf{Y}= \mathbf{1}_n \alpha + \mathbf{X}^c \boldsymbol{\beta}+ \boldsymbol{\epsilon}\]</span></p>
 <ul>
-<li class="fragment"><p>Confidence Interverals from Test Statistics</p></li>
-<li class="fragment"><p>Pivotal Quantities</p></li>
-<li class="fragment"><p>Confidence intervals for parameters</p></li>
-<li class="fragment"><p>Prediction Intervals</p></li>
-<li class="fragment"><p>Bayesian Credible Regions and Intervals</p></li>
-</ul>
-<div class="fragment">
-<p>Readings:</p>
-<ul>
-<li class="fragment">Christensen Appendix C, Chapter 3</li>
-</ul>
-</div>
-</section>
-<section id="goals" class="slide level2">
-<h2>Goals</h2>
-<p>For the regression model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+\boldsymbol{\epsilon}\)</span> we usually want to do more than just testing that <span class="math inline">\(\boldsymbol{\beta}\)</span> is zero</p>
-<ul>
-<li class="fragment"><p>what is a plausible range for <span class="math inline">\(\beta_j\)</span>?</p></li>
-<li class="fragment"><p>what is a plausible set of values for <span class="math inline">\(\beta_j\)</span> and <span class="math inline">\(\beta_k\)</span>?</p></li>
-<li class="fragment"><p>what is a a plausible range of values for <span class="math inline">\(\mathbf{x}^T\boldsymbol{\beta}\)</span> for a particular <span class="math inline">\(\mathbf{x}\)</span>?</p></li>
-<li class="fragment"><p>what is a plausible range of values for <span class="math inline">\(\mathbf{Y}_{n+1}\)</span> for a given value of <span class="math inline">\(\mathbf{x}_{n+1}\)</span>?</p></li>
-</ul>
-<div class="fragment">
-<p>Look at confidence intervals, confidence regions, prediction regions and Bayesian credible regions/intervals</p>
-</div>
-</section>
-<section id="confidence-sets" class="slide level2">
-<h2>Confidence Sets</h2>
-<p>For a random variable <span class="math inline">\(\mathbf{Y}\sim \mathbf{P}\in \{P_{\boldsymbol{\theta}}: \boldsymbol{\theta}\in \boldsymbol{\Theta}\}\)</span></p>
-<div id="confidence-region" class="Definition" title="Confidence Region">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition: </strong>Confidence Region</summary><div>A set valued function <span class="math inline">\(C\)</span> is a <span class="math inline">\((1 - \alpha) \times 100\%\)</span> confidence region for <span class="math inline">\(\boldsymbol{\theta}\)</span> if <span class="math display">\[P_{\boldsymbol{\theta}}(\{\boldsymbol{\theta}\in C(\mathbf{Y})\}) = 1- \alpha \, \forall \, \boldsymbol{\theta}\in \boldsymbol{\Theta}\]</span><p></p>
-</div></details>
-</div>
-<ul>
-<li class="fragment"><p>In this case we say <span class="math inline">\(C(Y)\)</span> is a <span class="math inline">\(1 - \alpha\)</span> confidence region for the parameter <span class="math inline">\(\boldsymbol{\theta}\)</span></p></li>
-<li class="fragment"><p>there is some true value of <span class="math inline">\(\boldsymbol{\theta}\)</span>, and the confidence region will cover it with probability <span class="math inline">\(1- \alpha\)</span> no matter what it is.</p></li>
-<li class="fragment"><p>the randomness is due to <span class="math inline">\(\mathbf{Y}\)</span> and <span class="math inline">\(C(\mathbf{Y})\)</span></p></li>
-<li class="fragment"><p>once we observe <span class="math inline">\(\mathbf{Y}\)</span> everything is fixed, so region may not include the true <span class="math inline">\(\boldsymbol{\theta}\)</span></p></li>
-</ul>
-</section>
-<section id="hypothesis-tests-and-rejectionacceptance-regions" class="slide level2">
-<h2>Hypothesis Tests and Rejection/Acceptance Regions</h2>
-<p>Recall for a level <span class="math inline">\(\alpha\)</span> test of a point null hypothesis</p>
-<ul>
-<li class="fragment"><p>we reject <span class="math inline">\(H\)</span> with probability <span class="math inline">\(\alpha\)</span> when <span class="math inline">\(H\)</span> is true</p></li>
-<li class="fragment"><p>for each test we can construct:</p>
-<ul>
-<li class="fragment">a rejection region <span class="math inline">\(R(\boldsymbol{\theta}) \subset \cal{Y}\)</span>, the <span class="math inline">\(Y\)</span> values for which we reject <span class="math inline">\(H\)</span></li>
-<li class="fragment">an acceptance region <span class="math inline">\(A(\boldsymbol{\theta})  \subset \cal{Y}\)</span>, the <span class="math inline">\(Y\)</span> values for which we accept <span class="math inline">\(H\)</span></li>
-</ul></li>
-<li class="fragment"><p>these sets are complements of each other (for non-randomized tests)</p></li>
-</ul>
-<div class="fragment">
-<p><span class="math display">\[\Pr(\mathbf{Y}\in A(\boldsymbol{\theta}) \mid \boldsymbol{\theta}) =  1 - \alpha\]</span></p>
-</div>
-</section>
-<section id="duality-of-hypothesis-testingconfidence-regions" class="slide level2">
-<h2>Duality of Hypothesis-Testing/Confidence Regions</h2>
-<p>Suppose we have a level <span class="math inline">\(\alpha\)</span> test for every possible valuse of <span class="math inline">\(\boldsymbol{\theta}\)</span></p>
-<ul>
-<li class="fragment"><p>for each <span class="math inline">\(\boldsymbol{\theta}\in \boldsymbol{\Theta}\)</span>, let <span class="math inline">\(A(\boldsymbol{\theta})\)</span> be the acceptance region of the test <span class="math inline">\(\mathbf{Y}\sim P_{\boldsymbol{\theta}}\)</span></p></li>
-<li class="fragment"><p>then <span class="math inline">\(P(\mathbf{Y}\in A(\boldsymbol{\theta}) \mid \boldsymbol{\theta}) = 1 - \alpha\)</span> for each <span class="math inline">\(\boldsymbol{\theta}\in \boldsymbol{\Theta}\)</span></p></li>
-<li class="fragment"><p>This collection of hypothesis tests can be “inverted” to construct a confidence region for θ, as follows:</p></li>
-<li class="fragment"><p>define <span class="math inline">\(C(\mathbf{Y}) = \{ \boldsymbol{\theta}\in \boldsymbol{\Theta}: \mathbf{Y}\in A(\boldsymbol{\theta}) \}\)</span></p></li>
-<li class="fragment"><p>this is the set of <span class="math inline">\(\boldsymbol{\theta}\)</span> values that are not rejected when <span class="math inline">\(\mathbf{Y}= \mathbf{y}\)</span> is observed</p></li>
-<li class="fragment"><p>then <span class="math inline">\(C\)</span> is a <span class="math inline">\(1 - \alpha\)</span> confidence region for <span class="math inline">\(\boldsymbol{\theta}\)</span></p></li>
-</ul>
-</section>
-<section id="confidence-intervals-for-regression-parameters" class="slide level2">
-<h2>Confidence Intervals for Regression Parameters</h2>
-<p>For the linear model <span class="math inline">\(\mathbf{Y}\sim \textsf{N}(\mathbf{X}\boldsymbol{\beta}, \sigma^2 \mathbf{I})\)</span>, confidence intervals for <span class="math inline">\(\beta_j\)</span> can be constructed from inverting the approriate <span class="math inline">\(t\)</span>-test.</p>
-<ul>
-<li class="fragment"><p>suppose you are testing <span class="math inline">\(H: \beta_j = 0\)</span></p></li>
-<li class="fragment"><p>if <span class="math inline">\(H\)</span> is true, then</p>
-<ul>
-<li class="fragment"><span class="math inline">\(\hat{\beta}_j - \beta_j \sim \textsf{N}(0, \sigma^2 v_{jj})\)</span> where <span class="math inline">\(v_{jj}\)</span> is the <span class="math inline">\(j\)</span>th diagonal element of <span class="math inline">\((\mathbf{X}^T\mathbf{X})^{-1}\)</span></li>
-<li class="fragment"><span class="math inline">\(s^2 \sim \sigma^2 \chi^2_{n-p}/(n-p)\)</span></li>
-<li class="fragment"><span class="math inline">\(\hat{\beta}_j\)</span> and <span class="math inline">\(s^2\)</span> are independent</li>
-</ul></li>
-<li class="fragment"><p>therefore if <span class="math inline">\(H\)</span> is true <span class="math display">\[t_j = \frac{\hat{\beta}_j - \beta_j}{s\sqrt{v_{jj}}} \sim t_{n-p}\]</span></p></li>
-</ul>
-</section>
-<section id="acceptance-region-confidence-interval" class="slide level2">
-<h2>Acceptance Region &amp; Confidence Interval</h2>
-<ul>
-<li class="fragment"><p>define the acceptance region <span class="math inline">\(A(\beta_j) = \{ \hat{\beta}_j, s^2: |t_j| &lt; t_{n-p, 1 - \alpha/2}\}\)</span><br>
+<li class="fragment"><p>“Redundant” variables lead to unstable estimates<br>
 </p></li>
-<li class="fragment"><p>we have that <span class="math inline">\(H\)</span> is accepted if <span class="math display">\[t_j \in A(\beta_j) \Leftrightarrow \frac{|\hat{\beta}_j - \beta_j|}{s\sqrt{v_{jj}}} &lt; t_{n-p, 1-\alpha/2}\]</span></p></li>
-<li class="fragment"><p>Now construct a confidence interval for the true value by inverting the tests: <span class="math display">\[\begin{align*}
-C(\hat{\beta}_j, s^2) &amp; =  (\hat{\beta_j}, s^2) \in A(\beta_j) \\
-&amp; = \left\{ \beta_j: |\hat{\beta}_j - \beta_j| &lt; s\sqrt{v_{jj}} t_{n-p, 1 - \alpha/2} \right\}\\
-&amp; = \left\{ \beta_j: \hat{\beta}_j - s\sqrt{v_{jj}} t_{n-p, 1 - \alpha/2} &lt; \beta_j &lt; \hat{\beta}_j + s\sqrt{v_{jj}} t_{n-p, 1 - \alpha/2} \right\} \\
-&amp; = \hat{\beta}_j \pm s\sqrt{v_{jj}}\, t_{n-p, 1 - \alpha/2}
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>for <span class="math inline">\(\alpha = 0.05\)</span> and large <span class="math inline">\(n\)</span>, <span class="math inline">\(t_{n-p,0.975} \approx 2\)</span>, so CI is approximately <span class="math inline">\(\hat{\beta}_j \pm 2s\sqrt{v_{jj}}\)</span></p></li>
-</ul>
-<div class="footer">
-
-</div>
-</section>
-<section id="confidence-intervals-for-linear-functions" class="slide level2">
-<h2>Confidence Intervals for Linear Functions</h2>
-<p>For a linear function of the parameters <span class="math inline">\(\lambda = \mathbf{a}^T \boldsymbol{\beta}\)</span> we can construct a confidence interval by inverting the appropriate <span class="math inline">\(t\)</span>-test</p>
-<ul>
-<li class="fragment">most important example <span class="math inline">\(\mathbf{a}^T\boldsymbol{\beta}= \mathbf{x}^T\boldsymbol{\beta}= \textsf{E}[\mathbf{Y}\mid \mathbf{x}]\)</span></li>
-<li class="fragment">suppose you are testing <span class="math inline">\(H: \mathbf{a}^T\boldsymbol{\beta}= m\)</span></li>
-<li class="fragment">If <span class="math inline">\(H\)</span> is true, <span class="math inline">\(\mathbf{a}^T\boldsymbol{\beta}- m \sim \textsf{N}(0, \sigma^2 v)\)</span> where <span class="math inline">\(v=\mathbf{a}^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{a})\)</span></li>
-<li class="fragment"><span class="math inline">\(s^2 \sim \sigma^2 \chi^2_{n-p}/(n-p)\)</span> independent of <span class="math inline">\(\mathbf{a}^T\hat{\boldsymbol{\beta}}\)</span></li>
-<li class="fragment">then <span class="math inline">\(t = \frac{\mathbf{a}^T\hat{\boldsymbol{\beta}} - m}{s\sqrt{v}} \sim t_{n-p}\)</span></li>
-<li class="fragment">a <span class="math inline">\(1-\alpha\)</span> confidence interval for <span class="math inline">\(\mathbf{a}^T\boldsymbol{\beta}\)</span> is <span class="math display">\[\mathbf{a}^T\hat{\boldsymbol{\beta}} \pm s\sqrt{v}\, t_{n-p, 1 - \alpha/2}\]</span></li>
+<li class="fragment"><p>Some variables may not be relevant at all (<span class="math inline">\(\beta_j = 0\)</span>)</p></li>
+<li class="fragment"><p>We want to reduce the dimension of the predictor space</p></li>
+<li class="fragment"><p>How can we infer a “good” model that uses a subset of predictors from the data?</p></li>
+<li class="fragment"><p>Expand model hierarchically to introduce another latent variable <span class="math inline">\(\boldsymbol{\gamma}\)</span> that encodes models <span class="math inline">\({\cal M}_\gamma\)</span> <span class="math inline">\(\boldsymbol{\gamma}= (\gamma_1, \gamma_2, \ldots \gamma_p)^T\)</span> where <span class="math display">\[\begin{align*}
+  \gamma_j = 0 &amp; \Leftrightarrow \beta_j = 0 \\
+  \gamma_j = 1 &amp;  \Leftrightarrow \beta_j \neq 0
+  \end{align*}\]</span></p></li>
+<li class="fragment"><p>Find Bayes factors and posterior probabilities of models <span class="math inline">\({\cal M}_\gamma\)</span></p></li>
 </ul>
 </section>
-<section id="prediction-regions-and-intervals" class="slide level2">
-<h2>Prediction Regions and Intervals</h2>
-<p>Related to CI for <span class="math inline">\(\textsf{E}[Y \mid \mathbf{x}] = \mathbf{x}^T\boldsymbol{\beta}\)</span>, we may wish to construct a prediction interval for a new observation <span class="math inline">\(Y^*\)</span> at <span class="math inline">\(\mathbf{x}_*\)</span></p>
+<section id="priors" class="slide level2">
+<h2>Priors</h2>
+<p>With <span class="math inline">\(2^p\)</span> models, subjective priors for <span class="math inline">\(\boldsymbol{\beta}\)</span> are out of the question for moderate <span class="math inline">\(p\)</span> and improper priors lead to arbitrary Bayes factors leading to <strong>conventional priors</strong> on model specific parameters</p>
 <ul>
-<li class="fragment"><p>a <span class="math inline">\(1-\alpha\)</span> prediction interval for <span class="math inline">\(Y^*\)</span> is a set valued function of <span class="math inline">\(\mathbf{Y}\)</span>, <span class="math inline">\(C(\mathbf{Y})\)</span> such that <span class="math display">\[\Pr(\mathbf{Y}^* \in C(\mathbf{Y}) \mid \boldsymbol{\beta},\sigma^2) = 1 - \alpha\]</span> where the distribution is computed using the distribution of <span class="math inline">\(\mathbf{Y}^*\)</span></p></li>
-<li class="fragment"><p>this use the idea of a <em>pivotal quantity</em>: a function of the data and the parameters that has a known distribution that does not depend on any unknown parameters.</p></li>
-<li class="fragment"><p>for prediction, <span class="math inline">\(Y^* = \mathbf{x}_*^T\boldsymbol{\beta}+ \boldsymbol{\epsilon}^*\)</span> where <span class="math inline">\(\boldsymbol{\epsilon}^* \sim \textsf{N}(0, \sigma^2)\)</span> independent of <span class="math inline">\(\boldsymbol{\epsilon}\)</span></p></li>
+<li class="fragment"><p>Zellner’s g-prior and related have attractive properties as a starting point <span class="math display">\[\boldsymbol{\beta}_\gamma \mid \alpha, \phi, \boldsymbol{\gamma}\sim \textsf{N}(0, g \phi^{-1}
+({\mathbf{X}_{\boldsymbol{\gamma}}^c}^\prime \mathbf{X}_{\boldsymbol{\gamma}}^c)^{-1})\]</span></p></li>
+<li class="fragment"><p>Independent Jeffrey’s prior on common parameters <span class="math inline">\((\alpha, \phi)\)</span><br>
+<span class="math inline">\(p(\alpha, \phi) \propto 1/\phi\)</span></p></li>
+<li class="fragment"><p>marginal likelihood of <span class="math inline">\(\boldsymbol{\gamma}\)</span> that is proportional to <span class="math display">\[ p(\mathbf{Y}\mid \boldsymbol{\gamma}) = C (1 + g)^{\frac{n-p_{\boldsymbol{\gamma}}-1}{2}} ( 1 + g (1 -
+R^2_\gamma))^{- \frac{(n-1)}{2}}\]</span></p></li>
+<li class="fragment"><p><span class="math inline">\(R^2_\gamma\)</span> is the usual coefficient of determination for model <span class="math inline">\({\cal M}_\gamma\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(C\)</span> is a constant common to all models (proportional to the marginal likelihood of the null model where <span class="math inline">\(\boldsymbol{\beta_\gamma}= \mathbf{0}_p\)</span></p></li>
+</ul>
+</section>
+<section id="sketch-for-marginal" class="slide level2">
+<h2>Sketch for Marginal</h2>
+<ul>
+<li class="fragment">Integrate out <span class="math inline">\(\boldsymbol{\beta_\gamma}\)</span> using sums of normals<br>
+</li>
+<li class="fragment">Find inverse of <span class="math inline">\(\mathbf{I}_n + g \mathbf{P}_{\mathbf{X}_{\boldsymbol{\gamma}}}\)</span> (properties of projections or Sherman-Woodbury-Morrison Theorem)<br>
+</li>
+<li class="fragment">Find determinant of <span class="math inline">\(\phi (\mathbf{I}_n + g \mathbf{P}_{\mathbf{X}_{\boldsymbol{\gamma}}})\)</span><br>
+</li>
+<li class="fragment">Integrate out intercept (normal)<br>
+</li>
+<li class="fragment">Integrate out <span class="math inline">\(\phi\)</span> (gamma)<br>
+</li>
+<li class="fragment">algebra to simplify quadratic forms to <span class="math inline">\(R^2_{\boldsymbol{\gamma}}\)</span></li>
+<li class="fragment">in the following slides we will assume that <span class="math inline">\(\mathbf{X}_{\boldsymbol{\gamma}}\)</span> is centered so that <span class="math inline">\(\mathbf{1}_n^T\mathbf{X}_{\boldsymbol{\gamma}}= \mathbf{0}_p\)</span> for all models <span class="math inline">\({\cal M}_\gamma\)</span></li>
 </ul>
 <div class="fragment">
-<p><span class="math display">\[\begin{align*}
-\textsf{E}[Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}]   &amp; = \mathbf{x}_*^T\boldsymbol{\beta}- \mathbf{x}_*^T\boldsymbol{\beta}= 0 \\
-\textsf{Var}(Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}) &amp; = \textsf{Var}(\boldsymbol{\epsilon}^*)  + \textsf{Var}(\mathbf{x}_*^T\hat{\boldsymbol{\beta}})   
-                         = \sigma^2 + \sigma^2 \mathbf{x}_*^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_* \\
-Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}&amp; \sim \textsf{N}(0, \sigma^2(1 + \mathbf{x}_*^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_*))
+<p>Or integrate <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\boldsymbol{\beta_\gamma}\)</span> and <span class="math inline">\(\phi\)</span> (complete the square!)</p>
+</div>
+</section>
+<section id="posterior-distributions-on-parameters" class="slide level2">
+<h2>Posterior Distributions on Parameters</h2>
+<p><span class="math display">\[\begin{align*}\alpha \mid \boldsymbol{\gamma}, \phi, y &amp; \sim \textsf{N}\left(\bar{y}, \frac{1}{n \phi}\right)\\
+\boldsymbol{\beta}_{\boldsymbol{\gamma}} \mid \boldsymbol{\gamma}, \phi, g, y &amp;\sim \textsf{N}\left( \frac{g}{1 + g} \hat{\boldsymbol{\beta}}_{\gamma}, \frac{g}{1 + g} \frac{1}{\phi} \left[{\boldsymbol{X}_{\gamma}}^T \boldsymbol{X}_{\gamma} \right]^{-1}  \right) \\
+\phi \mid \gamma, y &amp; \sim \textsf{Gamma}\left(\frac{n-1}{2}, \frac{\textsf{TotalSS} - \frac{g}{1+g} \textsf{RegSS}}{2}\right) \\
+\textsf{TotalSS} &amp; \equiv \sum_i (y_i - \bar{y})^2 \\
+\textsf{RegSS} &amp; \equiv \hat{\boldsymbol{\beta}}_\gamma^T \boldsymbol{X}_\gamma^T \boldsymbol{X}_\gamma \hat{\beta}\gamma \\
+R^2_\gamma &amp; = \frac{\textsf{RegSS}}{\textsf{TotalSS}}  = 1 - \frac{\textsf{ErrorSS}}{\textsf{TotalSS}}
 \end{align*}\]</span></p>
-<div class="footer">
-
-</div>
-</div>
 </section>
-<section id="pivotal-quantity-and-prediction-intervals" class="slide level2">
-<h2>Pivotal Quantity and Prediction Intervals</h2>
-<p>Since <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and <span class="math inline">\(s^2\)</span> are independent, we can construct a pivotal quantity for <span class="math inline">\(Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}\)</span>: <span class="math display">\[\frac{Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}}{s\sqrt{1 + \mathbf{x}_*^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_*}} \sim t_{n-p}\]</span></p>
+<section id="priors-on-model-space" class="slide level2">
+<h2>Priors on Model Space</h2>
+<p><span class="math inline">\(p({\cal M}_\gamma) \Leftrightarrow p(\boldsymbol{\gamma})\)</span></p>
 <ul>
-<li class="fragment"><p>therefore <span class="math display">\[\Pr\left(\frac{|Y^* - \mathbf{x}_*^T\hat{\boldsymbol{\beta}}|}{s\sqrt{1 + \mathbf{x}_*^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_*}} &lt; t_{n-p, 1-\alpha/2} \right) = 1 - \alpha\]</span></p></li>
-<li class="fragment"><p>Rearranging gives a <span class="math inline">\(1-\alpha\)</span> prediction interval for <span class="math inline">\(Y^*\)</span>: <span class="math display">\[\mathbf{x}_*^T\hat{\boldsymbol{\beta}}\pm s\sqrt{1 + \mathbf{x}_*^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_*} t_{n-p, 1-\alpha/2}\]</span></p></li>
-</ul>
-</section>
-<section id="joint-confidence-regions-for-boldsymbolbeta" class="slide level2">
-<h2>Joint Confidence Regions for <span class="math inline">\(\boldsymbol{\beta}\)</span></h2>
-<ul>
-<li class="fragment">we can construct a joint confidence region for <span class="math inline">\(\boldsymbol{\beta}\)</span> based on inverting a test <span class="math inline">\(H: \boldsymbol{\beta}= \boldsymbol{\beta}_0\)</span>. Recall:</li>
+<li class="fragment"><p>Fixed prior probability <span class="math inline">\(\gamma_j\)</span> <span class="math inline">\(p(\gamma_j = 1) = .5 \Rightarrow P({\cal M}_\gamma) = .5^p\)</span></p></li>
+<li class="fragment"><p>Uniform on space of models <span class="math inline">\(p_{\boldsymbol{\gamma}}\sim \textsf{Bin}(p, .5)\)</span></p></li>
+<li class="fragment"><p>Hierarchical prior <span class="math display">\[\begin{align}
+\gamma_j \mid \pi &amp; \mathrel{\mathop{\sim}\limits^{\rm iid}}\textsf{Ber}(\pi) \\
+\pi &amp; \sim \textsf{Beta}(a,b) \\
+\text{then  }  p_{\boldsymbol{\gamma}}&amp; \sim \textsf{BB}_p(a, b)
+\end{align}\]</span></p></li>
 </ul>
 <div class="fragment">
-<p><span class="math display">\[\begin{align*}
-\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}&amp; \sim \textsf{N}(0, \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}) \\
-(\mathbf{X}^T\mathbf{X})^{-1/2}(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}) &amp; \sim \textsf{N}(0, \sigma^2 \mathbf{I}) \\
-(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta})^T(\mathbf{X}^T\mathbf{X})^{-1}(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}) &amp; \sim \sigma^2 \chi^2_p
-\end{align*}\]</span></p>
-<ul>
-<li class="fragment">since <span class="math inline">\(s^2\)</span> is independent of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> we can construct a CI based on the <span class="math inline">\(F\)</span>-distribution <span class="math display">\[\frac{(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}_0)^T(\mathbf{X}^T\mathbf{X})^{-1}(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}_0)/p}{s^2} \sim F_{p, n-p}\]</span></li>
-<li class="fragment">inverting the <span class="math inline">\(F\)</span>-test gives a <span class="math inline">\(1-\alpha\)</span> confidence region for <span class="math inline">\(\boldsymbol{\beta}\)</span>: <span class="math display">\[\{ \boldsymbol{\beta}: (\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}_0)^T(\mathbf{X}^T\mathbf{X})^{-1}(\hat{\boldsymbol{\beta}}- \boldsymbol{\beta}_0)/s^2 &lt; p F_{p, n-p, 1-\alpha} \}\]</span></li>
-</ul>
-<div class="footer">
-
-</div>
+<p><span class="math display">\[
+p(p_{\boldsymbol{\gamma}}\mid p, a, b) = \frac{ \Gamma(p + 1) \Gamma(p_{\boldsymbol{\gamma}}+ a) \Gamma(p - p_{\boldsymbol{\gamma}}+ b) \Gamma (a + b) }{\Gamma(p_{\boldsymbol{\gamma}}+1) \Gamma(p - p_{\boldsymbol{\gamma}}+ 1) \Gamma(p + a + b) \Gamma(a) \Gamma(b)}
+\]</span> - Uniform on Model Size <span class="math inline">\(\Rightarrow p_{\boldsymbol{\gamma}}\sim \textsf{BB}_p(1, 1) \sim \textsf{Unif}(0, p)\)</span></p>
 </div>
 </section>
-<section id="bayesian-credible-regions" class="slide level2">
-<h2>Bayesian Credible Regions</h2>
+<section id="posterior-probabilities-of-models" class="slide level2">
+<h2>Posterior Probabilities of Models</h2>
 <ul>
-<li class="fragment"><p>In a Bayesian setting, we have a posterior distribution for <span class="math inline">\(\boldsymbol{\beta}\)</span> given the data <span class="math inline">\(\mathbf{Y}\)</span></p></li>
-<li class="fragment"><p>a set <span class="math inline">\(C \in \mathbb{R}^p\)</span> is a <span class="math inline">\(1-\alpha\)</span> posterior credible region (sometimes called a Bayesian confidence region) if <span class="math inline">\(\Pr(\boldsymbol{\beta}\in C \mid \mathbf{Y}) = 1 - \alpha\)</span></p></li>
-<li class="fragment"><p>lots of sets have this property, but we usually want the most probable values of <span class="math inline">\(\boldsymbol{\beta}\)</span> given the data</p></li>
-<li class="fragment"><p>this motivates looking at the highest posterior density (HPD) region which is a <span class="math inline">\(1-\alpha\)</span> credible set <span class="math inline">\(C\)</span> such that the values in <span class="math inline">\(C\)</span> have higher posterior density than those outside of <span class="math inline">\(C\)</span></p></li>
-<li class="fragment"><p>the HPD region is the smallest region that contains <span class="math inline">\(1-\alpha\)</span> of the posterior probability</p></li>
-</ul>
-</section>
-<section id="bayesian-credible-regions-1" class="slide level2">
-<h2>Bayesian Credible Regions</h2>
-<ul>
-<li class="fragment"><p>For a normal prior and normal likelihood, the posterior for <span class="math inline">\(\boldsymbol{\beta}\)</span> conditional on <span class="math inline">\(\sigma^2\)</span> is normal with say posterior mean <span class="math inline">\(\mathbf{b}_n\)</span> and posterior precision <span class="math inline">\(\boldsymbol{\Phi}_n\)</span></p></li>
-<li class="fragment"><p>the posterior density as a function of <span class="math inline">\(\boldsymbol{\beta}\)</span> for a fixed <span class="math inline">\(\sigma^2\)</span> is <span class="math display">\[p(\boldsymbol{\beta}\mid \mathbf{Y}) \propto \exp\left\{ -(\boldsymbol{\beta}- \mathbf{b}_n)^T \boldsymbol{\Phi}_n (\boldsymbol{\beta}- \mathbf{b}_n)/2 \right\}\]</span></p></li>
-<li class="fragment"><p>so a highest posterior density region has the form <span class="math display">\[C = \{ \boldsymbol{\beta}: (\boldsymbol{\beta}- \mathbf{b}_n)^T\boldsymbol{\Phi}_n^{-1}(\boldsymbol{\beta}- \mathbf{b}_n)  &lt; q \}\]</span></p></li>
+<li class="fragment"><p>Calculate posterior distribution analytically under enumeration. <span class="math display">\[p({\cal M}_\gamma\mid \mathbf{Y})= \frac{p(\mathbf{Y}\mid \boldsymbol{\gamma}) p(\boldsymbol{\gamma})} {\sum_{\boldsymbol{\gamma}^\prime \in \Gamma} p(\mathbf{Y}\mid \boldsymbol{\gamma}^\prime) p(\boldsymbol{\gamma}^\prime)}\]</span></p></li>
+<li class="fragment"><p>Express as a function of Bayes factors and prior odds!</p></li>
+<li class="fragment"><p>Use MCMC over <span class="math inline">\(\Gamma\)</span> - Gibbs, Metropolis Hastings if <span class="math inline">\(p\)</span> is large (depends on Bayes factors and prior odds)</p></li>
+<li class="fragment"><p>slow convergence/poor mixing with high correlations<br>
+</p></li>
+<li class="fragment"><p>Metropolis Hastings algorithms more flexibility<br>
+(swap pairs of variables or use adaptive Independent Metropolis!)</p></li>
 </ul>
 <div class="fragment">
-<p><span class="math display">\[\begin{align*}
-\boldsymbol{\beta}- \boldsymbol{\beta}_n \mid \sigma^2 &amp; \sim \textsf{N}(0, \boldsymbol{\Phi}_n^{-1}) \\
-\boldsymbol{\Phi}_n^{1/2}(\boldsymbol{\beta}- \boldsymbol{\beta}_n) \mid \sigma^2 &amp; \sim \textsf{N}(0, \mathbf{I}) \\
-(\boldsymbol{\beta}- \boldsymbol{\beta}_n)^T \boldsymbol{\Phi}_n (\boldsymbol{\beta}- \boldsymbol{\beta}_n) \mid \sigma^2 &amp; \sim  \chi^2_p
-\end{align*}\]</span></p>
-<ul>
-<li class="fragment">setting <span class="math inline">\(q = \chi^2_{p, 1-\alpha}\)</span> gives a Credible Region for <span class="math inline">\(\Pr(\boldsymbol{\beta}\in C \mid \mathbf{Y}) = 1 - \alpha\)</span></li>
-</ul>
-<div class="footer">
-
+<div class="callout callout-tip callout-style-simple">
+<div class="callout-body">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-content">
+<p>No need to run MCMC over <span class="math inline">\(\boldsymbol{\gamma}\)</span>, <span class="math inline">\(\boldsymbol{\beta_\gamma}\)</span>, <span class="math inline">\(\alpha\)</span>, and <span class="math inline">\(\phi\)</span>!</p>
+</div>
+</div>
 </div>
 </div>
 </section>
-<section id="bayesian-hpd-regions-for-unknown-sigma2" class="slide level2">
-<h2>Bayesian HPD Regions For Unknown <span class="math inline">\(\sigma^2\)</span></h2>
+<section id="choice-of-g-bartletts-paradox" class="slide level2">
+<h2>Choice of <span class="math inline">\(g\)</span>: Bartlett’s Paradox</h2>
+<p>The Bayes factor for comparing <span class="math inline">\(\boldsymbol{\gamma}\)</span> to the null model: <span class="math display">\[
+BF(\boldsymbol{\gamma}: \boldsymbol{\gamma}_0) =    (1 + g)^{(n - 1 - p_{\boldsymbol{\gamma}})/2} (1 + g(1 - R_{\boldsymbol{\gamma}}^2))^{-(n-1)/2}
+\]</span></p>
 <ul>
-<li class="fragment"><p>For unknown <span class="math inline">\(\sigma^2\)</span> we need to integrate out <span class="math inline">\(\sigma^2\)</span> to get the marginal posterior for <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
-<li class="fragment"><p>for conjugate priors, <span class="math inline">\(\boldsymbol{\beta}\mid \phi \sim \textsf{N}(\mathbf{b}_0, (\phi \boldsymbol{\Phi}_0)^{-1})\)</span> and <span class="math inline">\(\phi \sim \mathbf{G}(a_0/2, b_0/2)\)</span>, then <span class="math display">\[\begin{align*}
-\boldsymbol{\beta}\mid \phi, \mathbf{Y}&amp; \sim \textsf{N}(\mathbf{b}_n, (\phi \boldsymbol{\Phi}_n)^{-1}) \\
-\phi \mid \mathbf{Y}&amp; \sim \mathbf{G}(a_n/2, b_n/2) \\
-\boldsymbol{\beta}\mid \mathbf{Y}&amp; \sim \textsf{St}(a_n, \mathbf{b}_n, \hat{\sigma}^2\boldsymbol{\Phi}_n^{-1})
-\end{align*}\]</span> where <span class="math inline">\(\textsf{St}(a_n, \mathbf{b}_n, \hat{\sigma}^2\boldsymbol{\Phi}_n^{-1})\)</span> is a multivariate Student-t distribution with <span class="math inline">\(a_n\)</span> degrees of freedom location <span class="math inline">\(\mathbf{b}_n\)</span> and scale matrix <span class="math inline">\(\hat{\sigma}^2\boldsymbol{\Phi}_n^{-1}\)</span> with <span class="math inline">\(\hat{\sigma}^2 = b_n/a_n\)</span></p></li>
-<li class="fragment"><p>density of <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math display">\[p(\boldsymbol{\beta}\mid \mathbf{Y}) \propto \left(1 + \frac{(\boldsymbol{\beta}- \mathbf{b}_n)^T\boldsymbol{\Phi}_n(\boldsymbol{\beta}- \mathbf{b}_n)}{a_n \hat{\sigma}^2 } \right)^{-(a_n + p)/2}\]</span></p></li>
+<li class="fragment">For fixed sample size <span class="math inline">\(n\)</span> and <span class="math inline">\(R_{\boldsymbol{\gamma}}^2\)</span>, consider taking values of <span class="math inline">\(g\)</span> that go to infinity<br>
+</li>
+<li class="fragment">Increasing vagueness in prior</li>
+<li class="fragment">What happens to BF as <span class="math inline">\(g \to \infty\)</span>?</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bartlett Paradox</strong></p>
+</div>
+<div class="callout-content">
+<p>Why is this a paradox?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="information-paradox" class="slide level2">
+<h2>Information Paradox</h2>
+<p>The Bayes factor for comparing <span class="math inline">\(\boldsymbol{\gamma}\)</span> to the null model: <span class="math display">\[
+BF(\boldsymbol{\gamma}: \boldsymbol{\gamma}_0) =    (1 + g)^{(n - 1 - p_{\boldsymbol{\gamma}})/2} (1 + g(1 - R_{\boldsymbol{\gamma}}^2))^{-(n-1)/2}
+\]</span></p>
+<ul>
+<li class="fragment">Let <span class="math inline">\(g\)</span> be a fixed constant and take <span class="math inline">\(n\)</span> fixed.<br>
+</li>
+<li class="fragment">Usual F statistic for testing <span class="math inline">\(\boldsymbol{\gamma}\)</span> versus <span class="math inline">\(\boldsymbol{\gamma}_0\)</span> is <span class="math inline">\(F = \frac{R_{\boldsymbol{\gamma}}^2/p_{\boldsymbol{\gamma}}}{(1 - R_{\boldsymbol{\gamma}}^2)/(n - 1 - p_{\boldsymbol{\gamma}})}\)</span><br>
+</li>
+<li class="fragment">As <span class="math inline">\(R^2_{\boldsymbol{\gamma}} \to 1\)</span>, <span class="math inline">\(F \to \infty\)</span> Likelihood Rqtio test (F-test) would reject <span class="math inline">\(\boldsymbol{\gamma}_0\)</span> where <span class="math inline">\(F\)</span> is the usual <span class="math inline">\(F\)</span> statistic for comparing model <span class="math inline">\(\boldsymbol{\gamma}\)</span> to <span class="math inline">\(\boldsymbol{\gamma}_0\)</span><br>
+</li>
+<li class="fragment">BF converges to a fixed constant <span class="math inline">\((1+g)^{n - 1 -p_{\boldsymbol{\gamma}}/2}\)</span> (does not go to infinity !</li>
+</ul>
+<div class="fragment">
+<p><strong>Information Inconsistency</strong> of <a href="https://www.jstor.org/stable/27640050">Liang et al JASA 2008</a></p>
+</div>
+</section>
+<section id="mixtures-of-g-priors-information-consistency" class="slide level2">
+<h2>Mixtures of <span class="math inline">\(g\)</span>-priors &amp; Information consistency</h2>
+<ul>
+<li class="fragment">Want <span class="math inline">\(\textsf{BF}\to \infty\)</span> if <span class="math inline">\(\textsf{R}_{\boldsymbol{\gamma}}^2 \to 1\)</span> if model is full rank</li>
+<li class="fragment">Put a prior on <span class="math inline">\(g\)</span> <span class="math display">\[BF(\boldsymbol{\gamma}: \boldsymbol{\gamma}_0) =  \frac{ C \int (1 + g)^{(n - 1 - p_{\boldsymbol{\gamma}})/2} (1 + g(1 - R_{\boldsymbol{\gamma}}^2))^{-(n-1)/2} \pi(g) dg}{C}\]</span></li>
+<li class="fragment">interchange limit and integration as <span class="math inline">\(R^2 \to 1\)</span> want <span class="math display">\[ \textsf{E}_g[(1 +
+g)^{(n-1-p_{\boldsymbol{\gamma}})/2}]\]</span> to diverge under the prior</li>
 </ul>
 </section>
-<section id="reference-posterior-distribution" class="slide level2">
-<h2>Reference Posterior Distribution</h2>
-<p>For the reference prior <span class="math inline">\(\pi(\boldsymbol{\beta},\phi) \propto 1/\phi\)</span> and the likelihood <span class="math inline">\(p(\mathbf{Y}\mid \boldsymbol{\beta})\)</span>, the posterior is proportional to the likelihood times <span class="math inline">\(\phi^{-1}\)</span></p>
+<section id="one-solution" class="slide level2">
+<h2>One Solution</h2>
 <ul>
-<li class="fragment"><p>(generalized) posterior distribution: <span class="math display">\[\begin{align*}
-\boldsymbol{\beta}\mid \phi, \mathbf{Y}&amp; \sim \textsf{N}(\hat{\boldsymbol{\beta}}, (\phi \mathbf{X}^T\mathbf{X})^{-1}) \\
-\phi \mid \mathbf{Y}&amp; \sim \mathbf{G}((n-p)/2, \textsf{SSE}/2)
-\end{align*}\]</span> if <span class="math inline">\(n &gt; p\)</span></p></li>
-<li class="fragment"><p>marginal posterior distribution for <span class="math inline">\(\boldsymbol{\beta}\)</span> is multivariate Student-t with <span class="math inline">\(n-p\)</span> degrees of freedom, location <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> and scale matrix <span class="math inline">\(\hat{\sigma}^2\mathbf{X}^T\mathbf{X}^{-1}\)</span></p></li>
+<li class="fragment"><p>hyper-g prior (Liang et al JASA 2008) <span class="math display">\[p(g) = \frac{a-2}{2}(1 + g)^{-a/2}\]</span> or <span class="math inline">\(g/(1+g) \sim Beta(1, (a-2)/2)\)</span> for <span class="math inline">\(a &gt; 2\)</span></p></li>
+<li class="fragment"><p>prior expectation converges if <span class="math inline">\(a &gt; n + 1 - p_{\boldsymbol{\gamma}}\)</span> (properties of <span class="math inline">\(_2F_1\)</span> function)</p></li>
+<li class="fragment"><p>Consider minimal model <span class="math inline">\(p_{\boldsymbol{\gamma}}= 1\)</span> and <span class="math inline">\(n = 3\)</span> (can estimate intercept, one coefficient, and <span class="math inline">\(\sigma^2\)</span>, then for <span class="math inline">\(a &gt; 3\)</span> integral exists</p></li>
+<li class="fragment"><p>For <span class="math inline">\(2 &lt; a \le 3\)</span> integral diverges and resolves the information paradox! (see proof in <a href="https://www.jstor.org/stable/27640050">Liang et al JASA 2008</a> )</p></li>
 </ul>
 </section>
-<section id="duality" class="slide level2">
-<h2>Duality</h2>
+<section id="examples-of-priors-on-g" class="slide level2">
+<h2>Examples of Priors on <span class="math inline">\(g\)</span></h2>
 <ul>
-<li class="fragment"><p>the posterior density <span class="math inline">\(\boldsymbol{\beta}\)</span> is a monotonically decreasing function of <span class="math inline">\(Q(\boldsymbol{\beta}) \equiv (\boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T\mathbf{X}^T\mathbf{X}(\boldsymbol{\beta}- \hat{\boldsymbol{\beta}})\)</span> so contours of <span class="math inline">\(p(\boldsymbol{\beta}\mid \mathbf{Y})\)</span> are ellipsoidal in the parameter space of <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
-<li class="fragment"><p>the quantity <span class="math inline">\(Q(\boldsymbol{\beta})/p \hat{\sigma}^2\)</span> is distributed <em>a posteriori</em> <span class="math display">\[ Q(\boldsymbol{\beta})/p \hat{\sigma}^2 \sim F(p, n-p)\]</span> and the ellipsoidal contour of <span class="math inline">\(p(\boldsymbol{\beta}\mid \mathbf{Y})\)</span> is defined as <span class="math inline">\(\frac{Q(\boldsymbol{\beta})}{p \hat{\sigma}^2} = F(p, n-p, \alpha)\)</span>. (Box &amp; Tiao 1973)</p></li>
-<li class="fragment"><p>then HPD regions for <span class="math inline">\(\boldsymbol{\beta}\)</span> are the same as confidence regions for <span class="math inline">\(\boldsymbol{\beta}\)</span> based on the <span class="math inline">\(F\)</span>-distribution</p></li>
-<li class="fragment"><p>marginals of <span class="math inline">\(\beta_j\)</span>, <span class="math inline">\(\mathbf{x}^T\boldsymbol{\beta}\)</span> and <span class="math inline">\(Y^*\)</span> are also univariate Student-t with <span class="math inline">\(n-p\)</span> degrees of freedom</p></li>
-<li class="fragment"><p>difference is in the interpretation of the regions i.e posterior probability that <span class="math inline">\(\boldsymbol{\beta}\)</span> is in the given the data vs the probability <em>a priori</em> that the region covers the true <span class="math inline">\(\boldsymbol{\beta}\)</span></p></li>
+<li class="fragment"><p>hyper-g prior (Liang et al JASA 2008)</p>
+<ul>
+<li class="fragment">Special case is Jeffreys prior for <span class="math inline">\(g\)</span> which corresponds to <span class="math inline">\(a = 2\)</span> (improper)<br>
+</li>
+</ul></li>
+<li class="fragment"><p>Zellner-Siow Cauchy prior <span class="math inline">\(1/g \sim \textsf{Gamma}(1/2, n/2)\)</span><br>
+</p></li>
+<li class="fragment"><p>Hyper-g/n <span class="math inline">\((g/n)(1 + g/n) \sim \textsf{Beta}(1, (a-2)/2)\)</span> (generalized Beta distribution)</p></li>
+<li class="fragment"><p>robust prior (Bayarri et al Annals of Statistics 2012 )</p></li>
+<li class="fragment"><p>Intrinsic prior (Womack et al JASA 2015)</p></li>
+</ul>
+<div class="fragment">
+<p>All have prior tails for <span class="math inline">\(\boldsymbol{\beta}\)</span> that behave like a Cauchy distribution and all except the Gamma prior have marginal likelihoods that can be computed using special hypergeometric functions (<span class="math inline">\(_2F_1\)</span>, Appell <span class="math inline">\(F_1\)</span>)</p>
+</div>
+<div class="fragment">
+<p>No fixed value of <span class="math inline">\(g\)</span> (i.e a point mass prior) will resolve this!</p>
+</div>
+</section>
+<section id="us-air-example" class="slide level2">
+<h2>US Air Example</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(BAS)</span>
+<span id="cb1-2"><a></a><span class="fu">data</span>(usair, <span class="at">package=</span><span class="st">"HH"</span>)</span>
+<span id="cb1-3"><a></a>poll.bma <span class="ot">=</span> <span class="fu">bas.lm</span>(<span class="fu">log</span>(SO2) <span class="sc">~</span> temp <span class="sc">+</span> <span class="fu">log</span>(mfgfirms) <span class="sc">+</span></span>
+<span id="cb1-4"><a></a>                             <span class="fu">log</span>(popn) <span class="sc">+</span> wind <span class="sc">+</span></span>
+<span id="cb1-5"><a></a>                             precip <span class="sc">+</span> raindays,</span>
+<span id="cb1-6"><a></a>                  <span class="at">data=</span>usair,</span>
+<span id="cb1-7"><a></a>                  <span class="at">prior=</span><span class="st">"JZS"</span>,  <span class="co">#Jeffrey-Zellner-Siow</span></span>
+<span id="cb1-8"><a></a>                  <span class="at">alpha=</span><span class="fu">nrow</span>(usair), <span class="co"># n</span></span>
+<span id="cb1-9"><a></a>                  <span class="at">n.models=</span><span class="dv">2</span><span class="sc">^</span><span class="dv">6</span>,</span>
+<span id="cb1-10"><a></a>                  <span class="at">modelprior =</span> <span class="fu">uniform</span>(),</span>
+<span id="cb1-11"><a></a>                  <span class="at">method=</span><span class="st">"deterministic"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">summary</span>(poll.bma, <span class="at">n.models=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              P(B != 0 | Y) model 1   model 2   model 3   model 4
+Intercept        1.00000000 1.00000 1.0000000 1.0000000 1.0000000
+temp             0.91158530 1.00000 1.0000000 1.0000000 1.0000000
+log(mfgfirms)    0.31718916 0.00000 0.0000000 0.0000000 1.0000000
+log(popn)        0.09223957 0.00000 0.0000000 0.0000000 0.0000000
+wind             0.29394451 0.00000 0.0000000 0.0000000 1.0000000
+precip           0.28384942 0.00000 1.0000000 0.0000000 1.0000000
+raindays         0.22903262 0.00000 0.0000000 1.0000000 0.0000000
+BF                       NA 1.00000 0.3286643 0.2697945 0.2655873
+PostProbs                NA 0.29410 0.0967000 0.0794000 0.0781000
+R2                       NA 0.29860 0.3775000 0.3714000 0.5427000
+dim                      NA 2.00000 3.0000000 3.0000000 5.0000000
+logmarg                  NA 3.14406 2.0313422 1.8339656 1.8182487</code></pre>
+</div>
+</div>
+</section>
+<section id="plots-of-coefficients" class="slide level2">
+<h2>Plots of Coefficients</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a> beta <span class="ot">=</span> <span class="fu">coef</span>(poll.bma)</span>
+<span id="cb4-2"><a></a> <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>));  <span class="fu">plot</span>(beta, <span class="at">subset=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>,<span class="at">ask=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="17-bma_files/figure-revealjs/coef_plot,-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%;height:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="posterior-distribution-with-uniform-prior-on-model-space" class="slide level2">
+<h2>Posterior Distribution with Uniform Prior on Model Space</h2>
+<div class="cell" data-layout-align="center" data-fig.width="='9'">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">image</span>(poll.bma, <span class="at">rotate=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="17-bma_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" style="width:7in;height:5in"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="posterior-distribution-with-bb11-prior-on-model-space" class="slide level2">
+<h2>Posterior Distribution with BB(1,1) Prior on Model Space</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>poll.bb.bma <span class="ot">=</span> <span class="fu">bas.lm</span>(<span class="fu">log</span>(SO2) <span class="sc">~</span> temp <span class="sc">+</span> <span class="fu">log</span>(mfgfirms) <span class="sc">+</span></span>
+<span id="cb6-2"><a></a>                                <span class="fu">log</span>(popn) <span class="sc">+</span> wind <span class="sc">+</span></span>
+<span id="cb6-3"><a></a>                                precip <span class="sc">+</span> raindays,</span>
+<span id="cb6-4"><a></a>                     <span class="at">data=</span>usair,</span>
+<span id="cb6-5"><a></a>                     <span class="at">prior=</span><span class="st">"JZS"</span>,</span>
+<span id="cb6-6"><a></a>                     <span class="at">alpha=</span><span class="fu">nrow</span>(usair),</span>
+<span id="cb6-7"><a></a>                     <span class="at">n.models=</span><span class="dv">2</span><span class="sc">^</span><span class="dv">6</span>,  <span class="co">#enumerate</span></span>
+<span id="cb6-8"><a></a>                     <span class="at">modelprior=</span><span class="fu">beta.binomial</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="posterior-distribution-with-bb11-prior-on-model-space-1" class="slide level2">
+<h2>Posterior Distribution with BB(1,1) Prior on Model Space</h2>
+<div class="cell" data-layout-align="center" data-fig.width="='9'">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">image</span>(poll.bb.bma, <span class="at">rotate=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="17-bma_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" style="width:7in;height:5in"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="summary-1" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li class="fragment">Choice of prior on <span class="math inline">\(\boldsymbol{\beta_\gamma}\)</span></li>
+<li class="fragment">g-priors or mixtures of <span class="math inline">\(g\)</span> (sensitivity)</li>
+<li class="fragment">priors on the models (sensitivity)</li>
+<li class="fragment">posterior summaries - select a model or “average” over all models</li>
 </ul>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><a href="https://sta721-F24.github.io/website/" class="uri">https://sta721-F24.github.io/website/</a></p>
+<p><a href="https://sta702-F23.github.io/website/" class="uri">https://sta702-F23.github.io/website/</a></p>
 </div>
 </div>
 </section>
