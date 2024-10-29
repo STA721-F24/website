@@ -1,7 +1,7 @@
 ---
-title: "Lecture 17: Bayesian Variable Selection and Model Averaging"
+title: "Bayesian Model Averaging"
 author: "Merlise Clyde"
-subtitle: "STA702"
+subtitle: "STA 721: Lecture 17"
 institute: "Duke University"
 format: 
   revealjs:

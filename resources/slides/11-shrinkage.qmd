@@ -92,7 +92,7 @@ library(knitr)
 knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
 # For nonsese...
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
-require(lars, monomvn)
+require("lars", "monomvn")
 ```
 
 ## Outline
@@ -359,7 +359,7 @@ plot(kappa, density, type="l", xlab=expression(kappa), ylab="Density", main="Bet
 
 - Desirable  in the orthogonal case, where lasso is more like ridge regression (related to bounded influence)
 
-- MCMC is slow to mix using programs like `stan` but specialized `R` packages like `horseshoe` and `monomvm::bhs`are available
+- MCMC is slow to mix using programs like `stan` but specialized `R` packages like `horseshoe` and `monomvn::bhs`are available
 
 :::
 
@@ -435,8 +435,8 @@ using OLS, lasso and horseshoe priors
 #| results: hide
 #| cache: true
 
-library(lars)
-library(monomvn)
+library("lars")
+library("monomvn")
 
 data(diabetes)  
 
