@@ -1185,126 +1185,126 @@
   {
     "objectID": "resources/slides/17-bma.html#normal-regression-model",
     "href": "resources/slides/17-bma.html#normal-regression-model",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Normal Regression Model",
     "text": "Normal Regression Model\nCentered regression model where \\(\\mathbf{X}^c\\) is the \\(n \\times p\\) centered design matrix where all variables have had their means subtracted (may or may not need to be standardized)\n\\[\\mathbf{Y}= \\mathbf{1}_n \\alpha + \\mathbf{X}^c \\boldsymbol{\\beta}+ \\boldsymbol{\\epsilon}\\]\n\n“Redundant” variables lead to unstable estimates\n\nSome variables may not be relevant at all (\\(\\beta_j = 0\\))\nWe want to reduce the dimension of the predictor space\nHow can we infer a “good” model that uses a subset of predictors from the data?\nExpand model hierarchically to introduce another latent variable \\(\\boldsymbol{\\gamma}\\) that encodes models \\({\\cal M}_\\gamma\\) \\(\\boldsymbol{\\gamma}= (\\gamma_1, \\gamma_2, \\ldots \\gamma_p)^T\\) where \\[\\begin{align*}\n  \\gamma_j = 0 & \\Leftrightarrow \\beta_j = 0 \\\\\n  \\gamma_j = 1 &  \\Leftrightarrow \\beta_j \\neq 0\n  \\end{align*}\\]\nFind Bayes factors and posterior probabilities of models \\({\\cal M}_\\gamma\\)"
   },
   {
     "objectID": "resources/slides/17-bma.html#priors",
     "href": "resources/slides/17-bma.html#priors",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Priors",
     "text": "Priors\nWith \\(2^p\\) models, subjective priors for \\(\\boldsymbol{\\beta}\\) are out of the question for moderate \\(p\\) and improper priors lead to arbitrary Bayes factors leading to conventional priors on model specific parameters\n\nZellner’s g-prior and related have attractive properties as a starting point \\[\\boldsymbol{\\beta}_\\gamma \\mid \\alpha, \\phi, \\boldsymbol{\\gamma}\\sim \\textsf{N}(0, g \\phi^{-1}\n({\\mathbf{X}_{\\boldsymbol{\\gamma}}^c}^\\prime \\mathbf{X}_{\\boldsymbol{\\gamma}}^c)^{-1})\\]\nIndependent Jeffrey’s prior on common parameters \\((\\alpha, \\phi)\\)\n\\(p(\\alpha, \\phi) \\propto 1/\\phi\\)\nmarginal likelihood of \\(\\boldsymbol{\\gamma}\\) that is proportional to \\[ p(\\mathbf{Y}\\mid \\boldsymbol{\\gamma}) = C (1 + g)^{\\frac{n-p_{\\boldsymbol{\\gamma}}-1}{2}} ( 1 + g (1 -\nR^2_\\gamma))^{- \\frac{(n-1)}{2}}\\]\n\\(R^2_\\gamma\\) is the usual coefficient of determination for model \\({\\cal M}_\\gamma\\).\n\\(C\\) is a constant common to all models (proportional to the marginal likelihood of the null model where \\(\\boldsymbol{\\beta_\\gamma}= \\mathbf{0}_p\\)"
   },
   {
     "objectID": "resources/slides/17-bma.html#sketch-for-marginal",
     "href": "resources/slides/17-bma.html#sketch-for-marginal",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Sketch for Marginal",
     "text": "Sketch for Marginal\n\nIntegrate out \\(\\boldsymbol{\\beta_\\gamma}\\) using sums of normals\n\nFind inverse of \\(\\mathbf{I}_n + g \\mathbf{P}_{\\mathbf{X}_{\\boldsymbol{\\gamma}}}\\) (properties of projections or Sherman-Woodbury-Morrison Theorem)\n\nFind determinant of \\(\\phi (\\mathbf{I}_n + g \\mathbf{P}_{\\mathbf{X}_{\\boldsymbol{\\gamma}}})\\)\n\nIntegrate out intercept (normal)\n\nIntegrate out \\(\\phi\\) (gamma)\n\nalgebra to simplify quadratic forms to \\(R^2_{\\boldsymbol{\\gamma}}\\)\nin the following slides we will assume that \\(\\mathbf{X}_{\\boldsymbol{\\gamma}}\\) is centered so that \\(\\mathbf{1}_n^T\\mathbf{X}_{\\boldsymbol{\\gamma}}= \\mathbf{0}_p\\) for all models \\({\\cal M}_\\gamma\\)\n\n\nOr integrate \\(\\alpha\\), \\(\\boldsymbol{\\beta_\\gamma}\\) and \\(\\phi\\) (complete the square!)"
   },
   {
     "objectID": "resources/slides/17-bma.html#posterior-distributions-on-parameters",
     "href": "resources/slides/17-bma.html#posterior-distributions-on-parameters",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Posterior Distributions on Parameters",
     "text": "Posterior Distributions on Parameters\n\\[\\begin{align*}\\alpha \\mid \\boldsymbol{\\gamma}, \\phi, y & \\sim \\textsf{N}\\left(\\bar{y}, \\frac{1}{n \\phi}\\right)\\\\\n\\boldsymbol{\\beta}_{\\boldsymbol{\\gamma}} \\mid \\boldsymbol{\\gamma}, \\phi, g, y &\\sim \\textsf{N}\\left( \\frac{g}{1 + g} \\hat{\\boldsymbol{\\beta}}_{\\gamma}, \\frac{g}{1 + g} \\frac{1}{\\phi} \\left[{\\boldsymbol{X}_{\\gamma}}^T \\boldsymbol{X}_{\\gamma} \\right]^{-1}  \\right) \\\\\n\\phi \\mid \\gamma, y & \\sim \\textsf{Gamma}\\left(\\frac{n-1}{2}, \\frac{\\textsf{TotalSS} - \\frac{g}{1+g} \\textsf{RegSS}}{2}\\right) \\\\\n\\textsf{TotalSS} & \\equiv \\sum_i (y_i - \\bar{y})^2 \\\\\n\\textsf{RegSS} & \\equiv \\hat{\\boldsymbol{\\beta}}_\\gamma^T \\boldsymbol{X}_\\gamma^T \\boldsymbol{X}_\\gamma \\hat{\\beta}\\gamma \\\\\nR^2_\\gamma & = \\frac{\\textsf{RegSS}}{\\textsf{TotalSS}}  = 1 - \\frac{\\textsf{ErrorSS}}{\\textsf{TotalSS}}\n\\end{align*}\\]"
   },
   {
     "objectID": "resources/slides/17-bma.html#priors-on-model-space",
     "href": "resources/slides/17-bma.html#priors-on-model-space",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Priors on Model Space",
     "text": "Priors on Model Space\n\\(p({\\cal M}_\\gamma) \\Leftrightarrow p(\\boldsymbol{\\gamma})\\)\n\nFixed prior probability \\(\\gamma_j\\) \\(p(\\gamma_j = 1) = .5 \\Rightarrow P({\\cal M}_\\gamma) = .5^p\\)\nUniform on space of models \\(p_{\\boldsymbol{\\gamma}}\\sim \\textsf{Bin}(p, .5)\\)\nHierarchical prior \\[\\begin{align}\n\\gamma_j \\mid \\pi & \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{Ber}(\\pi) \\\\\n\\pi & \\sim \\textsf{Beta}(a,b) \\\\\n\\text{then  }  p_{\\boldsymbol{\\gamma}}& \\sim \\textsf{BB}_p(a, b)\n\\end{align}\\]\n\n\n\\[\np(p_{\\boldsymbol{\\gamma}}\\mid p, a, b) = \\frac{ \\Gamma(p + 1) \\Gamma(p_{\\boldsymbol{\\gamma}}+ a) \\Gamma(p - p_{\\boldsymbol{\\gamma}}+ b) \\Gamma (a + b) }{\\Gamma(p_{\\boldsymbol{\\gamma}}+1) \\Gamma(p - p_{\\boldsymbol{\\gamma}}+ 1) \\Gamma(p + a + b) \\Gamma(a) \\Gamma(b)}\n\\] - Uniform on Model Size \\(\\Rightarrow p_{\\boldsymbol{\\gamma}}\\sim \\textsf{BB}_p(1, 1) \\sim \\textsf{Unif}(0, p)\\)"
   },
   {
     "objectID": "resources/slides/17-bma.html#posterior-probabilities-of-models",
     "href": "resources/slides/17-bma.html#posterior-probabilities-of-models",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Posterior Probabilities of Models",
     "text": "Posterior Probabilities of Models\n\nCalculate posterior distribution analytically under enumeration. \\[p({\\cal M}_\\gamma\\mid \\mathbf{Y})= \\frac{p(\\mathbf{Y}\\mid \\boldsymbol{\\gamma}) p(\\boldsymbol{\\gamma})} {\\sum_{\\boldsymbol{\\gamma}^\\prime \\in \\Gamma} p(\\mathbf{Y}\\mid \\boldsymbol{\\gamma}^\\prime) p(\\boldsymbol{\\gamma}^\\prime)}\\]\nExpress as a function of Bayes factors and prior odds!\nUse MCMC over \\(\\Gamma\\) - Gibbs, Metropolis Hastings if \\(p\\) is large (depends on Bayes factors and prior odds)\nslow convergence/poor mixing with high correlations\n\nMetropolis Hastings algorithms more flexibility\n(swap pairs of variables or use adaptive Independent Metropolis!)\n\n\n\n\n\n\n\n\nNo need to run MCMC over \\(\\boldsymbol{\\gamma}\\), \\(\\boldsymbol{\\beta_\\gamma}\\), \\(\\alpha\\), and \\(\\phi\\)!"
   },
   {
     "objectID": "resources/slides/17-bma.html#choice-of-g-bartletts-paradox",
     "href": "resources/slides/17-bma.html#choice-of-g-bartletts-paradox",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Choice of \\(g\\): Bartlett’s Paradox",
     "text": "Choice of \\(g\\): Bartlett’s Paradox\nThe Bayes factor for comparing \\(\\boldsymbol{\\gamma}\\) to the null model: \\[\nBF(\\boldsymbol{\\gamma}: \\boldsymbol{\\gamma}_0) =    (1 + g)^{(n - 1 - p_{\\boldsymbol{\\gamma}})/2} (1 + g(1 - R_{\\boldsymbol{\\gamma}}^2))^{-(n-1)/2}\n\\]\n\nFor fixed sample size \\(n\\) and \\(R_{\\boldsymbol{\\gamma}}^2\\), consider taking values of \\(g\\) that go to infinity\n\nIncreasing vagueness in prior\nWhat happens to BF as \\(g \\to \\infty\\)?\n\n\n\n\n\n\n\n\nBartlett Paradox\n\n\nWhy is this a paradox?"
   },
   {
     "objectID": "resources/slides/17-bma.html#information-paradox",
     "href": "resources/slides/17-bma.html#information-paradox",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Information Paradox",
     "text": "Information Paradox\nThe Bayes factor for comparing \\(\\boldsymbol{\\gamma}\\) to the null model: \\[\nBF(\\boldsymbol{\\gamma}: \\boldsymbol{\\gamma}_0) =    (1 + g)^{(n - 1 - p_{\\boldsymbol{\\gamma}})/2} (1 + g(1 - R_{\\boldsymbol{\\gamma}}^2))^{-(n-1)/2}\n\\]\n\nLet \\(g\\) be a fixed constant and take \\(n\\) fixed.\n\nUsual F statistic for testing \\(\\boldsymbol{\\gamma}\\) versus \\(\\boldsymbol{\\gamma}_0\\) is \\(F = \\frac{R_{\\boldsymbol{\\gamma}}^2/p_{\\boldsymbol{\\gamma}}}{(1 - R_{\\boldsymbol{\\gamma}}^2)/(n - 1 - p_{\\boldsymbol{\\gamma}})}\\)\n\nAs \\(R^2_{\\boldsymbol{\\gamma}} \\to 1\\), \\(F \\to \\infty\\) Likelihood Rqtio test (F-test) would reject \\(\\boldsymbol{\\gamma}_0\\) where \\(F\\) is the usual \\(F\\) statistic for comparing model \\(\\boldsymbol{\\gamma}\\) to \\(\\boldsymbol{\\gamma}_0\\)\n\nBF converges to a fixed constant \\((1+g)^{n - 1 -p_{\\boldsymbol{\\gamma}}/2}\\) (does not go to infinity !\n\n\nInformation Inconsistency of Liang et al JASA 2008"
   },
   {
     "objectID": "resources/slides/17-bma.html#mixtures-of-g-priors-information-consistency",
     "href": "resources/slides/17-bma.html#mixtures-of-g-priors-information-consistency",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Mixtures of \\(g\\)-priors & Information consistency",
     "text": "Mixtures of \\(g\\)-priors & Information consistency\n\nWant \\(\\textsf{BF}\\to \\infty\\) if \\(\\textsf{R}_{\\boldsymbol{\\gamma}}^2 \\to 1\\) if model is full rank\nPut a prior on \\(g\\) \\[BF(\\boldsymbol{\\gamma}: \\boldsymbol{\\gamma}_0) =  \\frac{ C \\int (1 + g)^{(n - 1 - p_{\\boldsymbol{\\gamma}})/2} (1 + g(1 - R_{\\boldsymbol{\\gamma}}^2))^{-(n-1)/2} \\pi(g) dg}{C}\\]\ninterchange limit and integration as \\(R^2 \\to 1\\) want \\[ \\textsf{E}_g[(1 +\ng)^{(n-1-p_{\\boldsymbol{\\gamma}})/2}]\\] to diverge under the prior"
   },
   {
     "objectID": "resources/slides/17-bma.html#one-solution",
     "href": "resources/slides/17-bma.html#one-solution",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "One Solution",
     "text": "One Solution\n\nhyper-g prior (Liang et al JASA 2008) \\[p(g) = \\frac{a-2}{2}(1 + g)^{-a/2}\\] or \\(g/(1+g) \\sim Beta(1, (a-2)/2)\\) for \\(a &gt; 2\\)\nprior expectation converges if \\(a &gt; n + 1 - p_{\\boldsymbol{\\gamma}}\\) (properties of \\(_2F_1\\) function)\nConsider minimal model \\(p_{\\boldsymbol{\\gamma}}= 1\\) and \\(n = 3\\) (can estimate intercept, one coefficient, and \\(\\sigma^2\\), then for \\(a &gt; 3\\) integral exists\nFor \\(2 &lt; a \\le 3\\) integral diverges and resolves the information paradox! (see proof in Liang et al JASA 2008 )"
   },
   {
     "objectID": "resources/slides/17-bma.html#examples-of-priors-on-g",
     "href": "resources/slides/17-bma.html#examples-of-priors-on-g",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Examples of Priors on \\(g\\)",
     "text": "Examples of Priors on \\(g\\)\n\nhyper-g prior (Liang et al JASA 2008)\n\nSpecial case is Jeffreys prior for \\(g\\) which corresponds to \\(a = 2\\) (improper)\n\n\nZellner-Siow Cauchy prior \\(1/g \\sim \\textsf{Gamma}(1/2, n/2)\\)\n\nHyper-g/n \\((g/n)(1 + g/n) \\sim \\textsf{Beta}(1, (a-2)/2)\\) (generalized Beta distribution)\nrobust prior (Bayarri et al Annals of Statistics 2012 )\nIntrinsic prior (Womack et al JASA 2015)\n\n\nAll have prior tails for \\(\\boldsymbol{\\beta}\\) that behave like a Cauchy distribution and all except the Gamma prior have marginal likelihoods that can be computed using special hypergeometric functions (\\(_2F_1\\), Appell \\(F_1\\))\n\n\nNo fixed value of \\(g\\) (i.e a point mass prior) will resolve this!"
   },
   {
     "objectID": "resources/slides/17-bma.html#us-air-example",
     "href": "resources/slides/17-bma.html#us-air-example",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "US Air Example",
     "text": "US Air Example\n\nlibrary(BAS)\ndata(usair, package=\"HH\")\npoll.bma = bas.lm(log(SO2) ~ temp + log(mfgfirms) +\n                             log(popn) + wind +\n                             precip + raindays,\n                  data=usair,\n                  prior=\"JZS\",  #Jeffrey-Zellner-Siow\n                  alpha=nrow(usair), # n\n                  n.models=2^6,\n                  modelprior = uniform(),\n                  method=\"deterministic\")"
   },
   {
     "objectID": "resources/slides/17-bma.html#summary",
     "href": "resources/slides/17-bma.html#summary",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Summary",
     "text": "Summary\n\nsummary(poll.bma, n.models=4)\n\n              P(B != 0 | Y) model 1   model 2   model 3   model 4\nIntercept        1.00000000 1.00000 1.0000000 1.0000000 1.0000000\ntemp             0.91158530 1.00000 1.0000000 1.0000000 1.0000000\nlog(mfgfirms)    0.31718916 0.00000 0.0000000 0.0000000 1.0000000\nlog(popn)        0.09223957 0.00000 0.0000000 0.0000000 0.0000000\nwind             0.29394451 0.00000 0.0000000 0.0000000 1.0000000\nprecip           0.28384942 0.00000 1.0000000 0.0000000 1.0000000\nraindays         0.22903262 0.00000 0.0000000 1.0000000 0.0000000\nBF                       NA 1.00000 0.3286643 0.2697945 0.2655873\nPostProbs                NA 0.29410 0.0967000 0.0794000 0.0781000\nR2                       NA 0.29860 0.3775000 0.3714000 0.5427000\ndim                      NA 2.00000 3.0000000 3.0000000 5.0000000\nlogmarg                  NA 3.14406 2.0313422 1.8339656 1.8182487"
   },
   {
     "objectID": "resources/slides/17-bma.html#plots-of-coefficients",
     "href": "resources/slides/17-bma.html#plots-of-coefficients",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Plots of Coefficients",
     "text": "Plots of Coefficients\n\n beta = coef(poll.bma)\n par(mfrow=c(2,3));  plot(beta, subset=2:7,ask=F)"
   },
   {
     "objectID": "resources/slides/17-bma.html#posterior-distribution-with-uniform-prior-on-model-space",
     "href": "resources/slides/17-bma.html#posterior-distribution-with-uniform-prior-on-model-space",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Posterior Distribution with Uniform Prior on Model Space",
     "text": "Posterior Distribution with Uniform Prior on Model Space\n\nimage(poll.bma, rotate=FALSE)"
   },
   {
     "objectID": "resources/slides/17-bma.html#posterior-distribution-with-bb11-prior-on-model-space",
     "href": "resources/slides/17-bma.html#posterior-distribution-with-bb11-prior-on-model-space",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Posterior Distribution with BB(1,1) Prior on Model Space",
     "text": "Posterior Distribution with BB(1,1) Prior on Model Space\n\npoll.bb.bma = bas.lm(log(SO2) ~ temp + log(mfgfirms) +\n                                log(popn) + wind +\n                                precip + raindays,\n                     data=usair,\n                     prior=\"JZS\",\n                     alpha=nrow(usair),\n                     n.models=2^6,  #enumerate\n                     modelprior=beta.binomial(1,1))"
   },
   {
     "objectID": "resources/slides/17-bma.html#posterior-distribution-with-bb11-prior-on-model-space-1",
     "href": "resources/slides/17-bma.html#posterior-distribution-with-bb11-prior-on-model-space-1",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Posterior Distribution with BB(1,1) Prior on Model Space",
     "text": "Posterior Distribution with BB(1,1) Prior on Model Space\n\nimage(poll.bb.bma, rotate=FALSE)"
   },
   {
     "objectID": "resources/slides/17-bma.html#summary-1",
     "href": "resources/slides/17-bma.html#summary-1",
-    "title": "Lecture 17: Bayesian Variable Selection and Model Averaging",
+    "title": "Bayesian Model Averaging",
     "section": "Summary",
     "text": "Summary\n\nChoice of prior on \\(\\boldsymbol{\\beta_\\gamma}\\)\ng-priors or mixtures of \\(g\\) (sensitivity)\npriors on the models (sensitivity)\nposterior summaries - select a model or “average” over all models\n\n\n\n\n\nhttps://sta702-F23.github.io/website/"
   },
@@ -1628,7 +1628,7 @@
     "href": "resources/slides/11-shrinkage.html#features-and-issues-1",
     "title": "Shrinkage Estimators and Hierarchical Bayes",
     "section": "Features and Issues",
-    "text": "Features and Issues\n\n\n\nthe posterior mode also induces shrinkage and variable selection if the mode is at zero\nthe posterior mean is a shrinkage estimator (no selection)\nthe tails of the distribution are heavier than the Laplace prior (like a Cauchy distribution) so that there is less shrinkage of large \\(|\\hat{\\boldsymbol{\\beta}}|\\).\nDesirable in the orthogonal case, where lasso is more like ridge regression (related to bounded influence)\nMCMC is slow to mix using programs like stan but specialized R packages like horseshoe and monomvm::bhsare available"
+    "text": "Features and Issues\n\n\n\nthe posterior mode also induces shrinkage and variable selection if the mode is at zero\nthe posterior mean is a shrinkage estimator (no selection)\nthe tails of the distribution are heavier than the Laplace prior (like a Cauchy distribution) so that there is less shrinkage of large \\(|\\hat{\\boldsymbol{\\beta}}|\\).\nDesirable in the orthogonal case, where lasso is more like ridge regression (related to bounded influence)\nMCMC is slow to mix using programs like stan but specialized R packages like horseshoe and monomvn::bhsare available"
   },
   {
     "objectID": "resources/slides/11-shrinkage.html#bounded-influence-and-posterior-mean",

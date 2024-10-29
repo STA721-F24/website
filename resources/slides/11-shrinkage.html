@@ -391,34 +391,6 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Lemma {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Proof {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Proposition {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .Definition {
     --color1: #d999d3;
     --color2: #a01793;
@@ -430,6 +402,34 @@
   .Feature {
     --color1: #c0c0c0;
     --color2: #808080;
+  }
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .Exercise {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Proposition {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Lemma {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Proof {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   </style>
 </head>
@@ -680,7 +680,7 @@ E[\beta_i \mid \mathbf{Y}] &amp; = \textsf{E}_{\kappa_i \mid \mathbf{Y}}[ \texts
 <li class="fragment"><p>the posterior mean is a shrinkage estimator (no selection)</p></li>
 <li class="fragment"><p>the tails of the distribution are heavier than the Laplace prior (like a Cauchy distribution) so that there is less shrinkage of large <span class="math inline">\(|\hat{\boldsymbol{\beta}}|\)</span>.</p></li>
 <li class="fragment"><p>Desirable in the orthogonal case, where lasso is more like ridge regression (related to bounded influence)</p></li>
-<li class="fragment"><p>MCMC is slow to mix using programs like <code>stan</code> but specialized <code>R</code> packages like <code>horseshoe</code> and <code>monomvm::bhs</code>are available</p></li>
+<li class="fragment"><p>MCMC is slow to mix using programs like <code>stan</code> but specialized <code>R</code> packages like <code>horseshoe</code> and <code>monomvn::bhs</code>are available</p></li>
 </ul>
 </div><div class="column" style="width:40%;">
 <p><img data-src="img/densities.png"></p>
