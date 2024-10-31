@@ -1,5 +1,5 @@
 ---
-title: "Lecture 17: Bayesian Model Averaging"
+title: "Lecture 18: Bayesian Model Averaging & Bayesian Variable Selection"
 output: 
   html_document:
     theme: yeti
@@ -15,15 +15,6 @@ knitr::opts_chunk$set(echo = TRUE)
   
 - [Mixture of g-priors](https://www.tandfonline.com/doi/abs/10.1198/016214507000001337) Liang et al (2008)
  
-
-- [A First Course in Bayesian Statistical Methods](https://find.library.duke.edu/catalog/DUKE004968562) by Peter D. Hoff
- 
-  + Section 9.1: The linear regression model (review)
-  + Section 9.2: Bayesian estimation for a regression model
-  + Section 9.3: Model Selection (linear regression)
- 
-
-
 
 - [Bayesian Data Analysis (Third Edition)](https://find.library.duke.edu/catalog/DUKE006588051?utm_campaign=bento&utm_content=bento_result_link&utm_source=library.duke.edu&utm_medium=referral) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin
 
