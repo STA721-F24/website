@@ -1,0 +1,25 @@
+---
+title: "Lecture 19: Bayesian Model Uncertainty"
+output: 
+  html_document:
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Readings
+
+  
+- [Liang, F., Paulo, R, Molina, G. Clyde, M, Berger, J](https://www.jstor.org/stable/27640050) (2008) Mixtures of g-priors for Bayesian Variable Selection. Journal of the American Statistical Association,  103: 410-423 
+
+
+- [Hoeting, J.A, Madigan, D.  Raftery,A.  Volinsky, C.T.](https://www.jstor.org/stable/2676803) (1999) Bayesian Model Averaging: A Tutorial
+Statistical Science, 14: 382-401
+
+- [Porwal, A & Raftery, A.E.](https://doi.org/10.1073/pnas.2120737119) Comparing methods for statistical inference with model uncertainty. Proceedings of the National Academy of Sciences, 119(16), e2120737119
+
+- [Clyde, M and Iversen,E](https://www.researchgate.net/publication/261252831_Bayesian_Model_Averaging_in_the_M-Open_Framework) (2012) Bayesian Model Averaging in the M-Open Framework
+In _Bayesian Theory and Applications_ (pp.484-498)Publisher: Oxford University PressEditors: Damien P, Dellaportas P, Polson NG, Stephens DA. DOI:10.1093/acprof:oso/9780199695607.003.0024
