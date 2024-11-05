@@ -1,0 +1,307 @@
+---
+title: "Bayesian Model Uncertainty"
+author: "Merlise Clyde"
+subtitle: "STA721: Lecture 19"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta702-F23.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"    
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+    Corollary:
+      group: thmlike
+    Conjecture:
+      group: thmlike
+      collapse: true  
+    Definition:
+      group: thmlike
+      colors: [d999d3, a01793]
+    Feature: default
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+set.seed(42)
+require(BAS)
+```
+
+
+## Recap Diabetes Data
+
+{{< include macros.qmd >}}
+```{r}
+#| echo: true
+set.seed(8675309)
+source("yX.diabetes.train.txt")
+diabetes.train = as.data.frame(diabetes.train)
+source("yX.diabetes.test.txt")
+diabetes.test = as.data.frame(diabetes.test)
+colnames(diabetes.test)[1] = "y"
+
+str(diabetes.train)
+```
+
+## Credible Intervals under BMA
+```{r}
+#| label: MCMC
+#| cache: true
+#| echo: false 
+#| results: hide
+library(BAS)
+diabetes.bas = bas.lm(y ~ ., data=diabetes.train,
+                      prior = "JZS",
+                      method="MCMC",
+                      n.models = 10000,
+                      MCMC.iterations=500000,
+                      thin = 10,
+                      initprobs="eplogp",
+                      force.heredity=FALSE)
+```
+
+```{r}
+#| echo: true
+#| label: CI-coef
+#| cache: true
+
+coef.diabetes = coefficients(diabetes.bas)
+ci.coef.bas = confint(coef.diabetes, level=0.95)
+plot(ci.coef.bas)
+```
+
+- uses Monte Carlo simulations from the posteriors of the coefficients
+
+- uses HPD intervals from the CODA package to compute intervals
+
+## Out of Sample Prediction
+
+- What is the optimal value to predict $\Y^{\text{test}}$ given $\Y$ under squared error?
+
+- BMA is optimal prediction for squared error loss with Bayes
+$$\E[\| \Y^{\text{test}} - a\|^2 \mid \y] = \E[\| \Y^{\text{test}} - \E[\Y^{\text{test}}\mid \y] \|^2 \mid \y]  + \| \E[\Y^{\text{test}}\mid \y] - a\|^2  $$
+
+- Iterated expectations leads to BMA for $\E[\Y^{\text{test}} \mid \Y]$
+
+- Prediction under model averaging
+$$\hat{Y} = \sum_S (\hat{\alpha}_\g + \Xg^{\text{test}} \hat{\b}_{\g}) \hat{p}(\g \mid \Y)$$
+
+
+
+
+```{r}
+#| echo: false
+#| label: pred
+pred.bas = predict(diabetes.bas,
+                   newdata=diabetes.test,
+                   estimator="BMA",
+                   se=TRUE)
+mean((pred.bas$fit- diabetes.test$y)^2)
+
+```
+
+## Credible Intervals & Coverage
+
+- posterior predictive distribution 
+$$
+p(\y^{\text{test}} \mid \y) = \sum_\g p(\y^{\text{test}} \mid \y, \g)p(\g \mid \y)
+$$
+- integrate out $\alpha$ and $\bg$ to get a normal predictive given $\phi$ and $\g$ (and $\y$)
+
+- integrate out $\phi$ to get a t distribution given $\g$ and $\y$
+
+- credible intervals via sampling 
+
+    - sample a model from $p(\g \mid \y)$
+    - conditional on a model sample $y \sim p(\y^{\text{test}} \mid \y, \g)$
+    - compute HPD or quantiles from samples of $y$
+    
+. . .
+
+
+## 95% Prediction intervals
+
+```{r}
+#| echo: true
+ci.bas = confint(pred.bas);
+coverage = mean(diabetes.test$y > ci.bas[,1] & diabetes.test$y < ci.bas[,2])
+coverage
+```
+
+
+```{r}
+#| echo: true
+#| label: pred-in
+plot(ci.bas)
+points(diabetes.test$y, col=2, pch=15)
+```
+
+## Selection and Prediction
+
+- BMA is optimal for squared error loss Bayes
+
+
+ 
+
+- What if we want to use only a single model for prediction under squared error loss?
+
+- HPM: Highest Posterior Probability model is optimal for selection, but not prediction
+
+- MPM: Median Probability model (select model where PIP > 0.5)
+ (optimal under certain conditions; nested models)
+ 
+-  BPM: Best Probability Model - Model closest to BMA under loss
+      (usually includes more predictors than HPM or MPM)
+
+- costs of using variables in prediction?      
+
+## Example
+
+
+```{r}
+#| echo: true
+#| label: BMA-pred
+pred.bas = predict(diabetes.bas,
+                   newdata=diabetes.test,
+                   estimator="BMA",
+                   se=TRUE)
+mean((pred.bas$fit- diabetes.test$y)^2)
+
+```
+
+```{r}
+#| echo: true
+#| label: BPM-pred
+pred.bas = predict(diabetes.bas,
+                   newdata=diabetes.test,
+                   estimator="BPM",
+                   se=TRUE)
+#MSE
+mean((pred.bas$fit- diabetes.test$y)^2)
+#Coverage
+ci.bas = confint(pred.bas)
+mean(diabetes.test$y > ci.bas[,1] &
+     diabetes.test$y < ci.bas[,2])
+```
+
+ 
+## Theory - Consistency  of g-priors 
+
+
+- desire that posterior probability of model goes to 1 as $n \to \infty$
+
+     - does not always hold if the null model is true  (may be highest posterior probability model)
+     - need prior on $g$ to depend on $n$  (rules out EB and fixed g-priors with $g \ne n$)
+     - asymptotically BMA collapses to the true model
+
+- other quantities may converge i.e.  posterior mean 
+
+## Model Paradigms
+
+- what if the true model $\g_T$ is not in $\Gamma$?   What can we say?
+
+- $\M$-complete; BMA converges to the model that is "closest" to the truth in Kullback-Leibler divergence
+- $\M$-closed; 
+  - know $\g_T \notin \G$ so that $(p_\g) = 0 \ \forall \g \in \G$  but  want to use models in $\G$
+  - Predictive distribution $p(\Y^* \mid \Y, \g_T)$ is available
+  
+- $\M$-open; 
+  - know $\g_T \notin \G$ so that $(p_\g) = 0 \ \forall \g \in \G$  but  want to use models in $\G$
+  - Predictive distribution $p(\Y^* \mid \Y, \g_T)$ is not available. (too complicated to use, etc)
+
+
+## $\M$-Open and $M$-Complete Prediction
+
+Clyde & Iversen (2013) [pdf](https://www.researchgate.net/publication/261252831_Bayesian_Model_Averaging_in_the_M-Open_Framework) motivate a solution via decision theory
+
+- Use the models in $\G$ to predict $\Y^*$ given $\Y$ under squared error loss 
+    $$E[\Y^*, \sum_{\g \in \G} \omega_\g \hat{\Y}^*_\g \mid \Y] = \int ( \Y^* -  \sum_{\g \in \G} \omega_\g \hat{\Y}^*_\g )^2 p(\Y^* \mid \Y)$$
+- Still use a weighted sum of predictions or densities from models in $\G$ 
+    but now the weights are not probabilities but are chosen to minimize the loss function
+  - uses additional constraints of penalties on the weights as part of the loss function
+  - need to approximate the predictive distribution for $\Y^* \mid \Y$ (via an approximate Dirichlet Process Model)
+  - latter is related to "stacking"  (Wolpert 1972) which is a frequentist method of ensemble learning using cross-validation;
+     
+
+
+## Summary
+
+
+-  Choice of prior on $\bg$ 
+      
+    - multivariate Spike & Slab
+    - products of independent Spike & Slab priors
+    - intermediates block g-priors
+    - non-semi-conjugate 
+    - non-local priors
+    - shrinkage priors without point-masses
+    
+-  priors on the models (sensitivity)
+-  computation (MCMC, "stochastic search", adaptive MH, variational, orthogonal 
+   data augmentation, reversible jump-MCMC)
+-  decision theory - select a model or "average" over all models
+- asymptotic properties - large $n$ and large $p > n$
+
+## Other aspects of model selection?
+
+ - transformations of $\Y$
+ - functions of $\X$: interactions or nonlinear functions such as splines kernels
+ - choice of error distribution
+ - outliers 
+ 
