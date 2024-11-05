@@ -1,225 +1,302 @@
 [
   {
-    "objectID": "reading/15-CI.html",
-    "href": "reading/15-CI.html",
-    "title": "Confidence and Credible Regions",
+    "objectID": "reading/19-bvs.html",
+    "href": "reading/19-bvs.html",
+    "title": "Lecture 19: Bayesian Model Uncertainty",
     "section": "",
-    "text": "We present confidence and credible regions for parameters in the linear model\nReadings:\n\nChristensen Chapter 3, Appendix C"
+    "text": "Liang, F., Paulo, R, Molina, G. Clyde, M, Berger, J (2008) Mixtures of g-priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103: 410-423\nHoeting, J.A, Madigan, D. Raftery,A. Volinsky, C.T. (1999) Bayesian Model Averaging: A Tutorial Statistical Science, 14: 382-401\nPorwal, A & Raftery, A.E. Comparing methods for statistical inference with model uncertainty. Proceedings of the National Academy of Sciences, 119(16), e2120737119\nClyde, M and Iversen,E (2012) Bayesian Model Averaging in the M-Open Framework In Bayesian Theory and Applications (pp.484-498)Publisher: Oxford University PressEditors: Damien P, Dellaportas P, Polson NG, Stephens DA. DOI:10.1093/acprof:oso/9780199695607.003.0024"
   },
   {
-    "objectID": "reading/12-oracle.html",
-    "href": "reading/12-oracle.html",
-    "title": "Optimal Shrinkage/Selection and Oracle Properties",
+    "objectID": "reading/19-bvs.html#readings",
+    "href": "reading/19-bvs.html#readings",
+    "title": "Lecture 19: Bayesian Model Uncertainty",
     "section": "",
-    "text": "We discuss properties of the shrinkage estimators that provide both shrinkage and selection from frequentist and Bayesian paradigms.\nReadings:\n\nSeber & Lee Chapter 12\nFan & Li (2001) “Variable Selection via Nonconcave Penalized Likelihood and its Oracle Properties”\nTibshirani (1996) “Regression Shrinkage and Selection via the Lasso”\nCarvalho, Polson & Scott (2009) “Handling Sparsity via the Horseshoe”\nArmagan, Dunson & Lee (2013) “Generalized Double Pareto Shrinkage”"
+    "text": "Liang, F., Paulo, R, Molina, G. Clyde, M, Berger, J (2008) Mixtures of g-priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103: 410-423\nHoeting, J.A, Madigan, D. Raftery,A. Volinsky, C.T. (1999) Bayesian Model Averaging: A Tutorial Statistical Science, 14: 382-401\nPorwal, A & Raftery, A.E. Comparing methods for statistical inference with model uncertainty. Proceedings of the National Academy of Sciences, 119(16), e2120737119\nClyde, M and Iversen,E (2012) Bayesian Model Averaging in the M-Open Framework In Bayesian Theory and Applications (pp.484-498)Publisher: Oxford University PressEditors: Damien P, Dellaportas P, Polson NG, Stephens DA. DOI:10.1093/acprof:oso/9780199695607.003.0024"
   },
   {
-    "objectID": "reading/04-BLUE.html",
-    "href": "reading/04-BLUE.html",
-    "title": "Best Linear Unbiased Estimation",
+    "objectID": "reading/14-testing-submodels.html",
+    "href": "reading/14-testing-submodels.html",
+    "title": "Testing Hypotheses about Submodels",
     "section": "",
-    "text": "We will explore properties of MLEs/OLS and linear functionals of them. In particular characterizing the class of linear unbiased estimates and minimimum variances, cumulating with the Guass Markov Theorem for both the full rank case and rank deficient models and establing conditions under which OLS/MLE estimators are the Best Linear Unbiased Estimators under the assumption that the covariance of the errors is spherically symmetric.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
+    "text": "We continue discussion of \\(F\\)-tests with testing hypotheses about submodels of a linear model and connections to \\(t\\)-tests for individual coefficients as well as likelihood ratio tests.\nReadings:\n\nChristensen Chapter 3, Appendix C"
   },
   {
-    "objectID": "reading/10-james-stein.html",
-    "href": "reading/10-james-stein.html",
-    "title": "James-Stein Estimation",
+    "objectID": "reading/18-bvs.html",
+    "href": "reading/18-bvs.html",
+    "title": "Lecture 18: Bayesian Model Averaging & Bayesian Variable Selection",
     "section": "",
-    "text": "We discuss properties of the James-Stein shrinkage estimator and its relationship to Empirical Bayes in the case of ridge regression and the \\(g\\)-prior in regression with orthonormal predictors. While the James-Stein and positive-part James-Stein shrinkage estimators dominate the MLE/OLS estimator, they are not admissible.\nReadings:\n\nChristensen Chapter 15\nSeber & Lee Chapter 12\nJames and Stein (1961) “Estimation with Quadratic Loss”\nEfron & Morris (1973) “Stein’s Estimation Rule and its Competitors”\nRobert, C. (2007) “The Bayesian Choice” Chapter 5"
+    "text": "Mixture of g-priors Liang et al (2008)\nBayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin\n\nSection 14.2: Bayesian analysis of the classical regression model\n\nThe Bayesian Choice (Second Edition) by Christian Robert\nLiang, F., Paulo, R, Molina, G. Clyde, M, Berger, J (2008) Mixtures of g-priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103: 410-423\nHoeting, J.A, Madigan, D. Raftery,A. Volinsky, C.T. (1999) Bayesian Model Averaging: A Tutorial Statistical Science, 14: 382-401\nPorwal, A & Raftery, A.E. Comparing methods for statistical inference with model uncertainty. Proceedings of the National Academy of Sciences, 119(16), e2120737119"
   },
   {
-    "objectID": "reading/16-Bayes-tests.html",
-    "href": "reading/16-Bayes-tests.html",
-    "title": "Lecture 16: Basics of Bayesian Hypothesis Testing",
+    "objectID": "reading/18-bvs.html#readings",
+    "href": "reading/18-bvs.html#readings",
+    "title": "Lecture 18: Bayesian Model Averaging & Bayesian Variable Selection",
     "section": "",
-    "text": "Bayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin.:\n\nSection 7.4: Model comparison using Bayes factors\n\nThe Bayesian Choice (Second Edition) by Christian Robert\n\n5: Tests and Confidence Regions\n5.1: Introduction\n5.2: A first approach to testing theory\n5.3: Comparison with the classical approach\n5.4: A second decision-theoretic approach\n\nIntrinsic Bayes Factors for Model Selection and Comparison by J. O. Berger and L. R. Pericchi\n\nJournal of the Royal Statistical Society: Series B (Statistical Methodology) Volume 67, Issue 3, pages 725–748, June 2005"
+    "text": "Mixture of g-priors Liang et al (2008)\nBayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin\n\nSection 14.2: Bayesian analysis of the classical regression model\n\nThe Bayesian Choice (Second Edition) by Christian Robert\nLiang, F., Paulo, R, Molina, G. Clyde, M, Berger, J (2008) Mixtures of g-priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103: 410-423\nHoeting, J.A, Madigan, D. Raftery,A. Volinsky, C.T. (1999) Bayesian Model Averaging: A Tutorial Statistical Science, 14: 382-401\nPorwal, A & Raftery, A.E. Comparing methods for statistical inference with model uncertainty. Proceedings of the National Academy of Sciences, 119(16), e2120737119"
   },
   {
-    "objectID": "reading/16-Bayes-tests.html#readings",
-    "href": "reading/16-Bayes-tests.html#readings",
-    "title": "Lecture 16: Basics of Bayesian Hypothesis Testing",
+    "objectID": "reading/07-sampling.html",
+    "href": "reading/07-sampling.html",
+    "title": "Sampling Dsistributions & Distribution Theory",
     "section": "",
-    "text": "Bayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin.:\n\nSection 7.4: Model comparison using Bayes factors\n\nThe Bayesian Choice (Second Edition) by Christian Robert\n\n5: Tests and Confidence Regions\n5.1: Introduction\n5.2: A first approach to testing theory\n5.3: Comparison with the classical approach\n5.4: A second decision-theoretic approach\n\nIntrinsic Bayes Factors for Model Selection and Comparison by J. O. Berger and L. R. Pericchi\n\nJournal of the Royal Statistical Society: Series B (Statistical Methodology) Volume 67, Issue 3, pages 725–748, June 2005"
+    "text": "Readings:\n\nChristensen Chapter 1, 2.91 and Appendix C\nSeber & Lee Chapter 3.3 3.5"
   },
   {
-    "objectID": "reading/08-bayes.html",
-    "href": "reading/08-bayes.html",
-    "title": "Bayesian Estimation and Shrinkage",
+    "objectID": "reading/02-mles.html",
+    "href": "reading/02-mles.html",
+    "title": "MLEs & Projections",
     "section": "",
-    "text": "We study Bayes estimators of the regression coefficients, and show how these can be viewed as shrunken versions of the OLS estimator. We discuss two commonly used priors, the \\(g\\)-prior of Zellner (1986) and an independent prior. In the latter case, the posterior mean is equivalent to the classic ridge regression estimator of Hoerl and Kennedy. The posterior mean in both cases may offer improvements over OLS. Rigde regression in particular can reduce variance and estimation error in cases where the predictors are highly collinear.\nReadings:\n\nChristensen Chapter 2.9 and Chapter 15\nSeber & Lee Chapter 3.12 and Chapter 12\nHoerl, A.E. and Kennard, R.W. (1970) Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1):55–67\nZellner, A. (1986) On assessing prior distributions and Bayesian regression analysis with \\(g\\)-prior distributions. In Bayesian Inference and Decision Techniques: Essays in Honor of Bruno de Finetti, eds. P. K. Goel and A. Zellner, 233–243. Amsterdam: North-Holland"
+    "text": "Readings:\n\nChristensen Chapter 1-2, Appendix A, and Appendix B\nSeber & Lee Chapter 3, Appendix B"
   },
   {
-    "objectID": "reading/06-GLS.html",
-    "href": "reading/06-GLS.html",
-    "title": "Generalize Least Squares, MLEs, MVUEs and BUEs",
+    "objectID": "reading/09-bayes-freq-risk.html",
+    "href": "reading/09-bayes-freq-risk.html",
+    "title": "Bayesian and Frequentist Risk",
     "section": "",
-    "text": "We will develop GLS/MLE estimators when the covariance of the errors is is not a scale multiple of the identity matrix, and establish conditions for when the OLS and GLS are equivalent. Inthe case that the errors have a multivatiate normal distribution, the MLEs are equivalent to GLS and are not only the BLUE but are also Minimum Variance Unbiased Estimators or “BUE” out of all unbiased estimators linear or non-linear.\nReadings:\n\nChristensen Chapter 2 and 10 Appendix B\nSeber & Lee Chapter 3"
+    "text": "We study frequentist properties of Bayes estimators of the regression coefficients under the \\(g\\)-prior and independent normal prior that leads to ridge regression. In particular, there are values of the hper-parameters in the prior that lead to Bayes estimators dominating OLS in terms of MSE.\nReadings:\n\nChristensen Chapter 2.9 and Chapter 15\nSeber & Lee Chapter 3.12, 10.7.3 and 12\nHoerl, A.E. and Kennard, R.W. (1970) Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1):55–67\nZellner, A. (1986) On assessing prior distributions and Bayesian regression analysis with \\(g\\)-prior distributions. In Bayesian Inference and Decision Techniques: Essays in Honor of Bruno de Finetti, eds. P. K. Goel and A. Zellner, 233–243. Amsterdam: North-Holland"
   },
   {
-    "objectID": "reading/13-testing.html",
-    "href": "reading/13-testing.html",
-    "title": "Testing Hypotheses",
+    "objectID": "reading/11-shrinkage.html",
+    "href": "reading/11-shrinkage.html",
+    "title": "Shrinkage and Hierarchical Bayes",
     "section": "",
-    "text": "We develop an F-test for testing hypotheses about the coefficients in a linear model.\nReadings:\n\nChristensen Chapter 3, Appendix C"
+    "text": "We discuss properties of the shrinkage estimators that provide both shrinkage and selection from frequentist and Bayesian paradigms.\nReadings:\n\nSeber & Lee Chapter 12\nTibshirani (1996) “Regression Shrinkage and Selection via the Lasso”\nPark & Casella (2008) “The Bayesian Lasso”\nHans (2010) “Model uncertainty and variable selection in Bayesian lasso regression”\nCarvalho, Polson & Scott (2009) “Handling Sparsity via the Horseshoe”\nArmagan, Dunson & Lee (2013) “Generalized Double Pareto Shrinkage”\nRobert, C. (2007) “The Bayesian Choice” Chapter 5"
   },
   {
-    "objectID": "reading/03-non-full-rank.html",
-    "href": "reading/03-non-full-rank.html",
-    "title": "Rank Deficient Models",
+    "objectID": "reading/01-introduction.html",
+    "href": "reading/01-introduction.html",
+    "title": "Lecture 1 Readings",
     "section": "",
-    "text": "We will explore MLEs/OLS using rank deficient models using generalized inverses. We will characterize orthogonal projections using Spectral Decompositions and review how that is related to the Singular Value Decomposition of the model matrix.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
+    "text": "links to eBooks are on the Home page of the website or Resources page."
   },
   {
-    "objectID": "syllabus.html",
-    "href": "syllabus.html",
-    "title": " Syllabus",
-    "section": "",
-    "text": "When in doubt about anything at all, ask questions!!!\n\nPrerequisites\nALL students are expected to be familiar with all the topics covered within the required prerequisites to be in this course. That is - mathematical statistics and probability, linear algebra, and multivariate calculus. Students are also expected to be familiar with R and are encouraged to learn LaTeX during the course.\n\n\nWorkload\nWork hours will include time spent going through the preassigned readings, attending lectures and lab sessions, and doing all graded work.\n\n\nGraded Work\nGraded work for the course will consist of homework assignments, lab exercises, two midterms and a final exam. Regrade requests for problem sets and lab exercises must be done via Gradescope AT MOST 24 hours after grades are released! Regrade requests for quizzes, midterm, and final exams must be done via Gradescope AT MOST 12 hours after grades are released! Always write in complete sentences and show your steps.\nStudents’ final grades will be determined as shown below:\n\nComponent Percentage\n\n\nComponent\nPercentage\n\n\n\n\nHomework\n20%\n\n\nMidterm\n25%\n\n\nMidterm II\n25%\n\n\nParticipation\n5%\n\n\nFinal Exam\n25%\n\n\n\nThere are no make-ups for any of the graded work except for medical or familial emergencies or for reasons approved by the instructor BEFORE the due date. See the instructor in advance of relevant due dates to discuss possible alternatives.\nGrades may be curved at the end of the semester. Cumulative averages of 90% – 100% are guaranteed at least an A-, 80% – 89% at least a B-, and 70% – 79% at least a C-, however the exact ranges for letter grades will be determined at the end of the course.\n\n\nDescriptions of graded work\n\nProblem sets\nHomework will be handed out on a weekly basis. They will be based on both the lectures and labs and will be announced every Thursday or Friday – be sure to check the website regularly! Also, please note that any work that is not legible by the instructor or TAs will not be graded (given a score of 0). Every write-up must be clearly written in full sentences and clear English. Any assignment that is completely unclear to the instructors and/or TAs, may result in a grade of a 0. For programming exercises, we will be using R/knitr with \\(\\LaTeX\\) for preparing assignments using github classroom for data analysis.\nEach student MUST write up and turn in her or his own answers. You are encouraged to talk to each other regarding homework problems or to the instructor/TA. However, the write-up, solution, and code must be entirely your own work. No sharing of solutions or code! The assignments must be submitted on Gradescope under Assignments. Note that you will not be able to make online submissions after the due date, so be sure to submit before or by the Gradescope-specified deadline. You may resubmit, so when in doubt submit work early. In certain situations if there are issues with submissions, the TA may review your GitHub repository prior to the due date.\nSolutions will be curated from student solutions with proper attribution. Every week the TAs will select a representative correct solution for the assigned problems and put them together into one solutions set with each answer being attributed to the student who wrote it. If you would like to OPT OUT of having your homework solutions used for the class solutions, please let the Instructor and TAs know in advance.\nFinally, your lowest homework score will be dropped!\n\n\nLab exercises\nThe objective of the lab assignments is to give you more hands-on experience with Bayesian data analysis. Attend the lab session and learn a concept or two and some R from the TA, and then work on the computational part of the problem sets. Each lab assignment should be submitted in timely fashion. You are REQUIRED to use R/knitr (or R/Rmarkdown in some cases).\n\n\nMidterm Exams\nThere will be two inclass midterm exams. Detailed instructions on the midterm will be made available later but please check dates on the calendar well in advance!\n\n\nFinal Exam\nThere will be a final exam after the reading week. If you miss any quiz or the midterm, your grade will depend more on the final exam score since there are no make-up exams. You cannot miss the final exam! Please check the important dates on the homepage for the date and time of the final before making plans to return home at the end of the semester. Detailed instructions on the final will be made available later.\n\n\n\nLate Submission Policy\n\nno late submission of homework or lab assignments, however we will drop the lowest score in each.\n\n\n\nCourse Topics\nFor a detailed day-by-day list of topics, please refer to the Course Schedule\n\n\nAcademic integrity\nDuke University is a community dedicated to scholarship, leadership, and service and to the principles of honesty, fairness, respect, and accountability. Citizens of this community commit to reflect upon and uphold these principles in all academic and nonacademic endeavors, and to protect and promote a culture of integrity.\nRemember the Duke Community Standard that you have agreed to abide by:\n\nTo uphold the Duke Community Standard:\n\n\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors; and\nI will act if the Standard is compromised.\n\n\nCheating or plagiarism on any graded assessments, lying about an illness or absence and other forms of academic dishonesty are a breach of trust with classmates and faculty, violate the Duke Community Standard, and will not be tolerated. Such incidences will result in a 0 grade for all parties involved. Additionally, there may be penalties to your final class grade along with being reported to the Office of Student Conduct. Review the academic dishonesty policies at https://studentaffairs.duke.edu/conduct/z-policies/academic-dishonesty.\n\n\nDiversity & Inclusiveness\nThis course is designed so that students from all backgrounds and perspectives all feel welcome both in and out of class. Please feel free to talk to me (in person or via email) if you do not feel well-served by any aspect of this class, or if some aspect of class is not welcoming or accessible to you. My goal is for you to succeed in this course, therefore, let me know immediately if you feel you are struggling with any part of the course more than you know how to manage. Doing so will not affect your grades, but it will allow me to provide the resources to help you succeed in the course.\n\n\nDisability Statement\nStudents with disabilities who believe that they may need accommodations in the class are encouraged to contact the Student Disabilities Access Office at 919-668-1267 or disabilities@aas.duke.edu as soon as possible to better ensure that such accommodations are implemented in a timely fashion.\n\n\nOther Information\nIt can be a lot more pleasant oftentimes to get one-on-one answers and help. Make use of the teaching team’s office hours, we’re here to help! Do not hesitate to talk to me during office hours or by appointment to discuss a problem set or any aspect of the course. Questions related to course assignments and honesty policy should be directed to me. When the teaching team has announcements for you we will send an email to your Duke email address. Be sure to check your email daily.\nMost of the course components will be held in person, but occasionally may need to be held online using Zoom meetings. If you have any concerns, issues or challenges, let the instructor know as soon as possible. Also, all students are strongly encouraged to rely on the forums in Sakai, for interacting among yourself and asking other students questions. You can also ask the instructor or the TAs questions on there and we will try to respond as soon as possible. If you experience any technical issues with joining or using the forums, let the instructor know.\n\n\nProfessionalism\nTry as much as possible to refrain from texting or using your computer for anything other than coursework during class and labs. Again, the more engaged you are, the quicker you will be able to get through the materials. You are responsible for everything covered in the lecture videos, lecture notes/slides, and in the assigned readings."
+    "objectID": "reading/01-introduction.html#introduction-to-linear-models",
+    "href": "reading/01-introduction.html#introduction-to-linear-models",
+    "title": "Lecture 1 Readings",
+    "section": "Introduction to Linear Models",
+    "text": "Introduction to Linear Models\n\nreview the course website and syllabus for policies"
   },
   {
-    "objectID": "HW/hw-05.html",
-    "href": "HW/hw-05.html",
+    "objectID": "reading/01-introduction.html#vector-spaces",
+    "href": "reading/01-introduction.html#vector-spaces",
+    "title": "Lecture 1 Readings",
+    "section": "Vector Spaces",
+    "text": "Vector Spaces\nChristensen: Read\n\nChapter 1: pages 1-3\nAppendix A in Christensen pages 411-413\nAppendix B section B.1\n\nSee also Seber & Lee Chapter 1."
+  },
+  {
+    "objectID": "reading/05-BLUE-MVUE.html",
+    "href": "reading/05-BLUE-MVUE.html",
+    "title": "Best Linear Unbiased Estimation in Prediction, MVUEs and BUEs",
+    "section": "",
+    "text": "We will continue our discussion of OLS/MLE estimators with exploring conditions for when the Best Linear Unbiased Estimators exist, with a special focus on out of sample prediction in the non-full rank case. We will outline the proof for why MLEs are also Minimum Variance Unbiased Estimators or “BUE” out of all unbiased estimators linear or non-linear under the additional assumption of normality of the errors. This opens up the question of what estimators are unbiased for linear models and if there are other nonlinear unbiased estimators that are better than OLS, a topic that has received recent attention.\nReadings:\n\nChristensen Chapter 2, Appendix B\nSeber & Lee Chapter 3\n\nFor the curious\n\nWhat Estimators are Unbiased for Linear Models (2023) and references within\nAnderson, T.W. (1962). Least squares and best unbiased estimates. The Annals of Mathematical Statistics, 33(1): 266–272\nHansen, B.E. (2022) A modern gauss-markov theorem. Econometrica"
+  },
+  {
+    "objectID": "reading/17-bma.html",
+    "href": "reading/17-bma.html",
+    "title": "Lecture 17: Bayesian Model Averaging",
+    "section": "",
+    "text": "Mixture of g-priors Liang et al (2008)\nA First Course in Bayesian Statistical Methods by Peter D. Hoff\n\nSection 9.1: The linear regression model (review)\nSection 9.2: Bayesian estimation for a regression model\nSection 9.3: Model Selection (linear regression)\n\nBayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin\n\nSection 14.2: Bayesian analysis of the classical regression model\n\nThe Bayesian Choice (Second Edition) by Christian Robert\nLiang, F., Paulo, R, Molina, G. Clyde, M, Berger, J (2008) Mixtures of g-priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103: 410-423\nHoeting, J.A, Madigan, D. Raftery,A. Volinsky, C.T. (1999) Bayesian Model Averaging: A Tutorial Statistical Science, 14: 382-401\nPorwal, A & Raftery, A.E. Comparing methods for statistical inference with model uncertainty. Proceedings of the National Academy of Sciences, 119(16), e2120737119"
+  },
+  {
+    "objectID": "reading/17-bma.html#readings",
+    "href": "reading/17-bma.html#readings",
+    "title": "Lecture 17: Bayesian Model Averaging",
+    "section": "",
+    "text": "Mixture of g-priors Liang et al (2008)\nA First Course in Bayesian Statistical Methods by Peter D. Hoff\n\nSection 9.1: The linear regression model (review)\nSection 9.2: Bayesian estimation for a regression model\nSection 9.3: Model Selection (linear regression)\n\nBayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin\n\nSection 14.2: Bayesian analysis of the classical regression model\n\nThe Bayesian Choice (Second Edition) by Christian Robert\nLiang, F., Paulo, R, Molina, G. Clyde, M, Berger, J (2008) Mixtures of g-priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103: 410-423\nHoeting, J.A, Madigan, D. Raftery,A. Volinsky, C.T. (1999) Bayesian Model Averaging: A Tutorial Statistical Science, 14: 382-401\nPorwal, A & Raftery, A.E. Comparing methods for statistical inference with model uncertainty. Proceedings of the National Academy of Sciences, 119(16), e2120737119"
+  },
+  {
+    "objectID": "HW/hw-06.html",
+    "href": "HW/hw-06.html",
     "title": "Homework 5",
     "section": "",
     "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
   },
   {
-    "objectID": "HW/hw-05.html#due-1000pm-fri-oct-4",
-    "href": "HW/hw-05.html#due-1000pm-fri-oct-4",
+    "objectID": "HW/hw-06.html#due-1000pm-fri-oct-4",
+    "href": "HW/hw-06.html#due-1000pm-fri-oct-4",
     "title": "Homework 5",
     "section": "",
     "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
   },
   {
-    "objectID": "HW/hw-05.html#rstudio",
-    "href": "HW/hw-05.html#rstudio",
+    "objectID": "HW/hw-06.html#rstudio",
+    "href": "HW/hw-06.html#rstudio",
     "title": "Homework 5",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-05.html#getting-started-with-github-classroom",
-    "href": "HW/hw-05.html#getting-started-with-github-classroom",
+    "objectID": "HW/hw-06.html#getting-started-with-github-classroom",
+    "href": "HW/hw-06.html#getting-started-with-github-classroom",
     "title": "Homework 5",
     "section": "Getting started with Github Classroom",
     "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-05.html#r-rnw",
-    "href": "HW/hw-05.html#r-rnw",
+    "objectID": "HW/hw-06.html#r-rnw",
+    "href": "HW/hw-06.html#r-rnw",
     "title": "Homework 5",
     "section": "R & RNW",
     "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
   },
   {
-    "objectID": "HW/hw-05.html#gradescope-submission",
-    "href": "HW/hw-05.html#gradescope-submission",
+    "objectID": "HW/hw-06.html#gradescope-submission",
+    "href": "HW/hw-06.html#gradescope-submission",
     "title": "Homework 5",
     "section": "Gradescope Submission",
     "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-05.html#grading",
-    "href": "HW/hw-05.html#grading",
+    "objectID": "HW/hw-06.html#grading",
+    "href": "HW/hw-06.html#grading",
     "title": "Homework 5",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "HW/hw-07.html",
-    "href": "HW/hw-07.html",
-    "title": "Homework 7",
+    "objectID": "HW/hw-08.html",
+    "href": "HW/hw-08.html",
+    "title": "Homework 8",
     "section": "",
     "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
   },
   {
-    "objectID": "HW/hw-07.html#due-1000pm-fri-oct-25",
-    "href": "HW/hw-07.html#due-1000pm-fri-oct-25",
-    "title": "Homework 7",
+    "objectID": "HW/hw-08.html#due-1000pm-sunday-november-3",
+    "href": "HW/hw-08.html#due-1000pm-sunday-november-3",
+    "title": "Homework 8",
     "section": "",
     "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
   },
   {
-    "objectID": "HW/hw-07.html#rstudio",
-    "href": "HW/hw-07.html#rstudio",
-    "title": "Homework 7",
+    "objectID": "HW/hw-08.html#rstudio",
+    "href": "HW/hw-08.html#rstudio",
+    "title": "Homework 8",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-07.html#getting-started-with-github-classroom",
-    "href": "HW/hw-07.html#getting-started-with-github-classroom",
-    "title": "Homework 7",
+    "objectID": "HW/hw-08.html#getting-started-with-github-classroom",
+    "href": "HW/hw-08.html#getting-started-with-github-classroom",
+    "title": "Homework 8",
     "section": "Getting started with Github Classroom",
     "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-07.html#r-rnw",
-    "href": "HW/hw-07.html#r-rnw",
-    "title": "Homework 7",
+    "objectID": "HW/hw-08.html#r-rnw",
+    "href": "HW/hw-08.html#r-rnw",
+    "title": "Homework 8",
     "section": "R & RNW",
     "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
   },
   {
-    "objectID": "HW/hw-07.html#gradescope-submission",
-    "href": "HW/hw-07.html#gradescope-submission",
-    "title": "Homework 7",
+    "objectID": "HW/hw-08.html#gradescope-submission",
+    "href": "HW/hw-08.html#gradescope-submission",
+    "title": "Homework 8",
     "section": "Gradescope Submission",
     "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-07.html#grading",
-    "href": "HW/hw-07.html#grading",
-    "title": "Homework 7",
+    "objectID": "HW/hw-08.html#grading",
+    "href": "HW/hw-08.html#grading",
+    "title": "Homework 8",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "HW/hw-03.html",
-    "href": "HW/hw-03.html",
-    "title": "Homework 3",
+    "objectID": "HW/hw-04.html",
+    "href": "HW/hw-04.html",
+    "title": "Homework 4",
     "section": "",
-    "text": "See Gradescope for any updates on due dates."
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo from GitHub Classroom"
   },
   {
-    "objectID": "HW/hw-03.html#due-1100pm-thurs-sept-19",
-    "href": "HW/hw-03.html#due-1100pm-thurs-sept-19",
-    "title": "Homework 3",
+    "objectID": "HW/hw-04.html#due-1100pm-thurs-sept-27",
+    "href": "HW/hw-04.html#due-1100pm-thurs-sept-27",
+    "title": "Homework 4",
     "section": "",
-    "text": "See Gradescope for any updates on due dates."
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo from GitHub Classroom"
   },
   {
-    "objectID": "HW/hw-03.html#rstudio",
-    "href": "HW/hw-03.html#rstudio",
-    "title": "Homework 3",
+    "objectID": "HW/hw-04.html#rstudio",
+    "href": "HW/hw-04.html#rstudio",
+    "title": "Homework 4",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-03.html#getting-started-with-github-classroom",
-    "href": "HW/hw-03.html#getting-started-with-github-classroom",
-    "title": "Homework 3",
+    "objectID": "HW/hw-04.html#getting-started-with-github-classroom",
+    "href": "HW/hw-04.html#getting-started-with-github-classroom",
+    "title": "Homework 4",
     "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW3\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-03.html#r-rnw",
-    "href": "HW/hw-03.html#r-rnw",
-    "title": "Homework 3",
+    "objectID": "HW/hw-04.html#r-rnw",
+    "href": "HW/hw-04.html#r-rnw",
+    "title": "Homework 4",
     "section": "R & RNW",
     "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
   },
   {
-    "objectID": "HW/hw-03.html#gradescope-submission",
-    "href": "HW/hw-03.html#gradescope-submission",
-    "title": "Homework 3",
+    "objectID": "HW/hw-04.html#gradescope-submission",
+    "href": "HW/hw-04.html#gradescope-submission",
+    "title": "Homework 4",
     "section": "Gradescope Submission",
     "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-03.html#grading",
-    "href": "HW/hw-03.html#grading",
-    "title": "Homework 3",
+    "objectID": "HW/hw-04.html#grading",
+    "href": "HW/hw-04.html#grading",
+    "title": "Homework 4",
+    "section": "Grading",
+    "text": "Grading\nTotal: 20 points."
+  },
+  {
+    "objectID": "HW/hw-02.html",
+    "href": "HW/hw-02.html",
+    "title": "Homework 2",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates."
+  },
+  {
+    "objectID": "HW/hw-02.html#due-1100pm-thurs-sept-12",
+    "href": "HW/hw-02.html#due-1100pm-thurs-sept-12",
+    "title": "Homework 2",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates."
+  },
+  {
+    "objectID": "HW/hw-02.html#rstudio",
+    "href": "HW/hw-02.html#rstudio",
+    "title": "Homework 2",
+    "section": "RStudio",
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+  },
+  {
+    "objectID": "HW/hw-02.html#r-rnw",
+    "href": "HW/hw-02.html#r-rnw",
+    "title": "Homework 2",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+  },
+  {
+    "objectID": "HW/hw-02.html#getting-started-with-github-classroom",
+    "href": "HW/hw-02.html#getting-started-with-github-classroom",
+    "title": "Homework 2",
+    "section": "Getting started with Github Classroom",
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW2\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw2.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+  },
+  {
+    "objectID": "HW/hw-02.html#gradescope-submission",
+    "href": "HW/hw-02.html#gradescope-submission",
+    "title": "Homework 2",
+    "section": "Gradescope Submission",
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+  },
+  {
+    "objectID": "HW/hw-02.html#grading",
+    "href": "HW/hw-02.html#grading",
+    "title": "Homework 2",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
   },
@@ -2335,7 +2412,7 @@
     "href": "schedule.html",
     "title": " Schedule",
     "section": "",
-    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\nLecture 3: Rank Deficient Models\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\nLecture 4: Best Linear Unbiased Estimation and Gauss-Markov Theorem\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\nLecture 5: BLUES for Prediction and MVUE\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\nLecture 6: Generalized Linear Squares\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\nLecture 7: Sampling Distributions & Distribution Theory\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\nLecture 8: Bayesian Estimation\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\nLecture 9: Bayes and Frequentist Risk\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\nLecture 10: James-Stein\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\nLecture 11: Shrinkage Estimators and Hierarchical Bayes\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\nLecture 12: Shrinkage/Selection and Oracle Properties\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTues, Oct 8\nLecture 13: Testing Hypotheses\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\nLecture 14: Testing Submodels\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\nReview in Lab (see Canvas)\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nNO CLASS - Use time for review\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\nMidterm 1\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\nLecture 15: Confidence Regions and Intervals\n\n\n\n\n\n\n\n\n\n\nThur, Oct 24\nLecture 16: Intro to Bayesian Hypothesis Testing\n\n\n\n\n hw-08\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\nLecture 17: Bayesian Model Averaging\n\n\n\n\n\n\n\n\n\n\nThur, Oct 31\nLecture 18: BMA and Bayesian Variable Selection\n\n\n\n\n\n\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n hw-09\n\n\nWeek 11\nTues, Nov 5\nLecture 19:\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 7\nLecture 20:\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n hw-10\n\n\nWeek 12\nTues, Nov 12\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 14\nMidterm2\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n hw-11\n\n\nWeek 12\nTues, Nov 19\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 22\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 13\nTues, Nov 26\n\n\n\n\n\n\n\n\n hw-12\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
+    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\nLecture 3: Rank Deficient Models\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\nLecture 4: Best Linear Unbiased Estimation and Gauss-Markov Theorem\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\nLecture 5: BLUES for Prediction and MVUE\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\nLecture 6: Generalized Linear Squares\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\nLecture 7: Sampling Distributions & Distribution Theory\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\nLecture 8: Bayesian Estimation\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\nLecture 9: Bayes and Frequentist Risk\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\nLecture 10: James-Stein\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\nLecture 11: Shrinkage Estimators and Hierarchical Bayes\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\nLecture 12: Shrinkage/Selection and Oracle Properties\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTues, Oct 8\nLecture 13: Testing Hypotheses\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\nLecture 14: Testing Submodels\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\nReview in Lab (see Canvas)\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nNO CLASS - Use time for review\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\nMidterm 1\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\nLecture 15: Confidence Regions and Intervals\n\n\n\n\n\n\n\n\n\n\nThur, Oct 24\nLecture 16: Intro to Bayesian Hypothesis Testing\n\n\n\n\n hw-08\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\nLecture 17: Bayesian Model Averaging\n\n\n\n\n\n\n\n\n\n\nThur, Oct 31\nLecture 18: BMA and Bayesian Variable Selection\n\n\n\n\n\n\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\nTues, Nov 5\nLecture 19:\n\n\n\n\n hw-09\n\n\n\n\nThurs, Nov 7\nLecture 20:\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 12\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 14\nMidterm2\n\n\n\n\n\n\n hw-10\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 19\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 22\n\n\n\n\n\n\n\n\n hw-12\n\n\nWeek 13\nTues, Nov 26\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
   },
   {
     "objectID": "index.html#course-description",
@@ -2359,290 +2436,276 @@
     "text": "Course Topics\nCourse topics will be drawn (but subject to change) from\n\nMotivation for Studying Linear Models as Foundation\nRandom Vectors and Matrices\nMultivariate Normal Distribution Theory\nConditional Normal Distribution Theory\nLinear Models via Coordinate free representations (examples)\nMaximum Likelihood Estimation & Projections\nInterval Estimation: Distribution of Quadratic Forms\nGauss-Markov Theorem & Optimality of OLS/GLS\nFormulation of Bayesian Inference\nSubjective and Default Priors\nRelated Shrinkage Methods and Penalized Likelihoods (Ridge regression, lasso)\nModel Selection (comparison of classical and Bayesian approaches)\nBayes Factors\nBayesian Model Averaging\nModel Checking: Residual Analysis & Diagnostics\nRobust Methods for Outliers\nGeneralized Linear Model\nHierarchical Models\n\nPlease check the website for updates, slides and current readings."
   },
   {
-    "objectID": "HW/hw-02.html",
-    "href": "HW/hw-02.html",
-    "title": "Homework 2",
+    "objectID": "HW/hw-09.html",
+    "href": "HW/hw-09.html",
+    "title": "Homework 9",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from [GitHub Classroom]https://classroom.github.com/a/8iwB-ksr)"
+  },
+  {
+    "objectID": "HW/hw-09.html#due-1000pm-sunday-november-10",
+    "href": "HW/hw-09.html#due-1000pm-sunday-november-10",
+    "title": "Homework 9",
+    "section": "",
+    "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from [GitHub Classroom]https://classroom.github.com/a/8iwB-ksr)"
+  },
+  {
+    "objectID": "HW/hw-09.html#rstudio",
+    "href": "HW/hw-09.html#rstudio",
+    "title": "Homework 9",
+    "section": "RStudio",
+    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
+  },
+  {
+    "objectID": "HW/hw-09.html#getting-started-with-github-classroom",
+    "href": "HW/hw-09.html#getting-started-with-github-classroom",
+    "title": "Homework 9",
+    "section": "Getting started with Github Classroom",
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+  },
+  {
+    "objectID": "HW/hw-09.html#r-rnw",
+    "href": "HW/hw-09.html#r-rnw",
+    "title": "Homework 9",
+    "section": "R & RNW",
+    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
+  },
+  {
+    "objectID": "HW/hw-09.html#gradescope-submission",
+    "href": "HW/hw-09.html#gradescope-submission",
+    "title": "Homework 9",
+    "section": "Gradescope Submission",
+    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
+  },
+  {
+    "objectID": "HW/hw-09.html#grading",
+    "href": "HW/hw-09.html#grading",
+    "title": "Homework 9",
+    "section": "Grading",
+    "text": "Grading\nTotal: 20 points."
+  },
+  {
+    "objectID": "HW/hw-03.html",
+    "href": "HW/hw-03.html",
+    "title": "Homework 3",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-02.html#due-1100pm-thurs-sept-12",
-    "href": "HW/hw-02.html#due-1100pm-thurs-sept-12",
-    "title": "Homework 2",
+    "objectID": "HW/hw-03.html#due-1100pm-thurs-sept-19",
+    "href": "HW/hw-03.html#due-1100pm-thurs-sept-19",
+    "title": "Homework 3",
     "section": "",
     "text": "See Gradescope for any updates on due dates."
   },
   {
-    "objectID": "HW/hw-02.html#rstudio",
-    "href": "HW/hw-02.html#rstudio",
-    "title": "Homework 2",
+    "objectID": "HW/hw-03.html#rstudio",
+    "href": "HW/hw-03.html#rstudio",
+    "title": "Homework 3",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-02.html#r-rnw",
-    "href": "HW/hw-02.html#r-rnw",
-    "title": "Homework 2",
-    "section": "R & RNW",
-    "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
-  },
-  {
-    "objectID": "HW/hw-02.html#getting-started-with-github-classroom",
-    "href": "HW/hw-02.html#getting-started-with-github-classroom",
-    "title": "Homework 2",
+    "objectID": "HW/hw-03.html#getting-started-with-github-classroom",
+    "href": "HW/hw-03.html#getting-started-with-github-classroom",
+    "title": "Homework 3",
     "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW2\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw2.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
+    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment at HW3\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-02.html#gradescope-submission",
-    "href": "HW/hw-02.html#gradescope-submission",
-    "title": "Homework 2",
-    "section": "Gradescope Submission",
-    "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
-  },
-  {
-    "objectID": "HW/hw-02.html#grading",
-    "href": "HW/hw-02.html#grading",
-    "title": "Homework 2",
-    "section": "Grading",
-    "text": "Grading\nTotal: 20 points."
-  },
-  {
-    "objectID": "HW/hw-04.html",
-    "href": "HW/hw-04.html",
-    "title": "Homework 4",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates.\nCreate your repo from GitHub Classroom"
-  },
-  {
-    "objectID": "HW/hw-04.html#due-1100pm-thurs-sept-27",
-    "href": "HW/hw-04.html#due-1100pm-thurs-sept-27",
-    "title": "Homework 4",
-    "section": "",
-    "text": "See Gradescope for any updates on due dates.\nCreate your repo from GitHub Classroom"
-  },
-  {
-    "objectID": "HW/hw-04.html#rstudio",
-    "href": "HW/hw-04.html#rstudio",
-    "title": "Homework 4",
-    "section": "RStudio",
-    "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
-  },
-  {
-    "objectID": "HW/hw-04.html#getting-started-with-github-classroom",
-    "href": "HW/hw-04.html#getting-started-with-github-classroom",
-    "title": "Homework 4",
-    "section": "Getting started with Github Classroom",
-    "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
-  },
-  {
-    "objectID": "HW/hw-04.html#r-rnw",
-    "href": "HW/hw-04.html#r-rnw",
-    "title": "Homework 4",
+    "objectID": "HW/hw-03.html#r-rnw",
+    "href": "HW/hw-03.html#r-rnw",
+    "title": "Homework 3",
     "section": "R & RNW",
     "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
   },
   {
-    "objectID": "HW/hw-04.html#gradescope-submission",
-    "href": "HW/hw-04.html#gradescope-submission",
-    "title": "Homework 4",
+    "objectID": "HW/hw-03.html#gradescope-submission",
+    "href": "HW/hw-03.html#gradescope-submission",
+    "title": "Homework 3",
     "section": "Gradescope Submission",
     "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-04.html#grading",
-    "href": "HW/hw-04.html#grading",
-    "title": "Homework 4",
+    "objectID": "HW/hw-03.html#grading",
+    "href": "HW/hw-03.html#grading",
+    "title": "Homework 3",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "HW/hw-08.html",
-    "href": "HW/hw-08.html",
-    "title": "Homework 8",
+    "objectID": "HW/hw-07.html",
+    "href": "HW/hw-07.html",
+    "title": "Homework 7",
     "section": "",
     "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
   },
   {
-    "objectID": "HW/hw-08.html#due-1000pm-sunday-november-3",
-    "href": "HW/hw-08.html#due-1000pm-sunday-november-3",
-    "title": "Homework 8",
+    "objectID": "HW/hw-07.html#due-1000pm-fri-oct-25",
+    "href": "HW/hw-07.html#due-1000pm-fri-oct-25",
+    "title": "Homework 7",
     "section": "",
     "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
   },
   {
-    "objectID": "HW/hw-08.html#rstudio",
-    "href": "HW/hw-08.html#rstudio",
-    "title": "Homework 8",
+    "objectID": "HW/hw-07.html#rstudio",
+    "href": "HW/hw-07.html#rstudio",
+    "title": "Homework 7",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-08.html#getting-started-with-github-classroom",
-    "href": "HW/hw-08.html#getting-started-with-github-classroom",
-    "title": "Homework 8",
+    "objectID": "HW/hw-07.html#getting-started-with-github-classroom",
+    "href": "HW/hw-07.html#getting-started-with-github-classroom",
+    "title": "Homework 7",
     "section": "Getting started with Github Classroom",
     "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-08.html#r-rnw",
-    "href": "HW/hw-08.html#r-rnw",
-    "title": "Homework 8",
+    "objectID": "HW/hw-07.html#r-rnw",
+    "href": "HW/hw-07.html#r-rnw",
+    "title": "Homework 7",
     "section": "R & RNW",
     "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
   },
   {
-    "objectID": "HW/hw-08.html#gradescope-submission",
-    "href": "HW/hw-08.html#gradescope-submission",
-    "title": "Homework 8",
+    "objectID": "HW/hw-07.html#gradescope-submission",
+    "href": "HW/hw-07.html#gradescope-submission",
+    "title": "Homework 7",
     "section": "Gradescope Submission",
     "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-08.html#grading",
-    "href": "HW/hw-08.html#grading",
-    "title": "Homework 8",
+    "objectID": "HW/hw-07.html#grading",
+    "href": "HW/hw-07.html#grading",
+    "title": "Homework 7",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "HW/hw-06.html",
-    "href": "HW/hw-06.html",
+    "objectID": "HW/hw-05.html",
+    "href": "HW/hw-05.html",
     "title": "Homework 5",
     "section": "",
     "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
   },
   {
-    "objectID": "HW/hw-06.html#due-1000pm-fri-oct-4",
-    "href": "HW/hw-06.html#due-1000pm-fri-oct-4",
+    "objectID": "HW/hw-05.html#due-1000pm-fri-oct-4",
+    "href": "HW/hw-05.html#due-1000pm-fri-oct-4",
     "title": "Homework 5",
     "section": "",
     "text": "See Gradescope for any updates on due dates.\nCreate your repo for the HW from GitHub Classroom"
   },
   {
-    "objectID": "HW/hw-06.html#rstudio",
-    "href": "HW/hw-06.html#rstudio",
+    "objectID": "HW/hw-05.html#rstudio",
+    "href": "HW/hw-05.html#rstudio",
     "title": "Homework 5",
     "section": "RStudio",
     "text": "RStudio\nYou all should have R and RStudio installed on your computers by now or access to the Department RStudio Server https://rstudio.stat.duke.edu. If you need to setup your local version, first install the latest version of R here: https://cran.rstudio.com - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: https://www.rstudio.com/products/rstudio/download/. Scroll down to the “Installers for Supported Platforms” section and find the right installer for your operating system."
   },
   {
-    "objectID": "HW/hw-06.html#getting-started-with-github-classroom",
-    "href": "HW/hw-06.html#getting-started-with-github-classroom",
+    "objectID": "HW/hw-05.html#getting-started-with-github-classroom",
+    "href": "HW/hw-05.html#getting-started-with-github-classroom",
     "title": "Homework 5",
     "section": "Getting started with Github Classroom",
     "text": "Getting started with Github Classroom\nGo to Github classroom to accept the invitation to create a repository for this assignment.\nThis will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf.\nHit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.\nFollow the instructions in the README in your repo and in the hw#.Rnw file to complete the assignment and push to GitHub. If you encounter issues with Gradescope submission, it is critical that you have pushed your final assignment to GitHub by the due date to validate timestamps."
   },
   {
-    "objectID": "HW/hw-06.html#r-rnw",
-    "href": "HW/hw-06.html#r-rnw",
+    "objectID": "HW/hw-05.html#r-rnw",
+    "href": "HW/hw-05.html#r-rnw",
     "title": "Homework 5",
     "section": "R & RNW",
     "text": "R & RNW\nYou are required to use the .Rnw format to type up this report report if there are any R problems. To get started see Knitr with LaTeX article by Karl Broman. Feel free to include images of technical derivations if you are short of time to typeset in LaTeX. The macros.tex file should help with shortcuts. You may need to change some of your Project or Global options to get your document to compile with KnitR. If so please post under Ed in the General category or ask in Lab."
   },
   {
-    "objectID": "HW/hw-06.html#gradescope-submission",
-    "href": "HW/hw-06.html#gradescope-submission",
+    "objectID": "HW/hw-05.html#gradescope-submission",
+    "href": "HW/hw-05.html#gradescope-submission",
     "title": "Homework 5",
     "section": "Gradescope Submission",
     "text": "Gradescope Submission\nYou MUST submit both your final .Rnw .pdf files to the repo on Github and upload the pdf to Gradescope here: https://www.gradescope.com/courses/843802/assignments\nMake sure to to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!"
   },
   {
-    "objectID": "HW/hw-06.html#grading",
-    "href": "HW/hw-06.html#grading",
+    "objectID": "HW/hw-05.html#grading",
+    "href": "HW/hw-05.html#grading",
     "title": "Homework 5",
     "section": "Grading",
     "text": "Grading\nTotal: 20 points."
   },
   {
-    "objectID": "reading/17-bma.html",
-    "href": "reading/17-bma.html",
-    "title": "Lecture 17: Bayesian Model Averaging",
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": " Syllabus",
     "section": "",
-    "text": "Mixture of g-priors Liang et al (2008)\nA First Course in Bayesian Statistical Methods by Peter D. Hoff\n\nSection 9.1: The linear regression model (review)\nSection 9.2: Bayesian estimation for a regression model\nSection 9.3: Model Selection (linear regression)\n\nBayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin\n\nSection 14.2: Bayesian analysis of the classical regression model\n\nThe Bayesian Choice (Second Edition) by Christian Robert\nLiang, F., Paulo, R, Molina, G. Clyde, M, Berger, J (2008) Mixtures of g-priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103: 410-423\nHoeting, J.A, Madigan, D. Raftery,A. Volinsky, C.T. (1999) Bayesian Model Averaging: A Tutorial Statistical Science, 14: 382-401\nPorwal, A & Raftery, A.E. Comparing methods for statistical inference with model uncertainty. Proceedings of the National Academy of Sciences, 119(16), e2120737119"
+    "text": "When in doubt about anything at all, ask questions!!!\n\nPrerequisites\nALL students are expected to be familiar with all the topics covered within the required prerequisites to be in this course. That is - mathematical statistics and probability, linear algebra, and multivariate calculus. Students are also expected to be familiar with R and are encouraged to learn LaTeX during the course.\n\n\nWorkload\nWork hours will include time spent going through the preassigned readings, attending lectures and lab sessions, and doing all graded work.\n\n\nGraded Work\nGraded work for the course will consist of homework assignments, lab exercises, two midterms and a final exam. Regrade requests for problem sets and lab exercises must be done via Gradescope AT MOST 24 hours after grades are released! Regrade requests for quizzes, midterm, and final exams must be done via Gradescope AT MOST 12 hours after grades are released! Always write in complete sentences and show your steps.\nStudents’ final grades will be determined as shown below:\n\nComponent Percentage\n\n\nComponent\nPercentage\n\n\n\n\nHomework\n20%\n\n\nMidterm\n25%\n\n\nMidterm II\n25%\n\n\nParticipation\n5%\n\n\nFinal Exam\n25%\n\n\n\nThere are no make-ups for any of the graded work except for medical or familial emergencies or for reasons approved by the instructor BEFORE the due date. See the instructor in advance of relevant due dates to discuss possible alternatives.\nGrades may be curved at the end of the semester. Cumulative averages of 90% – 100% are guaranteed at least an A-, 80% – 89% at least a B-, and 70% – 79% at least a C-, however the exact ranges for letter grades will be determined at the end of the course.\n\n\nDescriptions of graded work\n\nProblem sets\nHomework will be handed out on a weekly basis. They will be based on both the lectures and labs and will be announced every Thursday or Friday – be sure to check the website regularly! Also, please note that any work that is not legible by the instructor or TAs will not be graded (given a score of 0). Every write-up must be clearly written in full sentences and clear English. Any assignment that is completely unclear to the instructors and/or TAs, may result in a grade of a 0. For programming exercises, we will be using R/knitr with \\(\\LaTeX\\) for preparing assignments using github classroom for data analysis.\nEach student MUST write up and turn in her or his own answers. You are encouraged to talk to each other regarding homework problems or to the instructor/TA. However, the write-up, solution, and code must be entirely your own work. No sharing of solutions or code! The assignments must be submitted on Gradescope under Assignments. Note that you will not be able to make online submissions after the due date, so be sure to submit before or by the Gradescope-specified deadline. You may resubmit, so when in doubt submit work early. In certain situations if there are issues with submissions, the TA may review your GitHub repository prior to the due date.\nSolutions will be curated from student solutions with proper attribution. Every week the TAs will select a representative correct solution for the assigned problems and put them together into one solutions set with each answer being attributed to the student who wrote it. If you would like to OPT OUT of having your homework solutions used for the class solutions, please let the Instructor and TAs know in advance.\nFinally, your lowest homework score will be dropped!\n\n\nLab exercises\nThe objective of the lab assignments is to give you more hands-on experience with Bayesian data analysis. Attend the lab session and learn a concept or two and some R from the TA, and then work on the computational part of the problem sets. Each lab assignment should be submitted in timely fashion. You are REQUIRED to use R/knitr (or R/Rmarkdown in some cases).\n\n\nMidterm Exams\nThere will be two inclass midterm exams. Detailed instructions on the midterm will be made available later but please check dates on the calendar well in advance!\n\n\nFinal Exam\nThere will be a final exam after the reading week. If you miss any quiz or the midterm, your grade will depend more on the final exam score since there are no make-up exams. You cannot miss the final exam! Please check the important dates on the homepage for the date and time of the final before making plans to return home at the end of the semester. Detailed instructions on the final will be made available later.\n\n\n\nLate Submission Policy\n\nno late submission of homework or lab assignments, however we will drop the lowest score in each.\n\n\n\nCourse Topics\nFor a detailed day-by-day list of topics, please refer to the Course Schedule\n\n\nAcademic integrity\nDuke University is a community dedicated to scholarship, leadership, and service and to the principles of honesty, fairness, respect, and accountability. Citizens of this community commit to reflect upon and uphold these principles in all academic and nonacademic endeavors, and to protect and promote a culture of integrity.\nRemember the Duke Community Standard that you have agreed to abide by:\n\nTo uphold the Duke Community Standard:\n\n\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors; and\nI will act if the Standard is compromised.\n\n\nCheating or plagiarism on any graded assessments, lying about an illness or absence and other forms of academic dishonesty are a breach of trust with classmates and faculty, violate the Duke Community Standard, and will not be tolerated. Such incidences will result in a 0 grade for all parties involved. Additionally, there may be penalties to your final class grade along with being reported to the Office of Student Conduct. Review the academic dishonesty policies at https://studentaffairs.duke.edu/conduct/z-policies/academic-dishonesty.\n\n\nDiversity & Inclusiveness\nThis course is designed so that students from all backgrounds and perspectives all feel welcome both in and out of class. Please feel free to talk to me (in person or via email) if you do not feel well-served by any aspect of this class, or if some aspect of class is not welcoming or accessible to you. My goal is for you to succeed in this course, therefore, let me know immediately if you feel you are struggling with any part of the course more than you know how to manage. Doing so will not affect your grades, but it will allow me to provide the resources to help you succeed in the course.\n\n\nDisability Statement\nStudents with disabilities who believe that they may need accommodations in the class are encouraged to contact the Student Disabilities Access Office at 919-668-1267 or disabilities@aas.duke.edu as soon as possible to better ensure that such accommodations are implemented in a timely fashion.\n\n\nOther Information\nIt can be a lot more pleasant oftentimes to get one-on-one answers and help. Make use of the teaching team’s office hours, we’re here to help! Do not hesitate to talk to me during office hours or by appointment to discuss a problem set or any aspect of the course. Questions related to course assignments and honesty policy should be directed to me. When the teaching team has announcements for you we will send an email to your Duke email address. Be sure to check your email daily.\nMost of the course components will be held in person, but occasionally may need to be held online using Zoom meetings. If you have any concerns, issues or challenges, let the instructor know as soon as possible. Also, all students are strongly encouraged to rely on the forums in Sakai, for interacting among yourself and asking other students questions. You can also ask the instructor or the TAs questions on there and we will try to respond as soon as possible. If you experience any technical issues with joining or using the forums, let the instructor know.\n\n\nProfessionalism\nTry as much as possible to refrain from texting or using your computer for anything other than coursework during class and labs. Again, the more engaged you are, the quicker you will be able to get through the materials. You are responsible for everything covered in the lecture videos, lecture notes/slides, and in the assigned readings."
   },
   {
-    "objectID": "reading/17-bma.html#readings",
-    "href": "reading/17-bma.html#readings",
-    "title": "Lecture 17: Bayesian Model Averaging",
+    "objectID": "reading/03-non-full-rank.html",
+    "href": "reading/03-non-full-rank.html",
+    "title": "Rank Deficient Models",
     "section": "",
-    "text": "Mixture of g-priors Liang et al (2008)\nA First Course in Bayesian Statistical Methods by Peter D. Hoff\n\nSection 9.1: The linear regression model (review)\nSection 9.2: Bayesian estimation for a regression model\nSection 9.3: Model Selection (linear regression)\n\nBayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin\n\nSection 14.2: Bayesian analysis of the classical regression model\n\nThe Bayesian Choice (Second Edition) by Christian Robert\nLiang, F., Paulo, R, Molina, G. Clyde, M, Berger, J (2008) Mixtures of g-priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103: 410-423\nHoeting, J.A, Madigan, D. Raftery,A. Volinsky, C.T. (1999) Bayesian Model Averaging: A Tutorial Statistical Science, 14: 382-401\nPorwal, A & Raftery, A.E. Comparing methods for statistical inference with model uncertainty. Proceedings of the National Academy of Sciences, 119(16), e2120737119"
+    "text": "We will explore MLEs/OLS using rank deficient models using generalized inverses. We will characterize orthogonal projections using Spectral Decompositions and review how that is related to the Singular Value Decomposition of the model matrix.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
   },
   {
-    "objectID": "reading/05-BLUE-MVUE.html",
-    "href": "reading/05-BLUE-MVUE.html",
-    "title": "Best Linear Unbiased Estimation in Prediction, MVUEs and BUEs",
+    "objectID": "reading/13-testing.html",
+    "href": "reading/13-testing.html",
+    "title": "Testing Hypotheses",
     "section": "",
-    "text": "We will continue our discussion of OLS/MLE estimators with exploring conditions for when the Best Linear Unbiased Estimators exist, with a special focus on out of sample prediction in the non-full rank case. We will outline the proof for why MLEs are also Minimum Variance Unbiased Estimators or “BUE” out of all unbiased estimators linear or non-linear under the additional assumption of normality of the errors. This opens up the question of what estimators are unbiased for linear models and if there are other nonlinear unbiased estimators that are better than OLS, a topic that has received recent attention.\nReadings:\n\nChristensen Chapter 2, Appendix B\nSeber & Lee Chapter 3\n\nFor the curious\n\nWhat Estimators are Unbiased for Linear Models (2023) and references within\nAnderson, T.W. (1962). Least squares and best unbiased estimates. The Annals of Mathematical Statistics, 33(1): 266–272\nHansen, B.E. (2022) A modern gauss-markov theorem. Econometrica"
+    "text": "We develop an F-test for testing hypotheses about the coefficients in a linear model.\nReadings:\n\nChristensen Chapter 3, Appendix C"
   },
   {
-    "objectID": "reading/01-introduction.html",
-    "href": "reading/01-introduction.html",
-    "title": "Lecture 1 Readings",
+    "objectID": "reading/06-GLS.html",
+    "href": "reading/06-GLS.html",
+    "title": "Generalize Least Squares, MLEs, MVUEs and BUEs",
     "section": "",
-    "text": "links to eBooks are on the Home page of the website or Resources page."
+    "text": "We will develop GLS/MLE estimators when the covariance of the errors is is not a scale multiple of the identity matrix, and establish conditions for when the OLS and GLS are equivalent. Inthe case that the errors have a multivatiate normal distribution, the MLEs are equivalent to GLS and are not only the BLUE but are also Minimum Variance Unbiased Estimators or “BUE” out of all unbiased estimators linear or non-linear.\nReadings:\n\nChristensen Chapter 2 and 10 Appendix B\nSeber & Lee Chapter 3"
   },
   {
-    "objectID": "reading/01-introduction.html#introduction-to-linear-models",
-    "href": "reading/01-introduction.html#introduction-to-linear-models",
-    "title": "Lecture 1 Readings",
-    "section": "Introduction to Linear Models",
-    "text": "Introduction to Linear Models\n\nreview the course website and syllabus for policies"
-  },
-  {
-    "objectID": "reading/01-introduction.html#vector-spaces",
-    "href": "reading/01-introduction.html#vector-spaces",
-    "title": "Lecture 1 Readings",
-    "section": "Vector Spaces",
-    "text": "Vector Spaces\nChristensen: Read\n\nChapter 1: pages 1-3\nAppendix A in Christensen pages 411-413\nAppendix B section B.1\n\nSee also Seber & Lee Chapter 1."
-  },
-  {
-    "objectID": "reading/11-shrinkage.html",
-    "href": "reading/11-shrinkage.html",
-    "title": "Shrinkage and Hierarchical Bayes",
+    "objectID": "reading/08-bayes.html",
+    "href": "reading/08-bayes.html",
+    "title": "Bayesian Estimation and Shrinkage",
     "section": "",
-    "text": "We discuss properties of the shrinkage estimators that provide both shrinkage and selection from frequentist and Bayesian paradigms.\nReadings:\n\nSeber & Lee Chapter 12\nTibshirani (1996) “Regression Shrinkage and Selection via the Lasso”\nPark & Casella (2008) “The Bayesian Lasso”\nHans (2010) “Model uncertainty and variable selection in Bayesian lasso regression”\nCarvalho, Polson & Scott (2009) “Handling Sparsity via the Horseshoe”\nArmagan, Dunson & Lee (2013) “Generalized Double Pareto Shrinkage”\nRobert, C. (2007) “The Bayesian Choice” Chapter 5"
+    "text": "We study Bayes estimators of the regression coefficients, and show how these can be viewed as shrunken versions of the OLS estimator. We discuss two commonly used priors, the \\(g\\)-prior of Zellner (1986) and an independent prior. In the latter case, the posterior mean is equivalent to the classic ridge regression estimator of Hoerl and Kennedy. The posterior mean in both cases may offer improvements over OLS. Rigde regression in particular can reduce variance and estimation error in cases where the predictors are highly collinear.\nReadings:\n\nChristensen Chapter 2.9 and Chapter 15\nSeber & Lee Chapter 3.12 and Chapter 12\nHoerl, A.E. and Kennard, R.W. (1970) Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1):55–67\nZellner, A. (1986) On assessing prior distributions and Bayesian regression analysis with \\(g\\)-prior distributions. In Bayesian Inference and Decision Techniques: Essays in Honor of Bruno de Finetti, eds. P. K. Goel and A. Zellner, 233–243. Amsterdam: North-Holland"
   },
   {
-    "objectID": "reading/09-bayes-freq-risk.html",
-    "href": "reading/09-bayes-freq-risk.html",
-    "title": "Bayesian and Frequentist Risk",
+    "objectID": "reading/16-Bayes-tests.html",
+    "href": "reading/16-Bayes-tests.html",
+    "title": "Lecture 16: Basics of Bayesian Hypothesis Testing",
     "section": "",
-    "text": "We study frequentist properties of Bayes estimators of the regression coefficients under the \\(g\\)-prior and independent normal prior that leads to ridge regression. In particular, there are values of the hper-parameters in the prior that lead to Bayes estimators dominating OLS in terms of MSE.\nReadings:\n\nChristensen Chapter 2.9 and Chapter 15\nSeber & Lee Chapter 3.12, 10.7.3 and 12\nHoerl, A.E. and Kennard, R.W. (1970) Ridge regression: Biased estimation for nonorthogonal problems. Technometrics, 12(1):55–67\nZellner, A. (1986) On assessing prior distributions and Bayesian regression analysis with \\(g\\)-prior distributions. In Bayesian Inference and Decision Techniques: Essays in Honor of Bruno de Finetti, eds. P. K. Goel and A. Zellner, 233–243. Amsterdam: North-Holland"
+    "text": "Bayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin.:\n\nSection 7.4: Model comparison using Bayes factors\n\nThe Bayesian Choice (Second Edition) by Christian Robert\n\n5: Tests and Confidence Regions\n5.1: Introduction\n5.2: A first approach to testing theory\n5.3: Comparison with the classical approach\n5.4: A second decision-theoretic approach\n\nIntrinsic Bayes Factors for Model Selection and Comparison by J. O. Berger and L. R. Pericchi\n\nJournal of the Royal Statistical Society: Series B (Statistical Methodology) Volume 67, Issue 3, pages 725–748, June 2005"
   },
   {
-    "objectID": "reading/02-mles.html",
-    "href": "reading/02-mles.html",
-    "title": "MLEs & Projections",
+    "objectID": "reading/16-Bayes-tests.html#readings",
+    "href": "reading/16-Bayes-tests.html#readings",
+    "title": "Lecture 16: Basics of Bayesian Hypothesis Testing",
     "section": "",
-    "text": "Readings:\n\nChristensen Chapter 1-2, Appendix A, and Appendix B\nSeber & Lee Chapter 3, Appendix B"
+    "text": "Bayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin.:\n\nSection 7.4: Model comparison using Bayes factors\n\nThe Bayesian Choice (Second Edition) by Christian Robert\n\n5: Tests and Confidence Regions\n5.1: Introduction\n5.2: A first approach to testing theory\n5.3: Comparison with the classical approach\n5.4: A second decision-theoretic approach\n\nIntrinsic Bayes Factors for Model Selection and Comparison by J. O. Berger and L. R. Pericchi\n\nJournal of the Royal Statistical Society: Series B (Statistical Methodology) Volume 67, Issue 3, pages 725–748, June 2005"
   },
   {
-    "objectID": "reading/07-sampling.html",
-    "href": "reading/07-sampling.html",
-    "title": "Sampling Dsistributions & Distribution Theory",
+    "objectID": "reading/10-james-stein.html",
+    "href": "reading/10-james-stein.html",
+    "title": "James-Stein Estimation",
     "section": "",
-    "text": "Readings:\n\nChristensen Chapter 1, 2.91 and Appendix C\nSeber & Lee Chapter 3.3 3.5"
+    "text": "We discuss properties of the James-Stein shrinkage estimator and its relationship to Empirical Bayes in the case of ridge regression and the \\(g\\)-prior in regression with orthonormal predictors. While the James-Stein and positive-part James-Stein shrinkage estimators dominate the MLE/OLS estimator, they are not admissible.\nReadings:\n\nChristensen Chapter 15\nSeber & Lee Chapter 12\nJames and Stein (1961) “Estimation with Quadratic Loss”\nEfron & Morris (1973) “Stein’s Estimation Rule and its Competitors”\nRobert, C. (2007) “The Bayesian Choice” Chapter 5"
   },
   {
-    "objectID": "reading/18-bvs.html",
-    "href": "reading/18-bvs.html",
-    "title": "Lecture 18: Bayesian Model Averaging & Bayesian Variable Selection",
+    "objectID": "reading/04-BLUE.html",
+    "href": "reading/04-BLUE.html",
+    "title": "Best Linear Unbiased Estimation",
     "section": "",
-    "text": "Mixture of g-priors Liang et al (2008)\nBayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin\n\nSection 14.2: Bayesian analysis of the classical regression model\n\nThe Bayesian Choice (Second Edition) by Christian Robert\nLiang, F., Paulo, R, Molina, G. Clyde, M, Berger, J (2008) Mixtures of g-priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103: 410-423\nHoeting, J.A, Madigan, D. Raftery,A. Volinsky, C.T. (1999) Bayesian Model Averaging: A Tutorial Statistical Science, 14: 382-401\nPorwal, A & Raftery, A.E. Comparing methods for statistical inference with model uncertainty. Proceedings of the National Academy of Sciences, 119(16), e2120737119"
+    "text": "We will explore properties of MLEs/OLS and linear functionals of them. In particular characterizing the class of linear unbiased estimates and minimimum variances, cumulating with the Guass Markov Theorem for both the full rank case and rank deficient models and establing conditions under which OLS/MLE estimators are the Best Linear Unbiased Estimators under the assumption that the covariance of the errors is spherically symmetric.\nReadings:\n\nChristensen Chapter 1-2, Appendix B\nSeber & Lee Chapter 3, Appendix A & Appendix B"
   },
   {
-    "objectID": "reading/18-bvs.html#readings",
-    "href": "reading/18-bvs.html#readings",
-    "title": "Lecture 18: Bayesian Model Averaging & Bayesian Variable Selection",
+    "objectID": "reading/12-oracle.html",
+    "href": "reading/12-oracle.html",
+    "title": "Optimal Shrinkage/Selection and Oracle Properties",
     "section": "",
-    "text": "Mixture of g-priors Liang et al (2008)\nBayesian Data Analysis (Third Edition) by Andrew Gelman, John Carlin, Hal Stern, David Dunson, Aki Vehtari, and Donald Rubin\n\nSection 14.2: Bayesian analysis of the classical regression model\n\nThe Bayesian Choice (Second Edition) by Christian Robert\nLiang, F., Paulo, R, Molina, G. Clyde, M, Berger, J (2008) Mixtures of g-priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103: 410-423\nHoeting, J.A, Madigan, D. Raftery,A. Volinsky, C.T. (1999) Bayesian Model Averaging: A Tutorial Statistical Science, 14: 382-401\nPorwal, A & Raftery, A.E. Comparing methods for statistical inference with model uncertainty. Proceedings of the National Academy of Sciences, 119(16), e2120737119"
+    "text": "We discuss properties of the shrinkage estimators that provide both shrinkage and selection from frequentist and Bayesian paradigms.\nReadings:\n\nSeber & Lee Chapter 12\nFan & Li (2001) “Variable Selection via Nonconcave Penalized Likelihood and its Oracle Properties”\nTibshirani (1996) “Regression Shrinkage and Selection via the Lasso”\nCarvalho, Polson & Scott (2009) “Handling Sparsity via the Horseshoe”\nArmagan, Dunson & Lee (2013) “Generalized Double Pareto Shrinkage”"
   },
   {
-    "objectID": "reading/14-testing-submodels.html",
-    "href": "reading/14-testing-submodels.html",
-    "title": "Testing Hypotheses about Submodels",
+    "objectID": "reading/15-CI.html",
+    "href": "reading/15-CI.html",
+    "title": "Confidence and Credible Regions",
     "section": "",
-    "text": "We continue discussion of \\(F\\)-tests with testing hypotheses about submodels of a linear model and connections to \\(t\\)-tests for individual coefficients as well as likelihood ratio tests.\nReadings:\n\nChristensen Chapter 3, Appendix C"
+    "text": "We present confidence and credible regions for parameters in the linear model\nReadings:\n\nChristensen Chapter 3, Appendix C"
   }
 ]
