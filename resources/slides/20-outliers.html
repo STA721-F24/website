@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Merlise Clyde">
-  <title>STA721-F24: Linear Models – Bayesian Model Averaging and Variable Selection</title>
+  <title>STA721-F24: Linear Models – Outliers and Robust Regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -391,13 +391,17 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Conjecture {
+    --color1: #948bde;
+    --color2: #584eab;
   }
-  .Feature {
-    --color1: #c0c0c0;
-    --color2: #808080;
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   .Theorem {
     --color1: #948bde;
@@ -407,17 +411,13 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Conjecture {
-    --color1: #948bde;
-    --color2: #584eab;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
   }
   </style>
 </head>
@@ -426,8 +426,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Bayesian Model Averaging and Variable Selection</h1>
-  <p class="subtitle">STA721: Lecture 18</p>
+  <h1 class="title">Outliers and Robust Regression</h1>
+  <p class="subtitle">STA 721: Lecture 20</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -441,364 +441,353 @@ Merlise Clyde
 </div>
 
 </section>
-<section id="us-air-example" class="slide level2">
-<h2>US Air Example</h2>
+<section id="body-fat-data" class="slide level2">
+<h2>Body Fat Data</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(BAS)</span>
-<span id="cb1-2"><a></a><span class="fu">data</span>(usair, <span class="at">package=</span><span class="st">"HH"</span>)</span>
-<span id="cb1-3"><a></a>poll.bma <span class="ot">=</span> <span class="fu">bas.lm</span>(<span class="fu">log</span>(SO2) <span class="sc">~</span> temp <span class="sc">+</span> <span class="fu">log</span>(mfgfirms) <span class="sc">+</span></span>
-<span id="cb1-4"><a></a>                             <span class="fu">log</span>(popn) <span class="sc">+</span> wind <span class="sc">+</span></span>
-<span id="cb1-5"><a></a>                             precip <span class="sc">+</span> raindays,</span>
-<span id="cb1-6"><a></a>                  <span class="at">data=</span>usair,</span>
-<span id="cb1-7"><a></a>                  <span class="at">prior=</span><span class="st">"JZS"</span>,  <span class="co">#Jeffrey-Zellner-Siow</span></span>
-<span id="cb1-8"><a></a>                  <span class="at">alpha=</span><span class="fu">nrow</span>(usair), <span class="co"># n</span></span>
-<span id="cb1-9"><a></a>                  <span class="at">n.models=</span><span class="dv">2</span><span class="sc">^</span><span class="dv">6</span>,</span>
-<span id="cb1-10"><a></a>                  <span class="at">modelprior =</span> <span class="fu">uniform</span>(),</span>
-<span id="cb1-11"><a></a>                  <span class="at">method=</span><span class="st">"deterministic"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="20-outliers_files/figure-revealjs/lm-1.png" class="quarto-figure quarto-figure-center" width="2100"></p>
+</figure>
 </div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="20-outliers_files/figure-revealjs/lmsub-1.png" class="quarto-figure quarto-figure-center" width="2100"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<p>Which analysis do we use? with Case 39 or not – or something different?</p>
+</section>
+<section id="cooks-distance" class="slide level2">
+<h2>Cook’s Distance</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">plot</span>(bodyfat.lm, <span class="at">which=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="20-outliers_files/figure-revealjs/cooksd-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2400"></section>
+<section id="options-for-handling-outliers" class="slide level2">
+<h2>Options for Handling Outliers</h2>
+<p>What are outliers?</p>
+<ul>
+<li class="fragment"><p>Are there scientific grounds for eliminating the case?</p></li>
+<li class="fragment"><p>Test if the case has a different mean than population</p></li>
+<li class="fragment"><p>Report results with and without the case</p></li>
+<li class="fragment"><p>Model Averaging to Account for Model Uncertainty?</p></li>
+<li class="fragment"><p>Full model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \mathbf{I}_n\delta+ \epsilon\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\delta\)</span> is a <span class="math inline">\(n \times 1\)</span> vector; <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(p \times 1\)</span></p></li>
+<li class="fragment"><p>All observations have a potentially different mean!</p></li>
+</ul>
+</section>
+<section id="outliers-in-bayesian-regression" class="slide level2">
+<h2>Outliers in Bayesian Regression</h2>
+<ul>
+<li class="fragment"><p>Hoeting, Madigan and Raftery (in various permutations) consider the problem of simultaneous variable selection and outlier identification</p></li>
+<li class="fragment"><p>This is implemented in the package <code>BMA</code> in the function <code>MC3.REG</code></p></li>
+<li class="fragment"><p>This has the advantage that more than 2 points may be considered as outliers at the same time</p></li>
+<li class="fragment"><p>The function uses a Markov chain to identify both important variables and potential outliers, but is coded in Fortran so should run reasonably quickly.</p></li>
+<li class="fragment"><p>Can also use <code>BAS</code> or other variable selection programs</p></li>
+</ul>
+</section>
+<section id="model-averaging-and-outliers" class="slide level2">
+<h2>Model Averaging and Outliers</h2>
+<ul>
+<li class="fragment"><p>Full model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \mathbf{I}_n\delta+ \epsilon\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\delta\)</span> is a <span class="math inline">\(n \times 1\)</span> vector; <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(p \times 1\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(2^n\)</span> submodels <span class="math inline">\(\gamma_i = 0 \Leftrightarrow \delta_i = 0\)</span></p></li>
+<li class="fragment"><p>If <span class="math inline">\(\gamma_i = 1\)</span> then case <span class="math inline">\(i\)</span> has a different mean ``mean shift’’ outliers</p></li>
+</ul>
+</section>
+<section id="mean-shift-variance-inflation" class="slide level2">
+<h2>Mean Shift <span class="math inline">\(=\)</span> Variance Inflation</h2>
+<ul>
+<li class="fragment"><p>Model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \mathbf{I}_n\delta+ \epsilon\)</span></p></li>
+<li class="fragment"><p>Prior <span class="math display">\[\begin{align}
+\qquad \delta_i \mid \gamma_i &amp; \sim N(0, V \sigma^2 \gamma_i) \\
+\qquad \gamma_i &amp; \sim  \textsf{Ber}(\pi)
+\end{align}
+\]</span></p></li>
+<li class="fragment"><p>Then <span class="math inline">\(\epsilon_i\)</span> given <span class="math inline">\(\sigma^2\)</span> is independent of <span class="math inline">\(\delta_i\)</span> and <span class="math display">\[\epsilon^*_i \equiv \epsilon_i + \delta_i \mid \sigma^2 \left\{
+\begin{array}{llc}
+N(0, \sigma^2) &amp; wp &amp;(1 - \pi) \\
+N(0, \sigma^2(1 + V)) &amp; wp &amp; \pi
+\end{array}
+\right.
+\]</span></p></li>
+<li class="fragment"><p>Model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \epsilon^*\)</span> <strong>variance inflation</strong></p></li>
+<li class="fragment"><p><span class="math inline">\(V+1 = K = 7\)</span> in the paper by Hoeting et al.&nbsp;package <code>BMA</code></p></li>
+</ul>
+</section>
+<section id="simultaneous-outlier-and-variable-selection" class="slide level2">
+<h2>Simultaneous Outlier and Variable Selection</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(BMA)</span>
+<span id="cb2-2"><a></a>bodyfat.bma <span class="ot">=</span> <span class="fu">MC3.REG</span>(<span class="at">all.y =</span> bodyfat<span class="sc">$</span>Bodyfat, <span class="at">all.x =</span> <span class="fu">as.matrix</span>(bodyfat<span class="sc">$</span>Abdomen),</span>
+<span id="cb2-3"><a></a>                      <span class="at">num.its =</span> <span class="dv">10000</span>, <span class="at">outliers =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-4"><a></a><span class="fu">summary</span>(bodyfat.bma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+MC3.REG(all.y = bodyfat$Bodyfat, all.x = as.matrix(bodyfat$Abdomen),     num.its = 10000, outliers = TRUE)
+
+Model parameters: PI = 0.02 K = 7 nu = 2.58 lambda = 0.28 phi = 2.85
+
+  15  models were selected
+ Best  5  models (cumulative posterior probability =  0.9939 ): 
+
+           prob     model 1   model 2   model 3   model 4   model 5 
+variables                                                           
+  all.x    1         x         x         x         x         x      
+outliers                                                            
+  39       0.94932   x         x         .         x         .      
+  204      0.04117   .         .         .         x         .      
+  207      0.10427   .         x         .         .         x      
+                                                                    
+post prob           0.814572  0.095383  0.044490  0.035024  0.004385</code></pre>
+</div>
+</div>
+</section>
+<section id="bas-with-truncated-prior" class="slide level2">
+<h2>BAS with Truncated Prior</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>bodyfat.w.out <span class="ot">=</span> <span class="fu">cbind</span>(bodyfat[, <span class="fu">c</span>(<span class="st">"Bodyfat"</span>, <span class="st">"Abdomen"</span>)],</span>
+<span id="cb4-2"><a></a>                      <span class="fu">diag</span>(<span class="fu">nrow</span>(bodyfat)))</span>
+<span id="cb4-3"><a></a></span>
+<span id="cb4-4"><a></a>bodyfat.bas <span class="ot">=</span> <span class="fu">bas.lm</span>(Bodyfat <span class="sc">~</span> ., <span class="at">data=</span>bodyfat.w.out, </span>
+<span id="cb4-5"><a></a>                     <span class="at">prior=</span><span class="st">"hyper-g-n"</span>, <span class="at">a=</span><span class="dv">3</span>, <span class="at">method=</span><span class="st">"MCMC"</span>,</span>
+<span id="cb4-6"><a></a>                     <span class="at">MCMC.it=</span><span class="dv">2</span><span class="sc">^</span><span class="dv">18</span>, </span>
+<span id="cb4-7"><a></a>                     <span class="at">modelprior=</span><span class="fu">tr.beta.binomial</span>(<span class="dv">1</span>,<span class="dv">254</span>, <span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<img data-src="20-outliers_files/figure-revealjs/basimage-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3000"></section>
+<section id="change-error-assumptions" class="slide level2">
+<h2>Change Error Assumptions</h2>
+<p>Use a Student-t error model <span class="math display">\[\begin{eqnarray*}
+Y_i &amp; \mathrel{\mathop{\sim}\limits^{\rm ind}}&amp; t(\nu, \alpha + \beta x_i, 1/\phi) \\
+L(\alpha, \beta,\phi) &amp; \propto &amp; \prod_{i = 1}^n \phi^{1/2} \left(1 +
+\frac{\phi (y_i - \alpha - \beta x_i)^2}{\nu}\right)^{-\frac{(\nu +
+  1)}{2}}
+\end{eqnarray*}\]</span></p>
+<ul>
+<li class="fragment"><p>Use Prior <span class="math inline">\(p(\alpha, \beta, \phi) \propto 1/\phi\)</span> </p></li>
+<li class="fragment"><p>Posterior distribution <span class="math display">\[ p(\alpha, \beta, \phi \mid Y) \propto \phi^{n/2 - 1} \prod_{i = 1}^n  \left(1 +
+\frac{\phi (y_i - \alpha - \beta x_i)^2}{\nu}\right)^{-\frac{(\nu +
+1)}{2}}\]</span></p></li>
+</ul>
+</section>
+<section id="bounded-influence" class="slide level2">
+<h2>Bounded Influence</h2>
+<ul>
+<li class="fragment"><p>Treat <span class="math inline">\(\sigma^2\)</span> as given, then <strong>influence</strong> of individual observations on the posterior distribution of <span class="math inline">\(\boldsymbol{\beta}\)</span> in the model where <span class="math inline">\(\textsf{E}[\mathbf{Y}_i] = \mathbf{x}_i^T\boldsymbol{\beta}\)</span> is investigated through the score function: <span class="math display">\[
+\frac{d} {d \boldsymbol{\beta}} \log p (\boldsymbol{\beta}\mid \mathbf{Y}) = \frac{d} {d \boldsymbol{\beta}} \log p(\boldsymbol{\beta}) +  \sum_{i = 1}^n \mathbf{x}_i g(y_i - \mathbf{x}^T_i \boldsymbol{\beta})
+\]</span></p></li>
+<li class="fragment"><p>influence function of the error distribution (unimodal, continuous, differentiable, symmetric) <span class="math display">\[ g(\boldsymbol{\epsilon}) = - \frac{d} {d \boldsymbol{\epsilon}} \log p(\boldsymbol{\epsilon})
+\]</span></p></li>
+<li class="fragment"><p>An outlying observation <span class="math inline">\(y_j\)</span> is accommodated if the posterior distribution for <span class="math inline">\(p(\boldsymbol{\beta}\mid \mathbf{Y}\)</span> converges to <span class="math inline">\(p(\boldsymbol{\beta}\mid \mathbf{Y}_{(i)})\)</span> for all <span class="math inline">\(\boldsymbol{\beta}\)</span> as <span class="math inline">\(|\mathbf{Y}_i| \to \infty\)</span>.</p></li>
+<li class="fragment"><p>Requires error models with influence functions that go to zero such as the Student <span class="math inline">\(t\)</span> (O’Hagan, 1979, West 1984, Hamura 2023)</p></li>
+</ul>
+</section>
+<section id="choice-of-df-for-student-t" class="slide level2">
+<h2>Choice of df for Student-<span class="math inline">\(t\)</span></h2>
+<p>Investigate the Score function <span class="math display">\[
+\frac{d} {d \boldsymbol{\beta}} \log p (\boldsymbol{\beta}\mid \mathbf{Y}) = \frac{d} {d \boldsymbol{\beta}} \log p(\boldsymbol{\beta}) +  \sum_{i = 1}^n \mathbf{x}_i g(y_i - \mathbf{x}^T_i \boldsymbol{\beta})
+\]</span></p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="20-outliers_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="2700"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p>Score function for <span class="math inline">\(t\)</span> with <span class="math inline">\(\alpha\)</span> degrees of freedom has turning points at <span class="math inline">\(\pm \sqrt{\alpha}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(g'(\boldsymbol{\epsilon})\)</span> is negative when <span class="math inline">\(\boldsymbol{\epsilon}^2 &gt; \alpha\)</span> (standardized errors)</p></li>
+<li class="fragment"><p>Contribution of observation to information matrix is negative and the observation is doubtful</p></li>
+<li class="fragment"><p>Suggest taking <span class="math inline">\(\alpha = 8\)</span> or <span class="math inline">\(\alpha = 9\)</span> to reject errors larger than <span class="math inline">\(\sqrt{8}\)</span> or <span class="math inline">\(3\)</span> sd.</p></li>
+</ul>
+</div></div>
+</div>
+</section>
+<section id="scale-mixtures-of-normal-representation" class="slide level2">
+<h2>Scale-Mixtures of Normal Representation</h2>
+<ul>
+<li class="fragment"><p>Latent Variable Model <span class="math display">\[\begin{eqnarray*}
+Y_i \mid \alpha, \beta, \phi, \lambda &amp; \mathrel{\mathop{\sim}\limits^{\rm ind}}&amp; N(\alpha + \beta x_i,
+\frac{1}{\phi \lambda_i}) \\
+\lambda_i &amp; \mathrel{\mathop{\sim}\limits^{\rm iid}}&amp; G(\nu/2, \nu/2) \\
+p(\alpha, \beta, \phi) &amp; \propto &amp; 1/\phi  
+\end{eqnarray*}\]</span></p></li>
+<li class="fragment"><p>Joint Posterior Distribution: <span class="math display">\[\begin{eqnarray*}
+p((\alpha, \beta, \phi, \lambda_1, \ldots, \lambda_n \mid Y)
+\propto \,  &amp; &amp;
+\phi^{n/2} \exp\left\{ - \frac{\phi}{2} \sum \lambda_i(y_i - \alpha  - \beta x_i)^2 \right\} \times \\
+&amp;  &amp; \phi^{-1} \\
+&amp;  &amp;\prod_{i=1}^n \lambda_i^{\nu/2 - 1} \exp(- \lambda_i \nu/2)
+\end{eqnarray*}\]</span></p></li>
+<li class="fragment"><p>Integrate out ``latent’’ <span class="math inline">\(\lambda\)</span>’s to obtain marginal <span class="math inline">\(t\)</span> distribution</p></li>
+</ul>
+</section>
+<section id="jags---just-another-gibbs-sampler" class="slide level2">
+<h2>JAGS - Just Another Gibbs Sampler</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>rr.model <span class="ot">=</span> <span class="cf">function</span>() {</span>
+<span id="cb5-2"><a></a>  df <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb5-3"><a></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb5-4"><a></a>    mu[i] <span class="ot">&lt;-</span> alpha0 <span class="sc">+</span> alpha1<span class="sc">*</span>(X[i] <span class="sc">-</span> Xbar)</span>
+<span id="cb5-5"><a></a>    lambda[i] <span class="sc">~</span> <span class="fu">dgamma</span>(df<span class="sc">/</span><span class="dv">2</span>, df<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb5-6"><a></a>    prec[i] <span class="ot">&lt;-</span> phi<span class="sc">*</span>lambda[i]</span>
+<span id="cb5-7"><a></a>    Y[i] <span class="sc">~</span> <span class="fu">dnorm</span>(mu[i], prec[i])</span>
+<span id="cb5-8"><a></a>  }</span>
+<span id="cb5-9"><a></a>  phi <span class="sc">~</span> <span class="fu">dgamma</span>(<span class="fl">1.0E-6</span>, <span class="fl">1.0E-6</span>)</span>
+<span id="cb5-10"><a></a>  alpha0 <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="dv">0</span>, <span class="fl">1.0E-6</span>)</span>
+<span id="cb5-11"><a></a>  alpha1 <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="dv">0</span>,<span class="fl">1.0E-6</span>)</span>
+<span id="cb5-12"><a></a>  beta0 <span class="ot">&lt;-</span> alpha0 <span class="sc">-</span> alpha1<span class="sc">*</span>Xbar  <span class="co"># transform back</span></span>
+<span id="cb5-13"><a></a>  beta1 <span class="ot">&lt;-</span> alpha1</span>
+<span id="cb5-14"><a></a>  sigma <span class="ot">&lt;-</span> <span class="fu">pow</span>(phi, <span class="sc">-</span>.<span class="dv">5</span>)</span>
+<span id="cb5-15"><a></a>  mu34 <span class="ot">&lt;-</span> beta0 <span class="sc">+</span> beta1<span class="sc">*</span><span class="fl">2.54</span><span class="sc">*</span><span class="dv">34</span>  <span class="co">#mean for a man w/ a 34 in waist</span></span>
+<span id="cb5-16"><a></a>  y34 <span class="sc">~</span> <span class="fu">dt</span>(mu34,phi, df)   <span class="co"># integrate out lambda_34 </span></span>
+<span id="cb5-17"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-warning callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning! Normals and Student-t are parameterized in terms of precisions!</strong></p>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+</section>
+<section id="what-output-to-save" class="slide level2">
+<h2>What output to Save?</h2>
+<p>The parameters to be monitored and returned to <code>R</code> are specified with the variable <code>parameters</code></p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>parameters <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"beta0"</span>, <span class="st">"beta1"</span>, <span class="st">"sigma"</span>, <span class="st">"mu34"</span>, <span class="st">"y34"</span>, <span class="st">"lambda[39]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li class="fragment"><p>Use of <code>&lt;-</code> for assignment for parameters that calculated from the other parameters. (See R-code for definitions of these parameters.)</p></li>
+<li class="fragment"><p><code>mu34</code> and <code>y34</code> are the mean functions and predictions for a man with a 34in waist.</p></li>
+<li class="fragment"><p><code>lambda[39]</code> saves only the 39th case of <span class="math inline">\(\lambda\)</span></p></li>
+<li class="fragment"><p>To save a whole vector (for example all lambdas, just give the vector name)</p></li>
+</ul>
+</section>
+<section id="running-jags-from-r" class="slide level2">
+<h2>Running JAGS from <code>R</code></h2>
+<p>Install jags from <a href="https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/">sourceforge</a></p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(R2jags)</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a><span class="co"># Create a data list with inputs for Winpost/Jags</span></span>
+<span id="cb7-4"><a></a></span>
+<span id="cb7-5"><a></a>bf.data <span class="ot">=</span> <span class="fu">list</span>(<span class="at">Y =</span> bodyfat<span class="sc">$</span>Bodyfat, <span class="at">X=</span>bodyfat<span class="sc">$</span>Abdomen)</span>
+<span id="cb7-6"><a></a>bf.data<span class="sc">$</span>n <span class="ot">=</span> <span class="fu">length</span>(bf.data<span class="sc">$</span>Y)</span>
+<span id="cb7-7"><a></a>bf.data<span class="sc">$</span>Xbar <span class="ot">=</span> <span class="fu">mean</span>(bf.data<span class="sc">$</span>X)</span>
+<span id="cb7-8"><a></a></span>
+<span id="cb7-9"><a></a><span class="co"># run jags</span></span>
+<span id="cb7-10"><a></a>bf.sim <span class="ot">=</span> <span class="fu">jags</span>(bf.data, <span class="at">inits=</span><span class="cn">NULL</span>, <span class="at">par=</span>parameters,</span>
+<span id="cb7-11"><a></a>              <span class="at">model=</span>rr.model, <span class="at">n.chains=</span><span class="dv">2</span>, <span class="at">n.iter=</span><span class="dv">20000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># create an MCMC object </span></span>
+<span id="cb8-2"><a></a><span class="fu">library</span>(coda)</span>
+<span id="cb8-3"><a></a>bf.post <span class="ot">=</span> <span class="fu">as.mcmc</span>(bf.sim<span class="sc">$</span>BUGSoutput<span class="sc">$</span>sims.matrix)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="posterior-distributions" class="slide level2">
+<h2>Posterior Distributions</h2>
+
+<img data-src="20-outliers_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3000"></section>
+<section id="posterior-of-lambda_39" class="slide level2">
+<h2>Posterior of <span class="math inline">\(\lambda_{39}\)</span></h2>
+
+<img data-src="20-outliers_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2400"></section>
+<section id="comparison" class="slide level2">
+<h2>Comparison</h2>
+<p>95% Confidence/Credible Intervals for <span class="math inline">\(\beta\)</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">2.5 %</th>
+<th style="text-align: right;">97.5 %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">lm all</td>
+<td style="text-align: right;">0.5750739</td>
+<td style="text-align: right;">0.6875349</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">robust bayes</td>
+<td style="text-align: right;">0.5974085</td>
+<td style="text-align: right;">0.7186084</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">lm w/out 39</td>
+<td style="text-align: right;">0.6144288</td>
+<td style="text-align: right;">0.7294781</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li class="fragment"><p>Results intermediate without having to remove any observations!</p></li>
+<li class="fragment"><p>Case 39 down weighted by <span class="math inline">\(\lambda_{39}\)</span> in posterior for <span class="math inline">\(\beta\)</span></p></li>
+<li class="fragment"><p>Under prior <span class="math inline">\(E[\lambda_{i}] = 1\)</span></p></li>
+<li class="fragment"><p>large residuals lead to smaller <span class="math inline">\(\lambda\)</span> <span class="math display">\[\lambda_j \mid \text{rest}, Y \sim G \left(\frac{\nu + 1}{2}, \frac{\phi(y_j - \alpha -
+\beta x_j)^2 + \nu}{2} \right)\]</span></p></li>
+</ul>
+</section>
+<section id="prior-distributions-on-parameters" class="slide level2">
+<h2>Prior Distributions on Parameters</h2>
+<ul>
+<li class="fragment"><p>As a general recommendation, the prior distribution should have ``heavier’’ tails than the likelihood</p></li>
+<li class="fragment"><p>with <span class="math inline">\(t_9\)</span> errors use a <span class="math inline">\(t_\alpha\)</span> with <span class="math inline">\(\alpha &lt; 9\)</span></p></li>
+<li class="fragment"><p>also represent via scale mixture of normals</p></li>
+<li class="fragment"><p>Horseshoe, Double Pareto, Cauchy all have heavier tails</p></li>
+</ul>
 </section>
 <section id="summary" class="slide level2">
 <h2>Summary</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">summary</span>(poll.bma, <span class="at">n.models=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>              P(B != 0 | Y) model 1   model 2   model 3   model 4
-Intercept        1.00000000 1.00000 1.0000000 1.0000000 1.0000000
-temp             0.91158530 1.00000 1.0000000 1.0000000 1.0000000
-log(mfgfirms)    0.31718916 0.00000 0.0000000 0.0000000 1.0000000
-log(popn)        0.09223957 0.00000 0.0000000 0.0000000 0.0000000
-wind             0.29394451 0.00000 0.0000000 0.0000000 1.0000000
-precip           0.28384942 0.00000 1.0000000 0.0000000 1.0000000
-raindays         0.22903262 0.00000 0.0000000 1.0000000 0.0000000
-BF                       NA 1.00000 0.3286643 0.2697945 0.2655873
-PostProbs                NA 0.29410 0.0967000 0.0794000 0.0781000
-R2                       NA 0.29860 0.3775000 0.3714000 0.5427000
-dim                      NA 2.00000 3.0000000 3.0000000 5.0000000
-logmarg                  NA 3.14406 2.0313422 1.8339656 1.8182487</code></pre>
-</div>
-</div>
-</section>
-<section id="plots-of-coefficients" class="slide level2">
-<h2>Plots of Coefficients</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a> beta <span class="ot">=</span> <span class="fu">coef</span>(poll.bma)</span>
-<span id="cb4-2"><a></a> <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>));  <span class="fu">plot</span>(beta, <span class="at">subset=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">7</span>,<span class="at">ask=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="18-bvs_files/figure-revealjs/coef_plot,-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%;height:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="posterior-distribution-with-uniform-prior-on-model-space" class="slide level2">
-<h2>Posterior Distribution with Uniform Prior on Model Space</h2>
-<div class="cell" data-layout-align="center" data-fig.width="='9'">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">image</span>(poll.bma, <span class="at">rotate=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="18-bvs_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" style="width:7in;height:5in"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="posterior-distribution-with-bb11-prior-on-model-space" class="slide level2">
-<h2>Posterior Distribution with BB(1,1) Prior on Model Space</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>poll.bb.bma <span class="ot">=</span> <span class="fu">bas.lm</span>(<span class="fu">log</span>(SO2) <span class="sc">~</span> temp <span class="sc">+</span> <span class="fu">log</span>(mfgfirms) <span class="sc">+</span></span>
-<span id="cb6-2"><a></a>                                <span class="fu">log</span>(popn) <span class="sc">+</span> wind <span class="sc">+</span></span>
-<span id="cb6-3"><a></a>                                precip <span class="sc">+</span> raindays,</span>
-<span id="cb6-4"><a></a>                     <span class="at">data=</span>usair,</span>
-<span id="cb6-5"><a></a>                     <span class="at">prior=</span><span class="st">"JZS"</span>,</span>
-<span id="cb6-6"><a></a>                     <span class="at">alpha=</span><span class="fu">nrow</span>(usair),</span>
-<span id="cb6-7"><a></a>                     <span class="at">n.models=</span><span class="dv">2</span><span class="sc">^</span><span class="dv">6</span>,  <span class="co">#enumerate</span></span>
-<span id="cb6-8"><a></a>                     <span class="at">modelprior=</span><span class="fu">beta.binomial</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="posterior-distribution-with-bb11-prior-on-model-space-1" class="slide level2">
-<h2>Posterior Distribution with BB(1,1) Prior on Model Space</h2>
-<div class="cell" data-layout-align="center" data-fig.width="='9'">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">image</span>(poll.bb.bma, <span class="at">rotate=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="18-bvs_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" style="width:7in;height:5in"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="diabetes-example" class="slide level2">
-<h2>Diabetes Example</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>)</span>
-<span id="cb8-2"><a></a><span class="fu">source</span>(<span class="st">"yX.diabetes.train.txt"</span>)</span>
-<span id="cb8-3"><a></a>diabetes.train <span class="ot">=</span> <span class="fu">as.data.frame</span>(diabetes.train)</span>
-<span id="cb8-4"><a></a><span class="fu">source</span>(<span class="st">"yX.diabetes.test.txt"</span>)</span>
-<span id="cb8-5"><a></a>diabetes.test <span class="ot">=</span> <span class="fu">as.data.frame</span>(diabetes.test)</span>
-<span id="cb8-6"><a></a><span class="fu">colnames</span>(diabetes.test)[<span class="dv">1</span>] <span class="ot">=</span> <span class="st">"y"</span></span>
-<span id="cb8-7"><a></a></span>
-<span id="cb8-8"><a></a><span class="fu">str</span>(diabetes.train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   342 obs. of  65 variables:
- $ y      : num  -0.0147 -1.0005 -0.1444 0.6987 -0.2222 ...
- $ age    : num  0.7996 -0.0395 1.7913 -1.8703 0.113 ...
- $ sex    : num  1.064 -0.937 1.064 -0.937 -0.937 ...
- $ bmi    : num  1.296 -1.081 0.933 -0.243 -0.764 ...
- $ map    : num  0.459 -0.553 -0.119 -0.77 0.459 ...
- $ tc     : num  -0.9287 -0.1774 -0.9576 0.256 0.0826 ...
- $ ldl    : num  -0.731 -0.402 -0.718 0.525 0.328 ...
- $ hdl    : num  -0.911 1.563 -0.679 -0.757 0.171 ...
- $ tch    : num  -0.0544 -0.8294 -0.0544 0.7205 -0.0544 ...
- $ ltg    : num  0.4181 -1.4349 0.0601 0.4765 -0.6718 ...
- $ glu    : num  -0.371 -1.936 -0.545 -0.197 -0.979 ...
- $ age^2  : num  -0.312 -0.867 1.925 2.176 -0.857 ...
- $ bmi^2  : num  0.4726 0.1185 -0.0877 -0.6514 -0.2873 ...
- $ map^2  : num  -0.652 -0.573 -0.815 -0.336 -0.652 ...
- $ tc^2   : num  -0.091 -0.6497 -0.0543 -0.6268 -0.6663 ...
- $ ldl^2  : num  -0.289 -0.521 -0.3 -0.45 -0.555 ...
- $ hdl^2  : num  -0.0973 0.8408 -0.3121 -0.2474 -0.5639 ...
- $ tch^2  : num  -0.639 -0.199 -0.639 -0.308 -0.639 ...
- $ ltg^2  : num  -0.605 0.78 -0.731 -0.567 -0.402 ...
- $ glu^2  : num  -0.578 1.8485 -0.4711 -0.6443 -0.0258 ...
- $ age:sex: num  0.69 -0.139 1.765 1.609 -0.284 ...
- $ age:bmi: num  0.852 -0.142 1.489 0.271 -0.271 ...
- $ age:map: num  0.0349 -0.3346 -0.5862 1.1821 -0.3025 ...
- $ age:tc : num  -0.978 -0.246 -1.927 -0.72 -0.244 ...
- $ age:ldl: num  -0.803 -0.203 -1.504 -1.2 -0.182 ...
- $ age:hdl: num  -0.7247 0.0147 -1.2661 1.6523 0.1046 ...
- $ age:tch: num  -0.254 -0.176 -0.31 -1.598 -0.216 ...
- $ age:ltg: num  0.0644 -0.2142 -0.163 -1.1657 -0.3474 ...
- $ age:glu: num  -0.636 -0.239 -1.359 0.071 -0.438 ...
- $ sex:bmi: num  1.304 0.935 0.915 0.142 0.635 ...
- $ sex:map: num  0.258 0.289 -0.381 0.5 -0.697 ...
- $ sex:tc : num  -1.02 0.131 -1.051 -0.274 -0.112 ...
- $ sex:ldl: num  -0.927 0.236 -0.913 -0.638 -0.452 ...
- $ sex:hdl: num  -0.647 -1.188 -0.377 1.189 0.238 ...
- $ sex:tch: num  -0.411 0.47 -0.411 -1.062 -0.296 ...
- $ sex:ltg: num  0.2988 1.2093 -0.0866 -0.6032 0.4857 ...
- $ sex:glu: num  -0.6171 1.6477 -0.8069 -0.0239 0.7283 ...
- $ bmi:map: num  0.189 0.191 -0.477 -0.195 -0.702 ...
- $ bmi:tc : num  -1.5061 -0.0595 -1.1853 -0.3231 -0.3239 ...
- $ bmi:ldl: num  -1.267 0.183 -0.976 -0.407 -0.536 ...
- $ bmi:hdl: num  -0.869 -1.41 -0.286 0.586 0.251 ...
- $ bmi:tch: num  -0.505 0.505 -0.484 -0.614 -0.388 ...
- $ bmi:ltg: num  0.1014 1.1613 -0.4085 -0.5893 0.0716 ...
- $ bmi:glu: num  -0.862 1.693 -0.89 -0.337 0.358 ...
- $ map:tc : num  -0.687 -0.148 -0.131 -0.451 -0.21 ...
- $ map:ldl: num  -0.5407 0.0388 -0.1034 -0.6114 -0.036 ...
- $ map:hdl: num  -0.235 -0.672 0.254 0.745 0.252 ...
- $ map:tch: num  -0.29 0.207 -0.258 -0.835 -0.29 ...
- $ map:ltg: num  -0.214 0.428 -0.427 -0.811 -0.748 ...
- $ map:glu: num  -0.541 0.659 -0.314 -0.23 -0.812 ...
- $ tc:ldl : num  -0.144 -0.551 -0.139 -0.509 -0.581 ...
- $ tc:hdl : num  0.8363 -0.3457 0.6304 -0.2579 -0.0392 ...
- $ tc:tch : num  -0.405 -0.326 -0.404 -0.295 -0.451 ...
- $ tc:ltg : num  -0.901 -0.259 -0.571 -0.392 -0.569 ...
- $ tc:glu : num  0.0202 0.0196 0.2073 -0.396 -0.4283 ...
- $ ldl:hdl: num  0.889 -0.446 0.705 -0.207 0.26 ...
- $ ldl:tch: num  -0.463 -0.243 -0.463 -0.21 -0.506 ...
- $ ldl:ltg: num  -0.6536 0.2724 -0.3783 -0.0708 -0.5638 ...
- $ ldl:glu: num  -0.0194 0.4995 0.1032 -0.4013 -0.6234 ...
- $ hdl:tch: num  0.703 -0.5 0.692 0.171 0.651 ...
- $ hdl:ltg: num  0.0179 -1.9846 0.3839 0.0399 0.3043 ...
- $ hdl:glu: num  0.654 -2.948 0.689 0.452 0.113 ...
- $ tch:ltg: num  -0.592 0.531 -0.574 -0.253 -0.537 ...
- $ tch:glu: num  -0.371 1.114 -0.362 -0.522 -0.34 ...
- $ ltg:glu: num  -0.584 2.184 -0.468 -0.526 0.183 ...</code></pre>
-</div>
-</div>
-</section>
-<section id="mcmc-with-bas" class="slide level2">
-<h2>MCMC with BAS</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">library</span>(BAS)</span>
-<span id="cb10-2"><a></a>diabetes.bas <span class="ot">=</span> <span class="fu">bas.lm</span>(y <span class="sc">~</span> ., <span class="at">data=</span>diabetes.train,</span>
-<span id="cb10-3"><a></a>                      <span class="at">prior =</span> <span class="st">"JZS"</span>,</span>
-<span id="cb10-4"><a></a>                      <span class="at">method=</span><span class="st">"MCMC"</span>,</span>
-<span id="cb10-5"><a></a>                      <span class="at">n.models =</span> <span class="dv">10000</span>,</span>
-<span id="cb10-6"><a></a>                      <span class="at">MCMC.iterations=</span><span class="dv">500000</span>,</span>
-<span id="cb10-7"><a></a>                      <span class="at">thin =</span> <span class="dv">10</span>,</span>
-<span id="cb10-8"><a></a>                      <span class="at">initprobs=</span><span class="st">"eplogp"</span>,</span>
-<span id="cb10-9"><a></a>                      <span class="at">force.heredity=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stdout">
-<pre><code>   user  system elapsed 
- 10.538   0.574  11.113 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "number of unique models 5905"</code></pre>
-</div>
-</div>
 <ul>
-<li class="fragment"><p>increase <code>MCMC.iterations</code>?</p></li>
-<li class="fragment"><p>check diagnostics</p></li>
-</ul>
-</section>
-<section id="estimates-of-posterior-probabilities" class="slide level2">
-<h2>Estimates of Posterior Probabilities</h2>
-<ul>
-<li class="fragment"><p>relative frequencies <span class="math inline">\(\hat{P}_{RF}(\boldsymbol{\gamma}\mid \mathbf{Y}) = \frac{\text{# times } \boldsymbol{\gamma}\in S }{S}\)</span></p>
-<ul>
-<li class="fragment"><p>ergodic average converges to <span class="math inline">\(p(\boldsymbol{\gamma}\mid \mathbf{Y})\)</span> as <span class="math inline">\(S \to \infty\)</span></p></li>
-<li class="fragment"><p>asymptoptically unbaised</p></li>
-</ul></li>
-<li class="fragment"><p>renormalized posterior probabilities <span class="math inline">\(\hat{P}_{RN}(\boldsymbol{\gamma}\mid \mathbf{Y}) = \frac{p(\mathbf{Y}\mid \boldsymbol{\gamma}) p(\boldsymbol{\gamma})} {\sum_{\boldsymbol{\gamma}\in S} p(\mathbf{Y}\mid \boldsymbol{\gamma}) p(\boldsymbol{\gamma})}\)</span></p>
-<ul>
-<li class="fragment"><p>also asymptoptically unbaised</p></li>
-<li class="fragment"><p>Fisher consistent (e.g if we happen to enumerate all models in <span class="math inline">\(S\)</span> iterations we recover the truth)</p></li>
-</ul></li>
-<li class="fragment"><p>if we run long enough the two should agree</p></li>
-<li class="fragment"><p>also look at other summaries i.e posterior inclusion probabilities <span class="math display">\[\hat{p}(\gamma_j = 1 \mid \mathbf{Y}) = \sum_S \gamma_j \hat{P}(\boldsymbol{\gamma}\mid \mathbf{Y})\]</span></p></li>
-</ul>
-</section>
-<section id="diagnostic-plot" class="slide level2">
-<h2>Diagnostic Plot</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">diagnostics</span>(diabetes.bas, <span class="at">type=</span><span class="st">"pip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="18-bvs_files/figure-revealjs/pip-1.png" class="quarto-figure quarto-figure-center r-stretch" width="1800"><ul>
-<li class="fragment">model probabilities converge much slower!</li>
-</ul>
-</section>
-<section id="out-of-sample-prediction" class="slide level2">
-<h2>Out of Sample Prediction</h2>
-<ul>
-<li class="fragment"><p>What is the optimal value to predict <span class="math inline">\(\mathbf{Y}^{\text{test}}\)</span> given <span class="math inline">\(\mathbf{Y}\)</span> under squared error?</p></li>
-<li class="fragment"><p>Iterated expectations leads to BMA for <span class="math inline">\(\textsf{E}[\mathbf{Y}^{\text{test}} \mid \mathbf{Y}]\)</span></p></li>
-<li class="fragment"><p>Prediction under model averaging <span class="math display">\[\hat{Y} = \sum_S (\hat{\alpha}_\boldsymbol{\gamma}+ \mathbf{X}_{\boldsymbol{\gamma}}^{\text{test}} \hat{\boldsymbol{\beta}}_{\boldsymbol{\gamma}}) \hat{p}(\boldsymbol{\gamma}\mid \mathbf{Y})\]</span></p></li>
-</ul>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>pred.bas <span class="ot">=</span> <span class="fu">predict</span>(diabetes.bas,</span>
-<span id="cb14-2"><a></a>                   <span class="at">newdata=</span>diabetes.test,</span>
-<span id="cb14-3"><a></a>                   <span class="at">estimator=</span><span class="st">"BMA"</span>,</span>
-<span id="cb14-4"><a></a>                   <span class="at">se=</span><span class="cn">TRUE</span>)</span>
-<span id="cb14-5"><a></a><span class="fu">mean</span>((pred.bas<span class="sc">$</span>fit<span class="sc">-</span> diabetes.test<span class="sc">$</span>y)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4556414</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="credible-intervals-coverage" class="slide level2">
-<h2>Credible Intervals &amp; Coverage</h2>
-<ul>
-<li class="fragment"><p>posterior predictive distribution <span class="math display">\[
-p(\mathbf{y}^{\text{test}} \mid \mathbf{y}) = \sum_\boldsymbol{\gamma}p(\mathbf{y}^{\text{test}} \mid \mathbf{y}, \boldsymbol{\gamma})p(\boldsymbol{\gamma}\mid \mathbf{y})
-\]</span></p></li>
-<li class="fragment"><p>integrate out <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\boldsymbol{\beta_\gamma}\)</span> to get a normal predictive given <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\boldsymbol{\gamma}\)</span> (and <span class="math inline">\(\mathbf{y}\)</span>)</p></li>
-<li class="fragment"><p>integrate out <span class="math inline">\(\phi\)</span> to get a t distribution given <span class="math inline">\(\boldsymbol{\gamma}\)</span> and <span class="math inline">\(\mathbf{y}\)</span></p></li>
-<li class="fragment"><p>credible intervals via sampling</p>
-<ul>
-<li class="fragment">sample a model from <span class="math inline">\(p(\boldsymbol{\gamma}\mid \mathbf{y})\)</span></li>
-<li class="fragment">conditional on a model sample <span class="math inline">\(y \sim p(\mathbf{y}^{\text{test}} \mid \mathbf{y}, \boldsymbol{\gamma})\)</span></li>
-<li class="fragment">compute quantiles from sample <span class="math inline">\(y\)</span></li>
-</ul></li>
-</ul>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>ci.bas <span class="ot">=</span> <span class="fu">confint</span>(pred.bas);</span>
-<span id="cb16-2"><a></a>coverage <span class="ot">=</span> <span class="fu">mean</span>(diabetes.test<span class="sc">$</span>y <span class="sc">&gt;</span> ci.bas[,<span class="dv">1</span>] <span class="sc">&amp;</span> diabetes.test<span class="sc">$</span>y <span class="sc">&lt;</span> ci.bas[,<span class="dv">2</span>])</span>
-<span id="cb16-3"><a></a>coverage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="prediction-intervals" class="slide level2">
-<h2>95% Prediction intervals</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">plot</span>(ci.bas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>NULL</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">points</span>(diabetes.test<span class="sc">$</span>y, <span class="at">col=</span><span class="dv">2</span>, <span class="at">pch=</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="18-bvs_files/figure-revealjs/pred-in-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3000"></section>
-<section id="selection-and-prediction" class="slide level2">
-<h2>Selection and Prediction</h2>
-<ul>
-<li class="fragment"><p>BMA - optimal for squared error loss Bayes <span class="math display">\[\textsf{E}[\| \mathbf{Y}^{\text{test}} - a\|^2 \mid \mathbf{y}] = \textsf{E}[\| \mathbf{Y}^{\text{test}} - \textsf{E}[\mathbf{Y}^{\text{test}}\mid \mathbf{y}] \|^2 \mid \mathbf{y}]  + \| \textsf{E}[\mathbf{Y}^{\text{test}}\mid \mathbf{y}] - a\|^2  \]</span></p></li>
-<li class="fragment"><p>What if we want to use only a single model for prediction under squared error loss?</p></li>
-<li class="fragment"><p>HPM: Highest Posterior Probability model is optimal for selection, but not prediction</p></li>
-<li class="fragment"><p>MPM: Median Probability model (select model where PIP &gt; 0.5) (optimal under certain conditions; nested models)</p></li>
-<li class="fragment"><p>BPM: Best Probability Model - Model closest to BMA under loss (usually includes more predictors than HPM or MPM)</p></li>
-</ul>
-</section>
-<section id="example" class="slide level2">
-<h2>Example</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>pred.bas <span class="ot">=</span> <span class="fu">predict</span>(diabetes.bas,</span>
-<span id="cb21-2"><a></a>                   <span class="at">newdata=</span>diabetes.test,</span>
-<span id="cb21-3"><a></a>                   <span class="at">estimator=</span><span class="st">"BPM"</span>,</span>
-<span id="cb21-4"><a></a>                   <span class="at">se=</span><span class="cn">TRUE</span>)</span>
-<span id="cb21-5"><a></a><span class="co">#MSE</span></span>
-<span id="cb21-6"><a></a><span class="fu">mean</span>((pred.bas<span class="sc">$</span>fit<span class="sc">-</span> diabetes.test<span class="sc">$</span>y)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4740667</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co">#Coverage</span></span>
-<span id="cb23-2"><a></a>ci.bas <span class="ot">=</span> <span class="fu">confint</span>(pred.bas)</span>
-<span id="cb23-3"><a></a><span class="fu">mean</span>(diabetes.test<span class="sc">$</span>y <span class="sc">&gt;</span> ci.bas[,<span class="dv">1</span>] <span class="sc">&amp;</span></span>
-<span id="cb23-4"><a></a>     diabetes.test<span class="sc">$</span>y <span class="sc">&lt;</span> ci.bas[,<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.98</code></pre>
-</div>
-</div>
-</section>
-<section id="theory---consistency-of-g-priors" class="slide level2">
-<h2>Theory - Consistency of g-priors</h2>
-<ul>
-<li class="fragment"><p>desire that posterior probability of model goes to 1 as <span class="math inline">\(n \to \infty\)</span></p>
-<ul>
-<li class="fragment">does not alwyas hold if the null model is true (may be highest posterior probability model)</li>
-<li class="fragment">need prior on <span class="math inline">\(g\)</span> to depend on <span class="math inline">\(n\)</span> (rules out EB and fixed g-priors with <span class="math inline">\(g \ne n\)</span>)</li>
-<li class="fragment">asymptotically BMA collapses to the true model</li>
-</ul></li>
-<li class="fragment"><p>other quantities may converge i.e.&nbsp;posterior mean</p></li>
-<li class="fragment"><p>what if the true model <span class="math inline">\(\boldsymbol{\gamma}_T\)</span> is not in <span class="math inline">\(\Gamma\)</span>? What can we say?</p>
-<ul>
-<li class="fragment"><span class="math inline">\(\boldsymbol{{\cal M}}\)</span>-complete; BMA converges to the model that is “closest” to the truth in Kullback-Leibler divergence</li>
-<li class="fragment"><span class="math inline">\(\boldsymbol{{\cal M}}\)</span>-closed; realize that <span class="math inline">\((p_\boldsymbol{\gamma}) = 0 \ \forall \boldsymbol{\gamma}\in \mathbf{G}\)</span> and is nonsense but know <span class="math inline">\(\boldsymbol{\gamma}_T\)</span>, however want to use models in <span class="math inline">\(\mathbf{G}\)</span> only</li>
-<li class="fragment"><span class="math inline">\(\boldsymbol{{\cal M}}\)</span>-open; realize that <span class="math inline">\((p_\boldsymbol{\gamma}) = 0 \ \forall \boldsymbol{\gamma}\in \mathbf{G}\)</span> and is nonsense but know <span class="math inline">\(\boldsymbol{\gamma}_T\)</span></li>
-<li class="fragment">latter is related to “stacking” which is a frequentist method of ensemble learning using cross-validation; see Clyde &amp; Iversen (2013) for the curious to motivate via decision theory</li>
-</ul></li>
-</ul>
-</section>
-<section id="summary-1" class="slide level2">
-<h2>Summary</h2>
-<ul>
-<li class="fragment"><p>Choice of prior on <span class="math inline">\(\boldsymbol{\beta_\gamma}\)</span></p>
-<ul>
-<li class="fragment">orthogonally invariant priors - multivariate Spike &amp; Slab</li>
-<li class="fragment">products of independent Spike &amp; Slab priors</li>
-<li class="fragment">non-semi-conjugate</li>
-</ul></li>
-<li class="fragment"><p>priors on the models (sensitivity)</p></li>
-<li class="fragment"><p>computation (MCMC, “stochastic search”, variational, orthogonal data augmentation, reversible jump-MCMC)</p></li>
-<li class="fragment"><p>posterior summaries - select a model or “average” over all models</p></li>
-</ul>
-<div class="fragment">
-<p>Other aspects of model selection?</p>
-<ul>
-<li class="fragment">transformations of <span class="math inline">\(\mathbf{Y}\)</span></li>
-<li class="fragment">functions of <span class="math inline">\(\mathbf{X}\)</span>: interactions or nonlinear functions such as splines kernels</li>
-<li class="fragment">choice of error distribution</li>
+<li class="fragment"><p>Classical diagnostics useful for EDA (checking data, potential outliers/influential points) or posterior predictive checks</p></li>
+<li class="fragment"><p>BMA/BVS and Bayesian robust regression avoid interactive decision making about outliers</p></li>
+<li class="fragment"><p>Robust Regression (Bayes) can still identify outliers through distribution on weights</p></li>
+<li class="fragment"><p>continuous versus mixture distribution on scale parameters</p></li>
+<li class="fragment"><p>Other mixtures (sub populations?) on scales and <span class="math inline">\(\boldsymbol{\beta}\)</span>?</p></li>
+<li class="fragment"><p>Be careful about what predictors or transformations are used in the model as some outliers may be a result of model misspecification!</p></li>
 </ul>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://sta702-F23.github.io/website/" class="uri">https://sta702-F23.github.io/website/</a></p>
-</div>
 </div>
 </div>
 </section>
