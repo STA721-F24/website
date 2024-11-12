@@ -391,7 +391,19 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
+  }
   .Theorem {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Corollary {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -403,21 +415,9 @@
     --color1: #d999d3;
     --color2: #a01793;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
-  }
   .Conjecture {
     --color1: #948bde;
     --color2: #584eab;
-  }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
   }
   </style>
 </head>
@@ -613,9 +613,9 @@ D_i &amp; =  &amp;\frac{\| \hat{\mathbf{Y}}_{(i)} - \hat{\mathbf{Y}} \|^2}{ p {\
 <h2>Bayesian Outlier Detection</h2>
 <p>Chaloner &amp; Brant (1988) <a href="http://biomet.oxfordjournals.org/content/75/4/651.full.pdf+html">“A Bayesian approach to outlier detection and residual analysis”</a></p>
 <ul>
-<li class="fragment"><p>provides an approach to identify outliers or surprising variables by looking at the probabilty that the <em>error</em> for a case is more than <span class="math inline">\(k\)</span> standard deviations above or below zero. <span class="math display">\[P(|e_i| &gt; k \sigma \mid \mathbf{Y})\]</span></p></li>
+<li class="fragment"><p>provides an approach to identify outliers or surprising variables by looking at the probabilty that the <em>error</em> for a case is more than <span class="math inline">\(k\)</span> standard deviations above or below zero. <span class="math display">\[P(|\epsilon_i| &gt; k \sigma \mid \mathbf{Y})\]</span></p></li>
 <li class="fragment"><p>Cases with a high probability (absolute fixed value of <span class="math inline">\(k\)</span> or relative to a multiplicity correction to determine <span class="math inline">\(k\)</span>) are then investigated.</p></li>
-<li class="fragment"><p>find posterior distribution of <span class="math inline">\(e_i\)</span> given the data and model</p></li>
+<li class="fragment"><p>find posterior distribution of <span class="math inline">\(\epsilon_i\)</span> given the data and model</p></li>
 <li class="fragment"><p>Chaloner and Brant use a reference prior for the analysis <span class="math inline">\(p(\boldsymbol{\beta}, \phi) \propto 1/\phi\)</span></p></li>
 <li class="fragment"><p>no closed form solution for the probability but can be approximated by MCMC or a one dimensional integral! see <code>?BAS::Bayes.outlier</code></p></li>
 </ul>
@@ -695,7 +695,7 @@ D_i &amp; =  &amp;\frac{\| \hat{\mathbf{Y}}_{(i)} - \hat{\mathbf{Y}} \|^2}{ p {\
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><a href="https://sta702-F23.github.io/website/" class="uri">https://sta702-F23.github.io/website/</a></p>
+<p><a href="https://sta721-F24.github.io/website/" class="uri">https://sta721-F24.github.io/website/</a></p>
 </div>
 </div>
 </section>
