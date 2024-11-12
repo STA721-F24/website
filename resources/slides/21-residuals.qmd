@@ -14,7 +14,7 @@ format:
     preview-links: auto
     smaller: true
     logo: ../../img/icon.png
-    footer: <https://sta702-F23.github.io/website/>
+    footer: <https://sta721-F24.github.io/website/>
     chalkboard: 
       boardmarker-width: 1
       chalk-width: 2
@@ -272,11 +272,11 @@ Chaloner &  Brant (1988)
 ["A Bayesian approach to outlier detection and residual analysis" ](http://biomet.oxfordjournals.org/content/75/4/651.full.pdf+html)  
 
 - provides an approach to identify outliers or surprising variables by looking at the probabilty that the *error* for a case is more than $k$ standard deviations above or below zero.
-$$P(|e_i| > k \sigma \mid \Y)$$
+$$P(|\epsilon_i| > k \sigma \mid \Y)$$
 
 - Cases with a high probability (absolute fixed value of $k$ or relative to a multiplicity correction to determine $k$) are then investigated.  
 
-- find posterior distribution of $e_i$ given the data and model
+- find posterior distribution of $\epsilon_i$ given the data and model
 
 - Chaloner and Brant use a reference prior for the analysis $p(\b, \phi) \propto 1/\phi$
 
