@@ -11,8 +11,8 @@
 <link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – Bayesian Estimation and Frequentist Risk</title>
+  <meta name="author" content="Merlise Clyde">
+  <title>STA721-F24: Linear Models – Residuals and Diagnostics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -326,27 +391,7 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Proof {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Lemma {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .TODO {
-    --color1: #e7b1b4;
-    --color2: #8c3236;
-  }
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Proposition {
+  .Theorem {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -358,13 +403,21 @@
     --color1: #d999d3;
     --color2: #a01793;
   }
-  .Theorem {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
+  }
+  .Conjecture {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .TODO {
+    --color1: #e7b1b4;
+    --color2: #8c3236;
   }
   </style>
 </head>
@@ -373,13 +426,13 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Bayesian Estimation and Frequentist Risk</h1>
-  <p class="subtitle">STA 721: Lecture 9</p>
+  <h1 class="title">Residuals and Diagnostics</h1>
+  <p class="subtitle">STA 721: Lecture 21</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Merlise Clyde (clyde@duke.edu) 
+Merlise Clyde 
 </div>
         <p class="quarto-title-affiliation">
             Duke University
@@ -388,181 +441,261 @@ Merlise Clyde (clyde@duke.edu)
 </div>
 
 </section>
-<section id="outline" class="slide level2">
-<h2>Outline</h2>
-<ul>
-<li class="fragment">Frequentist Risk of Bayes estimators</li>
-<li class="fragment">Bayes and Penalized Loss Functions</li>
-<li class="fragment">Generalized Ridge Regression</li>
-<li class="fragment">Hierarchical Bayes and Other Penalties</li>
-</ul>
+<section id="linear-model-assumptions" class="slide level2">
+<h2>Linear Model Assumptions</h2>
+<p>Linear Model: <span class="math display">\[ \mathbf{Y}= \boldsymbol{\mu}+ \boldsymbol{\epsilon}\]</span><br>
+Assumptions:<br>
+<span class="math display">\[\begin{eqnarray*}
+   \boldsymbol{\mu}\in C(\mathbf{X}) &amp; \Leftrightarrow &amp; \boldsymbol{\mu}= \mathbf{X}\boldsymbol{\beta}\\
+   \boldsymbol{\epsilon}&amp; \sim &amp;  \textsf{N}(\mathbf{0}_n, \sigma^2 \mathbf{I}_n)
+\end{eqnarray*}\]</span></p>
 <div class="fragment">
-<p>Readings:</p>
+<p>Focus on</p>
 <ul>
-<li class="fragment">Christensen Chapter 2.9 and Chapter 15</li>
-<li class="fragment">Seber &amp; Lee Chapter 10.7.3 and Chapter 12</li>
+<li class="fragment">Wrong mean for a case or cases<br>
+</li>
+<li class="fragment">Cases that influence the estimates of the mean<br>
+</li>
+<li class="fragment">Wrong distribution for <span class="math inline">\(\boldsymbol{\epsilon}\)</span></li>
 </ul>
-</div>
-</section>
-<section id="frequentist-risk-of-bayes-estimators" class="slide level2">
-<h2>Frequentist Risk of Bayes Estimators</h2>
-<p>Quadratic loss for estimating <span class="math inline">\(\boldsymbol{\beta}\)</span> using estimator <span class="math inline">\(\mathbf{a}\)</span> <span class="math display">\[ L(\boldsymbol{\beta}, \mathbf{a}) =  ( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a})\]</span></p>
-<ul>
-<li class="fragment">Consider our expected loss (before we see the data) of taking an ``action’’ <span class="math inline">\(\mathbf{a}\)</span> (i.e.&nbsp;reporting <span class="math inline">\(\mathbf{a}\)</span> as the estimate of <span class="math inline">\(\boldsymbol{\beta}\)</span>) <span class="math display">\[ \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[L(\boldsymbol{\beta}, \mathbf{a})] =  \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a})]\]</span> where the expectation is over the data <span class="math inline">\(\mathbf{Y}\)</span> given the true value of <span class="math inline">\(\boldsymbol{\beta}\)</span>.</li>
-</ul>
-</section>
-<section id="expectation-of-quadratic-forms" class="slide level2">
-<h2>Expectation of Quadratic Forms</h2>
-<div id="christensen-thm-1.3.2" class="Theorem" title="Christensen Thm 1.3.2">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Christensen Thm 1.3.2</summary><div>If <span class="math inline">\(\mathbf{W}\)</span> is a random variable with mean <span class="math inline">\(\boldsymbol{\mu}\)</span> and covariance matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> then <span class="math display">\[\textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}] = \textsf{tr}(\mathbf{A}\boldsymbol{\Sigma}) + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\]</span><p></p>
-</div></details>
 </div>
 <div class="fragment">
-<div id="Proof*-0.2" class="Proof">
-<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div><span class="math display">\[\begin{eqnarray*}
-(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu}) &amp; = &amp; \mathbf{W}^T\mathbf{A}\mathbf{W}- 2\boldsymbol{\mu}^T\mathbf{A}\mathbf{W}+ \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\\
-\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})] &amp; = &amp; \textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}]  - 2 \boldsymbol{\mu}^T\mathbf{A}\textsf{E}[\mathbf{W}] + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}
-\end{eqnarray*}\]</span><p></p>
-<p>Rearranging we have <span class="math display">\[\textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}] =  \textsf{E}[(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})] + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\]</span></p>
-</div></details>
-</div>
+<p>If <span class="math inline">\(\mu_i \neq \mathbf{x}_i^T\boldsymbol{\beta}\)</span> then expected value of <span class="math inline">\(e_i = Y_i -\hat{Y}_i\)</span> is not zero</p>
 </div>
 </section>
-<section class="slide level2">
-
-<div id="continued" class="Proof" title="continued">
-<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof: </strong>continued</summary><div>Recall <span class="math display">\[\begin{align*}
-\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})] &amp; = \textsf{E}[\textsf{tr}((\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})^T)] \\
-&amp; = \textsf{tr}(\textsf{E}[\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})(\mathbf{W}- \boldsymbol{\mu})^T]) \\
-&amp; = \textsf{tr}(\mathbf{A}\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})(\mathbf{W}- \boldsymbol{\mu})^T]) \\
-&amp; = \textsf{tr}(\mathbf{A}\boldsymbol{\Sigma})
-\end{align*}\]</span> Therefore the expectation is <span class="math display">\[\textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}] = \textsf{tr}(\mathbf{A}\boldsymbol{\Sigma}) + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\]</span><p></p>
-</div></details>
-</div>
+<section id="standardized-residuals" class="slide level2">
+<h2>Standardized residuals</h2>
 <ul>
-<li class="fragment">Use Theorem to Explore Frequentist Risk of using a Bayesian estimator <span class="math display">\[\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a})\]</span> compared to the OLS estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>.</li>
+<li class="fragment"><p>Standardized residuals <span class="math inline">\(e_i/\sqrt{\sigma^2(1 - h_{ii})}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(h_{ii}\)</span> is the <span class="math inline">\(i\)</span>th diagonal element of the hat matrix <span class="math inline">\(\mathbf{H}= \mathbf{X}(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\)</span> or <em>leverage</em></p></li>
+<li class="fragment"><p>Under correct model standardized residuals have mean 0 and scale 1</p></li>
+<li class="fragment"><p>plug in the usual unbiased estimate of <span class="math inline">\(\sigma^2\)</span> <span class="math display">\[r_i = e_i/\sqrt{\hat{\sigma}^2(1 - h_{ii})}
+\]</span></p></li>
+<li class="fragment"><p>if <span class="math inline">\(h_{ii}\)</span> is close to 1, then <span class="math inline">\(\hat{Y}_i\)</span> is close to <span class="math inline">\(Y_i\)</span> (why?!?) so <span class="math inline">\(e_i\)</span> is approximately 0<br>
+</p></li>
+<li class="fragment"><p><span class="math inline">\(\textsf{var}(e_i)\)</span> is also almost 0 as <span class="math inline">\(h_{ii} \to 1\)</span>, so <span class="math inline">\(e_i \to 0\)</span> with probability 1</p></li>
+<li class="fragment"><p>if <span class="math inline">\(h_{ii} \approx 1\)</span> <span class="math inline">\(r_i\)</span> may not flag ``outliers’’</p></li>
+<li class="fragment"><p>even if <span class="math inline">\(h_{ii}\)</span> is not close to 1, the distribution of <span class="math inline">\(r_i\)</span> is not a <span class="math inline">\(t\)</span> (hard to judge if large <span class="math inline">\(|r_i|\)</span> is unusual)</p></li>
 </ul>
 </section>
-<section id="steps-to-evaluate-frequentist-risk" class="slide level2">
-<h2>Steps to Evaluate Frequentist Risk</h2>
+<section id="outlier-test-for-mean-shift" class="slide level2">
+<h2>Outlier Test for Mean Shift</h2>
+<p>Test <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\mu_i = \mathbf{x}_i^T \boldsymbol{\beta}\)</span> versus <span class="math inline">\(H_a\)</span>: <span class="math inline">\(\mu_i = \mathbf{x}_i^T\boldsymbol{\beta}+ \alpha_i\)</span></p>
 <ul>
-<li class="fragment">MSE: <span class="math inline">\(\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a}) = \textsf{tr}(\boldsymbol{\Sigma}_\mathbf{a}) + (\boldsymbol{\beta}- \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}])^T(\boldsymbol{\beta}- \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}])\)</span></li>
-<li class="fragment">Bias of <span class="math inline">\(\mathbf{a}\)</span>: <span class="math inline">\(\textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}- \boldsymbol{\beta}] = \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}] - \boldsymbol{\beta}\)</span></li>
-<li class="fragment">Covariance of <span class="math inline">\(\mathbf{a}\)</span>: <span class="math inline">\(\textsf{Cov}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}- \textsf{E}[\mathbf{a}]\)</span></li>
-<li class="fragment">Multivariate analog of MSE = Bias<span class="math inline">\(^2\)</span> + Variance in the univariate case</li>
+<li class="fragment">t-test for testing H<span class="math inline">\(_0\)</span>: <span class="math inline">\(\alpha_i = 0\)</span> has <span class="math inline">\(n - p -1\)</span> degrees of freedom<br>
+</li>
+<li class="fragment">if p-value is small declare the <span class="math inline">\(i\)</span>th case to be an outlier: <span class="math inline">\(\textsf{E}[Y_i]\)</span> not given by <span class="math inline">\(\mathbf{X}\boldsymbol{\beta}\)</span> but <span class="math inline">\(\mathbf{X}\boldsymbol{\beta}+ \delta_i \alpha_i\)</span><br>
+</li>
+<li class="fragment">Can extend to include multiple <span class="math inline">\(\delta_i\)</span> and <span class="math inline">\(\delta_j\)</span> to test that case <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are both outliers<br>
+</li>
+<li class="fragment">Extreme case <span class="math inline">\(\boldsymbol{\mu}= \mathbf{X}\boldsymbol{\beta}+ \mathbf{I}_n \boldsymbol{\alpha}\)</span> all points have their own mean!<br>
+</li>
+<li class="fragment">Need to control for multiple testing without prior reason to expect a case to be an outlier (or use a Bayesian approach)</li>
 </ul>
 </section>
-<section id="mean-square-error-of-ols-estimator" class="slide level2">
-<h2>Mean Square Error of OLS Estimator</h2>
+<section id="predicted-residuals" class="slide level2">
+<h2>Predicted Residuals</h2>
+<p>Estimates without Case (i): <span class="math display">\[\begin{eqnarray*}
+  \hat{\boldsymbol{\beta}}_{(i)} &amp; = &amp; (\mathbf{X}_{(i)}^T\mathbf{X}_{(i)})^{-1 }\mathbf{X}_{(i)}^T \mathbf{Y}_{(i)}   \\
+&amp; = &amp; \hat{\boldsymbol{\beta}}- \frac{ (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{x}_i e_i}{ 1 - h_{ii}}   
+\end{eqnarray*}\]</span></p>
 <ul>
-<li class="fragment"><p>MSE of OLS <span class="math inline">\(\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}})\)</span></p></li>
-<li class="fragment"><p>OLS is unbiased os mean of <span class="math inline">\(\boldsymbol{\beta}- \hat{\boldsymbol{\beta}}\)</span> is <span class="math inline">\(\mathbf{0}_p\)</span></p></li>
-<li class="fragment"><p>covariance is <span class="math inline">\(\textsf{Cov}[\boldsymbol{\beta}- \hat{\boldsymbol{\beta}}] = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}\)</span> <span class="math display">\[\begin{eqnarray*}
-\textsf{MSE}(\boldsymbol{\beta}) \equiv \textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}}) &amp; = &amp;\sigma^2
-\textsf{tr}[(\mathbf{X}^T\mathbf{X})^{-1}]  \\
-&amp; = &amp; \sigma^2 \textsf{tr}\mathbf{U}\Lambda^{-1} \mathbf{U}^T \\
-&amp; = &amp; \sigma^2 \sum_{j=1}^p \lambda_j^{-1}
-\end{eqnarray*}\]</span> where <span class="math inline">\(\lambda_j\)</span> are eigenvalues of <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span>.</p></li>
-<li class="fragment"><p>If smallest <span class="math inline">\(\lambda_j \to 0\)</span> then MSE <span class="math inline">\(\to \infty\)</span></p></li>
-</ul>
-</section>
-<section id="mean-square-error-using-the-g-prior" class="slide level2">
-<h2>Mean Square Error using the <span class="math inline">\(g\)</span>-prior</h2>
-<ul>
-<li class="fragment"><p>posterior mean is <span class="math inline">\(\hat{\boldsymbol{\beta}}_g = \frac{g}{1+g} \hat{\boldsymbol{\beta}}\)</span> (minimizes Bayes risk under squared error loss)</p></li>
-<li class="fragment"><p>bias of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>: <span class="math display">\[\begin{align*}
-\textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\boldsymbol{\beta}- \hat{\boldsymbol{\beta}}_g] &amp; = \boldsymbol{\beta}\left(1 - \frac{g}{1+g}\right)  = \frac{1}{1+g} \boldsymbol{\beta}
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>covariance of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>: <span class="math inline">\(\textsf{Cov}(\hat{\boldsymbol{\beta}}_g) = \frac{g^2}{(1+g)^2} \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}\)</span></p></li>
-<li class="fragment"><p>MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>: <span class="math display">\[\begin{align*}
-\textsf{MSE}(\boldsymbol{\beta}) = \frac{g^2}{(1+g)^2} \sigma^2 \textsf{tr}(\mathbf{X}^T\mathbf{X})^{-1} + \frac{1}{(1+g)^2} \|\boldsymbol{\beta}\|^2 \\
-= \frac{1}{(1+g)^2} \left( g^2 \sigma^2 \sum_{j=1}^p\lambda_j^{-1} + \|\boldsymbol{\beta}\|^2 \right)
-\end{align*}\]</span></p></li>
-</ul>
-</section>
-<section id="can-bayes-estimators-have-smaller-mse-than-ols" class="slide level2">
-<h2>Can Bayes Estimators have smaller MSE than OLS?</h2>
-<ul>
-<li class="fragment"><p>MSE of OLS is <span class="math inline">\(\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}}) = \sigma^2
-  \textsf{tr}[(\mathbf{X}^T\mathbf{X})^{-1}]\)</span> (OLS has minimum MSE under squared error loss out of all <em>unbiased</em> estimators)</p></li>
-<li class="fragment"><p>MSE of <span class="math inline">\(g\)</span>-prior estimator is<br>
-<span class="math display">\[\textsf{MSE}_g(\boldsymbol{\beta}) = \frac{1}{(1+g)^2} \left( g^2 \sigma^2 \textsf{tr}[(\mathbf{X}^T\mathbf{X})^{-1}] + \|\boldsymbol{\beta}\|^2 \right)\]</span></p></li>
-<li class="fragment"><p>for fixed <span class="math inline">\(\boldsymbol{\beta}\)</span>, what values of <span class="math inline">\(g\)</span> is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> lower than that of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>?</p></li>
-<li class="fragment"><p>for fixed <span class="math inline">\(g\)</span>, what values of <span class="math inline">\(\boldsymbol{\beta}\)</span> is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> lower than that of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>?</p></li>
-<li class="fragment"><p>is there a value of <span class="math inline">\(g\)</span> that minimizes the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>?</p></li>
-<li class="fragment"><p>what is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> under the “optimal” <span class="math inline">\(g\)</span>?</p></li>
-<li class="fragment"><p>is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> using the “optimal” <span class="math inline">\(g\)</span> always lower than that of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>?</p></li>
-</ul>
-</section>
-<section id="mean-square-error-under-ridge-priors" class="slide level2">
-<h2>Mean Square Error under Ridge Priors</h2>
-<ul>
-<li class="fragment"><p>MSE with OLS and <span class="math inline">\(g\)</span>-prior estimators depend on the eigenvalues of <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> and can be infinite if the smallest eigenvalue is zero.</p></li>
-<li class="fragment"><p>Ridge regression estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}_\kappa = (\mathbf{X}^T\mathbf{X}+  \kappa \mathbf{I}_p)^{-1} \mathbf{X}^T\mathbf{Y}\)</span> has finite MSE for all <span class="math inline">\(\kappa &gt; 0\)</span>. (<span class="math inline">\(k = 0\)</span> is OLS)</p></li>
-<li class="fragment"><p>MSE of Ridge estimator <span class="math inline">\(\textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}}_\kappa)^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}}_\kappa) = \textsf{E}[(\boldsymbol{\alpha}- \mathbf{a})^T(\boldsymbol{\alpha}- \mathbf{a})]\)</span></p></li>
-<li class="fragment"><p>bias of <span class="math inline">\(a_j = \frac{\lambda_j}{\lambda_j + \kappa} \hat{\alpha}_j\)</span> is <span class="math inline">\(\frac{\kappa}{\lambda_j + \kappa} {\alpha}_j\)</span></p></li>
-<li class="fragment"><p>variance <span class="math inline">\(a_j = \sigma^2 \frac{\lambda_j^2}{(\lambda_j + \kappa)^2}\)</span> <span class="math display">\[\textsf{MSE}_R = \sigma^2 \sum_{j=1}^p \frac{\lambda_j^2}{(\lambda_j + \kappa)^2} + \sum_{j=1}^p \frac{\kappa^2}{(\lambda_j + \kappa)^2} \alpha_j^2\]</span></p></li>
-<li class="fragment"><p>can show that the deriviate of the <span class="math inline">\(\textsf{MSE}_R\)</span> with respect to <span class="math inline">\(\kappa\)</span> is negative at <span class="math inline">\(k = 0\)</span> so that there exists a <span class="math inline">\(\kappa\)</span> so the MSE of the Ridge estimator is always less than that of OLS.</p></li>
-</ul>
-</section>
-<section id="penalized-regression" class="slide level2">
-<h2>Penalized Regression</h2>
-<ul>
-<li class="fragment"><p>Ridge regression is a special case of penalized regression where the penalty is <span class="math inline">\(\kappa \|\boldsymbol{\beta}\|^2\)</span> for some <span class="math inline">\(\kappa &gt; 0\)</span>. (let <span class="math inline">\(\kappa^* = \kappa/\phi\)</span>)</p></li>
-<li class="fragment"><p>posterior mode maximizes the posterior density or log posterior density <span class="math display">\[\begin{align*}
-\hat{\boldsymbol{\beta}}_R = \arg \max_{\boldsymbol{\beta}} \cal{L}(\boldsymbol{\beta}) &amp; = \log p(\boldsymbol{\beta}\mid \mathbf{Y}) \propto \log p(\mathbf{Y}\mid \boldsymbol{\beta}) + \log p(\boldsymbol{\beta}) \\
-&amp; = -\frac{\phi}{2} \|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 - \frac{\kappa}{2} \|\boldsymbol{\beta}\|^2 \\
-&amp; = -\frac{\phi}{2} \left( \|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2 \right)
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>maximizing the posterior mode is equivalent to minimizing the penalized loss function <span class="math display">\[\begin{align*}
-\hat{\boldsymbol{\beta}}_R &amp; =  \arg \max_{\boldsymbol{\beta}} -\left(\|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2 \right) \\
-&amp; = \arg \min_{\boldsymbol{\beta}} \left(\|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2 \right)
-\end{align*}\]</span></p></li>
+<li class="fragment"><p>Predicted residual <span class="math inline">\(e_{(i)} = y_i - \mathbf{x}_i^T \hat{\boldsymbol{\beta}}_{(i)} = \frac{e_i}{1 - h_{ii}}\)</span></p></li>
+<li class="fragment"><p>variance <span class="math inline">\(\textsf{var}(e_{(i)}) = \frac{\sigma^2}{1 - h_{ii}}\)</span></p></li>
+<li class="fragment"><p>standardized predicted residual is <span class="math display">\[\frac{e_{(i)}}{\sqrt{\textsf{var}(e_{(i)})}}  = \frac{e_i/(1 -
+h_{ii})}{\sigma/\sqrt{1 - h_{ii}}} = \frac{e_i}{\sigma \sqrt{1 -
+  h_{ii}} }
+\]</span><br>
+these are the same as standardized residual!</p></li>
 </ul>
 <div class="footer">
 
 </div>
 </section>
-<section id="scaling-and-centering" class="slide level2">
-<h2>Scaling and Centering</h2>
-<p>Note: usually use Ridge regression after centering and scaling the columns of <span class="math inline">\(\mathbf{X}\)</span> so that the penalty is the same for all variables. <span class="math inline">\(\mathbf{Y}_c = (\mathbf{I}- \mathbf{P}_1) \mathbf{Y}\)</span> and <span class="math inline">\(X_c\)</span> the centered and standardized <span class="math inline">\(\mathbf{X}\)</span> matrix</p>
+<section id="how-to-calculate-hatboldsymbolbeta_i" class="slide level2">
+<h2>How to Calculate <span class="math inline">\(\hat{\boldsymbol{\beta}}_{(i)}\)</span></h2>
+<p>How do we calculate <span class="math inline">\(\hat{\boldsymbol{\beta}}_{(i)}\)</span> without case <span class="math inline">\(i\)</span> without refitting the model <span class="math inline">\(n\)</span> times?</p>
 <ul>
-<li class="fragment"><p>alternatively as a prior, we are assuming that the <span class="math inline">\(\boldsymbol{\beta}_j\)</span> are iid <span class="math inline">\(\textsf{N}(0, 1/\kappa^*)\)</span> so that the prior for <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{N}(\mathbf{0}_p, \mathbf{I}_p/\kappa^* )\)</span></p></li>
-<li class="fragment"><p>if the units/scales of the variables are different, then the variance or penality should be different for each variable.</p></li>
-<li class="fragment"><p>standardizing the <span class="math inline">\(\mathbf{X}\)</span> so that <span class="math inline">\(\mathbf{X}_c^T\mathbf{X}_c\)</span> is a constant times the correlation matrix of <span class="math inline">\(\mathbf{X}\)</span> ensures that all <span class="math inline">\(\boldsymbol{\beta}\)</span>’s have the same scale</p></li>
-<li class="fragment"><p>centering the data forces the intercept to be 0 (so no shrinkage or penality)</p></li>
+<li class="fragment">Note: <span class="math inline">\(\mathbf{X}^T\mathbf{X}= \mathbf{X}_{(i)}^T\mathbf{X}_{(i)} + \mathbf{x}_i\mathbf{x}_i^T\)</span> rearrange to get <span class="math inline">\(\mathbf{X}_{(i)}^T\mathbf{X}_{(i)} = \mathbf{X}^T\mathbf{X}- \mathbf{x}_i\mathbf{x}_i^T\)</span></li>
+<li class="fragment">Special Case of Binomial Inverse Theorem or Woodbury Theorem: (Thm B.56 in Christensen) <span class="math display">\[(\mathbf{A}+ \mathbf{u}\mathbf{v}^T)^{-1} = \mathbf{A}^{-1} - \frac{\mathbf{A}^{-1} \mathbf{u}\mathbf{v}^T \mathbf{A}^{-1}}{1 + \mathbf{v}^T \mathbf{A}^{-1} \mathbf{u}}\]</span> with <span class="math inline">\(\mathbf{A}= \mathbf{X}^T\mathbf{X}\)</span> and <span class="math inline">\(\mathbf{u}= -\mathbf{x}_i\)</span> and <span class="math inline">\(\mathbf{v}= \mathbf{x}_i\)</span></li>
 </ul>
-</section>
-<section id="alternative-motivation" class="slide level2">
-<h2>Alternative Motivation</h2>
-<ul>
-<li class="fragment"><p>If <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is unconstrained expect high variance with nearly singular <span class="math inline">\(\mathbf{X}_c\)</span> </p></li>
-<li class="fragment"><p>Control how large coefficients may grow <span class="math display">\[\arg \min_{\boldsymbol{\beta}} (\mathbf{Y}_c - \mathbf{X}_c \boldsymbol{\beta})^T (\mathbf{Y}_c - \mathbf{X}_c\boldsymbol{\beta})\]</span> subject to <span class="math display">\[ \sum \beta_j^2 \le t\]</span></p></li>
-<li class="fragment"><p>Equivalent Quadratic Programming Problem <span class="math display">\[\hat{\boldsymbol{\beta}}_{R} = \arg \min_{\boldsymbol{\beta}} \| \mathbf{Y}_c - \mathbf{X}_c \boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2\]</span></p></li>
-<li class="fragment"><p>different approaches to selecting <span class="math inline">\(\kappa^*\)</span> from frequentist ane Bayesian perspectives</p></li>
-</ul>
-</section>
-<section id="plot-of-constrained-problem" class="slide level2">
-<h2>Plot of Constrained Problem</h2>
+<div class="fragment">
+<p><span class="math display">\[(\mathbf{X}_{(i)}^T\mathbf{X}_{(i)})^{-1} = (\mathbf{X}^T\mathbf{X}- \mathbf{x}_i\mathbf{x}_i^T)^{-1} = (\mathbf{X}^T\mathbf{X})^{-1} + \frac{(\mathbf{X}^T\mathbf{X})^{-1} \mathbf{x}_i \mathbf{x}_i^T (\mathbf{X}^T\mathbf{X})^{-1}}{1 - \mathbf{x}_i^T (\mathbf{X}^T\mathbf{X})^{-1} \mathbf{x}_i}\]</span> - use <span class="math inline">\(\mathbf{X}_{i}^T\mathbf{Y}_{i} = \mathbf{X}^T\mathbf{Y}- \mathbf{x}_i y_i\)</span> to get <span class="math inline">\(\hat{\boldsymbol{\beta}}_{(i)}\)</span> and other quantities</p>
+<div class="footer">
 
-<img data-src="ridge-penalized-loss.png" class="r-stretch"></section>
-<section id="generalized-ridge-regression" class="slide level2">
-<h2>Generalized Ridge Regression</h2>
+</div>
+</div>
+</section>
+<section id="external-estimate-of-sigma2" class="slide level2">
+<h2>External estimate of <span class="math inline">\(\sigma^2\)</span></h2>
+<p>Estimate <span class="math inline">\({\hat{\sigma}}^2_{(i)}\)</span> using data with case <span class="math inline">\(i\)</span> deleted<br>
+<span class="math display">\[\begin{eqnarray*}
+\textsf{SSE}_{(i)} &amp; = &amp;  \textsf{SSE}- \frac{e_i^2}{1 - h_{ii}}   \\
+{\hat{\sigma}}^2_{(i)} = \textsf{MSE}_{(i)} &amp; = &amp;  \frac{\textsf{SSE}_{(i)}}{n - p - 1}  \\
+    \end{eqnarray*}\]</span></p>
 <ul>
-<li class="fragment"><p>rather than a common penalty for all variables, consider a different penalty for each variable</p></li>
-<li class="fragment"><p>as a prior, we are assuming that the <span class="math inline">\(\boldsymbol{\beta}_j\)</span> are iid <span class="math inline">\(\textsf{N}(0, \frac{\kappa_j}{\phi})\)</span> so that the prior for <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{N}(\mathbf{0}_p, \phi^{-1} \mathbf{K}^{-1})\)</span> where <span class="math inline">\(\mathbf{K}= \textsf{diag}(\kappa_1, \ldots, \kappa_p)\)</span></p></li>
-<li class="fragment"><p>hard enough to choose a single penalty, how to choose <span class="math inline">\(p\)</span> penalties?</p></li>
-<li class="fragment"><p>place independent priors on each of the <span class="math inline">\(\kappa_j\)</span>’s</p></li>
-<li class="fragment"><p>a hierarchical Bayes model</p></li>
-<li class="fragment"><p>if we can integrate out the <span class="math inline">\(\kappa_j\)</span>’s we have a new prior for <span class="math inline">\(\beta_j\)</span></p></li>
-<li class="fragment"><p>this leads to a new penalty!</p></li>
-<li class="fragment"><p>examples include the Lasso (Double Exponential Prior) and Double Pareto Priors</p></li>
+<li class="fragment"><p>Externally Standardized residuals<br>
+<span class="math display">\[t_i = \frac{e_{(i)}}{\sqrt{{\hat{\sigma}}^2_{(i)}/(1 - h_{ii})}}  =  \frac{y_i
+- \mathbf{x}_i^T \hat{\boldsymbol{\beta}}_{(i)}} {\sqrt{{\hat{\sigma}}^2_{(i)}/(1 - h_{ii})}}   =  r_i \left(
+\frac{ n - p - 1}{n - p - r_i^2}\right)^{1/2}\]</span></p></li>
+<li class="fragment"><p>May still miss extreme points with high leverage, but will pick up unusual <span class="math inline">\(y_i\)</span>’s</p></li>
+</ul>
+</section>
+<section id="externally-studentized-residual" class="slide level2">
+<h2>Externally Studentized Residual</h2>
+<ul>
+<li class="fragment"><p>Externally studentized residuals have a <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(n - p - 1\)</span> degrees of freedom: <span class="math display">\[t_i = \frac{e_{(i)}}{\sqrt{{\hat{\sigma}}^2_{(i)}/(1 - h_{ii})}}  =  \frac{y_i
+- \mathbf{x}_i^T \hat{\boldsymbol{\beta}}_{(i)}} {\sqrt{{\hat{\sigma}}^2_{(i)}/(1 - h_{ii})}}  \sim \textsf{St}(n - p - 1)\]</span> under the hypothesis that the <span class="math inline">\(i\)</span>th case is not an “outlier”.</p></li>
+<li class="fragment"><p>This externally studentized residual statistic is equivalent to the t-statistic for testing that <span class="math inline">\(\alpha_i\)</span> is zero!</p></li>
+</ul>
+<div class="fragment">
+<p>(HW)</p>
+</div>
+</section>
+<section id="multiple-testing" class="slide level2">
+<h2>Multiple Testing</h2>
+<ul>
+<li class="fragment">without prior reason to suspect an outlier, usually look at the maximum of the <span class="math inline">\(|t_i|\)</span>’s</li>
+<li class="fragment">is the <span class="math inline">\(\max |t_i|\)</span> larger than expected under the null of no outliers?</li>
+<li class="fragment">Need distribution of the max of Student <span class="math inline">\(t\)</span> random variables (simulation?)</li>
+<li class="fragment">a conservative approach is the Bonferroni Correction: For <span class="math inline">\(n\)</span> tests of size <span class="math inline">\(\alpha\)</span> the probability of falsely labeling at least one case as an outlier is no greater than <span class="math inline">\(n \alpha\)</span>; e.g.&nbsp;with 21 cases and <span class="math inline">\(\alpha = 0.05\)</span>, the probability is no greater than 1.05!</li>
+<li class="fragment">adjust <span class="math inline">\(\alpha^* = \alpha/n\)</span> so that the probability of falsely labeling at least one point an outlier is <span class="math inline">\(\alpha\)</span></li>
+<li class="fragment">with 21 cases and <span class="math inline">\(\alpha = 0.05\)</span>,<br>
+<span class="math inline">\(\alpha/n = .00238\)</span> so use <span class="math inline">\(\alpha^* = 0.0024\)</span> for each test</li>
+</ul>
+</section>
+<section id="influence---cooks-distance" class="slide level2">
+<h2>Influence - Cook’s Distance</h2>
+<ul>
+<li class="fragment"><p>Cook’s Distance measure of how much predictions change with <span class="math inline">\(i\)</span>th case deleted<br>
+<span class="math display">\[\begin{eqnarray*}
+D_i &amp; =  &amp;\frac{\| \hat{\mathbf{Y}}_{(i)} - \hat{\mathbf{Y}} \|^2}{ p {\hat{\sigma}}^2} =
+\frac{ (\hat{\boldsymbol{\beta}}_{(i)} - \hat{\boldsymbol{\beta}})^T \mathbf{X}^T\mathbf{X}(\hat{\boldsymbol{\beta}}_{(i)} - \hat{\boldsymbol{\beta}}) }{ p
+{\hat{\sigma}}^2}   \\
+&amp; = &amp; \frac{r_i^2}{p} \frac{h_{ii}}{ 1 - h_{ii}}  
+  \end{eqnarray*}\]</span></p></li>
+<li class="fragment"><p>Flag cases where <span class="math inline">\(D_i &gt; 1\)</span> or large relative to other cases</p></li>
+<li class="fragment"><p>Influential Cases are those with extreme leverage or large <span class="math inline">\(r_i^2\)</span></p></li>
+</ul>
+</section>
+<section id="stackloss-data" class="slide level2">
+<h2>Stackloss Data</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="21-residuals_files/figure-revealjs/stackloss-1.png" class="quarto-figure quarto-figure-center" style="width:7in;height:5in"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="case-21" class="slide level2">
+<h2>Case 21</h2>
+<ul>
+<li class="fragment">Leverage <span class="math inline">\(0.285\)</span> (compare to <span class="math inline">\(p/n = .19\)</span> )</li>
+<li class="fragment">p-value <span class="math inline">\(t_{21}\)</span> is <span class="math inline">\(0.0042\)</span></li>
+<li class="fragment">Bonferroni adjusted p-value is <span class="math inline">\(0.0024\)</span> (not really an outlier?)</li>
+<li class="fragment">Cooks’ Distance <span class="math inline">\(.69\)</span><br>
+</li>
+<li class="fragment">Other points? Masking?<br>
+</li>
+<li class="fragment">Refit without Case 21 and compare results</li>
+</ul>
+<div class="fragment">
+<p>Other analyses have suggested that cases (1, 2, 3, 4, 21) are outliers</p>
+<ul>
+<li class="fragment">look at <code>MC3.REG</code> or <code>BAS</code> or robust regression</li>
+</ul>
+</div>
+</section>
+<section id="bayesian-outlier-detection" class="slide level2">
+<h2>Bayesian Outlier Detection</h2>
+<p>Chaloner &amp; Brant (1988) <a href="http://biomet.oxfordjournals.org/content/75/4/651.full.pdf+html">“A Bayesian approach to outlier detection and residual analysis”</a></p>
+<ul>
+<li class="fragment"><p>provides an approach to identify outliers or surprising variables by looking at the probabilty that the <em>error</em> for a case is more than <span class="math inline">\(k\)</span> standard deviations above or below zero. <span class="math display">\[P(|e_i| &gt; k \sigma \mid \mathbf{Y})\]</span></p></li>
+<li class="fragment"><p>Cases with a high probability (absolute fixed value of <span class="math inline">\(k\)</span> or relative to a multiplicity correction to determine <span class="math inline">\(k\)</span>) are then investigated.</p></li>
+<li class="fragment"><p>find posterior distribution of <span class="math inline">\(e_i\)</span> given the data and model</p></li>
+<li class="fragment"><p>Chaloner and Brant use a reference prior for the analysis <span class="math inline">\(p(\boldsymbol{\beta}, \phi) \propto 1/\phi\)</span></p></li>
+<li class="fragment"><p>no closed form solution for the probability but can be approximated by MCMC or a one dimensional integral! see <code>?BAS::Bayes.outlier</code></p></li>
+</ul>
+</section>
+<section id="stackloss-data-1" class="slide level2">
+<h2>Stackloss Data</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(BAS)</span>
+<span id="cb1-2"><a></a>stack.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(stack.loss <span class="sc">~</span> ., <span class="at">data =</span> stackloss)</span>
+<span id="cb1-3"><a></a>stack.outliers <span class="ot">&lt;-</span> BAS<span class="sc">::</span><span class="fu">Bayes.outlier</span>(stack.lm, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb1-4"><a></a><span class="fu">plot</span>(stack.outliers<span class="sc">$</span>prob.outlier, </span>
+<span id="cb1-5"><a></a>     <span class="at">type =</span> <span class="st">"h"</span>, </span>
+<span id="cb1-6"><a></a>     <span class="at">ylab =</span> <span class="st">"Posterior Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="21-residuals_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" style="width:7in;height:5in"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="stackloss-data-2" class="slide level2">
+<h2>Stackloss Data</h2>
+<p>Adjust prior probability for multiple testing with sample size of 21 and prior probability of no outliers 0.95</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>stack.outliers <span class="ot">&lt;-</span> BAS<span class="sc">::</span><span class="fu">Bayes.outlier</span>(stack.lm, <span class="at">prior.prob =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>cases where posterior probability exceeds prior probability</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">which</span>(stack.outliers<span class="sc">$</span>prob.outlier <span class="sc">&gt;</span> </span>
+<span id="cb3-2"><a></a>      stack.outliers<span class="sc">$</span>prior.prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  4 21</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">plot</span>(stack.loss<span class="sc">~</span>Air.Flow, </span>
+<span id="cb5-2"><a></a>  <span class="at">data =</span> stackloss, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb5-3"><a></a>  <span class="at">col =</span> <span class="fu">ifelse</span>(</span>
+<span id="cb5-4"><a></a>        stack.outliers<span class="sc">$</span>prob.outlier <span class="sc">&gt;</span> </span>
+<span id="cb5-5"><a></a>        stack.outliers<span class="sc">$</span>prior.prob, </span>
+<span id="cb5-6"><a></a>        <span class="st">"red"</span>, <span class="st">"blue"</span>)</span>
+<span id="cb5-7"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="21-residuals_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" style="width:6in;height:5in"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="to-remove-or-not-remove" class="slide level2">
+<h2>To Remove or Not Remove?</h2>
+<ul>
+<li class="fragment">For suspicious cases, check data sources for errors</li>
+<li class="fragment">Check that points are not outliers/influential because of wrong mean function or distributional assumptions (transformations)</li>
+<li class="fragment">Investigate need for transformations (use EDA at several stages)</li>
+<li class="fragment">Influential cases - report results with and without cases (results may change - are differences meaningful?)<br>
+</li>
+<li class="fragment">Outlier test - suggests alternative population for the case(s); if keep in analysis, will inflate <span class="math inline">\({\hat{\sigma}}^2\)</span> and interval estimates<br>
+</li>
+<li class="fragment">Document how you handle any case deletions - reproducibility!</li>
+<li class="fragment">If lots of outliers - consider throwing out the model rather than data</li>
+<li class="fragment">Alternative Model Averaging with Outlier models<br>
+</li>
+<li class="fragment">Robust Regression Methods - M-estimation, L-estimation, S-estimation, MM-estimation, etc. or Bayes with heavy tails</li>
 </ul>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><a href="https://sta721-F24.github.io/website/" class="uri">https://sta721-F24.github.io/website/</a></p>
+<p><a href="https://sta702-F23.github.io/website/" class="uri">https://sta702-F23.github.io/website/</a></p>
 </div>
 </div>
 </section>
