@@ -175,3 +175,4 @@ iid}}}}
 \def\T{\boldsymbol{\Theta}}
 \def\Tb{\boldsymbol{\Theta}}
 \def\t{\mathbf{t}}
+\def\pause{\vspace{1mm}}
