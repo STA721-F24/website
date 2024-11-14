@@ -1,0 +1,49 @@
+---
+title: "Homework 10"
+link-citations: true
+toc: true
+---
+
+
+## Due: See Due Date in Gradescope
+
+
+See [Gradescope](https://www.gradescope.com/courses/843802/assignments) for any updates on due dates.
+
+Create your repo for the HW from [GitHub Classroom](https://classroom.github.com/a/clm74c8s)
+
+## RStudio
+
+You all should have R and RStudio installed on your computers by now or access to the Department RStudio Server [https://rstudio.stat.duke.edu](https://rstudio.stat.duke.edu). If you need to setup your local version, first install the latest version of R here: [https://cran.rstudio.com](https://cran.rstudio.com) - remember to select the right installer for your operating system). Next, install the latest version of RStudio here: [https://www.rstudio.com/products/rstudio/download/]([https://www.rstudio.com/products/rstudio/download/). Scroll down to the "Installers for Supported Platforms" section and find the right installer for your operating system.
+
+
+
+
+## Getting started with Github Classroom
+
+Go to Github classroom to  accept the invitation to create a repository for this assignment.
+
+This will create a private repo in the STA721-F24 organization on Github with your github user name. Note: You may receive an email invitation to join STA702-F24 on your behalf. 
+
+Hit refresh, to see the link for the repo, and then click on it to go to the STA721-F24 organization in Github.
+
+Follow the instructions in the `README` in your repo and in the `hw#.Rnw` file to complete the assignment and
+push to GitHub. If you encounter issues with Gradescope submission, it is critical
+that you have pushed your final assignment to GitHub by the due date to validate timestamps.
+
+## R & RNW
+
+You are required to use  the `.Rnw` format to type up this report report if there are any `R` problems.  To get started see [Knitr with LaTeX](https://kbroman.org/knitr_knutshell/pages/latex.html) article by Karl Broman.  Feel free to include images of technical derivations if you are short of time to typeset in LaTeX.   The `macros.tex` file should help with shortcuts.
+You may need to change some of your Project or Global options to get your document to compile with KnitR.  If so please post under Ed in the General category or ask in Lab.
+
+## Gradescope Submission
+
+You MUST submit both your final `.Rnw` `.pdf` files to the repo on Github and upload the pdf to Gradescope here: [https://www.gradescope.com/courses/843802/assignments](https://www.gradescope.com/courses/843802/assignments)
+
+Make sure to  to pdf; ask the TA about knitting to pdf if you cannot figure it out. Be sure to submit under the right assignment entry by the due date!  
+
+
+## Grading
+
+Total: 20 points.
+  
