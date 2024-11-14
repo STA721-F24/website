@@ -1,0 +1,474 @@
+---
+title: "Transformations and Normality Assumptions"
+author: "Merlise Clyde"
+subtitle: "STA 721: Lecture 22"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"    
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+    Corollary:
+      group: thmlike
+    Conjecture:
+      group: thmlike
+      collapse: true  
+    Definition:
+      group: thmlike
+      colors: [d999d3, a01793]
+    Feature: default
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+library(xtable)
+library(BAS)
+```
+
+## Outline
+{{< include macros.qmd >}}
+
+-   Normality \& Transformations
+-   Box-Cox
+-   Variance Stabilizing Transformations
+-   Nonlinear Regression
+
+. . .
+
+Readings: Christensen  Chapter 13, Seber & Lee Chapter 10  \& Wakefield Chapter 6
+
+## Model Assumptions
+
+Linear Model:
+ $$ \Y = \mub + \eps $$  
+Assumptions:  
+\begin{eqnarray*}
+   \mub \in C(\X) & \Leftrightarrow & \mub = \X \b  \\
+   \eps  & \sim &  \N(\zero_n, \sigma^2 \I_n) 
+\end{eqnarray*}
+
+
+
+
+-  Normal Distribution for $\Y$ with constant variance or fixed covariance
+- linearity of $\mub$ in $\X$
+-  Computational Advantages of Normal Models
+-  Robustify with heavy tailed  error distributions
+
+
+
+
+## Checking via QQ-Plots
+
+-  QQ-Plots are a graphical tool to assess normality
+
+-  Order residuals $e_i$: $e_{(1)} \le e_{(2)} \ldots \le e_{(n)}$  sample
+    order statistics or sample quantiles (standardized - divide by $\sqrt{1 - h_{ii}}$ 
+-  Let $z_{(1)} \le z_{(2)} \ldots z_{(n)}$ denote the expected
+  order statistics of a sample of size $n$ from a standard normal
+  distribution ``theoretical quantiles''  
+-  If the $e_i$ are normal then $\E[e_{(i)}/\sqrt{1 - h_{ii}}] = \sigma z_{(i)}$   
+-  Expect that points in a scatter plot of $e_{(i)}/\sqrt{1 - h_{ii}}$ and $z_{(i)}$
+  should be on a straight line.  
+-  Judgment call - use simulations to gain experience!
+
+## Animal Example
+```{r}
+#| label: animal-brain weight
+#| echo: TRUE
+#| fig.width: 6
+#| fig.height: 6
+#| out.width: 6in
+#| out.height: 6in
+data(Animals, package="MASS")
+plot(brain ~ body, data=Animals, xlab="Body Weight (kg)", ylab="Brain Weight (g)", main="Original Units")
+
+```
+
+::: {.footer}
+:::
+
+## Residual Plots
+
+```{r}
+#| label: animal-residuals
+#| echo: TRUE
+#| fig.width: 6
+#| fig.height: 6
+#| out.width: 6in
+#| out.height: 6in
+brains.lm <- lm(brain ~ body, data=Animals)
+par(mfrow=c(2,2))
+plot(brains.lm)
+```
+
+::: {.footer}
+:::
+
+## Normality Assumption
+
+Recall: 
+
+\begin{eqnarray*}
+ \e & = &(\I - \P_\X) \Y  \\
+ & = & (\I - \P_\X)(\X \bhat + \eps)  \\
+ & = &  (\I - \P_\X)\eps  
+    \end{eqnarray*}
+    
+. . . 
+
+$$e_i = \epsilon_i - \sum_{j=1}^n h_{ij} \epsilon_j$$  
+
+- Lyapunov CLT (independent but not identically distributed) implies that  residuals will be approximately normal
+(even for modest $n$),
+if the errors are not normal  
+
+
+
+
+
+- *Supernormality of residuals*
+
+
+- clearly not the case here!
+
+## Box-Cox Transformation
+
+Box and Cox (1964) suggested a family of power transformations for $Y > 0$  
+$$
+U(\Y, \lambda) =  Y^{(\lambda)} = \left\{
+   \begin{array}{ll}
+     \frac{(Y^\lambda -1)}{\lambda} & \lambda \neq 0 \\
+ \log(Y) & \lambda = 0
+   \end{array} \right.
+$$  
+
+
+-  Estimate $\lambda$ by maximum Likelihood  
+$$\cL(\lambda, \b, \sigma^2) \propto \prod f(y_i \mid \lambda, \b,
+\sigma^2)$$
+
+-   $U(\Y, \lambda) = Y^{(\lambda)} \sim \N(\X\b, \sigma^2)$
+ 
+-  Jacobian term is $\prod_i y_i^{\lambda - 1}$ for all $\lambda$  
+-  Profile Likelihood based on substituting MLE $\b$ and $\sigma^2$
+  for each value of $\lambda$ is
+$$\log(\cL(\lambda) \propto (\lambda -1)
+\sum_i \log(Y_i) - \frac{n}{2} \log(\SSE (\lambda))$$
+
+
+## Profile Likelihood
+
+-  Profile Likelihood is a function of $\lambda$ obtained by
+  substituting the MLE of $\b$ and $\sigma^2$ for each value of
+  $\lambda$
+  
+```{r}
+#| label: boxcox
+#| echo: TRUE
+#| fig.width: 6
+#| fig.height: 6
+#| out.width: 5in
+#| out.height: 5in
+
+MASS::boxcox(brains.lm, lambda=seq(-2, 2, by=0.1))
+```
+  
+::: {.footer}
+:::
+
+## Residuals after Transformation of Response
+
+```{r}
+#| label: log-transform
+#| echo: TRUE
+#| fig.width: 6
+#| fig.height: 6
+#| out.width: 5in
+#| out.height: 5in
+
+plot(lm(log(brain) ~ body, data=Animals))
+
+```
+
+::: {.footer}
+:::
+
+## Residuals after Transformation of Response and Predictor
+
+
+```{r}
+#| label: log-log
+#| echo: TRUE
+#| fig.width: 6
+#| fig.height: 6
+#| out.width: 5in
+#| out.height: 5in
+
+logbrain.lm <- lm(log(brain) ~ log(body), data=Animals)
+plot(logbrain.lm)
+```
+
+::: {.footer}
+:::
+
+
+## Transformed Data
+
+
+
+```{r}
+#| label: log-log orignal scale
+#| echo: TRUE
+#| fig.width: 6
+#| fig.height: 6
+#| out.width: 5in
+#| out.height: 5in
+
+plot(brain ~ body, data=Animals, xlab="Body Weight (kg)", ylab="Brain Weight (g)", log="xy", main="Logarithmic Scale")
+
+```
+
+::: {.footer}
+:::
+
+## Test that Dinosaurs are from a Different Population (outliers)
+
+```{r}
+#| label: no dinos
+#| echo: TRUE
+logbrains.nodino.lm = lm(log(brain) ~ log(body) + 
+                           I(row.names(Animals) == "Triceratops") +  
+                           I(row.names(Animals) == "Brachiosaurus") + 
+                           I(row.names(Animals) == "Dipliodocus"), 
+                         data=Animals)
+
+anova(logbrain.lm, logbrains.nodino.lm)
+
+```
+
+
+---
+
+```{r}
+#| label: BAS
+#| echo: TRUE
+#| cache: TRUE
+#| fig.width: 6
+#| fig.height: 7
+#| out.width: 5in
+#| out.height: 7in
+
+Animals = cbind(Animals, diag(28)); colnames(Animals)[3:30] = rownames(Animals)
+brains.bas = bas.lm(log(brain) ~ log(body) + . - body, data=Animals, 
+                    prior="hyper-g-n", a=3,modelprior=beta.binomial(1,28), method="MCMC", n.models=10000, MCMC.it=2^17)
+image(brains.bas, rotate=FALSE)
+```
+
+::: {.footer}
+:::
+
+## Variance Stabilizing Transformations
+
+
+-  If $Y - \mu$ (approximately) $N(0, h(\mu))$ 
+-  Delta Method implies that
+$$g(Y) \stackrel{\cdot}{\sim}\N( g(\mu),  g'(\mu)^2 h(\mu))$$ 
+
+-  Find function $g$ such that $g'(\mu)^2/h(\mu)$ is constant
+$$g(Y) \sim N(g(\mu), c)$$
+
+
+
+-  Poisson Counts (need $Y > 3$), $g$ is the square root transformation 
+-  Binomial: $\arcsin(\sqrt{Y})$
+
+. . .
+
+Note: transformation for normality may not be the same as the variance
+stabilizing transformation; boxcox assumes mean function is correct 
+
+. . .
+
+Generalized Linear Models are preferable to transforming data, but may still be useful for 
+starting values for MCMC
+
+## Nonlinear Regression
+
+- Drug concentration of caldralazine  at time $X_i$ in a cardiac
+failure patient given a single 30mg dose  $(D = 30)$ given by 
+$$
+\mu(\b) = \left[\frac{D}{V} \exp(-\kappa_e x_i) \right]
+$$
+with $\b = (V, \kappa_e)$  $V = volume$ and $\kappa_e$ is the
+elimination rate 
+
+- If $Y_i  =  \left[\frac{D}{V} \exp(-\kappa_e x_i) \right] \times \epsilon_i$ with $\log(\epsilon_i) \iid
+N(0, \sigma^2)$ then the model is *intrinisically* linear (can transform
+to linear model)
+
+. . .
+
+\begin{eqnarray*}
+\log(\mu(\b)) & = & \log\left[\frac{D}{V} \exp(-\kappa_e x_i) \right]  =  \log[D] - \log(V) -\kappa_e x_i \\
+log(Y_i) - \log[30] & = &\beta_0 + \beta_1 x_i + \epsilon_i
+\end{eqnarray*}
+where $\epsilon_i$ has a log normal distribution
+
+## Nonlinear Least Squares Example
+::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+#| label: nonlinear
+#| echo: TRUE
+
+
+x = c(2,4,6,8,10,24,28, 32)
+y = c(1.63, 1.01, .73, .55, .41, .01, .06, .02)
+
+conc.lm = lm(I(log(y) - log(30)) ~ x)
+
+vhat = exp(-coef(conc.lm)[1])
+khat = -coef(conc.lm)[2]
+
+vhat
+khat
+
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| label: nonlinear plot
+#| echo: TRUE
+#| 
+#| fig.width: 6
+#| fig.height: 6
+#| out.width: 5in
+#| out.height: 5in
+#| 
+
+plot(x, y)
+lines(x, (30/vhat)*exp(-khat*x))
+```
+:::
+::::
+## Additive Error Model
+
+-  If $\Y = \left[\frac{D}{V} \exp(-\kappa_e x_i) \right] + \epsilon_i$ model is intrinisically nonlinear
+and cannot transform to a linear model.
+
+- need to use nonlinear least squares to estimate $\b$ and $\sigma^2$
+
+- or MCMC to estimate the posterior distribution of $\b$ and $\sigma^2$
+
+
+## Intrinsically Linear Model nls
+
+```{r}
+#| label: nonlinear ls linear
+#| echo: TRUE
+
+df = data.frame(y=y, x=x)
+logconc.nlm = nls( log(y) ~ log((30/V)*exp(-k*x)), data=df, start=list(V=vhat, k=khat))
+summary(logconc.nlm)
+
+
+```
+
+## Intrinsically Nonlinear Model
+
+```{r}
+#| label: nonlinear ls
+
+conc.nlm = nls( y ~ (30/V)*exp(-k*x), data=df, 
+                start=list(V=vhat, k=khat))
+summary(conc.nlm)
+```
+
+## Functions of Interest
+Interest is in
+
+-  clearance: $V \kappa_e$ 
+-  elimination half-life $x_{1/2} = \log 2/\kappa_e$ 
+
+-    Use properties of MLEs: asymptotically  $\hat{\b} \sim N\left(\b,
+    I(\hat{\b})^{-1}\right)$ \pause
+-  Asymptotic Distributions
+
+
+- Bayes obtain the posterior directly for parameters and functions of parameters!    
+  - Priors? 
+  - Constraints on Distributions?
+  - Bayes Factor for testing normal vs log-normal models?
+
+## Summary
+
+
+-  Optimal transformation for normality (MLE) depends on choice
+    of mean function \pause
+-  May not be the same as the variance stabilizing transformation \pause
+-  Nonlinear Models as suggested by Theory or Generalized Linear
+   Models are alternatives \pause
+-  ``normal'' estimates may be useful approximations for large $p$
+   or for starting values for more complex models  (where convergence
+   may be sensitive to starting values)
+
+
+
+
