@@ -11,8 +11,8 @@
 <link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Merlise Clyde (clyde@duke.edu)">
-  <title>STA721-F24: Linear Models – Bayesian Estimation and Frequentist Risk</title>
+  <meta name="author" content="Merlise Clyde">
+  <title>STA721-F24: Linear Models – Transformations and Normality Assumptions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -326,26 +391,6 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Proof {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Corollary {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Lemma {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Theorem {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Exercise {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .Feature {
     --color1: #c0c0c0;
     --color2: #808080;
@@ -354,7 +399,15 @@
     --color1: #cce7b1;
     --color2: #86b754;
   }
-  .Proposition {
+  .Conjecture {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
+  }
+  .Corollary {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -362,9 +415,9 @@
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
+  .Theorem {
+    --color1: #948bde;
+    --color2: #584eab;
   }
   </style>
 </head>
@@ -373,13 +426,13 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Bayesian Estimation and Frequentist Risk</h1>
-  <p class="subtitle">STA 721: Lecture 9</p>
+  <h1 class="title">Transformations and Normality Assumptions</h1>
+  <p class="subtitle">STA 721: Lecture 22</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Merlise Clyde (clyde@duke.edu) 
+Merlise Clyde 
 </div>
         <p class="quarto-title-affiliation">
             Duke University
@@ -391,172 +444,412 @@ Merlise Clyde (clyde@duke.edu)
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
 <ul>
-<li class="fragment">Frequentist Risk of Bayes estimators</li>
-<li class="fragment">Bayes and Penalized Loss Functions</li>
-<li class="fragment">Generalized Ridge Regression</li>
-<li class="fragment">Hierarchical Bayes and Other Penalties</li>
+<li class="fragment">Normality &amp; Transformations</li>
+<li class="fragment">Box-Cox</li>
+<li class="fragment">Variance Stabilizing Transformations</li>
+<li class="fragment">Nonlinear Regression</li>
 </ul>
 <div class="fragment">
-<p>Readings:</p>
+<p>Readings: Christensen Chapter 13, Seber &amp; Lee Chapter 10 &amp; Wakefield Chapter 6</p>
+</div>
+</section>
+<section id="model-assumptions" class="slide level2">
+<h2>Model Assumptions</h2>
+<p>Linear Model: <span class="math display">\[ \mathbf{Y}= \boldsymbol{\mu}+ \boldsymbol{\epsilon}\]</span><br>
+Assumptions:<br>
+<span class="math display">\[\begin{eqnarray*}
+   \boldsymbol{\mu}\in C(\mathbf{X}) &amp; \Leftrightarrow &amp; \boldsymbol{\mu}= \mathbf{X}\boldsymbol{\beta}\\
+   \boldsymbol{\epsilon}&amp; \sim &amp;  \textsf{N}(\mathbf{0}_n, \sigma^2 \mathbf{I}_n)
+\end{eqnarray*}\]</span></p>
 <ul>
-<li class="fragment">Christensen Chapter 2.9 and Chapter 15</li>
-<li class="fragment">Seber &amp; Lee Chapter 10.7.3 and Chapter 12</li>
+<li class="fragment">Normal Distribution for <span class="math inline">\(\mathbf{Y}\)</span> with constant variance or fixed covariance</li>
+<li class="fragment">linearity of <span class="math inline">\(\boldsymbol{\mu}\)</span> in <span class="math inline">\(\mathbf{X}\)</span></li>
+<li class="fragment">Computational Advantages of Normal Models</li>
+<li class="fragment">Robustify with heavy tailed error distributions</li>
+</ul>
+</section>
+<section id="checking-via-qq-plots" class="slide level2">
+<h2>Checking via QQ-Plots</h2>
+<ul>
+<li class="fragment"><p>QQ-Plots are a graphical tool to assess normality</p></li>
+<li class="fragment"><p>Order residuals <span class="math inline">\(e_i\)</span>: <span class="math inline">\(e_{(1)} \le e_{(2)} \ldots \le e_{(n)}\)</span> sample order statistics or sample quantiles (standardized - divide by <span class="math inline">\(\sqrt{1 - h_{ii}}\)</span></p></li>
+<li class="fragment"><p>Let <span class="math inline">\(z_{(1)} \le z_{(2)} \ldots z_{(n)}\)</span> denote the expected order statistics of a sample of size <span class="math inline">\(n\)</span> from a standard normal distribution ``theoretical quantiles’’<br>
+</p></li>
+<li class="fragment"><p>If the <span class="math inline">\(e_i\)</span> are normal then <span class="math inline">\(\textsf{E}[e_{(i)}/\sqrt{1 - h_{ii}}] = \sigma z_{(i)}\)</span><br>
+</p></li>
+<li class="fragment"><p>Expect that points in a scatter plot of <span class="math inline">\(e_{(i)}/\sqrt{1 - h_{ii}}\)</span> and <span class="math inline">\(z_{(i)}\)</span> should be on a straight line.<br>
+</p></li>
+<li class="fragment"><p>Judgment call - use simulations to gain experience!</p></li>
+</ul>
+</section>
+<section id="animal-example" class="slide level2">
+<h2>Animal Example</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">data</span>(Animals, <span class="at">package=</span><span class="st">"MASS"</span>)</span>
+<span id="cb1-2"><a></a><span class="fu">plot</span>(brain <span class="sc">~</span> body, <span class="at">data=</span>Animals, <span class="at">xlab=</span><span class="st">"Body Weight (kg)"</span>, <span class="at">ylab=</span><span class="st">"Brain Weight (g)"</span>, <span class="at">main=</span><span class="st">"Original Units"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/animal-brain weight-1.png" class="quarto-figure quarto-figure-center" style="width:6in;height:6in"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="footer">
+
+</div>
+</section>
+<section id="residual-plots" class="slide level2">
+<h2>Residual Plots</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>brains.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(brain <span class="sc">~</span> body, <span class="at">data=</span>Animals)</span>
+<span id="cb2-2"><a></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb2-3"><a></a><span class="fu">plot</span>(brains.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/animal-residuals-1.png" class="quarto-figure quarto-figure-center" style="width:6in;height:6in"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="footer">
+
+</div>
+</section>
+<section id="normality-assumption" class="slide level2">
+<h2>Normality Assumption</h2>
+<p>Recall:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\mathbf{e}&amp; = &amp;(\mathbf{I}- \mathbf{P}_\mathbf{X}) \mathbf{Y}\\
+&amp; = &amp; (\mathbf{I}- \mathbf{P}_\mathbf{X})(\mathbf{X}\hat{\boldsymbol{\beta}}+ \boldsymbol{\epsilon})  \\
+&amp; = &amp;  (\mathbf{I}- \mathbf{P}_\mathbf{X})\boldsymbol{\epsilon}
+    \end{eqnarray*}\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[e_i = \epsilon_i - \sum_{j=1}^n h_{ij} \epsilon_j\]</span></p>
+<ul>
+<li class="fragment"><p>Lyapunov CLT (independent but not identically distributed) implies that residuals will be approximately normal (even for modest <span class="math inline">\(n\)</span>), if the errors are not normal</p></li>
+<li class="fragment"><p><em>Supernormality of residuals</em></p></li>
+<li class="fragment"><p>clearly not the case here!</p></li>
 </ul>
 </div>
 </section>
-<section id="frequentist-risk-of-bayes-estimators" class="slide level2">
-<h2>Frequentist Risk of Bayes Estimators</h2>
-<p>Quadratic loss for estimating <span class="math inline">\(\boldsymbol{\beta}\)</span> using estimator <span class="math inline">\(\mathbf{a}\)</span> <span class="math display">\[ L(\boldsymbol{\beta}, \mathbf{a}) =  ( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a})\]</span></p>
+<section id="box-cox-transformation" class="slide level2">
+<h2>Box-Cox Transformation</h2>
+<p>Box and Cox (1964) suggested a family of power transformations for <span class="math inline">\(Y &gt; 0\)</span><br>
+<span class="math display">\[
+U(\mathbf{Y}, \lambda) =  Y^{(\lambda)} = \left\{
+   \begin{array}{ll}
+     \frac{(Y^\lambda -1)}{\lambda} &amp; \lambda \neq 0 \\
+\log(Y) &amp; \lambda = 0
+   \end{array} \right.
+\]</span></p>
 <ul>
-<li class="fragment">Consider our expected loss (before we see the data) of taking an ``action’’ <span class="math inline">\(\mathbf{a}\)</span> (i.e.&nbsp;reporting <span class="math inline">\(\mathbf{a}\)</span> as the estimate of <span class="math inline">\(\boldsymbol{\beta}\)</span>) <span class="math display">\[ \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[L(\boldsymbol{\beta}, \mathbf{a})] =  \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a})]\]</span> where the expectation is over the data <span class="math inline">\(\mathbf{Y}\)</span> given the true value of <span class="math inline">\(\boldsymbol{\beta}\)</span>.</li>
+<li class="fragment"><p>Estimate <span class="math inline">\(\lambda\)</span> by maximum Likelihood<br>
+<span class="math display">\[{\cal{L}}(\lambda, \boldsymbol{\beta}, \sigma^2) \propto \prod f(y_i \mid \lambda, \boldsymbol{\beta},
+\sigma^2)\]</span></p></li>
+<li class="fragment"><p><span class="math inline">\(U(\mathbf{Y}, \lambda) = Y^{(\lambda)} \sim \textsf{N}(\mathbf{X}\boldsymbol{\beta}, \sigma^2)\)</span></p></li>
+<li class="fragment"><p>Jacobian term is <span class="math inline">\(\prod_i y_i^{\lambda - 1}\)</span> for all <span class="math inline">\(\lambda\)</span><br>
+</p></li>
+<li class="fragment"><p>Profile Likelihood based on substituting MLE <span class="math inline">\(\boldsymbol{\beta}\)</span> and <span class="math inline">\(\sigma^2\)</span> for each value of <span class="math inline">\(\lambda\)</span> is <span class="math display">\[\log({\cal{L}}(\lambda) \propto (\lambda -1)
+\sum_i \log(Y_i) - \frac{n}{2} \log(\textsf{SSE}(\lambda))\]</span></p></li>
 </ul>
 </section>
-<section id="expectation-of-quadratic-forms" class="slide level2">
-<h2>Expectation of Quadratic Forms</h2>
-<div id="christensen-thm-1.3.2" class="Theorem" title="Christensen Thm 1.3.2">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem: </strong>Christensen Thm 1.3.2</summary><div>If <span class="math inline">\(\mathbf{W}\)</span> is a random variable with mean <span class="math inline">\(\boldsymbol{\mu}\)</span> and covariance matrix <span class="math inline">\(\boldsymbol{\Sigma}\)</span> then <span class="math display">\[\textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}] = \textsf{tr}(\mathbf{A}\boldsymbol{\Sigma}) + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\]</span><p></p>
-</div></details>
+<section id="profile-likelihood" class="slide level2">
+<h2>Profile Likelihood</h2>
+<ul>
+<li class="fragment">Profile Likelihood is a function of <span class="math inline">\(\lambda\)</span> obtained by substituting the MLE of <span class="math inline">\(\boldsymbol{\beta}\)</span> and <span class="math inline">\(\sigma^2\)</span> for each value of <span class="math inline">\(\lambda\)</span></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>MASS<span class="sc">::</span><span class="fu">boxcox</span>(brains.lm, <span class="at">lambda=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="at">by=</span><span class="fl">0.1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/boxcox-1.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
 </div>
-<div class="fragment">
-<div id="Proof*-0.2" class="Proof">
-<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div><span class="math display">\[\begin{eqnarray*}
-(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu}) &amp; = &amp; \mathbf{W}^T\mathbf{A}\mathbf{W}- 2\boldsymbol{\mu}^T\mathbf{A}\mathbf{W}+ \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\\
-\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})] &amp; = &amp; \textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}]  - 2 \boldsymbol{\mu}^T\mathbf{A}\textsf{E}[\mathbf{W}] + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}
-\end{eqnarray*}\]</span><p></p>
-<p>Rearranging we have <span class="math display">\[\textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}] =  \textsf{E}[(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})] + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\]</span></p>
-</div></details>
+</div>
+</div>
+<div class="footer">
+
+</div>
+</section>
+<section id="residuals-after-transformation-of-response" class="slide level2">
+<h2>Residuals after Transformation of Response</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">plot</span>(<span class="fu">lm</span>(<span class="fu">log</span>(brain) <span class="sc">~</span> body, <span class="at">data=</span>Animals))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/log-transform-1.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/log-transform-2.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/log-transform-3.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/log-transform-4.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="footer">
+
+</div>
+</section>
+<section id="residuals-after-transformation-of-response-and-predictor" class="slide level2">
+<h2>Residuals after Transformation of Response and Predictor</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>logbrain.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(brain) <span class="sc">~</span> <span class="fu">log</span>(body), <span class="at">data=</span>Animals)</span>
+<span id="cb5-2"><a></a><span class="fu">plot</span>(logbrain.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/log-log-1.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/log-log-2.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/log-log-3.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/log-log-4.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="footer">
+
+</div>
+</section>
+<section id="transformed-data" class="slide level2">
+<h2>Transformed Data</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">plot</span>(brain <span class="sc">~</span> body, <span class="at">data=</span>Animals, <span class="at">xlab=</span><span class="st">"Body Weight (kg)"</span>, <span class="at">ylab=</span><span class="st">"Brain Weight (g)"</span>, <span class="at">log=</span><span class="st">"xy"</span>, <span class="at">main=</span><span class="st">"Logarithmic Scale"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/log-log orignal scale-1.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="footer">
+
+</div>
+</section>
+<section id="test-that-dinosaurs-are-from-a-different-population-outliers" class="slide level2">
+<h2>Test that Dinosaurs are from a Different Population (outliers)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>logbrains.nodino.lm <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">log</span>(brain) <span class="sc">~</span> <span class="fu">log</span>(body) <span class="sc">+</span> </span>
+<span id="cb7-2"><a></a>                           <span class="fu">I</span>(<span class="fu">row.names</span>(Animals) <span class="sc">==</span> <span class="st">"Triceratops"</span>) <span class="sc">+</span>  </span>
+<span id="cb7-3"><a></a>                           <span class="fu">I</span>(<span class="fu">row.names</span>(Animals) <span class="sc">==</span> <span class="st">"Brachiosaurus"</span>) <span class="sc">+</span> </span>
+<span id="cb7-4"><a></a>                           <span class="fu">I</span>(<span class="fu">row.names</span>(Animals) <span class="sc">==</span> <span class="st">"Dipliodocus"</span>), </span>
+<span id="cb7-5"><a></a>                         <span class="at">data=</span>Animals)</span>
+<span id="cb7-6"><a></a></span>
+<span id="cb7-7"><a></a><span class="fu">anova</span>(logbrain.lm, logbrains.nodino.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Model 1: log(brain) ~ log(body)
+Model 2: log(brain) ~ log(body) + I(row.names(Animals) == "Triceratops") + 
+    I(row.names(Animals) == "Brachiosaurus") + I(row.names(Animals) == 
+    "Dipliodocus")
+  Res.Df    RSS Df Sum of Sq     F    Pr(&gt;F)
+1     26 60.988                             
+2     23 12.117  3    48.871 30.92 3.031e-08</code></pre>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<div id="continued" class="Proof" title="continued">
-<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof: </strong>continued</summary><div>Recall <span class="math display">\[\begin{align*}
-\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})] &amp; = \textsf{E}[\textsf{tr}((\mathbf{W}- \boldsymbol{\mu})^T\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})^T)] \\
-&amp; = \textsf{tr}(\textsf{E}[\mathbf{A}(\mathbf{W}- \boldsymbol{\mu})(\mathbf{W}- \boldsymbol{\mu})^T]) \\
-&amp; = \textsf{tr}(\mathbf{A}\textsf{E}[(\mathbf{W}- \boldsymbol{\mu})(\mathbf{W}- \boldsymbol{\mu})^T]) \\
-&amp; = \textsf{tr}(\mathbf{A}\boldsymbol{\Sigma})
-\end{align*}\]</span> Therefore the expectation is <span class="math display">\[\textsf{E}[\mathbf{W}^T\mathbf{A}\mathbf{W}] = \textsf{tr}(\mathbf{A}\boldsymbol{\Sigma}) + \boldsymbol{\mu}^T\mathbf{A}\boldsymbol{\mu}\]</span><p></p>
-</div></details>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>Animals <span class="ot">=</span> <span class="fu">cbind</span>(Animals, <span class="fu">diag</span>(<span class="dv">28</span>)); <span class="fu">colnames</span>(Animals)[<span class="dv">3</span><span class="sc">:</span><span class="dv">30</span>] <span class="ot">=</span> <span class="fu">rownames</span>(Animals)</span>
+<span id="cb9-2"><a></a>brains.bas <span class="ot">=</span> <span class="fu">bas.lm</span>(<span class="fu">log</span>(brain) <span class="sc">~</span> <span class="fu">log</span>(body) <span class="sc">+</span> . <span class="sc">-</span> body, <span class="at">data=</span>Animals, </span>
+<span id="cb9-3"><a></a>                    <span class="at">prior=</span><span class="st">"hyper-g-n"</span>, <span class="at">a=</span><span class="dv">3</span>,<span class="at">modelprior=</span><span class="fu">beta.binomial</span>(<span class="dv">1</span>,<span class="dv">28</span>), <span class="at">method=</span><span class="st">"MCMC"</span>, <span class="at">n.models=</span><span class="dv">10000</span>, <span class="at">MCMC.it=</span><span class="dv">2</span><span class="sc">^</span><span class="dv">17</span>)</span>
+<span id="cb9-4"><a></a><span class="fu">image</span>(brains.bas, <span class="at">rotate=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/BAS-1.png" class="quarto-figure quarto-figure-center" style="width:5in;height:7in"></p>
+</figure>
 </div>
-<ul>
-<li class="fragment">Use Theorem to Explore Frequentist Risk of using a Bayesian estimator <span class="math display">\[\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a})\]</span> compared to the OLS estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>.</li>
-</ul>
-</section>
-<section id="steps-to-evaluate-frequentist-risk" class="slide level2">
-<h2>Steps to Evaluate Frequentist Risk</h2>
-<ul>
-<li class="fragment">MSE: <span class="math inline">\(\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \mathbf{a})^T(\boldsymbol{\beta}-\mathbf{a}) = \textsf{tr}(\boldsymbol{\Sigma}_\mathbf{a}) + (\boldsymbol{\beta}- \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}])^T(\boldsymbol{\beta}- \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}])\)</span></li>
-<li class="fragment">Bias of <span class="math inline">\(\mathbf{a}\)</span>: <span class="math inline">\(\textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}- \boldsymbol{\beta}] = \textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}] - \boldsymbol{\beta}\)</span></li>
-<li class="fragment">Covariance of <span class="math inline">\(\mathbf{a}\)</span>: <span class="math inline">\(\textsf{Cov}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\mathbf{a}- \textsf{E}[\mathbf{a}]\)</span></li>
-<li class="fragment">Multivariate analog of MSE = Bias<span class="math inline">\(^2\)</span> + Variance in the univariate case</li>
-</ul>
-</section>
-<section id="mean-square-error-of-ols-estimator" class="slide level2">
-<h2>Mean Square Error of OLS Estimator</h2>
-<ul>
-<li class="fragment"><p>MSE of OLS <span class="math inline">\(\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}})\)</span></p></li>
-<li class="fragment"><p>OLS is unbiased os mean of <span class="math inline">\(\boldsymbol{\beta}- \hat{\boldsymbol{\beta}}\)</span> is <span class="math inline">\(\mathbf{0}_p\)</span></p></li>
-<li class="fragment"><p>covariance is <span class="math inline">\(\textsf{Cov}[\boldsymbol{\beta}- \hat{\boldsymbol{\beta}}] = \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}\)</span> <span class="math display">\[\begin{eqnarray*}
-\textsf{MSE}(\boldsymbol{\beta}) \equiv \textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}}) &amp; = &amp;\sigma^2
-\textsf{tr}[(\mathbf{X}^T\mathbf{X})^{-1}]  \\
-&amp; = &amp; \sigma^2 \textsf{tr}\mathbf{U}\Lambda^{-1} \mathbf{U}^T \\
-&amp; = &amp; \sigma^2 \sum_{j=1}^p \lambda_j^{-1}
-\end{eqnarray*}\]</span> where <span class="math inline">\(\lambda_j\)</span> are eigenvalues of <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span>.</p></li>
-<li class="fragment"><p>If smallest <span class="math inline">\(\lambda_j \to 0\)</span> then MSE <span class="math inline">\(\to \infty\)</span></p></li>
-</ul>
-</section>
-<section id="mean-square-error-using-the-g-prior" class="slide level2">
-<h2>Mean Square Error using the <span class="math inline">\(g\)</span>-prior</h2>
-<ul>
-<li class="fragment"><p>posterior mean is <span class="math inline">\(\hat{\boldsymbol{\beta}}_g = \frac{g}{1+g} \hat{\boldsymbol{\beta}}\)</span> (minimizes Bayes risk under squared error loss)</p></li>
-<li class="fragment"><p>bias of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>: <span class="math display">\[\begin{align*}
-\textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[\boldsymbol{\beta}- \hat{\boldsymbol{\beta}}_g] &amp; = \boldsymbol{\beta}\left(1 - \frac{g}{1+g}\right)  = \frac{1}{1+g} \boldsymbol{\beta}
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>covariance of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>: <span class="math inline">\(\textsf{Cov}(\hat{\boldsymbol{\beta}}_g) = \frac{g^2}{(1+g)^2} \sigma^2 (\mathbf{X}^T\mathbf{X})^{-1}\)</span></p></li>
-<li class="fragment"><p>MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>: <span class="math display">\[\begin{align*}
-\textsf{MSE}(\boldsymbol{\beta}) = \frac{g^2}{(1+g)^2} \sigma^2 \textsf{tr}(\mathbf{X}^T\mathbf{X})^{-1} + \frac{1}{(1+g)^2} \|\boldsymbol{\beta}\|^2 \\
-= \frac{1}{(1+g)^2} \left( g^2 \sigma^2 \sum_{j=1}^p\lambda_j^{-1} + \|\boldsymbol{\beta}\|^2 \right)
-\end{align*}\]</span></p></li>
-</ul>
-</section>
-<section id="can-bayes-estimators-have-smaller-mse-than-ols" class="slide level2">
-<h2>Can Bayes Estimators have smaller MSE than OLS?</h2>
-<ul>
-<li class="fragment"><p>MSE of OLS is <span class="math inline">\(\textsf{E}_\mathbf{Y}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}})^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}}) = \sigma^2
-  \textsf{tr}[(\mathbf{X}^T\mathbf{X})^{-1}]\)</span> (OLS has minimum MSE under squared error loss out of all <em>unbiased</em> estimators)</p></li>
-<li class="fragment"><p>MSE of <span class="math inline">\(g\)</span>-prior estimator is<br>
-<span class="math display">\[\textsf{MSE}_g(\boldsymbol{\beta}) = \frac{1}{(1+g)^2} \left( g^2 \sigma^2 \textsf{tr}[(\mathbf{X}^T\mathbf{X})^{-1}] + \|\boldsymbol{\beta}\|^2 \right)\]</span></p></li>
-<li class="fragment"><p>for fixed <span class="math inline">\(\boldsymbol{\beta}\)</span>, what values of <span class="math inline">\(g\)</span> is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> lower than that of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>?</p></li>
-<li class="fragment"><p>for fixed <span class="math inline">\(g\)</span>, what values of <span class="math inline">\(\boldsymbol{\beta}\)</span> is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> lower than that of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>?</p></li>
-<li class="fragment"><p>is there a value of <span class="math inline">\(g\)</span> that minimizes the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span>?</p></li>
-<li class="fragment"><p>what is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> under the “optimal” <span class="math inline">\(g\)</span>?</p></li>
-<li class="fragment"><p>is the MSE of <span class="math inline">\(\hat{\boldsymbol{\beta}}_g\)</span> using the “optimal” <span class="math inline">\(g\)</span> always lower than that of <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span>?</p></li>
-</ul>
-</section>
-<section id="mean-square-error-under-ridge-priors" class="slide level2">
-<h2>Mean Square Error under Ridge Priors</h2>
-<ul>
-<li class="fragment"><p>MSE with OLS and <span class="math inline">\(g\)</span>-prior estimators depend on the eigenvalues of <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> and can be infinite if the smallest eigenvalue is zero.</p></li>
-<li class="fragment"><p>Ridge regression estimator <span class="math inline">\(\hat{\boldsymbol{\beta}}_\kappa = (\mathbf{X}^T\mathbf{X}+  \kappa \mathbf{I}_p)^{-1} \mathbf{X}^T\mathbf{Y}\)</span> has finite MSE for all <span class="math inline">\(\kappa &gt; 0\)</span>. (<span class="math inline">\(k = 0\)</span> is OLS)</p></li>
-<li class="fragment"><p>MSE of Ridge estimator <span class="math inline">\(\textsf{E}_{\mathbf{Y}\mid \boldsymbol{\beta}}[( \boldsymbol{\beta}- \hat{\boldsymbol{\beta}}_\kappa)^T(\boldsymbol{\beta}-\hat{\boldsymbol{\beta}}_\kappa) = \textsf{E}[(\boldsymbol{\alpha}- \mathbf{a})^T(\boldsymbol{\alpha}- \mathbf{a})]\)</span></p></li>
-<li class="fragment"><p>bias of <span class="math inline">\(a_j = \frac{\lambda_j}{\lambda_j + \kappa} \hat{\alpha}_j\)</span> is <span class="math inline">\(\frac{\kappa}{\lambda_j + \kappa} {\alpha}_j\)</span></p></li>
-<li class="fragment"><p>variance <span class="math inline">\(a_j = \sigma^2 \frac{\lambda_j^2}{(\lambda_j + \kappa)^2}\)</span> <span class="math display">\[\textsf{MSE}_R = \sigma^2 \sum_{j=1}^p \frac{\lambda_j^2}{(\lambda_j + \kappa)^2} + \sum_{j=1}^p \frac{\kappa^2}{(\lambda_j + \kappa)^2} \alpha_j^2\]</span></p></li>
-<li class="fragment"><p>can show that the deriviate of the <span class="math inline">\(\textsf{MSE}_R\)</span> with respect to <span class="math inline">\(\kappa\)</span> is negative at <span class="math inline">\(k = 0\)</span> so that there exists a <span class="math inline">\(\kappa\)</span> so the MSE of the Ridge estimator is always less than that of OLS.</p></li>
-</ul>
-</section>
-<section id="penalized-regression" class="slide level2">
-<h2>Penalized Regression</h2>
-<ul>
-<li class="fragment"><p>Ridge regression is a special case of penalized regression where the penalty is <span class="math inline">\(\kappa \|\boldsymbol{\beta}\|^2\)</span> for some <span class="math inline">\(\kappa &gt; 0\)</span>. (let <span class="math inline">\(\kappa^* = \kappa/\phi\)</span>)</p></li>
-<li class="fragment"><p>posterior mode maximizes the posterior density or log posterior density <span class="math display">\[\begin{align*}
-\hat{\boldsymbol{\beta}}_R = \arg \max_{\boldsymbol{\beta}} \cal{L}(\boldsymbol{\beta}) &amp; = \log p(\boldsymbol{\beta}\mid \mathbf{Y}) \propto \log p(\mathbf{Y}\mid \boldsymbol{\beta}) + \log p(\boldsymbol{\beta}) \\
-&amp; = -\frac{\phi}{2} \|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 - \frac{\kappa}{2} \|\boldsymbol{\beta}\|^2 \\
-&amp; = -\frac{\phi}{2} \left( \|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2 \right)
-\end{align*}\]</span></p></li>
-<li class="fragment"><p>maximizing the posterior mode is equivalent to minimizing the penalized loss function <span class="math display">\[\begin{align*}
-\hat{\boldsymbol{\beta}}_R &amp; =  \arg \max_{\boldsymbol{\beta}} -\left(\|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2 \right) \\
-&amp; = \arg \min_{\boldsymbol{\beta}} \left(\|\mathbf{Y}- \mathbf{X}\boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2 \right)
-\end{align*}\]</span></p></li>
-</ul>
+</div>
+</div>
 <div class="footer">
 
 </div>
 </section>
-<section id="scaling-and-centering" class="slide level2">
-<h2>Scaling and Centering</h2>
-<p>Note: usually use Ridge regression after centering and scaling the columns of <span class="math inline">\(\mathbf{X}\)</span> so that the penalty is the same for all variables. <span class="math inline">\(\mathbf{Y}_c = (\mathbf{I}- \mathbf{P}_1) \mathbf{Y}\)</span> and <span class="math inline">\(X_c\)</span> the centered and standardized <span class="math inline">\(\mathbf{X}\)</span> matrix</p>
+<section id="variance-stabilizing-transformations" class="slide level2">
+<h2>Variance Stabilizing Transformations</h2>
 <ul>
-<li class="fragment"><p>alternatively as a prior, we are assuming that the <span class="math inline">\(\boldsymbol{\beta}_j\)</span> are iid <span class="math inline">\(\textsf{N}(0, 1/\kappa^*)\)</span> so that the prior for <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{N}(\mathbf{0}_p, \mathbf{I}_p/\kappa^* )\)</span></p></li>
-<li class="fragment"><p>if the units/scales of the variables are different, then the variance or penality should be different for each variable.</p></li>
-<li class="fragment"><p>standardizing the <span class="math inline">\(\mathbf{X}\)</span> so that <span class="math inline">\(\mathbf{X}_c^T\mathbf{X}_c\)</span> is a constant times the correlation matrix of <span class="math inline">\(\mathbf{X}\)</span> ensures that all <span class="math inline">\(\boldsymbol{\beta}\)</span>’s have the same scale</p></li>
-<li class="fragment"><p>centering the data forces the intercept to be 0 (so no shrinkage or penality)</p></li>
+<li class="fragment"><p>If <span class="math inline">\(Y - \mu\)</span> (approximately) <span class="math inline">\(N(0, h(\mu))\)</span></p></li>
+<li class="fragment"><p>Delta Method implies that <span class="math display">\[g(Y) \stackrel{\cdot}{\sim}\textsf{N}( g(\mu),  g'(\mu)^2 h(\mu))\]</span></p></li>
+<li class="fragment"><p>Find function <span class="math inline">\(g\)</span> such that <span class="math inline">\(g'(\mu)^2/h(\mu)\)</span> is constant <span class="math display">\[g(Y) \sim N(g(\mu), c)\]</span></p></li>
+<li class="fragment"><p>Poisson Counts (need <span class="math inline">\(Y &gt; 3\)</span>), <span class="math inline">\(g\)</span> is the square root transformation</p></li>
+<li class="fragment"><p>Binomial: <span class="math inline">\(\arcsin(\sqrt{Y})\)</span></p></li>
+</ul>
+<div class="fragment">
+<p>Note: transformation for normality may not be the same as the variance stabilizing transformation; boxcox assumes mean function is correct</p>
+</div>
+<div class="fragment">
+<p>Generalized Linear Models are preferable to transforming data, but may still be useful for starting values for MCMC</p>
+</div>
+</section>
+<section id="nonlinear-regression" class="slide level2">
+<h2>Nonlinear Regression</h2>
+<ul>
+<li class="fragment"><p>Drug concentration of caldralazine at time <span class="math inline">\(X_i\)</span> in a cardiac failure patient given a single 30mg dose <span class="math inline">\((D = 30)\)</span> given by <span class="math display">\[
+\mu(\boldsymbol{\beta}) = \left[\frac{D}{V} \exp(-\kappa_e x_i) \right]
+\]</span> with <span class="math inline">\(\boldsymbol{\beta}= (V, \kappa_e)\)</span> <span class="math inline">\(V = volume\)</span> and <span class="math inline">\(\kappa_e\)</span> is the elimination rate</p></li>
+<li class="fragment"><p>If <span class="math inline">\(Y_i  =  \left[\frac{D}{V} \exp(-\kappa_e x_i) \right] \times \epsilon_i\)</span> with <span class="math inline">\(\log(\epsilon_i) \mathrel{\mathop{\sim}\limits^{\rm iid}}
+N(0, \sigma^2)\)</span> then the model is <em>intrinisically</em> linear (can transform to linear model)</p></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\begin{eqnarray*}
+\log(\mu(\boldsymbol{\beta})) &amp; = &amp; \log\left[\frac{D}{V} \exp(-\kappa_e x_i) \right]  =  \log[D] - \log(V) -\kappa_e x_i \\
+log(Y_i) - \log[30] &amp; = &amp;\beta_0 + \beta_1 x_i + \epsilon_i
+\end{eqnarray*}\]</span> where <span class="math inline">\(\epsilon_i\)</span> has a log normal distribution</p>
+</div>
+</section>
+<section id="nonlinear-least-squares-example" class="slide level2">
+<h2>Nonlinear Least Squares Example</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">24</span>,<span class="dv">28</span>, <span class="dv">32</span>)</span>
+<span id="cb10-2"><a></a>y <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">1.63</span>, <span class="fl">1.01</span>, .<span class="dv">73</span>, .<span class="dv">55</span>, .<span class="dv">41</span>, .<span class="dv">01</span>, .<span class="dv">06</span>, .<span class="dv">02</span>)</span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a>conc.lm <span class="ot">=</span> <span class="fu">lm</span>(<span class="fu">I</span>(<span class="fu">log</span>(y) <span class="sc">-</span> <span class="fu">log</span>(<span class="dv">30</span>)) <span class="sc">~</span> x)</span>
+<span id="cb10-5"><a></a></span>
+<span id="cb10-6"><a></a>vhat <span class="ot">=</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">coef</span>(conc.lm)[<span class="dv">1</span>])</span>
+<span id="cb10-7"><a></a>khat <span class="ot">=</span> <span class="sc">-</span><span class="fu">coef</span>(conc.lm)[<span class="dv">2</span>]</span>
+<span id="cb10-8"><a></a></span>
+<span id="cb10-9"><a></a>vhat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept) 
+   16.66331 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>khat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        x 
+0.1521064 </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">plot</span>(x, y)</span>
+<span id="cb14-2"><a></a><span class="fu">lines</span>(x, (<span class="dv">30</span><span class="sc">/</span>vhat)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>khat<span class="sc">*</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="22-transformations_files/figure-revealjs/nonlinear plot-1.png" class="quarto-figure quarto-figure-center" style="width:5in;height:5in"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="additive-error-model" class="slide level2">
+<h2>Additive Error Model</h2>
+<ul>
+<li class="fragment"><p>If <span class="math inline">\(\mathbf{Y}= \left[\frac{D}{V} \exp(-\kappa_e x_i) \right] + \epsilon_i\)</span> model is intrinisically nonlinear and cannot transform to a linear model.</p></li>
+<li class="fragment"><p>need to use nonlinear least squares to estimate <span class="math inline">\(\boldsymbol{\beta}\)</span> and <span class="math inline">\(\sigma^2\)</span></p></li>
+<li class="fragment"><p>or MCMC to estimate the posterior distribution of <span class="math inline">\(\boldsymbol{\beta}\)</span> and <span class="math inline">\(\sigma^2\)</span></p></li>
 </ul>
 </section>
-<section id="alternative-motivation" class="slide level2">
-<h2>Alternative Motivation</h2>
-<ul>
-<li class="fragment"><p>If <span class="math inline">\(\hat{\boldsymbol{\beta}}\)</span> is unconstrained expect high variance with nearly singular <span class="math inline">\(\mathbf{X}_c\)</span> </p></li>
-<li class="fragment"><p>Control how large coefficients may grow <span class="math display">\[\arg \min_{\boldsymbol{\beta}} (\mathbf{Y}_c - \mathbf{X}_c \boldsymbol{\beta})^T (\mathbf{Y}_c - \mathbf{X}_c\boldsymbol{\beta})\]</span> subject to <span class="math display">\[ \sum \beta_j^2 \le t\]</span></p></li>
-<li class="fragment"><p>Equivalent Quadratic Programming Problem <span class="math display">\[\hat{\boldsymbol{\beta}}_{R} = \arg \min_{\boldsymbol{\beta}} \| \mathbf{Y}_c - \mathbf{X}_c \boldsymbol{\beta}\|^2 + \kappa^* \|\boldsymbol{\beta}\|^2\]</span></p></li>
-<li class="fragment"><p>different approaches to selecting <span class="math inline">\(\kappa^*\)</span> from frequentist ane Bayesian perspectives</p></li>
-</ul>
-</section>
-<section id="plot-of-constrained-problem" class="slide level2">
-<h2>Plot of Constrained Problem</h2>
+<section id="intrinsically-linear-model-nls" class="slide level2">
+<h2>Intrinsically Linear Model nls</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">y=</span>y, <span class="at">x=</span>x)</span>
+<span id="cb15-2"><a></a>logconc.nlm <span class="ot">=</span> <span class="fu">nls</span>( <span class="fu">log</span>(y) <span class="sc">~</span> <span class="fu">log</span>((<span class="dv">30</span><span class="sc">/</span>V)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>k<span class="sc">*</span>x)), <span class="at">data=</span>df, <span class="at">start=</span><span class="fu">list</span>(<span class="at">V=</span>vhat, <span class="at">k=</span>khat))</span>
+<span id="cb15-3"><a></a><span class="fu">summary</span>(logconc.nlm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Formula: log(y) ~ log((30/V) * exp(-k * x))
 
-<img data-src="ridge-penalized-loss.png" class="r-stretch"></section>
-<section id="generalized-ridge-regression" class="slide level2">
-<h2>Generalized Ridge Regression</h2>
+Parameters:
+              Estimate Std. Error t value Pr(&gt;|t|)
+V.(Intercept) 16.66331    7.11923   2.341 0.057796
+k.x            0.15211    0.02368   6.423 0.000673
+
+Residual standard error: 0.7411 on 6 degrees of freedom
+
+Number of iterations to convergence: 0 
+Achieved convergence tolerance: 4.056e-09</code></pre>
+</div>
+</div>
+</section>
+<section id="intrinsically-nonlinear-model" class="slide level2">
+<h2>Intrinsically Nonlinear Model</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Formula: y ~ (30/V) * exp(-k * x)
+
+Parameters:
+  Estimate Std. Error t value Pr(&gt;|t|)
+V 13.06506    0.60899   21.45 6.69e-07
+k  0.18572    0.01124   16.52 3.14e-06
+
+Residual standard error: 0.05126 on 6 degrees of freedom
+
+Number of iterations to convergence: 4 
+Achieved convergence tolerance: 7.698e-06</code></pre>
+</div>
+</div>
+</section>
+<section id="functions-of-interest" class="slide level2">
+<h2>Functions of Interest</h2>
+<p>Interest is in</p>
 <ul>
-<li class="fragment"><p>rather than a common penalty for all variables, consider a different penalty for each variable</p></li>
-<li class="fragment"><p>as a prior, we are assuming that the <span class="math inline">\(\boldsymbol{\beta}_j\)</span> are iid <span class="math inline">\(\textsf{N}(0, \frac{\kappa_j}{\phi})\)</span> so that the prior for <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(\textsf{N}(\mathbf{0}_p, \phi^{-1} \mathbf{K}^{-1})\)</span> where <span class="math inline">\(\mathbf{K}= \textsf{diag}(\kappa_1, \ldots, \kappa_p)\)</span></p></li>
-<li class="fragment"><p>hard enough to choose a single penalty, how to choose <span class="math inline">\(p\)</span> penalties?</p></li>
-<li class="fragment"><p>place independent priors on each of the <span class="math inline">\(\kappa_j\)</span>’s</p></li>
-<li class="fragment"><p>a hierarchical Bayes model</p></li>
-<li class="fragment"><p>if we can integrate out the <span class="math inline">\(\kappa_j\)</span>’s we have a new prior for <span class="math inline">\(\beta_j\)</span></p></li>
-<li class="fragment"><p>this leads to a new penalty!</p></li>
-<li class="fragment"><p>examples include the Lasso (Double Exponential Prior) and Double Pareto Priors</p></li>
+<li class="fragment"><p>clearance: <span class="math inline">\(V \kappa_e\)</span></p></li>
+<li class="fragment"><p>elimination half-life <span class="math inline">\(x_{1/2} = \log 2/\kappa_e\)</span></p></li>
+<li class="fragment"><p>Use properties of MLEs: asymptotically <span class="math inline">\(\hat{\boldsymbol{\beta}} \sim N\left(\boldsymbol{\beta},
+    I(\hat{\boldsymbol{\beta}})^{-1}\right)\)</span> </p></li>
+<li class="fragment"><p>Asymptotic Distributions</p></li>
+<li class="fragment"><p>Bayes obtain the posterior directly for parameters and functions of parameters!</p>
+<ul>
+<li class="fragment">Priors?</li>
+<li class="fragment">Constraints on Distributions?</li>
+<li class="fragment">Bayes Factor for testing normal vs log-normal models?</li>
+</ul></li>
+</ul>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li class="fragment">Optimal transformation for normality (MLE) depends on choice of mean function </li>
+<li class="fragment">May not be the same as the variance stabilizing transformation </li>
+<li class="fragment">Nonlinear Models as suggested by Theory or Generalized Linear Models are alternatives </li>
+<li class="fragment">``normal’’ estimates may be useful approximations for large <span class="math inline">\(p\)</span> or for starting values for more complex models (where convergence may be sensitive to starting values)</li>
 </ul>
 
 <div class="quarto-auto-generated-content">
