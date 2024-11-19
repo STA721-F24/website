@@ -12,7 +12,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Merlise Clyde">
-  <title>STA721-F24: Linear Models – Outliers and Robust Regression</title>
+  <title>STA721-F24: Linear Models – Lecture 23: Random Effects</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,71 +30,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -391,33 +326,33 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Conjecture {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
-  .Theorem {
-    --color1: #948bde;
-    --color2: #584eab;
-  }
   .Feature {
     --color1: #c0c0c0;
     --color2: #808080;
-  }
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
   }
   .DONE {
     --color1: #cce7b1;
     --color2: #86b754;
   }
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .Corollary {
+  .Theorem {
     --color1: #948bde;
     --color2: #584eab;
+  }
+  .Conjecture {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
   }
   </style>
 </head>
@@ -426,8 +361,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Outliers and Robust Regression</h1>
-  <p class="subtitle">STA 721: Lecture 20</p>
+  <h1 class="title">Lecture 23: Random Effects</h1>
+  <p class="subtitle">STA702</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -441,353 +376,225 @@ Merlise Clyde
 </div>
 
 </section>
-<section id="body-fat-data" class="slide level2">
-<h2>Body Fat Data</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="20-outliers_files/figure-revealjs/lm-1.png" class="quarto-figure quarto-figure-center" width="2100"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="20-outliers_files/figure-revealjs/lmsub-1.png" class="quarto-figure quarto-figure-center" width="2100"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-<p>Which analysis do we use? with Case 39 or not – or something different?</p>
-</section>
-<section id="cooks-distance" class="slide level2">
-<h2>Cook’s Distance</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">plot</span>(bodyfat.lm, <span class="at">which=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="models-with-a-categorical-variable" class="slide level2">
+<h2>Models with a Categorical Variable</h2>
+<ul>
+<li class="fragment"><p>Naive model (baseline) <span class="math display">\[ y_{ij} \overset{iid}{\sim}  N(\mu, \sigma^2) \]</span></p></li>
+<li class="fragment"><p><span class="math inline">\(j\)</span> <strong>grouping or blocking variable</strong> - schools, counties, etc (categorical)</p></li>
+<li class="fragment"><p><span class="math inline">\(i\)</span> observations within a block - students within schools, households within counties, etc</p></li>
+<li class="fragment"><p>Fixed Effects model: <span class="math display">\[  Y_{ij} \overset{ind}{\sim}  N(\mu_j, \sigma^2) \]</span></p></li>
+<li class="fragment"><p>Common reparameterization <span class="math display">\[Y_{ij} \overset{ind}{\sim}  N(\alpha + \beta_j, \sigma^2) \]</span></p></li>
+<li class="fragment"><p>Identifiability</p></li>
+</ul>
+<div class="footer">
 
 </div>
-<img data-src="20-outliers_files/figure-revealjs/cooksd-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2400"></section>
-<section id="options-for-handling-outliers" class="slide level2">
-<h2>Options for Handling Outliers</h2>
-<p>What are outliers?</p>
+</section>
+<section id="issue-with-fixed-effect-approach" class="slide level2">
+<h2>Issue with Fixed Effect Approach</h2>
 <ul>
-<li class="fragment"><p>Are there scientific grounds for eliminating the case?</p></li>
-<li class="fragment"><p>Test if the case has a different mean than population</p></li>
-<li class="fragment"><p>Report results with and without the case</p></li>
-<li class="fragment"><p>Model Averaging to Account for Model Uncertainty?</p></li>
-<li class="fragment"><p>Full model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \mathbf{I}_n\delta+ \epsilon\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\delta\)</span> is a <span class="math inline">\(n \times 1\)</span> vector; <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(p \times 1\)</span></p></li>
-<li class="fragment"><p>All observations have a potentially different mean!</p></li>
+<li class="fragment"><p>What if <span class="math inline">\(n_j\)</span>, number of observations per block, are small?</p></li>
+<li class="fragment"><p>Estimated uncertainty/variances are large based on MLE using group specific means</p></li>
+<li class="fragment"><p>What if blocks might be viewed as a sample from some larger population? Sample of schools? Sample of plots in the forest? etc</p></li>
+<li class="fragment"><p>May want inference about the larger population and say things about future blocks or groups (schools) !</p></li>
+<li class="fragment"><p>fixed effects do not allow us to say anything about blocks or groups not in our sample!</p></li>
+<li class="fragment"><p>how to address this?</p></li>
 </ul>
 </section>
-<section id="outliers-in-bayesian-regression" class="slide level2">
-<h2>Outliers in Bayesian Regression</h2>
+<section id="random-effects" class="slide level2">
+<h2>Random Effects</h2>
+<p><span class="math display">\[\begin{align*}
+Y_{ij} &amp; = \alpha + \beta_j + \epsilon_{ij}, \qquad \epsilon_{ij} \overset{iid}{\sim} N(0, \sigma^2) \\
+\beta_j &amp; \overset{iid}{\sim} N(0, \tau^2)
+\end{align*}\]</span></p>
 <ul>
-<li class="fragment"><p>Hoeting, Madigan and Raftery (in various permutations) consider the problem of simultaneous variable selection and outlier identification</p></li>
-<li class="fragment"><p>This is implemented in the package <code>BMA</code> in the function <code>MC3.REG</code></p></li>
-<li class="fragment"><p>This has the advantage that more than 2 points may be considered as outliers at the same time</p></li>
-<li class="fragment"><p>The function uses a Markov chain to identify both important variables and potential outliers, but is coded in Fortran so should run reasonably quickly.</p></li>
-<li class="fragment"><p>Can also use <code>BAS</code> or other variable selection programs</p></li>
+<li class="fragment">random effects <span class="math inline">\(\beta_j\)</span></li>
 </ul>
-</section>
-<section id="model-averaging-and-outliers" class="slide level2">
-<h2>Model Averaging and Outliers</h2>
-<ul>
-<li class="fragment"><p>Full model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \mathbf{I}_n\delta+ \epsilon\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(\delta\)</span> is a <span class="math inline">\(n \times 1\)</span> vector; <span class="math inline">\(\boldsymbol{\beta}\)</span> is <span class="math inline">\(p \times 1\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(2^n\)</span> submodels <span class="math inline">\(\gamma_i = 0 \Leftrightarrow \delta_i = 0\)</span></p></li>
-<li class="fragment"><p>If <span class="math inline">\(\gamma_i = 1\)</span> then case <span class="math inline">\(i\)</span> has a different mean ``mean shift’’ outliers</p></li>
-</ul>
-</section>
-<section id="mean-shift-variance-inflation" class="slide level2">
-<h2>Mean Shift <span class="math inline">\(=\)</span> Variance Inflation</h2>
-<ul>
-<li class="fragment"><p>Model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \mathbf{I}_n\delta+ \epsilon\)</span></p></li>
-<li class="fragment"><p>Prior <span class="math display">\[\begin{align}
-\qquad \delta_i \mid \gamma_i &amp; \sim N(0, V \sigma^2 \gamma_i) \\
-\qquad \gamma_i &amp; \sim  \textsf{Ber}(\pi)
-\end{align}
-\]</span></p></li>
-<li class="fragment"><p>Then <span class="math inline">\(\epsilon_i\)</span> given <span class="math inline">\(\sigma^2\)</span> is independent of <span class="math inline">\(\delta_i\)</span> and <span class="math display">\[\epsilon^*_i \equiv \epsilon_i + \delta_i \mid \sigma^2 \left\{
-\begin{array}{llc}
-N(0, \sigma^2) &amp; wp &amp;(1 - \pi) \\
-N(0, \sigma^2(1 + V)) &amp; wp &amp; \pi
-\end{array}
-\right.
-\]</span></p></li>
-<li class="fragment"><p>Model <span class="math inline">\(\mathbf{Y}= \mathbf{X}\boldsymbol{\beta}+ \epsilon^*\)</span> <strong>variance inflation</strong></p></li>
-<li class="fragment"><p><span class="math inline">\(V+1 = K = 7\)</span> in the paper by Hoeting et al.&nbsp;package <code>BMA</code></p></li>
-</ul>
-</section>
-<section id="simultaneous-outlier-and-variable-selection" class="slide level2">
-<h2>Simultaneous Outlier and Variable Selection</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(BMA)</span>
-<span id="cb2-2"><a></a>bodyfat.bma <span class="ot">=</span> <span class="fu">MC3.REG</span>(<span class="at">all.y =</span> bodyfat<span class="sc">$</span>Bodyfat, <span class="at">all.x =</span> <span class="fu">as.matrix</span>(bodyfat<span class="sc">$</span>Abdomen),</span>
-<span id="cb2-3"><a></a>                      <span class="at">num.its =</span> <span class="dv">10000</span>, <span class="at">outliers =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-4"><a></a><span class="fu">summary</span>(bodyfat.bma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-MC3.REG(all.y = bodyfat$Bodyfat, all.x = as.matrix(bodyfat$Abdomen),     num.its = 10000, outliers = TRUE)
-
-Model parameters: PI = 0.02 K = 7 nu = 2.58 lambda = 0.28 phi = 2.85
-
-  15  models were selected
- Best  5  models (cumulative posterior probability =  0.9939 ): 
-
-           prob     model 1   model 2   model 3   model 4   model 5 
-variables                                                           
-  all.x    1         x         x         x         x         x      
-outliers                                                            
-  39       0.94932   x         x         .         x         .      
-  204      0.04117   .         .         .         x         .      
-  207      0.10427   .         x         .         .         x      
-                                                                    
-post prob           0.814572  0.095383  0.044490  0.035024  0.004385</code></pre>
-</div>
-</div>
-</section>
-<section id="bas-with-truncated-prior" class="slide level2">
-<h2>BAS with Truncated Prior</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>bodyfat.w.out <span class="ot">=</span> <span class="fu">cbind</span>(bodyfat[, <span class="fu">c</span>(<span class="st">"Bodyfat"</span>, <span class="st">"Abdomen"</span>)],</span>
-<span id="cb4-2"><a></a>                      <span class="fu">diag</span>(<span class="fu">nrow</span>(bodyfat)))</span>
-<span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a>bodyfat.bas <span class="ot">=</span> <span class="fu">bas.lm</span>(Bodyfat <span class="sc">~</span> ., <span class="at">data=</span>bodyfat.w.out, </span>
-<span id="cb4-5"><a></a>                     <span class="at">prior=</span><span class="st">"hyper-g-n"</span>, <span class="at">a=</span><span class="dv">3</span>, <span class="at">method=</span><span class="st">"MCMC"</span>,</span>
-<span id="cb4-6"><a></a>                     <span class="at">MCMC.it=</span><span class="dv">2</span><span class="sc">^</span><span class="dv">18</span>, </span>
-<span id="cb4-7"><a></a>                     <span class="at">modelprior=</span><span class="fu">tr.beta.binomial</span>(<span class="dv">1</span>,<span class="dv">254</span>, <span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
-<img data-src="20-outliers_files/figure-revealjs/basimage-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3000"></section>
-<section id="change-error-assumptions" class="slide level2">
-<h2>Change Error Assumptions</h2>
-<p>Use a Student-t error model <span class="math display">\[\begin{eqnarray*}
-Y_i &amp; \mathrel{\mathop{\sim}\limits^{\rm ind}}&amp; t(\nu, \alpha + \beta x_i, 1/\phi) \\
-L(\alpha, \beta,\phi) &amp; \propto &amp; \prod_{i = 1}^n \phi^{1/2} \left(1 +
-\frac{\phi (y_i - \alpha - \beta x_i)^2}{\nu}\right)^{-\frac{(\nu +
-  1)}{2}}
-\end{eqnarray*}\]</span></p>
-<ul>
-<li class="fragment"><p>Use Prior <span class="math inline">\(p(\alpha, \beta, \phi) \propto 1/\phi\)</span> </p></li>
-<li class="fragment"><p>Posterior distribution <span class="math display">\[ p(\alpha, \beta, \phi \mid Y) \propto \phi^{n/2 - 1} \prod_{i = 1}^n  \left(1 +
-\frac{\phi (y_i - \alpha - \beta x_i)^2}{\nu}\right)^{-\frac{(\nu +
-1)}{2}}\]</span></p></li>
-</ul>
-</section>
-<section id="bounded-influence" class="slide level2">
-<h2>Bounded Influence</h2>
-<ul>
-<li class="fragment"><p>Treat <span class="math inline">\(\sigma^2\)</span> as given, then <strong>influence</strong> of individual observations on the posterior distribution of <span class="math inline">\(\boldsymbol{\beta}\)</span> in the model where <span class="math inline">\(\textsf{E}[\mathbf{Y}_i] = \mathbf{x}_i^T\boldsymbol{\beta}\)</span> is investigated through the score function: <span class="math display">\[
-\frac{d} {d \boldsymbol{\beta}} \log p (\boldsymbol{\beta}\mid \mathbf{Y}) = \frac{d} {d \boldsymbol{\beta}} \log p(\boldsymbol{\beta}) +  \sum_{i = 1}^n \mathbf{x}_i g(y_i - \mathbf{x}^T_i \boldsymbol{\beta})
-\]</span></p></li>
-<li class="fragment"><p>influence function of the error distribution (unimodal, continuous, differentiable, symmetric) <span class="math display">\[ g(\boldsymbol{\epsilon}) = - \frac{d} {d \boldsymbol{\epsilon}} \log p(\boldsymbol{\epsilon})
-\]</span></p></li>
-<li class="fragment"><p>An outlying observation <span class="math inline">\(y_j\)</span> is accommodated if the posterior distribution for <span class="math inline">\(p(\boldsymbol{\beta}\mid \mathbf{Y}\)</span> converges to <span class="math inline">\(p(\boldsymbol{\beta}\mid \mathbf{Y}_{(i)})\)</span> for all <span class="math inline">\(\boldsymbol{\beta}\)</span> as <span class="math inline">\(|\mathbf{Y}_i| \to \infty\)</span>.</p></li>
-<li class="fragment"><p>Requires error models with influence functions that go to zero such as the Student <span class="math inline">\(t\)</span> (O’Hagan, 1979, West 1984, Hamura 2023)</p></li>
-</ul>
-</section>
-<section id="choice-of-df-for-student-t" class="slide level2">
-<h2>Choice of df for Student-<span class="math inline">\(t\)</span></h2>
-<p>Investigate the Score function <span class="math display">\[
-\frac{d} {d \boldsymbol{\beta}} \log p (\boldsymbol{\beta}\mid \mathbf{Y}) = \frac{d} {d \boldsymbol{\beta}} \log p(\boldsymbol{\beta}) +  \sum_{i = 1}^n \mathbf{x}_i g(y_i - \mathbf{x}^T_i \boldsymbol{\beta})
-\]</span></p>
 <div class="fragment">
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="20-outliers_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="2700"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment"><p>Score function for <span class="math inline">\(t\)</span> with <span class="math inline">\(\alpha\)</span> degrees of freedom has turning points at <span class="math inline">\(\pm \sqrt{\alpha}\)</span></p></li>
-<li class="fragment"><p><span class="math inline">\(g'(\boldsymbol{\epsilon})\)</span> is negative when <span class="math inline">\(\boldsymbol{\epsilon}^2 &gt; \alpha\)</span> (standardized errors)</p></li>
-<li class="fragment"><p>Contribution of observation to information matrix is negative and the observation is doubtful</p></li>
-<li class="fragment"><p>Suggest taking <span class="math inline">\(\alpha = 8\)</span> or <span class="math inline">\(\alpha = 9\)</span> to reject errors larger than <span class="math inline">\(\sqrt{8}\)</span> or <span class="math inline">\(3\)</span> sd.</p></li>
-</ul>
-</div></div>
-</div>
-</section>
-<section id="scale-mixtures-of-normal-representation" class="slide level2">
-<h2>Scale-Mixtures of Normal Representation</h2>
-<ul>
-<li class="fragment"><p>Latent Variable Model <span class="math display">\[\begin{eqnarray*}
-Y_i \mid \alpha, \beta, \phi, \lambda &amp; \mathrel{\mathop{\sim}\limits^{\rm ind}}&amp; N(\alpha + \beta x_i,
-\frac{1}{\phi \lambda_i}) \\
-\lambda_i &amp; \mathrel{\mathop{\sim}\limits^{\rm iid}}&amp; G(\nu/2, \nu/2) \\
-p(\alpha, \beta, \phi) &amp; \propto &amp; 1/\phi  
-\end{eqnarray*}\]</span></p></li>
-<li class="fragment"><p>Joint Posterior Distribution: <span class="math display">\[\begin{eqnarray*}
-p((\alpha, \beta, \phi, \lambda_1, \ldots, \lambda_n \mid Y)
-\propto \,  &amp; &amp;
-\phi^{n/2} \exp\left\{ - \frac{\phi}{2} \sum \lambda_i(y_i - \alpha  - \beta x_i)^2 \right\} \times \\
-&amp;  &amp; \phi^{-1} \\
-&amp;  &amp;\prod_{i=1}^n \lambda_i^{\nu/2 - 1} \exp(- \lambda_i \nu/2)
-\end{eqnarray*}\]</span></p></li>
-<li class="fragment"><p>Integrate out ``latent’’ <span class="math inline">\(\lambda\)</span>’s to obtain marginal <span class="math inline">\(t\)</span> distribution</p></li>
-</ul>
-</section>
-<section id="jags---just-another-gibbs-sampler" class="slide level2">
-<h2>JAGS - Just Another Gibbs Sampler</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>rr.model <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb5-2"><a></a>  df <span class="ot">&lt;-</span> <span class="dv">9</span></span>
-<span id="cb5-3"><a></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
-<span id="cb5-4"><a></a>    mu[i] <span class="ot">&lt;-</span> alpha0 <span class="sc">+</span> alpha1<span class="sc">*</span>(X[i] <span class="sc">-</span> Xbar)</span>
-<span id="cb5-5"><a></a>    lambda[i] <span class="sc">~</span> <span class="fu">dgamma</span>(df<span class="sc">/</span><span class="dv">2</span>, df<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb5-6"><a></a>    prec[i] <span class="ot">&lt;-</span> phi<span class="sc">*</span>lambda[i]</span>
-<span id="cb5-7"><a></a>    Y[i] <span class="sc">~</span> <span class="fu">dnorm</span>(mu[i], prec[i])</span>
-<span id="cb5-8"><a></a>  }</span>
-<span id="cb5-9"><a></a>  phi <span class="sc">~</span> <span class="fu">dgamma</span>(<span class="fl">1.0E-6</span>, <span class="fl">1.0E-6</span>)</span>
-<span id="cb5-10"><a></a>  alpha0 <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="dv">0</span>, <span class="fl">1.0E-6</span>)</span>
-<span id="cb5-11"><a></a>  alpha1 <span class="sc">~</span> <span class="fu">dnorm</span>(<span class="dv">0</span>,<span class="fl">1.0E-6</span>)</span>
-<span id="cb5-12"><a></a>  beta0 <span class="ot">&lt;-</span> alpha0 <span class="sc">-</span> alpha1<span class="sc">*</span>Xbar  <span class="co"># transform back</span></span>
-<span id="cb5-13"><a></a>  beta1 <span class="ot">&lt;-</span> alpha1</span>
-<span id="cb5-14"><a></a>  sigma <span class="ot">&lt;-</span> <span class="fu">pow</span>(phi, <span class="sc">-</span>.<span class="dv">5</span>)</span>
-<span id="cb5-15"><a></a>  mu34 <span class="ot">&lt;-</span> beta0 <span class="sc">+</span> beta1<span class="sc">*</span><span class="fl">2.54</span><span class="sc">*</span><span class="dv">34</span>  <span class="co">#mean for a man w/ a 34 in waist</span></span>
-<span id="cb5-16"><a></a>  y34 <span class="sc">~</span> <span class="fu">dt</span>(mu34,phi, df)   <span class="co"># integrate out lambda_34 </span></span>
-<span id="cb5-17"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="callout callout-warning callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning! Normals and Student-t are parameterized in terms of precisions!</strong></p>
+<p><strong>Note: Don’t confuse random effect distributions with prior distributions!</strong></p>
 </div>
 <div class="callout-content">
 
 </div>
 </div>
 </div>
-</section>
-<section id="what-output-to-save" class="slide level2">
-<h2>What output to Save?</h2>
-<p>The parameters to be monitored and returned to <code>R</code> are specified with the variable <code>parameters</code></p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>parameters <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"beta0"</span>, <span class="st">"beta1"</span>, <span class="st">"sigma"</span>, <span class="st">"mu34"</span>, <span class="st">"y34"</span>, <span class="st">"lambda[39]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <ul>
-<li class="fragment"><p>Use of <code>&lt;-</code> for assignment for parameters that calculated from the other parameters. (See R-code for definitions of these parameters.)</p></li>
-<li class="fragment"><p><code>mu34</code> and <code>y34</code> are the mean functions and predictions for a man with a 34in waist.</p></li>
-<li class="fragment"><p><code>lambda[39]</code> saves only the 39th case of <span class="math inline">\(\lambda\)</span></p></li>
-<li class="fragment"><p>To save a whole vector (for example all lambdas, just give the vector name)</p></li>
+<li class="fragment"><p>Random effect distributions should be viewed as part of the model specification</p></li>
+<li class="fragment"><p>We’ve specified the likelihood in a hierarchical manner to induce desirable structure</p></li>
+<li class="fragment"><p>unknown parameters are population parameters <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\tau\)</span> and <span class="math inline">\(\sigma^2\)</span> (fixed)</p></li>
+<li class="fragment"><p>Bayesians put prior distributions on <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\tau\)</span> and <span class="math inline">\(\sigma^2\)</span>; frequentists don’t!</p></li>
+</ul>
+</div>
+</section>
+<section id="equivalent-model" class="slide level2">
+<h2>Equivalent Model</h2>
+<p><span class="math display">\[Y_{j} = (y_{1j}, y_{2j}, \ldots, y_{n_j j})\]</span> <span class="math display">\[y_j  \mid  \alpha, \sigma^2, \tau^2 \mathrel{\mathop{\sim}\limits^{\rm ind}}N_{n_j}\left( \mathbf{1}_{n_j} \alpha, \left(
+\begin{array}{cccc}
+\sigma^2 + \tau^2 &amp; \tau^2 &amp; \ldots &amp; \tau^2 \\
+\tau^2 &amp; \ddots &amp;    &amp; \tau^2  \\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+\tau^2 &amp; \ldots &amp; \tau^2 &amp; \sigma^2 + \tau^2 \end{array}\right) \right)\]</span></p>
+<ul>
+<li class="fragment"><p><strong>Intraclass Correlation</strong> within-block correlation constant</p></li>
+<li class="fragment"><p>algorithmically we can use either the latent variable model (keep <span class="math inline">\(\boldsymbol{\beta}\)</span>) or the collapsed (marginal) model for inferences;</p></li>
+<li class="fragment"><p>latent variable is easier to work with for Bayes or MCMC for MLE!</p></li>
+<li class="fragment"><p>MLEs of <span class="math inline">\(\tau\)</span> on boundary in some cases argues for Bayes! (Meta-Analysis)</p></li>
 </ul>
 </section>
-<section id="running-jags-from-r" class="slide level2">
-<h2>Running JAGS from <code>R</code></h2>
-<p>Install jags from <a href="https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/">sourceforge</a></p>
+<section id="simple-gibbs-sampler" class="slide level2">
+<h2>Simple Gibbs Sampler</h2>
+<ul>
+<li class="fragment"><p>Reparameterize <span class="math inline">\(\theta  = (\alpha, \phi_\tau = 1/\tau^2, \phi_\sigma = 1/\sigma^2, \beta_1, \ldots, \beta_J)\)</span></p></li>
+<li class="fragment"><p>Priors (parameters Greek letters, hyperparameters Roman) <span class="math display">\[\begin{align*}
+\alpha &amp; \sim \textsf{N}(a_0, 1/P_0) \\
+\phi_\tau &amp; \sim \textsf{Gamma}(a_\tau/2, b_\tau/2) \\
+\phi_\sigma  &amp; \sim  \textsf{Gamma}(a_\sigma/2, b_\sigma/2)
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>Full Conditional for <span class="math inline">\(\alpha\)</span> <span class="math display">\[\begin{align*}\alpha \mid \tau^2, \sigma^2, \beta_1, \ldots \beta_n &amp; \sim \textsf{N}(a_n, 1/P_n) \\
+P_n = \left(P_0 + \sum_j n_{j} \phi_\sigma  \right) &amp;  \quad
+a_n  = \frac{a_0 P_0 +  \sum_j n_j \bar{y}^*_j }{P_n} \\
+\bar{y}^*_j  &amp; \equiv \frac{\sum_i (y_{ij} - \beta_j)}{n_j}
+\end{align*}\]</span></p></li>
+</ul>
+</section>
+<section id="full-conditionals-continued" class="slide level2">
+<h2>Full Conditionals Continued</h2>
+<p><span class="math display">\[\begin{align*}
+\phi_\sigma \mid \alpha, \phi_\tau, \beta_1, \ldots, \beta_J \sim  \textsf{Gamma}\left(\frac{a_\sigma + \sum_j n_j}{2}, \frac{b_\sigma + \sum_{ij} (y_{ij} - \alpha - \beta_j)^2}{2} \right)
+\end{align*}\]</span></p>
 <div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">library</span>(R2jags)</span>
-<span id="cb7-2"><a></a></span>
-<span id="cb7-3"><a></a><span class="co"># Create a data list with inputs for Winpost/Jags</span></span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a>bf.data <span class="ot">=</span> <span class="fu">list</span>(<span class="at">Y =</span> bodyfat<span class="sc">$</span>Bodyfat, <span class="at">X=</span>bodyfat<span class="sc">$</span>Abdomen)</span>
-<span id="cb7-6"><a></a>bf.data<span class="sc">$</span>n <span class="ot">=</span> <span class="fu">length</span>(bf.data<span class="sc">$</span>Y)</span>
-<span id="cb7-7"><a></a>bf.data<span class="sc">$</span>Xbar <span class="ot">=</span> <span class="fu">mean</span>(bf.data<span class="sc">$</span>X)</span>
-<span id="cb7-8"><a></a></span>
-<span id="cb7-9"><a></a><span class="co"># run jags</span></span>
-<span id="cb7-10"><a></a>bf.sim <span class="ot">=</span> <span class="fu">jags</span>(bf.data, <span class="at">inits=</span><span class="cn">NULL</span>, <span class="at">par=</span>parameters,</span>
-<span id="cb7-11"><a></a>              <span class="at">model=</span>rr.model, <span class="at">n.chains=</span><span class="dv">2</span>, <span class="at">n.iter=</span><span class="dv">20000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p><span class="math display">\[\begin{align*}\beta_j \mid \alpha, \tau, \sigma^2  &amp; \mathrel{\mathop{\sim}\limits^{\rm ind}}\textsf{N}( \hat{b}_j, \hat{P}_{\beta_j}^{-1}) \\
+\hat{P}_{\beta_j} &amp;= \left(\phi_\tau +  n_j \phi_\sigma \right) \\
+\hat{b}_j &amp; = \frac{\phi_{\tau} +  n_j \phi_\sigma \bar{y}^{**}_j }{\hat{P}_{\beta_j}} \\
+\bar{y}^{**}_j  &amp; \equiv \frac{\sum_i (y_{ij} - \alpha)}{n_j}
+\end{align*}\]</span></p>
 </div>
 <div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># create an MCMC object </span></span>
-<span id="cb8-2"><a></a><span class="fu">library</span>(coda)</span>
-<span id="cb8-3"><a></a>bf.post <span class="ot">=</span> <span class="fu">as.mcmc</span>(bf.sim<span class="sc">$</span>BUGSoutput<span class="sc">$</span>sims.matrix)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p><span class="math display">\[\begin{align*}
+\phi_\tau \mid \alpha, \sigma^2, \beta_1, \ldots, \beta_J \sim  \textsf{Gamma}\left(\frac{a_\tau +  J}{2}, \frac{b_\tau+ \sum_j \beta_j^2}{2} \right)
+\end{align*}\]</span></p>
 </div>
 </section>
-<section id="posterior-distributions" class="slide level2">
-<h2>Posterior Distributions</h2>
-
-<img data-src="20-outliers_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3000"></section>
-<section id="posterior-of-lambda_39" class="slide level2">
-<h2>Posterior of <span class="math inline">\(\lambda_{39}\)</span></h2>
-
-<img data-src="20-outliers_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" width="2400"></section>
-<section id="comparison" class="slide level2">
-<h2>Comparison</h2>
-<p>95% Confidence/Credible Intervals for <span class="math inline">\(\beta\)</span></p>
+<section id="complications-relative-to-usual-regression" class="slide level2">
+<h2>Complications Relative to Usual Regression</h2>
+<ol type="1">
+<li class="fragment"><p>Prior Choice</p></li>
+<li class="fragment"><p>Mixing and its dependence on parameterization</p></li>
+</ol>
+<ul>
+<li class="fragment"><p>Early recommendation after Gibbs Sampler used non-informative priors <span class="math display">\[\begin{align*}
+\pi(\alpha) &amp; \propto 1 \\
+\pi(\phi_\sigma) &amp; \sim \textsf{Gamma}(\epsilon/2, \epsilon/2) \qquad \pi(\phi_\sigma ) \propto 1/\phi_\sigma \text{ as } \epsilon \to 0 \\
+\pi(\phi_\tau) &amp; \sim \textsf{Gamma}(\epsilon/2, \epsilon/2)  \qquad  \pi(\phi_\tau) \propto 1/\phi_\tau  \text{ as } \epsilon \to 0
+\end{align*}\]</span></p></li>
+<li class="fragment"><p>Are full conditionals proper ?</p></li>
+<li class="fragment"><p>Is joint posterior proper ?</p></li>
+</ul>
+</section>
+<section id="mcmc-and-improper-priors" class="slide level2">
+<h2>MCMC and Improper Priors</h2>
+<ul>
+<li class="fragment"><p>proper full conditionals even with improper priors</p></li>
+<li class="fragment"><p>but joint is improper !</p></li>
+<li class="fragment"><p>MCMC won’t converge to the stationary distribution (doesn’t exist)</p></li>
+<li class="fragment"><p>may not notice it!</p></li>
+<li class="fragment"><p><a href="https://www.jstor.org/stable/2283247">Hill (1965)</a> considered the one-way anova model and showed impropriety for <span class="math inline">\(p(\tau^2) \propto 1/\tau^2\)</span></p></li>
+<li class="fragment"><p><a href="https://www.jstor.org/stable/2291572">Hobart &amp; Casella (1996)</a> provide conditions on improper priors leading to proper posteriors in more general random and mixed effects models</p></li>
+</ul>
+</section>
+<section id="diffuse-but-proper" class="slide level2">
+<h2>Diffuse But Proper</h2>
+<p><span class="math display">\[\begin{align*}
+\alpha &amp; \sim N(0, 10^{-6})\\
+\pi(\phi_\sigma) &amp; \sim \textsf{Gamma}(10^{-6}, 10^{-6} )\\
+\pi(\phi_\tau) &amp; \sim \textsf{Gamma}(10^{-6}, 10^{-6} )
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment">Nearly improper priors may lead to terrible performance! highly sensitive to just how vague the prior is! (Domains of attraction)</li>
+</ul>
+<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: right;">2.5 %</th>
-<th style="text-align: right;">97.5 %</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">lm all</td>
-<td style="text-align: right;">0.5750739</td>
-<td style="text-align: right;">0.6875349</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">robust bayes</td>
-<td style="text-align: right;">0.5974085</td>
-<td style="text-align: right;">0.7186084</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">lm w/out 39</td>
-<td style="text-align: right;">0.6144288</td>
-<td style="text-align: right;">0.7294781</td>
-</tr>
-</tbody>
-</table>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="23-random-effects_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center" width="3000"></p>
+</figure>
 </div>
 </div>
+</div>
+</div>
+</section>
+<section id="alternative-priors" class="slide level2">
+<h2>Alternative Priors</h2>
+<p><span class="math display">\[\begin{align*}
+y_{ij} \mid \alpha, \beta_1, \ldots \beta_J, \phi_\sigma^2 &amp; \mathrel{\mathop{\sim}\limits^{\rm ind}}\textsf{N}(\alpha + \beta_j, 1/\phi_\sigma^2) \\
+p(\alpha, \phi_\sigma) &amp; \propto 1/\phi_\sigma \\
+\beta_j  \mid \tau &amp; \overset{iid}{\sim} \textsf{N}(0, \tau^2)
+\end{align*}\]</span></p>
 <ul>
-<li class="fragment"><p>Results intermediate without having to remove any observations!</p></li>
-<li class="fragment"><p>Case 39 down weighted by <span class="math inline">\(\lambda_{39}\)</span> in posterior for <span class="math inline">\(\beta\)</span></p></li>
-<li class="fragment"><p>Under prior <span class="math inline">\(E[\lambda_{i}] = 1\)</span></p></li>
-<li class="fragment"><p>large residuals lead to smaller <span class="math inline">\(\lambda\)</span> <span class="math display">\[\lambda_j \mid \text{rest}, Y \sim G \left(\frac{\nu + 1}{2}, \frac{\phi(y_j - \alpha -
-\beta x_j)^2 + \nu}{2} \right)\]</span></p></li>
+<li class="fragment"><p><a href="https://projecteuclid.org/journals/bayesian-analysis/volume-1/issue-3/Prior-distributions-for-variance-parameters-in-hierarchical-models-comment-on/10.1214/06-BA117A.full">Gelman 2006</a> in a discussion of Browne &amp; Draper paper in Bayesian Analysis recommended priors on random effect standard deviation <span class="math inline">\(\tau\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\pi(\tau ) \propto 1(\tau &gt; 0)\)</span> (improper prior on sd)</p></li>
+<li class="fragment"><p><span class="math inline">\(\pi(\tau ) \propto 1(\tau &gt; 0)\textsf{N}(0,1)\)</span> folded standard normal (half-normal)</p></li>
+<li class="fragment"><p><span class="math inline">\(\pi(\tau ) \propto 1(\tau &gt; 0)\textsf{N}(0,1/\psi)  \qquad \psi \sim \textsf{Gamma}(\nu/2, \nu/2)\)</span> leads to a folded t or half t with <span class="math inline">\(\nu\)</span> degrees of freedom marginally</p></li>
+<li class="fragment"><p>half-Cauchy is a special case of half-t with <span class="math inline">\(\nu = 1\)</span></p></li>
 </ul>
 </section>
-<section id="prior-distributions-on-parameters" class="slide level2">
-<h2>Prior Distributions on Parameters</h2>
+<section id="proper-posterior" class="slide level2">
+<h2>Proper Posterior ?</h2>
+<p>Integrate out <span class="math inline">\(\beta_j\)</span> and work with<br>
+<span class="math display">\[\pi(\mu, \tau, \sigma^2 \mid y) \propto \pi(\mu, \tau, \sigma^2) \prod_{j=1}^J \textsf{N}\left(y_{j}; \mathbf{1}_{n_j} \alpha, \left(
+\begin{array}{cccc}
+\sigma^2 + \tau^2 &amp; \tau^2 &amp; \ldots &amp; \tau^2 \\
+\tau^2 &amp; \ddots &amp;    &amp; \tau^2  \\
+\vdots &amp; &amp; \ddots &amp; \vdots \\
+\tau^2 &amp; \ldots &amp; \tau^2 &amp; \sigma^2 + \tau^2 \end{array}\right) \right)\]</span></p>
 <ul>
-<li class="fragment"><p>As a general recommendation, the prior distribution should have ``heavier’’ tails than the likelihood</p></li>
-<li class="fragment"><p>with <span class="math inline">\(t_9\)</span> errors use a <span class="math inline">\(t_\alpha\)</span> with <span class="math inline">\(\alpha &lt; 9\)</span></p></li>
-<li class="fragment"><p>also represent via scale mixture of normals</p></li>
-<li class="fragment"><p>Horseshoe, Double Pareto, Cauchy all have heavier tails</p></li>
+<li class="fragment">take <span class="math inline">\(\pi(\mu, \tau, \sigma^2) \propto \sigma^{-2} \, \textsf{C}^+(\tau; 0, 1)\)</span></li>
+</ul>
+<div class="fragment">
+<p><strong>OR</strong></p>
+<ul>
+<li class="fragment"><p>take <span class="math inline">\(\pi(\mu, \tau, \sigma^2) \propto \sigma^{-2}\)</span> (note prior on standard deviation <span class="math inline">\(\tau\)</span>)</p></li>
+<li class="fragment"><p>Show that joint posterior is proper</p></li>
+</ul>
+</div>
+</section>
+<section id="propriety" class="slide level2">
+<h2>Propriety</h2>
+<ul>
+<li class="fragment"><p>expression for marginal likelihood requires determinant and inverse of intra-class correlation matrix!</p></li>
+<li class="fragment"><p>Write covariance as <span class="math inline">\(\sigma^2 \mathbf{I}_{n_j} + \tau^2 n_j \mathbf{P}_{\mathbf{1}_{n_j}}\)</span> and find spectral decomposition <span class="math display">\[\begin{align}
+\sigma^2 \mathbf{I}_{n_j} + \tau^2 n_j \mathbf{P}_{\mathbf{1}_{n_j}}  &amp; =
+\mathbf{U}[\sigma^2 \mathbf{I}_{n_j} + \tau^2 n_j \text{diag}(1, 0 , \ldots, 0)] \mathbf{U}^T\\
+(\sigma^2 \mathbf{I}_{n_j} + \tau^2 n_j \mathbf{P}_{\mathbf{1}_{n_j}} )^{-1}  &amp; = \frac{1}{\sigma^2} (\mathbf{I}_{n_j} + \frac{\tau^2 n_j}{\sigma^2 + \tau^2 n_j} \mathbf{P}_{\mathbf{1}_{n_j}})
+\end{align}\]</span></p></li>
+<li class="fragment"><p>integrate out <span class="math inline">\(\alpha\)</span> (messy completing the square)! see <a href="https://www.jstor.org/stable/2283247">Hill 1965</a> Equation 3.</p></li>
+<li class="fragment"><p>consider conditional and joint distributions from <span class="math inline">\(1/\sigma^2\)</span> and <span class="math inline">\(\tau\)</span></p></li>
+<li class="fragment"><p>determine if integrals are finite (what happens at <span class="math inline">\(\tau\)</span> near 0 ?)</p></li>
+<li class="fragment"><p>special case when <span class="math inline">\(n_j\)</span> are all equal is much simpler!</p></li>
 </ul>
 </section>
-<section id="summary" class="slide level2">
-<h2>Summary</h2>
+<section id="bayes-estimates-of-variances" class="slide level2">
+<h2>Bayes Estimates of Variances</h2>
 <ul>
-<li class="fragment"><p>Classical diagnostics useful for EDA (checking data, potential outliers/influential points) or posterior predictive checks</p></li>
-<li class="fragment"><p>BMA/BVS and Bayesian robust regression avoid interactive decision making about outliers</p></li>
-<li class="fragment"><p>Robust Regression (Bayes) can still identify outliers through distribution on weights</p></li>
-<li class="fragment"><p>continuous versus mixture distribution on scale parameters</p></li>
-<li class="fragment"><p>Other mixtures (sub populations?) on scales and <span class="math inline">\(\boldsymbol{\beta}\)</span>?</p></li>
-<li class="fragment"><p>Be careful about what predictors or transformations are used in the model as some outliers may be a result of model misspecification!</p></li>
+<li class="fragment"><p>Avoids issues when estimate of variance is on the boundary of the parameter space</p></li>
+<li class="fragment"><p>Do not have to use asymptotics to construct CI!</p></li>
+<li class="fragment"><p>full uncertainty propagation</p></li>
+<li class="fragment"><p>predictive distributions for future data (avoid plug in estimates of variance components</p></li>
+<li class="fragment"><p>Gelman (2006) recommends half-t if the number of groups is small or uniform but uniform on the standard deviation <span class="math inline">\(\tau\)</span> does lead to an improper posterior if <span class="math inline">\(J \leq 3\)</span> (typically need larger number of groups)</p></li>
+<li class="fragment"><p>Hobart &amp; Casella (1996) provides more rigorous conditions with improper priors</p></li>
 </ul>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../img/icon.png" class="slide-logo"></p>
 <div class="footer footer-default">
-<p><a href="https://sta702-F23.github.io/website/" class="uri">https://sta702-F23.github.io/website/</a></p>
+<p><a href="https://sta721-F24.github.io/website/" class="uri">https://sta721-F24.github.io/website/</a></p>
 </div>
 </div>
 </section>

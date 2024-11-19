@@ -391,15 +391,7 @@
   <link href="../../site_libs/font-awesome/css/all.min.css" rel="stylesheet">
   <link href="../../site_libs/font-awesome/css/v4-shims.min.css" rel="stylesheet">
   <style>
-  .Definition {
-    --color1: #d999d3;
-    --color2: #a01793;
-  }
-  .Feature {
-    --color1: #c0c0c0;
-    --color2: #808080;
-  }
-  .Corollary {
+  .Conjecture {
     --color1: #948bde;
     --color2: #584eab;
   }
@@ -407,17 +399,25 @@
     --color1: #948bde;
     --color2: #584eab;
   }
-  .Conjecture {
-    --color1: #948bde;
-    --color2: #584eab;
+  .DONE {
+    --color1: #cce7b1;
+    --color2: #86b754;
   }
   .TODO {
     --color1: #e7b1b4;
     --color2: #8c3236;
   }
-  .DONE {
-    --color1: #cce7b1;
-    --color2: #86b754;
+  .Corollary {
+    --color1: #948bde;
+    --color2: #584eab;
+  }
+  .Definition {
+    --color1: #d999d3;
+    --color2: #a01793;
+  }
+  .Feature {
+    --color1: #c0c0c0;
+    --color2: #808080;
   }
   </style>
 </head>
@@ -712,7 +712,7 @@ Model 2: log(brain) ~ log(body) + I(row.names(Animals) == "Triceratops") +
 <ul>
 <li class="fragment"><p>If <span class="math inline">\(Y - \mu\)</span> (approximately) <span class="math inline">\(N(0, h(\mu))\)</span></p></li>
 <li class="fragment"><p>Delta Method implies that <span class="math display">\[g(Y) \stackrel{\cdot}{\sim}\textsf{N}( g(\mu),  g'(\mu)^2 h(\mu))\]</span></p></li>
-<li class="fragment"><p>Find function <span class="math inline">\(g\)</span> such that <span class="math inline">\(g'(\mu)^2/h(\mu)\)</span> is constant <span class="math display">\[g(Y) \sim N(g(\mu), c)\]</span></p></li>
+<li class="fragment"><p>Find function <span class="math inline">\(g\)</span> such that <span class="math inline">\(g'(\mu)^2 h(\mu)\)</span> is constant <span class="math display">\[g(Y) \sim N(g(\mu), c)\]</span></p></li>
 <li class="fragment"><p>Poisson Counts (need <span class="math inline">\(Y &gt; 3\)</span>), <span class="math inline">\(g\)</span> is the square root transformation</p></li>
 <li class="fragment"><p>Binomial: <span class="math inline">\(\arcsin(\sqrt{Y})\)</span></p></li>
 </ul>
