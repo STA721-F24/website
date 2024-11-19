@@ -367,7 +367,7 @@ $$\begin{align}
 
 ## Bayes Estimates of Variances
 
-- Avoids issues when estimate of variance is on the boundary of the parmaeter space
+- Avoids issues when estimate of variance is on the boundary of the parameter space
 
 -  Do not have to use asymptotics to construct CI!
 
