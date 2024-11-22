@@ -1,0 +1,204 @@
+---
+title: "Linear Mixed Effects Models"
+author: "Merlise Clyde"
+subtitle: "STA721: Lecture 24"
+institute: "Duke University"
+format: 
+  revealjs:
+    theme: [simple, custom.scss]
+    slide-number: true
+    incremental: true
+    scrollable: false
+    controls: true
+    fragments: true
+    preview-links: auto
+    smaller: true
+    logo: ../../img/icon.png
+    footer: <https://sta721-F24.github.io/website/>
+    chalkboard: 
+      boardmarker-width: 1
+      chalk-width: 2
+      chalk-effect: 0
+    embed-resources: false
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"    
+editor: 
+  markdown: 
+    wrap: 72
+execute: 
+  echo: false
+number-sections: false
+filters:
+  - custom-numbered-blocks  
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [948bde, 584eab]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  classes:
+    Theorem:
+      group: thmlike
+    Corollary:
+      group: thmlike
+    Conjecture:
+      group: thmlike
+      collapse: true  
+    Definition:
+      group: thmlike
+      colors: [d999d3, a01793]
+    Feature: default
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos  
+---
+
+
+```{r setup, include=FALSE}
+# R options
+options(
+  htmltools.dir.version = FALSE, # for blogdown
+  show.signif.stars = FALSE,     # for regression output
+  warm = 1,
+  width=72
+  )
+# Set dpi and height for images
+library(knitr)
+knitr::opts_chunk$set(fig.height = 2.65, dpi = 300,fig.align='center',fig.show='hold',size='footnotesize', small.mar=TRUE) 
+# For nonsese...
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+## Random Effects Regression
+{{< include macros.qmd >}}
+
+- Easy to extend from random means by groups to random group level coefficients:
+$$\begin{align*}Y_{ij} & = \tb^T_j \x_{ij}+ \epsilon_{ij} \\
+\epsilon_{ij}   & \iid  \N(0, \sigma^2) 
+\end{align*}
+$$
+- $\tb_j$ is a $d \times 1$ vector regression coefficients for group $j$
+- $\x_{ij}$ is a $d \times 1$ vector of predictors for group $j$
+
+- If we view the groups as exchangeable, describe across group heterogeneity by
+$$\tb_j \iid \N(\b, \Sigmab)$$
+- $\b$, $\Sigmab$ and $\sigma^2$ are population parameters to be estimated.
+
+- Designed to accommodate correlated data due to nested/hierarchical structure/repeated measurements: 
+students w/in schools; patients w/in hospitals; additional covariates
+
+ 
+## Linear Mixed Effects Models
+
+- We can write $\tb = \b + \alphav_j$ with $\alphav_j \iid \N(\zero, \Sigmab)$
+
+- Substituting, we can rewrite model
+$$\begin{align*}Y_{ij} & = \b^T \x_{ij}+ \alphav_j^T \x_{ij} + \epsilon_{ij}, \qquad
+\epsilon_{ij}  \overset{iid}{\sim}  \N(0, \sigma^2) \\
+\alphav_j & \overset{iid}{\sim} \N_d(\zero_d, \Sigmab)
+\end{align*}$$
+
+
+- Fixed effects contribution $\b$ is constant across groups 
+
+ 
+
+- Random effects are $\alphav_j$ as they vary across groups  
+
+- called **mixed effects** as we have both fixed and random effects in the regression model
+
+## More General Model
+- No reason for the fixed effects and random effect covariates to be the same
+$$\begin{align*}Y_{ij} & = \b^T \x_{ij}+ \alphav_j^T \z_{ij} + \epsilon_{ij}, \qquad
+\epsilon_{ij}  \iid  \N(0, \sigma^2) \\
+\alphav_j & {\sim} \N_p(\zero_p, \Sigmab)
+\end{align*}$$
+
+- dimension of $\x_{ij}$ $d \times 1$
+
+- dimension of $\z_{ij}$ $p \times 1$
+
+- may or may not be overlapping
+
+- $\x_{ij}$ could include predictors that are constant across all $i$ in group $j$. (can't estimate if they are in $\z_{ij}$)
+
+
+- features of school $j$ that 
+ 
+## Likelihoods 
+
+- Complete Data Likelihood $(\b, \{\alphav_j\}, \sigma^2, \Sigmab)$
+$$\cL(\b, \{\alphav_j\}, \sigma^2, \Sigmab) \propto \prod_j \N(\alphav_j; \zero_p, \Sigmab) \prod_i \N(y_{ij}; \b^T \x_{ij} + \alphav_j^T\z_{ij}, \sigma^2 )$$
+ 
+
+- Marginal likelihood $(\b, \{\alphav_j\}, \sigma^2, \Sigmab)$
+$$\cL(\b, \sigma^2, \Sigmab)\propto \prod_j \int_{\bbR^p} \N(\alphav_j; \zero_p, \Sigmab) \prod_i \N(y_{ij}; \b^T \x_{ij} + \alphav_j^T \z_{ij}, \sigma^2 ) \, d \alphav_j$$
+ 
+
+- Option A: we can calculate this integral by brute force algebraically
+
+ 
+
+- Option B: (lazy option) We can calculate marginal exploiting properties of Gaussians as sums will be normal -  just read off the first two moments!
+
+
+
+## Marginal Distribution
+
+- Express observed data as vectors for each group $j$:  $(\Y_j, \X_j, \Z_j)$ where  $\Y_j$ is $n_j \times 1$, $\X_j$ is $n_j \times d$ and $\Z_j$ is $n_j \times p$;
+
+ 
+
+- Group Specific Model (1):
+$$\begin{align}\Y_j  & = \X_j \b + \Z_j \alphav_j + \eps_j, \qquad
+\eps_j  \sim \N(\zero_{n_j}, \sigma^2 \I_{n_j})\\
+\alphav_j & \iid \N(\zero_p, \Sigmab)
+\end{align}$$
+
+- Population Mean $\E[\Y_j] = \E[\X_j \b + \Z_j \alphav_j + \eps_j] = \X_j \b$
+
+
+- write out as a big regression model stacking $\Y = (\Y_1, \ldots, \Y_J)$, 
+$\X$ and $\Z$ is block diagonal and $\eps = (\eps_1, \ldots, \eps_J)$
+
+- use OLS to get unbiased estimate of $\b$ and $\alphav_j$ 
+
+
+## GLS Estimation 
+
+- Covariance $\Cov[\Y_j] = \Var[\X_j \b + \Z_j \alphav_j + \eps_j] = \Z_j \Sigmab \Z_j^T + \sigma^2 \I_{n_j}$
+
+
+ 
+
+- Group Specific Model (2)
+$$\Y_j \mid  \b, \Sigmab, \sigma^2 \ind \N(\X_j \b, \Z_j \Sigmab \Z_j^T + \sigma^2 \I_{n_j})$$
+- Use GLS conditional on $\Sigmab, \sigma^2$ to estimate $\b$:
+
+- BLUE of $\b$ is $\left(\sum_j \X_j^T (\Z_j \Sigmab \Z_j^T + \sigma^2 \I_{n_j})^{-1} \X_j \right)^{-1} \sum_j \X_j^T (\Z_j \Sigmab \Z_j^T + \sigma^2 \I_{n_j})^{-1} \Y_j$
+
+## Linear Prediction
+
+
+## Other Questions   
+
+- How do you decide what is a random effect or fixed effect?
+
+- Design structure is often important
+
+
+
+- What if the means are not normal?  Extensions to Generalized linear models
+
+- more examples in Case Studies next semester!
+
+
