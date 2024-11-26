@@ -361,63 +361,112 @@
     "href": "schedule.html",
     "title": " Schedule",
     "section": "",
-    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\nLecture 3: Rank Deficient Models\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\nLecture 4: Best Linear Unbiased Estimation and Gauss-Markov Theorem\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\nLecture 5: BLUES for Prediction and MVUE\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\nLecture 6: Generalized Linear Squares\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\nLecture 7: Sampling Distributions & Distribution Theory\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\nLecture 8: Bayesian Estimation\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\nLecture 9: Bayes and Frequentist Risk\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\nLecture 10: James-Stein\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\nLecture 11: Shrinkage Estimators and Hierarchical Bayes\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\nLecture 12: Shrinkage/Selection and Oracle Properties\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTues, Oct 8\nLecture 13: Testing Hypotheses\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\nLecture 14: Testing Submodels\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\nReview in Lab (see Canvas)\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nNO CLASS - Use time for review\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\nMidterm 1\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\nLecture 15: Confidence Regions and Intervals\n\n\n\n\n\n\n\n\n\n\nThur, Oct 24\nLecture 16: Intro to Bayesian Hypothesis Testing\n\n\n\n\n hw-08\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\nLecture 17: Bayesian Model Averaging\n\n\n\n\n\n\n\n\n\n\nThur, Oct 31\nLecture 18: BMA and Bayesian Variable Selection\n\n\n\n\n\n\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\nTues, Nov 5\nLecture 19: Model Uncertainty\n\n\n\n\n hw-09\n\n\n\n\nThurs, Nov 7\nLecture 20: Bayes Outliers: BMA and Robust Regression\n\n\n\n\n\n\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 12\nLecture 21: Residuals and Diagnostics\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 14\nLecture 22: Transfomations and Normality Assumptions\n\n\n\n\n hw-10\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 19\nLecture 23: Random Effects & Review\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\nMidterm2\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 22\n\n\n\n\n\n\n\n\n hw-12\n\n\nWeek 13\nTues, Nov 26\nLecture 24: Mixed Effects\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
+    "text": "Please refresh often in case links/content has been updated\n\n\n\n\n\n\n\n\nWeek\nDate\nLesson\nReading\nSlides\nLabs\nHomework\n\n\n\n\nWEEK 1\nTues, Aug 26\nLecture 1: Introduction to Linear Models\n\n\n\n\n\n\n\n\n\n\nThur, Aug 28\nLecture 2: MLEs & Projections\n\n\n\n\n hw-01\n\n\n\n\nFri, Aug 29\n\n\n\n\n\n\n\n\n\n\n\nWEEK 2\nTues, Sept 3\nLecture 3: Rank Deficient Models\n\n\n\n\n\n\n\n\n\n\nThur, Sept 5\nLecture 4: Best Linear Unbiased Estimation and Gauss-Markov Theorem\n\n\n\n\n hw-02\n\n\n\n\nFri, Sept 6\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 3\nTues, Sept 10\nLecture 5: BLUES for Prediction and MVUE\n\n\n\n\n\n\n\n\n\n\nThur, Sept 12\nLecture 6: Generalized Linear Squares\n\n\n\n\n hw-03\n\n\n\n\nFri, Sept 13\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 4\nTues, Sept 17\nLecture 7: Sampling Distributions & Distribution Theory\n\n\n\n\n\n\n\n\n\n\nThur, Sept 19\nLecture 8: Bayesian Estimation\n\n\n\n\n hw-04\n\n\n\n\nFri, Sept 20\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 5\nTues, Sept 24\nLecture 9: Bayes and Frequentist Risk\n\n\n\n\n\n\n\n\n\n\nThur, Sept 26\nLecture 10: James-Stein\n\n\n\n\n hw-05\n\n\n\n\nFri, Sept 28\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 6\nTues, Oct 1\nLecture 11: Shrinkage Estimators and Hierarchical Bayes\n\n\n\n\n\n\n\n\n\n\nThu, Oct 3\nLecture 12: Shrinkage/Selection and Oracle Properties\n\n\n\n\n hw-06\n\n\n\n\nFri, Oct 4\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 7\nTues, Oct 8\nLecture 13: Testing Hypotheses\n\n\n\n\n\n\n\n\n\n\nThu, Oct 10\nLecture 14: Testing Submodels\n\n\n\n\n hw-07\n\n\n\n\nFri, Oct 11\nReview in Lab (see Canvas)\n\n\n\n\n\n\n\n\n\n\nWEEK 8\nTue, Oct 15\nNO CLASS FALL BREAK\n\n\n\n\n\n\n\n\n\n\n\n\nThur, Oct 17\nNO CLASS - Use time for review\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Oct 18\nMidterm 1\n\n\n\n\n\n\n\n\n\n\nWEEK 9\nTue, Oct 22\nLecture 15: Confidence Regions and Intervals\n\n\n\n\n\n\n\n\n\n\nThur, Oct 24\nLecture 16: Intro to Bayesian Hypothesis Testing\n\n\n\n\n hw-08\n\n\n\n\nFri, Oct 25\n\n\n\n\n\n\n\n\n\n\n\n\nWEEK 10\nTues, Oct 29\nLecture 17: Bayesian Model Averaging\n\n\n\n\n\n\n\n\n\n\nThur, Oct 31\nLecture 18: BMA and Bayesian Variable Selection\n\n\n\n\n\n\n\n\n\n\nFri, Nov 1\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 11\nTues, Nov 5\nLecture 19: Model Uncertainty\n\n\n\n\n hw-09\n\n\n\n\nThurs, Nov 7\nLecture 20: Bayes Outliers: BMA and Robust Regression\n\n\n\n\n\n\n\n\n\n\nFri, Nov 8\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 12\nLecture 21: Residuals and Diagnostics\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 14\nLecture 22: Transfomations and Normality Assumptions\n\n\n\n\n hw-10\n\n\n\n\nFri, Nov 15\n\n\n\n\n\n\n\n\n\n\n\n\nWeek 12\nTues, Nov 19\nLecture 23: Random Effects & Review\n\n\n\n\n\n\n\n\n\n\nThurs, Nov 21\nMidterm2\n\n\n\n\n\n\n\n\n\n\n\n\nFri, Nov 22\n\n\n\n\n\n\n\n\n hw-12\n\n\nWeek 13\nTues, Nov 26\nLecture 24: Mixed Effects\n\n\n\n\n\n\n\n\n\n\nThur, Nov 30\nNO CLASS THANKSGIVING\n\n\n\n\n\n\n\n\n\n\nWeek 14\n\n\nGraduate Reading Period\n\n\n\n\n\n\n\n\n\n\nFinals Period\nSunt, Dec 15 9am-12pm (in classroom)"
   },
   {
     "objectID": "resources/slides/24-mixed-effects.html#random-effects-regression",
     "href": "resources/slides/24-mixed-effects.html#random-effects-regression",
     "title": "Linear Mixed Effects Models",
     "section": "Random Effects Regression",
-    "text": "Random Effects Regression\n\nEasy to extend from random means by groups to random group level coefficients: \\[\\begin{align*}Y_{ij} & = \\boldsymbol{\\theta}^T_j \\mathbf{x}_{ij}+ \\epsilon_{ij} \\\\\n\\epsilon_{ij}   & \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(0, \\sigma^2)\n\\end{align*}\n\\]\n\\(\\boldsymbol{\\theta}_j\\) is a \\(d \\times 1\\) vector regression coefficients for group \\(j\\)\n\\(\\mathbf{x}_{ij}\\) is a \\(d \\times 1\\) vector of predictors for group \\(j\\)\nIf we view the groups as exchangeable, describe across group heterogeneity by \\[\\boldsymbol{\\theta}_j \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(\\boldsymbol{\\beta}, \\boldsymbol{\\Sigma})\\]\n\\(\\boldsymbol{\\beta}\\), \\(\\boldsymbol{\\Sigma}\\) and \\(\\sigma^2\\) are population parameters to be estimated.\nDesigned to accommodate correlated data due to nested/hierarchical structure/repeated measurements: students w/in schools; patients w/in hospitals; additional covariates"
+    "text": "Random Effects Regression\n\nEasy to extend from random means by groups to random group level coefficients: \\[\\begin{align*}Y_{ij} & = \\boldsymbol{\\theta}^T_j \\mathbf{x}_{ij}+ \\epsilon_{ij} \\\\\n\\epsilon_{ij}   & \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(0, \\sigma^2)\n\\end{align*}\n\\]\n\\(\\boldsymbol{\\theta}_j\\) is a \\(p \\times 1\\) vector regression coefficients for group \\(j\\)\n\\(\\mathbf{x}_{ij}\\) is a \\(p \\times 1\\) vector of predictors for group \\(j\\)\nIf we view the groups as exchangeable, describe across group heterogeneity by \\[\\boldsymbol{\\theta}_j \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(\\boldsymbol{\\beta}, \\boldsymbol{\\Sigma})\\]\n\\(\\boldsymbol{\\beta}\\), \\(\\boldsymbol{\\Sigma}\\) and \\(\\sigma^2\\) are population parameters to be estimated.\nDesigned to accommodate correlated data due to nested/hierarchical structure/repeated measurements: students w/in schools; patients w/in hospitals; additional covariates"
   },
   {
     "objectID": "resources/slides/24-mixed-effects.html#linear-mixed-effects-models",
     "href": "resources/slides/24-mixed-effects.html#linear-mixed-effects-models",
     "title": "Linear Mixed Effects Models",
     "section": "Linear Mixed Effects Models",
-    "text": "Linear Mixed Effects Models\n\nWe can write \\(\\boldsymbol{\\theta}= \\boldsymbol{\\beta}+ \\boldsymbol{\\alpha}_j\\) with \\(\\boldsymbol{\\alpha}_j \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(\\mathbf{0}, \\boldsymbol{\\Sigma})\\)\nSubstituting, we can rewrite model \\[\\begin{align*}Y_{ij} & = \\boldsymbol{\\beta}^T \\mathbf{x}_{ij}+ \\boldsymbol{\\alpha}_j^T \\mathbf{x}_{ij} + \\epsilon_{ij}, \\qquad\n\\epsilon_{ij}  \\overset{iid}{\\sim}  \\textsf{N}(0, \\sigma^2) \\\\\n\\boldsymbol{\\alpha}_j & \\overset{iid}{\\sim} \\textsf{N}_d(\\mathbf{0}_d, \\boldsymbol{\\Sigma})\n\\end{align*}\\]\nFixed effects contribution \\(\\boldsymbol{\\beta}\\) is constant across groups\nRandom effects are \\(\\boldsymbol{\\alpha}_j\\) as they vary across groups\ncalled mixed effects as we have both fixed and random effects in the regression model"
+    "text": "Linear Mixed Effects Models\n\nWe can write \\(\\boldsymbol{\\theta}= \\boldsymbol{\\beta}+ \\boldsymbol{\\alpha}_j\\) with \\(\\boldsymbol{\\alpha}_j \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(\\mathbf{0}, \\boldsymbol{\\Sigma})\\)\nSubstituting, we can rewrite model \\[\\begin{align*}Y_{ij} & = \\boldsymbol{\\beta}^T \\mathbf{x}_{ij}+ \\boldsymbol{\\alpha}_j^T \\mathbf{x}_{ij} + \\epsilon_{ij}, \\qquad\n\\epsilon_{ij}  \\overset{iid}{\\sim}  \\textsf{N}(0, \\sigma^2) \\\\\n\\boldsymbol{\\alpha}_j & \\overset{iid}{\\sim} \\textsf{N}(\\mathbf{0}_p, \\boldsymbol{\\Sigma})\n\\end{align*}\\]\nFixed effects contribution \\(\\boldsymbol{\\beta}\\) is constant across groups\nRandom effects are \\(\\boldsymbol{\\alpha}_j\\) as they vary across groups\ncalled mixed effects as we have both fixed and random effects in the regression model"
   },
   {
     "objectID": "resources/slides/24-mixed-effects.html#more-general-model",
     "href": "resources/slides/24-mixed-effects.html#more-general-model",
     "title": "Linear Mixed Effects Models",
     "section": "More General Model",
-    "text": "More General Model\n\nNo reason for the fixed effects and random effect covariates to be the same \\[\\begin{align*}Y_{ij} & = \\boldsymbol{\\beta}^T \\mathbf{x}_{ij}+ \\boldsymbol{\\alpha}_j^T \\mathbf{z}_{ij} + \\epsilon_{ij}, \\qquad\n\\epsilon_{ij}  \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(0, \\sigma^2) \\\\\n\\boldsymbol{\\alpha}_j & {\\sim} \\textsf{N}_p(\\mathbf{0}_p, \\boldsymbol{\\Sigma})\n\\end{align*}\\]\ndimension of \\(\\mathbf{x}_{ij}\\) \\(d \\times 1\\)\ndimension of \\(\\mathbf{z}_{ij}\\) \\(p \\times 1\\)\nmay or may not be overlapping\n\\(\\mathbf{x}_{ij}\\) could include predictors that are constant across all \\(i\\) in group \\(j\\). (can’t estimate if they are in \\(\\mathbf{z}_{ij}\\))\nfeatures of school \\(j\\) that"
+    "text": "More General Model\n\nNo reason for the fixed effects and random effect covariates to be the same \\[\\begin{align*}Y_{ij} & = \\boldsymbol{\\beta}^T \\mathbf{x}_{ij}+ \\boldsymbol{\\alpha}_j^T \\mathbf{z}_{ij} + \\epsilon_{ij}, \\qquad\n\\epsilon_{ij}  \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(0, \\sigma^2) \\\\\n\\boldsymbol{\\alpha}_j & {\\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}} \\textsf{N}(\\mathbf{0}_q, \\boldsymbol{\\Sigma})\n\\end{align*}\\]\ndimension of \\(\\mathbf{x}_{ij}\\) \\(p \\times 1\\)\ndimension of \\(\\mathbf{z}_{ij}\\) \\(q \\times 1\\)\nmay or may not be overlapping\n\\(\\mathbf{x}_{ij}\\) could include predictors that are constant across all \\(i\\) in group \\(j\\). (can’t estimate if they are in \\(\\mathbf{z}_{ij}\\))\nfeatures of school \\(j\\) that vary across schools but are constant within a school"
   },
   {
-    "objectID": "resources/slides/24-mixed-effects.html#likelihoods",
-    "href": "resources/slides/24-mixed-effects.html#likelihoods",
+    "objectID": "resources/slides/24-mixed-effects.html#marginal-distribution-of-data",
+    "href": "resources/slides/24-mixed-effects.html#marginal-distribution-of-data",
     "title": "Linear Mixed Effects Models",
-    "section": "Likelihoods",
-    "text": "Likelihoods\n\nComplete Data Likelihood \\((\\boldsymbol{\\beta}, \\{\\boldsymbol{\\alpha}_j\\}, \\sigma^2, \\boldsymbol{\\Sigma})\\) \\[{\\cal{L}}(\\boldsymbol{\\beta}, \\{\\boldsymbol{\\alpha}_j\\}, \\sigma^2, \\boldsymbol{\\Sigma}) \\propto \\prod_j \\textsf{N}(\\boldsymbol{\\alpha}_j; \\mathbf{0}_p, \\boldsymbol{\\Sigma}) \\prod_i \\textsf{N}(y_{ij}; \\boldsymbol{\\beta}^T \\mathbf{x}_{ij} + \\boldsymbol{\\alpha}_j^T\\mathbf{z}_{ij}, \\sigma^2 )\\]\nMarginal likelihood \\((\\boldsymbol{\\beta}, \\{\\boldsymbol{\\alpha}_j\\}, \\sigma^2, \\boldsymbol{\\Sigma})\\) \\[{\\cal{L}}(\\boldsymbol{\\beta}, \\sigma^2, \\boldsymbol{\\Sigma})\\propto \\prod_j \\int_{\\mathbb{R}^p} \\textsf{N}(\\boldsymbol{\\alpha}_j; \\mathbf{0}_p, \\boldsymbol{\\Sigma}) \\prod_i \\textsf{N}(y_{ij}; \\boldsymbol{\\beta}^T \\mathbf{x}_{ij} + \\boldsymbol{\\alpha}_j^T \\mathbf{z}_{ij}, \\sigma^2 ) \\, d \\boldsymbol{\\alpha}_j\\]\nOption A: we can calculate this integral by brute force algebraically\nOption B: (lazy option) We can calculate marginal exploiting properties of Gaussians as sums will be normal - just read off the first two moments!"
-  },
-  {
-    "objectID": "resources/slides/24-mixed-effects.html#marginal-distribution",
-    "href": "resources/slides/24-mixed-effects.html#marginal-distribution",
-    "title": "Linear Mixed Effects Models",
-    "section": "Marginal Distribution",
-    "text": "Marginal Distribution\n\nExpress observed data as vectors for each group \\(j\\): \\((\\mathbf{Y}_j, \\mathbf{X}_j, \\mathbf{Z}_j)\\) where \\(\\mathbf{Y}_j\\) is \\(n_j \\times 1\\), \\(\\mathbf{X}_j\\) is \\(n_j \\times d\\) and \\(\\mathbf{Z}_j\\) is \\(n_j \\times p\\);\nGroup Specific Model (1): \\[\\begin{align}\\mathbf{Y}_j  & = \\mathbf{X}_j \\boldsymbol{\\beta}+ \\mathbf{Z}_j \\boldsymbol{\\alpha}_j + \\boldsymbol{\\epsilon}_j, \\qquad\n\\boldsymbol{\\epsilon}_j  \\sim \\textsf{N}(\\mathbf{0}_{n_j}, \\sigma^2 \\mathbf{I}_{n_j})\\\\\n\\boldsymbol{\\alpha}_j & \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(\\mathbf{0}_p, \\boldsymbol{\\Sigma})\n\\end{align}\\]\nPopulation Mean \\(\\textsf{E}[\\mathbf{Y}_j] = \\textsf{E}[\\mathbf{X}_j \\boldsymbol{\\beta}+ \\mathbf{Z}_j \\boldsymbol{\\alpha}_j + \\boldsymbol{\\epsilon}_j] = \\mathbf{X}_j \\boldsymbol{\\beta}\\)\nwrite out as a big regression model stacking \\(\\mathbf{Y}= (\\mathbf{Y}_1, \\ldots, \\mathbf{Y}_J)\\), \\(\\mathbf{X}\\) and \\(\\mathbf{Z}\\) is block diagonal and \\(\\boldsymbol{\\epsilon}= (\\boldsymbol{\\epsilon}_1, \\ldots, \\boldsymbol{\\epsilon}_J)\\)\nuse OLS to get unbiased estimate of \\(\\boldsymbol{\\beta}\\) and \\(\\boldsymbol{\\alpha}_j\\)"
+    "section": "Marginal Distribution of Data",
+    "text": "Marginal Distribution of Data\n\nExpress observed data as vectors for each group \\(j\\): \\((\\mathbf{Y}_j, \\mathbf{X}_j, \\mathbf{Z}_j)\\) where \\(\\mathbf{Y}_j\\) is \\(n_j \\times 1\\), \\(\\mathbf{X}_j\\) is \\(n_j \\times d\\) and \\(\\mathbf{Z}_j\\) is \\(n_j \\times q\\);\nGroup Specific Model (1): \\[\\begin{align}\\mathbf{Y}_j  & = \\mathbf{X}_j \\boldsymbol{\\beta}+ \\mathbf{Z}_j \\boldsymbol{\\alpha}_j + \\boldsymbol{\\epsilon}_j, \\qquad\n\\boldsymbol{\\epsilon}_j  \\sim \\textsf{N}(\\mathbf{0}_{n_j}, \\sigma^2 \\mathbf{I}_{n_j})\\\\\n\\boldsymbol{\\alpha}_j & \\mathrel{\\mathop{\\sim}\\limits^{\\rm iid}}\\textsf{N}(\\mathbf{0}_p, \\boldsymbol{\\Sigma})\n\\end{align}\\]\nPopulation Mean \\(\\textsf{E}[\\mathbf{Y}_j] = \\textsf{E}[\\mathbf{X}_j \\boldsymbol{\\beta}+ \\mathbf{Z}_j \\boldsymbol{\\alpha}_j + \\boldsymbol{\\epsilon}_j] = \\mathbf{X}_j \\boldsymbol{\\beta}\\)\nCovariance \\(\\textsf{Cov}[\\mathbf{Y}_j] = \\textsf{Var}[\\mathbf{X}_j \\boldsymbol{\\beta}+ \\mathbf{Z}_j \\boldsymbol{\\alpha}_j + \\boldsymbol{\\epsilon}_j] = \\mathbf{Z}_j \\boldsymbol{\\Sigma}\\mathbf{Z}_j^T + \\sigma^2 \\mathbf{I}_{n_j}\\) \\[\\mathbf{Y}_j \\mid  \\boldsymbol{\\beta}, \\boldsymbol{\\Sigma}, \\sigma^2 \\mathrel{\\mathop{\\sim}\\limits^{\\rm ind}}\\textsf{N}(\\mathbf{X}_j \\boldsymbol{\\beta}, \\mathbf{Z}_j \\boldsymbol{\\Sigma}\\mathbf{Z}_j^T + \\sigma^2 \\mathbf{I}_{n_j})\\]\nwrite out as a big regression model stacking \\(\\mathbf{Y}\\) \\(\\mathbf{X}\\) and \\(\\mathbf{Z}\\) and \\(\\boldsymbol{\\epsilon}= (\\boldsymbol{\\epsilon}_1, \\ldots, \\boldsymbol{\\epsilon}_J)\\) \\[\\mathbf{Y}= \\mathbf{X}\\boldsymbol{\\beta}+ \\mathbf{Z}\\boldsymbol{\\alpha}+ \\boldsymbol{\\epsilon}\\]"
   },
   {
     "objectID": "resources/slides/24-mixed-effects.html#gls-estimation",
     "href": "resources/slides/24-mixed-effects.html#gls-estimation",
     "title": "Linear Mixed Effects Models",
     "section": "GLS Estimation",
-    "text": "GLS Estimation\n\nCovariance \\(\\textsf{Cov}[\\mathbf{Y}_j] = \\textsf{Var}[\\mathbf{X}_j \\boldsymbol{\\beta}+ \\mathbf{Z}_j \\boldsymbol{\\alpha}_j + \\boldsymbol{\\epsilon}_j] = \\mathbf{Z}_j \\boldsymbol{\\Sigma}\\mathbf{Z}_j^T + \\sigma^2 \\mathbf{I}_{n_j}\\)\nGroup Specific Model (2) \\[\\mathbf{Y}_j \\mid  \\boldsymbol{\\beta}, \\boldsymbol{\\Sigma}, \\sigma^2 \\mathrel{\\mathop{\\sim}\\limits^{\\rm ind}}\\textsf{N}(\\mathbf{X}_j \\boldsymbol{\\beta}, \\mathbf{Z}_j \\boldsymbol{\\Sigma}\\mathbf{Z}_j^T + \\sigma^2 \\mathbf{I}_{n_j})\\]\nUse GLS conditional on \\(\\boldsymbol{\\Sigma}, \\sigma^2\\) to estimate \\(\\boldsymbol{\\beta}\\):\nBLUE of \\(\\boldsymbol{\\beta}\\) is \\(\\left(\\sum_j \\mathbf{X}_j^T (\\mathbf{Z}_j \\boldsymbol{\\Sigma}\\mathbf{Z}_j^T + \\sigma^2 \\mathbf{I}_{n_j})^{-1} \\mathbf{X}_j \\right)^{-1} \\sum_j \\mathbf{X}_j^T (\\mathbf{Z}_j \\boldsymbol{\\Sigma}\\mathbf{Z}_j^T + \\sigma^2 \\mathbf{I}_{n_j})^{-1} \\mathbf{Y}_j\\)"
+    "text": "GLS Estimation\nMarginal Model \\[\\mathbf{Y}\\mid  \\boldsymbol{\\beta}, \\boldsymbol{\\Sigma}, \\sigma^2 \\mathrel{\\mathop{\\sim}\\limits^{\\rm ind}}\\textsf{N}(\\mathbf{X}\\boldsymbol{\\beta}, \\mathbf{Z}\\boldsymbol{\\Sigma}\\mathbf{Z}^T + \\sigma^2 \\mathbf{I}_{n})\\]\n\nDefine covariance of \\(\\mathbf{Y}\\) to be \\(\\mathbf{V}= \\mathbf{Z}\\boldsymbol{\\Sigma}\\mathbf{Z}^T + \\sigma^2 \\mathbf{I}_{n}\\)\nUse GLS conditional on \\(\\boldsymbol{\\Sigma}, \\sigma^2\\) to estimate \\(\\boldsymbol{\\beta}\\): \\[\\boldsymbol{\\beta}= (\\mathbf{X}^T \\mathbf{V}^{-1} \\mathbf{X})^{-1} \\mathbf{X}^T \\mathbf{V}^{-1} \\mathbf{Y}\\]\nsince \\(\\mathbf{V}\\) has unknown parameters, typical practice (non-Bayes) is to use an estimate of \\(\\mathbf{V}\\), and replace \\(\\mathbf{V}\\) by \\(\\hat{\\mathbf{V}}\\). (MLE, Methods of Moments, REML)\nfrequentist random effects models arose from analysis of variance models so generally some simplification in \\(\\boldsymbol{\\Sigma}\\)!"
   },
   {
-    "objectID": "resources/slides/24-mixed-effects.html#linear-prediction",
-    "href": "resources/slides/24-mixed-effects.html#linear-prediction",
+    "objectID": "resources/slides/24-mixed-effects.html#one-way-anova-random-effects-model",
+    "href": "resources/slides/24-mixed-effects.html#one-way-anova-random-effects-model",
     "title": "Linear Mixed Effects Models",
-    "section": "Linear Prediction",
-    "text": "Linear Prediction"
+    "section": "One Way Anova Random Effects Model",
+    "text": "One Way Anova Random Effects Model\n\nConsider Balance data so that \\(n_1 = n_2 = \\cdots = n_J = r\\) and \\(n = rJ\\)\ndesign matrix \\(\\mathbf{X}= \\mathbf{1}_n\\)\ncovariance for random effects is \\(\\boldsymbol{\\Sigma}= \\sigma^2_{\\alpha} \\mathbf{I}_J\\)\nmatrix \\(\\mathbf{Z}\\) is \\(n \\times J\\) \\[\\mathbf{Z}= \\begin{pmatrix} \\mathbf{1}_r & \\mathbf{0}& \\cdots & \\mathbf{0}\\\\\n\\mathbf{0}& \\mathbf{1}_r & \\cdots & \\mathbf{0}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n\\mathbf{0}& \\mathbf{0}& \\cdots & \\mathbf{1}_r\n\\end{pmatrix}\\]\nCovariance \\[\\mathbf{V}=  \\sigma^2 \\mathbf{I}_{n} + \\mathbf{Z}\\boldsymbol{\\Sigma}\\mathbf{Z}^T = \\sigma^2 \\mathbf{I}_{n} + \\sigma^2_{\\alpha} \\mathbf{Z}\\mathbf{Z}^T = \\sigma^2 \\mathbf{I}_{n} + \\sigma^2_{\\alpha} r\\mathbf{P}_\\mathbf{Z}\\]"
+  },
+  {
+    "objectID": "resources/slides/24-mixed-effects.html#mles-for-one-way-random-effects-model",
+    "href": "resources/slides/24-mixed-effects.html#mles-for-one-way-random-effects-model",
+    "title": "Linear Mixed Effects Models",
+    "section": "MLEs for One-Way Random Effects Model",
+    "text": "MLEs for One-Way Random Effects Model\n\nModel \\(\\mathbf{Y}= \\mathbf{1}_n \\beta + \\boldsymbol{\\epsilon}\\) with \\(\\boldsymbol{\\epsilon}\\sim \\textsf{N}(\\mathbf{0}, \\mathbf{V})\\)\nSince \\(C(\\mathbf{V}\\mathbf{X}) \\subset C(\\mathbf{X})\\), the GLS of \\(\\boldsymbol{\\beta}\\) is the same as the OLS of \\(\\beta\\) in this case \\[\\hat{\\beta} = \\bar{y}_{..} = \\sum_{j=1}^J \\sum_{i=1}^r y_{ij}/n\\]\nWe need the determinant and inverse of \\(\\mathbf{V}\\) to get the MLEs for \\(\\sigma^2\\) and \\(\\sigma^2_{\\alpha}\\)\nnote that \\(\\mathbf{V}\\) is block diagonal with blocks \\(\\sigma^2 \\mathbf{I}_r + \\sigma^2_{\\alpha} r \\mathbf{P}_{\\mathbf{1}_r}\\) (use eigenvalues based on svd of \\(\\mathbf{P}_{\\mathbf{1}_r}\\) and \\(\\mathbf{I}_r\\))\ndeterminant of \\(\\mathbf{V}\\) is the product of determinants of blocks \\(\\sigma{^{2}}^n (1 + r \\sigma^2_{\\alpha}/\\sigma^2)^J\\)\nfind inverse of \\(\\mathbf{V}\\) via Woodbury identity (or svd of projections/eigenvalues) \\[\\mathbf{V}^{-1} = \\frac{1}{\\sigma^2} \\left( \\mathbf{I}_n - \\frac{r \\sigma^2_{\\alpha}}\n{\\sigma^2 + r \\sigma^2_{\\alpha}}\\mathbf{P}_{\\mathbf{Z}} \\right)\\]"
+  },
+  {
+    "objectID": "resources/slides/24-mixed-effects.html#log-likelihood",
+    "href": "resources/slides/24-mixed-effects.html#log-likelihood",
+    "title": "Linear Mixed Effects Models",
+    "section": "Log likelihood",
+    "text": "Log likelihood\n\nplug in \\(\\hat{\\beta}\\) \\[\\begin{align*}\n\\log L(\\sigma^2, \\sigma^2_{\\alpha}) & = - \\frac{1}{2}\\log{|V|} - \\frac{1}{2}\n(\\mathbf{Y}- \\mathbf{1}_n \\bar{y})^T\\mathbf{V}^{-1} (\\mathbf{Y}- \\mathbf{1}_n\\bar{y})\\\\\n& = - \\frac{1}{2}\\log{|V|} - \\frac{1}{2}\n\\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{1}_n})\\mathbf{V}^{-1} (\\mathbf{I}- \\mathbf{P}_{\\mathbf{1}_n})\\mathbf{Y}\\\\\n& = - \\frac{J(r - 1)}{2}\\log{\\sigma^2} - \\frac{J}{2} \\log(\\sigma^2 + r \\sigma^2_{\\alpha}) \\\\\n& \\ - \\frac{1}{2 \\sigma^2} \\left( \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{1}_n})( \\mathbf{I}_n - \\frac{r \\sigma^2_{\\alpha}}\n{\\sigma^2 + r \\sigma^2_{\\alpha}}\\mathbf{P}_{\\mathbf{Z}})(\\mathbf{I}- \\mathbf{P}_{\\mathbf{1}_n})\\mathbf{Y}\\right) \\\\\n& = - \\frac{J(r - 1)}{2}\\log{\\sigma^2} - \\frac{J}{2} \\log(\\sigma^2 + r \\sigma^2_{\\alpha}) \\\\\n& \\ -  \\frac{1}{2\\sigma^2} \\left( \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{1}_n})\\left(\\frac{ \\sigma^2\\mathbf{I}_n + r \\sigma^2_{\\alpha} (\\mathbf{I}_n - \\mathbf{P}_{\\mathbf{Z}})}\n{\\sigma^2 + r \\sigma^2_{\\alpha}}\\right)(\\mathbf{I}- \\mathbf{P}_{\\mathbf{1}_n})\\mathbf{Y}\\right)\n\\end{align*}\\]"
+  },
+  {
+    "objectID": "resources/slides/24-mixed-effects.html#mles",
+    "href": "resources/slides/24-mixed-effects.html#mles",
+    "title": "Linear Mixed Effects Models",
+    "section": "MLEs",
+    "text": "MLEs\n\nSimplify using Properties of Projections; ie \\((\\mathbf{I}_n - \\mathbf{P}_{\\mathbf{1}_n})(\\mathbf{I}_n - \\mathbf{P}_{\\mathbf{Z}})\\) to rewrite in terms of familiar \\(\\textsf{SSE}= \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{Z}})\\mathbf{Y}\\) and \\(\\textsf{SST}= \\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{1}_n})\\mathbf{Y}\\) based on the fixed effects one-way anova model\ntake derivatives and solve for MLEs (some alegebra involved!)\nMLE of \\(\\sigma^2\\) is \\(\\hat{\\sigma}^2 = \\textsf{MSE}= \\textsf{SSE}/(n - J)\\)\nMLE of \\(\\sigma^2_{\\alpha}\\) is \\[\\hat{\\sigma}^2_{\\alpha} = \\frac{\\frac{\\textsf{SST}}{J} - \\textsf{MSE}}{n}\\] but this is true only if \\(\\textsf{MSE}&lt; \\textsf{SST}/J\\) otherwise the mode is on the boundary and \\(\\hat{\\sigma}^2_{\\alpha} = 0\\)"
+  },
+  {
+    "objectID": "resources/slides/24-mixed-effects.html#comments",
+    "href": "resources/slides/24-mixed-effects.html#comments",
+    "title": "Linear Mixed Effects Models",
+    "section": "Comments",
+    "text": "Comments\nFor the One-Way model (and HW) we can find MLEs in closed form - but several approaches to simplify the algebra\n\nsteps outlined here (via the stacked approach - more general)\ntreating the response as a matrix and using the matrix normal distribution with the mean function and covariance via Kronecker transformations (lab)\n\nextends to other balanced ANOVA models\n\nsimplify the problem based on summary statistics - i.e. the distributions in terms of \\(\\textsf{SSE}\\). (Gamma) and the sample means (Normal) and integrate out random effects (Approach in Box & Hill for Bayesian solution)\n\neasiest imho for the one-way model\n\n\n\nFor more general problems we may need iterative methods to find MLEs (alternating between conditional MLE of \\(\\boldsymbol{\\beta}\\) and MLE of \\(\\boldsymbol{\\Sigma}\\)) (Gauss-Siedel optimization)"
+  },
+  {
+    "objectID": "resources/slides/24-mixed-effects.html#best-linear-prediction",
+    "href": "resources/slides/24-mixed-effects.html#best-linear-prediction",
+    "title": "Linear Mixed Effects Models",
+    "section": "Best Linear Prediction",
+    "text": "Best Linear Prediction\nGiven a linear model with \\(\\textsf{E}[Y^*] = \\mathbf{X}\\boldsymbol{\\beta}\\) with or without correlation structure, we can predict a new observation \\(Y^*\\) at \\(\\mathbf{x}\\) as \\(\\mathbf{x}^T \\hat{\\boldsymbol{\\beta}}\\) where \\(\\hat{\\boldsymbol{\\beta}}\\) is the OLS or GLS of \\(\\boldsymbol{\\beta}\\).\n\nbut if \\(Y^*\\) and \\(\\mathbf{Y}\\) are correlated we can do better!\n\n\n\nTheorem: Christensen 6.3.4; Sec 12.2Let \\(\\mathbf{Y}\\) and \\(Y^*\\) be random variables with the following moments \\[\\begin{align*}\n\\textsf{E}[\\mathbf{Y}]  =  \\mathbf{X}\\boldsymbol{\\beta}& \\quad & \\textsf{E}[\\mathbf{Y}^*]  = \\mathbf{x}^T\\boldsymbol{\\beta}\\\\\n\\textsf{Var}[\\mathbf{Y}]  =  \\mathbf{V}& \\quad & \\textsf{Cov}[\\mathbf{Y}, Y^*]  = \\psi\n\\end{align*}\\]\nThen the best linear predictor of \\(Y^*\\) given \\(\\mathbf{Y}\\) is \\[\\textsf{E}[Y^* \\mid \\mathbf{Y}] = \\mathbf{x}^T \\hat{\\boldsymbol{\\beta}}+ \\delta(\\mathbf{Y}- \\mathbf{X}\\hat{\\boldsymbol{\\beta}})\\] where \\(\\delta = \\mathbf{V}^{-1}\\psi\\)"
+  },
+  {
+    "objectID": "resources/slides/24-mixed-effects.html#best-linear-unbiased-prediction",
+    "href": "resources/slides/24-mixed-effects.html#best-linear-unbiased-prediction",
+    "title": "Linear Mixed Effects Models",
+    "section": "Best Linear Unbiased Prediction",
+    "text": "Best Linear Unbiased Prediction\nTo go from BLPs to BLUPs we need to estimate the unknown parameters in the model \\(\\boldsymbol{\\beta}\\)\n\nreplacing \\(\\boldsymbol{\\beta}\\) by \\(\\hat{\\boldsymbol{\\beta}}\\) in the BLP gives the Best Linear Unbiased Predictor (BLUP) of \\(Y^*\\) given \\(\\mathbf{Y}\\) (see Christensen 12.2 for details and proof)\nif the \\(y_i\\) are uncorrelated, the BLUP is the same as the BLUE, \\(\\mathbf{x}^T \\hat{\\boldsymbol{\\beta}}\\)\nwhat about other linear combinations? \\(\\boldsymbol{\\lambda}^T\\boldsymbol{\\alpha}\\)?\n\\(\\textsf{E}[\\boldsymbol{\\lambda}^T\\boldsymbol{\\alpha}] = 0\\) so we can let \\(Y^* = \\boldsymbol{\\lambda}^T\\boldsymbol{\\alpha}\\) with \\(\\mathbf{x}= 0\\) \\[\\begin{align*}\n\\psi & = \\textsf{Cov}[\\mathbf{Y}, Y^*] = \\textsf{Cov}(\\mathbf{Z}\\boldsymbol{\\alpha}+ \\boldsymbol{\\epsilon}, \\boldsymbol{\\lambda}^T\\boldsymbol{\\alpha}) \\\\\n   & = \\textsf{Cov}(\\mathbf{Z}\\boldsymbol{\\alpha}, \\boldsymbol{\\lambda}^T\\boldsymbol{\\alpha}) = \\mathbf{Z}\\boldsymbol{\\Sigma}\\boldsymbol{\\lambda}\n\\end{align*}\\]\nthe BLUP of \\(\\boldsymbol{\\lambda}^T\\boldsymbol{\\alpha}\\) given \\(\\mathbf{Y}\\) is \\[\\delta_*^T(\\mathbf{Y}- \\mathbf{X}\\hat{\\boldsymbol{\\beta}})\\] where \\(\\delta_* = \\mathbf{V}^{-1}\\psi = \\mathbf{V}^{-1}\\mathbf{Z}\\boldsymbol{\\Sigma}\\boldsymbol{\\lambda}\\)"
+  },
+  {
+    "objectID": "resources/slides/24-mixed-effects.html#mixed-model-equations-via-bayes-rule",
+    "href": "resources/slides/24-mixed-effects.html#mixed-model-equations-via-bayes-rule",
+    "title": "Linear Mixed Effects Models",
+    "section": "Mixed Model Equations via Bayes Rule",
+    "text": "Mixed Model Equations via Bayes Rule\nThe mixed model equations are the normal equations for the mixed effects model and provide both BLUEs and BLUPs\n\nConsider the model \\[\\begin{align*}\n\\mathbf{Y}& \\sim \\textsf{N}(\\mathbf{W}\\boldsymbol{\\theta}, \\sigma^2 \\mathbf{I}_n) \\\\\n\\mathbf{W}& = [\\mathbf{X}, \\mathbf{Z}] \\\\\n\\boldsymbol{\\theta}& = [\\boldsymbol{\\beta}^T, \\boldsymbol{\\alpha}^T]\n\\end{align*}\\]\nestimate \\(\\boldsymbol{\\theta}\\) using Bayes with the prior \\(\\boldsymbol{\\theta}\\sim \\textsf{N}(\\mathbf{0}, \\Omega)\\) where \\(\\Omega = \\begin{pmatrix} \\mathbf{I}_p  /\\kappa & \\mathbf{0}\\\\ \\mathbf{0}& \\boldsymbol{\\Sigma}\\end{pmatrix}\\)\nposterior mean of \\(\\boldsymbol{\\theta}\\) \\[\\hat{\\boldsymbol{\\theta}} =  \\begin{pmatrix} \\hat{\\boldsymbol{\\beta}}\\\\ \\hat{\\boldsymbol{\\alpha}} \\end{pmatrix} =\n\\begin{pmatrix} \\mathbf{X}^T\\mathbf{X}/\\sigma^2 + \\kappa \\mathbf{I}_p & \\mathbf{X}^T\\mathbf{Z}/\\sigma^2  \\\\\n\\mathbf{Z}^T\\mathbf{X}/\\sigma^2   &   \\mathbf{Z}^T\\mathbf{Z}+ \\boldsymbol{\\Sigma}^{-1} \\end{pmatrix}^{-1}\n\\begin{pmatrix} \\mathbf{X}^T\\mathbf{Y}/\\sigma^2 \\\\ \\mathbf{Z}^T\\mathbf{Y}/\\sigma^2 \\end{pmatrix}\\]"
+  },
+  {
+    "objectID": "resources/slides/24-mixed-effects.html#blues-and-blups-via-bayes-rule",
+    "href": "resources/slides/24-mixed-effects.html#blues-and-blups-via-bayes-rule",
+    "title": "Linear Mixed Effects Models",
+    "section": "BLUEs and BLUPs via Bayes Rule",
+    "text": "BLUEs and BLUPs via Bayes Rule\n\ntake the limiting prior with \\(\\kappa \\rightarrow 0\\) and \\(\\boldsymbol{\\Sigma}\\rightarrow \\mathbf{0}\\) to get the mixed model equations\nThe BLUE of \\(\\boldsymbol{\\beta}\\) and BLUP of \\(\\boldsymbol{\\alpha}\\) satisfy the limiting form of the posterior mean of \\(\\boldsymbol{\\theta}\\) \\[\\hat{\\boldsymbol{\\theta}} =  \\begin{pmatrix} \\hat{\\boldsymbol{\\beta}}\\\\ \\hat{\\boldsymbol{\\alpha}} \\end{pmatrix} =\n\\begin{pmatrix} \\mathbf{X}^T\\mathbf{X}/\\sigma^2  & \\mathbf{X}^T\\mathbf{Z}/\\sigma^2  \\\\\n\\mathbf{Z}^T\\mathbf{X}/\\sigma^2   &   \\mathbf{Z}^T\\mathbf{Z}+ \\boldsymbol{\\Sigma}^{-1} \\end{pmatrix}^{-1}\n\\begin{pmatrix} \\mathbf{X}^T\\mathbf{Y}/\\sigma^2 \\\\ \\mathbf{Z}^T\\mathbf{Y}/\\sigma^2 \\end{pmatrix}\\]\nsee Christensen Sec 12.3 for details\nthe mixed model equations have computational advantages over the usual GLS espression for \\(\\boldsymbol{\\beta}\\) as it avoids inverting \\(\\mathbf{V}\\) \\(n \\times n\\) and instead we are inverting \\(p + q\\) matrix!\nrelated to spatial kriging and Gaussian Process Regression"
   },
   {
     "objectID": "resources/slides/24-mixed-effects.html#other-questions",
     "href": "resources/slides/24-mixed-effects.html#other-questions",
     "title": "Linear Mixed Effects Models",
     "section": "Other Questions",
-    "text": "Other Questions\n\nHow do you decide what is a random effect or fixed effect?\nDesign structure is often important\nWhat if the means are not normal? Extensions to Generalized linear models\nmore examples in Case Studies next semester!\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Other Questions\n\nHow do you decide what is a random effect or fixed effect?\nDesign structure is often important\nWhat if the means are not normal? Extensions to Generalized Linear Models\nwhat if random effects are not normal? (Mixtures of Normals, Bayes…)\nmore examples in Case Studies next semester!\nfor more in depth treatment take STA 610"
   },
   {
     "objectID": "resources/slides/15-CI.html#outline",
@@ -529,7 +578,7 @@
     "href": "resources/slides/15-CI.html#duality",
     "title": "Confidence & Credible Regions",
     "section": "Duality",
-    "text": "Duality\n\nthe posterior density \\(\\boldsymbol{\\beta}\\) is a monotonically decreasing function of \\(Q(\\boldsymbol{\\beta}) \\equiv (\\boldsymbol{\\beta}- \\hat{\\boldsymbol{\\beta}})^T\\mathbf{X}^T\\mathbf{X}(\\boldsymbol{\\beta}- \\hat{\\boldsymbol{\\beta}})\\) so contours of \\(p(\\boldsymbol{\\beta}\\mid \\mathbf{Y})\\) are ellipsoidal in the parameter space of \\(\\boldsymbol{\\beta}\\)\nthe quantity \\(Q(\\boldsymbol{\\beta})/p \\hat{\\sigma}^2\\) is distributed a posteriori \\[ Q(\\boldsymbol{\\beta})/p \\hat{\\sigma}^2 \\sim F(p, n-p)\\] and the ellipsoidal contour of \\(p(\\boldsymbol{\\beta}\\mid \\mathbf{Y})\\) is defined as \\(\\frac{Q(\\boldsymbol{\\beta})}{p \\hat{\\sigma}^2} = F(p, n-p, \\alpha)\\). (Box & Tiao 1973)\nthen HPD regions for \\(\\boldsymbol{\\beta}\\) are the same as confidence regions for \\(\\boldsymbol{\\beta}\\) based on the \\(F\\)-distribution\nmarginals of \\(\\beta_j\\), \\(\\mathbf{x}^T\\boldsymbol{\\beta}\\) and \\(Y^*\\) are also univariate Student-t with \\(n-p\\) degrees of freedom\ndifference is in the interpretation of the regions i.e posterior probability that \\(\\boldsymbol{\\beta}\\) is in the given the data vs the probability a priori that the region covers the true \\(\\boldsymbol{\\beta}\\)\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Duality\n\nthe posterior density \\(\\boldsymbol{\\beta}\\) is a monotonically decreasing function of \\(Q(\\boldsymbol{\\beta}) \\equiv (\\boldsymbol{\\beta}- \\hat{\\boldsymbol{\\beta}})^T\\mathbf{X}^T\\mathbf{X}(\\boldsymbol{\\beta}- \\hat{\\boldsymbol{\\beta}})\\) so contours of \\(p(\\boldsymbol{\\beta}\\mid \\mathbf{Y})\\) are ellipsoidal in the parameter space of \\(\\boldsymbol{\\beta}\\)\nthe quantity \\(Q(\\boldsymbol{\\beta})/p \\hat{\\sigma}^2\\) is distributed a posteriori \\[ Q(\\boldsymbol{\\beta})/p \\hat{\\sigma}^2 \\sim F(p, n-p)\\] and the ellipsoidal contour of \\(p(\\boldsymbol{\\beta}\\mid \\mathbf{Y})\\) is defined as \\(\\frac{Q(\\boldsymbol{\\beta})}{p \\hat{\\sigma}^2} = F(p, n-p, \\alpha)\\). (Box & Tiao 1973)\nthen HPD regions for \\(\\boldsymbol{\\beta}\\) are the same as confidence regions for \\(\\boldsymbol{\\beta}\\) based on the \\(F\\)-distribution\nmarginals of \\(\\beta_j\\), \\(\\mathbf{x}^T\\boldsymbol{\\beta}\\) and \\(Y^*\\) are also univariate Student-t with \\(n-p\\) degrees of freedom\ndifference is in the interpretation of the regions i.e posterior probability that \\(\\boldsymbol{\\beta}\\) is in the given the data vs the probability a priori that the region covers the true \\(\\boldsymbol{\\beta}\\)"
   },
   {
     "objectID": "resources/slides/14-testing-submodels.html#outline",
@@ -641,7 +690,7 @@
     "href": "resources/slides/14-testing-submodels.html#likelihood-ratio-tests-1",
     "title": "Hypothesis Testing Related to SubModels",
     "section": "Likelihood Ratio Tests",
-    "text": "Likelihood Ratio Tests\nEquivalently, we can look at -2 times the log likelihood ratio statistic \\[\\lambda(\\mathbf{Y}) = -2\\log(R(\\mathbf{Y})) = -2 [\\sup_{\\boldsymbol{\\theta}\\in \\boldsymbol{\\Theta}_0} \\cal{l}(\\boldsymbol{\\theta})- \\sup_{\\boldsymbol{\\theta}\\in \\boldsymbol{\\Theta}} \\cal{l}(\\boldsymbol{\\theta})]\\] where \\(\\cal{l}(\\boldsymbol{\\theta}) \\propto \\log p_\\boldsymbol{\\theta}(\\mathbf{Y})\\) (the log likelihood)\n\nSteps:\n\nFind the MLEs of \\(\\boldsymbol{\\theta}\\) in the reduced model \\(\\boldsymbol{\\Theta}_0\\), \\(\\hat{\\boldsymbol{\\theta}}_0\\)\nFind the MLEs of $the full model \\(\\boldsymbol{\\Theta}\\), \\(\\hat{\\boldsymbol{\\theta}}\\)\nCompute \\(\\lambda(\\mathbf{Y}) = -2 [\\cal{l}(\\hat{\\boldsymbol{\\theta}}_0)- \\cal{l}(\\hat{\\boldsymbol{\\theta}})]\\)\nFind the distribution of \\(\\lambda(\\mathbf{Y})\\) under the reduced model\n\n\n\nwith some rearranging and 1-to-1 transformations, can show that this is equivalent to the \\(F\\)-test! (HW)\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Likelihood Ratio Tests\nEquivalently, we can look at -2 times the log likelihood ratio statistic \\[\\lambda(\\mathbf{Y}) = -2\\log(R(\\mathbf{Y})) = -2 [\\sup_{\\boldsymbol{\\theta}\\in \\boldsymbol{\\Theta}_0} \\cal{l}(\\boldsymbol{\\theta})- \\sup_{\\boldsymbol{\\theta}\\in \\boldsymbol{\\Theta}} \\cal{l}(\\boldsymbol{\\theta})]\\] where \\(\\cal{l}(\\boldsymbol{\\theta}) \\propto \\log p_\\boldsymbol{\\theta}(\\mathbf{Y})\\) (the log likelihood)\n\nSteps:\n\nFind the MLEs of \\(\\boldsymbol{\\theta}\\) in the reduced model \\(\\boldsymbol{\\Theta}_0\\), \\(\\hat{\\boldsymbol{\\theta}}_0\\)\nFind the MLEs of $the full model \\(\\boldsymbol{\\Theta}\\), \\(\\hat{\\boldsymbol{\\theta}}\\)\nCompute \\(\\lambda(\\mathbf{Y}) = -2 [\\cal{l}(\\hat{\\boldsymbol{\\theta}}_0)- \\cal{l}(\\hat{\\boldsymbol{\\theta}})]\\)\nFind the distribution of \\(\\lambda(\\mathbf{Y})\\) under the reduced model\n\n\n\nwith some rearranging and 1-to-1 transformations, can show that this is equivalent to the \\(F\\)-test! (HW)"
   },
   {
     "objectID": "resources/slides/23-random-effects.html#models-with-a-categorical-variable",
@@ -732,7 +781,7 @@
     "href": "resources/slides/23-random-effects.html#bayes-estimates-of-variances",
     "title": "Lecture 23: Random Effects",
     "section": "Bayes Estimates of Variances",
-    "text": "Bayes Estimates of Variances\n\nAvoids issues when estimate of variance is on the boundary of the parameter space\nDo not have to use asymptotics to construct CI!\nfull uncertainty propagation\npredictive distributions for future data (avoid plug in estimates of variance components\nGelman (2006) recommends half-t if the number of groups is small or uniform but uniform on the standard deviation \\(\\tau\\) does lead to an improper posterior if \\(J \\leq 3\\) (typically need larger number of groups)\nHobart & Casella (1996) provides more rigorous conditions with improper priors\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Bayes Estimates of Variances\n\nAvoids issues when estimate of variance is on the boundary of the parameter space\nDo not have to use asymptotics to construct CI!\nfull uncertainty propagation\npredictive distributions for future data (avoid plug in estimates of variance components\nGelman (2006) recommends half-t if the number of groups is small or uniform but uniform on the standard deviation \\(\\tau\\) does lead to an improper posterior if \\(J \\leq 3\\) (typically need larger number of groups)\nHobart & Casella (1996) provides more rigorous conditions with improper priors"
   },
   {
     "objectID": "resources/slides/04-BLUE.html#outline",
@@ -837,7 +886,7 @@
     "href": "resources/slides/04-BLUE.html#proof-of-cross-product",
     "title": "Best Linear Unbiased Estimators",
     "section": "Proof of Cross-Product",
-    "text": "Proof of Cross-Product\nLet \\(\\mathbf{D}= \\mathbf{H}\\mathbf{P}\\) and write \\[\\begin{align*}\n\\textsf{E}[(\\mathbf{H}^T(\\mathbf{Y}- \\mu))^T\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] & = \\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{H}\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] \\\\\n& = \\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})]\n\\end{align*}\\]\n\n\\[\\begin{align*}\n\\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})] = & \\textsf{E}[\\textsf{tr}(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu}))]  \\\\\n= & \\textsf{E}[\\textsf{tr}(\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T)] \\\\\n= & \\textsf{tr}(\\textsf{E}[\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T]) \\\\\n= & \\textsf{tr}(\\mathbf{D}\\textsf{E}[(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T]) \\\\\n  = & \\sigma^2 \\textsf{tr}(\\mathbf{D}\\mathbf{I}_n)\\\\\n\\end{align*}\\]\n\n\nSince \\(\\textsf{tr}(\\mathbf{D}) = \\textsf{tr}(\\mathbf{H}\\mathbf{P}) = \\textsf{tr}(\\mathbf{P}\\mathbf{H})\\) we can conclude that the cross-product term is zero.\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Proof of Cross-Product\nLet \\(\\mathbf{D}= \\mathbf{H}\\mathbf{P}\\) and write \\[\\begin{align*}\n\\textsf{E}[(\\mathbf{H}^T(\\mathbf{Y}- \\mu))^T\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] & = \\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{H}\\mathbf{P}(\\mathbf{Y}- \\boldsymbol{\\mu})] \\\\\n& = \\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})]\n\\end{align*}\\]\n\n\\[\\begin{align*}\n\\textsf{E}[(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})] = & \\textsf{E}[\\textsf{tr}(\\mathbf{Y}- \\mu))^T\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu}))]  \\\\\n= & \\textsf{E}[\\textsf{tr}(\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T)] \\\\\n= & \\textsf{tr}(\\textsf{E}[\\mathbf{D}(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T]) \\\\\n= & \\textsf{tr}(\\mathbf{D}\\textsf{E}[(\\mathbf{Y}- \\boldsymbol{\\mu})(\\mathbf{Y}- \\mu)^T]) \\\\\n  = & \\sigma^2 \\textsf{tr}(\\mathbf{D}\\mathbf{I}_n)\\\\\n\\end{align*}\\]\n\n\nSince \\(\\textsf{tr}(\\mathbf{D}) = \\textsf{tr}(\\mathbf{H}\\mathbf{P}) = \\textsf{tr}(\\mathbf{P}\\mathbf{H})\\) we can conclude that the cross-product term is zero."
   },
   {
     "objectID": "resources/slides/07-sampling.html#outline",
@@ -935,7 +984,14 @@
     "href": "resources/slides/07-sampling.html#next-class",
     "title": "Sampling Distributions and Distribution Theory",
     "section": "Next Class",
-    "text": "Next Class\n\nshrinkage estimators\nBayes and penalized loss functions\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Next Class\n\nshrinkage estimators\nBayes and penalized loss functions"
+  },
+  {
+    "objectID": "resources/slides/list-of-mathstuff.html",
+    "href": "resources/slides/list-of-mathstuff.html",
+    "title": "STA721-F24: Linear Models",
+    "section": "",
+    "text": "Theorem: Christensen 6.3.4; Sec 12.2"
   },
   {
     "objectID": "resources/slides/16-Bayes-tests.html#outline",
@@ -1054,7 +1110,7 @@
     "href": "resources/slides/16-Bayes-tests.html#intrinsic-bayes-factors-priors-berger-pericchi",
     "title": "Basics of Bayesian Hypothesis Testing",
     "section": "Intrinsic Bayes Factors & Priors (Berger & Pericchi)",
-    "text": "Intrinsic Bayes Factors & Priors (Berger & Pericchi)\n\nCan’t use improper priors under \\(\\cal{H}_1\\)\nuse part of the data \\(y(l)\\) to update an improper prior on \\(\\theta\\) to get a proper posterior \\(\\pi(\\theta \\mid \\cal{H}_i, y(l))\\)\nuse \\(\\pi(\\theta \\mid y(l), \\cal{H}_i)\\) to obtain the posterior for \\(\\theta\\) based on the rest of the training data\nCalculate a Bayes Factor (avoids arbitrary normalizing constants!)\nChoice of training sample \\(y(l)\\)?\nBerger & Pericchi (1996) propose “averaging” over training samples intrinsic Bayes Factors\nintrinsic prior on \\(\\theta\\) given \\(\\cal{H}_1\\) in model \\(\\mathbf{Y}\\mid \\theta \\sim \\textsf{N}(\\theta, \\sigma^2)\\) \\[\n\\pi(\\theta \\mid \\sigma^2) = \\frac{1 - \\exp[-\\theta^2/\\sigma^2]}{2 \\sqrt{\\pi} \\theta^2\\sigma}\n\\] leads to the Intrisic Bayes Factor\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Intrinsic Bayes Factors & Priors (Berger & Pericchi)\n\nCan’t use improper priors under \\(\\cal{H}_1\\)\nuse part of the data \\(y(l)\\) to update an improper prior on \\(\\theta\\) to get a proper posterior \\(\\pi(\\theta \\mid \\cal{H}_i, y(l))\\)\nuse \\(\\pi(\\theta \\mid y(l), \\cal{H}_i)\\) to obtain the posterior for \\(\\theta\\) based on the rest of the training data\nCalculate a Bayes Factor (avoids arbitrary normalizing constants!)\nChoice of training sample \\(y(l)\\)?\nBerger & Pericchi (1996) propose “averaging” over training samples intrinsic Bayes Factors\nintrinsic prior on \\(\\theta\\) given \\(\\cal{H}_1\\) in model \\(\\mathbf{Y}\\mid \\theta \\sim \\textsf{N}(\\theta, \\sigma^2)\\) \\[\n\\pi(\\theta \\mid \\sigma^2) = \\frac{1 - \\exp[-\\theta^2/\\sigma^2]}{2 \\sqrt{\\pi} \\theta^2\\sigma}\n\\] leads to the Intrisic Bayes Factor"
   },
   {
     "objectID": "resources/slides/21-residuals.html#linear-model-assumptions",
@@ -1159,7 +1215,7 @@
     "href": "resources/slides/21-residuals.html#to-remove-or-not-remove",
     "title": "Residuals and Diagnostics",
     "section": "To Remove or Not Remove?",
-    "text": "To Remove or Not Remove?\n\nFor suspicious cases, check data sources for errors\nCheck that points are not outliers/influential because of wrong mean function or distributional assumptions (transformations)\nInvestigate need for transformations (use EDA at several stages)\nInfluential cases - report results with and without cases (results may change - are differences meaningful?)\n\nOutlier test - suggests alternative population for the case(s); if keep in analysis, will inflate \\({\\hat{\\sigma}}^2\\) and interval estimates\n\nDocument how you handle any case deletions - reproducibility!\nIf lots of outliers - consider throwing out the model rather than data\nAlternative Model Averaging with Outlier models\n\nRobust Regression Methods - M-estimation, L-estimation, S-estimation, MM-estimation, etc. or Bayes with heavy tails\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "To Remove or Not Remove?\n\nFor suspicious cases, check data sources for errors\nCheck that points are not outliers/influential because of wrong mean function or distributional assumptions (transformations)\nInvestigate need for transformations (use EDA at several stages)\nInfluential cases - report results with and without cases (results may change - are differences meaningful?)\n\nOutlier test - suggests alternative population for the case(s); if keep in analysis, will inflate \\({\\hat{\\sigma}}^2\\) and interval estimates\n\nDocument how you handle any case deletions - reproducibility!\nIf lots of outliers - consider throwing out the model rather than data\nAlternative Model Averaging with Outlier models\n\nRobust Regression Methods - M-estimation, L-estimation, S-estimation, MM-estimation, etc. or Bayes with heavy tails"
   },
   {
     "objectID": "resources/slides/11-shrinkage.html#outline",
@@ -1264,7 +1320,7 @@
     "href": "resources/slides/11-shrinkage.html#summary",
     "title": "Shrinkage Estimators and Hierarchical Bayes",
     "section": "Summary",
-    "text": "Summary\nThe literature on shrinkage estimators (with or without selection) is vast\n\nElastic Net (Zou & Hastie 2005)\nSCAD (Fan & Li 2001)\nGeneralized Double Pareto Prior (Armagan, Dunson & Lee 2013)\nSpike-and-Slab Lasso (Rockova & George 2018)\n\n\nFor Bayes, choice of estimator\n\nposterior mean (easy via MCMC)\nposterior mode (optimization)\nposterior median (via MCMC)\n\n\n\nProperties?\n\nFan & Li (JASA 2001) discuss variable selection via non-concave penalties and oracle properties (next time …)\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Summary\nThe literature on shrinkage estimators (with or without selection) is vast\n\nElastic Net (Zou & Hastie 2005)\nSCAD (Fan & Li 2001)\nGeneralized Double Pareto Prior (Armagan, Dunson & Lee 2013)\nSpike-and-Slab Lasso (Rockova & George 2018)\n\n\nFor Bayes, choice of estimator\n\nposterior mean (easy via MCMC)\nposterior mode (optimization)\nposterior median (via MCMC)\n\n\n\nProperties?\n\nFan & Li (JASA 2001) discuss variable selection via non-concave penalties and oracle properties (next time …)"
   },
   {
     "objectID": "resources/slides/06-GLS.html#outline",
@@ -1383,7 +1439,7 @@
     "href": "resources/slides/06-GLS.html#equivalence-of-gls-estimators",
     "title": "Generalized Least Squares, BLUES & BUES",
     "section": "Equivalence of GLS estimators",
-    "text": "Equivalence of GLS estimators\nThe following corollary to the theorem establishes when two GLS estimators for different \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}]\\) are equivalent :\n\nCorollarySuppose \\(\\mathbf{V}= \\mathbf{X}\\boldsymbol{\\Psi}\\mathbf{X}^ T + \\boldsymbol{\\Phi}\\mathbf{H}\\boldsymbol{\\Omega}\\mathbf{H}^T \\boldsymbol{\\Phi}\\). Then \\(\\hat{\\boldsymbol{\\beta}}_\\mathbf{V}= \\hat{\\boldsymbol{\\beta}}_\\boldsymbol{\\Phi}\\)\n\n\n\nCan you construct an equivalent representation based on zero correlation of \\(\\mathbf{P}_\\boldsymbol{\\Phi}\\mathbf{Y}\\) and \\((\\mathbf{I}_n - \\mathbf{P}_\\boldsymbol{\\Phi})\\mathbf{Y}\\) when \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{V}?\\)\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Equivalence of GLS estimators\nThe following corollary to the theorem establishes when two GLS estimators for different \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}]\\) are equivalent :\n\nCorollarySuppose \\(\\mathbf{V}= \\mathbf{X}\\boldsymbol{\\Psi}\\mathbf{X}^ T + \\boldsymbol{\\Phi}\\mathbf{H}\\boldsymbol{\\Omega}\\mathbf{H}^T \\boldsymbol{\\Phi}\\). Then \\(\\hat{\\boldsymbol{\\beta}}_\\mathbf{V}= \\hat{\\boldsymbol{\\beta}}_\\boldsymbol{\\Phi}\\)\n\n\n\nCan you construct an equivalent representation based on zero correlation of \\(\\mathbf{P}_\\boldsymbol{\\Phi}\\mathbf{Y}\\) and \\((\\mathbf{I}_n - \\mathbf{P}_\\boldsymbol{\\Phi})\\mathbf{Y}\\) when \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\sigma^2 \\mathbf{V}?\\)"
   },
   {
     "objectID": "resources/slides/13-testing.html#outline",
@@ -1502,7 +1558,7 @@
     "href": "resources/slides/13-testing.html#extra-sum-of-squares-1",
     "title": "Hypothesis Testing",
     "section": "Extra Sum of Squares",
-    "text": "Extra Sum of Squares\nRewrite \\(\\textsf{SSE}_{M0}\\): \\[\\begin{align*}\n\\textsf{SSE}_{M0} & = \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\\\\n          & = \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{Z}} + \\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\\\\n          & = \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{Z}})\\mathbf{Y}+ \\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\\\\n          & = \\textsf{SSE}_{M1} + \\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\n\\end{align*}\\]\n\nExtra Sum of Squares: \\[\\textsf{SSE}_{M0} - \\textsf{SSE}_{M1}  = \\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\]\n\nis \\(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}}\\) is a projection matrix?\nonto what space? along what space ?\nwhat is the distribution of \\(\\textsf{SSE}_{M0} - \\textsf{SSE}_{M1}\\) under the null model M0? under M1?\nis it independent of \\(\\textsf{SSE}_{M1}\\)?\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Extra Sum of Squares\nRewrite \\(\\textsf{SSE}_{M0}\\): \\[\\begin{align*}\n\\textsf{SSE}_{M0} & = \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\\\\n          & = \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{Z}} + \\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\\\\n          & = \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_{\\mathbf{Z}})\\mathbf{Y}+ \\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\\\\n          & = \\textsf{SSE}_{M1} + \\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\n\\end{align*}\\]\n\nExtra Sum of Squares: \\[\\textsf{SSE}_{M0} - \\textsf{SSE}_{M1}  = \\mathbf{Y}^T(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}})\\mathbf{Y}\\]\n\nis \\(\\mathbf{P}_{\\mathbf{Z}} - \\mathbf{P}_{\\mathbf{W}}\\) is a projection matrix?\nonto what space? along what space ?\nwhat is the distribution of \\(\\textsf{SSE}_{M0} - \\textsf{SSE}_{M1}\\) under the null model M0? under M1?\nis it independent of \\(\\textsf{SSE}_{M1}\\)?"
   },
   {
     "objectID": "resources/slides/17-bma.html#normal-regression-model",
@@ -1628,7 +1684,7 @@
     "href": "resources/slides/17-bma.html#summary-1",
     "title": "Bayesian Model Averaging",
     "section": "Summary",
-    "text": "Summary\n\nChoice of prior on \\(\\boldsymbol{\\beta_\\gamma}\\)\ng-priors or mixtures of \\(g\\) (sensitivity)\npriors on the models (sensitivity)\nposterior summaries - select a model or “average” over all models\n\n\n\n\n\nhttps://sta702-F23.github.io/website/"
+    "text": "Summary\n\nChoice of prior on \\(\\boldsymbol{\\beta_\\gamma}\\)\ng-priors or mixtures of \\(g\\) (sensitivity)\npriors on the models (sensitivity)\nposterior summaries - select a model or “average” over all models"
   },
   {
     "objectID": "labs/lab-01.html",
@@ -1747,7 +1803,7 @@
     "href": "resources/slides/03-non-full-rank.html#linear-unbiased-estimation",
     "title": "Rank Deficient Models",
     "section": "Linear Unbiased Estimation",
-    "text": "Linear Unbiased Estimation\n\n\n\n\n\n\n\nExercise\n\n\n\nExplain why an estimator that is unbiased for the model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{k+1}\\) is unbiased for the model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{k}\\) .\nFind an estimator that is unbiased for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{1}\\) that but is biased for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{2}\\).\n\n\n\n\n\n\nRestrict attention to linear unbiased estimators\n\n\n\nDefinition: Linear Unbiased Estimators (LUEs)\nAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is a Linear Unbiased Estimator (LUE) of \\(\\boldsymbol{\\beta}\\) if\n\nlinearity: \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\) for \\(\\mathbf{A}\\in \\mathbb{R}^{p \\times n}\\)\nunbiasedness: \\(\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\) for all \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\)\n\n\n\n\n\n\nAre there other LUEs besides the OLS/MLE estimator?\nWhich is “best”? (and in what sense?)\n\n\n\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Linear Unbiased Estimation\n\n\n\n\n\n\n\nExercise\n\n\n\nExplain why an estimator that is unbiased for the model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{k+1}\\) is unbiased for the model with parameter space \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{k}\\) .\nFind an estimator that is unbiased for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{1}\\) that but is biased for \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\) and \\(P \\in  \\cal{P}_{2}\\).\n\n\n\n\n\n\nRestrict attention to linear unbiased estimators\n\n\n\nDefinition: Linear Unbiased Estimators (LUEs)\nAn estimator \\(\\tilde{\\boldsymbol{\\beta}}\\) is a Linear Unbiased Estimator (LUE) of \\(\\boldsymbol{\\beta}\\) if\n\nlinearity: \\(\\tilde{\\boldsymbol{\\beta}}= \\mathbf{A}\\mathbf{Y}\\) for \\(\\mathbf{A}\\in \\mathbb{R}^{p \\times n}\\)\nunbiasedness: \\(\\textsf{E}[\\tilde{\\boldsymbol{\\beta}}] = \\boldsymbol{\\beta}\\) for all \\(\\boldsymbol{\\beta}\\in \\mathbb{R}^p\\)\n\n\n\n\n\n\nAre there other LUEs besides the OLS/MLE estimator?\nWhich is “best”? (and in what sense?)"
   },
   {
     "objectID": "resources/slides/05-BLUE-MVUE.html#outline",
@@ -1845,7 +1901,7 @@
     "href": "resources/slides/05-BLUE-MVUE.html#next-up",
     "title": "Best Linear Unbiased Estimators in Prediction, MVUEs and BUEs",
     "section": "Next Up",
-    "text": "Next Up\n\nGLS under assumptions \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\boldsymbol{\\Sigma}\\)\nOblique projections and orthogonality with other inner products on \\(\\mathbb{R}^n\\)\nMLEs in Multivariate Normal setting\nGauss-Markov\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Next Up\n\nGLS under assumptions \\(\\textsf{E}[\\boldsymbol{\\epsilon}] = \\mathbf{0}_n\\) and \\(\\textsf{Cov}[\\boldsymbol{\\epsilon}] = \\boldsymbol{\\Sigma}\\)\nOblique projections and orthogonality with other inner products on \\(\\mathbb{R}^n\\)\nMLEs in Multivariate Normal setting\nGauss-Markov"
   },
   {
     "objectID": "resources/slides/01-introduction.html#introduction-to-sta721",
@@ -1950,14 +2006,14 @@
     "href": "resources/slides/01-introduction.html#philosophy",
     "title": "Introduction to STA721",
     "section": "Philosophy",
-    "text": "Philosophy\n\nfor many problems frequentist and Bayesian methods will give similar answers (more a matter of taste in interpretation)\n\nFor small problems, Bayesian methods allow us to incorporate prior information which provides better calibrated answers\n\nfor problems with complex designs and/or missing data Bayesian methods are often easier to implement (do not need to rely on asymptotics) \n\nFor problems involving hypothesis testing or model selection frequentist and Bayesian methods can be strikingly different.\n\nFrequentist methods often faster (particularly with “big data”) so great for exploratory analysis and for building a “data-sense”\n\nBayesian methods sit on top of Frequentist Likelihood\n\nGoemetric perspective important in both!\n\n\nImportant to understand advantages and problems of each perspective!\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Philosophy\n\nfor many problems frequentist and Bayesian methods will give similar answers (more a matter of taste in interpretation)\n\nFor small problems, Bayesian methods allow us to incorporate prior information which provides better calibrated answers\n\nfor problems with complex designs and/or missing data Bayesian methods are often easier to implement (do not need to rely on asymptotics) \n\nFor problems involving hypothesis testing or model selection frequentist and Bayesian methods can be strikingly different.\n\nFrequentist methods often faster (particularly with “big data”) so great for exploratory analysis and for building a “data-sense”\n\nBayesian methods sit on top of Frequentist Likelihood\n\nGoemetric perspective important in both!\n\n\nImportant to understand advantages and problems of each perspective!"
   },
   {
     "objectID": "resources/slides/template.html#outline",
     "href": "resources/slides/template.html#outline",
     "title": "template",
     "section": "Outline",
-    "text": "Outline\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Outline"
   },
   {
     "objectID": "resources/slides/08-bayes.html#outline",
@@ -2069,7 +2125,7 @@
     "href": "resources/slides/08-bayes.html#next-class",
     "title": "Bayesian Estimation in Linear Models",
     "section": "Next Class",
-    "text": "Next Class\n\nFrequentist risk of Bayes estimators\nBayes and penalized loss functions\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Next Class\n\nFrequentist risk of Bayes estimators\nBayes and penalized loss functions"
   },
   {
     "objectID": "resources/slides/09-bayes-freq-risk.html#outline",
@@ -2160,7 +2216,7 @@
     "href": "resources/slides/09-bayes-freq-risk.html#generalized-ridge-regression",
     "title": "Bayesian Estimation and Frequentist Risk",
     "section": "Generalized Ridge Regression",
-    "text": "Generalized Ridge Regression\n\nrather than a common penalty for all variables, consider a different penalty for each variable\nas a prior, we are assuming that the \\(\\boldsymbol{\\beta}_j\\) are iid \\(\\textsf{N}(0, \\frac{\\kappa_j}{\\phi})\\) so that the prior for \\(\\boldsymbol{\\beta}\\) is \\(\\textsf{N}(\\mathbf{0}_p, \\phi^{-1} \\mathbf{K}^{-1})\\) where \\(\\mathbf{K}= \\textsf{diag}(\\kappa_1, \\ldots, \\kappa_p)\\)\nhard enough to choose a single penalty, how to choose \\(p\\) penalties?\nplace independent priors on each of the \\(\\kappa_j\\)’s\na hierarchical Bayes model\nif we can integrate out the \\(\\kappa_j\\)’s we have a new prior for \\(\\beta_j\\)\nthis leads to a new penalty!\nexamples include the Lasso (Double Exponential Prior) and Double Pareto Priors\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Generalized Ridge Regression\n\nrather than a common penalty for all variables, consider a different penalty for each variable\nas a prior, we are assuming that the \\(\\boldsymbol{\\beta}_j\\) are iid \\(\\textsf{N}(0, \\frac{\\kappa_j}{\\phi})\\) so that the prior for \\(\\boldsymbol{\\beta}\\) is \\(\\textsf{N}(\\mathbf{0}_p, \\phi^{-1} \\mathbf{K}^{-1})\\) where \\(\\mathbf{K}= \\textsf{diag}(\\kappa_1, \\ldots, \\kappa_p)\\)\nhard enough to choose a single penalty, how to choose \\(p\\) penalties?\nplace independent priors on each of the \\(\\kappa_j\\)’s\na hierarchical Bayes model\nif we can integrate out the \\(\\kappa_j\\)’s we have a new prior for \\(\\beta_j\\)\nthis leads to a new penalty!\nexamples include the Lasso (Double Exponential Prior) and Double Pareto Priors"
   },
   {
     "objectID": "resources/slides/02-mles.html#outline",
@@ -2265,7 +2321,7 @@
     "href": "resources/slides/02-mles.html#mle-estimate-of-sigma2",
     "title": "Maximum Likelihood Estimation",
     "section": "MLE Estimate of \\(\\sigma^2\\)",
-    "text": "MLE Estimate of \\(\\sigma^2\\)\nMaximum Likelihood Estimate of \\(\\sigma^2\\) \\[\\begin{eqnarray*}\n    {\\hat{\\sigma}}^2& = & \\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2}{n} \\\\\n      & = & \\frac{\\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})^T(\\mathbf{I}-\\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{ \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{\\mathbf{e}^T\\mathbf{e}} {n}\n  \\end{eqnarray*}\\] where \\(\\mathbf{e}= (\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\\mathbf{Y}\\) are the residuals from the regression of \\(\\mathbf{Y}\\) on \\(\\mathbf{X}\\)\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "MLE Estimate of \\(\\sigma^2\\)\nMaximum Likelihood Estimate of \\(\\sigma^2\\) \\[\\begin{eqnarray*}\n    {\\hat{\\sigma}}^2& = & \\frac{\\| (\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}\\|^2}{n} \\\\\n      & = & \\frac{\\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X})^T(\\mathbf{I}-\\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{ \\mathbf{Y}^T(\\mathbf{I}- \\mathbf{P}_\\mathbf{X}) \\mathbf{Y}}{n} \\\\\n& = & \\frac{\\mathbf{e}^T\\mathbf{e}} {n}\n  \\end{eqnarray*}\\] where \\(\\mathbf{e}= (\\mathbf{I}- \\mathbf{P}_\\mathbf{X})\\mathbf{Y}\\) are the residuals from the regression of \\(\\mathbf{Y}\\) on \\(\\mathbf{X}\\)"
   },
   {
     "objectID": "resources/slides/10-james-stein.html#outline",
@@ -2342,7 +2398,7 @@
     "href": "resources/slides/10-james-stein.html#lasso-estimator",
     "title": "James-Stein Estimation and Shrinkage",
     "section": "LASSO Estimator",
-    "text": "LASSO Estimator\n\n\n\nan alternative estimator that allows for shrinkage and selection is the LASSO (Least Absolute Shrinkage and Selection Operator).\nthe LASSO replaces the penalty term in the ridge regression with an \\(L_1\\) penalty term \\[\\hat{\\boldsymbol{\\beta}}_{LASSO} = \\mathop{\\mathrm{argmin}}_{\\boldsymbol{\\beta}} \\left\\{ \\|\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2 + \\lambda \\|\\boldsymbol{\\beta}\\|_1 \\right\\}\\]\nthe LASSO can also be shown to be the posterior mode of a Bayesian model with independent Laplace or double exponential prior distributions on the coefficients.\nas the double exponential prior is a “scale” mixture of normals, this provides a generalization of the ridge regression.\n\n\n\nfrom Machine Learning with R\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "LASSO Estimator\n\n\n\nan alternative estimator that allows for shrinkage and selection is the LASSO (Least Absolute Shrinkage and Selection Operator).\nthe LASSO replaces the penalty term in the ridge regression with an \\(L_1\\) penalty term \\[\\hat{\\boldsymbol{\\beta}}_{LASSO} = \\mathop{\\mathrm{argmin}}_{\\boldsymbol{\\beta}} \\left\\{ \\|\\mathbf{Y}- \\mathbf{X}\\boldsymbol{\\beta}\\|^2 + \\lambda \\|\\boldsymbol{\\beta}\\|_1 \\right\\}\\]\nthe LASSO can also be shown to be the posterior mode of a Bayesian model with independent Laplace or double exponential prior distributions on the coefficients.\nas the double exponential prior is a “scale” mixture of normals, this provides a generalization of the ridge regression.\n\n\n\nfrom Machine Learning with R"
   },
   {
     "objectID": "resources/slides/example.html",
@@ -2468,7 +2524,7 @@
     "href": "resources/slides/18-bvs.html#summary-1",
     "title": "Bayesian Model Averaging and Variable Selection",
     "section": "Summary",
-    "text": "Summary\n\nChoice of prior on \\(\\boldsymbol{\\beta_\\gamma}\\)\n\northogonally invariant priors - multivariate Spike & Slab\nproducts of independent Spike & Slab priors\nnon-semi-conjugate\n\npriors on the models (sensitivity)\ncomputation (MCMC, “stochastic search”, variational, orthogonal data augmentation, reversible jump-MCMC)\nposterior summaries - select a model or “average” over all models\n\n\nOther aspects of model selection?\n\ntransformations of \\(\\mathbf{Y}\\)\nfunctions of \\(\\mathbf{X}\\): interactions or nonlinear functions such as splines kernels\nchoice of error distribution\n\n\n\n\n\nhttps://sta702-F23.github.io/website/"
+    "text": "Summary\n\nChoice of prior on \\(\\boldsymbol{\\beta_\\gamma}\\)\n\northogonally invariant priors - multivariate Spike & Slab\nproducts of independent Spike & Slab priors\nnon-semi-conjugate\n\npriors on the models (sensitivity)\ncomputation (MCMC, “stochastic search”, variational, orthogonal data augmentation, reversible jump-MCMC)\nposterior summaries - select a model or “average” over all models\n\n\nOther aspects of model selection?\n\ntransformations of \\(\\mathbf{Y}\\)\nfunctions of \\(\\mathbf{X}\\): interactions or nonlinear functions such as splines kernels\nchoice of error distribution"
   },
   {
     "objectID": "resources/slides/12-oracle.html#outline",
@@ -2573,7 +2629,7 @@
     "href": "resources/slides/12-oracle.html#selection-and-uncertainty",
     "title": "Optimal Shrinkage/Selection and Oracle Properties",
     "section": "Selection and Uncertainty",
-    "text": "Selection and Uncertainty\n\nPrior/Posterior do not put any probability on the event \\(\\beta_j = 0\\)\nUncertainty that the coefficient is zero?\nSelection solved as a post-analysis decision problem\nSelection part of model uncertainty\n\nadd prior probability that \\(\\beta_j = 0\\)\ncombine with decision problem\n\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Selection and Uncertainty\n\nPrior/Posterior do not put any probability on the event \\(\\beta_j = 0\\)\nUncertainty that the coefficient is zero?\nSelection solved as a post-analysis decision problem\nSelection part of model uncertainty\n\nadd prior probability that \\(\\beta_j = 0\\)\ncombine with decision problem"
   },
   {
     "objectID": "resources/slides/20-outliers.html#body-fat-data",
@@ -2713,7 +2769,7 @@
     "href": "resources/slides/20-outliers.html#summary",
     "title": "Outliers and Robust Regression",
     "section": "Summary",
-    "text": "Summary\n\nClassical diagnostics useful for EDA (checking data, potential outliers/influential points) or posterior predictive checks\nBMA/BVS and Bayesian robust regression avoid interactive decision making about outliers\nRobust Regression (Bayes) can still identify outliers through distribution on weights\ncontinuous versus mixture distribution on scale parameters\nOther mixtures (sub populations?) on scales and \\(\\boldsymbol{\\beta}\\)?\nBe careful about what predictors or transformations are used in the model as some outliers may be a result of model misspecification!\n\n\n\n\n\nhttps://sta702-F23.github.io/website/"
+    "text": "Summary\n\nClassical diagnostics useful for EDA (checking data, potential outliers/influential points) or posterior predictive checks\nBMA/BVS and Bayesian robust regression avoid interactive decision making about outliers\nRobust Regression (Bayes) can still identify outliers through distribution on weights\ncontinuous versus mixture distribution on scale parameters\nOther mixtures (sub populations?) on scales and \\(\\boldsymbol{\\beta}\\)?\nBe careful about what predictors or transformations are used in the model as some outliers may be a result of model misspecification!"
   },
   {
     "objectID": "resources/slides/22-transformations.html#outline",
@@ -2853,7 +2909,7 @@
     "href": "resources/slides/22-transformations.html#summary",
     "title": "Transformations and Normality Assumptions",
     "section": "Summary",
-    "text": "Summary\n\nOptimal transformation for normality (MLE) depends on choice of mean function \nMay not be the same as the variance stabilizing transformation \nNonlinear Models as suggested by Theory or Generalized Linear Models are alternatives \n``normal’’ estimates may be useful approximations for large \\(p\\) or for starting values for more complex models (where convergence may be sensitive to starting values)\n\n\n\n\n\nhttps://sta721-F24.github.io/website/"
+    "text": "Summary\n\nOptimal transformation for normality (MLE) depends on choice of mean function \nMay not be the same as the variance stabilizing transformation \nNonlinear Models as suggested by Theory or Generalized Linear Models are alternatives \n``normal’’ estimates may be useful approximations for large \\(p\\) or for starting values for more complex models (where convergence may be sensitive to starting values)"
   },
   {
     "objectID": "resources/slides/19-bvs.html#recap-diabetes-data",
@@ -2937,7 +2993,7 @@
     "href": "resources/slides/19-bvs.html#other-aspects-of-model-selection",
     "title": "Bayesian Model Uncertainty",
     "section": "Other aspects of model selection?",
-    "text": "Other aspects of model selection?\n\ntransformations of \\(\\mathbf{Y}\\)\nfunctions of \\(\\mathbf{X}\\): interactions or nonlinear functions such as splines kernels\nchoice of error distribution\noutliers\n\n\n\n\n\nhttps://sta702-F23.github.io/website/"
+    "text": "Other aspects of model selection?\n\ntransformations of \\(\\mathbf{Y}\\)\nfunctions of \\(\\mathbf{X}\\): interactions or nonlinear functions such as splines kernels\nchoice of error distribution\noutliers"
   },
   {
     "objectID": "about.html",
