@@ -1,1 +1,2 @@
 \providecommand{\Pageref}[1]{\hfill p.\pageref{#1}}
+ [**Theorem**](#christensen-6.3.4-sec-12.2): Christensen 6.3.4; Sec 12.2\Pageref{christensen-6.3.4-sec-12.2}

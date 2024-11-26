@@ -12,6 +12,7 @@
 \newcommand{\E}{\textsf{E}}
 \newcommand{\SE}{\textsf{SE}}
 \newcommand{\SSE}{\textsf{SSE}}
+\newcommand{\SST}{\textsf{SST}}
 \newcommand{\RSS}{\textsf{RSS}}
 \newcommand{\FSS}{\textsf{FSS}}
 \renewcommand{\SS}{\textsf{SS}}
@@ -133,6 +134,7 @@ iid}}}}
 \def\bhat{\hat{\boldsymbol{\beta}}}
 \def\btilde{\tilde{\boldsymbol{\beta}}}
 \def\tb{\boldsymbol{\theta}}
+\def\thetab{\boldsymbol{\theta}}
 \def\bg{\boldsymbol{\beta_\gamma}}
 \def\bgnot{\boldsymbol{\beta_{(-\gamma)}}}
 \def\mub{\boldsymbol{\mu}}
